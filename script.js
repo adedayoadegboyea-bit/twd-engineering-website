@@ -27,3 +27,14 @@ window.addEventListener('scroll',()=>{
   backTop?.classList.toggle('show',window.scrollY>600);
 });
 backTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+
+const newsletterForm=document.querySelector('#newsletterForm');
+newsletterForm?.addEventListener('submit',(event)=>{
+  event.preventDefault();
+  const email=document.querySelector('#newsletterEmail')?.value.trim();
+  if(!email) return;
+  const subject=encodeURIComponent('TW&D Newsletter Subscription');
+  const body=encodeURIComponent('Hello TW&D Engineering Consult & Services Ltd,\n\nPlease add this email address to the TW&D project/company update list:\n'+email+'\n\nThank you.');
+  window.location.href='mailto:twdengineeringconsult@engineer.com?subject='+subject+'&body='+body;
+});
