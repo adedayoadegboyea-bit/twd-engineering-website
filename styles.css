@@ -60,3 +60,24 @@ footer{background:#031b38;color:#dce7f5;padding-top:60px}.footer-grid{display:gr
 .gallery-feature img{height:390px}
 .gallery-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:22px;padding:18px 0;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
 @media(max-width:620px){.gallery-grid{grid-template-columns:1fr}.gallery-feature{grid-column:auto}.gallery-card img,.gallery-feature img{height:250px}.gallery-footer{flex-direction:column;align-items:flex-start}}
+
+
+/* Friendly updates and gallery controls */
+.gallery-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.updates-section{background:var(--navy);color:#fff;padding:72px 0}
+.updates-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
+.updates-grid h2{font-size:clamp(30px,4vw,48px);line-height:1.08;margin:0 0 12px;color:#fff;letter-spacing:-1.3px}
+.updates-grid>div:first-child>p:not(.eyebrow){color:#cbd8e7;font-size:14px;max-width:620px}
+.update-card{background:#fff;color:var(--navy);padding:28px;border:1px solid #d9e2ec;display:grid;grid-template-columns:48px 1fr;gap:18px;box-shadow:var(--shadow)}
+.update-icon{width:48px;height:48px;display:grid;place-items:center;background:var(--gold);color:var(--navy);font-size:20px;font-weight:900}
+.update-card strong,.update-card span,.update-card small{display:block}
+.update-card strong{font-size:18px;margin-bottom:6px}
+.update-card span{font-size:12px;color:var(--muted);line-height:1.65}
+.newsletter-form{display:flex;gap:8px;margin-top:17px}
+.newsletter-form input{flex:1;min-width:0;border:1px solid #cbd7e3;padding:13px 14px;font:inherit;font-size:12px;outline:none}
+.newsletter-form input:focus{border-color:#9a7100;box-shadow:0 0 0 3px #f7bd1822}
+.newsletter-form .btn{border:0;cursor:pointer}
+.update-card small{font-size:9px;color:#7a899a;margin-top:10px;line-height:1.5}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1050px){.updates-grid{grid-template-columns:1fr;gap:30px}}
+@media(max-width:620px){.gallery-actions{flex-direction:column;align-items:flex-start;gap:12px}.newsletter-form{flex-direction:column}.newsletter-form .btn{width:100%}.update-card{grid-template-columns:1fr}.updates-section{padding:60px 0}}
