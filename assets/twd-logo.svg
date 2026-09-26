@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">TW&amp;D Engineering Consult &amp; Services Ltd logo</title>
+<desc id="desc">Bold navy and gold TW&amp;D engineering logo with roofline and skyline motif.</desc>
+<defs>
+  <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#123f73"/><stop offset="1" stop-color="#061a33"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4d27b"/><stop offset=".45" stop-color="#d7a62a"/><stop offset="1" stop-color="#a87508"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#061a33" flood-opacity=".18"/></filter>
+</defs>
+<g filter="url(#shadow)">
+  <path d="M55 255 C180 330 385 352 600 350 C820 348 1015 320 1145 252" fill="none" stroke="url(#navy)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M65 238 C190 305 390 323 600 322 C820 320 1005 296 1130 238" fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M205 205 V118 H70 V82 H335 L386 130 L438 82 H615 L548 130 H475 L423 205 H350 L395 130 H300 L255 205 Z" fill="url(#navy)"/>
+  <path d="M570 205 L665 82 H735 L805 205 H735 L712 167 H636 L614 205 Z M659 136 L646 155 H702 L689 136 Z" fill="url(#navy)"/>
+  <path d="M775 82 H845 V205 H775 Z" fill="url(#navy)"/>
+  <path d="M845 82 H925 V205 H845 Z" fill="url(#navy)"/>
+  <path d="M925 82 H1005 V205 H925 Z" fill="url(#navy)"/>
+  <path d="M1005 82 H1075 C1118 82 1140 106 1140 143 V144 C1140 181 1118 205 1075 205 H1005 V171 H1062 C1080 171 1090 162 1090 144 C1090 126 1080 116 1062 116 H1005 Z" fill="url(#navy)"/>
+  <path d="M168 78 L500 32 L785 88 L746 110 L500 67 L195 112 Z" fill="url(#gold)"/>
+  <path d="M665 74 V10 H705 V81 Z M720 82 V0 H760 V88 Z M775 90 V18 H815 V96 Z" fill="url(#gold)"/>
+  <text x="600" y="275" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="900" letter-spacing="4" fill="#061a33">ENGINEERING CONSULT &amp; SERVICES LTD</text>
+  <rect x="130" y="303" width="220" height="4" rx="2" fill="#d7a62a"/>
+  <rect x="850" y="303" width="220" height="4" rx="2" fill="#d7a62a"/>
+  <text x="600" y="326" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" letter-spacing="5" fill="#12355d">ENGINEERING SOLUTIONS. BUILT FOR NIGERIA.</text>
+</g>
+</svg>
