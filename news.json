@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T17:39:10.456373+00:00",
+  "generated_at": "2026-09-26T18:11:19.088187+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,16 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Delta NDC gov candidate seeks probe into civil servant’s death",
+      "summary": "NDC governorship candidate Chris Iyovwaye has called for a transparent probe into the death of a Delta State civil servant, Unity Ekpevbughe Adeda. Read More: https://punchng.com/delta-ndc-gov-candidate-seeks-probe-into-civil-servants-death/",
+      "url": "https://punchng.com/delta-ndc-gov-candidate-seeks-probe-into-civil-servants-death/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-26T18:49:00+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Thousands march in Madrid over eviction of 87-year-old woman",
       "summary": "Thousands marched in Madrid to protest the eviction of an 87-year-old woman, Maricarmen Abascal, from her lifelong home, demanding better tenant protection Read More: https://punchng.com/thousands-march-in-madrid-over-eviction-of-87-year-old-woman/",
@@ -28,6 +38,26 @@
       "published": "2026-09-26T18:26:42+00:00",
       "categories": [
         "government"
+      ]
+    },
+    {
+      "title": "Zamfara: Bandits invade Tsafe town, abduct five residents",
+      "summary": "Suspected bandits have attacked Tsafe town in Tsafe Local Government Area of Zamfara State, abducting five residents during the attack. The incident was disclosed on Saturday by crisis reporter in the Northwest region, Bakatsine, in a post shared via his X handle. According to Bakatsine, the bandits",
+      "url": "https://dailypost.ng/2026/09/26/zamfara-bandits-invade-tsafe-town-abduct-five-residents/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-26T18:08:31+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "AFCON 2027 qualifiers: What Chelle said about Osimhen after Nigeria beat Madagascar",
+      "summary": "Super Eagles coach, Eric Chelle, has praised the spirit of his squad, singling out Victor Osimhen’s presence as evidence that the team is building a new identity. Chelle watched as Nigeria came from a goal down to defeat Madagascar 2-1 in a 2027 Africa Cup of Nations, AFCON, qualifier on Friday. Goa",
+      "url": "https://dailypost.ng/2026/09/26/afcon-2027-qualifiers-what-chelle-said-about-osimhen-after-nigeria-beat-madagascar/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-26T18:05:46+00:00",
+      "categories": [
+        "engineering"
       ]
     },
     {
@@ -260,37 +290,6 @@
       "published": "2026-09-26T15:49:18+00:00",
       "categories": [
         "property"
-      ]
-    },
-    {
-      "title": "Sokoto ADC loses former Director-General Umar Salah to APC",
-      "summary": "The African Democratic Congress (ADC) in Tambuwal Local Government Area of Sokoto State has suffered another defection after its former Director-General, Alhaji Umar Salah, joined the All Progressives Congress (APC). The development was announced in a statement signed by Abubakar Bawa, Director-Gene",
-      "url": "https://dailypost.ng/2026/09/26/sokoto-adc-loses-former-director-general-umar-salah-to-apc/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T15:48:40+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: Delta NDC gov candidate rejects monarchs’ endorsement of Oborevwori",
-      "summary": "NDC governorship candidate in Delta, Chris Iyovwaye, has rejected the endorsement of Governor Sheriff Oborevwori by Urhobo monarchs for the 2027 race. Read More: https://punchng.com/2027-delta-ndc-gov-candidate-rejects-monarchs-endorsement-of-oborevwori/",
-      "url": "https://punchng.com/2027-delta-ndc-gov-candidate-rejects-monarchs-endorsement-of-oborevwori/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-26T15:48:08+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Osun Amotekun reunites wandering woman, children with family",
-      "summary": "The Osun Amotekun Corps has reunited a woman and her two young children found wandering in Ogii town, along the Gbongan-Ibadan road, Osogbo, with their family. The development is coming less than 24 hours after the story was published on DAILY POST and after operatives rescued them. According to a s",
-      "url": "https://dailypost.ng/2026/09/26/osun-amotekun-reunites-wandering-woman-children-with-family/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T15:46:32+00:00",
-      "categories": [
-        "engineering",
-        "oyo"
       ]
     }
   ]
