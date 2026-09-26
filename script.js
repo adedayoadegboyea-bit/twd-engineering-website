@@ -128,3 +128,40 @@ if(!reduceMotion && statBlocks.length){
   },{threshold:.25});
   statBlocks.forEach(block=>statObserver.observe(block));
 }
+
+
+/* Hero motion objects are created here so the animation remains lightweight and semantic. */
+const hero=document.querySelector('.hero');
+if(hero && !reduceMotion){
+  if(!hero.querySelector('.hero-orbit')){
+    const orbit=document.createElement('div');
+    orbit.className='hero-orbit';
+    orbit.setAttribute('aria-hidden','true');
+    orbit.innerHTML='<span class="hero-orbit-ring"></span><span class="hero-orbit-ring"></span><span class="hero-orbit-ring"></span><span class="hero-orbit-core"></span>';
+    hero.appendChild(orbit);
+  }
+  if(!hero.querySelector('.hero-blueprint')){
+    const blueprint=document.createElement('div');
+    blueprint.className='hero-blueprint';
+    blueprint.setAttribute('aria-hidden','true');
+    hero.appendChild(blueprint);
+  }
+  if(!hero.querySelector('.hero-scan')){
+    const scan=document.createElement('div');
+    scan.className='hero-scan';
+    scan.setAttribute('aria-hidden','true');
+    hero.appendChild(scan);
+  }
+
+  const orbit=document.querySelector('.hero-orbit');
+  const finePointer=window.matchMedia('(pointer:fine)').matches;
+  if(finePointer && orbit){
+    hero.addEventListener('pointermove',event=>{
+      const rect=hero.getBoundingClientRect();
+      const x=(event.clientX-rect.left)/rect.width-.5;
+      const y=(event.clientY-rect.top)/rect.height-.5;
+      orbit.style.transform='translate3d('+(x*18).toFixed(1)+'px,'+(-y*14).toFixed(1)+'px,-0px) translateY(-50%)';
+    });
+    hero.addEventListener('pointerleave',()=>{orbit.style.transform='translateY(-50%)';});
+  }
+}
