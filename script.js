@@ -61,3 +61,70 @@ if(!reduceMotion){
     hero.style.backgroundPosition='center '+(50+y*0.025)+'%';
   },{passive:true});
 }
+
+
+/* Premium interaction update: reading progress + full-screen project gallery. */
+const progressBar=document.createElement('div');
+progressBar.id='scrollProgress';
+progressBar.setAttribute('aria-hidden','true');
+document.body.prepend(progressBar);
+
+const updateScrollProgress=()=>{
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  progressBar.style.width=(max>0?(window.scrollY/max)*100:0)+'%';
+};
+window.addEventListener('scroll',updateScrollProgress,{passive:true});
+window.addEventListener('resize',updateScrollProgress);
+updateScrollProgress();
+
+const galleryCards=[...document.querySelectorAll('.gallery-card')];
+if(galleryCards.length){
+  const lightbox=document.createElement('div');
+  lightbox.className='gallery-lightbox';
+  lightbox.setAttribute('role','dialog');
+  lightbox.setAttribute('aria-modal','true');
+  lightbox.setAttribute('aria-label','Project photograph viewer');
+  lightbox.innerHTML='<button class="gallery-lightbox-close" type="button" aria-label="Close image viewer">×</button><img alt=""><div class="gallery-lightbox-caption"></div>';
+  document.body.appendChild(lightbox);
+
+  const viewerImg=lightbox.querySelector('img');
+  const caption=lightbox.querySelector('.gallery-lightbox-caption');
+  const close=()=>{
+    lightbox.classList.remove('open');
+    document.body.style.overflow='';
+  };
+  const open=(card)=>{
+    const image=card.querySelector('img');
+    const title=card.querySelector('figcaption strong')?.textContent || 'TW&D Project';
+    const detail=card.querySelector('figcaption small')?.textContent || '';
+    if(!image) return;
+    viewerImg.src=image.src;
+    viewerImg.alt=image.alt;
+    caption.innerHTML='<strong>'+title+'</strong><span>'+detail+'</span>';
+    lightbox.classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+  galleryCards.forEach(card=>{
+    card.addEventListener('click',event=>{
+      if(event.target.closest('a')) return;
+      open(card);
+    });
+  });
+  lightbox.querySelector('.gallery-lightbox-close').addEventListener('click',close);
+  lightbox.addEventListener('click',event=>{if(event.target===lightbox) close();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape' && lightbox.classList.contains('open')) close();});
+}
+
+/* Animate the existing portfolio stat blocks into view without inventing numbers. */
+const statBlocks=[...document.querySelectorAll('.stats-grid>div')];
+if(!reduceMotion && statBlocks.length){
+  const statObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('stat-visible');
+        statObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.25});
+  statBlocks.forEach(block=>statObserver.observe(block));
+}
