@@ -181,3 +181,82 @@ input,select,textarea{font-size:17px}
  h3{font-size:23px}
  .service-card p,.project-card p,.gallery-card p{font-size:16px}
 }
+
+/* 2026 MOTION + REFLECTIVE AESTHETICS */
+:root{
+  --motion-gold:#f4d37a;
+  --motion-blue:#174d7c;
+  --motion-red:#b51f2a;
+  --motion-green:#16824a;
+}
+.hero{isolation:isolate;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:-18%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 30%,rgba(215,166,42,.16),transparent 24%),
+    radial-gradient(circle at 82% 20%,rgba(22,130,74,.11),transparent 22%),
+    radial-gradient(circle at 72% 82%,rgba(181,31,42,.10),transparent 25%);
+  animation:heroLight 16s ease-in-out infinite alternate;
+}
+.hero-overlay,.hero-grid,.hero-content{position:relative;z-index:1}
+@keyframes heroLight{
+  0%{transform:translate3d(-2%,0,0) scale(1)}
+  50%{transform:translate3d(2%,-1%,0) scale(1.035)}
+  100%{transform:translate3d(-1%,2%,0) scale(1.02)}
+}
+.hero-grid{animation:gridDrift 24s linear infinite}
+@keyframes gridDrift{from{background-position:0 0}to{background-position:86px 86px}}
+
+.service-image,.gallery-card,.about-image,.author-photo,.state-project{position:relative;overflow:hidden}
+.service-image::after,.gallery-card::after,.about-image::after,.author-photo::after,.state-project::after{
+  content:"";position:absolute;top:-35%;left:-75%;width:42%;height:170%;pointer-events:none;
+  background:linear-gradient(100deg,transparent 0%,rgba(255,255,255,.06) 38%,rgba(255,255,255,.48) 50%,rgba(255,255,255,.06) 62%,transparent 100%);
+  transform:skewX(-18deg);opacity:0;
+}
+.service-card:hover .service-image::after,.gallery-card:hover::after,.about-image:hover::after,.author-feature:hover .author-photo::after,.state-project:hover::after{
+  opacity:1;animation:reflectSweep 1.15s ease forwards;
+}
+@keyframes reflectSweep{from{left:-75%}to{left:145%}}
+
+.service-image img,.gallery-card img,.about-image img,.author-photo img{
+  transform:scale(1.01);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease;will-change:transform;
+}
+.service-card:hover .service-image img,.gallery-card:hover img,.about-image:hover img,.author-feature:hover .author-photo img{
+  transform:scale(1.055);filter:saturate(1.08) contrast(1.045);
+}
+.service-card,.gallery-card,.state-project,.client-project,.author-feature{
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease,border-color .45s ease;
+}
+.service-card:hover,.gallery-card:hover,.state-project:hover{transform:translateY(-8px)}
+.state-project:hover{
+  border-color:rgba(243,210,122,.48);
+  box-shadow:0 28px 70px rgba(0,0,0,.25),0 0 28px rgba(215,166,42,.08);
+}
+.hero-trust i{position:relative;box-shadow:0 0 0 0 rgba(181,31,42,.45);animation:pulseSignal 2.8s ease-in-out infinite}
+.hero-trust i:nth-of-type(2){background:var(--motion-green)!important;box-shadow:0 0 0 0 rgba(22,130,74,.45);animation-delay:1.4s}
+@keyframes pulseSignal{
+  0%,100%{box-shadow:0 0 0 0 rgba(181,31,42,0)}
+  50%{box-shadow:0 0 0 8px rgba(181,31,42,.10)}
+}
+.section-heading h2,.about-copy h2,.profile-grid h2{position:relative}
+.section-heading h2::after,.about-copy h2::after,.profile-grid h2::after{
+  content:"";display:block;width:72px;height:3px;margin-top:14px;
+  background:linear-gradient(90deg,var(--brand-green),var(--gold),var(--brand-red));
+  background-size:200% 100%;animation:accentFlow 4s ease-in-out infinite;
+}
+@keyframes accentFlow{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.project-tags span{transition:transform .3s ease,border-color .3s ease,background .3s ease}
+.project-tags span:hover{transform:translateY(-3px);background:rgba(255,255,255,.07)}
+.btn-gold{position:relative;overflow:hidden}
+.btn-gold::after{
+  content:"";position:absolute;top:0;left:-90%;width:45%;height:100%;transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.48),transparent);
+  animation:buttonShine 4.5s ease-in-out infinite;
+}
+@keyframes buttonShine{0%,58%{left:-90%}78%,100%{left:145%}}
+.floating-wa{animation:waFloat 3.2s ease-in-out infinite}
+@keyframes waFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){
+  .hero::before,.hero-grid,.hero-trust i,.section-heading h2::after,.about-copy h2::after,.profile-grid h2::after,.btn-gold::after,.floating-wa{animation:none!important}
+  .service-card,.gallery-card,.state-project,.service-image img,.gallery-card img,.about-image img,.author-photo img{transition:none!important}
+}
