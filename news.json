@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T18:42:08.641164+00:00",
+  "generated_at": "2026-09-26T19:09:39.262368+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,48 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Osun Senator dismisses disqualification claim after Supreme Court judgement",
+      "summary": "Senator Olubiyi Fadeyi of Osun East has dismissed claims that a Supreme Court judgement has ended his 2027 re-election bid, calling them speculative. Read More: https://punchng.com/osun-senator-dismisses-disqualification-claim-after-supreme-court-judgement/",
+      "url": "https://punchng.com/osun-senator-dismisses-disqualification-claim-after-supreme-court-judgement/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-26T20:07:47+00:00",
+      "categories": []
+    },
+    {
+      "title": "Salah left out of Egypt squad due to artificial turf",
+      "summary": "Mohamed Salah has been left out of Egypt’s squad for the AFCON qualifier against South Sudan because the match will be played on an artificial pitch. Read More: https://punchng.com/salah-left-out-of-egypt-squad-due-to-artificial-turf/",
+      "url": "https://punchng.com/salah-left-out-of-egypt-squad-due-to-artificial-turf/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-26T20:07:02+00:00",
+      "categories": []
+    },
+    {
+      "title": "Abia NDC senate candidate rejects APC membership, parties clash",
+      "summary": "Abia Central senatorial candidate, Sen. Nkechi Nwaogu, has denied being a member of the APC, stating she joined the NDC before the INEC deadline. Read More: https://punchng.com/abia-ndc-senate-candidate-rejects-apc-membership-parties-clash/",
+      "url": "https://punchng.com/abia-ndc-senate-candidate-rejects-apc-membership-parties-clash/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-26T20:05:15+00:00",
+      "categories": []
+    },
+    {
+      "title": "Cholera outbreak kills two inmates at Kano custodial centre",
+      "summary": "The Nigerian Correctional Service has confirmed that a cholera outbreak at the Kurmawa Custodial Centre in Kano State has resulted in the death of two inma Read More: https://punchng.com/cholera-outbreak-kills-two-inmates-at-kano-custodial-centre/",
+      "url": "https://punchng.com/cholera-outbreak-kills-two-inmates-at-kano-custodial-centre/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-26T19:50:12+00:00",
+      "categories": []
+    },
+    {
+      "title": "Evening recap: Aide disputes Obi’s claim as godfather to Soludo’s children, Umahi says no rainbow coalition in Ebonyi, other top stories",
+      "summary": "Read the evening recap of major stories, including an aide disputing Peter Obi’s claim about Governor Soludo’s children and Umahi on Ebonyi politics. Read More: https://punchng.com/evening-recap-aide-disputes-obis-claim-as-godfather-to-soludos-children-umahi-says-no-rainbow-coalition-in-ebonyi-other",
+      "url": "https://punchng.com/evening-recap-aide-disputes-obis-claim-as-godfather-to-soludos-children-umahi-says-no-rainbow-coalition-in-ebonyi-other-top-stories/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-26T19:48:41+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Business has no religion, Northern Christian leader backs Dangote IPO",
       "summary": "The Northern Christian Association Chairman, Rev. Joseph Hayab, has urged Christians to invest in the Dangote Petroleum Refinery IPO, stating business has Read More: https://punchng.com/business-has-no-religion-northern-christian-leader-backs-dangote-ipo/",
@@ -71,11 +113,93 @@
       ]
     },
     {
+      "title": "2027: Apologise to Nigerians for hardship, account for loans – Atiku to Tinubu, APC",
+      "summary": "The African Democratic Congress, ADC, presidential candidate, Atiku Abubakar, has described President Bola Tinubu’s economic policies as a failure, saying Nigerians are struggling to cope with the rising cost of living. Atiku said Nigerians could no longer feed their children with government revenue",
+      "url": "https://dailypost.ng/2026/09/26/2027-apologise-to-nigerians-for-hardship-account-for-loans-atiku-to-tinubu-apc/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-26T19:08:38+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "We are building strong foundations for agricultural transformation in Jigawa – Namadi",
+      "summary": "The governor said hi SC administration is laying strong and sustainable foundations for the transformation of agriculture into a productive, technology-driven, and commercially viable sector capable of improving livelihoods and creating opportunities for the people. The post We are building strong f",
+      "url": "https://www.premiumtimesng.com/promoted/912599-we-are-building-strong-foundations-for-agricultural-transformation-in-jigawa-namadi.html",
+      "source": "Premium Times",
+      "published": "2026-09-26T19:08:00+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "‘Emir Sanusi is with us’ – El-Rufai’s family rejects Kperogi’s claim of neglect",
+      "summary": "The family of the embattled former Governor of Kaduna State, Mallam Nasiru El-Rufai, has dismissed insinuations that the Emir of Kano, Mallam Muhammadu Sanusi II, has neglected El-Rufai in his hour of need. Responding to an article written by Professor Farooq Kperogi, titled “Sanusi and the Betrayal",
+      "url": "https://dailypost.ng/2026/09/26/emir-sanusi-is-with-us-el-rufais-family-rejects-kperogis-claim-of-neglect/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-26T19:06:54+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Court dismisses suit seeking fresh investigation into Mohbad’s death",
+      "summary": "PREMIUM TIMES gathered that the suit listed the Inspector-General of Police (IGP), the Nigeria Police Force and the Commissioner of Police, Lagos State Command, as respondents. The post Court dismisses suit seeking fresh investigation into Mohbad’s death appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/entertainment/naija-fashion/912595-court-dismisses-suit-seeking-fresh-investigation-into-mohbads-death.html",
+      "source": "Premium Times",
+      "published": "2026-09-26T19:04:31+00:00",
+      "categories": [
+        "lagos"
+      ]
+    },
+    {
+      "title": "Oil Marketers Cut Petrol Price To N1,350/litre As Depot Rates Drop",
+      "summary": "Oil marketers have begun cutting the pump price of Premium Motor Spirit (PMS), also known as petrol, with MRS reducing its price in Lagos and environs by N20 per litre to N1,350 from N1,370. Checks by Vanguard showed that some independent oil marketers also reduced their retail prices to N1,360 from",
+      "url": "https://www.informationng.com/2026/09/oil-marketers-cut-petrol-price-to-n1350-litre-as-depot-rates-drop.html",
+      "source": "Information Nigeria",
+      "published": "2026-09-26T18:59:29+00:00",
+      "categories": [
+        "business",
+        "lagos"
+      ]
+    },
+    {
+      "title": "“N70,000 Wage No Longer Enough For Nigerian Workers” – Keyamo",
+      "summary": "Aviation Minister Festus Keyamo has told the Federal Government that Nigerian workers cannot survive on the current N70,000 minimum wage given the mounting economic pressures squeezing household budgets. He called for the government to compromise with organised labour in ongoing wage negotiations. S",
+      "url": "https://www.informationng.com/2026/09/n70000-wage-no-longer-enough-for-nigerian-workers-keyamo.html",
+      "source": "Information Nigeria",
+      "published": "2026-09-26T18:50:24+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Delta NDC gov candidate seeks probe into civil servant’s death",
       "summary": "NDC governorship candidate Chris Iyovwaye has called for a transparent probe into the death of a Delta State civil servant, Unity Ekpevbughe Adeda. Read More: https://punchng.com/delta-ndc-gov-candidate-seeks-probe-into-civil-servants-death/",
       "url": "https://punchng.com/delta-ndc-gov-candidate-seeks-probe-into-civil-servants-death/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-26T18:49:00+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Five killed at Plateau mining site as soldiers rescue district head",
+      "summary": "Gunmen attacked a mining site in Marit village, Barkin Ladi Local Government Area of Plateau State, on Saturday, according to community sources The post Five killed at Plateau mining site as soldiers rescue district head appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/headlines/912591-five-killed-at-plateau-mining-site-as-soldiers-rescue-district-head.html",
+      "source": "Premium Times",
+      "published": "2026-09-26T18:43:05+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "‘Peter Obi Is Not Better Than Me’ – Dave Umahi",
+      "summary": "The Minister of Works, Dave Umahi, has dismissed claims that he is not on the same level as the presidential candidate of the Nigeria Democratic Congress (NDC), Peter Obi. Speaking in Benin City on Thursday, September 24, Umahi said there was no area in which Obi could be considered superior to him,",
+      "url": "https://www.informationng.com/2026/09/peter-obi-is-not-better-than-me-dave-umahi.html",
+      "source": "Information Nigeria",
+      "published": "2026-09-26T18:42:23+00:00",
       "categories": [
         "government"
       ]
@@ -176,125 +300,6 @@
       "source": "Daily Post Nigeria",
       "published": "2026-09-26T18:12:00+00:00",
       "categories": []
-    },
-    {
-      "title": "Zamfara: Bandits invade Tsafe town, abduct five residents",
-      "summary": "Suspected bandits have attacked Tsafe town in Tsafe Local Government Area of Zamfara State, abducting five residents during the attack. The incident was disclosed on Saturday by crisis reporter in the Northwest region, Bakatsine, in a post shared via his X handle. According to Bakatsine, the bandits",
-      "url": "https://dailypost.ng/2026/09/26/zamfara-bandits-invade-tsafe-town-abduct-five-residents/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T18:08:31+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "AFCON 2027 qualifiers: What Chelle said about Osimhen after Nigeria beat Madagascar",
-      "summary": "Super Eagles coach, Eric Chelle, has praised the spirit of his squad, singling out Victor Osimhen’s presence as evidence that the team is building a new identity. Chelle watched as Nigeria came from a goal down to defeat Madagascar 2-1 in a 2027 Africa Cup of Nations, AFCON, qualifier on Friday. Goa",
-      "url": "https://dailypost.ng/2026/09/26/afcon-2027-qualifiers-what-chelle-said-about-osimhen-after-nigeria-beat-madagascar/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T18:05:46+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Hisbah arrests eight over homosexuality in Jigawa",
-      "summary": "The Hisbah Board in Jigawa State has arrested eight persons over alleged homosexual acts following a complaint by a man who claims he contracted HIV. Read More: https://punchng.com/hisbah-arrests-eight-over-homosexuality-in-jigawa/",
-      "url": "https://punchng.com/hisbah-arrests-eight-over-homosexuality-in-jigawa/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-26T18:00:03+00:00",
-      "categories": []
-    },
-    {
-      "title": "Delta pledges justice after civil servant dies at work",
-      "summary": "The Delta State Government has assured the family of a late civil servant, Unity Adeda, that justice will be served following his death after an altercatio Read More: https://punchng.com/delta-pledges-justice-after-civil-servant-dies-at-work/",
-      "url": "https://punchng.com/delta-pledges-justice-after-civil-servant-dies-at-work/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-26T17:56:49+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "PHOTOS: Jerry Eze leads thousands in prayer at Man United’s Old Trafford",
-      "summary": "Nigerian pastor Jerry Eze led thousands of believers in prayer at Manchester United’s Old Trafford stadium for the NSPPD UK Prayer Conference on Saturday. Read More: https://punchng.com/photos-jerry-eze-leads-thousands-in-prayer-at-man-uniteds-old-trafford/",
-      "url": "https://punchng.com/photos-jerry-eze-leads-thousands-in-prayer-at-man-uniteds-old-trafford/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-26T17:37:04+00:00",
-      "categories": []
-    },
-    {
-      "title": "Five miners feared killed, two injured by gunmen in Plateau",
-      "summary": "Gunmen have reportedly killed at least five miners and injured two others in an ambush at a mining site in Barkin Ladi Local Government Area of Plateau Sta Read More: https://punchng.com/five-miners-feared-killed-two-injured-by-gunmen-in-plateau/",
-      "url": "https://punchng.com/five-miners-feared-killed-two-injured-by-gunmen-in-plateau/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-26T17:34:10+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Borno reintegrates 20 ex-Boko Haram children into communities",
-      "summary": "No fewer than 20 children formerly associated with Boko Haram have been reintegrated into communities in Borno State after completing a deradicalisation programme. The beneficiaries, comprising 10 girls and 10 boys classified as low-risk minors, received livelihood support and training in business m",
-      "url": "https://dailypost.ng/2026/09/26/borno-reintegrates-20-ex-boko-haram-children-into-communities/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T17:27:00+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Nigerian graduates not unemployable – UI Don declares",
-      "summary": "A former Dean of Faculty of Economics and Management Sciences at University of Ibadan, Professor Surajudeen Bankole has declared that contrary to insinuations, Nigerian graduates are employable. Bankole, explained that the notion that Nigerian graduates are unemployable is not correct. He said that ",
-      "url": "https://dailypost.ng/2026/09/26/nigerian-graduates-not-unemployable-ui-don-declares/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T17:25:09+00:00",
-      "categories": [
-        "oyo"
-      ]
-    },
-    {
-      "title": "Without Fela, Nigerian music wouldn’t have been popular – Timaya claims",
-      "summary": "Singer Timaya has said that Nigerian music wouldn’t have been popular as it is today without the contributions of the late Afrobeat pioneer, Fela Anikulapo-Kuti. Speaking in an episode of the Afrobeats Intelligence podcast, Timaya said Fela inspired him and many Nigerian artists. He noted that Fela’",
-      "url": "https://dailypost.ng/2026/09/26/without-fela-nigerian-music-wouldnt-have-been-popular-timaya-claims/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T17:22:30+00:00",
-      "categories": []
-    },
-    {
-      "title": "AFCON 2027Q: Ilenikhena thrilled to make Super Eagles bow",
-      "summary": "George Ilenikhena has shared his excitement following his debut for the Super Eagles of Nigeria, DAILY POST reports. Ilenikhena made his maiden appearance for the West Africans in Friday’s 2027 Africa Cup of Nations qualifying matchday one encounter against the Barea of Madagascar. The 20-year-old s",
-      "url": "https://dailypost.ng/2026/09/26/afcon-2027q-ilenikhena-thrilled-to-make-super-eagles-bow/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T17:20:14+00:00",
-      "categories": []
-    },
-    {
-      "title": "AFCON 2027 qualifiers: Why we lost 2-1 to Nigeria – Madagascar coach, Martins",
-      "summary": "Madagascar head coach, Corentin Martins, has explained why his team lost 2–1 to Nigeria in their opening 2027 Africa Cup of Nations, AFCON, qualifier on Friday. Martins watched as Kari Eshan gave Madagascar an early lead, but two goals from debutants George Ilenikhena and Moses Usor ensured the Supe",
-      "url": "https://dailypost.ng/2026/09/26/afcon-2027-qualifiers-why-we-lost-2-1-to-nigeria-madagascar-coach-martins/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T17:17:53+00:00",
-      "categories": []
-    },
-    {
-      "title": "Man City confident of clearing financial charges, says chairman",
-      "summary": "Manchester City chairman, Khaldoon Al Mubarak, says the club is confident of proving its innocence over 114 alleged breaches of Premier League financial ru Read More: https://punchng.com/man-city-confident-of-clearing-financial-charges-says-chairman/",
-      "url": "https://punchng.com/man-city-confident-of-clearing-financial-charges-says-chairman/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-26T16:59:44+00:00",
-      "categories": []
-    },
-    {
-      "title": "Lagos 2027: Court strikes out Oyefusi’s suit against Rhodes-Vivour, ADC",
-      "summary": "The Federal High Court in Lagos has struck out a suit instituted by Princess Abiodun Oyefusi challenging the outcome of the African Democratic Congress, NDC, governorship primary in Lagos State. The development was disclosed by the ADC governorship candidate, Gbadebo Rhodes-Vivour, in a post on X on",
-      "url": "https://dailypost.ng/2026/09/26/lagos-2027-court-strikes-out-oyefusis-suit-against-rhodes-vivour-adc/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-26T16:51:32+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
     }
   ]
 }
