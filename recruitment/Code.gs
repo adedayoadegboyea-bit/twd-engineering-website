@@ -1,7 +1,7 @@
 const CONFIG = {
   SHEET_NAME: 'Applications',
   DRIVE_FOLDER_NAME: 'TW&D Recruitment Documents',
-  MANAGEMENT_EMAIL: 'twdengineeringconsult@engineer.com',
+  MANAGEMENT_EMAIL: 'admin@twdengineeringconsult.com',
   COMPANY_NAME: 'TW&D Engineering Consult & Services Ltd',
   TIMEZONE: 'Africa/Lagos'
 };
@@ -317,6 +317,7 @@ function sendManagementNewApplicationEmail_(row) {
 
   MailApp.sendEmail({
     to: CONFIG.MANAGEMENT_EMAIL,
+    replyTo: 'careers@twdengineeringconsult.com',
     subject: 'New TW&D job application: ' + position,
     htmlBody: html
   });
@@ -333,6 +334,7 @@ function sendApplicantReceiptEmail_(row) {
 
   MailApp.sendEmail({
     to: email,
+    replyTo: 'careers@twdengineeringconsult.com',
     subject: 'Application received — TW&D Engineering Consult & Services Ltd',
     htmlBody:
       '<p>Dear ' + escapeHtml_(name) + ',</p>' +
