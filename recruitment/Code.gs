@@ -25,6 +25,9 @@ function setupRecruitment() {
   const folders = DriveApp.getFoldersByName(CONFIG.DRIVE_FOLDER_NAME);
   folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(CONFIG.DRIVE_FOLDER_NAME);
   PropertiesService.getScriptProperties().setProperties({SHEET_ID:ss.getId(),FOLDER_ID:folder.getId()});
+  const triggers = ScriptApp.getProjectTriggers();
+  triggers.forEach(trigger => { if (trigger.getHandlerFunction() === 'onEdit') ScriptApp.deleteTrigger(trigger); });
+  ScriptApp.newTrigger('onEdit').forSpreadsheet(ss).onEdit().create();
   return {sheetUrl:ss.getUrl(),folderUrl:folder.getUrl()};
 }
 
@@ -64,7 +67,12 @@ function sendStatusEmail(row) {
 }
 
 function onEdit(e) {
+  if (!e || !e.range) return;
   const range = e.range, sheet = range.getSheet();
   if (sheet.getName() !== CONFIG.SHEET_NAME || range.getRow() === 1) return;
-  if ([14,15,16,17,18,19].indexOf(range.getColumn()) !== -1) sendStatusEmail(sheet.getRange(range.getRow(),1,1,19));
+  // Send an applicant update only when Management changes the Status column.
+  // Interview details should be entered first, then set Status to "Interview Scheduled".
+  if (range.getColumn() === 14) {
+    sendStatusEmail(sheet.getRange(range.getRow(),1,1,19));
+  }
 }
