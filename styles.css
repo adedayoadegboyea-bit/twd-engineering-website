@@ -110,3 +110,28 @@ footer{background:radial-gradient(circle at 80% 0,#10385f 0,#031221 58%);padding
 .client-project{box-shadow:0 15px 40px rgba(4,20,40,.10)}
 @media(max-width:1050px){.service-grid{grid-template-columns:repeat(2,1fr)}.state-project-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.service-grid,.state-project-grid{grid-template-columns:1fr}.hero{min-height:650px}.hero-content{padding:90px 0}.about-image img{height:390px}.gallery-feature img{height:300px}}
+
+/* BOLD CORPORATE LOGO + PREMIUM HEADER */
+.site-header{position:sticky;top:0;z-index:50}
+.nav-wrap{min-height:92px}
+.brand-logo{display:flex;align-items:center;width:330px;min-width:330px;text-decoration:none}
+.brand-logo img{display:block;width:330px;height:auto;max-height:82px;object-fit:contain;object-position:left center}
+.site-header .nav-wrap{gap:26px}
+.site-header nav{flex:1;justify-content:center;gap:4px}
+.site-header nav a{font-size:10px;font-weight:800;letter-spacing:.45px;padding:10px 9px}
+.site-header .nav-cta{white-space:nowrap}
+@media(max-width:1150px){
+  .brand-logo,.brand-logo img{width:270px;min-width:270px}
+  .site-header .nav-wrap{gap:14px}
+  .site-header nav a{font-size:9px;padding:9px 6px}
+}
+@media(max-width:1050px){
+  .nav-wrap{min-height:78px}
+  .brand-logo,.brand-logo img{width:300px;min-width:300px}
+  .brand-logo img{max-height:68px}
+}
+@media(max-width:620px){
+  .nav-wrap{min-height:72px}
+  .brand-logo,.brand-logo img{width:220px;min-width:220px}
+  .brand-logo img{max-height:56px}
+}
