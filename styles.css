@@ -260,3 +260,37 @@ input,select,textarea{font-size:17px}
   .hero::before,.hero-grid,.hero-trust i,.section-heading h2::after,.about-copy h2::after,.profile-grid h2::after,.btn-gold::after,.floating-wa{animation:none!important}
   .service-card,.gallery-card,.state-project,.service-image img,.gallery-card img,.about-image img,.author-photo img{transition:none!important}
 }
+
+
+/* 2026 PREMIUM INTERACTION UPDATE */
+html{scroll-behavior:smooth}
+#scrollProgress{
+  position:fixed;top:0;left:0;width:0;height:4px;z-index:9999;
+  background:linear-gradient(90deg,var(--brand-green),var(--gold),var(--brand-red));
+  box-shadow:0 0 14px rgba(215,166,42,.55);
+  transition:width .08s linear;
+}
+.gallery-lightbox{
+  position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;
+  padding:30px;background:rgba(2,10,20,.92);backdrop-filter:blur(12px);
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.gallery-lightbox.open{opacity:1;pointer-events:auto}
+.gallery-lightbox img{
+  max-width:min(94vw,1400px);max-height:82vh;object-fit:contain;
+  border:1px solid rgba(243,210,122,.55);box-shadow:0 30px 100px rgba(0,0,0,.55);
+  transform:scale(.94);transition:transform .35s ease;
+}
+.gallery-lightbox.open img{transform:scale(1)}
+.gallery-lightbox-caption{
+  position:absolute;left:50%;bottom:34px;transform:translateX(-50%);
+  color:#fff;text-align:center;font-size:15px;max-width:90vw;
+}
+.gallery-lightbox-caption strong{display:block;font-size:20px}
+.gallery-lightbox-close{
+  position:absolute;top:22px;right:24px;width:48px;height:48px;border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.08);color:#fff;font-size:28px;cursor:pointer;border-radius:50%;
+}
+.gallery-card img{cursor:zoom-in}
+.stats-grid>div{transition:transform .35s ease,box-shadow .35s ease}
+.stats-grid>div:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(4,20,40,.16)}
