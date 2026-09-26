@@ -267,3 +267,52 @@ if(timelineProjects.length){
     });
   });
 }
+
+
+/* Nigeria Today: render the automatically generated RSS feed without republishing full articles. */
+const newsFeed=document.querySelector('#newsFeed');
+const newsUpdated=document.querySelector('#newsUpdated');
+if(newsFeed){
+  const escapeHtml=(value)=>String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const formatNewsDate=(value)=>{
+    if(!value) return 'Recent';
+    const date=new Date(value);
+    if(Number.isNaN(date.getTime())) return 'Recent';
+    return new Intl.DateTimeFormat('en-NG',{day:'numeric',month:'short',year:'numeric'}).format(date);
+  };
+  const renderNews=(payload,filter='all')=>{
+    const articles=Array.isArray(payload?.articles)?payload.articles:[];
+    const filtered=filter==='all'?articles:articles.filter(item=>(item.categories||[]).includes(filter));
+    if(!filtered.length){
+      newsFeed.innerHTML='<div class="news-empty"><p>No stories currently match this category. Please check another category.</p></div>';
+      return;
+    }
+    newsFeed.innerHTML=filtered.slice(0,9).map(item=>{
+      const tags=(item.categories||[]).slice(0,3).map(tag=>'<span class="news-tag">'+escapeHtml(tag)+'</span>').join('');
+      return '<article class="news-card"><div class="news-card-top"><span class="news-source">'+escapeHtml(item.source)+'</span><span class="news-date">'+escapeHtml(formatNewsDate(item.published))+'</span></div><div class="news-card-body"><h3>'+escapeHtml(item.title)+'</h3><p>'+escapeHtml(item.summary||'Read the original story for the full report.')+'</p><div class="news-tags">'+tags+'</div><a class="news-card-link" href="'+escapeHtml(item.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a></div></article>';
+    }).join('');
+  };
+  const loadNews=async()=>{
+    try{
+      const response=await fetch('news.json?cache='+Date.now(),{cache:'no-store'});
+      if(!response.ok) throw new Error('News feed unavailable');
+      const payload=await response.json();
+      renderNews(payload,'all');
+      if(newsUpdated){
+        const generated=payload.generated_at?new Date(payload.generated_at):null;
+        newsUpdated.textContent=generated&&!Number.isNaN(generated.getTime())?'Last feed refresh: '+formatNewsDate(generated):'Feed refreshes automatically.';
+      }
+      document.querySelectorAll('.news-filter').forEach(button=>{
+        button.addEventListener('click',()=>{
+          document.querySelectorAll('.news-filter').forEach(b=>b.classList.remove('active'));
+          button.classList.add('active');
+          renderNews(payload,button.dataset.newsFilter||'all');
+        });
+      });
+    }catch(error){
+      newsFeed.innerHTML='<div class="news-error"><p>The live news feed is temporarily unavailable. Please check back shortly.</p></div>';
+      if(newsUpdated) newsUpdated.textContent='Automatic feed refresh is enabled.';
+    }
+  };
+  loadNews();
+}
