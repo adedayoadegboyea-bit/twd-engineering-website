@@ -152,3 +152,32 @@ footer{background:radial-gradient(circle at 80% 0,#10385f 0,#031221 58%);padding
 .floating-wa{background:var(--brand-green)}
 .footer-grid h4{color:var(--gold2)}
 .footer-grid a:hover{color:#f0b5bb}
+
+/* LARGE-TYPE READABILITY PASS */
+body{font-size:18px;line-height:1.75}
+p,li{font-size:18px;line-height:1.75}
+.site-header nav a{font-size:12px;letter-spacing:.55px}
+.hero-copy p{font-size:21px;line-height:1.7}
+.hero-kicker{font-size:13px}
+.hero-stats strong{font-size:30px}
+.hero-stats span{font-size:14px}
+.section-kicker,.eyebrow{font-size:13px;letter-spacing:1.8px}
+h1{font-size:clamp(46px,6vw,82px);line-height:1.02}
+h2{font-size:clamp(36px,4.2vw,58px);line-height:1.08}
+h3{font-size:26px;line-height:1.2}
+.service-card h3,.project-card h3,.gallery-card h3{font-size:25px}
+.service-card p,.project-card p,.gallery-card p{font-size:17px}
+.btn,.nav-cta{font-size:14px}
+.form-group label,.quote-form label{font-size:15px}
+input,select,textarea{font-size:17px}
+.footer-grid{font-size:16px}
+.footer-grid a,.footer-grid p{font-size:16px}
+@media(max-width:700px){
+ body{font-size:17px}
+ p,li{font-size:17px}
+ .hero-copy p{font-size:19px}
+ h1{font-size:42px}
+ h2{font-size:34px}
+ h3{font-size:23px}
+ .service-card p,.project-card p,.gallery-card p{font-size:16px}
+}
