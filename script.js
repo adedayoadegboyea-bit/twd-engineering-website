@@ -165,3 +165,20 @@ if(hero && !reduceMotion){
     hero.addEventListener('pointerleave',()=>{orbit.style.transform='translateY(-50%)';});
   }
 }
+
+
+/* Mobile navigation polish: close on outside tap and Escape. */
+const mobileMenuToggle=document.querySelector('.menu-toggle');
+const mobileNav=document.querySelector('#nav');
+document.addEventListener('click',event=>{
+  if(window.innerWidth<=700 && mobileNav?.classList.contains('open')){
+    if(!event.target.closest('.site-header')) mobileNav.classList.remove('open');
+  }
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape' && mobileNav?.classList.contains('open')){
+    mobileNav.classList.remove('open');
+    mobileMenuToggle?.setAttribute('aria-expanded','false');
+    mobileMenuToggle?.focus();
+  }
+});
