@@ -135,3 +135,20 @@ footer{background:radial-gradient(circle at 80% 0,#10385f 0,#031221 58%);padding
   .brand-logo,.brand-logo img{width:220px;min-width:220px}
   .brand-logo img{max-height:56px}
 }
+
+/* BRAND ACCENTS — RED & GREEN TOUCHES */
+:root{--brand-red:#b51f2a;--brand-green:#16824a}
+.site-header:after{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--brand-green) 0 32%,var(--gold) 32% 68%,var(--brand-red) 68% 100%)}
+.hero-kicker span{background:var(--brand-green)!important}
+.hero-kicker{color:#e7f3ec}
+.hero-trust i{background:var(--brand-red)!important}
+.card-label{color:var(--brand-green)!important}
+.service-card:hover .card-label,.gallery-card:hover figcaption span{color:var(--brand-red)!important}
+.text-link:hover{color:var(--brand-red)!important}
+.profile-points>div:nth-child(2n){border-left-color:var(--brand-green)}
+.profile-points>div:nth-child(3n){border-left-color:var(--brand-red)}
+.project-tags span:first-child{border-color:rgba(22,130,74,.5);color:#d8f1e4}
+.client-project{border-left-color:var(--brand-red)}
+.floating-wa{background:var(--brand-green)}
+.footer-grid h4{color:var(--gold2)}
+.footer-grid a:hover{color:#f0b5bb}
