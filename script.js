@@ -182,3 +182,29 @@ document.addEventListener('keydown',event=>{
     mobileMenuToggle?.focus();
   }
 });
+
+
+/* Animated project timelines: reveal on scroll and allow stage focus. */
+const timelineProjects=[...document.querySelectorAll('[data-timeline] .timeline-project')];
+if(timelineProjects.length){
+  const activateTimeline=(project)=>{
+    project.classList.add('timeline-visible');
+    const steps=[...project.querySelectorAll('.timeline-step')];
+    if(steps.length && !steps.some(step=>step.classList.contains('active'))) steps[0].classList.add('active');
+  };
+  if(reduceMotion){timelineProjects.forEach(activateTimeline);}
+  else{
+    const timelineObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){activateTimeline(entry.target);timelineObserver.unobserve(entry.target);}
+      });
+    },{threshold:.22});
+    timelineProjects.forEach(project=>timelineObserver.observe(project));
+  }
+  timelineProjects.forEach(project=>{
+    project.querySelectorAll('.timeline-step').forEach(step=>step.addEventListener('click',()=>{
+      project.querySelectorAll('.timeline-step').forEach(item=>item.classList.remove('active'));
+      step.classList.add('active');
+    }));
+  });
+}
