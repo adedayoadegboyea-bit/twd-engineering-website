@@ -554,3 +554,33 @@ html{scroll-behavior:smooth}
  .timeline-step{display:grid;grid-template-columns:24px 1fr;align-items:center;gap:12px;text-align:left;padding:2px 0}.timeline-step b{margin:0}.timeline-step span{font-size:13px}
 }
 @media(prefers-reduced-motion:reduce){.timeline-project,.timeline-project::after,.timeline-progress{transition:none!important;animation:none!important}.timeline-project{opacity:1;transform:none}.timeline-project .timeline-progress{width:95%}}
+
+
+/* TIMELINE ENHANCEMENT — active-stage progress, pulse and mobile polish */
+.timeline-project{isolation:isolate}
+.timeline-project.timeline-visible{box-shadow:0 18px 55px rgba(0,0,0,.14)}
+.timeline-project.timeline-visible .timeline-project-head>span{animation:timelineBadgePulse 2.8s ease-in-out infinite}
+@keyframes timelineBadgePulse{0%,100%{box-shadow:0 0 0 rgba(243,210,122,0)}50%{box-shadow:0 0 22px rgba(243,210,122,.22)}}
+.timeline-progress{width:0!important;max-width:95%}
+.timeline-project.timeline-visible .timeline-progress{animation:timelineLineGlow 2.4s ease-in-out .5s infinite alternate}
+@keyframes timelineLineGlow{from{filter:brightness(1)}to{filter:brightness(1.55);box-shadow:0 0 18px rgba(215,166,42,.5)}}
+.timeline-step{transition:transform .25s ease,color .25s ease}
+.timeline-step.active{transform:translateY(-2px)}
+.timeline-step.active b{animation:timelineNodePulse 1.8s ease-in-out infinite}
+@keyframes timelineNodePulse{0%,100%{box-shadow:0 0 0 rgba(215,166,42,0)}50%{box-shadow:0 0 20px rgba(215,166,42,.45)}}
+.timeline-step.is-complete b{background:#16824a;border-color:#8fe0b5;color:#fff}
+.timeline-step.is-complete span{color:#d5e9df}
+.timeline-step[data-step="4"] b{font-size:9px}
+.timeline-status{margin-top:18px;min-height:22px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.65);font-size:11px;letter-spacing:.35px}
+.timeline-status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d7a62a;box-shadow:0 0 10px rgba(215,166,42,.6)}
+@media(max-width:700px){
+ .timeline-project.timeline-visible .timeline-progress{animation:timelineVerticalGlow 2.4s ease-in-out .5s infinite alternate}
+ .timeline-step.is-complete b{background:#16824a}
+ .timeline-status{margin-top:15px;font-size:12px}
+}
+@keyframes timelineVerticalGlow{from{filter:brightness(1)}to{filter:brightness(1.5);box-shadow:0 0 14px rgba(215,166,42,.5)}}
+@media(prefers-reduced-motion:reduce){
+ .timeline-project.timeline-visible .timeline-project-head>span,
+ .timeline-project.timeline-visible .timeline-progress,
+ .timeline-step.active b{animation:none!important}
+}
