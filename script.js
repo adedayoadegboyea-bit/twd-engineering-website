@@ -184,27 +184,86 @@ document.addEventListener('keydown',event=>{
 });
 
 
-/* Animated project timelines: reveal on scroll and allow stage focus. */
+/* Animated project timelines: scroll reveal, staged progress and interactive milestones. */
 const timelineProjects=[...document.querySelectorAll('[data-timeline] .timeline-project')];
 if(timelineProjects.length){
+  const stageNames=['Planning','Design & Coordination','Construction','Finishing & Handover'];
   const activateTimeline=(project)=>{
     project.classList.add('timeline-visible');
     const steps=[...project.querySelectorAll('.timeline-step')];
-    if(steps.length && !steps.some(step=>step.classList.contains('active'))) steps[0].classList.add('active');
+    const progress=project.querySelector('.timeline-progress');
+    if(!steps.length) return;
+    const setStage=(index,animate=true)=>{
+      const safe=Math.max(0,Math.min(index,steps.length-1));
+      steps.forEach((step,i)=>{
+        step.classList.toggle('active',i===safe);
+        step.classList.toggle('is-complete',i<safe);
+        step.setAttribute('aria-current',i===safe?'step':'false');
+      });
+      if(progress){
+        const pct=steps.length===1?0:(safe/(steps.length-1))*95;
+        if(window.innerWidth<=700){
+          progress.style.height=(safe/(steps.length-1))*Math.max(0,project.querySelector('.timeline-track').scrollHeight-24)+'px';
+          progress.style.width='2px';
+        }else{
+          progress.style.width=pct+'%';
+        }
+      }
+      const label=steps[safe].querySelector('span')?.textContent || stageNames[safe] || 'Project stage';
+      let status=project.querySelector('.timeline-status');
+      if(!status){
+        status=document.createElement('div');
+        status.className='timeline-status';
+        project.appendChild(status);
+      }
+      status.innerHTML='<i aria-hidden="true"></i><span>Current stage: <strong>'+label+'</strong></span>';
+    };
+    if(!project.dataset.timelineReady){
+      project.dataset.timelineReady='true';
+      steps.forEach((step,index)=>step.addEventListener('click',()=>setStage(index)));
+      setStage(0,false);
+      if(!reduceMotion){
+        let current=0;
+        const advance=()=>{
+          if(!project.classList.contains('timeline-visible')) return;
+          current=(current+1)%steps.length;
+          setStage(current);
+        };
+        project._timelineTimer=setInterval(advance,3200);
+        project.addEventListener('mouseenter',()=>clearInterval(project._timelineTimer));
+        project.addEventListener('mouseleave',()=>{
+          clearInterval(project._timelineTimer);
+          project._timelineTimer=setInterval(advance,3200);
+        });
+        project.addEventListener('focusin',()=>clearInterval(project._timelineTimer));
+        project.addEventListener('focusout',()=>{
+          clearInterval(project._timelineTimer);
+          project._timelineTimer=setInterval(advance,3200);
+        });
+      }
+    }
   };
-  if(reduceMotion){timelineProjects.forEach(activateTimeline);}
-  else{
+  if(reduceMotion){
+    timelineProjects.forEach(activateTimeline);
+  }else{
     const timelineObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
-        if(entry.isIntersecting){activateTimeline(entry.target);timelineObserver.unobserve(entry.target);}
+        if(entry.isIntersecting){
+          activateTimeline(entry.target);
+          timelineObserver.unobserve(entry.target);
+        }
       });
-    },{threshold:.22});
+    },{threshold:.2});
     timelineProjects.forEach(project=>timelineObserver.observe(project));
   }
-  timelineProjects.forEach(project=>{
-    project.querySelectorAll('.timeline-step').forEach(step=>step.addEventListener('click',()=>{
-      project.querySelectorAll('.timeline-step').forEach(item=>item.classList.remove('active'));
-      step.classList.add('active');
-    }));
+  window.addEventListener('resize',()=>{
+    timelineProjects.forEach(project=>{
+      if(project.classList.contains('timeline-visible')){
+        const active=project.querySelector('.timeline-step.active');
+        if(active){
+          active.click();
+        }
+      }
+    });
   });
 }
