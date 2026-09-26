@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="TW&D Marketplace — buy and sell houses, land, cars, home gadgets, equipment and other verified listings across Nigeria.">
+<title>TW&D Marketplace | Buy & Sell Across Nigeria</title>
+<link rel="stylesheet" href="marketplace.css">
+</head>
+<body>
+<header class="mp-header">
+  <div class="mp-container mp-nav">
+    <a class="mp-brand" href="index.html"><img src="assets/twd-logo.svg" alt="TW&D Engineering Consult & Services Ltd"><span>MARKETPLACE</span></a>
+    <nav><a href="index.html">Company</a><a class="active" href="#listings">Marketplace</a><a href="#sell">Sell</a><a href="#plans">Subscriptions</a></nav>
+    <a class="mp-sell-btn" href="#sell">+ List an Item</a>
+  </div>
+</header>
+
+<main>
+<section class="mp-hero">
+ <div class="mp-container hero-grid">
+  <div>
+   <span class="eyebrow">TW&D MARKETPLACE • NIGERIA</span>
+   <h1>Buy. Sell. <em>Build Value.</em></h1>
+   <p>A dedicated marketplace for houses, land, cars, home gadgets, building materials, equipment and other legitimate goods and services.</p>
+   <div class="hero-actions"><a class="primary" href="#listings">Browse Listings</a><a class="secondary" href="#sell">Sell on TW&D</a></div>
+   <div class="trust-row"><span>🏠 Property</span><span>🚗 Cars</span><span>📱 Gadgets</span><span>🛠 Equipment</span></div>
+  </div>
+  <div class="hero-card"><div class="hero-card-top">SELLER TOOLS</div><strong>Reach more buyers.</strong><p>Choose a subscription, publish listings, receive enquiries and manage your marketplace presence.</p><a href="#plans">View seller plans →</a></div>
+ </div>
+</section>
+
+<section class="mp-container" id="listings">
+ <div class="section-head"><div><span class="eyebrow">DISCOVER</span><h2>Marketplace Listings</h2></div><p>Search by category, location or listing title.</p></div>
+ <div class="filters">
+  <input id="search" type="search" placeholder="Search houses, land, cars, gadgets...">
+  <select id="category"><option value="">All categories</option><option>Houses</option><option>Land</option><option>Cars</option><option>Home Gadgets</option><option>Building Materials</option><option>Equipment</option><option>Other</option></select>
+  <select id="location"><option value="">All locations</option><option>Ibadan</option><option>Lagos</option><option>Ogun</option><option>Osun</option><option>Rivers</option><option>Abuja</option><option>Other</option></select>
+ </div>
+ <div id="listingGrid" class="listing-grid"></div>
+ <div id="empty" class="empty" hidden>No matching listings found.</div>
+</section>
+
+<section class="sell-section" id="sell">
+ <div class="mp-container sell-grid">
+  <div><span class="eyebrow">SELL ON TW&D</span><h2>Put your property or product in front of buyers.</h2><p>Submit your listing details and photographs. Listings can be reviewed before publication to reduce fraud and improve buyer confidence.</p>
+   <ul><li>Houses, land and property</li><li>Cars and commercial vehicles</li><li>Home gadgets and electronics</li><li>Building materials and equipment</li></ul>
+  </div>
+  <form id="listingForm" class="form-card">
+   <h3>Create a Listing</h3>
+   <label>Seller / Business Name<input name="sellerName" required></label>
+   <div class="two"><label>Phone / WhatsApp<input name="phone" required></label><label>Email<input name="email" type="email" required></label></div>
+   <div class="two"><label>Category<select name="category" required><option value="">Choose</option><option>Houses</option><option>Land</option><option>Cars</option><option>Home Gadgets</option><option>Building Materials</option><option>Equipment</option><option>Other</option></select></label><label>Location<input name="location" placeholder="e.g. Ibadan, Oyo" required></label></div>
+   <label>Listing Title<input name="title" placeholder="e.g. 4-bedroom duplex at..." required></label>
+   <div class="two"><label>Price (₦)<input name="price" type="number" min="0" required></label><label>Condition<select name="condition"><option>New</option><option>Used</option><option>For Sale</option><option>For Rent</option></select></label></div>
+   <label>Description<textarea name="description" rows="4" required></textarea></label>
+   <label>Photos<input name="photos" type="file" accept=".jpg,.jpeg,.png,.webp" multiple required></label>
+   <label class="check"><input type="checkbox" required> I confirm that the information is accurate and I have the right to advertise this item.</label>
+   <button class="primary" type="submit">Submit Listing for Review</button>
+   <p id="formStatus" class="status" aria-live="polite"></p>
+  </form>
+ </div>
+</section>
+
+<section class="plans mp-container" id="plans">
+ <div class="section-head"><div><span class="eyebrow">SELLER SUBSCRIPTIONS</span><h2>Choose how you want to advertise.</h2></div><p>Subscriptions are designed to create recurring marketplace revenue for TW&D.</p></div>
+ <div class="plan-grid">
+  <article class="plan"><span>STARTER</span><strong>₦5,000</strong><small>/ month</small><h3>Individual Seller</h3><ul><li>Up to 3 active listings</li><li>Standard listing placement</li><li>WhatsApp buyer enquiries</li></ul><button data-plan="Starter — ₦5,000/month">Subscribe</button></article>
+  <article class="plan featured"><b class="ribbon">POPULAR</b><span>BUSINESS</span><strong>₦15,000</strong><small>/ month</small><h3>Business Seller</h3><ul><li>Up to 15 active listings</li><li>Priority placement</li><li>Seller profile</li><li>Lead notifications</li></ul><button data-plan="Business — ₦15,000/month">Subscribe</button></article>
+  <article class="plan"><span>PRO</span><strong>₦30,000</strong><small>/ month</small><h3>Property / Dealer Pro</h3><ul><li>Up to 40 active listings</li><li>Featured placements</li><li>Priority support</li><li>Enhanced seller profile</li></ul><button data-plan="Pro — ₦30,000/month">Subscribe</button></article>
+ </div>
+ <div class="revenue-note"><strong>Payment gateway:</strong> subscription checkout is prepared for integration with a Nigerian payment gateway such as Paystack or Flutterwave. No subscription payment is taken until the merchant account and public key are configured.</div>
+</section>
+
+<section class="safety mp-container"><div><span class="eyebrow">BUYER SAFETY</span><h2>Marketplace rules matter.</h2></div><p>TW&D can review submitted listings, but buyers should independently inspect property, verify ownership/documents, inspect vehicles or goods, and complete transactions safely. Do not send money solely because an item appears on this website.</p></section>
+</main>
+<footer><div class="mp-container"><strong>TW&D Engineering Consult & Services Ltd</strong><span>25 Engr Adedayo Close, Olateju Street, off First Bank Area, Akingbade Area, Ibadan, Oyo State, Nigeria</span><a href="https://wa.me/2348035774420">WhatsApp 08035774420</a></div></footer>
+<script src="marketplace.js"></script>
+</body>
+</html>
