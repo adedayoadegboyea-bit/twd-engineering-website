@@ -24,7 +24,7 @@ form.addEventListener("submit",async e=>{
  const payload={};new FormData(form).forEach((v,k)=>{if(k!=="photos")payload[k]=v});
  payload.photos=[];
  for(const file of files){payload.photos.push({name:file.name,type:file.type,size:file.size,data:await toBase64(file)});}
- const endpoint="PASTE_YOUR_MARKETPLACE_WEB_APP_URL_HERE";
+ const endpoint="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
  if(endpoint.startsWith("PASTE_")){status.textContent="Your listing form is ready. The marketplace administrator still needs to connect the secure publishing backend.";return;}
  try{const r=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});const j=await r.json();status.textContent=j.message||"Listing submitted for review.";if(j.ok)form.reset();}catch(err){status.textContent="Submission could not be completed. Please try again or contact TW&D.";}
 });
@@ -32,7 +32,7 @@ function toBase64(file){return new Promise((resolve,reject)=>{const r=new FileRe
 
 document.querySelectorAll("[data-plan]").forEach(btn=>btn.addEventListener("click",()=>{
  const plan=btn.dataset.plan;
- const endpoint="PASTE_YOUR_MARKETPLACE_WEB_APP_URL_HERE";
+ const endpoint="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
  if(endpoint.startsWith("PASTE_")){alert(plan+" selected. Payment gateway setup is the next step before live subscription payments can be collected.");return;}
  window.location.href=endpoint+"?action=subscribe&plan="+encodeURIComponent(plan);
 }));
