@@ -23,13 +23,27 @@ function escapeHtml(value) {
 function publicImageUrl(value) {
   const src = String(value || "").trim();
   if (!src) return "";
-  const match = src.match(/[?&]id=([^&]+)/);
+
+  // Google Drive file URL: /file/d/FILE_ID/view
+  let match = src.match(/drive\.google\.com\/file\/d\/([^/?#]+)/i);
   if (match && match[1]) {
-    return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1200";
+    return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1600";
   }
+
+  // Google Drive thumbnail/open URL with ?id=FILE_ID
+  match = src.match(/[?&]id=([^&]+)/i);
+  if (match && match[1]) {
+    return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1600";
+  }
+
+  // Google Drive uc?export=view&id=FILE_ID
+  match = src.match(/(?:export=view|uc[^?]*)[?&]id=([^&]+)/i);
+  if (match && match[1]) {
+    return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1600";
+  }
+
   return src;
 }
-
 function render() {
   const search = (document.querySelector("#search").value || "").toLowerCase().trim();
   const category = document.querySelector("#category").value;
@@ -68,12 +82,12 @@ function render() {
       encodeURIComponent("Hello TW&D Marketplace, I am interested in: " + item.title);
 
     const gallery = images.slice(0, 5).map((src, index) =>
-      '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="lazy" data-gallery-src="' + escapeHtml(src) + '">'
+      '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="eager" decoding="async" data-gallery-src="' + escapeHtml(src) + '">'
     ).join("");
 
     return `<article class="listing">
       <div class="listing-media">
-        <img class="listing-main-image" src="${image}" alt="${title}" loading="lazy">
+        <img class="listing-main-image" src="${image}" alt="${title}" loading="eager" decoding="async">
         ${images.length > 1 ? '<div class="listing-thumbs">' + gallery + '</div>' : ''}
       </div>
       <div class="listing-body">
@@ -87,6 +101,21 @@ function render() {
   }).join("");
 
   empty.hidden = rows.length > 0;
+
+  // Let visitors switch through every uploaded listing photo.
+  grid.querySelectorAll(".listing").forEach(card => {
+    const main = card.querySelector(".listing-main-image");
+    card.querySelectorAll(".listing-thumbs img").forEach(thumb => {
+      thumb.addEventListener("click", () => {
+        const src = thumb.getAttribute("data-gallery-src");
+        if (!src || !main) return;
+        main.src = src;
+        main.classList.remove("listing-image-swap");
+        void main.offsetWidth;
+        main.classList.add("listing-image-swap");
+      });
+    });
+  });
 }
 
 ["#search","#category","#location"].forEach(selector => {
