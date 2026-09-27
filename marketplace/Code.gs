@@ -416,9 +416,16 @@ function getPaymentSettings_() {
     paystackPaymentLink: props.getProperty("PAYSTACK_PAYMENT_LINK") || CONFIG.PAYSTACK_PAYMENT_LINK,
     whatsappNumber: props.getProperty("WHATSAPP_NUMBER") || CONFIG.WHATSAPP_NUMBER,
     bankTransfer: {
-      bankName: props.getProperty("BANK_NAME") || CONFIG.BANK_NAME,
-      accountName: props.getProperty("BANK_ACCOUNT_NAME") || CONFIG.BANK_ACCOUNT_NAME,
-      accountNumber: props.getProperty("BANK_ACCOUNT_NUMBER") || CONFIG.BANK_ACCOUNT_NUMBER
+      primary: {
+        bankName: props.getProperty("BANK_NAME") || CONFIG.BANK_NAME,
+        accountName: props.getProperty("BANK_ACCOUNT_NAME") || CONFIG.BANK_ACCOUNT_NAME,
+        accountNumber: props.getProperty("BANK_ACCOUNT_NUMBER") || CONFIG.BANK_ACCOUNT_NUMBER
+      },
+      secondary: {
+        bankName: props.getProperty("PREMIUM_BANK_NAME") || "Premium Trust Bank",
+        accountName: props.getProperty("PREMIUM_BANK_ACCOUNT_NAME") || CONFIG.BANK_ACCOUNT_NAME,
+        accountNumber: props.getProperty("PREMIUM_BANK_ACCOUNT_NUMBER") || ""
+      }
     }
   };
 }
