@@ -1,13 +1,6 @@
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
 
-const demoListings = [
-  {id:"demo-1",category:"Houses",location:"Ibadan, Oyo",title:"Modern 4-Bedroom Family Home",price:65000000,image:"assets/completed-building-01.jpg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"For Sale"},
-  {id:"demo-2",category:"Land",location:"Ogun State",title:"Residential Land Opportunity",price:12000000,image:"assets/project-08.jpg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"For Sale"},
-  {id:"demo-3",category:"Building Materials",location:"Ibadan, Oyo",title:"Building & Finishing Materials",price:0,image:"assets/building.jpg",seller:"TW&D Engineering",phone:"08035774420",condition:"New"},
-  {id:"demo-4",category:"Home Gadgets",location:"Lagos",title:"Home Improvement & Interior Items",price:0,image:"assets/marble-bathroom.jpeg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"New"}
-];
-
-let listings = [...demoListings];
+let listings = [];
 
 const grid = document.querySelector("#listingGrid");
 const empty = document.querySelector("#empty");
@@ -94,7 +87,7 @@ async function loadApprovedListings() {
 
     const data = await response.json();
     if (data && Array.isArray(data.listings)) {
-      listings = [...demoListings, ...data.listings];
+      listings = data.listings;
       render();
     }
   } catch (error) {
