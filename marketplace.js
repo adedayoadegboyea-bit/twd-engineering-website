@@ -26,6 +26,15 @@ function escapeHtml(value) {
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[ch]));
 }
+function publicImageUrl(value) {
+  const src = String(value || "").trim();
+  if (!src) return "assets/building.jpg";
+  const match = src.match(/[?&]id=([^&]+)/);
+  if (match && match[1]) {
+    return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1200";
+  }
+  return src;
+}
 
 function render() {
   const search = (document.querySelector("#search").value || "").toLowerCase().trim();
@@ -44,7 +53,7 @@ function render() {
     const images = Array.isArray(item.images) && item.images.length
       ? item.images
       : (item.image ? [item.image] : ["assets/building.jpg"]);
-    const image = escapeHtml(images[0] || "assets/building.jpg");
+    const image = escapeHtml(publicImageUrl(images[0] || "assets/building.jpg"));
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
     const conditionText = escapeHtml(item.condition || "");
@@ -80,7 +89,7 @@ function render() {
 
 async function loadApprovedListings() {
   try {
-    const response = await fetch(ENDPOINT + "?action=listings", {cache:"no-store"});
+    const response = await fetch(ENDPOINT + "?action=listings&_=" + Date.now(), {cache:"no-store"});
     if (!response.ok) return;
 
     const data = await response.json();
