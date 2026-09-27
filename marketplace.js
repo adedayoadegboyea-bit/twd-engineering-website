@@ -138,6 +138,46 @@ async function loadApprovedListings() {
   }
 }
 
+
+// ---------------- LISTING OPTION / EMBEDDED SUBSCRIPTION ----------------
+const listingOptionInputs = document.querySelectorAll('input[name="listingOption"]');
+const embeddedChoices = document.querySelector("#embeddedSubscriptionChoices");
+const selectedPlanBox = document.querySelector("#listingSelectedPlan");
+const listingSubmitButton = document.querySelector("#listingSubmitButton");
+
+function setListingOption(option) {
+  const paid = option === "subscription";
+  embeddedChoices.hidden = !paid;
+  document.querySelectorAll(".listing-choice").forEach(card => {
+    card.classList.toggle("selected", card.dataset.choice === option);
+  });
+
+  if (!paid) {
+    selectedPlanBox.textContent = "Free listing selected — no subscription payment required.";
+    listingSubmitButton.textContent = "Submit Free Listing for Review";
+    return;
+  }
+
+  const selected = document.querySelector(".embedded-plan.selected");
+  const plan = selected?.dataset.embeddedPlan || "Business — ₦15,000/month";
+  selectedPlanBox.innerHTML = "Selected subscription: <strong>" + escapeHtml(plan) + "</strong> — continue to secure payment below.";
+  listingSubmitButton.textContent = "Submit Listing & Continue to Subscription";
+}
+
+listingOptionInputs.forEach(input => {
+  input.addEventListener("change", () => setListingOption(input.value));
+});
+
+document.querySelectorAll(".embedded-plan").forEach(card => {
+  const button = card.querySelector("button");
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".embedded-plan").forEach(item => item.classList.remove("selected"));
+    card.classList.add("selected");
+    const plan = card.dataset.embeddedPlan || "";
+    selectedPlanBox.innerHTML = "Selected subscription: <strong>" + escapeHtml(plan) + "</strong> — continue to secure payment below.";
+  });
+});
+
 form.addEventListener("submit", async event => {
   event.preventDefault();
 
@@ -191,7 +231,14 @@ form.addEventListener("submit", async event => {
     }
 
     statusBox.textContent = data.message + (data.listingId ? " Reference: " + data.listingId : "");
+    const option = form.querySelector('input[name="listingOption"]:checked')?.value || "free";
+    const selectedPlan = document.querySelector(".embedded-plan.selected")?.dataset.embeddedPlan || "Business — ₦15,000/month";
     form.reset();
+    document.querySelector('input[name="listingOption"][value="free"]').checked = true;
+    setListingOption("free");
+    if (option === "subscription") {
+      openSubscription(selectedPlan, data.listingId || "");
+    }
   } catch (error) {
     console.error(error);
     statusBox.textContent = error.message || "Submission failed. Please try again.";
