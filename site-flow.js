@@ -13,7 +13,23 @@
   };
   const isProject=!!projectPages[path];
   const isMarketplace=path==="marketplace.html";
-  if(["invoice.html","client-portal.html","account.html","projects.html","careers.html","index.html",""].includes(path)||document.querySelector("[data-site-flow='off']")) return;
+  const privateOrExcluded=["invoice.html","client-portal.html",""].includes(path);
+  if(document.querySelector("[data-site-flow='off']")) return;
+
+  // Persistent visitor incentives: keep the key journeys visible while visitors scroll.
+  // These are intentionally public navigation links; no private account data is exposed here.
+  if(!privateOrExcluded&&!document.querySelector(".luxury-explore-dock")){
+    const dock=document.createElement("div");
+    dock.className="luxury-explore-dock";
+    dock.setAttribute("aria-label","Quick access");
+    dock.innerHTML='<span class="luxury-explore-label">EXPLORE</span>'
+      +'<a href="marketplace.html" class="luxury-explore-link marketplace-link"><span>MARKETPLACE</span><b>↗</b></a>'
+      +'<a href="index.html#nigeria-news" class="luxury-explore-link insights-link"><span>INSIGHTS</span><b>↓</b></a>'
+      +'<a href="careers.html" class="luxury-explore-link careers-link"><span>CAREERS</span><b>↗</b></a>'
+      +'<a href="account.html" class="luxury-explore-link account-link"><span>MY ACCOUNT</span><b>↗</b></a>';
+    document.body.appendChild(dock);
+  }
+
   if(!isProject&&!isMarketplace)return;
 
   if(isProject){
