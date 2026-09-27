@@ -200,7 +200,7 @@ function ensureSubscriptionFields() {
     methodLabel.innerHTML =
       '<span>Payment method</span><select id="subscriptionPaymentMethod" name="paymentMethod">' +
       '<option value="payoneer">Payoneer</option>' +
-      '<option value="bank_transfer">Nigerian bank transfer</option>' +
+      '<option value="bank_transfer">Bank Transfer — Moniepoint / Premium Trust Bank</option>' +
       '</select>';
     subscriptionForm.insertBefore(methodLabel, subscriptionForm.querySelector("button"));
   }
