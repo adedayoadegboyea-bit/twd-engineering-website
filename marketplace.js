@@ -19,6 +19,7 @@ function escapeHtml(value) {
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[ch]));
 }
+
 function publicImageUrl(value) {
   const src = String(value || "").trim();
   if (!src) return "";
@@ -187,8 +188,6 @@ const subscriptionStatus = document.querySelector("#subscriptionStatus");
 function ensureSubscriptionFields() {
   if (!subscriptionForm) return;
 
-  // These fields are added here so marketplace.html does not have to be
-  // changed again just to support listing promotion and payment tracking.
   if (!document.querySelector("#subscriptionListingId")) {
     const listingLabel = document.createElement("label");
     listingLabel.innerHTML =
@@ -199,7 +198,10 @@ function ensureSubscriptionFields() {
   if (!document.querySelector("#subscriptionPaymentMethod")) {
     const methodLabel = document.createElement("label");
     methodLabel.innerHTML =
-      '<span>Payment method</span><select id="subscriptionPaymentMethod" name="paymentMethod"><option value="payoneer">Payoneer</option><option value="bank_transfer">Nigerian bank transfer</option></select>';
+      '<span>Payment method</span><select id="subscriptionPaymentMethod" name="paymentMethod">' +
+      '<option value="payoneer">Payoneer</option>' +
+      '<option value="bank_transfer">Nigerian bank transfer</option>' +
+      '</select>';
     subscriptionForm.insertBefore(methodLabel, subscriptionForm.querySelector("button"));
   }
 
@@ -216,24 +218,62 @@ function showPaymentResult(data) {
   const box = document.querySelector("#subscriptionPaymentBox");
   if (!box) return;
 
+  const method = String(data.paymentMethod || "").toLowerCase().trim();
   const paymentUrl = String(data.paymentUrl || data.payoneerUrl || "").trim();
   const reference = escapeHtml(data.subscriptionId || "");
 
-  if (paymentUrl) {
+  // PAYONEER
+  if (method === "payoneer") {
+    if (paymentUrl) {
+      box.hidden = false;
+      box.innerHTML =
+        '<div class="payment-success">' +
+        '<strong>Complete your Payoneer payment</strong>' +
+        '<p>Your subscription request has been recorded. Click the button below to continue to the secure Payoneer payment page.</p>' +
+        '<a class="primary" href="' + escapeHtml(paymentUrl) + '" target="_blank" rel="noopener noreferrer">Pay with Payoneer →</a>' +
+        '<p class="status">Payoneer account: <strong>adedayo.adegboyea@gmail.com</strong></p>' +
+        (reference ? '<p class="status">Subscription reference: <strong>' + reference + '</strong></p>' : '') +
+        '</div>';
+    } else {
+      box.hidden = false;
+      box.innerHTML =
+        '<div class="payment-success">' +
+        '<strong>Payoneer payment</strong>' +
+        '<p>Your subscription request has been recorded. Payoneer is configured for <strong>adedayo.adegboyea@gmail.com</strong>, but the secure payment link still needs to be added by management.</p>' +
+        (reference ? '<p class="status">Subscription reference: <strong>' + reference + '</strong></p>' : '') +
+        '</div>';
+    }
+    return;
+  }
+
+  // NIGERIAN BANK TRANSFER
+  if (method === "bank_transfer") {
+    const bank = data.bankTransfer || {};
+    const bankName = escapeHtml(bank.bankName || "Premium Trust Bank");
+    const accountName = escapeHtml(bank.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD");
+    const accountNumber = escapeHtml(bank.accountNumber || "0040278142");
+
     box.hidden = false;
     box.innerHTML =
-      '<strong>Next step: complete payment</strong>' +
-      '<p>Your subscription request has been recorded. Complete payment using the secure payment link below.</p>' +
-      '<a class="primary" href="' + escapeHtml(paymentUrl) + '" target="_blank" rel="noopener noreferrer">Pay securely now →</a>' +
-      (reference ? '<p class="status">Reference: ' + reference + '</p>' : '');
+      '<div class="payment-success">' +
+      '<strong>Complete your bank transfer</strong>' +
+      '<p>Your subscription request has been recorded. Transfer the subscription amount to the account below, then keep your transaction receipt/reference.</p>' +
+      '<div class="bank-payment-details">' +
+      '<div><span>Bank</span><strong>' + bankName + '</strong></div>' +
+      '<div><span>Account Name</span><strong>' + accountName + '</strong></div>' +
+      '<div><span>Account Number</span><strong>' + accountNumber + '</strong></div>' +
+      '</div>' +
+      '<p class="status">After payment, send your transfer receipt and subscription reference to TW&D management for verification and activation.</p>' +
+      (reference ? '<p class="status">Subscription reference: <strong>' + reference + '</strong></p>' : '') +
+      '</div>';
     return;
   }
 
   box.hidden = false;
   box.innerHTML =
-    '<strong>Payment link pending</strong>' +
-    '<p>Your subscription request has been recorded. TW&D management will provide the payment instructions.</p>' +
-    (reference ? '<p class="status">Reference: ' + reference + '</p>' : '');
+    '<strong>Payment instructions</strong>' +
+    '<p>Your subscription request has been recorded. Please follow the payment instructions provided.</p>' +
+    (reference ? '<p class="status">Subscription reference: ' + reference + '</p>' : '');
 }
 
 function openSubscription(plan, listingId = "") {
@@ -311,7 +351,7 @@ if (subscriptionForm) {
     try {
       const response = await fetch(ENDPOINT, {
         method: "POST",
-        headers: {"Content-Type": "text/plain;charset=utf-8"},
+        headers: {"Content-Type":"text/plain;charset=utf-8"},
         body: JSON.stringify(payload)
       });
 
@@ -327,9 +367,10 @@ if (subscriptionForm) {
 
       showPaymentResult(data);
 
-      // Keep the payment/reference information visible instead of immediately
-      // closing the modal or wiping the form.
       if (data.subscriptionId) {
+        const oldReference = subscriptionForm.querySelector('input[name="subscriptionReference"]');
+        if (oldReference) oldReference.remove();
+
         const hiddenReference = document.createElement("input");
         hiddenReference.type = "hidden";
         hiddenReference.name = "subscriptionReference";
