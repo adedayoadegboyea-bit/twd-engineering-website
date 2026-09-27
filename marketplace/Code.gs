@@ -1,46 +1,527 @@
-const CONFIG={SHEET_NAME:"Marketplace Listings",FOLDER_NAME:"TW&D Marketplace Photos",MANAGEMENT_EMAIL:"admin@twdengineeringconsult.com",REPLY_TO:"marketplace@twdengineeringconsult.com",TIMEZONE:"Africa/Lagos",MAX_FILE_BYTES:5*1024*1024};
+const CONFIG = {
+  COMPANY: "TW&D Engineering Consult & Services Ltd",
+  SHEET_NAME: "Marketplace Listings",
+  SUBSCRIPTION_SHEET_NAME: "Marketplace Subscriptions",
+  FOLDER_NAME: "TW&D Marketplace Photos",
+  MANAGEMENT_EMAIL: "admin@twdengineeringconsult.com",
+  REPLY_TO: "marketplace@twdengineeringconsult.com",
+  TIMEZONE: "Africa/Lagos",
+  MAX_FILE_BYTES: 5 * 1024 * 1024,
+  MAX_TOTAL_FILE_BYTES: 15 * 1024 * 1024
+};
 
-function setupMarketplace(){
- const props=PropertiesService.getScriptProperties();
- let folder;const fid=props.getProperty("FOLDER_ID");
- try{folder=fid?DriveApp.getFolderById(fid):null}catch(e){folder=null}
- if(!folder)folder=DriveApp.createFolder(CONFIG.FOLDER_NAME);
- props.setProperty("FOLDER_ID",folder.getId());
- let ss;const sid=props.getProperty("SHEET_ID");
- try{ss=sid?SpreadsheetApp.openById(sid):null}catch(e){ss=null}
- if(!ss)ss=SpreadsheetApp.create(CONFIG.SHEET_NAME);
- props.setProperty("SHEET_ID",ss.getId());
- let sh=ss.getSheets()[0];sh.setName(CONFIG.SHEET_NAME);
- if(sh.getLastRow()===0)sh.appendRow(["Timestamp","Listing ID","Status","Seller","Email","Phone","Category","Location","Title","Price","Condition","Description","Photo Folder"]);
- return {folderId:folder.getId(),sheetId:ss.getId(),webAppNote:"Deploy this project as a Web App: Execute as Me; access Anyone."};
+/**
+ * ONE-TIME SETUP
+ * Run setupMarketplace() manually once from Apps Script.
+ */
+function setupMarketplace() {
+  const props = PropertiesService.getScriptProperties();
+
+  let folder = null;
+  const oldFolderId = props.getProperty("FOLDER_ID") || props.getProperty("MARKETPLACE_FOLDER_ID");
+  if (oldFolderId) {
+    try { folder = DriveApp.getFolderById(oldFolderId); } catch (err) { folder = null; }
+  }
+  if (!folder) {
+    folder = DriveApp.createFolder(CONFIG.FOLDER_NAME);
+  }
+  props.setProperty("FOLDER_ID", folder.getId());
+  props.setProperty("MARKETPLACE_FOLDER_ID", folder.getId());
+
+  let spreadsheet = null;
+  const oldSheetId = props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID");
+  if (oldSheetId) {
+    try { spreadsheet = SpreadsheetApp.openById(oldSheetId); } catch (err) { spreadsheet = null; }
+  }
+  if (!spreadsheet) {
+    spreadsheet = SpreadsheetApp.create("TW&D Marketplace Database");
+  }
+
+  props.setProperty("SHEET_ID", spreadsheet.getId());
+  props.setProperty("MARKETPLACE_SPREADSHEET_ID", spreadsheet.getId());
+
+  const listingsSheet = getOrCreateSheet_(
+    spreadsheet,
+    CONFIG.SHEET_NAME,
+    [
+      "Timestamp","Listing ID","Status","Seller / Business","Email",
+      "Phone / WhatsApp","Category","Location","Listing Title","Price",
+      "Condition","Description","Photo Folder","Photos Saved"
+    ]
+  );
+
+  const subscriptionsSheet = getOrCreateSheet_(
+    spreadsheet,
+    CONFIG.SUBSCRIPTION_SHEET_NAME,
+    [
+      "Timestamp","Subscription ID","Status","Plan",
+      "Seller / Business","Email","Phone / WhatsApp"
+    ]
+  );
+
+  listingsSheet.setFrozenRows(1);
+  subscriptionsSheet.setFrozenRows(1);
+
+  return json({
+    ok: true,
+    message: "TW&D Marketplace setup completed successfully.",
+    folderId: folder.getId(),
+    spreadsheetId: spreadsheet.getId()
+  });
 }
 
-function doPost(e){
- try{
-  const data=JSON.parse(e.postData.contents||"{}");
-  if(data.action==="subscribe")return json({ok:true,message:"Subscription request received. Connect Paystack/Flutterwave before enabling live payment collection."});
-  return submitListing(data);
- }catch(err){return json({ok:false,message:String(err)});}
+function getOrCreateSheet_(spreadsheet, name, headers) {
+  let sheet = spreadsheet.getSheetByName(name);
+  if (!sheet) {
+    sheet = spreadsheet.insertSheet(name);
+  }
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(headers);
+  } else if (sheet.getRange(1, 1).getValue() === "") {
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  }
+
+  sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
+  return sheet;
 }
 
-function submitListing(d){
- ["sellerName","email","phone","category","location","title","price","description"].forEach(k=>{if(!d[k])throw new Error("Missing field: "+k);});
- const folder=DriveApp.getFolderById(PropertiesService.getScriptProperties().getProperty("FOLDER_ID"));
- const id="TWM-"+Utilities.formatDate(new Date(),CONFIG.TIMEZONE,"yyyyMMdd-HHmmss")+"-"+Math.floor(Math.random()*900+100);
- const itemFolder=folder.createFolder(id+" - "+safe(d.title));
- const photoLinks=[];
- (d.photos||[]).forEach(p=>{
-  if(Number(p.size)>CONFIG.MAX_FILE_BYTES)throw new Error("Photo too large: "+p.name);
-  const bytes=Utilities.base64Decode(p.data);const blob=Utilities.newBlob(bytes,p.type||"image/jpeg",p.name);
-  const file=itemFolder.createFile(blob);photoLinks.push(file.getUrl());
- });
- const ss=SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty("SHEET_ID"));
- ss.getSheetByName(CONFIG.SHEET_NAME).appendRow([new Date(),id,"PENDING_REVIEW",d.sellerName,d.email,d.phone,d.category,d.location,d.title,d.price,d.condition||"",d.description,itemFolder.getUrl()]);
- MailApp.sendEmail({to:CONFIG.MANAGEMENT_EMAIL,replyTo:CONFIG.REPLY_TO,subject:"New TW&D Marketplace listing: "+id,htmlBody:"<p>A new marketplace listing was submitted.</p><p><b>"+esc(d.title)+"</b><br>Seller: "+esc(d.sellerName)+"<br>Category: "+esc(d.category)+"<br>Location: "+esc(d.location)+"<br>Price: ₦"+esc(d.price)+"</p><p>Listing ID: "+id+"<br><a href='"+itemFolder.getUrl()+"'>Open photo folder</a></p>"});
- MailApp.sendEmail({to:d.email,replyTo:CONFIG.REPLY_TO,subject:"TW&D Marketplace listing received — "+id,htmlBody:"<p>Thank you. Your listing <b>"+esc(d.title)+"</b> has been received and is pending review.</p><p>Reference: "+id+"</p>"});
- return json({ok:true,message:"Listing submitted for review. Reference: "+id});
+/**
+ * Website POST endpoint.
+ */
+function doPost(e) {
+  try {
+    const data = parseRequest_(e);
+
+    if (data.action === "subscribe") {
+      return handleSubscription_(data);
+    }
+
+    return submitListing(data);
+  } catch (error) {
+    console.error(error && error.stack ? error.stack : error);
+    return json({
+      ok: false,
+      message: "The marketplace could not process this request. " + safeErrorMessage_(error)
+    });
+  }
 }
-function safe(s){return String(s).replace(/[^a-z0-9 _-]/gi,"").slice(0,70)||"Listing";}
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
-function json(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);}
-function testSetup(){return setupMarketplace();}
+
+/**
+ * Simple GET endpoint for health checking.
+ */
+function doGet(e) {
+  const action = e && e.parameter ? String(e.parameter.action || "") : "";
+
+  if (action === "health") {
+    return json({
+      ok: true,
+      service: "TW&D Marketplace",
+      status: "online",
+      time: Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "yyyy-MM-dd HH:mm:ss")
+    });
+  }
+
+  return json({
+    ok: true,
+    service: "TW&D Marketplace",
+    message: "Marketplace backend is online. Use POST for listings and subscription requests."
+  });
+}
+
+function parseRequest_(e) {
+  if (!e || !e.postData || !e.postData.contents) {
+    throw new Error("No POST data was received.");
+  }
+
+  let data;
+  try {
+    data = JSON.parse(e.postData.contents);
+  } catch (error) {
+    throw new Error("The submitted data was not valid JSON.");
+  }
+
+  if (!data || typeof data !== "object") {
+    throw new Error("Invalid marketplace request.");
+  }
+
+  return data;
+}
+
+/**
+ * Main listing workflow:
+ * validate -> create folder -> save photos -> write spreadsheet -> email.
+ *
+ * Email errors are deliberately isolated so an email problem cannot erase
+ * an otherwise successful listing submission.
+ */
+function submitListing(data) {
+  if (!data || typeof data !== "object") {
+    throw new Error("Listing data was not supplied.");
+  }
+
+  const sellerName = required_(data.sellerName, "Seller / Business Name");
+  const email = requiredEmail_(data.email);
+  const phone = required_(data.phone, "Phone / WhatsApp");
+  const category = required_(data.category, "Category");
+  const location = required_(data.location, "Location");
+  const title = required_(data.title, "Listing Title");
+  const price = required_(data.price, "Price");
+  const condition = clean_(data.condition || "");
+  const description = required_(data.description, "Description");
+
+  const props = PropertiesService.getScriptProperties();
+  const folderId = props.getProperty("FOLDER_ID") || props.getProperty("MARKETPLACE_FOLDER_ID");
+  const spreadsheetId = props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID");
+
+  if (!folderId) {
+    throw new Error("Marketplace storage is not configured. Run setupMarketplace() first.");
+  }
+  if (!spreadsheetId) {
+    throw new Error("Marketplace spreadsheet is not configured. Run setupMarketplace() first.");
+  }
+
+  const photos = Array.isArray(data.photos) ? data.photos : [];
+  let totalBytes = 0;
+
+  photos.forEach(function(photo) {
+    if (!photo || !photo.data || !photo.name) return;
+
+    const declaredSize = Number(photo.size || 0);
+    if (declaredSize > CONFIG.MAX_FILE_BYTES) {
+      throw new Error("Photo is larger than 5 MB: " + clean_(photo.name));
+    }
+    totalBytes += declaredSize;
+  });
+
+  if (totalBytes > CONFIG.MAX_TOTAL_FILE_BYTES) {
+    throw new Error("The combined photo upload is too large. Please keep all photos together below 15 MB.");
+  }
+
+  const listingId =
+    "TWM-" +
+    Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "yyyyMMdd-HHmmss") +
+    "-" +
+    Math.floor(1000 + Math.random() * 9000);
+
+  const mainFolder = DriveApp.getFolderById(folderId);
+  const listingFolder = mainFolder.createFolder(listingId + " - " + safeFolderName_(title));
+
+  const savedPhotos = [];
+
+  photos.forEach(function(photo) {
+    if (!photo || !photo.data || !photo.name) return;
+
+    try {
+      const base64 = String(photo.data).replace(/^data:[^;]+;base64,/, "");
+      const bytes = Utilities.base64Decode(base64);
+
+      if (bytes.length > CONFIG.MAX_FILE_BYTES) {
+        throw new Error("Photo exceeds the 5 MB limit.");
+      }
+
+      const contentType = allowedImageType_(photo.type);
+      const blob = Utilities.newBlob(bytes, contentType, safeFileName_(photo.name));
+      const file = listingFolder.createFile(blob);
+
+      savedPhotos.push({
+        name: file.getName(),
+        url: file.getUrl()
+      });
+    } catch (photoError) {
+      console.error("Photo save error:", photoError);
+      throw new Error("Could not save photo: " + clean_(photo.name));
+    }
+  });
+
+  const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+  const sheet = spreadsheet.getSheetByName(CONFIG.SHEET_NAME);
+
+  if (!sheet) {
+    throw new Error("Marketplace Listings sheet was not found. Run setupMarketplace() again.");
+  }
+
+  sheet.appendRow([
+    new Date(),
+    listingId,
+    "PENDING_REVIEW",
+    sellerName,
+    email,
+    phone,
+    category,
+    location,
+    title,
+    price,
+    condition,
+    description,
+    listingFolder.getUrl(),
+    savedPhotos.length
+  ]);
+
+  const listingInfo = {
+    listingId: listingId,
+    seller: sellerName,
+    email: email,
+    phone: phone,
+    category: category,
+    location: location,
+    title: title,
+    price: price,
+    condition: condition,
+    description: description,
+    photoCount: savedPhotos.length,
+    folderUrl: listingFolder.getUrl()
+  };
+
+  safeSendManagementNotification_(listingInfo);
+  safeSendSellerConfirmation_(listingInfo);
+
+  return json({
+    ok: true,
+    message: "Listing submitted successfully and is awaiting TW&D review.",
+    listingId: listingId,
+    status: "PENDING_REVIEW",
+    photosSaved: savedPhotos.length
+  });
+}
+
+function handleSubscription_(data) {
+  if (!data || typeof data !== "object") {
+    throw new Error("Subscription data was not supplied.");
+  }
+
+  const plan = required_(data.plan, "Subscription Plan");
+  const seller = required_(data.sellerName, "Seller / Business Name");
+  const email = requiredEmail_(data.email);
+  const phone = required_(data.phone, "Phone / WhatsApp");
+
+  const props = PropertiesService.getScriptProperties();
+  const spreadsheetId = props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID");
+
+  if (!spreadsheetId) {
+    throw new Error("Marketplace spreadsheet is not configured. Run setupMarketplace() first.");
+  }
+
+  const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+  const sheet = getOrCreateSheet_(
+    spreadsheet,
+    CONFIG.SUBSCRIPTION_SHEET_NAME,
+    ["Timestamp","Subscription ID","Status","Plan","Seller / Business","Email","Phone / WhatsApp"]
+  );
+
+  const subscriptionId =
+    "TWS-" +
+    Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "yyyyMMdd-HHmmss") +
+    "-" +
+    Math.floor(1000 + Math.random() * 9000);
+
+  sheet.appendRow([
+    new Date(),
+    subscriptionId,
+    "PAYMENT_PENDING",
+    plan,
+    seller,
+    email,
+    phone
+  ]);
+
+  const details = {
+    subscriptionId: subscriptionId,
+    plan: plan,
+    seller: seller,
+    email: email,
+    phone: phone
+  };
+
+  safeSendSubscriptionManagement_(details);
+  safeSendSubscriptionConfirmation_(details);
+
+  return json({
+    ok: true,
+    message: "Your subscription request has been received. TW&D will contact you with payment instructions.",
+    subscriptionId: subscriptionId,
+    status: "PAYMENT_PENDING"
+  });
+}
+
+function safeSendManagementNotification_(data) {
+  try {
+    const subject = "New TW&D Marketplace Listing: " + data.listingId;
+    const body =
+      "NEW MARKETPLACE LISTING\n\n" +
+      "Listing ID: " + data.listingId + "\n" +
+      "Seller / Business: " + data.seller + "\n" +
+      "Email: " + data.email + "\n" +
+      "Phone / WhatsApp: " + data.phone + "\n" +
+      "Category: " + data.category + "\n" +
+      "Location: " + data.location + "\n" +
+      "Title: " + data.title + "\n" +
+      "Price: " + data.price + "\n" +
+      "Condition: " + data.condition + "\n" +
+      "Photos saved: " + data.photoCount + "\n\n" +
+      "Description:\n" + data.description + "\n\n" +
+      "Drive folder: " + data.folderUrl + "\n\n" +
+      "STATUS: PENDING REVIEW";
+
+    MailApp.sendEmail({
+      to: CONFIG.MANAGEMENT_EMAIL,
+      subject: subject,
+      body: body,
+      replyTo: CONFIG.REPLY_TO
+    });
+  } catch (error) {
+    console.error("Management email failed:", error);
+  }
+}
+
+function safeSendSellerConfirmation_(data) {
+  if (!data || !data.email) return;
+
+  try {
+    const subject = "TW&D Marketplace Listing Received - " + data.listingId;
+    const body =
+      "Dear " + data.seller + ",\n\n" +
+      "Thank you for submitting your listing to " + CONFIG.COMPANY + ".\n\n" +
+      "Listing ID: " + data.listingId + "\n" +
+      "Listing: " + data.title + "\n\n" +
+      "Your listing has been received and is currently pending review by TW&D management.\n\n" +
+      "You will be contacted after the review process.\n\n" +
+      "TW&D Engineering Consult & Services Ltd\n" +
+      "We design and we build to last.\n" +
+      "WhatsApp: +234 803 577 4420";
+
+    MailApp.sendEmail({
+      to: data.email,
+      subject: subject,
+      body: body,
+      replyTo: CONFIG.REPLY_TO
+    });
+  } catch (error) {
+    console.error("Seller confirmation email failed:", error);
+  }
+}
+
+function safeSendSubscriptionManagement_(data) {
+  try {
+    MailApp.sendEmail({
+      to: CONFIG.MANAGEMENT_EMAIL,
+      subject: "TW&D Marketplace Subscription Request - " + data.subscriptionId,
+      body:
+        "NEW MARKETPLACE SUBSCRIPTION REQUEST\n\n" +
+        "Subscription ID: " + data.subscriptionId + "\n" +
+        "Plan: " + data.plan + "\n" +
+        "Seller / Business: " + data.seller + "\n" +
+        "Email: " + data.email + "\n" +
+        "Phone: " + data.phone + "\n\n" +
+        "STATUS: PAYMENT PENDING"
+    });
+  } catch (error) {
+    console.error("Subscription management email failed:", error);
+  }
+}
+
+function safeSendSubscriptionConfirmation_(data) {
+  if (!data || !data.email) return;
+
+  try {
+    MailApp.sendEmail({
+      to: data.email,
+      subject: "TW&D Marketplace Subscription Request - " + data.subscriptionId,
+      body:
+        "Dear " + data.seller + ",\n\n" +
+        "We received your request for the " + data.plan + " marketplace subscription.\n\n" +
+        "Reference: " + data.subscriptionId + "\n\n" +
+        "Payment has not yet been collected. TW&D will contact you with the approved payment instructions.\n\n" +
+        "TW&D Engineering Consult & Services Ltd\n" +
+        "WhatsApp: +234 803 577 4420",
+      replyTo: CONFIG.REPLY_TO
+    });
+  } catch (error) {
+    console.error("Subscription confirmation email failed:", error);
+  }
+}
+
+function required_(value, label) {
+  const result = clean_(value);
+  if (!result) throw new Error("Missing required field: " + label);
+  return result.substring(0, 10000);
+}
+
+function requiredEmail_(value) {
+  const email = clean_(value).toLowerCase();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    throw new Error("Please provide a valid email address.");
+  }
+  return email.substring(0, 320);
+}
+
+function clean_(value) {
+  if (value === null || value === undefined) return "";
+  return String(value).trim();
+}
+
+function safeFolderName_(value) {
+  return clean_(value).replace(/[\\/:*?"<>|#%{}]/g, "").substring(0, 80) || "Listing";
+}
+
+function safeFileName_(value) {
+  const name = clean_(value).replace(/[\\/:*?"<>|#%{}]/g, "_").substring(0, 150);
+  return name || ("photo-" + new Date().getTime() + ".jpg");
+}
+
+function allowedImageType_(type) {
+  const allowed = ["image/jpeg", "image/png", "image/webp"];
+  return allowed.indexOf(type) >= 0 ? type : "image/jpeg";
+}
+
+function safeErrorMessage_(error) {
+  if (!error) return "Please try again.";
+  const message = clean_(error.message || error);
+  return message.substring(0, 500);
+}
+
+function json(data) {
+  return ContentService
+    .createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * SAFE TEST:
+ * This verifies the spreadsheet/folder setup without pretending
+ * that submitListing() was called from the website.
+ */
+function testMarketplaceWrite() {
+  const props = PropertiesService.getScriptProperties();
+  const folderId = props.getProperty("FOLDER_ID") || props.getProperty("MARKETPLACE_FOLDER_ID");
+  const spreadsheetId = props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID");
+
+  if (!folderId || !spreadsheetId) {
+    throw new Error("Run setupMarketplace() first.");
+  }
+
+  const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+  const sheet = spreadsheet.getSheetByName(CONFIG.SHEET_NAME);
+
+  if (!sheet) throw new Error("Marketplace Listings sheet was not found.");
+
+  const testId = "TEST-" + Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "yyyyMMdd-HHmmss");
+  sheet.appendRow([
+    new Date(),
+    testId,
+    "TEST_ONLY",
+    "TW&D System Test",
+    CONFIG.MANAGEMENT_EMAIL,
+    "08035774420",
+    "Other",
+    "Ibadan, Oyo",
+    "Marketplace Backend Test",
+    "0",
+    "Test",
+    "This is a backend spreadsheet test. It is not a public listing.",
+    DriveApp.getFolderById(folderId).getUrl(),
+    0
+  ]);
+
+  return "TEST PASSED: " + testId + " was written to Marketplace Listings.";
+}
