@@ -475,7 +475,22 @@ function getApprovedListings_() {
   headers.forEach(function(header, i) { index[header] = i; });
 
   return values.slice(1).filter(function(row) {
-    return String(row[index["Status"]] || "").trim().toUpperCase() === "APPROVED";
+    const status = String(row[index["Status"]] || "").trim().toUpperCase();
+    const seller = String(row[index["Seller / Business"]] || "").trim().toLowerCase();
+    const photoValue = index["Photo URLs"] !== undefined ? String(row[index["Photo URLs"]] || "").trim() : "";
+
+    // Public Marketplace listings must come from visitors/sellers.
+    // Company project/gallery records and demo listings must never be published here.
+    const isCompanyOrDemoSeller =
+      seller.includes("tw&d") ||
+      seller.includes("twd engineering") ||
+      seller.includes("marketplace demo") ||
+      seller.includes("system test");
+
+    return status === "APPROVED" &&
+      !isCompanyOrDemoSeller &&
+      photoValue &&
+      photoValue !== "[]";
   }).map(function(row) {
     let photoUrls = [];
     const rawPhotos = index["Photo URLs"] !== undefined ? row[index["Photo URLs"]] : "";
@@ -498,7 +513,7 @@ function getApprovedListings_() {
       description: String(row[index["Description"]] || ""),
       phone: String(row[index["Phone / WhatsApp"]] || ""),
       images: photoUrls,
-      image: photoUrls.length ? photoUrls[0] : "assets/building.jpg"
+      image: photoUrls.length ? photoUrls[0] : ""
     };
   });
 }
