@@ -7,7 +7,16 @@ const CONFIG = {
   REPLY_TO: "marketplace@twdengineeringconsult.com",
   TIMEZONE: "Africa/Lagos",
   MAX_FILE_BYTES: 5 * 1024 * 1024,
-  MAX_TOTAL_FILE_BYTES: 15 * 1024 * 1024
+  MAX_TOTAL_FILE_BYTES: 15 * 1024 * 1024,
+
+  // PAYMENT SETTINGS
+  // Paste your real Payoneer payment link here when you create it.
+  PAYONEER_PAYMENT_LINK: "",
+
+  // Nigerian bank transfer details
+  BANK_NAME: "Premium Trust Bank",
+  BANK_ACCOUNT_NAME: "TW&D ENGINEERING CONSULT & SERVICES LTD",
+  BANK_ACCOUNT_NUMBER: "0040278142"
 };
 
 /**
@@ -55,7 +64,8 @@ function setupMarketplace() {
     CONFIG.SUBSCRIPTION_SHEET_NAME,
     [
       "Timestamp","Subscription ID","Status","Plan",
-      "Seller / Business","Email","Phone / WhatsApp"
+      "Seller / Business","Email","Phone / WhatsApp","Listing ID",
+      "Payment Method","Payment Reference","Payment Status"
     ]
   );
 
@@ -313,6 +323,13 @@ function handleSubscription_(data) {
   const seller = required_(data.sellerName, "Seller / Business Name");
   const email = requiredEmail_(data.email);
   const phone = required_(data.phone, "Phone / WhatsApp");
+  const listingId = clean_(data.listingId || "");
+  const paymentMethod = clean_(data.paymentMethod || "payoneer").toLowerCase();
+
+  const allowedPaymentMethods = ["payoneer", "bank_transfer"];
+  if (allowedPaymentMethods.indexOf(paymentMethod) === -1) {
+    throw new Error("Please select a valid payment method.");
+  }
 
   const props = PropertiesService.getScriptProperties();
   const spreadsheetId = props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID");
@@ -325,7 +342,11 @@ function handleSubscription_(data) {
   const sheet = getOrCreateSheet_(
     spreadsheet,
     CONFIG.SUBSCRIPTION_SHEET_NAME,
-    ["Timestamp","Subscription ID","Status","Plan","Seller / Business","Email","Phone / WhatsApp"]
+    [
+      "Timestamp","Subscription ID","Status","Plan",
+      "Seller / Business","Email","Phone / WhatsApp","Listing ID",
+      "Payment Method","Payment Reference","Payment Status"
+    ]
   );
 
   const subscriptionId =
@@ -334,14 +355,20 @@ function handleSubscription_(data) {
     "-" +
     Math.floor(1000 + Math.random() * 9000);
 
+  const paymentStatus = "PAYMENT_PENDING";
+
   sheet.appendRow([
     new Date(),
     subscriptionId,
-    "PAYMENT_PENDING",
+    paymentStatus,
     plan,
     seller,
     email,
-    phone
+    phone,
+    listingId,
+    paymentMethod,
+    "",
+    paymentStatus
   ]);
 
   const details = {
@@ -349,18 +376,40 @@ function handleSubscription_(data) {
     plan: plan,
     seller: seller,
     email: email,
-    phone: phone
+    phone: phone,
+    listingId: listingId,
+    paymentMethod: paymentMethod
   };
 
   safeSendSubscriptionManagement_(details);
   safeSendSubscriptionConfirmation_(details);
 
-  return json({
+  const response = {
     ok: true,
-    message: "Your subscription request has been received. TW&D will contact you with payment instructions.",
+    message: "Your subscription request has been received. Please complete payment using your selected payment method.",
     subscriptionId: subscriptionId,
-    status: "PAYMENT_PENDING"
-  });
+    status: paymentStatus,
+    paymentMethod: paymentMethod,
+    paymentUrl: paymentMethod === "payoneer" ? CONFIG.PAYONEER_PAYMENT_LINK : "",
+    bankTransfer: {
+      bankName: CONFIG.BANK_NAME,
+      accountName: CONFIG.BANK_ACCOUNT_NAME,
+      accountNumber: CONFIG.BANK_ACCOUNT_NUMBER
+    }
+  };
+
+  return json(response);
+}
+
+function getPaymentDetails_() {
+  return {
+    payoneerPaymentLink: CONFIG.PAYONEER_PAYMENT_LINK,
+    bankTransfer: {
+      bankName: CONFIG.BANK_NAME,
+      accountName: CONFIG.BANK_ACCOUNT_NAME,
+      accountNumber: CONFIG.BANK_ACCOUNT_NUMBER
+    }
+  };
 }
 
 function safeSendManagementNotification_(data) {
@@ -431,7 +480,9 @@ function safeSendSubscriptionManagement_(data) {
         "Plan: " + data.plan + "\n" +
         "Seller / Business: " + data.seller + "\n" +
         "Email: " + data.email + "\n" +
-        "Phone: " + data.phone + "\n\n" +
+        "Phone: " + data.phone + "\n" +
+        "Listing ID: " + (data.listingId || "Not specified") + "\n" +
+        "Payment Method: " + (data.paymentMethod || "Payoneer") + "\n\n" +
         "STATUS: PAYMENT PENDING"
     });
   } catch (error) {
@@ -449,8 +500,10 @@ function safeSendSubscriptionConfirmation_(data) {
       body:
         "Dear " + data.seller + ",\n\n" +
         "We received your request for the " + data.plan + " marketplace subscription.\n\n" +
-        "Reference: " + data.subscriptionId + "\n\n" +
-        "Payment has not yet been collected. TW&D will contact you with the approved payment instructions.\n\n" +
+        "Reference: " + data.subscriptionId + "\n" +
+        "Listing ID: " + (data.listingId || "Not specified") + "\n" +
+        "Payment Method: " + (data.paymentMethod || "Payoneer") + "\n\n" +
+        "Payment has not yet been verified. Please complete payment using the instructions shown on the marketplace.\n\n" +
         "TW&D Engineering Consult & Services Ltd\n" +
         "WhatsApp: +234 803 577 4420",
       replyTo: CONFIG.REPLY_TO
@@ -510,7 +563,7 @@ function getApprovedListings_() {
 
     // Older approved listings were created before the Photo URLs column was added.
     // Recover their real uploaded photos directly from the saved listing folder.
-    if (!photoUrls.length && Number(row[index["Photos Saved"]] || 0) > 0) {
+    if (!photoUrls.length) {
       photoUrls = recoverPhotoUrlsFromFolder_(
         String(row[index["Photo Folder"]] || "").trim()
       );
