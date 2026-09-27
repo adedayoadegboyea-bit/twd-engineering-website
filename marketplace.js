@@ -253,10 +253,13 @@ function showPaymentResult(data) {
     const secondary = bank.secondary || {};
     const primaryName = escapeHtml(primary.bankName || "Moniepoint");
     const primaryAccountName = escapeHtml(primary.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD");
-    const primaryAccountNumber = escapeHtml(primary.accountNumber || "");
+    // Public payment details are intentionally shown to subscribers.
+    // These fallback values ensure the customer can still pay if the Apps Script
+    // deployment temporarily returns blank Script Property values.
+    const primaryAccountNumber = escapeHtml(primary.accountNumber || "6365401118");
     const secondaryName = escapeHtml(secondary.bankName || "Premium Trust Bank");
     const secondaryAccountName = escapeHtml(secondary.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD");
-    const secondaryAccountNumber = escapeHtml(secondary.accountNumber || "");
+    const secondaryAccountNumber = escapeHtml(secondary.accountNumber || "0040278142");
 
     box.hidden = false;
     box.innerHTML =
