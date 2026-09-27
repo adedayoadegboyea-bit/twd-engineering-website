@@ -41,16 +41,25 @@ function render() {
 
   grid.innerHTML = rows.map(item => {
     const title = escapeHtml(item.title);
-    const image = escapeHtml(item.image || "assets/building.jpg");
+    const images = Array.isArray(item.images) && item.images.length
+      ? item.images
+      : (item.image ? [item.image] : ["assets/building.jpg"]);
+    const image = escapeHtml(images[0] || "assets/building.jpg");
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
     const conditionText = escapeHtml(item.condition || "");
-    const phone = item.phone || "08035774420";
     const wa = "https://wa.me/2348035774420?text=" +
       encodeURIComponent("Hello TW&D Marketplace, I am interested in: " + item.title);
 
+    const gallery = images.slice(0, 5).map((src, index) =>
+      '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="lazy">'
+    ).join("");
+
     return `<article class="listing">
-      <img src="${image}" alt="${title}" loading="lazy">
+      <div class="listing-media">
+        <img class="listing-main-image" src="${image}" alt="${title}" loading="lazy">
+        ${images.length > 1 ? '<div class="listing-thumbs">' + gallery + '</div>' : ''}
+      </div>
       <div class="listing-body">
         <span class="tag">${categoryText}</span>
         <h3>${title}</h3>
