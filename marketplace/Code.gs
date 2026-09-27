@@ -46,7 +46,7 @@ function setupMarketplace() {
     [
       "Timestamp","Listing ID","Status","Seller / Business","Email",
       "Phone / WhatsApp","Category","Location","Listing Title","Price",
-      "Condition","Description","Photo Folder","Photos Saved"
+      "Condition","Description","Photo Folder","Photos Saved","Photo URLs"
     ]
   );
 
@@ -80,6 +80,8 @@ function getOrCreateSheet_(spreadsheet, name, headers) {
     sheet.appendRow(headers);
   } else if (sheet.getRange(1, 1).getValue() === "") {
     sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  } else if (sheet.getLastColumn() < headers.length) {
+    sheet.getRange(1, sheet.getLastColumn() + 1, 1, headers.length - sheet.getLastColumn()).setValues([headers.slice(sheet.getLastColumn())]);
   }
 
   sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
@@ -120,6 +122,15 @@ function doGet(e) {
       status: "online",
       time: Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "yyyy-MM-dd HH:mm:ss")
     });
+  }
+
+  if (action === "listings") {
+    try {
+      return json({ ok: true, listings: getApprovedListings_() });
+    } catch (error) {
+      console.error("Public listings error:", error);
+      return json({ ok: false, listings: [], message: safeErrorMessage_(error) });
+    }
   }
 
   return json({
@@ -224,9 +235,16 @@ function submitListing(data) {
       const blob = Utilities.newBlob(bytes, contentType, safeFileName_(photo.name));
       const file = listingFolder.createFile(blob);
 
+      try {
+        file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      } catch (sharingError) {
+        console.error("Public photo sharing could not be enabled:", sharingError);
+      }
+
       savedPhotos.push({
         name: file.getName(),
-        url: file.getUrl()
+        id: file.getId(),
+        url: "https://drive.google.com/uc?export=view&id=" + file.getId()
       });
     } catch (photoError) {
       console.error("Photo save error:", photoError);
@@ -255,7 +273,8 @@ function submitListing(data) {
     condition,
     description,
     listingFolder.getUrl(),
-    savedPhotos.length
+    savedPhotos.length,
+    JSON.stringify(savedPhotos.map(function(photo) { return photo.url; }))
   ]);
 
   const listingInfo = {
@@ -441,6 +460,49 @@ function safeSendSubscriptionConfirmation_(data) {
   }
 }
 
+function getApprovedListings_() {
+  const props = PropertiesService.getScriptProperties();
+  const spreadsheetId = props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID");
+  if (!spreadsheetId) throw new Error("Marketplace spreadsheet is not configured.");
+
+  const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+  const sheet = spreadsheet.getSheetByName(CONFIG.SHEET_NAME);
+  if (!sheet || sheet.getLastRow() < 2) return [];
+
+  const values = sheet.getDataRange().getValues();
+  const headers = values[0].map(function(value) { return String(value); });
+  const index = {};
+  headers.forEach(function(header, i) { index[header] = i; });
+
+  return values.slice(1).filter(function(row) {
+    return String(row[index["Status"]] || "").trim().toUpperCase() === "APPROVED";
+  }).map(function(row) {
+    let photoUrls = [];
+    const rawPhotos = index["Photo URLs"] !== undefined ? row[index["Photo URLs"]] : "";
+    if (rawPhotos) {
+      try {
+        const parsed = JSON.parse(String(rawPhotos));
+        if (Array.isArray(parsed)) photoUrls = parsed.filter(Boolean);
+      } catch (error) {
+        console.error("Could not parse Photo URLs for listing:", row[index["Listing ID"]]);
+      }
+    }
+    return {
+      id: String(row[index["Listing ID"]] || ""),
+      category: String(row[index["Category"]] || ""),
+      location: String(row[index["Location"]] || ""),
+      title: String(row[index["Listing Title"]] || ""),
+      price: String(row[index["Price"]] || ""),
+      seller: String(row[index["Seller / Business"]] || ""),
+      condition: String(row[index["Condition"]] || ""),
+      description: String(row[index["Description"]] || ""),
+      phone: String(row[index["Phone / WhatsApp"]] || ""),
+      images: photoUrls,
+      image: photoUrls.length ? photoUrls[0] : "assets/building.jpg"
+    };
+  });
+}
+
 function required_(value, label) {
   const result = clean_(value);
   if (!result) throw new Error("Missing required field: " + label);
@@ -520,7 +582,8 @@ function testMarketplaceWrite() {
     "Test",
     "This is a backend spreadsheet test. It is not a public listing.",
     DriveApp.getFolderById(folderId).getUrl(),
-    0
+    0,
+    "[]"
   ]);
 
   return "TEST PASSED: " + testId + " was written to Marketplace Listings.";
