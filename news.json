@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T16:09:55.129030+00:00",
+  "generated_at": "2026-09-27T16:40:21.147769+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,46 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Nigeria’s investment levels inadequate for job creation — NESG",
+      "summary": "The Nigerian Economic Summit Group says the nation’s current investment level is insufficient to create jobs and deliver prosperity for its growing populat Read More: https://punchng.com/nigerias-investment-levels-inadequate-for-job-creation-nesg/",
+      "url": "https://punchng.com/nigerias-investment-levels-inadequate-for-job-creation-nesg/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-27T17:34:33+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "FG eyes 10 million certified talents by 2030",
+      "summary": "The Federal Government plans to produce 10 million globally certified Nigerian talents and create one million export-linked jobs by 2030 through reforms. Read More: https://punchng.com/fg-eyes-10-million-certified-talents-by-2030/",
+      "url": "https://punchng.com/fg-eyes-10-million-certified-talents-by-2030/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-27T17:22:07+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Resident doctors give two-week ultimatum to FG over unmet demands",
+      "summary": "The National Association of Resident Doctors (NARD) has given the Federal Government a two-week ultimatum to resolve unmet welfare and professional demands Read More: https://punchng.com/resident-doctors-give-two-week-ultimatum-to-fg-over-unmet-demands/",
+      "url": "https://punchng.com/resident-doctors-give-two-week-ultimatum-to-fg-over-unmet-demands/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-27T17:20:27+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Suspected rabid dog bites 18 in Kano",
+      "summary": "A dog suspected to be rabid has bitten 18 people in Garko Local Government Area of Kano State, prompting a search by the Nigerian Forest Security Service. Read More: https://punchng.com/suspected-rabid-dog-bites-18-in-kano/",
+      "url": "https://punchng.com/suspected-rabid-dog-bites-18-in-kano/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-27T17:19:55+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "LASU announces opening of 2026/2027 NELFUND loan application",
       "summary": "Lagos State University has announced the opening of the NELFUND loan application for the 2026/2027 session, urging eligible students to apply before Dec 31 Read More: https://punchng.com/lasu-announces-opening-of-2026-2027-nelfund-loan-application/",
@@ -44,6 +84,67 @@
       "url": "https://punchng.com/apm-slams-okpebholo-for-comparing-nigerian-fuel-prices-to-uk/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-27T16:37:47+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: Labour Party chieftain, Eze raises alarm over economic hardship in Nigeria",
+      "summary": "A chieftain of the Labour Party, LP, in Ebonyi State, Ezeh Emmanuel Ezeh, has raised the alarm over the rising cost of living in the country under the ruling All Progressives Congress, APC, while also criticising the economic policies of the federal government, He expressed worry that the economy ha",
+      "url": "https://dailypost.ng/2026/09/27/2027-labour-party-chieftain-eze-raises-alarm-over-economic-hardship-in-nigeria/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-27T16:35:10+00:00",
+      "categories": [
+        "engineering",
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "Decoupling Sovereignty Index (1): The anatomy of becoming nobody, By Max Amuchie",
+      "summary": "On 7 June, this column unveiled the Decoupling Sovereignty Index (DSI) as the quantitative extension of the Trinity of Sovereignty Decay (TSD) theory, formerly known as the Trinity of State Decay. It is a measurement instrument designed to track the degree to which a state’s formal authority has sep",
+      "url": "https://www.premiumtimesng.com/opinion/912775-decoupling-sovereignty-index-1-the-anatomy-of-becoming-nobody-by-max-amuchie.html",
+      "source": "Premium Times",
+      "published": "2026-09-27T16:26:14+00:00",
+      "categories": []
+    },
+    {
+      "title": "NPFL: Buter laments Sporting Lagos’ missed opportunity against Barau FC",
+      "summary": "Sporting Lagos head coach, Jeffrey Buter has lamented his team’s home draw against Barau FC, DAILY POST reports. Buter’s side battled Barau FC to a 1-1 draw in their Nigeria Premier Football League, NPFL, matchday six encounter at the Mobolaji Johnson Arena, Onikan on Saturday. Barau FC took the lea",
+      "url": "https://dailypost.ng/2026/09/27/npfl-buter-laments-sporting-lagos-missed-opportunity-against-barau-fc/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-27T16:25:31+00:00",
+      "categories": [
+        "property",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Calabar erosion: Nigerian govt moves to protect NNPC jetty, Naval assets from ecological disaster",
+      "summary": "The Federal Government has moved to urgently tackle the growing threats to key strategic national assets, including the Nigerian Navy Ship, NNS Victory installation, and an Nigerian National Petroleum Company, NNPC Limited jetty supporting the nation’s energy infrastructure, following an ecological ",
+      "url": "https://dailypost.ng/2026/09/27/calabar-erosion-nigerian-govt-moves-to-protect-nnpc-jetty-naval-assets-from-ecological-disaster/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-27T16:19:07+00:00",
+      "categories": [
+        "engineering",
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "Fani-Kayode on Atiku: Separating claims from the record, By Paul Ibe",
+      "summary": "Fani-Kayode is free to dislike Atiku, disagree with his policies, question his political choices and prefer President Bola Tinubu. But history should not be rewritten to serve those preferences… Atiku has sought presidential nominations repeatedly. That is true. He has changed political parties like",
+      "url": "https://www.premiumtimesng.com/opinion/912771-fani-kayode-on-atiku-separating-claims-from-the-record-by-paul-ibe.html",
+      "source": "Premium Times",
+      "published": "2026-09-27T16:18:26+00:00",
+      "categories": []
+    },
+    {
+      "title": "Family of Delta civil servant murdered rejects state govt’s condolence visit, assurances",
+      "summary": "The family of the late Mr Unity Adeda, a Level 16 civil servant in the Ministry of Secondary Education, who reportedly died following an altercation at his workplace, has rejected the condolence visits from the Delta State government. But the state government insists that justice would not be perver",
+      "url": "https://dailypost.ng/2026/09/27/family-of-delta-civil-servant-murdered-rejects-state-govts-condolence-visit-assurances/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-27T16:17:09+00:00",
       "categories": [
         "government"
       ]
@@ -195,103 +296,6 @@
       "categories": [
         "government"
       ]
-    },
-    {
-      "title": "Judiciary was better under military — Farotimi",
-      "summary": "Human rights lawyer and activist, Dele Farotimi, says Nigerian judiciary was better under military rule than now. Farotimi made this assertion in a statement shared on social media on Sunday, noting that the judiciary has lost the integrity it once commanded during military rule. The activist compar",
-      "url": "https://dailypost.ng/2026/09/27/judiciary-was-better-under-military-farotimi/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-27T15:14:50+00:00",
-      "categories": []
-    },
-    {
-      "title": "Flamingos maul Togo to claim WAFU B U-17 Girls Cup title",
-      "summary": "Nigeria’s Flamingos were crowned champions of the 2026 WAFU B U-17 Girls Cup after thrashing Togo 4-0 in the final on Sunday. Captain Harmony Chidi was the star of the show, scoring twice from the penalty spot in the first half to put Nigeria firmly in control. Oluebube Umejiaku added a third in the",
-      "url": "https://dailypost.ng/2026/09/27/flamingos-maul-togo-to-claim-wafu-b-u-17-girls-cup-title/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-27T15:14:05+00:00",
-      "categories": []
-    },
-    {
-      "title": "LASTMA impounds 84 vehicles in Lagos traffic crackdown",
-      "summary": "The operation was carried out during the weekend in Idumota, Iddo, Ijora-Olopa, Costain and Onipanu, the agency said in a statement, Vanguard Newspaper reported on Sunday. The post LASTMA impounds 84 vehicles in Lagos traffic crackdown appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/912745-lastma-impounds-84-vehicles-in-lagos-traffic-crackdown.html",
-      "source": "Premium Times",
-      "published": "2026-09-27T15:10:48+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "I never questioned Tinubu over political decisions unfavourable to me – Gbajabiamila",
-      "summary": "President Bola Tinubu’s Chief of Staff, Femi Gbajabiamila, has insisted that he never questioned the president’s leadership qualities when he takes political decisions that are not favourable to him. Gbajabiamila affirmed that he will always be loyal and won’t betray Tinubu’s trust. Speaking during ",
-      "url": "https://dailypost.ng/2026/09/27/i-never-questioned-tinubu-over-political-decisions-unfavourable-to-me-gbajabiamila/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-27T15:10:09+00:00",
-      "categories": [
-        "engineering",
-        "lagos"
-      ]
-    },
-    {
-      "title": "NPFL: Fans to gain free entry for Plateau United vs Inter Lagos",
-      "summary": "The Plateau State government has announced free entry for the Nigeria Premier Football League, NPFL, match day five fixture between Plateau United and Inter Lagos. The state government made the announcement through the Ministry of Youth and Sports. The move is to encourage massive support and create",
-      "url": "https://dailypost.ng/2026/09/27/npfl-fans-to-gain-free-entry-for-plateau-united-vs-inter-lagos/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-27T15:10:00+00:00",
-      "categories": [
-        "government",
-        "property",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Atiku, Saraki celebrate Bishop Oyedepo at 72",
-      "summary": "Former VP Atiku Abubakar and ex-Senate President Bukola Saraki have celebrated Bishop David Oyedepo on his 72nd birthday, praising his contributions to soc Read More: https://punchng.com/atiku-saraki-celebrate-bishop-oyedepo-at-72/",
-      "url": "https://punchng.com/atiku-saraki-celebrate-bishop-oyedepo-at-72/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-27T15:09:25+00:00",
-      "categories": []
-    },
-    {
-      "title": "LASTMA impounds 84 vehicles, overcomes resistance, attacks",
-      "summary": "The Lagos State Traffic Management Authority has impounded 84 vehicles for various traffic infractions during an enforcement operation in Lagos. Read More: https://punchng.com/lastma-impounds-84-vehicles-overcomes-resistance-attacks/",
-      "url": "https://punchng.com/lastma-impounds-84-vehicles-overcomes-resistance-attacks/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-27T15:08:33+00:00",
-      "categories": [
-        "lagos"
-      ]
-    },
-    {
-      "title": "At least 27 people killed in separate South African mass shootings",
-      "summary": "Some residents of the community have attributed the violence to competition over the control of the illicit gold mining trade between powerful gangs. The post At least 27 people killed in separate South African mass shootings appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/912744-at-least-27-people-killed-in-separate-south-african-mass-shootings.html",
-      "source": "Premium Times",
-      "published": "2026-09-27T15:07:16+00:00",
-      "categories": [
-        "engineering",
-        "business"
-      ]
-    },
-    {
-      "title": "AbdulRazaq unveils book on 50 women’s strides in diplomacy at UNGA",
-      "summary": "Kwara State Governor, AbdulRahman AbdulRazaq, has co-presented a book, The Female Diplomat, chronicling the contributions and achievements of 50 women who have distinguished themselves in public service, particularly on the global stage. AbdulRazaq disclosed this in a post shared on his Facebook pag",
-      "url": "https://punchng.com/abdulrazaq-unveils-book-on-50-womens-strides-in-diplomacy-at-unga/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-27T15:01:45+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "‘What exactly is Tinubu doing in France’ – Atiku questions President’s prolonged vacation",
-      "summary": "The African Democratic Congress, ADC, presidential candidate, Atiku Abubakar, has questioned the prolonged absence of President Bola Tinubu from Nigeria. A statement through his media aide asked what the President is still doing in Paris, France upon the expiration of his official three-week vacatio",
-      "url": "https://dailypost.ng/2026/09/27/what-exactly-is-tinubu-doing-in-france-atiku-questions-presidents-prolonged-vacation/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-27T15:01:36+00:00",
-      "categories": []
     }
   ]
 }
