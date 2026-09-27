@@ -36,7 +36,10 @@ function render() {
 
   const rows = listings.filter(item => {
     const seller = String(item.seller || "").toLowerCase();
-    const hasUploadedPhoto = Array.isArray(item.images) && item.images.length > 0;
+    const normalizedImages = Array.isArray(item.images) && item.images.length
+      ? item.images
+      : (item.image ? [item.image] : []);
+    const hasUploadedPhoto = normalizedImages.length > 0;
     const isCompanyOrDemo =
       seller.includes("tw&d") ||
       seller.includes("twd engineering") ||
@@ -52,9 +55,7 @@ function render() {
 
   grid.innerHTML = rows.map(item => {
     const title = escapeHtml(item.title);
-    const images = Array.isArray(item.images) && item.images.length
-      ? item.images
-      : (item.image ? [item.image] : []);
+    const images = normalizedImages.map(publicImageUrl);
     const image = escapeHtml(publicImageUrl(images[0] || ""));
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
@@ -63,7 +64,7 @@ function render() {
       encodeURIComponent("Hello TW&D Marketplace, I am interested in: " + item.title);
 
     const gallery = images.slice(0, 5).map((src, index) =>
-      '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="lazy">'
+      '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="lazy" data-gallery-src="' + escapeHtml(src) + '">'
     ).join("");
 
     return `<article class="listing">
