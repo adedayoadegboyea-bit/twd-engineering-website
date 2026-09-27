@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T04:41:00.694621+00:00",
+  "generated_at": "2026-09-27T05:09:24.116259+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -17,6 +17,16 @@
       "source": "PUNCH",
       "published": "2026-09-27T05:38:40+00:00",
       "categories": []
+    },
+    {
+      "title": "Nigerian Newspapers: 10 things you need to know Sunday morning",
+      "summary": "Good morning! Here is today’s summary from Nigerian Newspapers: 1. At least 5 miners have been gunned down and two others left with injuries after gunmen attacked them at a site in Marit village, Barkin Ladi Local Government Area of Plateau State on Saturday. The attack happened amid high tension in",
+      "url": "https://dailypost.ng/2026/09/27/nigerian-newspapers-10-things-you-need-to-know-sunday-morning-145/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-27T05:07:40+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "Rivers couple: The face of child cruelty",
@@ -263,14 +273,6 @@
       "categories": [
         "lagos"
       ]
-    },
-    {
-      "title": "Inside Redeemer’s Village robotic surgery",
-      "summary": "Redeemer’s Health Village in Ogun State successfully performs tele-robotic surgery, offering advanced, affordable healthcare in Nigeria. Read More: https://punchng.com/inside-redeemers-village-robotic-surgery/",
-      "url": "https://punchng.com/inside-redeemers-village-robotic-surgery/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-27T00:12:59+00:00",
-      "categories": []
     }
   ]
 }
