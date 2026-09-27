@@ -1080,3 +1080,115 @@ body{font-family:'DM Sans',Inter,Arial,sans-serif;overflow-x:hidden}.site-header
   .bank-payment-row{align-items:flex-start!important}
   .copy-payment-btn{padding:8px 9px!important}
 }
+
+/* 2026-09-27 — premium horizontal swipe rails
+   Keep important categories on one page while letting visitors swipe/scroll
+   horizontally and see the next card before reaching it. */
+.service-group-cards,
+.state-project-grid,
+.gallery-grid{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  gap:18px!important;
+  padding:4px 4px 18px!important;
+  margin-right:-4px!important;
+  scroll-snap-type:x mandatory!important;
+  scroll-behavior:smooth!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-width:thin!important;
+  overscroll-behavior-x:contain!important;
+}
+.service-group-cards::-webkit-scrollbar,
+.state-project-grid::-webkit-scrollbar,
+.gallery-grid::-webkit-scrollbar{height:7px!important}
+.service-group-cards::-webkit-scrollbar-thumb,
+.state-project-grid::-webkit-scrollbar-thumb,
+.gallery-grid::-webkit-scrollbar-thumb{
+  background:rgba(6,43,89,.28)!important;
+  border-radius:20px!important;
+}
+.service-group-cards:after,
+.state-project-grid:after,
+.gallery-grid:after{
+  content:"SWIPE / SCROLL →";
+  flex:0 0 auto!important;
+  align-self:center!important;
+  padding:9px 12px!important;
+  border:1px solid rgba(212,165,44,.45)!important;
+  border-radius:999px!important;
+  color:#8a6a13!important;
+  background:#fffaf0!important;
+  font:800 10px/1 Inter,Arial,sans-serif!important;
+  letter-spacing:1.2px!important;
+  scroll-snap-align:none!important;
+}
+.service-group-cards .service-card{
+  flex:0 0 clamp(310px,34vw,390px)!important;
+  min-width:0!important;
+  scroll-snap-align:start!important;
+}
+.state-project-grid .state-project{
+  flex:0 0 clamp(310px,31vw,390px)!important;
+  min-width:0!important;
+  scroll-snap-align:start!important;
+}
+.gallery-grid .gallery-card{
+  flex:0 0 clamp(310px,31vw,390px)!important;
+  min-width:0!important;
+  scroll-snap-align:start!important;
+}
+.gallery-grid .gallery-feature{
+  flex-basis:clamp(360px,42vw,520px)!important;
+}
+.service-group{
+  overflow:visible!important;
+}
+@media(max-width:700px){
+  .service-group-cards,
+  .state-project-grid,
+  .gallery-grid{
+    gap:12px!important;
+    padding:3px 0 16px!important;
+    margin-right:0!important;
+    scrollbar-width:none!important;
+  }
+  .service-group-cards::-webkit-scrollbar,
+  .state-project-grid::-webkit-scrollbar,
+  .gallery-grid::-webkit-scrollbar{display:none!important}
+  .service-group-cards .service-card,
+  .state-project-grid .state-project,
+  .gallery-grid .gallery-card{
+    flex-basis:84vw!important;
+    max-width:390px!important;
+  }
+  .gallery-grid .gallery-feature{flex-basis:88vw!important}
+  .service-group-cards:after,
+  .state-project-grid:after,
+  .gallery-grid:after{
+    content:"SWIPE →";
+    padding:8px 10px!important;
+    font-size:9px!important;
+  }
+}
+
+/* Small directional cue above each long rail */
+.service-group-head:after{
+  content:"Swipe through services →";
+  justify-self:end;
+  align-self:end;
+  margin-bottom:4px;
+  color:#8a6a13;
+  font:800 10px/1 Inter,Arial,sans-serif;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  .service-group-head:after{
+    grid-column:2;
+    justify-self:start;
+    margin-top:2px;
+  }
+}
