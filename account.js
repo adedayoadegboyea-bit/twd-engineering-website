@@ -1,44 +1,208 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, updateProfile } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-import { firebaseConfig, FIREBASE_CONFIG_READY } from "./firebase-config.js";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
 
-const $=id=>document.getElementById(id);
-const setup=$("setupWarning"), panel=$("authPanel"), dash=$("dashboardPanel"), status=$("accountStatus");
-let auth=null;
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
-function msg(text,type=""){status.textContent=text;status.className="account-status show "+type}
-function err(e){const m={"auth/email-already-in-use":"An account already exists with this email address.","auth/invalid-email":"Please enter a valid email address.","auth/weak-password":"Please use a stronger password.","auth/invalid-credential":"The email or password is incorrect.","auth/user-not-found":"No account was found for this email address.","auth/wrong-password":"The email or password is incorrect.","auth/too-many-requests":"Too many attempts. Please wait and try again.","auth/network-request-failed":"Network connection failed. Please try again."};return m[e.code]||"The request could not be completed."}
+const $ = id => document.getElementById(id);
+const panel = $("authPanel");
+const dash = $("dashboardPanel");
+const status = $("accountStatus");
+const setup = $("setupWarning");
+const resetPanel = $("passwordResetPanel");
+let recoveryMode = false;
 
-if(!FIREBASE_CONFIG_READY){setup.classList.add("show")}else{
- const app=initializeApp(firebaseConfig);auth=getAuth(app);
- onAuthStateChanged(auth,user=>{
-  if(user){panel.style.display="none";dash.classList.add("show");$("welcomeName").textContent=user.displayName?"Welcome, "+user.displayName:"Welcome";$("welcomeEmail").textContent=user.email||""}
-  else{panel.style.display="";dash.classList.remove("show")}
- });
+function msg(text, type = "") {
+  status.textContent = text;
+  status.className = "account-status show " + type;
 }
 
-$("showSignup").onclick=()=>{$("signupForm").hidden=false;$("signinForm").hidden=true;$("showSignup").classList.add("active");$("showSignin").classList.remove("active");status.className="account-status"};
-$("showSignin").onclick=()=>{$("signupForm").hidden=true;$("signinForm").hidden=false;$("showSignup").classList.remove("active");$("showSignin").classList.add("active");status.className="account-status"};
+function err(e) {
+  const message = String(e?.message || "").toLowerCase();
+  if (message.includes("user already registered")) return "An account already exists with this email address.";
+  if (message.includes("invalid login credentials")) return "The email or password is incorrect.";
+  if (message.includes("password should be at least")) return "Please use a stronger password.";
+  if (message.includes("unable to validate email address")) return "Please enter a valid email address.";
+  if (message.includes("rate limit")) return "Too many requests. Please wait a little and try again.";
+  if (message.includes("email not confirmed")) return "Please confirm your email address before signing in.";
+  if (message.includes("network")) return "Network connection failed. Please try again.";
+  return e?.message || "The request could not be completed.";
+}
 
-$("signupForm").addEventListener("submit",async e=>{
- e.preventDefault();
- if(!auth){msg("Firebase is not connected yet. Add the Firebase Web App configuration first.","error");return}
- const name=$("signupName").value.trim(),email=$("signupEmail").value.trim(),password=$("signupPassword").value,confirm=$("signupConfirm").value;
- if(password!==confirm){msg("The passwords do not match.","error");return}
- try{msg("Creating your secure account…");const c=await createUserWithEmailAndPassword(auth,email,password);await updateProfile(c.user,{displayName:name});msg("Account created successfully. You are now signed in.","success")}
- catch(e){msg(err(e),"error")}
-});
+function showSignedIn(user) {
+  panel.style.display = "none";
+  resetPanel.hidden = true;
+  dash.classList.add("show");
+  $("welcomeName").textContent = user?.user_metadata?.full_name
+    ? "Welcome, " + user.user_metadata.full_name
+    : "Welcome";
+  $("welcomeEmail").textContent = user?.email || "";
+}
 
-$("signinForm").addEventListener("submit",async e=>{
- e.preventDefault();
- if(!auth){msg("Firebase is not connected yet. Add the Firebase Web App configuration first.","error");return}
- try{msg("Signing you in securely…");await signInWithEmailAndPassword(auth,$("signinEmail").value.trim(),$("signinPassword").value);msg("Signed in successfully.","success")}catch(e){msg(err(e),"error")}
-});
+function showSignedOut() {
+  panel.style.display = "";
+  dash.classList.remove("show");
+}
 
-$("forgotPassword").onclick=async()=>{
- if(!auth){msg("Firebase is not connected yet. Add the Firebase Web App configuration first.","error");return}
- const email=$("signinEmail").value.trim();if(!email){msg("Enter your email address first.","error");return}
- try{await sendPasswordResetEmail(auth,email);msg("Password-reset instructions have been sent to your email.","success")}catch(e){msg(err(e),"error")}
+function showRecoveryMode() {
+  recoveryMode = true;
+  panel.style.display = "";
+  dash.classList.remove("show");
+  resetPanel.hidden = false;
+  $("signinForm").hidden = true;
+  $("signupForm").hidden = true;
+  document.querySelector(".account-tabs").style.display = "none";
+  msg("Enter a new password for your TW&D account.");
+}
+
+$("showSignup").onclick = () => {
+  $("signupForm").hidden = false;
+  $("signinForm").hidden = true;
+  $("showSignup").classList.add("active");
+  $("showSignin").classList.remove("active");
+  status.className = "account-status";
 };
 
-$("signoutButton").onclick=async()=>{if(auth){await signOut(auth);msg("You have been signed out.","success")}};
+$("showSignin").onclick = () => {
+  $("signupForm").hidden = true;
+  $("signinForm").hidden = false;
+  $("showSignup").classList.remove("active");
+  $("showSignin").classList.add("active");
+  status.className = "account-status";
+};
+
+$("signupForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const name = $("signupName").value.trim();
+  const email = $("signupEmail").value.trim();
+  const phone = $("signupPhone").value.trim();
+  const password = $("signupPassword").value;
+  const confirm = $("signupConfirm").value;
+
+  if (password !== confirm) {
+    msg("The passwords do not match.", "error");
+    return;
+  }
+
+  try {
+    msg("Creating your secure account…");
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: window.location.origin + "/account.html",
+        data: {
+          full_name: name,
+          phone: phone
+        }
+      }
+    });
+
+    if (error) throw error;
+
+    if (data.session) {
+      msg("Account created successfully. You are now signed in.", "success");
+    } else {
+      msg("Account created. Please check your email and confirm your address before signing in.", "success");
+      $("signupForm").reset();
+      $("showSignin").click();
+      $("signinEmail").value = email;
+    }
+  } catch (e) {
+    msg(err(e), "error");
+  }
+});
+
+$("signinForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  try {
+    msg("Signing you in securely…");
+    const { error } = await supabase.auth.signInWithPassword({
+      email: $("signinEmail").value.trim(),
+      password: $("signinPassword").value
+    });
+
+    if (error) throw error;
+    msg("Signed in successfully.", "success");
+  } catch (e) {
+    msg(err(e), "error");
+  }
+});
+
+$("forgotPassword").onclick = async () => {
+  const email = $("signinEmail").value.trim();
+
+  if (!email) {
+    msg("Enter your email address first.", "error");
+    return;
+  }
+
+  try {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + "/account.html"
+    });
+
+    if (error) throw error;
+    msg("Password-reset instructions have been sent to your email.", "success");
+  } catch (e) {
+    msg(err(e), "error");
+  }
+};
+
+$("passwordResetForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const password = $("newPassword").value;
+  const confirm = $("newPasswordConfirm").value;
+
+  if (password !== confirm) {
+    msg("The passwords do not match.", "error");
+    return;
+  }
+
+  try {
+    msg("Updating your password…");
+    const { error } = await supabase.auth.updateUser({ password });
+    if (error) throw error;
+
+    recoveryMode = false;
+    resetPanel.hidden = true;
+    $("signinForm").hidden = false;
+    document.querySelector(".account-tabs").style.display = "";
+    msg("Your password has been updated. You can now sign in.", "success");
+    await supabase.auth.signOut();
+  } catch (e) {
+    msg(err(e), "error");
+  }
+});
+
+$("signoutButton").onclick = async () => {
+  const { error } = await supabase.auth.signOut();
+  if (error) msg(err(error), "error");
+  else msg("You have been signed out.", "success");
+};
+
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "PASSWORD_RECOVERY") {
+    showRecoveryMode();
+    return;
+  }
+
+  if (session?.user && !recoveryMode) {
+    showSignedIn(session.user);
+  } else if (!recoveryMode) {
+    showSignedOut();
+  }
+});
+
+(async () => {
+  try {
+    const { data, error } = await supabase.auth.getSession();
+    if (error) throw error;
+    if (data.session && !recoveryMode) showSignedIn(data.session.user);
+  } catch (e) {
+    setup.classList.add("show");
+    msg("The account service could not be reached. Please try again later.", "error");
+  }
+})();
