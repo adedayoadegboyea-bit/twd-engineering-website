@@ -329,7 +329,7 @@ function handleSubscription_(data) {
   const listingId = clean_(data.listingId || "");
   const paymentMethod = clean_(data.paymentMethod || "payoneer").toLowerCase();
 
-  const allowedPaymentMethods = ["payoneer", "paystack", "bank_transfer"];
+  const allowedPaymentMethods = ["flutterwave", "payoneer", "paystack", "bank_transfer"];
   if (allowedPaymentMethods.indexOf(paymentMethod) === -1) {
     throw new Error("Please select a valid payment method.");
   }
@@ -395,11 +395,13 @@ function handleSubscription_(data) {
     subscriptionId: subscriptionId,
     status: paymentStatus,
     paymentMethod: paymentMethod,
-    paymentUrl: paymentMethod === "payoneer"
-      ? paymentSettings.payoneerPaymentLink
-      : paymentMethod === "paystack"
-        ? paymentSettings.paystackPaymentLink
-        : "",
+    paymentUrl: paymentMethod === "flutterwave"
+      ? getFlutterwavePaymentLink_(plan)
+      : paymentMethod === "payoneer"
+        ? paymentSettings.payoneerPaymentLink
+        : paymentMethod === "paystack"
+          ? paymentSettings.paystackPaymentLink
+          : "",
     payoneerEmail: "adedayo.adegboyea@gmail.com",
     paystackEnabled: Boolean(paymentSettings.paystackPaymentLink),
     whatsappNumber: paymentSettings.whatsappNumber,
@@ -407,6 +409,14 @@ function handleSubscription_(data) {
   };
 
   return json(response);
+}
+
+function getFlutterwavePaymentLink_(plan) {
+  const p = String(plan || "").toLowerCase();
+  if (p.indexOf("starter") === 0) return "https://flutterwave.com/pay/tpdl5uufd62l";
+  if (p.indexOf("business") === 0) return "https://flutterwave.com/pay/26nqlxpttr1t";
+  if (p.indexOf("pro") === 0) return "https://flutterwave.com/pay/frhgwtnzuaez";
+  throw new Error("No Flutterwave payment link is configured for the selected plan.");
 }
 
 function getPaymentSettings_() {
