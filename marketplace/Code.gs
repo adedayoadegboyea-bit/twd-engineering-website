@@ -11,12 +11,15 @@ const CONFIG = {
 
   // PAYMENT SETTINGS
   // Paste your real Payoneer payment link here when you create it.
+  // PAYMENT LINKS — keep real payment URLs in Apps Script Properties, not GitHub.
   PAYONEER_PAYMENT_LINK: "",
+  PAYSTACK_PAYMENT_LINK: "",
 
-  // Nigerian bank transfer details
-  BANK_NAME: "Premium Trust Bank",
+  // These are read privately from Apps Script Properties.
+  BANK_NAME: "Moniepoint",
   BANK_ACCOUNT_NAME: "TW&D ENGINEERING CONSULT & SERVICES LTD",
-  BANK_ACCOUNT_NUMBER: "0040278142"
+  BANK_ACCOUNT_NUMBER: "",
+  WHATSAPP_NUMBER: "2348035774420"
 };
 
 /**
@@ -326,7 +329,7 @@ function handleSubscription_(data) {
   const listingId = clean_(data.listingId || "");
   const paymentMethod = clean_(data.paymentMethod || "payoneer").toLowerCase();
 
-  const allowedPaymentMethods = ["payoneer", "bank_transfer"];
+  const allowedPaymentMethods = ["payoneer", "paystack", "bank_transfer"];
   if (allowedPaymentMethods.indexOf(paymentMethod) === -1) {
     throw new Error("Please select a valid payment method.");
   }
@@ -384,32 +387,44 @@ function handleSubscription_(data) {
   safeSendSubscriptionManagement_(details);
   safeSendSubscriptionConfirmation_(details);
 
+  const paymentSettings = getPaymentSettings_();
+
   const response = {
     ok: true,
     message: "Your subscription request has been received. Please complete payment using your selected payment method.",
     subscriptionId: subscriptionId,
     status: paymentStatus,
     paymentMethod: paymentMethod,
-    paymentUrl: paymentMethod === "payoneer" ? CONFIG.PAYONEER_PAYMENT_LINK : "",
-    bankTransfer: {
-      bankName: CONFIG.BANK_NAME,
-      accountName: CONFIG.BANK_ACCOUNT_NAME,
-      accountNumber: CONFIG.BANK_ACCOUNT_NUMBER
-    }
+    paymentUrl: paymentMethod === "payoneer"
+      ? paymentSettings.payoneerPaymentLink
+      : paymentMethod === "paystack"
+        ? paymentSettings.paystackPaymentLink
+        : "",
+    payoneerEmail: "adedayo.adegboyea@gmail.com",
+    paystackEnabled: Boolean(paymentSettings.paystackPaymentLink),
+    whatsappNumber: paymentSettings.whatsappNumber,
+    bankTransfer: paymentSettings.bankTransfer
   };
 
   return json(response);
 }
 
-function getPaymentDetails_() {
+function getPaymentSettings_() {
+  const props = PropertiesService.getScriptProperties();
   return {
-    payoneerPaymentLink: CONFIG.PAYONEER_PAYMENT_LINK,
+    payoneerPaymentLink: props.getProperty("PAYONEER_PAYMENT_LINK") || CONFIG.PAYONEER_PAYMENT_LINK,
+    paystackPaymentLink: props.getProperty("PAYSTACK_PAYMENT_LINK") || CONFIG.PAYSTACK_PAYMENT_LINK,
+    whatsappNumber: props.getProperty("WHATSAPP_NUMBER") || CONFIG.WHATSAPP_NUMBER,
     bankTransfer: {
-      bankName: CONFIG.BANK_NAME,
-      accountName: CONFIG.BANK_ACCOUNT_NAME,
-      accountNumber: CONFIG.BANK_ACCOUNT_NUMBER
+      bankName: props.getProperty("BANK_NAME") || CONFIG.BANK_NAME,
+      accountName: props.getProperty("BANK_ACCOUNT_NAME") || CONFIG.BANK_ACCOUNT_NAME,
+      accountNumber: props.getProperty("BANK_ACCOUNT_NUMBER") || CONFIG.BANK_ACCOUNT_NUMBER
     }
   };
+}
+
+function getPaymentDetails_() {
+  return getPaymentSettings_();
 }
 
 function safeSendManagementNotification_(data) {
