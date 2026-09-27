@@ -561,7 +561,6 @@ function recoverPhotoUrlsFromFolder_(folderUrl) {
     return [];
   }
 }
-}
 
 function required_(value, label) {
   const result = clean_(value);
