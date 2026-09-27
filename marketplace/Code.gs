@@ -477,7 +477,6 @@ function getApprovedListings_() {
   return values.slice(1).filter(function(row) {
     const status = String(row[index["Status"]] || "").trim().toUpperCase();
     const seller = String(row[index["Seller / Business"]] || "").trim().toLowerCase();
-    const photoValue = index["Photo URLs"] !== undefined ? String(row[index["Photo URLs"]] || "").trim() : "";
 
     // Public Marketplace listings must come from visitors/sellers.
     // Company project/gallery records and demo listings must never be published here.
@@ -487,21 +486,36 @@ function getApprovedListings_() {
       seller.includes("marketplace demo") ||
       seller.includes("system test");
 
-    return status === "APPROVED" &&
-      !isCompanyOrDemoSeller &&
-      photoValue &&
-      photoValue !== "[]";
+    return status === "APPROVED" && !isCompanyOrDemoSeller;
   }).map(function(row) {
     let photoUrls = [];
     const rawPhotos = index["Photo URLs"] !== undefined ? row[index["Photo URLs"]] : "";
+
     if (rawPhotos) {
       try {
         const parsed = JSON.parse(String(rawPhotos));
-        if (Array.isArray(parsed)) photoUrls = parsed.filter(Boolean);
+        if (Array.isArray(parsed)) {
+          photoUrls = parsed.filter(Boolean).map(function(url) {
+            return String(url).trim();
+          }).filter(Boolean);
+        } else if (typeof parsed === "string" && parsed.trim()) {
+          photoUrls = [parsed.trim()];
+        }
       } catch (error) {
-        console.error("Could not parse Photo URLs for listing:", row[index["Listing ID"]]);
+        // Support older rows where Photo URLs may contain one plain URL.
+        const legacyUrl = String(rawPhotos).trim();
+        if (legacyUrl && legacyUrl !== "[]") photoUrls = [legacyUrl];
       }
     }
+
+    // Older approved listings were created before the Photo URLs column was added.
+    // Recover their real uploaded photos directly from the saved listing folder.
+    if (!photoUrls.length && Number(row[index["Photos Saved"]] || 0) > 0) {
+      photoUrls = recoverPhotoUrlsFromFolder_(
+        String(row[index["Photo Folder"]] || "").trim()
+      );
+    }
+
     return {
       id: String(row[index["Listing ID"]] || ""),
       category: String(row[index["Category"]] || ""),
@@ -515,7 +529,38 @@ function getApprovedListings_() {
       images: photoUrls,
       image: photoUrls.length ? photoUrls[0] : ""
     };
+  }).filter(function(item) {
+    return Array.isArray(item.images) && item.images.length > 0;
   });
+}
+
+function recoverPhotoUrlsFromFolder_(folderUrl) {
+  if (!folderUrl) return [];
+
+  const match = String(folderUrl).match(/\/folders\/([a-zA-Z0-9_-]+)/);
+  if (!match || !match[1]) return [];
+
+  try {
+    const folder = DriveApp.getFolderById(match[1]);
+    const files = folder.getFiles();
+    const urls = [];
+
+    while (files.hasNext()) {
+      const file = files.next();
+      try {
+        file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      } catch (sharingError) {
+        console.error("Could not enable public photo sharing:", sharingError);
+      }
+      urls.push("https://drive.google.com/uc?export=view&id=" + file.getId());
+    }
+
+    return urls;
+  } catch (error) {
+    console.error("Could not recover listing photos from folder:", error);
+    return [];
+  }
+}
 }
 
 function required_(value, label) {
