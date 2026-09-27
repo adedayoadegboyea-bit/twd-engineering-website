@@ -804,3 +804,54 @@ body{font-family:'DM Sans',Inter,Arial,sans-serif;overflow-x:hidden}.site-header
 @media(max-width:700px){
   .hero-logo{width:min(330px,100%)!important;margin-bottom:20px!important}
 }
+
+
+/* Luxury TW&D logo — clean, spacious hero treatment */
+.hero{
+  min-height:760px!important;
+  height:760px!important;
+  background:#07172d url('assets/architectural-concept-02.jpg') center/cover no-repeat!important;
+}
+.hero-overlay{
+  background:linear-gradient(90deg,rgba(3,27,56,.92) 0%,rgba(3,27,56,.78) 40%,rgba(3,27,56,.34) 72%,rgba(3,27,56,.12) 100%)!important;
+}
+.hero-grid{display:none!important}
+.hero-content{
+  max-width:1180px!important;
+  padding:86px 0 72px!important;
+  min-height:760px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+}
+.hero-brand-lockup{
+  width:min(620px,68vw)!important;
+  margin:0 0 24px!important;
+  line-height:0!important;
+}
+.hero-brand-lockup img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+}
+.hero h1{
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:clamp(40px,5vw,68px)!important;
+  line-height:1.02!important;
+  letter-spacing:-2.5px!important;
+  margin:0 0 20px!important;
+  max-width:680px!important;
+}
+.hero-actions{margin-top:8px!important}
+@media(max-width:700px){
+  .hero{min-height:700px!important;height:700px!important;background-position:center!important}
+  .hero-overlay{background:linear-gradient(180deg,rgba(3,27,56,.84) 0%,rgba(3,27,56,.66) 50%,rgba(3,27,56,.92) 100%)!important}
+  .hero-content{min-height:700px!important;padding:70px 0 50px!important;justify-content:center!important}
+  .hero-brand-lockup{width:min(500px,92vw)!important;margin-bottom:22px!important}
+  .hero h1{font-size:42px!important;letter-spacing:-1.8px!important}
+  .hero-actions{width:100%!important;max-width:360px!important}
+}
