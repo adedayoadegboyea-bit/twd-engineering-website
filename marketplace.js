@@ -249,19 +249,29 @@ function showPaymentResult(data) {
   // NIGERIAN BANK TRANSFER
   if (method === "bank_transfer") {
     const bank = data.bankTransfer || {};
-    const bankName = escapeHtml(bank.bankName || "Premium Trust Bank");
-    const accountName = escapeHtml(bank.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD");
-    const accountNumber = escapeHtml(bank.accountNumber || "0040278142");
+    const primary = bank.primary || {};
+    const secondary = bank.secondary || {};
+    const primaryName = escapeHtml(primary.bankName || "Moniepoint");
+    const primaryAccountName = escapeHtml(primary.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD");
+    const primaryAccountNumber = escapeHtml(primary.accountNumber || "");
+    const secondaryName = escapeHtml(secondary.bankName || "Premium Trust Bank");
+    const secondaryAccountName = escapeHtml(secondary.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD");
+    const secondaryAccountNumber = escapeHtml(secondary.accountNumber || "");
 
     box.hidden = false;
     box.innerHTML =
       '<div class="payment-success">' +
       '<strong>Complete your bank transfer</strong>' +
-      '<p>Your subscription request has been recorded. Transfer the subscription amount to the account below, then keep your transaction receipt/reference.</p>' +
+      '<p>Your subscription request has been recorded. You may transfer the subscription amount to either TW&D account below, then keep your transaction receipt/reference.</p>' +
       '<div class="bank-payment-details">' +
-      '<div><span>Bank</span><strong>' + bankName + '</strong></div>' +
-      '<div><span>Account Name</span><strong>' + accountName + '</strong></div>' +
-      '<div><span>Account Number</span><strong>' + accountNumber + '</strong></div>' +
+      '<div><span>Bank</span><strong>' + primaryName + '</strong></div>' +
+      '<div><span>Account Name</span><strong>' + primaryAccountName + '</strong></div>' +
+      '<div><span>Account Number</span><strong>' + primaryAccountNumber + '</strong></div>' +
+      '</div>' +
+      '<div class="bank-payment-details">' +
+      '<div><span>Bank</span><strong>' + secondaryName + '</strong></div>' +
+      '<div><span>Account Name</span><strong>' + secondaryAccountName + '</strong></div>' +
+      '<div><span>Account Number</span><strong>' + (secondaryAccountNumber || "Not configured yet") + '</strong></div>' +
       '</div>' +
       '<p class="status">After payment, send your transfer receipt and subscription reference to TW&D management for verification and activation.</p>' +
       (reference ? '<p class="status">Subscription reference: <strong>' + reference + '</strong></p>' : '') +
