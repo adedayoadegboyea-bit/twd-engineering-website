@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="TW&D Marketplace — buy and sell houses, land, cars, home gadgets, equipment and other verified listings across Nigeria.">
+<meta name="description" content="TW&D Marketplace — buy and sell houses, land, cars, home gadgets, equipment and other legitimate listings across Nigeria.">
 <title>TW&D Marketplace | Buy & Sell Across Nigeria</title>
 <link rel="stylesheet" href="marketplace.css">
 </head>
@@ -24,9 +24,9 @@
    <h1>Buy. Sell. <em>Build Value.</em></h1>
    <p>A dedicated marketplace for houses, land, cars, home gadgets, building materials, equipment and other legitimate goods and services.</p>
    <div class="hero-actions"><a class="primary" href="#listings">Browse Listings</a><a class="secondary" href="#sell">Sell on TW&D</a></div>
-   <div class="trust-row"><span>🏠 Property</span><span>🚗 Cars</span><span>📱 Gadgets</span><span>🛠 Equipment</span></div>
+   <div class="trust-row"><span>Property</span><span>Cars</span><span>Gadgets</span><span>Equipment</span></div>
   </div>
-  <div class="hero-card"><div class="hero-card-top">SELLER TOOLS</div><strong>Reach more buyers.</strong><p>Choose a subscription, publish listings, receive enquiries and manage your marketplace presence.</p><a href="#plans">View seller plans →</a></div>
+  <div class="hero-card"><div class="hero-card-top">SELLER TOOLS</div><strong>Reach more buyers.</strong><p>Submit listings for review, receive enquiries and choose a seller subscription when you are ready.</p><a href="#plans">View seller plans →</a></div>
  </div>
 </section>
 
@@ -43,7 +43,7 @@
 
 <section class="sell-section" id="sell">
  <div class="mp-container sell-grid">
-  <div><span class="eyebrow">SELL ON TW&D</span><h2>Put your property or product in front of buyers.</h2><p>Submit your listing details and photographs. Listings can be reviewed before publication to reduce fraud and improve buyer confidence.</p>
+  <div><span class="eyebrow">SELL ON TW&D</span><h2>Put your property or product in front of buyers.</h2><p>Submit your listing details and photographs. Listings are recorded as <strong>pending review</strong> until TW&D approves them.</p>
    <ul><li>Houses, land and property</li><li>Cars and commercial vehicles</li><li>Home gadgets and electronics</li><li>Building materials and equipment</li></ul>
   </div>
   <form id="listingForm" class="form-card">
@@ -54,7 +54,7 @@
    <label>Listing Title<input name="title" placeholder="e.g. 4-bedroom duplex at..." required></label>
    <div class="two"><label>Price (₦)<input name="price" type="number" min="0" required></label><label>Condition<select name="condition"><option>New</option><option>Used</option><option>For Sale</option><option>For Rent</option></select></label></div>
    <label>Description<textarea name="description" rows="4" required></textarea></label>
-   <label>Photos<input name="photos" type="file" accept=".jpg,.jpeg,.png,.webp" multiple required></label>
+   <label>Photos<input name="photos" type="file" accept=".jpg,.jpeg,.png,.webp" multiple required><small>Maximum 5 MB per photo and 15 MB total.</small></label>
    <label class="check"><input type="checkbox" required> I confirm that the information is accurate and I have the right to advertise this item.</label>
    <button class="primary" type="submit">Submit Listing for Review</button>
    <p id="formStatus" class="status" aria-live="polite"></p>
@@ -63,17 +63,35 @@
 </section>
 
 <section class="plans mp-container" id="plans">
- <div class="section-head"><div><span class="eyebrow">SELLER SUBSCRIPTIONS</span><h2>Choose how you want to advertise.</h2></div><p>Subscriptions are designed to create recurring marketplace revenue for TW&D.</p></div>
+ <div class="section-head"><div><span class="eyebrow">SELLER SUBSCRIPTIONS</span><h2>Choose how you want to advertise.</h2></div><p>Subscription requests are recorded and sent to TW&D management. Payment collection is kept separate until the payment gateway is configured.</p></div>
  <div class="plan-grid">
-  <article class="plan"><span>STARTER</span><strong>₦5,000</strong><small>/ month</small><h3>Individual Seller</h3><ul><li>Up to 3 active listings</li><li>Standard listing placement</li><li>WhatsApp buyer enquiries</li></ul><button data-plan="Starter — ₦5,000/month">Subscribe</button></article>
-  <article class="plan featured"><b class="ribbon">POPULAR</b><span>BUSINESS</span><strong>₦15,000</strong><small>/ month</small><h3>Business Seller</h3><ul><li>Up to 15 active listings</li><li>Priority placement</li><li>Seller profile</li><li>Lead notifications</li></ul><button data-plan="Business — ₦15,000/month">Subscribe</button></article>
-  <article class="plan"><span>PRO</span><strong>₦30,000</strong><small>/ month</small><h3>Property / Dealer Pro</h3><ul><li>Up to 40 active listings</li><li>Featured placements</li><li>Priority support</li><li>Enhanced seller profile</li></ul><button data-plan="Pro — ₦30,000/month">Subscribe</button></article>
+  <article class="plan"><span>STARTER</span><strong>₦5,000</strong><small>/ month</small><h3>Individual Seller</h3><ul><li>Up to 3 active listings</li><li>Standard listing placement</li><li>WhatsApp buyer enquiries</li></ul><button data-plan="Starter — ₦5,000/month">Request Subscription</button></article>
+  <article class="plan featured"><b class="ribbon">POPULAR</b><span>BUSINESS</span><strong>₦15,000</strong><small>/ month</small><h3>Business Seller</h3><ul><li>Up to 15 active listings</li><li>Priority placement</li><li>Seller profile</li><li>Lead notifications</li></ul><button data-plan="Business — ₦15,000/month">Request Subscription</button></article>
+  <article class="plan"><span>PRO</span><strong>₦30,000</strong><small>/ month</small><h3>Property / Dealer Pro</h3><ul><li>Up to 40 active listings</li><li>Featured placements</li><li>Priority support</li><li>Enhanced seller profile</li></ul><button data-plan="Pro — ₦30,000/month">Request Subscription</button></article>
  </div>
- <div class="revenue-note"><strong>Payment gateway:</strong> subscription checkout is prepared for integration with a Nigerian payment gateway such as Paystack or Flutterwave. No subscription payment is taken until the merchant account and public key are configured.</div>
+ <div class="revenue-note"><strong>Payment status:</strong> subscription requests are live, but automatic online payment is not yet enabled. We will connect Paystack or Flutterwave after the merchant account/public key is configured.</div>
 </section>
 
-<section class="safety mp-container"><div><span class="eyebrow">BUYER SAFETY</span><h2>Marketplace rules matter.</h2></div><p>TW&D can review submitted listings, but buyers should independently inspect property, verify ownership/documents, inspect vehicles or goods, and complete transactions safely. Do not send money solely because an item appears on this website.</p></section>
+<section class="safety mp-container"><div><span class="eyebrow">BUYER SAFETY</span><h2>Marketplace rules matter.</h2></div><p>TW&D may review submitted listings, but buyers should independently inspect property, verify ownership and documents, inspect vehicles or goods, and complete transactions safely. Do not send money solely because an item appears on this website.</p></section>
 </main>
+
+<div id="subscriptionModal" class="subscription-modal" hidden>
+  <div class="subscription-dialog" role="dialog" aria-modal="true" aria-labelledby="subscriptionTitle">
+    <button id="closeSubscription" class="modal-close" type="button" aria-label="Close">×</button>
+    <span class="eyebrow">SELLER SUBSCRIPTION</span>
+    <h2 id="subscriptionTitle">Request a subscription</h2>
+    <p>Your request will be recorded and sent to TW&D management. Payment is not collected through this form.</p>
+    <form id="subscriptionForm">
+      <input id="subscriptionPlan" name="plan" type="hidden">
+      <label>Seller / Business Name<input id="subscriptionSeller" name="sellerName" required></label>
+      <label>Email<input id="subscriptionEmail" name="email" type="email" required></label>
+      <label>Phone / WhatsApp<input id="subscriptionPhone" name="phone" required></label>
+      <button class="primary" type="submit">Send Subscription Request</button>
+      <p id="subscriptionStatus" class="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
 <footer><div class="mp-container"><strong>TW&D Engineering Consult & Services Ltd</strong><span>25 Engr Adedayo Close, Olateju Street, off First Bank Area, Akingbade Area, Ibadan, Oyo State, Nigeria</span><a href="https://wa.me/2348035774420">WhatsApp 08035774420</a></div></footer>
 <script src="marketplace.js"></script>
 </body>
