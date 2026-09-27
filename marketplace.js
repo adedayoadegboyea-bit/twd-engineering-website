@@ -21,7 +21,7 @@ function escapeHtml(value) {
 }
 function publicImageUrl(value) {
   const src = String(value || "").trim();
-  if (!src) return "assets/building.jpg";
+  if (!src) return "";
   const match = src.match(/[?&]id=([^&]+)/);
   if (match && match[1]) {
     return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1200";
@@ -35,6 +35,15 @@ function render() {
   const location = document.querySelector("#location").value;
 
   const rows = listings.filter(item => {
+    const seller = String(item.seller || "").toLowerCase();
+    const hasUploadedPhoto = Array.isArray(item.images) && item.images.length > 0;
+    const isCompanyOrDemo =
+      seller.includes("tw&d") ||
+      seller.includes("twd engineering") ||
+      seller.includes("marketplace demo") ||
+      seller.includes("system test");
+
+    if (isCompanyOrDemo || !hasUploadedPhoto) return false;
     const haystack = [item.title,item.category,item.location,item.seller].join(" ").toLowerCase();
     return (!search || haystack.includes(search))
       && (!category || item.category === category)
@@ -45,8 +54,8 @@ function render() {
     const title = escapeHtml(item.title);
     const images = Array.isArray(item.images) && item.images.length
       ? item.images
-      : (item.image ? [item.image] : ["assets/building.jpg"]);
-    const image = escapeHtml(publicImageUrl(images[0] || "assets/building.jpg"));
+      : (item.image ? [item.image] : []);
+    const image = escapeHtml(publicImageUrl(images[0] || ""));
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
     const conditionText = escapeHtml(item.condition || "");
