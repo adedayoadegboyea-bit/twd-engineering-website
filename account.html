@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Create or access your TW&D Engineering customer account for project, marketplace and service access.">
+<meta name="robots" content="noindex, nofollow">
+<title>My Account | TW&D Engineering Consult & Services Ltd</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="account.css?v=20260927-1">
+</head>
+<body>
+<header class="account-header"><div class="account-nav"><a class="account-brand" href="index.html"><img src="assets/twd-luxury-logo.svg" alt="TW&D Engineering"><span>TW&D ENGINEERING<br>MY ACCOUNT</span></a><a class="account-back" href="index.html">← Back to website</a></div></header>
+<main class="account-shell">
+<section class="account-hero"><span class="eyebrow">TW&D CUSTOMER ACCESS</span><h1>Your projects. Your marketplace. One account.</h1><p>Create a secure customer account to access the TW&D customer area. Your account can later be connected to project documents, quotations, marketplace activity, notifications and other private services.</p></section>
+<div id="setupWarning" class="setup-warning">Firebase has not been connected yet. The account interface is installed, but registration cannot be activated until the Firebase Web App configuration is added to <strong>firebase-config.js</strong>.</div>
+<section id="authPanel" class="account-grid">
+<div class="account-card">
+<div class="account-tabs"><button class="account-tab active" id="showSignup" type="button">Create Account</button><button class="account-tab" id="showSignin" type="button">Sign In</button></div>
+<form id="signupForm" class="account-form"><label>Full Name<input id="signupName" autocomplete="name" required></label><label>Email Address<input id="signupEmail" type="email" autocomplete="email" required></label><label>Phone / WhatsApp<input id="signupPhone" autocomplete="tel" required></label><label>Password<input id="signupPassword" type="password" minlength="8" autocomplete="new-password" required></label><label>Confirm Password<input id="signupConfirm" type="password" minlength="8" autocomplete="new-password" required></label><label><span><input id="signupTerms" type="checkbox" required> I agree to use the TW&D website responsibly and provide accurate account information.</span></label><button class="account-btn" type="submit">Create My Account</button></form>
+<form id="signinForm" class="account-form" hidden><label>Email Address<input id="signinEmail" type="email" autocomplete="email" required></label><label>Password<input id="signinPassword" type="password" autocomplete="current-password" required></label><button class="account-btn secondary" type="submit">Sign In Securely</button><button id="forgotPassword" class="account-link-btn" type="button">Forgot your password?</button></form>
+<div id="accountStatus" class="account-status" aria-live="polite"></div>
+</div>
+<aside class="account-card account-side"><span class="eyebrow">PRIVATE CUSTOMER AREA</span><h2>Designed for long-term project access.</h2><p>After authentication is activated, TW&D can connect this account to information that belongs specifically to the signed-in customer.</p><div class="account-features"><div class="account-feature"><strong>PROJECTS</strong><span>Project references, progress and service requests.</span></div><div class="account-feature"><strong>DOCUMENTS</strong><span>Private drawings, quotations and project files.</span></div><div class="account-feature"><strong>MARKETPLACE</strong><span>Seller listings, subscription status and enquiries.</span></div><div class="account-feature"><strong>NOTIFICATIONS</strong><span>Important TW&D updates in one account area.</span></div></div></aside>
+</section>
+<section id="dashboardPanel" class="account-card account-dashboard"><div class="dashboard-head"><div><span class="eyebrow">SIGNED IN</span><h2 id="welcomeName">Welcome</h2><p id="welcomeEmail"></p></div><button id="signoutButton" class="signout" type="button">Sign Out</button></div><div class="dashboard-grid"><div class="dashboard-item"><strong>My Projects</strong><span>Project access area ready for connection.</span></div><div class="dashboard-item"><strong>My Documents</strong><span>Private document area ready for connection.</span></div><div class="dashboard-item"><strong>Marketplace</strong><span>Seller and buyer account features ready for connection.</span></div></div></section>
+</main>
+<footer>© TW&D Engineering Consult & Services Ltd • Customer Account</footer>
+<script type="module" src="account.js?v=20260927-1"></script>
+</body></html>
