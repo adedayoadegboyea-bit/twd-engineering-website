@@ -673,3 +673,112 @@ body{font-family:'DM Sans',Inter,Arial,sans-serif;overflow-x:hidden}.site-header
 .portal-preview-actions{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .portal-secondary{font-weight:800;color:#b51f2a;border-bottom:1px solid #d4a52c;padding-bottom:4px}
 @media(max-width:700px){.hero{min-height:760px!important}.hero:after{width:100%!important;height:42%!important;top:auto!important;bottom:0!important;opacity:.22!important}.hero-content{padding:75px 20px 330px!important;min-height:760px!important}.hero h1{font-size:46px!important}.hero-motto{font-size:17px!important}.client-portal-preview-grid{grid-template-columns:1fr;gap:28px}}
+
+
+/* 2026-09-27 PREMIUM ARCHITECTURAL HERO — use verified gallery image */
+.hero{
+  min-height:760px!important;
+  height:760px!important;
+  background:#161313 url('assets/architectural-concept-02.jpg') center/cover no-repeat!important;
+  position:relative!important;
+  overflow:hidden!important;
+}
+.hero:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  background:
+    linear-gradient(90deg,rgba(10,10,12,.88) 0%,rgba(10,10,12,.72) 34%,rgba(10,10,12,.28) 68%,rgba(10,10,12,.08) 100%),
+    linear-gradient(0deg,rgba(10,10,12,.38),transparent 42%)!important;
+  clip-path:none!important;
+  opacity:1!important;
+  z-index:0!important;
+}
+.hero-content{
+  min-height:760px!important;
+  max-width:1250px!important;
+  padding:110px 46% 90px 0!important;
+  display:flex!important;
+  justify-content:center!important;
+  position:relative!important;
+  z-index:3!important;
+}
+.hero-kicker{
+  color:#f7dc82!important;
+  font-size:12px!important;
+  letter-spacing:2.8px!important;
+  font-weight:800!important;
+}
+.hero-kicker span{
+  background:#d4a52c!important;
+  width:42px!important;
+  height:3px!important;
+}
+.hero h1{
+  color:#fff!important;
+  font-family:'Playfair Display',Georgia,serif!important;
+  font-size:clamp(52px,6.2vw,86px)!important;
+  line-height:.98!important;
+  letter-spacing:-2.8px!important;
+  max-width:700px!important;
+  margin:20px 0 24px!important;
+  text-shadow:0 8px 30px rgba(0,0,0,.28)!important;
+}
+.hero h1 span{
+  color:#f7dc82!important;
+  background:none!important;
+}
+.hero-motto{
+  color:#fff!important;
+  font-size:20px!important;
+  font-weight:500!important;
+  line-height:1.6!important;
+  border-left:3px solid #d4a52c!important;
+  max-width:510px!important;
+  padding-left:18px!important;
+  text-shadow:0 4px 18px rgba(0,0,0,.3)!important;
+}
+.hero-actions{
+  margin-top:34px!important;
+  display:flex!important;
+  gap:14px!important;
+}
+.hero-actions .btn-gold{
+  background:#d4a52c!important;
+  color:#181313!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.24)!important;
+}
+.hero-actions .btn-outline{
+  border-color:rgba(255,255,255,.75)!important;
+  color:#fff!important;
+  background:rgba(255,255,255,.05)!important;
+  backdrop-filter:blur(5px)!important;
+}
+.hero-actions .btn-outline:hover{
+  background:#fff!important;
+  color:#181313!important;
+}
+@media(max-width:700px){
+  .hero{
+    min-height:720px!important;
+    height:720px!important;
+    background-position:center!important;
+  }
+  .hero:after{
+    background:
+      linear-gradient(180deg,rgba(10,10,12,.72) 0%,rgba(10,10,12,.55) 42%,rgba(10,10,12,.78) 100%)!important;
+  }
+  .hero-content{
+    min-height:720px!important;
+    padding:88px 20px 55px!important;
+    justify-content:flex-start!important;
+  }
+  .hero h1{
+    font-size:46px!important;
+    letter-spacing:-1.8px!important;
+    margin-top:18px!important;
+  }
+  .hero-motto{font-size:17px!important}
+}
