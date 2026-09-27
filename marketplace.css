@@ -23,3 +23,31 @@
 .checkout-trust{display:flex!important;gap:7px!important;flex-wrap:wrap!important}
 .payment-ready{border-color:rgba(91,220,150,.34)!important}
 @media(max-width:600px){.subscription-dialog{margin:10px!important;padding:22px!important}.checkout-amount strong{font-size:30px!important}.checkout-provider{align-items:flex-start!important}.checkout-secure{font-size:8px!important}}
+
+
+/* 2026-09-27 — embedded free vs subscription choice */
+.listing-choice-head{margin-bottom:18px}
+.listing-choice-head h3{margin:7px 0 5px!important;font-size:26px!important;letter-spacing:-.5px!important}
+.listing-choice-head p{margin:0!important;color:var(--muted)!important;font-size:13px!important;line-height:1.65!important}
+.listing-choice-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;margin:18px 0 12px!important}
+.listing-choice{position:relative!important;display:flex!important;gap:12px!important;align-items:flex-start!important;padding:17px!important;border:1px solid #dfe6ee!important;border-radius:13px!important;background:#fff!important;cursor:pointer!important;transition:.2s ease!important}
+.listing-choice input{position:absolute!important;opacity:0!important;pointer-events:none!important}
+.listing-choice.selected{border:2px solid var(--gold)!important;background:linear-gradient(145deg,#fffdf5,#fff)!important;box-shadow:0 10px 28px rgba(215,166,42,.13)!important}
+.choice-check{flex:0 0 24px!important;width:24px!important;height:24px!important;border:1px solid #b8c4d0!important;border-radius:50%!important;display:grid!important;place-items:center!important;color:transparent!important;font-size:12px!important;font-weight:900!important}
+.listing-choice.selected .choice-check{background:var(--gold)!important;border-color:var(--gold)!important;color:#10233d!important}
+.choice-copy{display:flex!important;flex-direction:column!important;min-width:0!important}
+.choice-copy strong{font-size:10px!important;letter-spacing:1.5px!important;color:var(--red)!important}
+.choice-copy b{font-size:24px!important;line-height:1.2!important;margin:4px 0!important;color:var(--ink)!important}
+.choice-copy small{font-size:11px!important;line-height:1.45!important;color:var(--muted)!important}
+.embedded-subscription-choices{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:9px!important;padding:12px!important;margin:0 0 10px!important;border-radius:12px!important;background:#071d38!important}
+.embedded-plan{padding:14px!important;border:1px solid rgba(255,255,255,.13)!important;border-radius:10px!important;background:rgba(255,255,255,.05)!important;color:#fff!important}
+.embedded-plan.selected{border-color:#f7bd18!important;background:rgba(247,189,24,.10)!important;box-shadow:inset 0 0 0 1px rgba(247,189,24,.2)!important}
+.embedded-plan span{display:block!important;color:#f7dc82!important;font-size:9px!important;font-weight:900!important;letter-spacing:1.4px!important}
+.embedded-plan strong{display:block!important;font-size:23px!important;line-height:1.15!important;margin:6px 0!important}
+.embedded-plan small{display:block!important;color:#c8d3df!important;font-size:10px!important;line-height:1.45!important;min-height:30px!important}
+.embedded-plan button{margin-top:10px!important;width:100%!important;padding:8px 7px!important;border:1px solid rgba(247,189,24,.55)!important;border-radius:7px!important;background:transparent!important;color:#fff0a6!important;font-size:10px!important;font-weight:900!important;cursor:pointer!important}
+.embedded-plan.selected button{background:#f7bd18!important;color:#07172d!important}
+.listing-selected-plan{margin:8px 0 18px!important;padding:11px 13px!important;border-left:3px solid var(--gold)!important;background:#fff9e9!important;color:#554a30!important;font-size:12px!important;line-height:1.5!important}
+.form-divider{display:flex!important;align-items:center!important;gap:10px!important;margin:19px 0 7px!important;color:#8b98a8!important;font-size:9px!important;letter-spacing:1.7px!important;font-weight:900!important}
+.form-divider:after{content:"";height:1px;flex:1;background:var(--line)}
+@media(max-width:700px){.listing-choice-grid{grid-template-columns:1fr!important}.embedded-subscription-choices{grid-template-columns:1fr!important}.embedded-plan small{min-height:0!important}}
