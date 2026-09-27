@@ -177,71 +177,172 @@ function toBase64(file) {
   });
 }
 
-document.querySelectorAll("[data-plan]").forEach(button => {
-  button.addEventListener("click", () => openSubscription(button.dataset.plan));
-});
+// ---------------- SUBSCRIPTIONS ----------------
 
-function openSubscription(plan) {
-  const modal = document.querySelector("#subscriptionModal");
+const subscriptionModal = document.querySelector("#subscriptionModal");
+const subscriptionForm = document.querySelector("#subscriptionForm");
+const closeSubscriptionButton = document.querySelector("#closeSubscription");
+const subscriptionStatus = document.querySelector("#subscriptionStatus");
+
+function ensureSubscriptionFields() {
+  if (!subscriptionForm) return;
+
+  // These fields are added here so marketplace.html does not have to be
+  // changed again just to support listing promotion and payment tracking.
+  if (!document.querySelector("#subscriptionListingId")) {
+    const listingLabel = document.createElement("label");
+    listingLabel.innerHTML =
+      'Listing ID (optional)<input id="subscriptionListingId" name="listingId" placeholder="Example: TWM-20260927-113732-8940">';
+    subscriptionForm.insertBefore(listingLabel, subscriptionForm.querySelector("button"));
+  }
+
+  if (!document.querySelector("#subscriptionPaymentMethod")) {
+    const methodLabel = document.createElement("label");
+    methodLabel.innerHTML =
+      '<span>Payment method</span><select id="subscriptionPaymentMethod" name="paymentMethod"><option value="payoneer">Payoneer</option><option value="bank_transfer">Nigerian bank transfer</option></select>';
+    subscriptionForm.insertBefore(methodLabel, subscriptionForm.querySelector("button"));
+  }
+
+  if (!document.querySelector("#subscriptionPaymentBox")) {
+    const box = document.createElement("div");
+    box.id = "subscriptionPaymentBox";
+    box.className = "subscription-payment-box";
+    box.hidden = true;
+    subscriptionForm.insertBefore(box, subscriptionForm.querySelector("button"));
+  }
+}
+
+function showPaymentResult(data) {
+  const box = document.querySelector("#subscriptionPaymentBox");
+  if (!box) return;
+
+  const paymentUrl = String(data.paymentUrl || data.payoneerUrl || "").trim();
+  const reference = escapeHtml(data.subscriptionId || "");
+
+  if (paymentUrl) {
+    box.hidden = false;
+    box.innerHTML =
+      '<strong>Next step: complete payment</strong>' +
+      '<p>Your subscription request has been recorded. Complete payment using the secure payment link below.</p>' +
+      '<a class="primary" href="' + escapeHtml(paymentUrl) + '" target="_blank" rel="noopener noreferrer">Pay securely now →</a>' +
+      (reference ? '<p class="status">Reference: ' + reference + '</p>' : '');
+    return;
+  }
+
+  box.hidden = false;
+  box.innerHTML =
+    '<strong>Payment link pending</strong>' +
+    '<p>Your subscription request has been recorded. TW&D management will provide the payment instructions.</p>' +
+    (reference ? '<p class="status">Reference: ' + reference + '</p>' : '');
+}
+
+function openSubscription(plan, listingId = "") {
+  if (!subscriptionModal || !subscriptionForm) return;
+
+  ensureSubscriptionFields();
+
   const planInput = document.querySelector("#subscriptionPlan");
   const sellerInput = document.querySelector("#subscriptionSeller");
   const emailInput = document.querySelector("#subscriptionEmail");
   const phoneInput = document.querySelector("#subscriptionPhone");
-  const message = document.querySelector("#subscriptionStatus");
+  const listingInput = document.querySelector("#subscriptionListingId");
+  const paymentMethod = document.querySelector("#subscriptionPaymentMethod");
+  const paymentBox = document.querySelector("#subscriptionPaymentBox");
 
-  planInput.value = plan;
+  planInput.value = plan || "";
   sellerInput.value = "";
   emailInput.value = "";
   phoneInput.value = "";
-  message.textContent = "";
-  modal.hidden = false;
+  listingInput.value = listingId || "";
+  paymentMethod.value = "payoneer";
+  paymentBox.hidden = true;
+  paymentBox.innerHTML = "";
+  subscriptionStatus.textContent = "";
+
+  subscriptionModal.hidden = false;
   sellerInput.focus();
 }
 
+document.querySelectorAll("[data-plan]").forEach(button => {
+  button.addEventListener("click", () => {
+    openSubscription(
+      button.dataset.plan || "",
+      button.dataset.listingId || ""
+    );
+  });
+});
+
 function closeSubscription() {
-  document.querySelector("#subscriptionModal").hidden = true;
+  if (subscriptionModal) subscriptionModal.hidden = true;
 }
 
-document.querySelector("#closeSubscription").addEventListener("click", closeSubscription);
-document.querySelector("#subscriptionModal").addEventListener("click", event => {
-  if (event.target.id === "subscriptionModal") closeSubscription();
-});
+if (closeSubscriptionButton) {
+  closeSubscriptionButton.addEventListener("click", closeSubscription);
+}
 
-document.querySelector("#subscriptionForm").addEventListener("submit", async event => {
-  event.preventDefault();
+if (subscriptionModal) {
+  subscriptionModal.addEventListener("click", event => {
+    if (event.target.id === "subscriptionModal") closeSubscription();
+  });
+}
 
-  const formData = new FormData(event.currentTarget);
-  const status = document.querySelector("#subscriptionStatus");
-  const payload = {
-    action:"subscribe",
-    plan:formData.get("plan"),
-    sellerName:formData.get("sellerName"),
-    email:formData.get("email"),
-    phone:formData.get("phone")
-  };
+if (subscriptionForm) {
+  subscriptionForm.addEventListener("submit", async event => {
+    event.preventDefault();
 
-  status.textContent = "Sending your subscription request…";
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      action: "subscribe",
+      plan: String(formData.get("plan") || "").trim(),
+      sellerName: String(formData.get("sellerName") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      listingId: String(formData.get("listingId") || "").trim(),
+      paymentMethod: String(formData.get("paymentMethod") || "payoneer").trim()
+    };
 
-  try {
-    const response = await fetch(ENDPOINT, {
-      method:"POST",
-      headers:{"Content-Type":"text/plain;charset=utf-8"},
-      body:JSON.stringify(payload)
-    });
-
-    const data = await response.json();
-
-    if (!data.ok) {
-      throw new Error(data.message || "Subscription request failed.");
+    if (!payload.sellerName || !payload.email || !payload.phone || !payload.plan) {
+      subscriptionStatus.textContent = "Please complete all required fields.";
+      return;
     }
 
-    status.textContent = data.message + (data.subscriptionId ? " Reference: " + data.subscriptionId : "");
-    event.currentTarget.reset();
-  } catch (error) {
-    console.error(error);
-    status.textContent = error.message || "Unable to send the subscription request.";
-  }
-});
+    subscriptionStatus.textContent = "Recording your subscription request securely…";
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: {"Content-Type": "text/plain;charset=utf-8"},
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "Subscription request failed.");
+      }
+
+      subscriptionStatus.textContent =
+        (data.message || "Subscription request received.") +
+        (data.subscriptionId ? " Reference: " + data.subscriptionId : "");
+
+      showPaymentResult(data);
+
+      // Keep the payment/reference information visible instead of immediately
+      // closing the modal or wiping the form.
+      if (data.subscriptionId) {
+        const hiddenReference = document.createElement("input");
+        hiddenReference.type = "hidden";
+        hiddenReference.name = "subscriptionReference";
+        hiddenReference.value = data.subscriptionId;
+        subscriptionForm.appendChild(hiddenReference);
+      }
+    } catch (error) {
+      console.error(error);
+      subscriptionStatus.textContent =
+        error.message || "Unable to send the subscription request.";
+    }
+  });
+}
 
 render();
 loadApprovedListings();
