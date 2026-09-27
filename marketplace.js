@@ -251,6 +251,51 @@ function ensureSubscriptionFields() {
   updatePaymentMethodPreview();
 }
 
+function copyPaymentValue(button) {
+  const value = String(button?.dataset.copyValue || "").trim();
+  if (!value) return;
+
+  const done = () => {
+    const original = button.textContent;
+    button.textContent = "Copied ✓";
+    button.classList.add("copied");
+    setTimeout(() => {
+      button.textContent = original || "Copy";
+      button.classList.remove("copied");
+    }, 1400);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(value).then(done).catch(() => fallbackCopyPaymentValue(value, done));
+  } else {
+    fallbackCopyPaymentValue(value, done);
+  }
+}
+
+function fallbackCopyPaymentValue(value, done) {
+  const input = document.createElement("textarea");
+  input.value = value;
+  input.setAttribute("readonly", "");
+  input.style.position = "fixed";
+  input.style.opacity = "0";
+  document.body.appendChild(input);
+  input.select();
+  try { document.execCommand("copy"); done(); }
+  catch (error) { console.error(error); }
+  input.remove();
+}
+
+function wireCopyPaymentButtons(box) {
+  box.querySelectorAll(".copy-payment-btn").forEach(button => {
+    button.addEventListener("click", () => copyPaymentValue(button));
+  });
+}
+
+function bankDetailRow(label, value) {
+  return '<div class="bank-payment-row"><div><span>' + escapeHtml(label) + '</span><strong>' + escapeHtml(value) + '</strong></div>' +
+    '<button type="button" class="copy-payment-btn" data-copy-value="' + escapeHtml(value) + '">Copy</button></div>';
+}
+
 function updatePaymentMethodPreview() {
   const method = String(document.querySelector("#subscriptionPaymentMethod")?.value || "payoneer").toLowerCase();
   const box = document.querySelector("#subscriptionPaymentBox");
@@ -261,19 +306,20 @@ function updatePaymentMethodPreview() {
     box.innerHTML =
       '<div class="payment-success">' +
       '<strong>TW&D BANK TRANSFER DETAILS</strong>' +
-      '<p class="status">You can make payment directly to either of the official TW&D company accounts below.</p>' +
+      '<p class="status">You can make payment directly to either official TW&D company account below. Use the Copy button beside any bank, account name or account number.</p>' +
       '<div class="bank-payment-details">' +
-      '<div><span>Bank</span><strong>Moniepoint</strong></div>' +
-      '<div><span>Account Name</span><strong>TW&D ENGINEERING CONSULT & SERVICES LTD</strong></div>' +
-      '<div><span>Account Number</span><strong>6365401118</strong></div>' +
+      bankDetailRow("Bank", "Moniepoint") +
+      bankDetailRow("Account Name", "TW&D ENGINEERING CONSULT & SERVICES LTD") +
+      bankDetailRow("Account Number", "6365401118") +
       '</div>' +
       '<div class="bank-payment-details">' +
-      '<div><span>Bank</span><strong>Premium Trust Bank</strong></div>' +
-      '<div><span>Account Name</span><strong>TW&D ENGINEERING CONSULT & SERVICES LTD</strong></div>' +
-      '<div><span>Account Number</span><strong>0040278142</strong></div>' +
+      bankDetailRow("Bank", "Premium Trust Bank") +
+      bankDetailRow("Account Name", "TW&D ENGINEERING CONSULT & SERVICES LTD") +
+      bankDetailRow("Account Number", "0040278142") +
       '</div>' +
-      '<p class="status"><strong>Important:</strong> After transfer, keep your receipt. Submit this subscription request, then send the payment receipt and your subscription reference to TW&D management for verification and activation.</p>' +
+      '<p class="status"><strong>Important:</strong> After transfer, keep your receipt. Submit this subscription request, then send the payment receipt and subscription reference to TW&D management for verification and activation.</p>' +
       '</div>';
+    wireCopyPaymentButtons(box);
     return;
   }
 
@@ -281,9 +327,10 @@ function updatePaymentMethodPreview() {
   box.innerHTML =
     '<div class="payment-success">' +
     '<strong>PAYONEER PAYMENT</strong>' +
-    '<p class="status">Payoneer account: <strong>adedayo.adegboyea@gmail.com</strong></p>' +
+    '<p class="status">Payoneer account: <strong>adedayo.adegboyea@gmail.com</strong> <button type="button" class="copy-payment-btn inline-copy" data-copy-value="adedayo.adegboyea@gmail.com">Copy</button></p>' +
     '<p class="status">Submit your subscription request to receive the secure Payoneer payment link.</p>' +
     '</div>';
+  wireCopyPaymentButtons(box);
 }
 
 function showPaymentResult(data) {
@@ -323,34 +370,32 @@ function showPaymentResult(data) {
     const bank = data.bankTransfer || {};
     const primary = bank.primary || {};
     const secondary = bank.secondary || {};
-    const primaryName = escapeHtml(primary.bankName || "Moniepoint");
-    const primaryAccountName = escapeHtml(primary.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD");
-    // Public payment details are intentionally shown to subscribers.
-    // These fallback values ensure the customer can still pay if the Apps Script
-    // deployment temporarily returns blank Script Property values.
-    const primaryAccountNumber = escapeHtml(primary.accountNumber || "6365401118");
-    const secondaryName = escapeHtml(secondary.bankName || "Premium Trust Bank");
-    const secondaryAccountName = escapeHtml(secondary.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD");
-    const secondaryAccountNumber = escapeHtml(secondary.accountNumber || "0040278142");
+    const primaryName = primary.bankName || "Moniepoint";
+    const primaryAccountName = primary.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD";
+    const primaryAccountNumber = primary.accountNumber || "6365401118";
+    const secondaryName = secondary.bankName || "Premium Trust Bank";
+    const secondaryAccountName = secondary.accountName || "TW&D ENGINEERING CONSULT & SERVICES LTD";
+    const secondaryAccountNumber = secondary.accountNumber || "0040278142";
 
     box.hidden = false;
     box.innerHTML =
       '<div class="payment-success">' +
       '<strong>Complete your bank transfer</strong>' +
-      '<p>Your subscription request has been recorded. You may transfer the subscription amount to either TW&D account below, then keep your transaction receipt/reference.</p>' +
+      '<p>Your subscription request has been recorded. You may transfer the subscription amount to either TW&D account below. Copy the details directly from this screen.</p>' +
       '<div class="bank-payment-details">' +
-      '<div><span>Bank</span><strong>' + primaryName + '</strong></div>' +
-      '<div><span>Account Name</span><strong>' + primaryAccountName + '</strong></div>' +
-      '<div><span>Account Number</span><strong>' + primaryAccountNumber + '</strong></div>' +
+      bankDetailRow("Bank", primaryName) +
+      bankDetailRow("Account Name", primaryAccountName) +
+      bankDetailRow("Account Number", primaryAccountNumber) +
       '</div>' +
       '<div class="bank-payment-details">' +
-      '<div><span>Bank</span><strong>' + secondaryName + '</strong></div>' +
-      '<div><span>Account Name</span><strong>' + secondaryAccountName + '</strong></div>' +
-      '<div><span>Account Number</span><strong>' + (secondaryAccountNumber || "Not configured yet") + '</strong></div>' +
+      bankDetailRow("Bank", secondaryName) +
+      bankDetailRow("Account Name", secondaryAccountName) +
+      bankDetailRow("Account Number", secondaryAccountNumber) +
       '</div>' +
       '<p class="status">After payment, send your transfer receipt and subscription reference to TW&D management for verification and activation.</p>' +
       (reference ? '<p class="status">Subscription reference: <strong>' + reference + '</strong></p>' : '') +
       '</div>';
+    wireCopyPaymentButtons(box);
     return;
   }
 
