@@ -241,6 +241,49 @@ function ensureSubscriptionFields() {
     box.hidden = true;
     subscriptionForm.insertBefore(box, subscriptionForm.querySelector("button"));
   }
+
+  const paymentMethod = document.querySelector("#subscriptionPaymentMethod");
+  if (paymentMethod && !paymentMethod.dataset.previewBound) {
+    paymentMethod.addEventListener("change", updatePaymentMethodPreview);
+    paymentMethod.dataset.previewBound = "1";
+  }
+
+  updatePaymentMethodPreview();
+}
+
+function updatePaymentMethodPreview() {
+  const method = String(document.querySelector("#subscriptionPaymentMethod")?.value || "payoneer").toLowerCase();
+  const box = document.querySelector("#subscriptionPaymentBox");
+  if (!box) return;
+
+  if (method === "bank_transfer") {
+    box.hidden = false;
+    box.innerHTML =
+      '<div class="payment-success">' +
+      '<strong>TW&D BANK TRANSFER DETAILS</strong>' +
+      '<p class="status">You can make payment directly to either of the official TW&D company accounts below.</p>' +
+      '<div class="bank-payment-details">' +
+      '<div><span>Bank</span><strong>Moniepoint</strong></div>' +
+      '<div><span>Account Name</span><strong>TW&D ENGINEERING CONSULT & SERVICES LTD</strong></div>' +
+      '<div><span>Account Number</span><strong>6365401118</strong></div>' +
+      '</div>' +
+      '<div class="bank-payment-details">' +
+      '<div><span>Bank</span><strong>Premium Trust Bank</strong></div>' +
+      '<div><span>Account Name</span><strong>TW&D ENGINEERING CONSULT & SERVICES LTD</strong></div>' +
+      '<div><span>Account Number</span><strong>0040278142</strong></div>' +
+      '</div>' +
+      '<p class="status"><strong>Important:</strong> After transfer, keep your receipt. Submit this subscription request, then send the payment receipt and your subscription reference to TW&D management for verification and activation.</p>' +
+      '</div>';
+    return;
+  }
+
+  box.hidden = false;
+  box.innerHTML =
+    '<div class="payment-success">' +
+    '<strong>PAYONEER PAYMENT</strong>' +
+    '<p class="status">Payoneer account: <strong>adedayo.adegboyea@gmail.com</strong></p>' +
+    '<p class="status">Submit your subscription request to receive the secure Payoneer payment link.</p>' +
+    '</div>';
 }
 
 function showPaymentResult(data) {
@@ -340,6 +383,7 @@ function openSubscription(plan, listingId = "") {
   paymentBox.hidden = true;
   paymentBox.innerHTML = "";
   subscriptionStatus.textContent = "";
+  updatePaymentMethodPreview();
 
   subscriptionModal.hidden = false;
   sellerInput.focus();
