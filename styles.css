@@ -876,3 +876,147 @@ body{font-family:'DM Sans',Inter,Arial,sans-serif;overflow-x:hidden}.site-header
   .home-sales-flash{top:82px;right:12px;width:calc(100vw - 24px);padding:16px 42px 15px 15px}
   .home-sales-flash-title{font-size:15px}
 }
+
+
+/* Luxury header lettering — drawn, metallic and gently glittering */
+.site-header .brand-luxury{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:12px!important;
+  min-width:220px!important;
+  text-decoration:none!important;
+  line-height:1!important;
+  overflow:visible!important;
+}
+.site-header .brand-twd{
+  position:relative;
+  display:inline-block;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(28px,2.4vw,39px);
+  font-weight:900;
+  letter-spacing:-2px;
+  color:#f7bd18;
+  -webkit-text-stroke:1px rgba(255,240,166,.85);
+  text-shadow:0 1px 0 #fff0a6,0 3px 12px rgba(247,189,24,.38),0 0 22px rgba(247,189,24,.16);
+  background:linear-gradient(110deg,#9b6700 0%,#f7bd18 22%,#fff4b8 42%,#d99600 58%,#fff0a6 76%,#a66b00 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:220% 100%;
+  animation:twBrandShimmer 4.8s ease-in-out infinite;
+}
+.site-header .brand-twd::after{
+  content:"";
+  position:absolute;
+  inset:-8px -10px;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.92) 47%,rgba(255,240,166,.2) 52%,transparent 61%);
+  background-size:240% 100%;
+  mix-blend-mode:screen;
+  pointer-events:none;
+  animation:twBrandGlint 5.2s ease-in-out infinite;
+}
+.site-header .brand-engineering{
+  font-family:Inter,Arial,sans-serif;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:#fff0a6;
+  text-shadow:0 0 9px rgba(247,189,24,.45);
+  white-space:nowrap;
+}
+@keyframes twBrandShimmer{
+  0%,55%,100%{background-position:0% 50%}
+  72%,88%{background-position:100% 50%}
+}
+@keyframes twBrandGlint{
+  0%,58%{background-position:-120% 50%;opacity:0}
+  67%{opacity:.9}
+  78%{background-position:120% 50%;opacity:0}
+  100%{background-position:120% 50%;opacity:0}
+}
+
+/* Marketplace flash — image-led, attention-catching but compact */
+.home-sales-flash{
+  display:flex!important;
+  align-items:center!important;
+  gap:12px!important;
+  width:min(430px,calc(100vw - 28px))!important;
+  padding:10px 13px 10px 10px!important;
+  border:1px solid rgba(247,189,24,.62)!important;
+  border-radius:18px!important;
+  background:linear-gradient(135deg,rgba(4,22,48,.97),rgba(8,39,76,.95))!important;
+  box-shadow:0 14px 38px rgba(0,0,0,.34),0 0 28px rgba(247,189,24,.16)!important;
+  overflow:hidden!important;
+  backdrop-filter:blur(12px)!important;
+}
+.home-sales-flash-media{
+  position:relative!important;
+  flex:0 0 82px!important;
+  width:82px!important;
+  height:82px!important;
+  border-radius:13px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(255,240,166,.65)!important;
+  box-shadow:0 0 18px rgba(247,189,24,.2)!important;
+}
+.home-sales-flash-image{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  opacity:.96!important;
+  transform:scale(1.02)!important;
+  transition:opacity .35s ease,transform .7s ease,filter .35s ease!important;
+}
+.home-sales-flash-image.flash-image-pulse{
+  animation:listingImageFlash 2.2s ease-out both;
+}
+.home-sales-flash-spark{
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.8) 48%,rgba(255,240,166,.12) 53%,transparent 68%);
+  background-size:220% 100%;
+  animation:listingImageGlint 3.4s ease-in-out infinite;
+}
+@keyframes listingImageFlash{
+  0%{opacity:.25;transform:scale(1.09);filter:brightness(1.55)}
+  18%{opacity:1}
+  100%{opacity:.96;transform:scale(1.02);filter:brightness(1)}
+}
+@keyframes listingImageGlint{
+  0%,48%{background-position:-120% 50%;opacity:0}
+  60%{opacity:.95}
+  76%,100%{background-position:120% 50%;opacity:0}
+}
+.home-sales-flash-copy{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:3px!important;
+  padding-right:18px!important;
+}
+.home-sales-flash-title{
+  max-width:280px!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.home-sales-flash-meta{
+  max-width:285px!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+@media(max-width:700px){
+  .site-header .brand-luxury{min-width:0!important;gap:8px!important}
+  .site-header .brand-twd{font-size:28px!important}
+  .site-header .brand-engineering{font-size:8px!important;letter-spacing:1.8px!important}
+  .home-sales-flash{width:min(390px,calc(100vw - 22px))!important}
+  .home-sales-flash-media{flex-basis:72px!important;width:72px!important;height:72px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .site-header .brand-twd,.site-header .brand-twd::after,.home-sales-flash-image.flash-image-pulse,.home-sales-flash-spark{animation:none!important}
+}
