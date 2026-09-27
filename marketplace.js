@@ -1,38 +1,223 @@
-const listings=[
- {id:"demo-1",category:"Houses",location:"Ibadan, Oyo",title:"Modern 4-Bedroom Family Home",price:65000000,image:"assets/completed-building-01.jpg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"For Sale"},
- {id:"demo-2",category:"Land",location:"Ogun State",title:"Residential Land Opportunity",price:12000000,image:"assets/project-08.jpg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"For Sale"},
- {id:"demo-3",category:"Building Materials",location:"Ibadan, Oyo",title:"Building & Finishing Materials",price:0,image:"assets/building.jpg",seller:"TW&D Engineering",phone:"08035774420",condition:"New"},
- {id:"demo-4",category:"Home Gadgets",location:"Lagos",title:"Home Improvement & Interior Items",price:0,image:"assets/marble-bathroom.jpeg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"New"}
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
+
+const demoListings = [
+  {id:"demo-1",category:"Houses",location:"Ibadan, Oyo",title:"Modern 4-Bedroom Family Home",price:65000000,image:"assets/completed-building-01.jpg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"For Sale"},
+  {id:"demo-2",category:"Land",location:"Ogun State",title:"Residential Land Opportunity",price:12000000,image:"assets/project-08.jpg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"For Sale"},
+  {id:"demo-3",category:"Building Materials",location:"Ibadan, Oyo",title:"Building & Finishing Materials",price:0,image:"assets/building.jpg",seller:"TW&D Engineering",phone:"08035774420",condition:"New"},
+  {id:"demo-4",category:"Home Gadgets",location:"Lagos",title:"Home Improvement & Interior Items",price:0,image:"assets/marble-bathroom.jpeg",seller:"TW&D Marketplace Demo",phone:"08035774420",condition:"New"}
 ];
-const grid=document.querySelector("#listingGrid"),empty=document.querySelector("#empty");
-const money=n=>n?new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(n):"Contact seller";
-function render(){
- const q=(document.querySelector("#search").value||"").toLowerCase(),cat=document.querySelector("#category").value,loc=document.querySelector("#location").value;
- const rows=listings.filter(x=>(!q||(x.title+" "+x.category+" "+x.location).toLowerCase().includes(q))&&(!cat||x.category===cat)&&(!loc||x.location.toLowerCase().includes(loc.toLowerCase())));
- grid.innerHTML=rows.map(x=>`<article class="listing"><img src="${x.image}" alt="${x.title}" loading="lazy"><div class="listing-body"><span class="tag">${x.category}</span><h3>${x.title}</h3><div class="price">${money(x.price)}</div><div class="meta">${x.location} • ${x.condition}</div><a href="https://wa.me/2348035774420?text=${encodeURIComponent("Hello TW&D Marketplace, I am interested in: "+x.title)}" target="_blank" rel="noopener">Ask about this listing →</a></div></article>`).join("");
- empty.hidden=rows.length>0;
+
+let listings = [...demoListings];
+
+const grid = document.querySelector("#listingGrid");
+const empty = document.querySelector("#empty");
+const form = document.querySelector("#listingForm");
+const statusBox = document.querySelector("#formStatus");
+
+const money = value => {
+  const n = Number(value || 0);
+  return n > 0
+    ? new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(n)
+    : "Contact seller";
+};
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[ch]));
 }
-["#search","#category","#location"].forEach(s=>document.querySelector(s).addEventListener("input",render));
-render();
 
-const form=document.querySelector("#listingForm");
-form.addEventListener("submit",async e=>{
- e.preventDefault();
- const status=document.querySelector("#formStatus"),files=[...form.photos.files];
- if(files.some(f=>f.size>5*1024*1024)){status.textContent="Each photo must be 5 MB or smaller.";return;}
- status.textContent="Preparing your listing…";
- const payload={};new FormData(form).forEach((v,k)=>{if(k!=="photos")payload[k]=v});
- payload.photos=[];
- for(const file of files){payload.photos.push({name:file.name,type:file.type,size:file.size,data:await toBase64(file)});}
- const endpoint="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
- if(endpoint.startsWith("PASTE_")){status.textContent="Your listing form is ready. The marketplace administrator still needs to connect the secure publishing backend.";return;}
- try{const r=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});const j=await r.json();status.textContent=j.message||"Listing submitted for review.";if(j.ok)form.reset();}catch(err){status.textContent="Submission could not be completed. Please try again or contact TW&D.";}
+function render() {
+  const search = (document.querySelector("#search").value || "").toLowerCase().trim();
+  const category = document.querySelector("#category").value;
+  const location = document.querySelector("#location").value;
+
+  const rows = listings.filter(item => {
+    const haystack = [item.title,item.category,item.location,item.seller].join(" ").toLowerCase();
+    return (!search || haystack.includes(search))
+      && (!category || item.category === category)
+      && (!location || item.location.toLowerCase().includes(location.toLowerCase()));
+  });
+
+  grid.innerHTML = rows.map(item => {
+    const title = escapeHtml(item.title);
+    const image = escapeHtml(item.image || "assets/building.jpg");
+    const categoryText = escapeHtml(item.category);
+    const locationText = escapeHtml(item.location);
+    const conditionText = escapeHtml(item.condition || "");
+    const phone = item.phone || "08035774420";
+    const wa = "https://wa.me/2348035774420?text=" +
+      encodeURIComponent("Hello TW&D Marketplace, I am interested in: " + item.title);
+
+    return `<article class="listing">
+      <img src="${image}" alt="${title}" loading="lazy">
+      <div class="listing-body">
+        <span class="tag">${categoryText}</span>
+        <h3>${title}</h3>
+        <div class="price">${money(item.price)}</div>
+        <div class="meta">${locationText} • ${conditionText}</div>
+        <a href="${wa}" target="_blank" rel="noopener">Ask about this listing →</a>
+      </div>
+    </article>`;
+  }).join("");
+
+  empty.hidden = rows.length > 0;
+}
+
+["#search","#category","#location"].forEach(selector => {
+  document.querySelector(selector).addEventListener("input", render);
+  document.querySelector(selector).addEventListener("change", render);
 });
-function toBase64(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result).split(",")[1]);r.onerror=reject;r.readAsDataURL(file);});}
 
-document.querySelectorAll("[data-plan]").forEach(btn=>btn.addEventListener("click",()=>{
- const plan=btn.dataset.plan;
- const endpoint="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
- if(endpoint.startsWith("PASTE_")){alert(plan+" selected. Payment gateway setup is the next step before live subscription payments can be collected.");return;}
- window.location.href=endpoint+"?action=subscribe&plan="+encodeURIComponent(plan);
-}));
+async function loadApprovedListings() {
+  try {
+    const response = await fetch(ENDPOINT + "?action=listings", {cache:"no-store"});
+    if (!response.ok) return;
+
+    const data = await response.json();
+    if (data && Array.isArray(data.listings)) {
+      listings = [...demoListings, ...data.listings];
+      render();
+    }
+  } catch (error) {
+    console.log("Approved marketplace listings are not available yet.", error);
+  }
+}
+
+form.addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const files = [...form.photos.files];
+  const MAX = 5 * 1024 * 1024;
+  const MAX_TOTAL = 15 * 1024 * 1024;
+
+  if (!files.length) {
+    statusBox.textContent = "Please select at least one photo.";
+    return;
+  }
+
+  if (files.some(file => file.size > MAX)) {
+    statusBox.textContent = "Each photo must be 5 MB or smaller.";
+    return;
+  }
+
+  if (files.reduce((sum,file) => sum + file.size, 0) > MAX_TOTAL) {
+    statusBox.textContent = "Please keep all photos together below 15 MB.";
+    return;
+  }
+
+  statusBox.textContent = "Uploading your listing securely…";
+
+  try {
+    const payload = {};
+    new FormData(form).forEach((value,key) => {
+      if (key !== "photos") payload[key] = value;
+    });
+
+    payload.photos = [];
+    for (const file of files) {
+      payload.photos.push({
+        name:file.name,
+        type:file.type,
+        size:file.size,
+        data:await toBase64(file)
+      });
+    }
+
+    const response = await fetch(ENDPOINT, {
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    if (!data.ok) {
+      throw new Error(data.message || "The marketplace rejected the submission.");
+    }
+
+    statusBox.textContent = data.message + (data.listingId ? " Reference: " + data.listingId : "");
+    form.reset();
+  } catch (error) {
+    console.error(error);
+    statusBox.textContent = error.message || "Submission failed. Please try again.";
+  }
+});
+
+function toBase64(file) {
+  return new Promise((resolve,reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+document.querySelectorAll("[data-plan]").forEach(button => {
+  button.addEventListener("click", () => openSubscription(button.dataset.plan));
+});
+
+function openSubscription(plan) {
+  const modal = document.querySelector("#subscriptionModal");
+  const planInput = document.querySelector("#subscriptionPlan");
+  const sellerInput = document.querySelector("#subscriptionSeller");
+  const emailInput = document.querySelector("#subscriptionEmail");
+  const phoneInput = document.querySelector("#subscriptionPhone");
+  const message = document.querySelector("#subscriptionStatus");
+
+  planInput.value = plan;
+  sellerInput.value = "";
+  emailInput.value = "";
+  phoneInput.value = "";
+  message.textContent = "";
+  modal.hidden = false;
+  sellerInput.focus();
+}
+
+function closeSubscription() {
+  document.querySelector("#subscriptionModal").hidden = true;
+}
+
+document.querySelector("#closeSubscription").addEventListener("click", closeSubscription);
+document.querySelector("#subscriptionModal").addEventListener("click", event => {
+  if (event.target.id === "subscriptionModal") closeSubscription();
+});
+
+document.querySelector("#subscriptionForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const formData = new FormData(event.currentTarget);
+  const status = document.querySelector("#subscriptionStatus");
+  const payload = {
+    action:"subscribe",
+    plan:formData.get("plan"),
+    sellerName:formData.get("sellerName"),
+    email:formData.get("email"),
+    phone:formData.get("phone")
+  };
+
+  status.textContent = "Sending your subscription request…";
+
+  try {
+    const response = await fetch(ENDPOINT, {
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    if (!data.ok) {
+      throw new Error(data.message || "Subscription request failed.");
+    }
+
+    status.textContent = data.message + (data.subscriptionId ? " Reference: " + data.subscriptionId : "");
+    event.currentTarget.reset();
+  } catch (error) {
+    console.error(error);
+    status.textContent = error.message || "Unable to send the subscription request.";
+  }
+});
+
+render();
+loadApprovedListings();
