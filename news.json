@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T21:09:56.671528+00:00",
+  "generated_at": "2026-09-27T21:39:20.094353+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Nations League: Ronaldo unused as Portugal beat Norway 2-1",
+      "summary": "Portugal secured a 2-1 victory over Norway in the Nations League, with goals from João Félix and Gonçalo Ramos, as Cristiano Ronaldo remained on the bench. Read More: https://punchng.com/nations-league-ronaldo-unused-as-portugal-beat-norway-2-1/",
+      "url": "https://punchng.com/nations-league-ronaldo-unused-as-portugal-beat-norway-2-1/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-27T22:34:36+00:00",
+      "categories": []
+    },
     {
       "title": "OAU medical students offer Osun residents free treatment, surgeries",
       "summary": "Medical students of Obafemi Awolowo University have provided free medical and surgical services to over 200 residents of Moro Community in Osun State. Read More: https://punchng.com/oau-medical-students-offer-osun-residents-free-treatment-surgeries/",
@@ -59,6 +67,14 @@
       "categories": [
         "property"
       ]
+    },
+    {
+      "title": "Pope promises to protect French sex abuse victims",
+      "summary": "Pope Leo XIV on Sunday told victims of clerical sex abuse he met in France that he was committed to preventing further harm, taking one in his arms in a moment the 80-year-old man described as “extraordinary”. The leader of the world’s 1.4 billion Catholics was on the first official papal visit to F",
+      "url": "https://punchng.com/pope-promises-to-protect-french-sex-abuse-victims/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-27T21:07:14+00:00",
+      "categories": []
     },
     {
       "title": "Serbia’s President Vucic resigns as ruling party faces youth-backed opposition",
@@ -264,28 +280,6 @@
       "published": "2026-09-27T19:24:56+00:00",
       "categories": [
         "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Nigeria woos 14 German firms for industrial investments",
-      "summary": "The Federal Government is wooing 14 leading German firms to invest in Nigeria’s cement, mining, construction, and industrial technology sectors. Read More: https://punchng.com/nigeria-woos-14-german-firms-for-industrial-investments/",
-      "url": "https://punchng.com/nigeria-woos-14-german-firms-for-industrial-investments/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-27T19:21:45+00:00",
-      "categories": [
-        "engineering",
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "UBA showcases Africa’s opportunities on global stage",
-      "summary": "Speaking in New York, at the Forward Africa Leaders Symposium, held during the ongoing United Nations General Assembly engagements (UNGA), where he participated in a fireside chat, Group Managing Director and Chief Executive Officer of UBA, Oliver Alawuba, called for greater focus on turning Africa’",
-      "url": "https://www.premiumtimesng.com/promoted/912793-uba-showcases-africas-opportunities-on-global-stage.html",
-      "source": "Premium Times",
-      "published": "2026-09-27T19:14:58+00:00",
-      "categories": [
         "government"
       ]
     }
