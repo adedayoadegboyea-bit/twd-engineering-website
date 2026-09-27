@@ -1020,3 +1020,13 @@ body{font-family:'DM Sans',Inter,Arial,sans-serif;overflow-x:hidden}.site-header
 @media(prefers-reduced-motion:reduce){
   .site-header .brand-twd,.site-header .brand-twd::after,.home-sales-flash-image.flash-image-pulse,.home-sales-flash-spark{animation:none!important}
 }
+
+/* Marketplace listing images: visible, fast-loading and easy to browse */
+.listing-media{background:#07172d!important;min-height:250px!important}
+.listing-main-image{display:block!important;width:100%!important;height:280px!important;object-fit:cover!important;background:#07172d!important}
+.listing-thumbs{display:flex!important;gap:6px!important;padding:7px!important;overflow-x:auto!important}
+.listing-thumbs img{flex:0 0 58px!important;width:58px!important;height:48px!important;object-fit:cover!important;cursor:pointer!important;border:1px solid rgba(255,255,255,.25)!important;border-radius:6px!important}
+.listing-thumbs img:hover{border-color:#f7bd18!important;transform:translateY(-1px)}
+.listing-main-image.listing-image-swap{animation:listingMainImageSwap .45s ease both}
+@keyframes listingMainImageSwap{0%{opacity:.35;transform:scale(1.035);filter:brightness(1.35)}100%{opacity:1;transform:scale(1);filter:brightness(1)}}
+@media(max-width:700px){.listing-main-image{height:235px!important}}
