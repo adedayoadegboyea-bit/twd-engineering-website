@@ -6,6 +6,7 @@ const HOME_MARKETPLACE_ENDPOINT = "https://script.google.com/macros/s/AKfycbzyZ5
 
   const title=box.querySelector(".home-sales-flash-title");
   const meta=box.querySelector(".home-sales-flash-meta");
+  const image=box.querySelector(".home-sales-flash-image");
   const close=box.querySelector(".home-sales-flash-close");
   const link=box.querySelector(".home-sales-flash-link");
   let items=[];
@@ -25,6 +26,15 @@ const HOME_MARKETPLACE_ENDPOINT = "https://script.google.com/macros/s/AKfycbzyZ5
     const item=items[index%items.length];
     index++;
     title.textContent=clean(item.title)||"New marketplace listing";
+    const images=Array.isArray(item.images)&&item.images.length ? item.images : (item.image ? [item.image] : []);
+    const imageUrl=clean(images[(index-1)%Math.max(images.length,1)]||"");
+    if(imageUrl){
+      image.src=imageUrl;
+      image.alt=clean(item.title)||"Marketplace listing";
+      image.classList.remove("flash-image-pulse");
+      void image.offsetWidth;
+      image.classList.add("flash-image-pulse");
+    }
     const parts=[clean(item.category),clean(item.location),money(item.price)].filter(Boolean);
     meta.textContent=parts.join(" • ");
     link.href="marketplace.html";
