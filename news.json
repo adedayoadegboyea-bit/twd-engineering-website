@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T15:12:49.689167+00:00",
+  "generated_at": "2026-09-28T15:43:02.473376+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "UBEC unveils digital tracking platform for school projects, funds",
+      "summary": "The Universal Basic Education Commission has unveiled a digital platform to enable parents and communities to track basic education projects and funds. Read More: https://punchng.com/ubec-unveils-digital-tracking-platform-for-school-projects-funds/",
+      "url": "https://punchng.com/ubec-unveils-digital-tracking-platform-for-school-projects-funds/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T16:17:19+00:00",
+      "categories": []
+    },
     {
       "title": "Damaged power facility throws Ogun community into darkness",
       "summary": "Residents of Arepo in Ogun State are experiencing a power outage after a shattered insulator damaged a TCN facility, disrupting electricity supply. Read More: https://punchng.com/damaged-power-facility-throws-ogun-community-into-darkness/",
@@ -41,13 +49,11 @@
     },
     {
       "title": "2027: Kenneth Okonkwo changes position on Obi’s Anambra debt record",
-      "summary": "Kenneth Okonkwo, a chieftain of the African Democratic Congress, has said he was misled when he previously defended former Anambra State Governor Peter Obi against claims that his administration left debts and other financial obligations behind. Okonkwo, who served as Obi’s spokesman during the 2023",
+      "summary": "Kenneth Okonkwo, a former spokesman for Peter Obi, says he was misled when he defended Obi’s Anambra debt record, citing new claims from the state governme Read More: https://punchng.com/2027-kenneth-okonkwo-changes-position-on-obis-anambra-debt-record/",
       "url": "https://punchng.com/2027-kenneth-okonkwo-changes-position-on-obis-anambra-debt-record/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-28T15:49:27+00:00",
-      "categories": [
-        "government"
-      ]
+      "categories": []
     },
     {
       "title": "Tinubu congratulates Osikoya, Awolowo on Black Market Guinness record",
@@ -60,6 +66,55 @@
       ]
     },
     {
+      "title": "CBN urges Nigerians to handle Naira with care",
+      "summary": "This, according to the central bank, will extend its lifespan and reduce the cost of replacing soiled and mutilated notes. The post CBN urges Nigerians to handle Naira with care appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/more-news/913001-cbn-urges-nigerians-to-handle-naira-with-care.html",
+      "source": "Premium Times",
+      "published": "2026-09-28T15:34:11+00:00",
+      "categories": []
+    },
+    {
+      "title": "‘Nigeria can’t be run by delegation and press release’ — NDC blasts Tinubu",
+      "summary": "The Nigeria Democratic Congress, NDC, has criticised President Bola Tinubu over his absence from the 81st Session of the United Nations General Assembly, UNGA, in New York. The party, in a statement signed by its National Publicity Secretary, Osa Director, on Monday, described Tinubu’s absence as hi",
+      "url": "https://dailypost.ng/2026/09/28/nigeria-cant-be-run-by-delegation-and-press-release-ndc-blasts-tinubu/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T15:23:15+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: How Atiku asked me to make Peter Obi his running mate – Babachir Lawal",
+      "summary": "Former Secretary to the Government of the Federation, SGF, Babachir Lawal, has revealed that former Vice President, Atiku Abubakar, asked him to persuade Peter Obi to join the African Democratic Congress, ADC, and serve as his running mate in the 2027 presidential election. Lawal made this disclosur",
+      "url": "https://dailypost.ng/2026/09/28/2027-how-atiku-asked-me-to-make-peter-obi-his-running-mate-babachir-lawal/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T15:22:52+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Flooding: PDP accuses Sanwo-Olu govt of neglecting Jakande Estates",
+      "summary": "The Lagos State chapter of the Peoples Democratic Party, PDP, has accused the administration of Governor Babajide Sanwo-Olu of failing to adequately address the infrastructure challenges facing residents and property owners in Phases 1, 2, 3 and 4 of the Anikantamo Jakande Estates on Lagos Island. T",
+      "url": "https://dailypost.ng/2026/09/28/flooding-pdp-accuses-sanwo-olu-govt-of-neglecting-jakande-estates/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T15:18:41+00:00",
+      "categories": [
+        "engineering",
+        "government",
+        "property",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Kano court remands 11 youths over alleged killing of police officer",
+      "summary": "A Kano Magistrates’ Court has ordered the remand of 11 youths at a correctional facility over allegations of conspiracy, public disturbance, arson and the killing of a police officer. The court, presided over by Magistrate Auwal Yusuf Sulaiman of Magistrates’ Court No. 2, was told that the suspects ",
+      "url": "https://dailypost.ng/2026/09/28/kano-court-remands-11-youths-over-alleged-killing-of-police-officer/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T15:18:32+00:00",
+      "categories": []
+    },
+    {
       "title": "Soldiers foil abduction attempts, rescue 10 in Zamfara",
       "summary": "Troops of Operation Fansan Yamma have foiled two separate abduction attempts and rescued 10 victims in Maru and Tsafe Local Government Areas of Zamfara Sta Read More: https://punchng.com/soldiers-foil-abduction-attempts-rescue-10-in-zamfara/",
       "url": "https://punchng.com/soldiers-foil-abduction-attempts-rescue-10-in-zamfara/?utm_source=rss.punchng.com&utm_medium=web",
@@ -68,6 +123,24 @@
       "categories": [
         "government"
       ]
+    },
+    {
+      "title": "CBN urges Kano traders, residents to handle naira notes properly",
+      "summary": "The Central Bank of Nigeria (CBN) has urged traders and residents in Kano State to handle naira notes properly, warning that careless handling increases the cost of replacing dirty and damaged currency. The apex bank made the call during a sensitisation campaign launched at major markets across the ",
+      "url": "https://dailypost.ng/2026/09/28/cbn-urges-kano-traders-residents-to-handle-naira-notes-properly/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T15:14:59+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "INEC begins 2027 election readiness assessment",
+      "summary": "The Independent National Electoral Commission (INEC) has begun assessing its preparedness for the 2027 general elections, with its chairman, Professor Joash O. Amupitan, SAN, calling on officials to address operational gaps and maintain neutrality. In a post on X, INEC said Amupitan made the call on",
+      "url": "https://dailypost.ng/2026/09/28/inec-begins-2027-election-readiness-assessment/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T15:14:53+00:00",
+      "categories": []
     },
     {
       "title": "Nigerian-born Samson Dauda finishes second at 2026 Mr Olympia",
@@ -212,83 +285,6 @@
       "url": "https://www.premiumtimesng.com/health/health-news/912994-resident-doctors-give-fg-14-day-ultimatum-to-meet-demands-or-face-industrial-action.html",
       "source": "Premium Times",
       "published": "2026-09-28T14:37:11+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Terrorists defy govt curfew to attack Plateau communities — NBA alleges",
-      "summary": "The Nigerian Bar Association, NBA, in Plateau State has alleged that terrorists attacked communities in the state despite government-imposed curfews. The four NBA branches in Jos, Pankshin, Bukuru and Shendam raised the concern on Monday at a joint press conference at the NUJ Secretariat in Jos. In ",
-      "url": "https://dailypost.ng/2026/09/28/terrorists-defy-govt-curfew-to-attack-plateau-communities-nba-alleges/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T14:36:41+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Terrorists attacking Plateau communities observing curfew, NBA alleges",
-      "summary": "The Nigerian Bar Association in Plateau State has alleged that terrorists are openly attacking communities observing government-imposed curfews. Read More: https://punchng.com/terrorists-attacking-plateau-communities-observing-curfew-nba-alleges/",
-      "url": "https://punchng.com/terrorists-attacking-plateau-communities-observing-curfew-nba-alleges/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T14:25:39+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "From cannon, birds to animals: The story behind Premier League club badges",
-      "summary": "Discover the story behind Premier League club badges, from Arsenal’s cannon and Chelsea’s lion to the symbols on the crests of other top teams. Read More: https://punchng.com/from-cannon-birds-to-animals-the-story-behind-premier-league-club-badges/",
-      "url": "https://punchng.com/from-cannon-birds-to-animals-the-story-behind-premier-league-club-badges/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T14:24:44+00:00",
-      "categories": []
-    },
-    {
-      "title": "NELFUND haven of corruption, giving students only N20,000 — Dino Melaye",
-      "summary": "African Democratic Congress, ADC, chieftain, Dino Melaye, has alleged corruption in the running of the Nigerian Education Loan Fund, NELFUND, and the Federal Government’s student loan scheme under President Bola Tinubu. Melaye described NELFUND as a “haven of corruption” while questioning the adequa",
-      "url": "https://dailypost.ng/2026/09/28/nelfund-haven-of-corruption-giving-students-only-n20000-dino-melaye/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T14:19:03+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Troops rescue missing 19-year-old herder in Plateau",
-      "summary": "Troops of Operation Enduring Peace (OPEP), have rescued a 19-year-old herder who was reported missing while grazing livestock at Shen village in Jos South Local Government Area of Plateau State. Security analyst Zagazola Makama, in a post on X, quoted security sources as saying that the incident occ",
-      "url": "https://dailypost.ng/2026/09/28/troops-rescue-missing-19-year-old-herder-in-plateau/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T14:18:23+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "APC wins all local council chairmanship, councillorship seats in Enugu",
-      "summary": "A PREMIUM TIMES review of the 17 chairmen-elect shows that 12 of them were re-elected for a second term in office while five others were elected for the first time. The post APC wins all local council chairmanship, councillorship seats in Enugu appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/912992-apc-wins-all-local-council-chairmanship-councillorship-seats-in-enugu.html",
-      "source": "Premium Times",
-      "published": "2026-09-28T14:17:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "TCN begins urgent repairs on Ikot Abasi-Eket power transmission line after vandalism",
-      "summary": "The Transmission Company of Nigeria, TCN, said it has commenced urgent rehabilitation work on Towers J4 and N9 to N12 along the Ikot Abasi-Eket 132kV double-circuit transmission line following recent acts of vandalism. TCN made this disclosure in a statement on Monday. According to TCN, during a sit",
-      "url": "https://dailypost.ng/2026/09/28/tcn-begins-urgent-repairs-on-ikot-abasi-eket-power-transmission-line-after-vandalism/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T14:15:55+00:00",
-      "categories": [
-        "engineering",
-        "business"
-      ]
-    },
-    {
-      "title": "Court to deliver judgment in suit against Yahaya Bello’s senatorial candidacy Nov 19",
-      "summary": "Justice Inyang Edem Ekwo of the Federal High Court in Abuja has fixed November 19 for judgment in a suit challenging the emergence of former Governor Yahaya Bello as the senatorial candidate of the All Progressives Congress, APC, for Kogi Central. The judge fixed the date on Monday after lawyers in ",
-      "url": "https://dailypost.ng/2026/09/28/court-to-deliver-judgment-in-suit-against-yahaya-bellos-senatorial-candidacy-nov-19/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T14:00:03+00:00",
       "categories": [
         "government"
       ]
