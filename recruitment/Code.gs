@@ -610,48 +610,113 @@ function getAptitudeSheet_() {
 }
 
 function generateAptitudeQuestions_(position) {
-  const key = PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY');
-  if (!key) throw new Error('AI aptitude testing is not configured yet. Add GEMINI_API_KEY to the recruitment Apps Script properties.');
+  const props=PropertiesService.getScriptProperties();
+  const key=String(props.getProperty('GEMINI_API_KEY')||'').trim();
+  if(!key) throw new Error('GEMINI_API_KEY is missing from Recruitment Apps Script → Project Settings → Script Properties.');
 
-  const model = PropertiesService.getScriptProperties().getProperty('GEMINI_MODEL') || 'gemini-2.5-flash';
+  const model=String(props.getProperty('GEMINI_MODEL')||'gemini-2.5-flash').trim();
   const prompt =
-    'Create exactly 50 multiple-choice aptitude questions for a Nigerian engineering and construction company applicant applying for the role: ' +
-    position + '. Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios appropriate to the role. ' +
-    'Each question must have exactly 4 options and exactly one correct answer. Avoid trick questions and avoid questions that require private company information. ' +
-    'Return ONLY valid JSON in this exact structure: {"questions":[{"question":"...","options":["A","B","C","D"],"answer":0,"explanation":"..."}]}. ' +
-    'The answer value must be the zero-based index of the correct option.';
+    'Create exactly 50 concise multiple-choice aptitude questions for a Nigerian engineering and construction company applicant applying for the role: '+position+'. '+
+    'Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios appropriate to that role. '+
+    'Each question must have exactly 4 options and exactly one correct answer. Do not use private company information. '+
+    'Keep each question and option concise so all 50 questions fit in one response. Do not include explanations.';
 
-  const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(key);
-  const response = UrlFetchApp.fetch(url, {
-    method:'post',
-    contentType:'application/json',
-    muteHttpExceptions:true,
-    payload:JSON.stringify({
-      contents:[{parts:[{text:prompt}]}],
-      generationConfig:{responseMimeType:'application/json',temperature:0.2}
-    })
-  });
+  const schema={
+    type:'OBJECT',
+    properties:{
+      questions:{
+        type:'ARRAY',
+        minItems:50,
+        maxItems:50,
+        items:{
+          type:'OBJECT',
+          properties:{
+            question:{type:'STRING'},
+            options:{type:'ARRAY',minItems:4,maxItems:4,items:{type:'STRING'}},
+            answer:{type:'INTEGER',minimum:0,maximum:3}
+          },
+          required:['question','options','answer']
+        }
+      }
+    },
+    required:['questions']
+  };
+
+  const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent';
+  const payload={
+    contents:[{parts:[{text:prompt}]}],
+    generationConfig:{
+      responseMimeType:'application/json',
+      responseSchema:schema,
+      temperature:0.2,
+      maxOutputTokens:30000
+    }
+  };
+
+  let response;
+  try{
+    response=UrlFetchApp.fetch(url,{
+      method:'post',
+      contentType:'application/json',
+      headers:{'x-goog-api-key':key},
+      muteHttpExceptions:true,
+      payload:JSON.stringify(payload)
+    });
+  }catch(fetchError){
+    throw new Error('Could not reach Gemini: '+fetchError.message);
+  }
 
   const code=response.getResponseCode();
   const body=response.getContentText();
-  if(code<200 || code>=300){
+
+  if(code<200||code>=300){
     let detail=body;
-    try{const apiErr=JSON.parse(body);detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||body;}catch(ignore){}
-    throw new Error('AI question generation failed (HTTP '+code+'): '+String(detail).slice(0,700));
+    try{
+      const apiErr=JSON.parse(body);
+      detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||body;
+    }catch(ignore){}
+    throw new Error('Gemini API error HTTP '+code+': '+String(detail).slice(0,900));
   }
+
   let outer;
-  try{outer=JSON.parse(body);}catch(parseError){throw new Error('Gemini returned an invalid response: '+String(body).slice(0,700));}
-  const text=outer.candidates&&outer.candidates[0]&&outer.candidates[0].content&&outer.candidates[0].content.parts&&outer.candidates[0].content.parts[0]&&outer.candidates[0].content.parts[0].text;
-  if(!text){const finish=outer.candidates&&outer.candidates[0]&&outer.candidates[0].finishReason;throw new Error('Gemini returned no aptitude questions'+(finish?' (finish reason: '+finish+')':'.'));}
-  let jsonText=String(text).trim();
-  jsonText=jsonText.replace(/^```json\s*/i,'').replace(/^```\s*/,'').replace(/\s*```$/,'').trim();
+  try{outer=JSON.parse(body);}
+  catch(e){throw new Error('Gemini returned invalid JSON: '+body.slice(0,700));}
+
+  if(!outer.candidates||!outer.candidates.length){
+    const reason=outer.promptFeedback&&outer.promptFeedback.blockReason;
+    throw new Error('Gemini returned no candidate'+(reason?' — '+reason:'')+'.');
+  }
+
+  const candidate=outer.candidates[0];
+  const text=candidate.content&&candidate.content.parts&&candidate.content.parts[0]&&candidate.content.parts[0].text;
+  if(!text){
+    throw new Error('Gemini returned no question content. Finish reason: '+(candidate.finishReason||'unknown'));
+  }
+
   let parsed;
-  try{parsed=JSON.parse(jsonText);}catch(parseError){throw new Error('Gemini returned text that was not valid JSON. Response starts: '+jsonText.slice(0,500));}
-  if(!parsed.questions||!Array.isArray(parsed.questions)||parsed.questions.length!==50) throw new Error('AI did not return exactly 50 questions. It returned '+((parsed.questions&&parsed.questions.length)||0)+'.');
+  try{parsed=JSON.parse(text);}
+  catch(e){throw new Error('Gemini structured response could not be parsed: '+text.slice(0,700));}
+
+  if(!parsed.questions||!Array.isArray(parsed.questions)||parsed.questions.length!==50){
+    throw new Error('AI generated '+((parsed.questions&&parsed.questions.length)||0)+' questions instead of exactly 50.');
+  }
+
   parsed.questions.forEach(function(q,i){
-    if(!q.question||!Array.isArray(q.options)||q.options.length!==4||typeof q.answer!=='number'||q.answer<0||q.answer>3) throw new Error('AI returned an invalid question at item '+(i+1)+'.');
+    if(!q.question||!Array.isArray(q.options)||q.options.length!==4||typeof q.answer!=='number'||q.answer<0||q.answer>3){
+      throw new Error('Invalid AI question at number '+(i+1)+'.');
+    }
   });
+
   return parsed.questions;
+}
+
+/**
+ * Manual diagnostic. Run this from Apps Script once after deployment/update.
+ * It generates 50 questions without creating an applicant or sending email.
+ */
+function testAptitudeAI(){
+  const questions=generateAptitudeQuestions_('Site Engineer / Project Engineer');
+  return 'AI TEST PASSED: '+questions.length+' questions generated successfully using Gemini.';
 }
 
 function startAptitudeTest(applicationId, position, email) {
