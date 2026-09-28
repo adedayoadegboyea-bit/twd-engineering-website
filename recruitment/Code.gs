@@ -322,12 +322,7 @@ function sendManagementNewApplicationEmail_(row) {
     '<p><b>CV:</b> ' + (cvUrl ? '<a href="' + cvUrl + '">Open CV</a>' : 'Not supplied') + '</p>' +
     '<p><b>Supporting document:</b> ' + (docsUrl ? '<a href="' + docsUrl + '">Open document</a>' : 'Not supplied') + '</p>';
 
-  MailApp.sendEmail({
-    to: CONFIG.MANAGEMENT_EMAIL,
-    replyTo: 'careers@twdengineeringconsult.com',
-    subject: 'New TW&D job application: ' + position,
-    htmlBody: html
-  });
+  sendTransactionalEmail_(CONFIG.MANAGEMENT_EMAIL, 'New TW&D job application: ' + position, html);
 }
 
 /**
@@ -339,18 +334,16 @@ function sendApplicantReceiptEmail_(row) {
   const email = row[3];
   const position = row[5];
 
-  MailApp.sendEmail({
-    to: email,
-    replyTo: 'careers@twdengineeringconsult.com',
-    subject: 'Application received — TW&D Engineering Consult & Services Ltd',
-    htmlBody:
-      '<p>Dear ' + escapeHtml_(name) + ',</p>' +
-      '<p>Thank you for applying to <b>' + CONFIG.COMPANY_NAME + '</b>.</p>' +
-      '<p><b>Application reference:</b> ' + escapeHtml_(id) + '</p>' +
-      '<p><b>Position:</b> ' + escapeHtml_(position) + '</p>' +
-      '<p>Your application has been received and will be reviewed by our management team. We will contact you regarding the next stage.</p>' +
-      '<p>Regards,<br><b>' + CONFIG.COMPANY_NAME + '</b></p>'
-  });
+  sendTransactionalEmail_(
+    email,
+    'Application received — TW&D Engineering Consult & Services Ltd',
+    '<p>Dear ' + escapeHtml_(name) + ',</p>' +
+    '<p>Thank you for applying to <b>' + CONFIG.COMPANY_NAME + '</b>.</p>' +
+    '<p><b>Application reference:</b> ' + escapeHtml_(id) + '</p>' +
+    '<p><b>Position:</b> ' + escapeHtml_(position) + '</p>' +
+    '<p>Your application has been received and will be reviewed by our management team. We will contact you regarding the next stage.</p>' +
+    '<p>Regards,<br><b>' + CONFIG.COMPANY_NAME + '</b></p>'
+  );
 }
 
 /**
