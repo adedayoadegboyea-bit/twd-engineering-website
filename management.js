@@ -15,7 +15,7 @@ async function requireAdmin(){
 }
 async function loadAll(){
  const [c,p,r,q,w]=await Promise.all([
-  supabase.from("profiles").select("id,full_name,phone,account_type").order("uploaded_at",{ascending:false}),
+  supabase.from("profiles").select("id,full_name,phone,account_type").order("created_at",{ascending:false}),
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
   supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
   supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100),
@@ -52,7 +52,7 @@ async function openProject(id){
  $("reportDate").value=new Date().toISOString().slice(0,10);$("reportProgress").value=p.progress||0;
  const [r,d]=await Promise.all([
   supabase.from("project_reports").select("*").eq("project_id",id).order("report_date",{ascending:false}),
-  supabase.from("project_documents").select("*").eq("project_id",id).order("created_at",{ascending:false})
+  supabase.from("project_documents").select("*").eq("project_id",id).order("uploaded_at",{ascending:false})
  ]);
  if(r.error||d.error){status((r.error||d.error).message,true);return}
  $("reportsList").innerHTML='<h3>Private reports</h3>'+(r.data||[]).map(x=>'<div class="report-item"><strong>'+esc(x.report_title)+'</strong><small>'+esc(x.report_date||"")+" • "+(x.progress??"")+"%</small><div>"+esc(x.report_body).replace(/\n/g,"<br>")+"</div></div>").join("")||"<p>No reports yet.</p>";
