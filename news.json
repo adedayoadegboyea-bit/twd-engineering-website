@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T21:10:26.713702+00:00",
+  "generated_at": "2026-09-28T21:40:15.065652+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "UEFA Nations League: Olise wonder goal gives France win in Belgium",
+      "summary": "Michael Olise’s magnificent late strike gave France a 1-0 victory over Belgium in the UEFA Nations League, securing a second win for new coach Zinedine Zid Read More: https://punchng.com/uefa-nations-league-olise-wonder-goal-gives-france-win-in-belgium/",
+      "url": "https://punchng.com/uefa-nations-league-olise-wonder-goal-gives-france-win-in-belgium/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T22:35:11+00:00",
+      "categories": []
+    },
     {
       "title": "Unexplained wealth hindering Nigeria’s progress — Wahab Shittu",
       "summary": "A Senior Advocate of Nigeria, Wahab Shittu, says Nigeria’s progress is hindered by unexplained wealth, which allows the nation’s resources to be siphoned. Read More: https://punchng.com/unexplained-wealth-hindering-nigerias-progress-wahab-shittu/",
@@ -27,11 +35,85 @@
       "categories": []
     },
     {
+      "title": "Nigeria’s Power Sector: Lack of coordination slows reliable electricity supply – Tegbe",
+      "summary": "The Minister of Power, Joseph Tegbe, said a lack of coordination had slowed the delivery of reliable electricity supply to Nigerians. The Minister made this disclosure on Monday at the announcement of the Off-Grid Stakeholder Coordination in Abuja. According to the Minister, who was represented by h",
+      "url": "https://dailypost.ng/2026/09/28/nigerias-power-sector-lack-of-coordination-slows-reliable-electricity-supply-tegbe/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T21:31:44+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "Police arrest Delta commissioner, four others over deputy director’s death",
+      "summary": "Vanguard and PUNCH reported that workers in the Delta State Ministry of Secondary Education demanded a thorough investigation into the circumstances surrounding Mr Adeda’s death, with PUNCH reporting that the Nigeria Labour Congress shut the state secretariat in Asaba on Friday to press for investig",
+      "url": "https://www.premiumtimesng.com/news/top-news/913103-police-arrest-delta-commissioner-four-others-over-deputy-directors-death.html",
+      "source": "Premium Times",
+      "published": "2026-09-28T21:27:34+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: We won’t bribe voters, party agents — Peter Obi",
+      "summary": "The 2027 Nigeria Democratic Congress, NDC, presidential candidate, Peter Obi, has said the Obi/Kwankwaso movement will not provide money to party agents for the purpose of inducing voters during the 2027 polls. Obi made this declaration on Monday while fielding questions at a town hall meeting in So",
+      "url": "https://dailypost.ng/2026/09/28/2027-we-wont-bribe-voters-party-agents-peter-obi/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T21:23:23+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "US targets foreign officials prolonging parental child abduction cases",
+      "summary": "The United States has moved against people responsible for, or complicit in, impeding the resolution of international parental child abduction cases, as well as their family members. The action targets individuals who intentionally obstruct the prompt resolution of such litigation by prolonging fami",
+      "url": "https://dailypost.ng/2026/09/28/us-targets-foreign-officials-prolonging-parental-child-abduction-cases/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T21:21:07+00:00",
+      "categories": []
+    },
+    {
+      "title": "Construction work to begin on Ogun Deep Sea Port in November — Abiodun",
+      "summary": "The governor said the groundbreaking ceremony for the project would take place in November, after which construction would commence immediately, with the port expected to be substantially completed within two and a half years. The post Construction work to begin on Ogun Deep Sea Port in November — A",
+      "url": "https://www.premiumtimesng.com/promoted/913058-construction-work-to-begin-on-ogun-deep-sea-port-in-november-abiodun.html",
+      "source": "Premium Times",
+      "published": "2026-09-28T21:15:38+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
       "title": "2027: Kano CP warns police against partisanship",
       "summary": "The Kano State Commissioner of Police, Ibrahim Bakori, has warned officers to remain neutral and apolitical in the build-up to the 2027 general elections. Read More: https://punchng.com/2027-kano-cp-warns-police-against-partisanship/",
       "url": "https://punchng.com/2027-kano-cp-warns-police-against-partisanship/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-28T21:15:09+00:00",
+      "categories": []
+    },
+    {
+      "title": "Court dismisses $25 million privacy suit against Meta in Delta",
+      "summary": "The judge held that applicant failed to provide sufficient evidence to establish that Meta had violated her privacy rights or unlawfully processed her personal data. The post Court dismisses $25 million privacy suit against Meta in Delta appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/913097-court-dismisses-25-million-privacy-suit-against-meta-in-delta.html",
+      "source": "Premium Times",
+      "published": "2026-09-28T21:15:00+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: ‘I’m playing fatherly role’ – Sultan of Sokoto speaks on receiving Peter Obi, APC PCC",
+      "summary": "The Sultan of Sokoto and President-General of the Nigeria Supreme Council for Islamic Affairs, NSCIA, Muhammad Sa’ad Abubakar, on Monday, said he was playing the role of a father without favouritism to all politicians vying for elective offices in 2027. Abubakar disclosed this while receiving the Ni",
+      "url": "https://dailypost.ng/2026/09/28/2027-im-playing-fatherly-role-sultan-of-sokoto-speaks-on-receiving-peter-obi-apc-pcc/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T21:13:40+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: Don’t insult, use inflammatory remarks to cause tension – Sultan of Sokoto to politicians",
+      "summary": "The Sultan of Sokoto and President-General of the Nigeria Supreme Council for Islamic Affairs, NSCIA, Muhammad Sa’ad Abubakar, on Monday warned politicians against the use of insults and inflammatory remarks ahead of the 2027 general elections. Abubakar warned that such conduct could heighten tensio",
+      "url": "https://dailypost.ng/2026/09/28/2027-dont-insult-use-inflammatory-remarks-to-cause-tension-sultan-of-sokoto-to-politicians/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T21:13:11+00:00",
       "categories": []
     },
     {
@@ -193,96 +275,6 @@
       "source": "Premium Times",
       "published": "2026-09-28T19:54:31+00:00",
       "categories": []
-    },
-    {
-      "title": "Court convicts 21 companies over alleged unlicensed investment operations",
-      "summary": "The Federal High Court in Lafia, Nasarawa State, has convicted and sentenced 21 companies for allegedly operating financial investment businesses without valid licences from the Securities and Exchange Commission, SEC. Justice Anyalewa Onoja-Alapa convicted the companies after they were arraigned by",
-      "url": "https://dailypost.ng/2026/09/28/court-convicts-21-companies-over-alleged-unlicensed-investment-operations/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T19:49:41+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "Akpabio urges lawmakers to protect public purse",
-      "summary": "Senate President Godswill Akpabio has charged lawmakers to remain committed to protecting public funds, saying the National Assembly owes Nigerians a duty. Read More: https://punchng.com/akpabio-urges-lawmakers-to-protect-public-purse/",
-      "url": "https://punchng.com/akpabio-urges-lawmakers-to-protect-public-purse/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T19:41:25+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Kano CP directs police commanders to remain neutral ahead of 2027 elections",
-      "summary": "The Kano State Commissioner of Police, CP Ibrahim Adamu Bakori, has directed operational commanders across the state to remain neutral, professional and non-partisan ahead of the 2027 general elections. Bakori gave the directive on Monday, September 28, 2026, during a strategic lecture on election s",
-      "url": "https://dailypost.ng/2026/09/28/kano-cp-directs-police-commanders-to-remain-neutral-ahead-of-2027-elections/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T19:37:48+00:00",
-      "categories": []
-    },
-    {
-      "title": "Black Market: Tinubu Hails Nigerian Filmmakers On Guinness Record For Largest Attendance At A Film Screening",
-      "summary": "President Bola Tinubu has congratulated Nigerian filmmakers Damilola Osikoya of Switch Visual Production and Nora Awolowo of Rixel Studios on their Guinness World Record achievement. The filmmakers reportedly set the record for the largest attendance at a film screening during a showing of Black Mar",
-      "url": "https://www.informationng.com/2026/09/black-market-tinubu-hails-nigerian-filmmakers-on-guinness-record-for-largest-attendance-at-a-film-screening.html",
-      "source": "Information Nigeria",
-      "published": "2026-09-28T19:34:59+00:00",
-      "categories": [
-        "business",
-        "lagos"
-      ]
-    },
-    {
-      "title": "FG urges states to hasten completion of urban water projects",
-      "summary": "The Federal Government has urged participating states to hasten the completion of projects under the National Urban Water Sector Reform Project. Read More: https://punchng.com/fg-urges-states-to-hasten-completion-of-urban-water-projects/",
-      "url": "https://punchng.com/fg-urges-states-to-hasten-completion-of-urban-water-projects/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T19:27:26+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Road To The Crown: Zenith Bank/NBBF women’s basketball league final eight set for Lagos",
-      "summary": "Emerging from fiercely contested Atlantic and Savannah Conference campaigns, Nigeria Customs, AS Sky Queens, Titans, Air Warriors, MFM, First Bank, Victoria Queens, and Bayelsa Blue Whales have earned their place in the final battle for national honours. The post Road To The Crown: Zenith Bank/NBBF ",
-      "url": "https://www.premiumtimesng.com/promoted/913061-road-to-the-crown-zenith-bank-nbbf-womens-basketball-league-final-eight-set-for-lagos.html",
-      "source": "Premium Times",
-      "published": "2026-09-28T19:26:23+00:00",
-      "categories": [
-        "engineering",
-        "lagos"
-      ]
-    },
-    {
-      "title": "FG Seeks Fresh $1.5bn World Bank Loan",
-      "summary": "The Federal Government has opened discussions with the World Bank for three new loans totalling $1.5bn, even as Nigeria’s public debt climbed to a record N166.79tn at the end of June 2026. Documents obtained from the World Bank show that the proposed financing comprises three separate $500m faciliti",
-      "url": "https://www.informationng.com/2026/09/fg-seeks-fresh-1-5bn-world-bank-loan.html",
-      "source": "Information Nigeria",
-      "published": "2026-09-28T19:25:34+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Madrid’s Perez summoned over Barcelona referee payments comments",
-      "summary": "Real Madrid president Florentino Perez has been summoned to a Madrid court for a conciliation hearing over alleged defamatory comments about FC Barcelona. Read More: https://punchng.com/madrids-perez-summoned-over-barcelona-referee-payments-comments/",
-      "url": "https://punchng.com/madrids-perez-summoned-over-barcelona-referee-payments-comments/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T19:25:05+00:00",
-      "categories": []
-    },
-    {
-      "title": "Nigeria’s budget too small for its population — Minister",
-      "summary": "The Minister of Budget and Economic Planning, Abubakar Bagudu, says Nigeria has one of the smallest national budgets among the world’s 10 most populous nat Read More: https://punchng.com/nigerias-budget-too-small-for-its-population-minister/",
-      "url": "https://punchng.com/nigerias-budget-too-small-for-its-population-minister/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T19:17:12+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
