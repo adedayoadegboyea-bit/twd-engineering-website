@@ -5,6 +5,8 @@ const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
 const list=(a,fn,e)=>a?.length?a.map(fn).join(""):e;
 const status=$("accountStatus"),portalStatus=$("portalStatus"),setup=$("setupWarning");
+function setupPasswordToggles(){document.querySelectorAll("[data-password-toggle]").forEach(btn=>{btn.addEventListener("click",()=>{const input=document.getElementById(btn.dataset.passwordToggle);if(!input)return;const show=input.type==="password";input.type=show?"text":"password";btn.textContent=show?"HIDE":"SHOW";btn.setAttribute("aria-label",show?"Hide password":"Show password");btn.setAttribute("aria-pressed",String(show));});});}
+setupPasswordToggles();
 let recoveryMode=false,currentUser=null;
 function msg(text,type=""){status.textContent=text;status.className="account-status show "+type}
 function pmsg(text,type=""){portalStatus.textContent=text;portalStatus.className="portal-status show "+type}
