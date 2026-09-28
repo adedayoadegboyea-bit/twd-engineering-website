@@ -614,12 +614,13 @@ function generateAptitudeQuestions_(position) {
   const key=String(props.getProperty('GEMINI_API_KEY')||'').trim();
   if(!key) throw new Error('GEMINI_API_KEY is missing from Recruitment Apps Script → Project Settings → Script Properties.');
 
-  const model=String(props.getProperty('GEMINI_MODEL')||'gemini-3.8-flash').trim();
+  const configuredModel=String(props.getProperty('GEMINI_MODEL')||'gemini-3.5-flash-lite').trim();
+
   const prompt =
     'Create exactly 50 concise multiple-choice aptitude questions for a Nigerian engineering and construction company applicant applying for the role: '+position+'. '+
     'Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios appropriate to that role. '+
     'Each question must have exactly 4 options and exactly one correct answer. Do not use private company information. '+
-    'Keep each question and option concise so all 50 questions fit in one response. Do not include explanations.';
+    'Keep each question and option concise. Do not include explanations.';
 
   const schema={
     type:'OBJECT',
@@ -647,28 +648,29 @@ function generateAptitudeQuestions_(position) {
     generationConfig:{
       responseMimeType:'application/json',
       responseSchema:schema,
-      maxOutputTokens:30000
+      maxOutputTokens:24000
     }
   };
 
   /*
-   * Gemini can temporarily return HTTP 503 when model capacity is busy.
-   * Use bounded exponential backoff, then fall back to a lighter current
-   * Flash-Lite model. We never retry permanent 4xx configuration errors.
+   * Try the configured model first, then lighter/current Flash models.
+   * 503/429/5xx responses receive bounded exponential backoff.
    */
-  const modelsToTry=[model];
-  if(model!=='gemini-3.5-flash-lite'){
-    modelsToTry.push('gemini-3.5-flash-lite');
-  }
+  const modelsToTry=[];
+  [configuredModel,'gemini-3.5-flash-lite','gemini-3.7-flash','gemini-3.8-flash'].forEach(function(m){
+    if(m && modelsToTry.indexOf(m)===-1) modelsToTry.push(m);
+  });
 
-  let response=null;
   let lastError='';
+  let successfulBody='';
 
   for(let modelIndex=0;modelIndex<modelsToTry.length;modelIndex++){
     const activeModel=modelsToTry[modelIndex];
     const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(activeModel)+':generateContent';
 
     for(let attempt=0;attempt<4;attempt++){
+      let response=null;
+
       try{
         response=UrlFetchApp.fetch(url,{
           method:'post',
@@ -679,61 +681,58 @@ function generateAptitudeQuestions_(position) {
         });
       }catch(fetchError){
         lastError='Could not reach Gemini ('+activeModel+'): '+fetchError.message;
-        response=null;
       }
 
-      if(response){
-        const code=response.getResponseCode();
-        const body=response.getContentText();
-
-        if(code>=200&&code<300){
-          break;
+      if(!response){
+        if(attempt<3){
+          Utilities.sleep((4000*Math.pow(2,attempt))+Math.floor(Math.random()*1500));
+          continue;
         }
-
-        let detail=body;
-        try{
-          const apiErr=JSON.parse(body);
-          detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||body;
-        }catch(ignore){}
-
-        lastError='Gemini API error HTTP '+code+' ('+activeModel+'): '+String(detail).slice(0,900);
-
-        /*
-         * Retry only transient server/rate-limit errors.
-         * 503 is the error currently being reported.
-         */
-        if(code===503 || code===429 || code===408 || code===500 || code===502 || code===504){
-          if(attempt<3){
-            const delay=(5000*Math.pow(2,attempt))+Math.floor(Math.random()*2000);
-            Utilities.sleep(delay);
-            continue;
-          }
-        }
-
-        response=null;
         break;
       }
 
+      const code=response.getResponseCode();
+      const responseBody=response.getContentText();
+
+      if(code>=200 && code<300){
+        successfulBody=responseBody;
+        break;
+      }
+
+      let detail=responseBody;
+      try{
+        const apiErr=JSON.parse(responseBody);
+        detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||responseBody;
+      }catch(ignore){}
+
+      lastError='Gemini API error HTTP '+code+' ('+activeModel+'): '+String(detail).slice(0,900);
+
+      if(code===503 || code===429 || code===408 || code===500 || code===502 || code===504){
+        if(attempt<3){
+          Utilities.sleep((4000*Math.pow(2,attempt))+Math.floor(Math.random()*1500));
+          continue;
+        }
+      }
+
       break;
     }
 
-    if(response && response.getResponseCode()>=200 && response.getResponseCode()<300){
-      break;
-    }
-
-    response=null;
+    if(successfulBody) break;
   }
 
-  if(!response){
+  if(!successfulBody){
     throw new Error(
       lastError ||
-      'Gemini could not generate the aptitude questions after the available retries.'
+      'Gemini could not generate the aptitude questions after trying the available models.'
     );
   }
 
   let outer;
-  try{outer=JSON.parse(body);}
-  catch(e){throw new Error('Gemini returned invalid JSON: '+body.slice(0,700));}
+  try{
+    outer=JSON.parse(successfulBody);
+  }catch(e){
+    throw new Error('Gemini returned invalid JSON: '+successfulBody.slice(0,700));
+  }
 
   if(!outer.candidates||!outer.candidates.length){
     const reason=outer.promptFeedback&&outer.promptFeedback.blockReason;
@@ -743,16 +742,20 @@ function generateAptitudeQuestions_(position) {
   const candidate=outer.candidates[0];
   const finishReason=String(candidate.finishReason||'');
   const text=candidate.content&&candidate.content.parts&&candidate.content.parts[0]&&candidate.content.parts[0].text;
+
   if(!text){
     if(finishReason==='MAX_TOKENS'){
-      throw new Error('Gemini stopped before all 50 questions were generated. The response reached the output limit. Try again; the generator is configured to retry transient API failures.');
+      throw new Error('Gemini stopped before all 50 questions were generated. Try again.');
     }
     throw new Error('Gemini returned no question content. Finish reason: '+(finishReason||'unknown'));
   }
 
   let parsed;
-  try{parsed=JSON.parse(text);}
-  catch(e){throw new Error('Gemini structured response could not be parsed: '+text.slice(0,700));}
+  try{
+    parsed=JSON.parse(text);
+  }catch(e){
+    throw new Error('Gemini structured response could not be parsed: '+text.slice(0,700));
+  }
 
   if(!parsed.questions||!Array.isArray(parsed.questions)||parsed.questions.length!==50){
     throw new Error('AI generated '+((parsed.questions&&parsed.questions.length)||0)+' questions instead of exactly 50.');
