@@ -40,18 +40,36 @@ async function loadDashboard(user){
  $("profileEmail").value=user.email||"";
  const [p,pr,r,q,n]=await Promise.all([
   supabase.from("profiles").select("account_type,full_name,phone").eq("id",user.id).maybeSingle(),
-  supabase.from("projects").select("project_name,service_type,status,progress").order("created_at",{ascending:false}).limit(5),
+  supabase.from("projects").select("id,project_name,service_type,status,progress,location,description,updated_at").order("created_at",{ascending:false}).limit(20),
   supabase.from("service_requests").select("subject,status").order("created_at",{ascending:false}).limit(5),
   supabase.from("quotations").select("quotation_number,amount,currency,status").order("created_at",{ascending:false}).limit(5),
   supabase.from("notifications").select("id,title,message,read").order("created_at",{ascending:false}).limit(5)
  ]);
- if(p.data?.account_type)$("accountType").textContent=p.data.account_type.toUpperCase();
+ window.__twProjects=pr.data||[];
+  if(p.data?.account_type)$("accountType").textContent=p.data.account_type.toUpperCase();
  if(p.data?.full_name&&!name){$("profileName").value=p.data.full_name;$("welcomeName").textContent="Welcome, "+p.data.full_name}
  if(p.data?.phone&&!$("profilePhone").value)$("profilePhone").value=p.data.phone;
- $("projectsList").innerHTML=list(pr.data,x=>'<div class="portal-row"><strong>'+esc(x.project_name)+'</strong><span>'+esc(x.service_type||"Project")+" • "+esc(x.status)+" • "+(x.progress||0)+"%</span></div>",'<div class="portal-empty">No projects assigned yet.</div>');
+ $("projectsList").innerHTML=list(pr.data,x=>'<button type="button" class="portal-row project-open" data-project-id="'+esc(x.id)+'"><strong>'+esc(x.project_name)+'</strong><span>'+esc(x.service_type||"Project")+" • "+esc(x.status)+" • "+(x.progress||0)+"%"+(x.location?" • "+esc(x.location):"")+'</span></button>','<div class="portal-empty">No projects assigned yet.</div>');
+document.querySelectorAll(".project-open").forEach(b=>b.onclick=()=>openProject(b.dataset.projectId));
  $("requestsList").innerHTML=list(r.data,x=>'<div class="portal-row"><strong>'+esc(x.subject)+'</strong><span>'+esc(x.status)+"</span></div>",'<div class="portal-empty">No service requests yet.</div>');
  $("quotesList").innerHTML=list(q.data,x=>'<div class="portal-row"><strong>'+esc(x.quotation_number||"Quotation")+'</strong><span>'+esc(x.currency)+" "+Number(x.amount||0).toLocaleString()+" • "+esc(x.status)+"</span></div>",'<div class="portal-empty">No quotations yet.</div>');
  $("notificationsList").innerHTML=list(n.data,x=>'<div class="portal-row '+(x.read?"":"unread")+'"><strong>'+esc(x.title)+'</strong><span>'+esc(x.message)+"</span></div>",'<div class="portal-empty">No notifications yet.</div>');
+}
+
+async function openProject(projectId){
+ const project=(window.__twProjects||[]).find(x=>x.id===projectId); if(!project)return;
+ $("projectDetailPanel").hidden=false;$("projectDetailTitle").textContent=project.project_name;$("projectDetailMeta").textContent=(project.service_type||"Project")+" • "+(project.status||"")+(project.location?" • "+project.location:"");
+ $("projectProgressValue").textContent=(project.progress||0)+"%";$("projectProgressBar").style.width=Math.max(0,Math.min(100,Number(project.progress||0)))+"%";$("projectDetailDescription").textContent=project.description||"No project description has been published yet.";
+ const [reports,docs]=await Promise.all([
+  supabase.from("project_reports").select("report_title,report_body,progress,report_date,created_at").eq("project_id",project.id).order("report_date",{ascending:false}),
+  supabase.from("project_documents").select("id,document_name,document_type,storage_path,description,uploaded_at").eq("project_id",project.id).order("uploaded_at",{ascending:false})
+ ]);
+ if(reports.error){pmsg(reports.error.message,"error");return}
+ if(docs.error){pmsg(docs.error.message,"error");return}
+ $("projectReports").innerHTML=list(reports.data,r=>'<article class="portal-report"><small>'+esc(r.report_date||"")+(r.progress!=null?" • "+r.progress+"%":"")+'</small><strong>'+esc(r.report_title)+'</strong><p>'+esc(r.report_body).replace(/\\n/g,"<br>")+'</p></article>','<div class="portal-empty">No progress reports have been published yet.</div>');
+ $("projectDocuments").innerHTML=list(docs.data,d=>'<div class="portal-row"><strong>'+esc(d.document_name)+'</strong><span>'+esc(d.description||d.document_type||"Private project document")+' • '+esc(new Date(d.uploaded_at).toLocaleDateString())+'</span><button type="button" class="portal-action doc-download" data-path="'+esc(d.storage_path)+'">Open Secure Document</button></div>','<div class="portal-empty">No private documents have been uploaded yet.</div>');
+ document.querySelectorAll(".doc-download").forEach(b=>b.onclick=async()=>{b.disabled=true;b.textContent="Opening…";const {data,error}=await supabase.storage.from("project-private").createSignedUrl(b.dataset.path,300);if(error){b.disabled=false;b.textContent="Open Secure Document";pmsg(error.message,"error");return}window.open(data.signedUrl,"_blank","noopener");b.disabled=false;b.textContent="Open Secure Document"});
+ $("projectDetailPanel").scrollIntoView({behavior:"smooth",block:"start"});
 }
 $("showSignup").onclick=()=>{$("signupForm").hidden=false;$("signinForm").hidden=true;$("showSignup").classList.add("active");$("showSignin").classList.remove("active");status.className="account-status"};
 $("showSignin").onclick=()=>{$("signupForm").hidden=true;$("signinForm").hidden=false;$("showSignup").classList.remove("active");$("showSignin").classList.add("active");status.className="account-status"};
