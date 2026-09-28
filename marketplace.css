@@ -51,3 +51,10 @@
 .form-divider{display:flex!important;align-items:center!important;gap:10px!important;margin:19px 0 7px!important;color:#8b98a8!important;font-size:9px!important;letter-spacing:1.7px!important;font-weight:900!important}
 .form-divider:after{content:"";height:1px;flex:1;background:var(--line)}
 @media(max-width:700px){.listing-choice-grid{grid-template-columns:1fr!important}.embedded-subscription-choices{grid-template-columns:1fr!important}.embedded-plan small{min-height:0!important}}
+
+
+/* Marketplace advertisement video media */
+.listing-videos{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.listing-videos video{display:block;width:100%;max-height:320px;border-radius:14px;background:#020914;object-fit:cover;border:1px solid rgba(247,189,24,.18)}
+.listing-video-placeholder{min-height:220px;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,#07172d,#0c2747);color:#f7bd18;font:800 12px/1 Inter,Arial,sans-serif;letter-spacing:1.8px;text-align:center}
+@media(max-width:700px){.listing-videos video{max-height:260px}}
