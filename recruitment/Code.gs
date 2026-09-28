@@ -1,7 +1,7 @@
 const CONFIG = {
   SHEET_NAME: 'Applications',
   DRIVE_FOLDER_NAME: 'TW&D Recruitment Documents',
-  MANAGEMENT_EMAIL: 'twedprivateschools@gmail.com',
+  MANAGEMENT_EMAIL: 'twdengineeringconsult@engineer.com',
   COMPANY_NAME: 'TW&D Engineering Consult & Services Ltd',
   TIMEZONE: 'Africa/Lagos'
 };
