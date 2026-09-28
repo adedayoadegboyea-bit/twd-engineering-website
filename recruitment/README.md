@@ -27,3 +27,35 @@ Use a versioned deployment for public use rather than the test /dev deployment.
 
 ## Security
 Do not place Google credentials, Sheet IDs, Drive IDs or secrets in the public GitHub website. The backend should remain in the TW&D Google account.
+
+
+## Safe consolidation / suspected split spreadsheets
+
+`Migration.gs` is a **non-destructive consolidation tool** for the recruitment system.
+
+It will:
+- create one canonical spreadsheet named **TW&D Recruitment Master**;
+- find the currently configured recruitment spreadsheet and other spreadsheets whose names clearly identify them as TW&D recruitment spreadsheets;
+- import `Applications` and `Aptitude Tests` records into the master using header-name mapping;
+- avoid importing the same Application ID or Test ID twice;
+- preserve records that have no ID by assigning a migration-only ID in the master;
+- create a **Migration Log** showing every source spreadsheet and what was imported;
+- create a **Drive File Inventory** for every file in the existing `TW&D Recruitment Documents` folder and its subfolders;
+- change the Apps Script `SHEET_ID` property to the master only after the consolidation completes;
+- reinstall the recruitment triggers against the master;
+- **never delete, trash, move, rename, or overwrite any source spreadsheet or recruitment document**.
+
+### One-time migration
+
+After adding `Migration.gs` to the same Apps Script project as `Code.gs`:
+
+1. Save the project.
+2. Run `consolidateRecruitmentNow()` once.
+3. Approve the requested Google permissions.
+4. Copy the returned master spreadsheet URL.
+5. Run `verifyRecruitmentConsolidation()` and confirm the reported counts.
+6. Do not delete the old spreadsheets. Keep them as preserved historical backups until the master has been tested.
+
+The migration uses Google Apps Script's Spreadsheet and Drive services to open spreadsheets by ID and inventory Drive files. Google documents these services and authorization requirements here:
+https://developers.google.com/apps-script/guides/services/
+https://developers.google.com/apps-script/guides/services/authorization
