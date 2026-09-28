@@ -15,7 +15,7 @@ async function requireAdmin(){
 }
 async function loadAll(){
  const [c,p,r,q,w]=await Promise.all([
-  supabase.from("profiles").select("id,full_name,phone,account_type").order("created_at",{ascending:false}),
+  supabase.from("profiles").select("id,full_name,phone,account_type").order("uploaded_at",{ascending:false}),
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
   supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
   supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100),
@@ -40,7 +40,7 @@ function renderRequests(){
 function renderQuotations(){
  const el=document.getElementById("quotationsList");
  if(!el)return;
- el.innerHTML=quotations.map(x=>'<div class="mgmt-row"><strong>'+esc(x.quotation_number)+" • "+esc(x.status)+"</strong><span>"+esc(customerName(x.customer_id))+" • ₦"+Number(x.amount||0).toLocaleString()+"</span><small>"+esc(x.description||"")+"</small></div>").join("")||"<p>No quotations yet.</p>";
+ el.innerHTML=quotations.map(x=>'<div class="mgmt-row"><strong>'+esc(x.quotation_number)+" • "+esc(x.status)+"</strong><span>"+esc(customerName(x.customer_id))+" • ₦"+Number(x.amount||0).toLocaleString()+"</span><small>"+esc(x.notes||"")+"</small></div>").join("")||"<p>No quotations yet.</p>";
 }
 function customerName(id){return customers.find(x=>x.id===id)?.full_name||id||"Unknown customer"}
 function populateCustomerSelects(){const opts='<option value="">Select customer</option>'+customers.filter(x=>x.account_type!=="admin").map(x=>'<option value="'+x.id+'">'+esc(x.full_name||x.id)+'</option>').join("");$("projectCustomer").innerHTML=opts;$("quoteCustomer").innerHTML=opts}
@@ -56,7 +56,7 @@ async function openProject(id){
  ]);
  if(r.error||d.error){status((r.error||d.error).message,true);return}
  $("reportsList").innerHTML='<h3>Private reports</h3>'+(r.data||[]).map(x=>'<div class="report-item"><strong>'+esc(x.report_title)+'</strong><small>'+esc(x.report_date||"")+" • "+(x.progress??"")+"%</small><div>"+esc(x.report_body).replace(/\n/g,"<br>")+"</div></div>").join("")||"<p>No reports yet.</p>";
- $("documentsList").innerHTML='<h3>Private documents</h3>'+(d.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(x.document_name)+'</strong><span>'+esc(x.description||x.document_type||"Private project file")+" • "+new Date(x.created_at).toLocaleString()+'</span><button class="mgmt-btn small doc-admin-download" data-path="'+esc(x.storage_path)+'">Download</button></div>').join("")||"<p>No private documents yet.</p>";
+ $("documentsList").innerHTML='<h3>Private documents</h3>'+(d.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(x.document_name)+'</strong><span>'+esc(x.description||x.document_type||"Private project file")+" • "+new Date(x.uploaded_at).toLocaleString()+'</span><button class="mgmt-btn small doc-admin-download" data-path="'+esc(x.storage_path)+'">Download</button></div>').join("")||"<p>No private documents yet.</p>";
  document.querySelectorAll(".doc-admin-download").forEach(b=>b.onclick=()=>downloadPrivate(b));
 }
 async function downloadPrivate(b){b.disabled=true;b.textContent="Opening…";const {data,error}=await supabase.storage.from("project-private").createSignedUrl(b.dataset.path,300);if(error){status(error.message,true);b.disabled=false;b.textContent="Download";return}window.open(data.signedUrl,"_blank","noopener");b.disabled=false;b.textContent="Download"}
@@ -65,7 +65,7 @@ async function respondToRequest(id){
  if(!row||!message){status("Write a response first.",true);return}
  const up=await supabase.from("service_requests").update({status:"RESPONDED",updated_at:new Date().toISOString()}).eq("id",id);
  if(up.error){status(up.error.message,true);return}
- const n=await supabase.from("notifications").insert({customer_id:row.customer_id,title:"Response to your service request",message:"TW&D response to '"+row.subject+"': "+message,notification_type:"SERVICE_REQUEST"});
+ const n=await supabase.from("notifications").insert({customer_id:row.customer_id,title:"Response to your service request",message:"TW&D response to '"+row.subject+"': "+message});
  if(n.error){status(n.error.message,true);return}
  status("Response sent and customer notified.");await loadAll();
 }
@@ -85,7 +85,7 @@ $("reportForm").onsubmit=async e=>{
  const ins=await supabase.from("project_reports").insert({project_id:p.id,customer_id:p.customer_id,report_title:$("reportTitle").value.trim(),report_body:$("reportBody").value.trim(),progress,report_date:$("reportDate").value});
  if(ins.error){status(ins.error.message,true);return}
  const pu=await supabase.from("projects").update({progress,updated_at:new Date().toISOString()}).eq("id",p.id);if(pu.error){status(pu.error.message,true);return}
- const n=await supabase.from("notifications").insert({customer_id:p.customer_id,title:"New project progress report",message:"A new private progress report is available for "+p.project_name+" in your TW&D account.",notification_type:"PROJECT_REPORT"});if(n.error){status(n.error.message,true);return}
+ const n=await supabase.from("notifications").insert({customer_id:p.customer_id,title:"New project progress report",message:"A new private progress report is available for "+p.project_name+" in your TW&D account."});if(n.error){status(n.error.message,true);return}
  $("reportForm").reset();$("reportDate").value=new Date().toISOString().slice(0,10);status("Private report published and customer notified.");await loadAll();await openProject(p.id);
 };
 $("documentForm").onsubmit=async e=>{
@@ -95,14 +95,14 @@ $("documentForm").onsubmit=async e=>{
  const up=await supabase.storage.from("project-private").upload(path,file,{upsert:false});if(up.error){status(up.error.message,true);return}
  const ins=await supabase.from("project_documents").insert({project_id:p.id,customer_id:p.customer_id,document_name:file.name,document_type:file.type,storage_path:path});
  if(ins.error){await supabase.storage.from("project-private").remove([path]);status(ins.error.message,true);return}
- const n=await supabase.from("notifications").insert({customer_id:p.customer_id,title:"New private project document",message:"A new project document has been added to "+p.project_name+" in your secure TW&D account.",notification_type:"PROJECT_DOCUMENT"});if(n.error){status(n.error.message,true);return}
+ const n=await supabase.from("notifications").insert({customer_id:p.customer_id,title:"New private project document",message:"A new project document has been added to "+p.project_name+" in your secure TW&D account."});if(n.error){status(n.error.message,true);return}
  $("documentForm").reset();status("Private document uploaded and customer notified.");await openProject(p.id);
 };
 $("quoteForm").onsubmit=async e=>{
  e.preventDefault();const customer=$("quoteCustomer").value;
- const ins=await supabase.from("quotations").insert({customer_id:customer,project_id:$("quoteProject").value||null,quotation_number:$("quoteNumber").value.trim(),amount:Number($("quoteAmount").value),status:$("quoteStatus").value,description:$("quoteNotes").value.trim()});
+ const ins=await supabase.from("quotations").insert({customer_id:customer,project_id:$("quoteProject").value||null,quotation_number:$("quoteNumber").value.trim(),amount:Number($("quoteAmount").value),status:$("quoteStatus").value,notes:$("quoteNotes").value.trim()});
  if(ins.error){status(ins.error.message,true);return}
- const n=await supabase.from("notifications").insert({customer_id:customer,title:"Quotation update",message:"Quotation "+$("quoteNumber").value.trim()+" has been added to your TW&D account.",notification_type:"QUOTATION"});if(n.error){status(n.error.message,true);return}
+ const n=await supabase.from("notifications").insert({customer_id:customer,title:"Quotation update",message:"Quotation "+$("quoteNumber").value.trim()+" has been added to your TW&D account."});if(n.error){status(n.error.message,true);return}
  $("quoteForm").reset();status("Quotation saved and customer notified.");await loadAll();
 };
 (async()=>{await requireAdmin()})();
