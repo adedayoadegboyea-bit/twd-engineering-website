@@ -636,7 +636,6 @@ function onRecruitmentEdit(e) {
     approveAptitudeResult(testId, String(sheet.getRange(range.getRow(), 14).getValue() || '').trim());
   }
 }
-}
 
 /**
  * Sends the status email for a specific spreadsheet row.
