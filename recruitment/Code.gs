@@ -776,7 +776,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
  * It generates 50 questions without creating an applicant or sending email.
  */
 function recruitmentBuildInfo(){
-  return 'TW&D RECRUITMENT BUILD 2026-09-28-RESILIENT-AI-02';
+  return 'TW&D RECRUITMENT BUILD 2026-09-28-EMAIL-FALLBACK-03';
 }
 
 function testAptitudeAI(){
@@ -952,14 +952,13 @@ function sendTransactionalEmail_(to,subject,htmlBody) {
       }
     }
 
-    // Do not hide a Resend rate-limit problem behind a second provider error.
+    // Resend rate limits are temporary. Fall back to Apps Script MailApp
+    // so the applicant can still receive the confirmation immediately.
     if (lastError && /HTTP 429|rate.?limit/i.test(lastError)) {
-      throw new Error(
-        'Email provider rate limit reached. The application was saved successfully; the confirmation email will need to be retried.'
-      );
+      console.warn(lastError + ' Resend rate limit reached; falling back to MailApp.');
+    } else {
+      console.warn(lastError + ' Falling back to MailApp.');
     }
-
-    console.warn(lastError + ' Falling back to MailApp.');
   }
 
   if (MailApp.getRemainingDailyQuota() <= 0) {
