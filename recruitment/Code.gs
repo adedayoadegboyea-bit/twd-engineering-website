@@ -397,11 +397,7 @@ function sendStatusEmail(row) {
     '<p>Thank you for your interest in joining TW&D Engineering Consult & Services Ltd.</p>' +
     '<p>Regards,<br><b>' + CONFIG.COMPANY_NAME + '</b></p>';
 
-  MailApp.sendEmail({
-    to: email,
-    subject: subject,
-    htmlBody: body
-  });
+  sendTransactionalEmail_(email, subject, body);
 
   return 'Status email sent successfully to ' + email;
 }
