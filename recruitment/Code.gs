@@ -286,15 +286,18 @@ function submitApplication(data) {
 
   sheet.appendRow(row);
 
-  // Email failures must never cancel a valid application.
-  try { sendManagementNewApplicationEmail_(row); } catch (mailError) { console.error('Management email failed:', mailError); }
-  try { sendApplicantReceiptEmail_(row); } catch (mailError) { console.error('Applicant receipt email failed:', mailError); }
-
-
+  let applicantEmailSent = false;
+  let managementEmailSent = false;
+  let applicantEmailError = '';
+  try { managementEmailSent = !!sendManagementNewApplicationEmail_(row); } catch (e) { console.error(e); }
+  try { applicantEmailSent = !!sendApplicantReceiptEmail_(row); } catch (e) { applicantEmailError = e.message || String(e); console.error(e); }
   return {
     ok: true,
     id: id,
-    message: 'Application submitted successfully. Your reference is ' + id + '. A confirmation email has been sent.'
+    applicantEmailSent: applicantEmailSent,
+    managementEmailSent: managementEmailSent,
+    message: applicantEmailSent ? 'Application submitted successfully. Your reference is ' + id + '. A confirmation email was sent.' : 'Application submitted successfully. Your reference is ' + id + ', but the confirmation email could not be sent.',
+    emailError: applicantEmailError
   };
 }
 
@@ -322,7 +325,7 @@ function sendManagementNewApplicationEmail_(row) {
     '<p><b>CV:</b> ' + (cvUrl ? '<a href="' + cvUrl + '">Open CV</a>' : 'Not supplied') + '</p>' +
     '<p><b>Supporting document:</b> ' + (docsUrl ? '<a href="' + docsUrl + '">Open document</a>' : 'Not supplied') + '</p>';
 
-  sendTransactionalEmail_(CONFIG.MANAGEMENT_EMAIL, 'New TW&D job application: ' + position, html);
+  return sendTransactionalEmail_(CONFIG.MANAGEMENT_EMAIL, 'New TW&D job application: ' + position, html);
 }
 
 /**
@@ -334,7 +337,7 @@ function sendApplicantReceiptEmail_(row) {
   const email = row[3];
   const position = row[5];
 
-  sendTransactionalEmail_(
+  return sendTransactionalEmail_(
     email,
     'Application received — TW&D Engineering Consult & Services Ltd',
     '<p>Dear ' + escapeHtml_(name) + ',</p>' +
