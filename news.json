@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T09:42:53.625334+00:00",
+  "generated_at": "2026-09-28T10:12:02.309685+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,17 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Otti appeals to investors who relocated from Abia to return",
+      "summary": "Abia State Governor, Alex Otti, has appealed to investors who relocated from the state, as well as prospective investors, to return and take advantage of the business-friendly environment created by his administration. Otti made the appeal on Sunday while commissioning a hospitality facility built b",
+      "url": "https://punchng.com/otti-appeals-to-investors-who-relocated-from-abia-to-return/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T10:48:37+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
     {
       "title": "Ekiti showcases tourist attractions, woos investors",
       "summary": "Ekiti State Government is intensifying efforts to position tourism as a major economic driver, urging investors to develop sites like Arinta Waterfall. Read More: https://punchng.com/ekiti-showcases-tourist-attractions-woos-investors/",
@@ -38,6 +49,16 @@
       "source": "PUNCH",
       "published": "2026-09-28T10:29:28+00:00",
       "categories": []
+    },
+    {
+      "title": "Parents raise alarm over alleged extortion in Akwa Ibom unity school, seek FG’s intervention",
+      "summary": "Parents of students at the Federal Government College, Ikot Ekpene, Akwa Ibom State have appealed to the Minister of Education, Dr Tunji Alausa, to intervene in the alleged extortion and multiple charges by the school management and the Parent-Teacher Association, PTA of the institution. Mr Etim Iko",
+      "url": "https://dailypost.ng/2026/09/28/parents-raise-alarm-over-alleged-extortion-in-akwa-ibom-unity-school-seek-fgs-intervention/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T10:00:26+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "2027: Northern candidates should wait till 2031 to contest – Kano gov",
@@ -274,22 +295,6 @@
       "categories": [
         "property"
       ]
-    },
-    {
-      "title": "INEC must comply with Supreme Court judgment – Adeyanju",
-      "summary": "Human rights lawyer and political commentator, Deji Adeyanju, has called on the Independent National Electoral Commission, INEC, to immediately comply with the recent Supreme Court judgment on the Electoral Act. Adeyanju, in a statement issued on Monday, urged the commission to remove from its offic",
-      "url": "https://dailypost.ng/2026/09/28/inec-must-comply-with-supreme-court-judgment-adeyanju/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T08:01:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "Presidency tries to assuage concerns as Tinubu fails to return as announced",
-      "summary": "The presidency said the president would also attend events marking Nigeria’s 66th Independence Anniversary and the premiere of a film commemorating the late MKO Abiola. The post Presidency tries to assuage concerns as Tinubu fails to return as announced appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/912894-presidency-tries-to-assuage-concerns-as-tinubu-fails-to-return-as-announced.html",
-      "source": "Premium Times",
-      "published": "2026-09-28T07:54:07+00:00",
-      "categories": []
     }
   ]
 }
