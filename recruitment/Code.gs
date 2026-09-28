@@ -876,13 +876,23 @@ function notifyAptitudeAdmin_(row,score,assessment) {
 }
 
 function sendTransactionalEmail_(to,subject,htmlBody) {
-  const key=PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY');
-  if(key){
-    const response=UrlFetchApp.fetch('https://api.resend.com/emails',{method:'post',contentType:'application/json',headers:{Authorization:'Bearer '+key},muteHttpExceptions:true,payload:JSON.stringify({from:'TW&D Engineering Consult & Services Ltd <contact@twdengineeringconsult.com>',to:[to],subject:subject,html:htmlBody})});
-    if(response.getResponseCode()>=200 && response.getResponseCode()<300) return true;
-    throw new Error('Resend email failed: HTTP '+response.getResponseCode());
+  to = String(to || '').trim();
+  if (!to || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(to)) throw new Error('Invalid recipient email address.');
+  const key = String(PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY') || '').trim();
+  if (key) {
+    let lastError = '';
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const response = UrlFetchApp.fetch('https://api.resend.com/emails',{method:'post',contentType:'application/json',headers:{Authorization:'Bearer '+key},muteHttpExceptions:true,payload:JSON.stringify({from:'TW&D Engineering Consult & Services Ltd <contact@twdengineeringconsult.com>',to:[to],subject:subject,html:htmlBody})});
+        const code=response.getResponseCode();
+        if(code>=200 && code<300) return true;
+        lastError='Resend HTTP '+code+': '+response.getContentText().slice(0,500);
+        if(attempt===0 && (code===408 || code===429 || code>=500)) Utilities.sleep(2000); else break;
+      } catch(e) { lastError='Resend request failed: '+(e.message || String(e)); if(attempt===0) Utilities.sleep(2000); }
+    }
+    console.warn(lastError+' Falling back to MailApp.');
   }
   if(MailApp.getRemainingDailyQuota()<=0) throw new Error('Email quota exceeded.');
-  MailApp.sendEmail({to:to,subject:subject,htmlBody:htmlBody});
-  return true;
+  try { MailApp.sendEmail({to:to,subject:subject,htmlBody:htmlBody,body:String(htmlBody).replace(/<br\\s*\\/?>(\r?\n)?/gi,'\\n').replace(/<[^>]+>/g,'').trim()}); return true; }
+  catch(e) { throw new Error('MailApp delivery failed: '+(e.message || String(e))); }
 }
