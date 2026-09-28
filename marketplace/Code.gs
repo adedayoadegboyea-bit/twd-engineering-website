@@ -58,7 +58,7 @@ function setupMarketplace() {
     [
       "Timestamp","Listing ID","Status","Seller / Business","Email",
       "Phone / WhatsApp","Category","Location","Listing Title","Price",
-      "Condition","Description","Photo Folder","Photos Saved","Photo URLs"
+      "Condition","Description","Photo Folder","Photos Saved","Photo URLs","Video URLs"
     ]
   );
 
@@ -205,21 +205,21 @@ function submitListing(data) {
     throw new Error("Marketplace spreadsheet is not configured. Run setupMarketplace() first.");
   }
 
-  const photos = Array.isArray(data.photos) ? data.photos : [];
+  const media = Array.isArray(data.photos) ? data.photos : [];
   let totalBytes = 0;
 
-  photos.forEach(function(photo) {
+  media.forEach(function(photo) {
     if (!photo || !photo.data || !photo.name) return;
 
     const declaredSize = Number(photo.size || 0);
     if (declaredSize > CONFIG.MAX_FILE_BYTES) {
-      throw new Error("Photo is larger than 5 MB: " + clean_(photo.name));
+      throw new Error("Media file is larger than 5 MB: " + clean_(photo.name));
     }
     totalBytes += declaredSize;
   });
 
   if (totalBytes > CONFIG.MAX_TOTAL_FILE_BYTES) {
-    throw new Error("The combined photo upload is too large. Please keep all photos together below 15 MB.");
+    throw new Error("The combined photo/video upload is too large. Please keep all media together below 15 MB.");
   }
 
   const listingId =
@@ -232,8 +232,9 @@ function submitListing(data) {
   const listingFolder = mainFolder.createFolder(listingId + " - " + safeFolderName_(title));
 
   const savedPhotos = [];
+  const savedVideos = [];
 
-  photos.forEach(function(photo) {
+  media.forEach(function(photo) {
     if (!photo || !photo.data || !photo.name) return;
 
     try {
@@ -241,10 +242,10 @@ function submitListing(data) {
       const bytes = Utilities.base64Decode(base64);
 
       if (bytes.length > CONFIG.MAX_FILE_BYTES) {
-        throw new Error("Photo exceeds the 5 MB limit.");
+        throw new Error("Media file exceeds the 5 MB limit.");
       }
 
-      const contentType = allowedImageType_(photo.type);
+      const contentType = allowedMediaType_(photo.type);
       const blob = Utilities.newBlob(bytes, contentType, safeFileName_(photo.name));
       const file = listingFolder.createFile(blob);
 
@@ -254,11 +255,8 @@ function submitListing(data) {
         console.error("Public photo sharing could not be enabled:", sharingError);
       }
 
-      savedPhotos.push({
-        name: file.getName(),
-        id: file.getId(),
-        url: "https://drive.google.com/uc?export=view&id=" + file.getId()
-      });
+      const mediaRecord = {name:file.getName(),id:file.getId(),url:"https://drive.google.com/uc?export=view&id=" + file.getId(),type:contentType};
+      if (contentType.indexOf("video/") === 0) savedVideos.push(mediaRecord); else savedPhotos.push(mediaRecord);
     } catch (photoError) {
       console.error("Photo save error:", photoError);
       throw new Error("Could not save photo: " + clean_(photo.name));
@@ -266,7 +264,7 @@ function submitListing(data) {
   });
 
   const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
-  const sheet = spreadsheet.getSheetByName(CONFIG.SHEET_NAME);
+  const sheet = getOrCreateSheet_(spreadsheet, CONFIG.SHEET_NAME, ["Timestamp","Listing ID","Status","Seller / Business","Email","Phone / WhatsApp","Category","Location","Listing Title","Price","Condition","Description","Photo Folder","Photos Saved","Photo URLs","Video URLs"]);
 
   if (!sheet) {
     throw new Error("Marketplace Listings sheet was not found. Run setupMarketplace() again.");
@@ -287,7 +285,8 @@ function submitListing(data) {
     description,
     listingFolder.getUrl(),
     savedPhotos.length,
-    JSON.stringify(savedPhotos.map(function(photo) { return photo.url; }))
+    JSON.stringify(savedPhotos.map(function(photo) { return photo.url; })),
+    JSON.stringify(savedVideos.map(function(video) { return video.url; }))
   ]);
 
   const listingInfo = {
@@ -302,6 +301,7 @@ function submitListing(data) {
     condition: condition,
     description: description,
     photoCount: savedPhotos.length,
+    videoCount: savedVideos.length,
     folderUrl: listingFolder.getUrl()
   };
 
@@ -458,7 +458,7 @@ function safeSendManagementNotification_(data) {
       "Title: " + data.title + "\n" +
       "Price: " + data.price + "\n" +
       "Condition: " + data.condition + "\n" +
-      "Photos saved: " + data.photoCount + "\n\n" +
+      "Photos saved: " + data.photoCount + "\n" + "Videos saved: " + (data.videoCount || 0) + "\n\n" +
       "Description:\n" + data.description + "\n\n" +
       "Drive folder: " + data.folderUrl + "\n\n" +
       "STATUS: PENDING REVIEW";
@@ -574,7 +574,9 @@ function getApprovedListings_() {
     return status === "APPROVED" && !isCompanyOrDemoSeller;
   }).map(function(row) {
     let photoUrls = [];
+    let videoUrls = [];
     const rawPhotos = index["Photo URLs"] !== undefined ? row[index["Photo URLs"]] : "";
+    const rawVideos = index["Video URLs"] !== undefined ? row[index["Video URLs"]] : "";
 
     if (rawPhotos) {
       try {
@@ -590,6 +592,17 @@ function getApprovedListings_() {
         // Support older rows where Photo URLs may contain one plain URL.
         const legacyUrl = String(rawPhotos).trim();
         if (legacyUrl && legacyUrl !== "[]") photoUrls = [legacyUrl];
+      }
+    }
+
+    if (rawVideos) {
+      try {
+        const parsedVideos = JSON.parse(String(rawVideos));
+        if (Array.isArray(parsedVideos)) videoUrls = parsedVideos.filter(Boolean).map(function(url){return String(url).trim();}).filter(Boolean);
+        else if (typeof parsedVideos === "string" && parsedVideos.trim()) videoUrls = [parsedVideos.trim()];
+      } catch (error) {
+        const legacyVideoUrl = String(rawVideos).trim();
+        if (legacyVideoUrl && legacyVideoUrl !== "[]") videoUrls = [legacyVideoUrl];
       }
     }
 
@@ -612,7 +625,8 @@ function getApprovedListings_() {
       description: String(row[index["Description"]] || ""),
       phone: String(row[index["Phone / WhatsApp"]] || ""),
       images: photoUrls,
-      image: photoUrls.length ? photoUrls[0] : ""
+      image: photoUrls.length ? photoUrls[0] : "",
+      videos: videoUrls
     };
   }).filter(function(item) {
     return Array.isArray(item.images) && item.images.length > 0;
@@ -675,10 +689,13 @@ function safeFileName_(value) {
   return name || ("photo-" + new Date().getTime() + ".jpg");
 }
 
-function allowedImageType_(type) {
-  const allowed = ["image/jpeg", "image/png", "image/webp"];
-  return allowed.indexOf(type) >= 0 ? type : "image/jpeg";
+function allowedMediaType_(type) {
+  const allowed = ["image/jpeg","image/png","image/webp","video/mp4","video/webm","video/quicktime"];
+  if (allowed.indexOf(type) >= 0) return type;
+  throw new Error("Unsupported media type. Use JPG, PNG, WEBP, MP4, WEBM or MOV.");
 }
+
+function allowedImageType_(type) { return allowedMediaType_(type); }
 
 function safeErrorMessage_(error) {
   if (!error) return "Please try again.";
