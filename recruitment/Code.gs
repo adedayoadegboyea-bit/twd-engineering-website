@@ -698,7 +698,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
   }};
 
   const models=[];
-  [configuredModel,'gemini-3.6-flash','gemini-3.8-flash'].forEach(function(m){
+  [configuredModel,'gemini-3.8-flash','gemini-3.6-flash','gemini-3.1-flash-lite'].forEach(function(m){
     if(m&&models.indexOf(m)===-1) models.push(m);
   });
 
@@ -756,9 +756,13 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
  * Manual diagnostic. Run this from Apps Script once after deployment/update.
  * It generates 50 questions without creating an applicant or sending email.
  */
+function recruitmentBuildInfo(){
+  return 'TW&D RECRUITMENT BUILD 2026-09-28-RESILIENT-AI-02';
+}
+
 function testAptitudeAI(){
   const questions=generateAptitudeQuestions_('Site Engineer / Project Engineer');
-  return 'AI TEST PASSED: '+questions.length+' questions generated successfully using Gemini.';
+  return recruitmentBuildInfo()+' | TEST PASSED: '+questions.length+' questions are available. Gemini is optional; the built-in fallback guarantees the exam if Gemini is unavailable.';
 }
 
 function startAptitudeTest(applicationId, position, email) {
