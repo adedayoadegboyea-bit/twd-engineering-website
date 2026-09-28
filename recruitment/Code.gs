@@ -986,7 +986,12 @@ function sendTransactionalEmail_(to,subject,htmlBody) {
 
   // Resend is attempted once only. A rate limit is never retried synchronously.
   // This prevents email-provider problems from blocking the recruitment workflow.
-  if (key) {
+  const resendPausedUntil = Number(
+    PropertiesService.getScriptProperties().getProperty('RESEND_PAUSED_UNTIL') || 0
+  );
+  const resendPaused = resendPausedUntil > Date.now();
+
+  if (key && !resendPaused) {
     try {
       const response = UrlFetchApp.fetch(
         'https://api.resend.com/emails',
@@ -1007,9 +1012,20 @@ function sendTransactionalEmail_(to,subject,htmlBody) {
       const code = response.getResponseCode();
       const raw = response.getContentText();
 
-      if (code >= 200 && code < 300) return true;
+      if (code >= 200 && code < 300) {
+        PropertiesService.getScriptProperties().deleteProperty('RESEND_PAUSED_UNTIL');
+        return true;
+      }
 
-      console.warn('Resend unavailable HTTP ' + code + '. Falling back to MailApp immediately.');
+      if (code === 429) {
+        PropertiesService.getScriptProperties().setProperty(
+          'RESEND_PAUSED_UNTIL',
+          String(Date.now() + 60 * 60 * 1000)
+        );
+        console.warn('Resend HTTP 429. Resend paused for 60 minutes; using MailApp.');
+      } else {
+        console.warn('Resend unavailable HTTP ' + code + '. Falling back to MailApp immediately.');
+      }
     } catch (e) {
       console.warn('Resend request failed. Falling back to MailApp: ' + (e.message || String(e)));
     }
