@@ -614,7 +614,7 @@ function generateAptitudeQuestions_(position) {
   const key=String(props.getProperty('GEMINI_API_KEY')||'').trim();
   if(!key) throw new Error('GEMINI_API_KEY is missing from Recruitment Apps Script → Project Settings → Script Properties.');
 
-  const model=String(props.getProperty('GEMINI_MODEL')||'gemini-2.5-flash').trim();
+  const model=String(props.getProperty('GEMINI_MODEL')||'gemini-3.8-flash').trim();
   const prompt =
     'Create exactly 50 concise multiple-choice aptitude questions for a Nigerian engineering and construction company applicant applying for the role: '+position+'. '+
     'Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios appropriate to that role. '+
@@ -795,7 +795,7 @@ function submitAptitudeTest(testId, answers) {
 function markAptitudeWithAI_(position,questions,answers,score) {
   const key=PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY');
   if(!key) return 'Automatic score: '+score+'/50. AI assessment pending administrator review.';
-  const model=PropertiesService.getScriptProperties().getProperty('GEMINI_MODEL') || 'gemini-2.5-flash';
+  const model=PropertiesService.getScriptProperties().getProperty('GEMINI_MODEL') || 'gemini-3.8-flash';
   const compact=questions.map(function(q,i){return {n:i+1,q:q.question,options:q.options,correct:q.answer,applicant:answers[i]};});
   const prompt='Assess an applicant aptitude test for the role '+position+'. There are 50 multiple-choice questions. The automatic score is '+score+'/50. Review the answer pattern and provide a concise professional assessment for the administrator: strengths, notable gaps, safety/ethics concerns if any, and a suggested review focus. Do not make a final hiring decision. Return plain text. DATA: '+JSON.stringify(compact);
   const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent?key='+encodeURIComponent(key);
