@@ -619,8 +619,13 @@ function generateAptitudeQuestions_(position) {
   for(let batch=0;batch<5;batch++){
     const first=batch*10+1;
     const last=first+9;
-    const questions=generateAptitudeBatch_(position,first,last,key,configuredModel);
-    questions.forEach(function(q){allQuestions.push(q);});
+    try {
+      const questions=generateAptitudeBatch_(position,first,last,key,configuredModel);
+      questions.forEach(function(q){allQuestions.push(q);});
+    } catch(batchError) {
+      console.warn('Gemini batch '+first+'-'+last+' failed: '+batchError.message);
+      return fallbackAptitudeQuestions_(position);
+    }
   }
   if(allQuestions.length!==50) throw new Error('AI generated '+allQuestions.length+' questions instead of exactly 50.');
   allQuestions.forEach(function(q,i){
@@ -628,6 +633,48 @@ function generateAptitudeQuestions_(position) {
       throw new Error('Invalid AI question at number '+(i+1)+'.');
   });
   return allQuestions;
+}
+
+
+function fallbackAptitudeQuestions_(position){
+  const bank=[
+    ["Before starting excavation work, what should be confirmed first?",["The approved drawings, permits and underground-service information","The paint colour for the site office","The lunch schedule","The number of visitors"],0],
+    ["What is the main purpose of a risk assessment?",["To identify hazards and establish suitable controls","To increase paperwork without changing work","To replace all site supervision","To determine staff salaries"],0],
+    ["A worker notices damaged electrical insulation. What is the safest action?",["Stop using the equipment and report it for isolation and repair","Cover it with paper and continue","Ignore it if the equipment still works","Ask another worker to use it"],0],
+    ["Why are PPE requirements important on a construction site?",["They reduce exposure to identified workplace hazards","They remove the need for training","They guarantee that accidents cannot happen","They replace safe work procedures"],0],
+    ["What should a project engineer do when site conditions differ materially from the drawings?",["Document the difference and seek the appropriate technical review before proceeding","Change the drawings personally without approval","Continue regardless of the difference","Delete the affected drawing"],0],
+    ["What is the best response to a near miss?",["Report and investigate it so controls can be improved","Hide it because nobody was injured","Wait until the end of the project","Blame the nearest worker"],0],
+    ["Why is concrete curing important?",["It supports proper strength development and durability","It makes concrete change colour","It eliminates the need for reinforcement","It prevents all cracking"],0],
+    ["What should be checked before lifting a heavy load?",["Load weight, lifting equipment capacity, rigging and the lifting plan","Only the colour of the crane","The weather forecast alone","The worker's phone battery"],0],
+    ["What does good quality control primarily achieve?",["Conformance of work and materials with specified requirements","Faster work regardless of defects","Elimination of project documentation","Automatic approval of all variations"],0],
+    ["If a drawing revision is issued, what should happen to obsolete copies?",["They should be controlled or withdrawn so the current revision is used","They should remain on every workbench","They should be mixed with current drawings","They should be given to visitors"],0],
+    ["What is a key reason for keeping accurate site records?",["They provide traceable evidence of work, decisions and progress","They make meetings longer","They replace engineering calculations","They prevent every dispute"],0],
+    ["What should an employee do if asked to falsify a project record?",["Refuse and report the concern through the appropriate channel","Sign it immediately","Delete the original record","Ask a colleague to sign it"],0],
+    ["What is the purpose of a method statement?",["To describe how a task will be carried out safely and correctly","To advertise the contractor","To replace the contract","To calculate employee salaries"],0],
+    ["What is the safest approach when a worker is unsure about a procedure?",["Pause and seek clarification from the responsible supervisor or competent person","Guess and continue","Copy an unrelated procedure","Ignore the uncertainty"],0],
+    ["What is a practical purpose of surveying before construction?",["To establish reliable positions, levels and site information","To choose staff uniforms","To replace structural design","To determine electricity tariffs"],0],
+    ["What does a borehole drilling investigation help determine?",["Subsurface conditions and groundwater information relevant to the investigation","The colour of a building facade","The project payroll","The office seating plan"],0],
+    ["Why is geotechnical investigation important to building design?",["It helps characterize soil and groundwater conditions for foundation decisions","It guarantees zero construction cost changes","It replaces architectural drawings","It removes the need for site inspection"],0],
+    ["What should happen when a safety control is found ineffective?",["Work should be reviewed and the control strengthened before unsafe work continues","The finding should be ignored","The control should be removed permanently","The worker should be blamed"],0],
+    ["What is the purpose of a toolbox talk?",["To communicate task-specific hazards, controls and expectations before work","To approve staff leave","To replace all formal training","To discuss private matters"],0],
+    ["Why should materials be inspected on delivery?",["To verify identity, condition and required specifications before use","To increase storage time","To avoid keeping records","To change the project scope"],0],
+    ["What should a project manager do when a delay is identified?",["Assess its cause and impact, document it and coordinate corrective action","Hide it from the client","Stop all unrelated work automatically","Change the completion date without review"],0],
+    ["What is the purpose of a bill of quantities?",["To describe measured work items and quantities for pricing and control","To replace architectural drawings","To record employee attendance","To certify every completed activity"],0],
+    ["What is a professional way to handle a client complaint?",["Listen, document the issue and respond through the appropriate project process","Argue with the client","Delete the complaint","Promise an outcome without checking facts"],0],
+    ["Why should site access be controlled?",["To manage safety, security and authorized movement around the work area","To prevent all deliveries","To avoid keeping attendance records","To reduce the need for supervision"],0],
+    ["What is the main purpose of a project programme?",["To plan activities, sequencing, resources and target dates","To replace the contract","To determine employee passwords","To eliminate inspections"],0]
+  ];
+  const questions=[];
+  for(let i=0;i<50;i++){
+    const base=bank[i%bank.length];
+    const cycle=Math.floor(i/bank.length);
+    questions.push({
+      question:(i+1)+'. '+base[0]+' Role focus: '+position+'.',
+      options:base[1].slice(),
+      answer:base[2]
+    });
+  }
+  return questions;
 }
 
 function generateAptitudeBatch_(position,first,last,key,configuredModel){
