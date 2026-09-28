@@ -877,7 +877,7 @@ function notifyAptitudeAdmin_(row,score,assessment) {
 
 function sendTransactionalEmail_(to,subject,htmlBody) {
   to = String(to || '').trim();
-  if (!to || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(to)) throw new Error('Invalid recipient email address.');
+  if (!to || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) throw new Error('Invalid recipient email address.');
   const key = String(PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY') || '').trim();
   if (key) {
     let lastError = '';
@@ -893,6 +893,6 @@ function sendTransactionalEmail_(to,subject,htmlBody) {
     console.warn(lastError+' Falling back to MailApp.');
   }
   if(MailApp.getRemainingDailyQuota()<=0) throw new Error('Email quota exceeded.');
-  try { MailApp.sendEmail({to:to,subject:subject,htmlBody:htmlBody,body:String(htmlBody).replace(/<br\\s*\\/?>(\r?\n)?/gi,'\\n').replace(/<[^>]+>/g,'').trim()}); return true; }
+  try { MailApp.sendEmail({to:to,subject:subject,htmlBody:htmlBody,body:String(htmlBody).replace(/<br\s*\/?>(\r?\n)?/gi,'\\n').replace(/<[^>]+>/g,'').trim()}); return true; }
   catch(e) { throw new Error('MailApp delivery failed: '+(e.message || String(e))); }
 }
