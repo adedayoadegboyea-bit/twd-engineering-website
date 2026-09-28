@@ -289,8 +289,8 @@ function submitApplication(data) {
   let applicantEmailSent = false;
   let managementEmailSent = false;
   let applicantEmailError = '';
-  try { managementEmailSent = !!sendManagementNewApplicationEmail_(row); } catch (e) { console.error(e); }
-  try { applicantEmailSent = !!sendApplicantReceiptEmail_(row); } catch (e) { applicantEmailError = e.message || String(e); console.error(e); }
+  try { managementEmailSent = !!sendManagementNewApplicationEmail_(row); } catch (e) { console.error('Management email failed: ' + (e.message || String(e))); }
+  try { applicantEmailSent = !!sendApplicantReceiptEmail_(row); } catch (e) { applicantEmailError = 'Confirmation email failed: ' + (e.message || String(e)); console.error('Applicant confirmation email failed: ' + (e.message || String(e))); }
   return {
     ok: true,
     id: id,
@@ -509,6 +509,13 @@ function testStatusEmail() {
 /**
  * Tests basic outgoing email without touching the Applications sheet.
  */
+function testApplicantConfirmationEmail(testRecipient) {
+  const to = String(testRecipient || '').trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) throw new Error('Enter a valid test recipient email.');
+  const result = sendTransactionalEmail_(to, 'TW&D Recruitment Email Diagnostic', '<p>This is a diagnostic email from the TW&D recruitment system.</p><p>If you received it, outgoing email is working.</p>');
+  return 'SUCCESS: confirmation-email transport is working for ' + to;
+}
+
 function testRecruitmentEmail() {
   MailApp.sendEmail({
     to: CONFIG.MANAGEMENT_EMAIL,
