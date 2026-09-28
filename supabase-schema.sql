@@ -4,7 +4,7 @@ create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   full_name text,
   phone text,
-  account_type text not null default 'customer' check (account_type in ('customer','seller','admin')),
+  account_type text not null default 'customer' check (account_type in ('customer','seller','worker','admin')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -214,3 +214,141 @@ create index if not exists project_documents_customer_id_idx on public.project_d
 create index if not exists service_requests_customer_id_idx on public.service_requests(customer_id);
 create index if not exists notifications_customer_id_idx on public.notifications(customer_id);
 create index if not exists quotations_customer_id_idx on public.quotations(customer_id);
+
+
+-- ============================================================
+-- TW&D WORKER + ATTENDANCE + PAYROLL + REPORTING
+-- ============================================================
+
+create table if not exists public.workers (
+  id uuid primary key references auth.users(id) on delete cascade,
+  employee_code text unique not null,
+  bank_name text,
+  account_name text,
+  account_number text,
+  job_title text,
+  department text,
+  employment_status text not null default 'ACTIVE',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.attendance_codes (
+  id uuid primary key default gen_random_uuid(),
+  work_date date not null default current_date,
+  code text not null,
+  generated_by uuid references auth.users(id) on delete set null,
+  expires_at timestamptz not null,
+  created_at timestamptz not null default now(),
+  unique(work_date, code)
+);
+
+create table if not exists public.worker_attendance (
+  id uuid primary key default gen_random_uuid(),
+  worker_id uuid not null references auth.users(id) on delete cascade,
+  work_date date not null default current_date,
+  attendance_code_id uuid references public.attendance_codes(id) on delete set null,
+  check_in timestamptz not null default now(),
+  check_out timestamptz,
+  status text not null default 'PRESENT',
+  created_at timestamptz not null default now(),
+  unique(worker_id, work_date)
+);
+
+create table if not exists public.worker_reports (
+  id uuid primary key default gen_random_uuid(),
+  worker_id uuid not null references auth.users(id) on delete cascade,
+  report_date date not null default current_date,
+  report_title text not null,
+  report_body text not null,
+  attachment_path text,
+  status text not null default 'SUBMITTED',
+  admin_notes text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.worker_payments (
+  id uuid primary key default gen_random_uuid(),
+  worker_id uuid not null references auth.users(id) on delete cascade,
+  pay_period text not null,
+  amount numeric(15,2) not null default 0,
+  currency text not null default 'NGN',
+  status text not null default 'PENDING',
+  payment_date date,
+  reference text,
+  notes text,
+  created_at timestamptz not null default now()
+);
+
+alter table public.workers enable row level security;
+alter table public.attendance_codes enable row level security;
+alter table public.worker_attendance enable row level security;
+alter table public.worker_reports enable row level security;
+alter table public.worker_payments enable row level security;
+
+drop policy if exists "Workers can view own worker profile" on public.workers;
+create policy "Workers can view own worker profile"
+on public.workers for select to authenticated
+using(id=auth.uid() or public.is_admin());
+
+drop policy if exists "Admins can manage workers" on public.workers;
+create policy "Admins can manage workers"
+on public.workers for all to authenticated
+using(public.is_admin()) with check(public.is_admin());
+
+drop policy if exists "Workers can view active attendance codes" on public.attendance_codes;
+create policy "Workers can view active attendance codes"
+on public.attendance_codes for select to authenticated
+using(expires_at > now() and (exists(select 1 from public.workers w where w.id=auth.uid()) or public.is_admin()));
+
+drop policy if exists "Admins can manage attendance codes" on public.attendance_codes;
+create policy "Admins can manage attendance codes"
+on public.attendance_codes for all to authenticated
+using(public.is_admin()) with check(public.is_admin());
+
+drop policy if exists "Workers can manage own attendance" on public.worker_attendance;
+create policy "Workers can manage own attendance"
+on public.worker_attendance for select to authenticated
+using(worker_id=auth.uid() or public.is_admin());
+
+drop policy if exists "Workers can check in" on public.worker_attendance;
+create policy "Workers can check in"
+on public.worker_attendance for insert to authenticated
+with check(worker_id=auth.uid());
+
+drop policy if exists "Admins can manage attendance" on public.worker_attendance;
+create policy "Admins can manage attendance"
+on public.worker_attendance for all to authenticated
+using(public.is_admin()) with check(public.is_admin());
+
+drop policy if exists "Workers can view own reports" on public.worker_reports;
+create policy "Workers can view own reports"
+on public.worker_reports for select to authenticated
+using(worker_id=auth.uid() or public.is_admin());
+
+drop policy if exists "Workers can submit reports" on public.worker_reports;
+create policy "Workers can submit reports"
+on public.worker_reports for insert to authenticated
+with check(worker_id=auth.uid());
+
+drop policy if exists "Admins can manage worker reports" on public.worker_reports;
+create policy "Admins can manage worker reports"
+on public.worker_reports for all to authenticated
+using(public.is_admin()) with check(public.is_admin());
+
+drop policy if exists "Workers can view own payments" on public.worker_payments;
+create policy "Workers can view own payments"
+on public.worker_payments for select to authenticated
+using(worker_id=auth.uid() or public.is_admin());
+
+drop policy if exists "Admins can manage worker payments" on public.worker_payments;
+create policy "Admins can manage worker payments"
+on public.worker_payments for all to authenticated
+using(public.is_admin()) with check(public.is_admin());
+
+create index if not exists workers_employee_code_idx on public.workers(employee_code);
+create index if not exists attendance_codes_date_idx on public.attendance_codes(work_date);
+create index if not exists worker_attendance_worker_date_idx on public.worker_attendance(worker_id,work_date);
+create index if not exists worker_reports_worker_date_idx on public.worker_reports(worker_id,report_date);
+create index if not exists worker_payments_worker_period_idx on public.worker_payments(worker_id,pay_period);
