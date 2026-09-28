@@ -628,8 +628,8 @@ function onRecruitmentEdit(e) {
   // Aptitude result approval: management changes Admin Decision (column 14)
   // to APPROVED after reviewing the AI score/report.
   if (sheet.getName() === 'Aptitude Tests') {
-    if (range.getColumn() !== 13) return;
-    const decision = String(sheet.getRange(range.getRow(), 13).getValue() || '').trim().toUpperCase();
+    if (range.getColumn() !== 14) return;
+    const decision = String(sheet.getRange(range.getRow(), 14).getValue() || '').trim().toUpperCase();
     if (decision !== 'APPROVED') return;
     const testId = String(sheet.getRange(range.getRow(), 1).getValue() || '').trim();
     if (!testId) return;
@@ -1095,7 +1095,7 @@ function approveAptitudeResult(testId,adminNotes) {
     if(String(row[4])!=='SUBMITTED_AI_MARKED_PENDING_ADMIN') throw new Error('This aptitude result is not awaiting administrator approval.');
     const score100=Number(row[9]||0),assessment=String(row[10]||''),notes=String(adminNotes||row[13]||'').trim();
     const releasedAt=new Date();
-    sheet.getRange(r+1,13,1,3).setValues([['APPROVED',notes,releasedAt]]);
+    sheet.getRange(r+1,14,1,3).setValues([['APPROVED',notes,releasedAt]]);
     sendAptitudeResultToApplicant_(row,score100,assessment,notes,releasedAt);
     return 'Aptitude result approved and released to the applicant.';
   }
