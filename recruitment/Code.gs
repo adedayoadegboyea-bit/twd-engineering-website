@@ -103,6 +103,21 @@ function getRecruitmentSpreadsheet_() {
     }
   }
 
+  // Reuse the existing recruitment spreadsheet if this project has lost its
+  // Script Property, rather than silently creating a second spreadsheet.
+  const files = DriveApp.getFilesByName(CONFIG.COMPANY_NAME + ' Recruitment');
+  if (files.hasNext()) {
+    const file = files.next();
+    try {
+      const ss = SpreadsheetApp.openById(file.getId());
+      props.setProperty('SHEET_ID', ss.getId());
+      return ss;
+    } catch (err) {
+      // Continue below and create a valid spreadsheet if the matching file
+      // is not a spreadsheet or cannot be opened.
+    }
+  }
+
   const ss = SpreadsheetApp.create(CONFIG.COMPANY_NAME + ' Recruitment');
   props.setProperty('SHEET_ID', ss.getId());
   return ss;
@@ -334,13 +349,47 @@ function submitApplication(data) {
     );
   }
 
+  // Send both confirmation messages immediately after the application row is
+  // safely stored. If email delivery fails, the application remains recorded
+  // and the exact error is written to the sheet for retry/diagnosis.
+  let applicantEmailSent = false;
+  let managementEmailSent = false;
+  const emailErrors = [];
+
+  try {
+    sendApplicantReceiptEmail_(row);
+    applicantEmailSent = true;
+    sheet.getRange(applicationRowNumber, 24).setValue('SENT');
+  } catch (e) {
+    emailErrors.push('Applicant email: ' + (e.message || String(e)));
+    sheet.getRange(applicationRowNumber, 24).setValue('PENDING');
+  }
+
+  try {
+    sendManagementNewApplicationEmail_(row);
+    managementEmailSent = true;
+    sheet.getRange(applicationRowNumber, 25).setValue('SENT');
+  } catch (e) {
+    emailErrors.push('Management email: ' + (e.message || String(e)));
+    sheet.getRange(applicationRowNumber, 25).setValue('PENDING');
+  }
+
+  if (emailErrors.length) {
+    sheet.getRange(applicationRowNumber, 26).setValue(emailErrors.join(' | ').slice(0, 1000));
+  }
+
+  const ssUrl = sheet.getParent().getUrl();
+
   return {
     ok: true,
     id: id,
-    applicantEmailSent: false,
-    managementEmailSent: false,
-    emailQueued: true,
-    message: 'Application submitted successfully. Your reference is ' + id + '. Your confirmation email has been queued for automatic delivery.'
+    applicantEmailSent: applicantEmailSent,
+    managementEmailSent: managementEmailSent,
+    emailQueued: emailErrors.length > 0,
+    spreadsheetUrl: ssUrl,
+    message: 'Application submitted successfully. Your reference is ' + id +
+      '. Confirmation email: ' + (applicantEmailSent ? 'sent.' : 'pending.') +
+      ' Your application has been recorded for management review.'
   };
 }
 
