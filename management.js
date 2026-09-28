@@ -17,7 +17,7 @@ async function loadAll(){
  const [c,p,r,q]=await Promise.all([
   supabase.from("profiles").select("id,full_name,phone,account_type").order("created_at",{ascending:false}),
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
-  supabase.from("service_requests").select("id,customer_id,service_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
+  supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
   supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100)
  ]);
  const firstErr=c.error||p.error||r.error||q.error;
@@ -33,7 +33,7 @@ function renderProjects(){
  document.querySelectorAll("[data-id]").forEach(el=>el.onclick=()=>openProject(el.dataset.id));
 }
 function renderRequests(){
- $("requestsList").innerHTML=requests.map(x=>'<div class="mgmt-row"><strong>'+esc(x.subject)+'</strong><span>'+esc(customerName(x.customer_id))+" • "+esc(x.service_type||"GENERAL ENQUIRY")+" • "+esc(x.status)+"</span><small>"+esc(x.message||"")+'</small><div class="request-response"><textarea rows="2" data-response-for="'+esc(x.id)+'" placeholder="Write a response to the customer"></textarea><button class="mgmt-btn small" data-respond="'+esc(x.id)+'">Respond & Notify</button></div></div>').join("")||"<p>No service requests.</p>";
+ $("requestsList").innerHTML=requests.map(x=>'<div class="mgmt-row"><strong>'+esc(x.subject)+'</strong><span>'+esc(customerName(x.customer_id))+" • "+esc(x.request_type||"GENERAL ENQUIRY")+" • "+esc(x.status)+"</span><small>"+esc(x.message||"")+'</small><div class="request-response"><textarea rows="2" data-response-for="'+esc(x.id)+'" placeholder="Write a response to the customer"></textarea><button class="mgmt-btn small" data-respond="'+esc(x.id)+'">Respond & Notify</button></div></div>').join("")||"<p>No service requests.</p>";
  document.querySelectorAll("[data-respond]").forEach(b=>b.onclick=()=>respondToRequest(b.dataset.respond));
 }
 function renderQuotations(){
