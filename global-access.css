@@ -1,0 +1,11 @@
+/* TW&D GLOBAL ACCESS NAVIGATION — unified across the public website */
+.tw-global-access{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:9990;width:58px;background:rgba(3,27,56,.94);border:1px solid rgba(247,189,24,.35);border-radius:18px;padding:8px;box-shadow:0 18px 50px rgba(0,0,0,.22);backdrop-filter:blur(18px);display:flex;flex-direction:column;gap:5px}
+.tw-global-access a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;color:#dce7f5;text-decoration:none;font:800 8px/1 Inter,Arial,sans-serif;letter-spacing:.5px;text-transform:uppercase;text-align:center;transition:.22s ease}
+.tw-global-access a:hover,.tw-global-access a:focus-visible{background:#f7bd18;color:#031b38;transform:translateX(-2px);outline:none}
+.tw-global-access .tw-ga-home{border-bottom:1px solid rgba(255,255,255,.12);border-radius:0 0 11px 11px;margin-bottom:3px}
+.tw-global-access .tw-ga-account{color:#f7bd18}
+.tw-global-access .tw-ga-contact{background:rgba(255,255,255,.08)}
+.tw-global-access-label{position:absolute;right:68px;top:50%;transform:translateY(-50%);white-space:nowrap;background:#031b38;color:#f7bd18;border:1px solid rgba(247,189,24,.3);border-radius:9px;padding:8px 10px;font:800 8px/1 Inter,Arial,sans-serif;letter-spacing:1.2px;opacity:0;pointer-events:none;transition:.2s}
+.tw-global-access:hover .tw-global-access-label{opacity:1}
+@media(max-width:900px){.tw-global-access{top:auto;bottom:14px;right:50%;transform:translateX(50%);width:auto;max-width:calc(100vw - 18px);flex-direction:row;padding:7px;border-radius:16px;overflow-x:auto;gap:4px}.tw-global-access a{width:auto;min-width:58px;height:40px;padding:0 8px}.tw-global-access .tw-ga-home{border-bottom:0;border-right:1px solid rgba(255,255,255,.12);border-radius:0 11px 11px 0;margin:0 3px 0 0}.tw-global-access-label{display:none}body{padding-bottom:70px}}
+@media(prefers-reduced-motion:reduce){.tw-global-access a{transition:none}}
