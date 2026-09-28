@@ -29,7 +29,10 @@ const HEADERS = [
   'Aptitude Test Status',
   'Aptitude Score',
   'Aptitude Submitted At',
-  'AI Assessment'
+  'AI Assessment',
+  'Applicant Email Status',
+  'Management Email Status',
+  'Email Error'
 ];
 
 const VALID_STATUSES = [
