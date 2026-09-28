@@ -4,6 +4,7 @@ create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   full_name text,
   phone text,
+  email text,
   account_type text not null default 'customer' check (account_type in ('customer','seller','worker','admin')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -93,9 +94,9 @@ create table if not exists public.seller_profiles (
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path=public as $fn$
 begin
-  insert into public.profiles(id,full_name,phone)
-  values(new.id,coalesce(new.raw_user_meta_data->>'full_name',''),coalesce(new.raw_user_meta_data->>'phone',''))
-  on conflict(id) do update set full_name=excluded.full_name,phone=excluded.phone,updated_at=now();
+  insert into public.profiles(id,full_name,phone,email)
+  values(new.id,coalesce(new.raw_user_meta_data->>'full_name',''),coalesce(new.raw_user_meta_data->>'phone',''),new.email)
+  on conflict(id) do update set full_name=excluded.full_name,phone=excluded.phone,email=excluded.email,updated_at=now();
   return new;
 end;
 $fn$;
@@ -434,3 +435,7 @@ $$;
 
 revoke all on function public.admin_generate_attendance_code() from public;
 grant execute on function public.admin_generate_attendance_code() to authenticated;
+
+
+alter table public.profiles add column if not exists email text;
+update public.profiles p set email=u.email from auth.users u where u.id=p.id and (p.email is null or p.email<>u.email);
