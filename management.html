@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>TW&D Management Portal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="account.css"><link rel="stylesheet" href="management.css">
+</head>
+<body>
+<header class="mgmt-header"><div class="mgmt-nav"><a href="index.html" class="mgmt-brand"><img src="assets/twd-luxury-logo.svg" alt="TW&D Engineering"><span>TW&D ENGINEERING<br>MANAGEMENT</span></a><button id="signout" class="mgmt-signout" hidden>Sign Out</button></div></header>
+<main class="mgmt-shell">
+<section id="loginPanel" class="mgmt-card"><span class="eyebrow">PRIVATE MANAGEMENT ACCESS</span><h1>TW&D Project Management</h1><p>Only authorised TW&D administrators can access customer projects, reports, private documents and service requests.</p><form id="loginForm" class="mgmt-form"><label>Email<input id="adminEmail" type="email" required autocomplete="username"></label><label>Password<input id="adminPassword" type="password" required autocomplete="current-password"></label><button class="mgmt-btn primary">Sign In to Management</button></form><div id="loginStatus" class="mgmt-status"></div></section>
+<section id="appPanel" hidden>
+<div class="mgmt-hero"><div><span class="eyebrow">SECURE ADMIN AREA</span><h1>Project Control Centre</h1><p>Manage customer assignments and publish private progress information to the correct customer account.</p></div><div id="adminIdentity" class="admin-identity"></div></div>
+<div id="mgmtStatus" class="mgmt-status"></div>
+<div class="mgmt-grid">
+<section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">CUSTOMERS</span><h2>Customer accounts</h2></div></div><div id="customersList" class="mgmt-list"></div></section>
+<section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">PROJECTS</span><h2>Project assignments</h2></div><button id="newProjectBtn" class="mgmt-btn small">New Project</button></div><div id="projectsList" class="mgmt-list"></div></section>
+<section class="mgmt-card wide"><div class="section-head"><div><span class="eyebrow">SELECTED PROJECT</span><h2 id="selectedProjectTitle">Choose a project</h2></div></div><div id="projectEditor" hidden>
+<form id="projectForm" class="mgmt-form"><div class="two-col"><label>Customer<select id="projectCustomer" required></select></label><label>Project Name<input id="projectName" required></label><label>Project Code<input id="projectCode"></label><label>Service Type<input id="projectService"></label><label>Location<input id="projectLocation"></label><label>Status<select id="projectStatus"><option>REQUESTED</option><option>DESIGN</option><option>APPROVAL</option><option>FOUNDATION</option><option>STRUCTURE</option><option>ROOFING</option><option>FINISHING</option><option>COMPLETED</option></select></label><label>Progress %<input id="projectProgress" type="number" min="0" max="100" required></label></div><label>Description<textarea id="projectDescription" rows="4"></textarea></label><button class="mgmt-btn primary">Save Project</button></form>
+<hr>
+<div class="report-grid"><form id="reportForm" class="mgmt-form"><span class="eyebrow">PRIVATE PROGRESS REPORT</span><h3>Publish update to this customer</h3><label>Report title<input id="reportTitle" required></label><label>Report date<input id="reportDate" type="date" required></label><label>Progress %<input id="reportProgress" type="number" min="0" max="100"></label><label>Report<textarea id="reportBody" rows="7" required></textarea></label><button class="mgmt-btn primary">Publish Secure Report</button></form>
+<form id="documentForm" class="mgmt-form"><span class="eyebrow">PRIVATE PROJECT DOCUMENT</span><h3>Upload to customer's secure account</h3><label>Document description<input id="documentDescription"></label><label>File<input id="projectFile" type="file" required></label><button class="mgmt-btn">Upload Private Document</button><small>Files are stored in a private Supabase bucket and are not part of the public gallery.</small></form></div>
+<div id="reportsList" class="mgmt-subsection"></div><div id="documentsList" class="mgmt-subsection"></div>
+</div></section>
+<section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">SERVICE DESK</span><h2>Customer requests</h2></div></div><div id="requestsList" class="mgmt-list"></div></section>
+<section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">QUOTATIONS</span><h2>Customer quotations</h2></div></div><form id="quoteForm" class="mgmt-form"><div class="two-col"><label>Customer<select id="quoteCustomer" required></select></label><label>Project<select id="quoteProject"></select></label><label>Quotation No.<input id="quoteNumber" required></label><label>Amount<input id="quoteAmount" type="number" step="0.01" required></label><label>Status<select id="quoteStatus"><option>DRAFT</option><option>SENT</option><option>ACCEPTED</option><option>DECLINED</option></select></label></div><label>Notes<textarea id="quoteNotes" rows="3"></textarea></label><button class="mgmt-btn primary">Save Quotation & Notify Customer</button></form></section>
+</div></section></main>
+<script type="module" src="management.js"></script>
+</body></html>
