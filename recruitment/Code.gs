@@ -909,9 +909,10 @@ function fallbackAptitudeQuestions_(position){
 
 function generateAptitudeBatch_(position,first,last,key,configuredModel){
   const count=last-first+1;
-  const prompt='Create exactly '+count+' concise multiple-choice aptitude questions, numbered '+first+' through '+last+
+  const prompt='Live generation seed: '+Utilities.getUuid()+'. Create exactly '+count+' concise multiple-choice aptitude questions, numbered '+first+' through '+last+
     ', for a Nigerian engineering and construction company applicant applying for the role: '+position+'. '+
     'Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios. '+
+    'Generate a fresh randomized question set for this applicant; do not reuse a fixed question order. '+
     'Each question must have exactly 4 options and exactly one correct answer. '+
     'Do not use private company information. Keep questions and options concise. Do not include explanations.';
 
