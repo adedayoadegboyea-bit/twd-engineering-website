@@ -3,7 +3,7 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
 const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-let admin=null,projects=[],customers=[],requests=[],quotations=[];
+let admin=null,projects=[],customers=[],requests=[],quotations=[],workers=[];
 function status(t,bad=false){$("mgmtStatus").textContent=t||"";$("mgmtStatus").className="mgmt-status"+(bad?" error":"")}
 function loginStatus(t,bad=false){$("loginStatus").textContent=t||"";$("loginStatus").className="mgmt-status"+(bad?" error":"")}
 async function requireAdmin(){
@@ -14,16 +14,17 @@ async function requireAdmin(){
  admin=session.user;$("loginPanel").hidden=true;$("appPanel").hidden=false;$("signout").hidden=false;$("adminIdentity").textContent=(p.full_name||session.user.email)+" • ADMINISTRATOR";await loadAll();return true;
 }
 async function loadAll(){
- const [c,p,r,q]=await Promise.all([
+ const [c,p,r,q,w]=await Promise.all([
   supabase.from("profiles").select("id,full_name,phone,account_type").order("created_at",{ascending:false}),
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
   supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
-  supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100)
+  supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100),
+  supabase.from("workers").select("*").order("created_at",{ascending:false})
  ]);
- const firstErr=c.error||p.error||r.error||q.error;
+ const firstErr=c.error||p.error||r.error||q.error||w.error;
  if(firstErr){status(firstErr.message,true);return}
- customers=c.data||[];projects=p.data||[];requests=r.data||[];quotations=q.data||[];
- renderCustomers();renderProjects();renderRequests();renderQuotations();populateCustomerSelects();populateQuoteProjects();
+ customers=c.data||[];projects=p.data||[];requests=r.data||[];quotations=q.data||[];workers=w.data||[];
+ renderCustomers();renderProjects();renderRequests();renderQuotations();renderWorkers();renderWorkerAttendance();renderWorkerReports();populateCustomerSelects();populateQuoteProjects();populateWorkerSelects();
 }
 function renderCustomers(){
  $("customersList").innerHTML=customers.map(x=>'<div class="mgmt-row"><strong>'+esc(x.full_name||"Unnamed customer")+'</strong><span>'+esc(x.phone||"No phone")+" • "+esc(x.account_type||"customer")+" • "+esc(x.id)+'</span></div>').join("")||"<p>No accounts yet.</p>";
@@ -105,3 +106,34 @@ $("quoteForm").onsubmit=async e=>{
  $("quoteForm").reset();status("Quotation saved and customer notified.");await loadAll();
 };
 (async()=>{await requireAdmin()})();
+
+function renderWorkers(){
+ $("workersList").innerHTML=workers.map(x=>'<div class="mgmt-row"><strong>'+esc(x.employee_code)+' • '+esc(customerName(x.id))+'</strong><span>'+esc(x.job_title||"Worker")+' • '+esc(x.department||"")+' • '+esc(x.employment_status)+'</span></div>').join("")||"<p>No workers activated yet.</p>";
+}
+function populateWorkerSelects(){
+ const opts='<option value="">Select worker</option>'+workers.map(x=>'<option value="'+x.id+'">'+esc(x.employee_code)+' • '+esc(customerName(x.id))+'</option>').join("");
+ if($("paymentWorker")) $("paymentWorker").innerHTML=opts;
+ const eligible=customers.filter(x=>x.account_type!=="admin").map(x=>'<option value="'+x.id+'">'+esc(x.full_name||x.email||x.id)+' • '+esc(x.email||"")+'</option>').join("");
+ if($("workerUser")) $("workerUser").innerHTML='<option value="">Select existing account</option>'+eligible;
+}
+async function renderWorkerAttendance(){
+ const q=await supabase.from("worker_attendance").select("worker_id,work_date,check_in,check_out,status").order("work_date",{ascending:false}).limit(50);
+ if(q.error){$("attendanceList").innerHTML="<p>"+esc(q.error.message)+"</p>";return}
+ $("attendanceList").innerHTML=(q.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(customerName(x.worker_id))+'</strong><span>'+esc(x.work_date)+' • '+esc(x.status)+' • '+new Date(x.check_in).toLocaleString()+(x.check_out?" • out "+new Date(x.check_out).toLocaleString():"")+'</span></div>').join("")||"<p>No attendance records.</p>";
+}
+async function renderWorkerReports(){
+ const q=await supabase.from("worker_reports").select("worker_id,report_date,report_title,report_body,status,admin_notes").order("report_date",{ascending:false}).limit(30);
+ if(q.error){$("workerReportsList").innerHTML="<p>"+esc(q.error.message)+"</p>";return}
+ $("workerReportsList").innerHTML=(q.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(x.report_title)+'</strong><span>'+esc(customerName(x.worker_id))+' • '+esc(x.report_date)+' • '+esc(x.status)+'</span><small>'+esc(x.report_body)+'</small></div>').join("")||"<p>No worker reports.</p>";
+}
+$("generateAttendanceCode")?.addEventListener("click",async()=>{const r=await supabase.rpc("admin_generate_attendance_code");if(r.error){$("attendanceCodeResult").textContent=r.error.message;return}$("attendanceCodeResult").textContent="TODAY'S ATTENDANCE CODE: "+r.data;await renderWorkerAttendance()});
+$("workerForm")?.addEventListener("submit",async e=>{
+ e.preventDefault();const id=$("workerUser").value;if(!id)return;
+ const payload={id,employee_code:$("employeeCode").value.trim(),job_title:$("workerJobTitle").value.trim(),department:$("workerDepartment").value.trim(),bank_name:$("workerBank").value.trim(),account_name:$("workerAccountName").value.trim(),account_number:$("workerAccountNumber").value.trim(),employment_status:"ACTIVE"};
+ const up=await supabase.from("workers").upsert(payload);if(up.error){status(up.error.message,true);return}
+ const prof=await supabase.from("profiles").update({account_type:"worker"}).eq("id",id);if(prof.error){status(prof.error.message,true);return}
+ status("Worker account activated. The worker can now sign in through worker.html.");await loadAll();
+});
+$("paymentForm")?.addEventListener("submit",async e=>{
+ e.preventDefault();const r=await supabase.from("worker_payments").insert({worker_id:$("paymentWorker").value,pay_period:$("payPeriod").value.trim(),amount:Number($("paymentAmount").value),status:$("paymentStatus").value,payment_date:$("paymentDate").value||null,reference:$("paymentReference").value.trim(),notes:$("paymentNotes").value.trim()});if(r.error){status(r.error.message,true);return}$("paymentForm").reset();status("Worker payment record saved.");await loadAll();
+});
