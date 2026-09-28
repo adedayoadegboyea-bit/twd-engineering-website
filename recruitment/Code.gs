@@ -971,21 +971,21 @@ function submitAptitudeTest(testId, answers) {
   for(let r=1;r<data.length;r++) if(String(data[r][0])===String(testId)){rowNumber=r+1;row=data[r];break;}
   if(rowNumber<0) throw new Error('Aptitude test not found.');
   if(String(row[4])!=='IN_PROGRESS') throw new Error('This aptitude test is no longer open.');
-  if(new Date(row[6]).getTime()<Date.now()) {
-    sheet.getRange(rowNumber,5).setValue('EXPIRED');
-    throw new Error('The 1-hour aptitude test window has expired.');
-  }
+  const expired=new Date(row[6]).getTime()<Date.now();
 
   const questions=JSON.parse(String(row[10]||'[]'));
-  if(!Array.isArray(answers) || answers.length!==50) throw new Error('Please answer all 50 questions before submitting.');
+  if(!Array.isArray(answers) || answers.length!==50) throw new Error('The aptitude test submission is incomplete.');
+  // -1 means the applicant did not answer that question. It is scored as incorrect.
+  // This is required so the test can be submitted automatically when the hour expires.
 
   const key=questions.map(function(q){return Number(q.answer);});
   let score=0;
   for(let i=0;i<50;i++) if(Number(answers[i])===key[i]) score++;
 
-  let assessment='AI assessment unavailable.';
+  let assessment='Automatic score: '+score+'/50. AI assessment is pending administrator review.';
   try { assessment=markAptitudeWithAI_(row[2],questions,answers,score); }
-  catch(aiError) { console.error('AI marking failed:',aiError); assessment='Automatic score: '+score+'/50. AI assessment is pending administrator review.'; }
+  catch(aiError) { console.error('AI marking failed:',aiError); }
+  if(expired) assessment='Automatic score: '+score+'/50. '+assessment+' The test was submitted automatically at the end of the 1-hour window.';
 
   const submitted=new Date();
   sheet.getRange(rowNumber,5,1,10).setValues([[
