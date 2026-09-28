@@ -25,7 +25,11 @@ const HEADERS = [
   'Interview Time',
   'Interview Location',
   'Interview Type',
-  'Management Notes'
+  'Management Notes',
+  'Aptitude Test Status',
+  'Aptitude Score',
+  'Aptitude Submitted At',
+  'AI Assessment'
 ];
 
 const VALID_STATUSES = [
@@ -273,16 +277,19 @@ function submitApplication(data) {
     '',
     '',
     '',
+    '',
+    '',
+    '',
+    '',
     ''
   ];
 
   sheet.appendRow(row);
 
-  // Notify management.
-  sendManagementNewApplicationEmail_(row);
+  // Email failures must never cancel a valid application.
+  try { sendManagementNewApplicationEmail_(row); } catch (mailError) { console.error('Management email failed:', mailError); }
+  try { sendApplicantReceiptEmail_(row); } catch (mailError) { console.error('Applicant receipt email failed:', mailError); }
 
-  // Confirm receipt to applicant.
-  sendApplicantReceiptEmail_(row);
 
   return {
     ok: true,
@@ -583,4 +590,182 @@ function formatValue_(value, fallback) {
   }
 
   return escapeHtml_(value);
+}
+
+
+/* ============================================================
+   AI APTITUDE TEST SYSTEM
+   Requires Script Property: GEMINI_API_KEY
+   Optional Script Property: GEMINI_MODEL
+   ============================================================ */
+
+const APTITUDE_HEADERS = [
+  'Test ID','Application ID','Position','Applicant Email','Status',
+  'Started At','Expires At','Submitted At','Score','AI Assessment',
+  'Questions JSON','Answers JSON','Admin Decision','Admin Notes'
+];
+
+function getAptitudeSheet_() {
+  const ss = getRecruitmentSpreadsheet_();
+  let sheet = ss.getSheetByName('Aptitude Tests');
+  if (!sheet) sheet = ss.insertSheet('Aptitude Tests');
+  if (sheet.getLastRow() === 0) sheet.getRange(1,1,1,APTITUDE_HEADERS.length).setValues([APTITUDE_HEADERS]);
+  else {
+    const row = sheet.getRange(1,1,1,APTITUDE_HEADERS.length).getValues()[0];
+    let changed=false;
+    APTITUDE_HEADERS.forEach(function(h,i){ if(!row[i]){row[i]=h;changed=true;} });
+    if(changed) sheet.getRange(1,1,1,APTITUDE_HEADERS.length).setValues([row]);
+  }
+  sheet.setFrozenRows(1);
+  return sheet;
+}
+
+function generateAptitudeQuestions_(position) {
+  const key = PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY');
+  if (!key) throw new Error('AI aptitude testing is not configured yet. Add GEMINI_API_KEY to the recruitment Apps Script properties.');
+
+  const model = PropertiesService.getScriptProperties().getProperty('GEMINI_MODEL') || 'gemini-2.5-flash';
+  const prompt =
+    'Create exactly 50 multiple-choice aptitude questions for a Nigerian engineering and construction company applicant applying for the role: ' +
+    position + '. Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios appropriate to the role. ' +
+    'Each question must have exactly 4 options and exactly one correct answer. Avoid trick questions and avoid questions that require private company information. ' +
+    'Return ONLY valid JSON in this exact structure: {"questions":[{"question":"...","options":["A","B","C","D"],"answer":0,"explanation":"..."}]}. ' +
+    'The answer value must be the zero-based index of the correct option.';
+
+  const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(key);
+  const response = UrlFetchApp.fetch(url, {
+    method:'post',
+    contentType:'application/json',
+    muteHttpExceptions:true,
+    payload:JSON.stringify({
+      contents:[{parts:[{text:prompt}]}],
+      generationConfig:{responseMimeType:'application/json',temperature:0.2}
+    })
+  });
+
+  const code=response.getResponseCode();
+  const body=response.getContentText();
+  if(code<200 || code>=300) throw new Error('AI question generation failed: HTTP '+code);
+
+  const outer=JSON.parse(body);
+  const text=outer.candidates && outer.candidates[0] && outer.candidates[0].content && outer.candidates[0].content.parts && outer.candidates[0].content.parts[0] && outer.candidates[0].content.parts[0].text;
+  if(!text) throw new Error('AI returned no aptitude questions.');
+
+  const parsed=JSON.parse(text);
+  if(!parsed.questions || parsed.questions.length!==50) throw new Error('AI did not return exactly 50 questions.');
+  parsed.questions.forEach(function(q,i){
+    if(!q.question || !Array.isArray(q.options) || q.options.length!==4 || typeof q.answer!=='number') {
+      throw new Error('AI returned an invalid question at item '+(i+1)+'.');
+    }
+  });
+  return parsed.questions;
+}
+
+function startAptitudeTest(applicationId, position, email) {
+  const sheet=getAptitudeSheet_();
+  const values=sheet.getDataRange().getValues();
+  for(let r=1;r<values.length;r++){
+    if(String(values[r][1])===String(applicationId)){
+      const status=String(values[r][4]||'');
+      if(status==='IN_PROGRESS' && values[r][6] && new Date(values[r][6]).getTime()>Date.now()) {
+        return aptitudeClientPayload_(values[r]);
+      }
+      if(status==='SUBMITTED_AI_MARKED_PENDING_ADMIN' || status==='APPROVED' || status==='REJECTED') {
+        return {ok:false,status:status,message:'This aptitude test has already been submitted.'};
+      }
+    }
+  }
+
+  const questions=generateAptitudeQuestions_(position);
+  const now=new Date();
+  const expires=new Date(now.getTime()+60*60*1000);
+  const testId='APT-'+Utilities.formatDate(now,CONFIG.TIMEZONE,'yyyyMMdd-HHmmss')+'-'+Math.floor(1000+Math.random()*9000);
+  sheet.appendRow([testId,applicationId,position,email||'', 'IN_PROGRESS', now, expires, '', '', '', JSON.stringify(questions), '', 'PENDING', '']);
+  return {
+    ok:true,testId:testId,applicationId:applicationId,position:position,
+    startedAt:now.toISOString(),expiresAt:expires.toISOString(),
+    questions:questions.map(function(q){return {question:q.question,options:q.options};})
+  };
+}
+
+function aptitudeClientPayload_(row) {
+  const questions=JSON.parse(String(row[10]||'[]'));
+  return {
+    ok:true,testId:row[0],applicationId:row[1],position:row[2],
+    startedAt:new Date(row[5]).toISOString(),expiresAt:new Date(row[6]).toISOString(),
+    questions:questions.map(function(q){return {question:q.question,options:q.options};})
+  };
+}
+
+function submitAptitudeTest(testId, answers) {
+  const sheet=getAptitudeSheet_();
+  const data=sheet.getDataRange().getValues();
+  let rowNumber=-1,row=null;
+  for(let r=1;r<data.length;r++) if(String(data[r][0])===String(testId)){rowNumber=r+1;row=data[r];break;}
+  if(rowNumber<0) throw new Error('Aptitude test not found.');
+  if(String(row[4])!=='IN_PROGRESS') throw new Error('This aptitude test is no longer open.');
+  if(new Date(row[6]).getTime()<Date.now()) {
+    sheet.getRange(rowNumber,5).setValue('EXPIRED');
+    throw new Error('The 1-hour aptitude test window has expired.');
+  }
+
+  const questions=JSON.parse(String(row[10]||'[]'));
+  if(!Array.isArray(answers) || answers.length!==50) throw new Error('Please answer all 50 questions before submitting.');
+
+  const key=questions.map(function(q){return Number(q.answer);});
+  let score=0;
+  for(let i=0;i<50;i++) if(Number(answers[i])===key[i]) score++;
+
+  let assessment='AI assessment unavailable.';
+  try { assessment=markAptitudeWithAI_(row[2],questions,answers,score); }
+  catch(aiError) { console.error('AI marking failed:',aiError); assessment='Automatic score: '+score+'/50. AI assessment is pending administrator review.'; }
+
+  const submitted=new Date();
+  sheet.getRange(rowNumber,5,1,10).setValues([[
+    'SUBMITTED_AI_MARKED_PENDING_ADMIN',row[5],row[6],submitted,score,assessment,row[10],JSON.stringify(answers),'PENDING',row[13]||''
+  ]]);
+  updateApplicationAptitude_(row[1],score,assessment,submitted);
+  notifyAptitudeAdmin_(row,score,assessment);
+
+  return {ok:true,score:score,total:50,status:'SUBMITTED_AI_MARKED_PENDING_ADMIN',message:'Your aptitude test has been submitted. Your application and result have been sent to TW&D management for review. The recruitment result will be communicated within 24 hours.'};
+}
+
+function markAptitudeWithAI_(position,questions,answers,score) {
+  const key=PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY');
+  if(!key) return 'Automatic score: '+score+'/50. AI assessment pending administrator review.';
+  const model=PropertiesService.getScriptProperties().getProperty('GEMINI_MODEL') || 'gemini-2.5-flash';
+  const compact=questions.map(function(q,i){return {n:i+1,q:q.question,options:q.options,correct:q.answer,applicant:answers[i]};});
+  const prompt='Assess an applicant aptitude test for the role '+position+'. There are 50 multiple-choice questions. The automatic score is '+score+'/50. Review the answer pattern and provide a concise professional assessment for the administrator: strengths, notable gaps, safety/ethics concerns if any, and a suggested review focus. Do not make a final hiring decision. Return plain text. DATA: '+JSON.stringify(compact);
+  const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent?key='+encodeURIComponent(key);
+  const response=UrlFetchApp.fetch(url,{method:'post',contentType:'application/json',muteHttpExceptions:true,payload:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.2}})});
+  if(response.getResponseCode()<200 || response.getResponseCode()>=300) throw new Error('AI marking failed.');
+  const body=JSON.parse(response.getContentText());
+  return body.candidates[0].content.parts[0].text || ('Automatic score: '+score+'/50.');
+}
+
+function updateApplicationAptitude_(applicationId,score,assessment,submitted) {
+  const sheet=getApplicationsSheet_(getRecruitmentSpreadsheet_());
+  const data=sheet.getDataRange().getValues();
+  for(let r=1;r<data.length;r++) if(String(data[r][0])===String(applicationId)){
+    sheet.getRange(r+1,20,1,4).setValues([['SUBMITTED_AI_MARKED_PENDING_ADMIN',score,submitted,assessment]]);
+    return;
+  }
+}
+
+function notifyAptitudeAdmin_(row,score,assessment) {
+  const subject='TW&D aptitude test submitted: '+row[5];
+  const html='<h2>Applicant aptitude test submitted</h2><p><b>Application ID:</b> '+escapeHtml_(row[0])+'</p><p><b>Applicant:</b> '+escapeHtml_(row[2])+'</p><p><b>Position:</b> '+escapeHtml_(row[5])+'</p><p><b>Score:</b> '+score+'/50</p><p><b>AI assessment:</b><br>'+escapeHtml_(assessment).replace(/\n/g,'<br>')+'</p><p>The application is awaiting administrator review and approval.</p>';
+  try { sendTransactionalEmail_(CONFIG.MANAGEMENT_EMAIL,subject,html); } catch(e) { console.error(e); }
+}
+
+function sendTransactionalEmail_(to,subject,htmlBody) {
+  const key=PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY');
+  if(key){
+    const response=UrlFetchApp.fetch('https://api.resend.com/emails',{method:'post',contentType:'application/json',headers:{Authorization:'Bearer '+key},muteHttpExceptions:true,payload:JSON.stringify({from:'TW&D Engineering Consult & Services Ltd <contact@twdengineeringconsult.com>',to:[to],subject:subject,html:htmlBody})});
+    if(response.getResponseCode()>=200 && response.getResponseCode()<300) return true;
+    throw new Error('Resend email failed: HTTP '+response.getResponseCode());
+  }
+  if(MailApp.getRemainingDailyQuota()<=0) throw new Error('Email quota exceeded.');
+  MailApp.sendEmail({to:to,subject:subject,htmlBody:htmlBody});
+  return true;
 }
