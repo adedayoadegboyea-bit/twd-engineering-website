@@ -634,18 +634,22 @@ function generateAptitudeQuestions_(position) {
 
   const code=response.getResponseCode();
   const body=response.getContentText();
-  if(code<200 || code>=300) throw new Error('AI question generation failed: HTTP '+code);
-
-  const outer=JSON.parse(body);
-  const text=outer.candidates && outer.candidates[0] && outer.candidates[0].content && outer.candidates[0].content.parts && outer.candidates[0].content.parts[0] && outer.candidates[0].content.parts[0].text;
-  if(!text) throw new Error('AI returned no aptitude questions.');
-
-  const parsed=JSON.parse(text);
-  if(!parsed.questions || parsed.questions.length!==50) throw new Error('AI did not return exactly 50 questions.');
+  if(code<200 || code>=300){
+    let detail=body;
+    try{const apiErr=JSON.parse(body);detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||body;}catch(ignore){}
+    throw new Error('AI question generation failed (HTTP '+code+'): '+String(detail).slice(0,700));
+  }
+  let outer;
+  try{outer=JSON.parse(body);}catch(parseError){throw new Error('Gemini returned an invalid response: '+String(body).slice(0,700));}
+  const text=outer.candidates&&outer.candidates[0]&&outer.candidates[0].content&&outer.candidates[0].content.parts&&outer.candidates[0].content.parts[0]&&outer.candidates[0].content.parts[0].text;
+  if(!text){const finish=outer.candidates&&outer.candidates[0]&&outer.candidates[0].finishReason;throw new Error('Gemini returned no aptitude questions'+(finish?' (finish reason: '+finish+')':'.'));}
+  let jsonText=String(text).trim();
+  jsonText=jsonText.replace(/^```json\s*/i,'').replace(/^```\s*/,'').replace(/\s*```$/,'').trim();
+  let parsed;
+  try{parsed=JSON.parse(jsonText);}catch(parseError){throw new Error('Gemini returned text that was not valid JSON. Response starts: '+jsonText.slice(0,500));}
+  if(!parsed.questions||!Array.isArray(parsed.questions)||parsed.questions.length!==50) throw new Error('AI did not return exactly 50 questions. It returned '+((parsed.questions&&parsed.questions.length)||0)+'.');
   parsed.questions.forEach(function(q,i){
-    if(!q.question || !Array.isArray(q.options) || q.options.length!==4 || typeof q.answer!=='number') {
-      throw new Error('AI returned an invalid question at item '+(i+1)+'.');
-    }
+    if(!q.question||!Array.isArray(q.options)||q.options.length!==4||typeof q.answer!=='number'||q.answer<0||q.answer>3) throw new Error('AI returned an invalid question at item '+(i+1)+'.');
   });
   return parsed.questions;
 }
