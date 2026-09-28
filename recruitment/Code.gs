@@ -1,7 +1,7 @@
 const CONFIG = {
   SHEET_NAME: 'Applications',
   DRIVE_FOLDER_NAME: 'TW&D Recruitment Documents',
-  MANAGEMENT_EMAIL: 'twdengineeringconsult@engineer.com',
+  MANAGEMENT_EMAIL: 'admin@twdengineeringconsult.com',
   COMPANY_NAME: 'TW&D Engineering Consult & Services Ltd',
   TIMEZONE: 'Africa/Lagos'
 };
@@ -241,28 +241,13 @@ function submitApplication(data) {
     'TWD-' +
     Utilities.formatDate(now, CONFIG.TIMEZONE, 'yyyyMMdd-HHmmss');
 
-  let cvUrl = '';
-  let docsUrl = '';
-
-  if (data.cv && data.cv.base64) {
-    const bytes = Utilities.base64Decode(data.cv.base64);
-    const blob = Utilities.newBlob(
-      bytes,
-      data.cv.mimeType || 'application/octet-stream',
-      data.cv.name || id + '-CV'
-    );
-    cvUrl = folder.createFile(blob).getUrl();
-  }
-
-  if (data.supporting && data.supporting.base64) {
-    const bytes = Utilities.base64Decode(data.supporting.base64);
-    const blob = Utilities.newBlob(
-      bytes,
-      data.supporting.mimeType || 'application/octet-stream',
-      data.supporting.name || id + '-Supporting'
-    );
-    docsUrl = folder.createFile(blob).getUrl();
-  }
+  // IMPORTANT: record the application BEFORE processing optional files.
+  // A Drive/file failure must never prevent the applicant from appearing in the spreadsheet.
+  const now = new Date();
+  const id =
+    'TWD-' +
+    Utilities.formatDate(now, CONFIG.TIMEZONE, 'yyyyMMdd-HHmmss') + '-' +
+    Utilities.getUuid().slice(0, 6).toUpperCase();
 
   const row = [
     id,
@@ -276,8 +261,8 @@ function submitApplication(data) {
     String(data.experience).trim(),
     String(data.registration || '').trim(),
     String(data.letter).trim(),
-    cvUrl,
-    docsUrl,
+    '',
+    '',
     'Application Received',
     '',
     '',
@@ -295,7 +280,51 @@ function submitApplication(data) {
     ''
   ];
 
-  sheet.getRange(sheet.getLastRow() + 1, 1, 1, HEADERS.length).setValues([row]);
+  const applicationRowNumber = sheet.getLastRow() + 1;
+  sheet.getRange(applicationRowNumber, 1, 1, HEADERS.length).setValues([row]);
+  SpreadsheetApp.flush();
+
+  // Process uploaded files after the application record is safely written.
+  // File failures are recorded in the spreadsheet instead of cancelling the application.
+  let cvUrl = '';
+  let docsUrl = '';
+  const fileErrors = [];
+
+  try {
+    if (data.cv && data.cv.base64) {
+      const bytes = Utilities.base64Decode(data.cv.base64);
+      const blob = Utilities.newBlob(
+        bytes,
+        data.cv.mimeType || 'application/octet-stream',
+        data.cv.name || id + '-CV'
+      );
+      cvUrl = folder.createFile(blob).getUrl();
+      sheet.getRange(applicationRowNumber, 12).setValue(cvUrl);
+    }
+  } catch (e) {
+    fileErrors.push('CV: ' + (e.message || String(e)));
+  }
+
+  try {
+    if (data.supporting && data.supporting.base64) {
+      const bytes = Utilities.base64Decode(data.supporting.base64);
+      const blob = Utilities.newBlob(
+        bytes,
+        data.supporting.mimeType || 'application/octet-stream',
+        data.supporting.name || id + '-Supporting'
+      );
+      docsUrl = folder.createFile(blob).getUrl();
+      sheet.getRange(applicationRowNumber, 13).setValue(docsUrl);
+    }
+  } catch (e) {
+    fileErrors.push('Supporting document: ' + (e.message || String(e)));
+  }
+
+  if (fileErrors.length) {
+    sheet.getRange(applicationRowNumber, 26).setValue(
+      'Application recorded; file upload issue: ' + fileErrors.join(' | ').slice(0, 900)
+    );
+  }
 
   return {
     ok: true,
