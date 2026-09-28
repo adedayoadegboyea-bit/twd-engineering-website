@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T16:12:10.042637+00:00",
+  "generated_at": "2026-09-28T16:41:49.179689+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,51 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "AI should complement, not replace, judicial officers – A’Ibom CJ",
+      "summary": "The Chief Judge of Akwa Ibom State, Justice Ekaete Fabian-Obot, has called for the systematic application of Artificial Intelligence in Nigeria’s justice s Read More: https://punchng.com/ai-should-complement-not-replace-judicial-officers-aibom-cj/",
+      "url": "https://punchng.com/ai-should-complement-not-replace-judicial-officers-aibom-cj/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T17:31:40+00:00",
+      "categories": []
+    },
+    {
+      "title": "NDLEA, Army destroy cannabis farms, arrest two suspects in Edo",
+      "summary": "The NDLEA and Nigerian Army have destroyed two cannabis farms in Edo State, seizing over 1,360kg of the substance and arresting two male suspects. Read More: https://punchng.com/ndlea-army-destroy-cannabis-farms-arrest-two-suspects-in-edo/",
+      "url": "https://punchng.com/ndlea-army-destroy-cannabis-farms-arrest-two-suspects-in-edo/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T17:17:23+00:00",
+      "categories": []
+    },
+    {
+      "title": "REA seeks unified approach to expand electricity access across Nigeria",
+      "summary": "The Rural Electrification Agency has called for a unified approach among stakeholders to accelerate electricity access and avoid project duplication in Nig Read More: https://punchng.com/rea-seeks-unified-approach-to-expand-electricity-access-across-nigeria/",
+      "url": "https://punchng.com/rea-seeks-unified-approach-to-expand-electricity-access-across-nigeria/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T17:16:23+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "JUST IN: AAC sues Tinubu, NASS over Europe vacation",
+      "summary": "The African Action Congress has sued President Bola Tinubu and the National Assembly for his alleged failure to notify them before his vacation to Europe. Read More: https://punchng.com/just-in-aac-sues-tinubu-nass-over-europe-vacation/",
+      "url": "https://punchng.com/just-in-aac-sues-tinubu-nass-over-europe-vacation/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T17:15:16+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Military now a nightmare to terrorists – Reps deputy spokesperson",
+      "summary": "The House of Reps Deputy Spokesperson, Philip Agbese, says the Nigerian military is now a nightmare to terrorists, citing recent operational successes. Read More: https://punchng.com/military-now-a-nightmare-to-terrorists-reps-deputy-spokesperson/",
+      "url": "https://punchng.com/military-now-a-nightmare-to-terrorists-reps-deputy-spokesperson/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T17:13:55+00:00",
+      "categories": []
+    },
     {
       "title": "Ogun federal varsity targets 2027/28 take-off, adds 66 new programmes",
       "summary": "The Federal University of Technology, Ilaro, Ogun State, is targeting the 2027/2028 academic session for its take-off as a university from a polytechnic. Read More: https://punchng.com/ogun-federal-varsity-targets-2027-28-take-off-adds-66-new-programmes/",
@@ -26,6 +71,33 @@
       "url": "https://punchng.com/atiku-faults-fg-over-fresh-1-5bn-world-bank-loan/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-28T16:41:33+00:00",
+      "categories": []
+    },
+    {
+      "title": "AFCON 2027Q: Usor reveals how Simon inspired match-winning goal against Madagascar",
+      "summary": "Moses Usor has revealed Moses Simon was the inspiration behind his spectacular strike in Nigeria’s 2-1 victory over the Barea of Madagascar. Usor rose from the bench to score the winning goal for the Super Eagles in the keenly contested encounter. The LASK of Austria winger drove forward after recei",
+      "url": "https://dailypost.ng/2026/09/28/afcon-2027q-usor-reveals-how-simon-inspired-match-winning-goal-against-madagascar/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T16:31:18+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ogun Govt intensifies campaign to tackle illiteracy, out-of-school menace",
+      "summary": "In its bid to encourage mass literacy among the citizens and to tackle out of school challenges in Ogun State, the Governor Dapo Abiodun administration, through the Agency for Mass and Lifelong Education, has taken its campaign against illiteracy to market places and motor parks in the state. The ca",
+      "url": "https://dailypost.ng/2026/09/28/ogun-govt-intensifies-campaign-to-tackle-illiteracy-out-of-school-menace/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T16:22:14+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "NIPC, Kaduna take top spots in transparency, integrity ranking",
+      "summary": "The report noted that only a few institutions performed well, with many scoring less than 20 per cent. The post NIPC, Kaduna take top spots in transparency, integrity ranking appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/913003-nipc-kaduna-take-top-spots-in-transparency-integrity-ranking.html",
+      "source": "Premium Times",
+      "published": "2026-09-28T16:18:33+00:00",
       "categories": []
     },
     {
@@ -58,9 +130,9 @@
       ]
     },
     {
-      "title": "Customs probes corruption perception, begins integrity survey",
-      "summary": "The Nigeria Customs Service has launched a nationwide integrity survey to gauge corruption perceptions among its officers and stakeholders in collaboration Read More: https://punchng.com/customs-probes-corruption-perception-begins-integrity-survey/",
-      "url": "https://punchng.com/customs-probes-corruption-perception-begins-integrity-survey/?utm_source=rss.punchng.com&utm_medium=web",
+      "title": "Customs probe corruption perception, begins integrity survey",
+      "summary": "The Nigeria Customs Service has commenced a nationwide integrity survey to gauge perceptions of corruption and transparency among its officers and stakehol Read More: https://punchng.com/customs-probe-corruption-perception-begins-integrity-survey/",
+      "url": "https://punchng.com/customs-probe-corruption-perception-begins-integrity-survey/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-28T16:05:15+00:00",
       "categories": []
@@ -214,81 +286,6 @@
       "url": "https://dailypost.ng/2026/09/28/2027-inec-announces-date-for-nationwide-collection-of-pvcs/",
       "source": "Daily Post Nigeria",
       "published": "2026-09-28T15:05:31+00:00",
-      "categories": []
-    },
-    {
-      "title": "‘You lost my child because you were wearing waist trainers’ – MC Fish to ex-wife Anita Joseph",
-      "summary": "A hype man, Fisayo Olagunju, popularly known as MC Fish, has reignited his social media dispute with his estranged wife, actress Anita Joseph, with a series of allegations against her. MC Fish, who shared the posts on his Instagram Stories, claimed he had screenshots and recorded conversations conce",
-      "url": "https://dailypost.ng/2026/09/28/you-lost-my-child-because-you-were-wearing-waist-trainers-mc-fish-to-ex-wife-anita-joseph/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:04:05+00:00",
-      "categories": []
-    },
-    {
-      "title": "Account for Nigeria’s N166.79trn debt before asking World Bank for $1.5bn loan – Atiku to Tinubu",
-      "summary": "The African Democratic Congress, ADC, presidential candidate, Atiku Abubakar, on Monday, charged President Bola Tinubu to account for N166.79 trillion debt before borrowing $1.5 billion from the World Bank. Atiku accused Tinubu of running a government that demands endless sacrifices from Nigerians w",
-      "url": "https://dailypost.ng/2026/09/28/account-for-nigerias-n166-79trn-debt-before-asking-world-bank-for-1-5bn-loan-atiku-to-tinubu/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:01:24+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Nigerian Air Force completes local reassembly of first two H125 helicopters",
-      "summary": "The Nigerian Air Force has completed the local reassembly of its first two H125 helicopters in Lagos with support from Airbus technical personnel. Read More: https://punchng.com/nigerian-air-force-completes-local-reassembly-of-first-two-h125-helicopters/",
-      "url": "https://punchng.com/nigerian-air-force-completes-local-reassembly-of-first-two-h125-helicopters/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T15:00:36+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Army operationalises 28 Armoured Brigade, two formations in Kebbi",
-      "summary": "The Nigerian Army has operationalised 28 Armoured Brigade and Garrison in Birnin Kebbi, alongside 281 Tank Battalion in Yauri and 381 Artillery Regiment in Kaoje, Kebbi State. The Chief of Army Staff, Lt. Gen. Waidi Shaibu, was represented at the event by the General Officer Commanding 8 Division Ni",
-      "url": "https://dailypost.ng/2026/09/28/army-operationalises-28-armoured-brigade-two-formations-in-kebbi/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T14:57:55+00:00",
-      "categories": []
-    },
-    {
-      "title": "Lagos Representative Danielle Adewusi Crowned Miss Universe Nigeria 2026",
-      "summary": "Lagos State representative, Danielle Adewusi, has been crowned Miss Universe Nigeria 2026 after defeating 19 other contestants at the pageant’s grand finale in Lagos. The finale was held on Sunday at Balmoral Hall, Federal Palace Hotel, Victoria Island, Lagos, following weeks of competition featurin",
-      "url": "https://www.informationng.com/2026/09/lagos-representative-danielle-adewusi-crowned-miss-universe-nigeria-2026.html",
-      "source": "Information Nigeria",
-      "published": "2026-09-28T14:57:48+00:00",
-      "categories": [
-        "government",
-        "property",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Rivers assembly backs state police bill",
-      "summary": "The Rivers State House of Assembly has endorsed a bill seeking to provide a constitutional framework for the establishment of State Police Services in Nige Read More: https://punchng.com/rivers-assembly-backs-state-police-bill/",
-      "url": "https://punchng.com/rivers-assembly-backs-state-police-bill/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T14:57:36+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "JAMB restores CAPS, urges schools to speed up 2026 admissions",
-      "summary": "The Joint Admissions and Matriculation Board has restored its Central Admissions Processing System (CAPS) and urged institutions to speed up admissions. Read More: https://punchng.com/jamb-restores-caps-urges-schools-to-speed-up-2026-admissions/",
-      "url": "https://punchng.com/jamb-restores-caps-urges-schools-to-speed-up-2026-admissions/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T14:52:40+00:00",
-      "categories": []
-    },
-    {
-      "title": "UN, AU Ask Obasanjo To Rescue Ethiopia’s Peace Deal As Tensions Rise",
-      "summary": "The UN and AU have asked former President Olusegun Obasanjo to help pull Ethiopia back from renewed conflict as tensions threaten the peace agreement he helped broker in 2022. The two organisations reaffirmed “steadfast support” for Obasanjo’s renewed mediation and urged the parties to return immedi",
-      "url": "https://www.informationng.com/2026/09/un-au-ask-obasanjo-to-rescue-ethiopias-peace-deal-as-tensions-rise.html",
-      "source": "Information Nigeria",
-      "published": "2026-09-28T14:44:26+00:00",
       "categories": []
     }
   ]
