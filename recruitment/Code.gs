@@ -613,7 +613,7 @@ function generateAptitudeQuestions_(position) {
   const props=PropertiesService.getScriptProperties();
   const key=String(props.getProperty('GEMINI_API_KEY')||'').trim();
   if(!key) throw new Error('GEMINI_API_KEY is missing from Recruitment Apps Script → Project Settings → Script Properties.');
-  const configuredModel=String(props.getProperty('GEMINI_MODEL')||'gemini-3.5-flash-lite').trim();
+  // Use a capacity-friendly stable model first. Do not let an old Script Property force a congested model.\n  const configuredModel='gemini-3.5-flash-lite';
 
   const allQuestions=[];
   for(let batch=0;batch<5;batch++){
@@ -698,7 +698,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
   }};
 
   const models=[];
-  [configuredModel,'gemini-3.5-flash-lite','gemini-3.6-flash','gemini-3.7-flash','gemini-3.8-flash'].forEach(function(m){
+  [configuredModel,'gemini-3.6-flash','gemini-3.8-flash'].forEach(function(m){
     if(m&&models.indexOf(m)===-1) models.push(m);
   });
 
@@ -749,7 +749,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
     }
   }
 
-  throw new Error('Could not generate questions '+first+'-'+last+'. '+lastError);
+  // Gemini capacity errors must never prevent an applicant from getting an exam.\n  console.warn('All Gemini models unavailable for batch '+first+'-'+last+'. Using built-in aptitude bank. Last error: '+lastError);\n  return fallbackAptitudeQuestions_(position).slice(first-1,last);
 }
 
 /**
