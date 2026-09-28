@@ -65,6 +65,7 @@ function setupRecruitment() {
   });
 
   installStatusTrigger_();
+  installRecruitmentEmailTrigger_();
 
   return {
     ok: true,
@@ -281,24 +282,103 @@ function submitApplication(data) {
     '',
     '',
     '',
+    '',
+    'PENDING',
+    'PENDING',
     ''
   ];
 
-  sheet.appendRow(row);
+  sheet.getRange(sheet.getLastRow() + 1, 1, 1, HEADERS.length).setValues([row]);
 
-  let applicantEmailSent = false;
-  let managementEmailSent = false;
-  let applicantEmailError = '';
-  try { managementEmailSent = !!sendManagementNewApplicationEmail_(row); } catch (e) { console.error('Management email failed: ' + (e.message || String(e))); }
-  try { applicantEmailSent = !!sendApplicantReceiptEmail_(row); } catch (e) { applicantEmailError = 'Confirmation email failed: ' + (e.message || String(e)); console.error('Applicant confirmation email failed: ' + (e.message || String(e))); }
   return {
     ok: true,
     id: id,
-    applicantEmailSent: applicantEmailSent,
-    managementEmailSent: managementEmailSent,
-    message: applicantEmailSent ? 'Application submitted successfully. Your reference is ' + id + '. A confirmation email was sent.' : 'Application submitted successfully. Your reference is ' + id + ', but the confirmation email could not be sent.',
-    emailError: applicantEmailError
+    applicantEmailSent: false,
+    managementEmailSent: false,
+    emailQueued: true,
+    message: 'Application submitted successfully. Your reference is ' + id + '. Your confirmation email has been queued for automatic delivery.'
   };
+}
+
+/**
+ * Installs exactly one 1-minute background email queue trigger.
+ * Application submission never waits for email delivery.
+ */
+function installRecruitmentEmailTrigger_() {
+  ScriptApp.getProjectTriggers().forEach(function(trigger) {
+    if (trigger.getHandlerFunction() === 'processRecruitmentEmailQueue') {
+      ScriptApp.deleteTrigger(trigger);
+    }
+  });
+
+  ScriptApp.newTrigger('processRecruitmentEmailQueue')
+    .timeBased()
+    .everyMinutes(1)
+    .create();
+}
+
+/**
+ * Public/manual helper to reinstall the background email trigger.
+ */
+function reinstallRecruitmentEmailTrigger() {
+  installRecruitmentEmailTrigger_();
+  return 'Recruitment email queue trigger installed successfully.';
+}
+
+/**
+ * Background worker. It retries pending email jobs without blocking applicants.
+ * Column 24 = applicant status, 25 = management status, 26 = error.
+ */
+function processRecruitmentEmailQueue() {
+  const sheet = getApplicationsSheet_(getRecruitmentSpreadsheet_());
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) return 'No recruitment emails pending.';
+
+  const rows = sheet.getRange(2, 1, lastRow - 1, HEADERS.length).getValues();
+  let processed = 0;
+
+  for (let i = 0; i < rows.length && processed < 10; i++) {
+    const row = rows[i];
+    const applicantStatus = String(row[23] || 'PENDING').trim();
+    const managementStatus = String(row[24] || 'PENDING').trim();
+
+    if (applicantStatus === 'SENT' && managementStatus === 'SENT') continue;
+
+    const rowNumber = i + 2;
+    let applicantError = '';
+    let managementError = '';
+
+    if (applicantStatus !== 'SENT') {
+      try {
+        sendApplicantReceiptEmail_(row);
+        sheet.getRange(rowNumber, 24).setValue('SENT');
+      } catch (e) {
+        applicantError = e.message || String(e);
+        sheet.getRange(rowNumber, 24).setValue('PENDING');
+      }
+    }
+
+    if (managementStatus !== 'SENT') {
+      try {
+        sendManagementNewApplicationEmail_(row);
+        sheet.getRange(rowNumber, 25).setValue('SENT');
+      } catch (e) {
+        managementError = e.message || String(e);
+        sheet.getRange(rowNumber, 25).setValue('PENDING');
+      }
+    }
+
+    const combinedError = [applicantError, managementError].filter(Boolean).join(' | ');
+    if (combinedError) {
+      sheet.getRange(rowNumber, 26).setValue(combinedError.slice(0, 1000));
+    } else {
+      sheet.getRange(rowNumber, 26).clearContent();
+    }
+
+    processed++;
+  }
+
+  return 'Processed ' + processed + ' recruitment email job(s).';
 }
 
 /**
@@ -776,7 +856,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
  * It generates 50 questions without creating an applicant or sending email.
  */
 function recruitmentBuildInfo(){
-  return 'TW&D RECRUITMENT BUILD 2026-09-28-EMAIL-FALLBACK-03';
+  return 'TW&D RECRUITMENT BUILD 2026-09-28-EMAIL-QUEUE-04';
 }
 
 function testAptitudeAI(){
@@ -901,69 +981,40 @@ function sendTransactionalEmail_(to,subject,htmlBody) {
     PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY') || ''
   ).trim();
 
+  // Resend is attempted once only. A rate limit is never retried synchronously.
+  // This prevents email-provider problems from blocking the recruitment workflow.
   if (key) {
-    let lastError = '';
-
-    // Retry temporary Resend rate limits before giving up.
-    for (let attempt = 0; attempt < 4; attempt++) {
-      try {
-        const response = UrlFetchApp.fetch(
-          'https://api.resend.com/emails',
-          {
-            method: 'post',
-            contentType: 'application/json',
-            headers: { Authorization: 'Bearer ' + key },
-            muteHttpExceptions: true,
-            payload: JSON.stringify({
-              from: 'TW&D Engineering Consult & Services Ltd <contact@twdengineeringconsult.com>',
-              to: [to],
-              subject: subject,
-              html: htmlBody
-            })
-          }
-        );
-
-        const code = response.getResponseCode();
-        const raw = response.getContentText();
-
-        if (code >= 200 && code < 300) return true;
-
-        lastError = 'Resend HTTP ' + code + ': ' + raw.slice(0, 500);
-
-        if (
-          code === 408 || code === 429 ||
-          code === 500 || code === 502 ||
-          code === 503 || code === 504
-        ) {
-          if (attempt < 3) {
-            Utilities.sleep(4000 * Math.pow(2, attempt));
-            continue;
-          }
+    try {
+      const response = UrlFetchApp.fetch(
+        'https://api.resend.com/emails',
+        {
+          method: 'post',
+          contentType: 'application/json',
+          headers: { Authorization: 'Bearer ' + key },
+          muteHttpExceptions: true,
+          payload: JSON.stringify({
+            from: 'TW&D Engineering Consult & Services Ltd <contact@twdengineeringconsult.com>',
+            to: [to],
+            subject: subject,
+            html: htmlBody
+          })
         }
+      );
 
-        break;
+      const code = response.getResponseCode();
+      const raw = response.getContentText();
 
-      } catch (e) {
-        lastError = 'Resend request failed: ' + (e.message || String(e));
-        if (attempt < 3) {
-          Utilities.sleep(4000 * Math.pow(2, attempt));
-          continue;
-        }
-      }
-    }
+      if (code >= 200 && code < 300) return true;
 
-    // Resend rate limits are temporary. Fall back to Apps Script MailApp
-    // so the applicant can still receive the confirmation immediately.
-    if (lastError && /HTTP 429|rate.?limit/i.test(lastError)) {
-      console.warn(lastError + ' Resend rate limit reached; falling back to MailApp.');
-    } else {
-      console.warn(lastError + ' Falling back to MailApp.');
+      console.warn('Resend unavailable HTTP ' + code + '. Falling back to MailApp immediately.');
+    } catch (e) {
+      console.warn('Resend request failed. Falling back to MailApp: ' + (e.message || String(e)));
     }
   }
 
   if (MailApp.getRemainingDailyQuota() <= 0) {
     throw new Error(
-      'MailApp daily email quota has been exceeded. The application was saved successfully.'
+      'All email transports are temporarily unavailable. The application remains queued and will retry automatically.'
     );
   }
 
@@ -980,7 +1031,8 @@ function sendTransactionalEmail_(to,subject,htmlBody) {
     return true;
   } catch (e) {
     throw new Error(
-      'MailApp delivery failed: ' + (e.message || String(e))
+      'MailApp delivery failed. The email remains queued for automatic retry: ' +
+      (e.message || String(e))
     );
   }
 }
