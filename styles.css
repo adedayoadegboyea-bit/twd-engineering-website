@@ -1355,3 +1355,90 @@ body{font-family:'DM Sans',Inter,Arial,sans-serif;overflow-x:hidden}.site-header
 @media(max-width:700px){
   .luxury-explore-link{font-size:8px!important;letter-spacing:.7px!important;padding:10px 5px!important}
 }
+
+
+/* FINAL SITE-WIDE VISUAL ARCHITECTURE */
+:root{
+  --tw-navy:#061b35;
+  --tw-navy-soft:#0b315d;
+  --tw-gold:#f7bd18;
+  --tw-ice:#eef4fb;
+}
+body{overflow-x:hidden;background:#fff}
+main>section{scroll-margin-top:108px}
+.stats{position:relative;z-index:2}
+.section{position:relative}
+.section-heading{margin-bottom:44px}
+.section-heading h2{max-width:760px}
+.service-groups,.project-grid,.gallery-grid,.state-project-grid{position:relative}
+.service-group{margin-top:0;margin-bottom:58px}
+.service-group:last-child{margin-bottom:0}
+.service-group-head{margin-bottom:24px}
+.projects-section,.team-section,.nigeria-news-section{overflow:hidden}
+.projects-section{background:
+ radial-gradient(circle at 85% 10%,rgba(247,189,24,.08),transparent 25%),
+ linear-gradient(135deg,#061b35 0%,#0a315d 100%)}
+.gallery-section{background:#f7f9fc}
+.nigeria-news-section{background:#fff}
+.team-section{background:#f4f7fb}
+.client-portal-preview{background:linear-gradient(135deg,#061b35,#0b315d);color:#fff}
+.client-portal-preview h2{color:#fff!important}
+.client-portal-preview p:not(.eyebrow){color:#d5e1ef}
+.contact-section{background:#fff}
+footer{position:relative;z-index:3}
+.floating-wa{z-index:9985!important}
+.back-top{z-index:9984!important}
+
+/* One persistent access system; old experimental dock is disabled if stale markup exists. */
+.luxury-explore-dock{display:none!important}
+.tw-global-access{z-index:9990!important}
+.tw-global-access a{white-space:nowrap}
+
+/* Mobile: make long information sections swipe naturally without shrinking the cards. */
+@media(max-width:900px){
+  .container{width:min(94%,680px)}
+  .section{padding:72px 0}
+  .section-heading.split{display:block}
+  .section-heading.split>p{margin-top:18px}
+  .service-group{margin-bottom:46px}
+  .service-group-cards,.state-project-grid,.gallery-grid{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:auto!important;
+    overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;
+    gap:14px;
+    padding:4px 4px 18px 2px;
+    scrollbar-width:thin;
+  }
+  .service-group-cards>.service-card,
+  .state-project-grid>.state-project,
+  .gallery-grid>.gallery-card{
+    flex:0 0 min(84vw,390px);
+    scroll-snap-align:start;
+  }
+  .project-grid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr;gap:34px}
+  .about-image img{height:430px}
+}
+@media(max-width:620px){
+  .top-left .top-dot,.top-left a{display:none}
+  .topbar-inner{justify-content:center;min-height:34px}
+  .nav-wrap{min-height:68px}
+  .nav-cta{display:none}
+  nav{display:none}
+  .menu-toggle{display:block}
+  .hero{min-height:680px}
+  .hero-content{padding:82px 0 62px}
+  .hero-brand-lockup{width:min(520px,92vw)}
+  .hero h1{font-size:clamp(38px,11vw,54px);letter-spacing:-2px}
+  .hero-actions{flex-direction:column;width:100%;max-width:360px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stats-grid>div{min-height:82px;padding:13px 15px!important}
+  .stats-grid>div:nth-child(2){border-right:0}
+  .stats-grid>div:nth-child(3){border-top:1px solid #09264b2b}
+  .project-grid{grid-template-columns:1fr}
+  .project-grid figure:first-child{grid-column:auto;grid-row:auto}
+  .values{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr!important}
+}
