@@ -1068,7 +1068,7 @@ function startAptitudeTest(applicationId, position, email) {
   const questions=generateAptitudeQuestions_(approvedPosition), now=new Date(), expires=new Date(now.getTime()+60*60*1000);
   const testId='APT-'+Utilities.formatDate(now,CONFIG.TIMEZONE,'yyyyMMdd-HHmmss')+'-'+Math.floor(1000+Math.random()*9000);
   sheet.appendRow([testId,applicationId,approvedPosition,approvedEmail,'IN_PROGRESS',now,expires,'','','',JSON.stringify(questions),'','PENDING','']);
-  return {ok:true,testId:testId,applicationId:applicationId,position:approvedPosition,startedAt:now.toISOString(),expiresAt:expires.toISOString(),questions:questions.map(function(q){return {question:q.question,options:q.options};})};
+  return {ok:true,testId:testId,applicationId:applicationId,position:approvedPosition,email:approvedEmail,startedAt:now.toISOString(),expiresAt:expires.toISOString(),questions:questions.map(function(q){return {question:q.question,options:q.options};})};
 }
 
 function loginAptitude(username,password){
@@ -1091,6 +1091,7 @@ function aptitudeClientPayload_(row) {
   return {
     ok:true,testId:row[0],applicationId:row[1],position:row[2],
     startedAt:new Date(row[5]).toISOString(),expiresAt:new Date(row[6]).toISOString(),
+    email:String(row[3]||''),
     questions:questions.map(function(q){return {question:q.question,options:q.options};})
   };
 }
@@ -1179,7 +1180,7 @@ function updateApplicationAptitude_(applicationId,score,assessment,submitted) {
 
 function notifyAptitudeAdmin_(row,score,assessment) {
   const subject='TW&D aptitude test submitted: '+row[5];
-  const html='<h2>Applicant aptitude test submitted</h2><p><b>Application ID:</b> '+escapeHtml_(row[0])+'</p><p><b>Applicant:</b> '+escapeHtml_(row[2])+'</p><p><b>Position:</b> '+escapeHtml_(row[5])+'</p><p><b>Score:</b> '+score+'/50</p><p><b>AI assessment:</b><br>'+escapeHtml_(assessment).replace(/\n/g,'<br>')+'</p><p>The application is awaiting administrator review and approval.</p>';
+  const html='<h2>Applicant aptitude test submitted</h2><p><b>Application ID:</b> '+escapeHtml_(row[0])+'</p><p><b>Applicant:</b> '+escapeHtml_(row[2])+'</p><p><b>Position:</b> '+escapeHtml_(row[5])+'</p><p><b>Score:</b> '+score+'/100</p><p><b>AI assessment:</b><br>'+escapeHtml_(assessment).replace(/\n/g,'<br>')+'</p><p>The application is awaiting administrator review and approval.</p>';
   try { sendTransactionalEmail_(CONFIG.MANAGEMENT_EMAIL,subject,html); } catch(e) { console.error(e); }
 }
 
