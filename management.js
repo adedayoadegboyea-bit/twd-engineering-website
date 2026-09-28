@@ -15,7 +15,7 @@ async function requireAdmin(){
 }
 async function loadAll(){
  const [c,p,r,q,w]=await Promise.all([
-  supabase.from("profiles").select("id,full_name,phone,email,account_type").order("created_at",{ascending:false}),
+  supabase.from("profiles").select("id,full_name,phone,account_type").order("created_at",{ascending:false}),
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
   supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
   supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100),
@@ -113,7 +113,7 @@ function renderWorkers(){
 function populateWorkerSelects(){
  const opts='<option value="">Select worker</option>'+workers.map(x=>'<option value="'+x.id+'">'+esc(x.employee_code)+' • '+esc(customerName(x.id))+'</option>').join("");
  if($("paymentWorker")) $("paymentWorker").innerHTML=opts;
- const eligible=customers.filter(x=>x.account_type!=="admin").map(x=>'<option value="'+x.id+'">'+esc(x.full_name||x.email||x.id)+' • '+esc(x.email||"")+'</option>').join("");
+ const eligible=customers.filter(x=>x.account_type!=="admin").map(x=>'<option value="'+x.id+'">'+esc(x.full_name||x.id)+' • '+esc(x.phone||"No phone")+'</option>').join("");
  if($("workerUser")) $("workerUser").innerHTML='<option value="">Select existing account</option>'+eligible;
 }
 async function renderWorkerAttendance(){
