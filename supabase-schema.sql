@@ -1,19 +1,124 @@
 create extension if not exists pgcrypto;
-create table if not exists public.profiles (id uuid primary key references auth.users(id) on delete cascade, full_name text, phone text, account_type text not null default 'customer' check (account_type in ('customer','seller','admin')), created_at timestamptz not null default now(), updated_at timestamptz not null default now());
-create table if not exists public.projects (id uuid primary key default gen_random_uuid(), customer_id uuid not null references auth.users(id) on delete cascade, project_name text not null, project_code text unique, service_type text, location text, status text not null default 'REQUESTED', progress integer not null default 0 check(progress between 0 and 100), description text, created_at timestamptz not null default now(), updated_at timestamptz not null default now());
-create table if not exists public.project_documents (id uuid primary key default gen_random_uuid(), project_id uuid not null references public.projects(id) on delete cascade, customer_id uuid not null references auth.users(id) on delete cascade, document_name text not null, document_type text, storage_path text, description text, uploaded_at timestamptz not null default now());
-create table if not exists public.service_requests (id uuid primary key default gen_random_uuid(), customer_id uuid not null references auth.users(id) on delete cascade, request_type text not null, subject text not null, message text not null, status text not null default 'SUBMITTED', created_at timestamptz not null default now(), updated_at timestamptz not null default now());
-create table if not exists public.notifications (id uuid primary key default gen_random_uuid(), customer_id uuid not null references auth.users(id) on delete cascade, title text not null, message text not null, read boolean not null default false, created_at timestamptz not null default now());
-create table if not exists public.quotations (id uuid primary key default gen_random_uuid(), customer_id uuid not null references auth.users(id) on delete cascade, project_id uuid references public.projects(id) on delete set null, quotation_number text unique, amount numeric(15,2), currency text not null default 'NGN', status text not null default 'DRAFT', notes text, created_at timestamptz not null default now(), updated_at timestamptz not null default now());
-create table if not exists public.seller_profiles (id uuid primary key references auth.users(id) on delete cascade, business_name text, business_description text, whatsapp text, location text, subscription_plan text, subscription_status text not null default 'NONE', created_at timestamptz not null default now(), updated_at timestamptz not null default now());
 
-create or replace function public.handle_new_user() returns trigger language plpgsql security definer set search_path=public as $fn$
-begin insert into public.profiles(id,full_name,phone) values(new.id,coalesce(new.raw_user_meta_data->>'full_name',''),coalesce(new.raw_user_meta_data->>'phone','')) on conflict(id) do update set full_name=excluded.full_name,phone=excluded.phone,updated_at=now(); return new; end; $fn$;
+create table if not exists public.profiles (
+  id uuid primary key references auth.users(id) on delete cascade,
+  full_name text,
+  phone text,
+  account_type text not null default 'customer' check (account_type in ('customer','seller','admin')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.projects (
+  id uuid primary key default gen_random_uuid(),
+  customer_id uuid not null references auth.users(id) on delete cascade,
+  project_name text not null,
+  project_code text unique,
+  service_type text,
+  location text,
+  status text not null default 'REQUESTED',
+  progress integer not null default 0 check(progress between 0 and 100),
+  description text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.project_reports (
+  id uuid primary key default gen_random_uuid(),
+  project_id uuid not null references public.projects(id) on delete cascade,
+  customer_id uuid not null references auth.users(id) on delete cascade,
+  report_title text not null,
+  report_body text not null,
+  progress integer check(progress between 0 and 100),
+  report_date date not null default current_date,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.project_documents (
+  id uuid primary key default gen_random_uuid(),
+  project_id uuid not null references public.projects(id) on delete cascade,
+  customer_id uuid not null references auth.users(id) on delete cascade,
+  document_name text not null,
+  document_type text,
+  storage_path text,
+  description text,
+  uploaded_at timestamptz not null default now()
+);
+
+create table if not exists public.service_requests (
+  id uuid primary key default gen_random_uuid(),
+  customer_id uuid not null references auth.users(id) on delete cascade,
+  request_type text not null,
+  subject text not null,
+  message text not null,
+  status text not null default 'SUBMITTED',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.notifications (
+  id uuid primary key default gen_random_uuid(),
+  customer_id uuid not null references auth.users(id) on delete cascade,
+  title text not null,
+  message text not null,
+  read boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.quotations (
+  id uuid primary key default gen_random_uuid(),
+  customer_id uuid not null references auth.users(id) on delete cascade,
+  project_id uuid references public.projects(id) on delete set null,
+  quotation_number text unique,
+  amount numeric(15,2),
+  currency text not null default 'NGN',
+  status text not null default 'DRAFT',
+  notes text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.seller_profiles (
+  id uuid primary key references auth.users(id) on delete cascade,
+  business_name text,
+  business_description text,
+  whatsapp text,
+  location text,
+  subscription_plan text,
+  subscription_status text not null default 'NONE',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create or replace function public.handle_new_user()
+returns trigger language plpgsql security definer set search_path=public as $fn$
+begin
+  insert into public.profiles(id,full_name,phone)
+  values(new.id,coalesce(new.raw_user_meta_data->>'full_name',''),coalesce(new.raw_user_meta_data->>'phone',''))
+  on conflict(id) do update set full_name=excluded.full_name,phone=excluded.phone,updated_at=now();
+  return new;
+end;
+$fn$;
+
 drop trigger if exists on_auth_user_created on auth.users;
-create trigger on_auth_user_created after insert on auth.users for each row execute procedure public.handle_new_user();
+create trigger on_auth_user_created after insert on auth.users
+for each row execute procedure public.handle_new_user();
+
+create or replace function public.is_admin()
+returns boolean
+language sql
+security definer
+set search_path=public
+as $$
+  select exists(
+    select 1 from public.profiles
+    where id=auth.uid() and account_type='admin'
+  );
+$$;
 
 alter table public.profiles enable row level security;
 alter table public.projects enable row level security;
+alter table public.project_reports enable row level security;
 alter table public.project_documents enable row level security;
 alter table public.service_requests enable row level security;
 alter table public.notifications enable row level security;
@@ -21,29 +126,90 @@ alter table public.quotations enable row level security;
 alter table public.seller_profiles enable row level security;
 
 drop policy if exists "Users can view own profile" on public.profiles;
-create policy "Users can view own profile" on public.profiles for select to authenticated using(id=auth.uid());
+create policy "Users can view own profile" on public.profiles for select to authenticated using(id=auth.uid() or public.is_admin());
+
 drop policy if exists "Users can update own profile" on public.profiles;
-create policy "Users can update own profile" on public.profiles for update to authenticated using(id=auth.uid()) with check(id=auth.uid());
+create policy "Users can update own profile" on public.profiles for update to authenticated using(id=auth.uid() or public.is_admin()) with check(id=auth.uid() or public.is_admin());
+
+drop policy if exists "Admins can manage profiles" on public.profiles;
+create policy "Admins can manage profiles" on public.profiles for all to authenticated using(public.is_admin()) with check(public.is_admin());
+
 drop policy if exists "Customers can view own projects" on public.projects;
-create policy "Customers can view own projects" on public.projects for select to authenticated using(customer_id=auth.uid());
+create policy "Customers can view own projects" on public.projects for select to authenticated using(customer_id=auth.uid() or public.is_admin());
+
+drop policy if exists "Admins can manage projects" on public.projects;
+create policy "Admins can manage projects" on public.projects for all to authenticated using(public.is_admin()) with check(public.is_admin());
+
+drop policy if exists "Customers can view own project reports" on public.project_reports;
+create policy "Customers can view own project reports" on public.project_reports for select to authenticated using(customer_id=auth.uid() or public.is_admin());
+
+drop policy if exists "Admins can manage project reports" on public.project_reports;
+create policy "Admins can manage project reports" on public.project_reports for all to authenticated using(public.is_admin()) with check(public.is_admin());
+
 drop policy if exists "Customers can view own project documents" on public.project_documents;
-create policy "Customers can view own project documents" on public.project_documents for select to authenticated using(customer_id=auth.uid());
+create policy "Customers can view own project documents" on public.project_documents for select to authenticated using(customer_id=auth.uid() or public.is_admin());
+
+drop policy if exists "Admins can manage project documents" on public.project_documents;
+create policy "Admins can manage project documents" on public.project_documents for all to authenticated using(public.is_admin()) with check(public.is_admin());
+
 drop policy if exists "Customers can create own service requests" on public.service_requests;
 create policy "Customers can create own service requests" on public.service_requests for insert to authenticated with check(customer_id=auth.uid());
+
 drop policy if exists "Customers can view own service requests" on public.service_requests;
-create policy "Customers can view own service requests" on public.service_requests for select to authenticated using(customer_id=auth.uid());
+create policy "Customers can view own service requests" on public.service_requests for select to authenticated using(customer_id=auth.uid() or public.is_admin());
+
+drop policy if exists "Admins can manage service requests" on public.service_requests;
+create policy "Admins can manage service requests" on public.service_requests for all to authenticated using(public.is_admin()) with check(public.is_admin());
+
 drop policy if exists "Customers can view own notifications" on public.notifications;
-create policy "Customers can view own notifications" on public.notifications for select to authenticated using(customer_id=auth.uid());
+create policy "Customers can view own notifications" on public.notifications for select to authenticated using(customer_id=auth.uid() or public.is_admin());
+
 drop policy if exists "Customers can mark own notifications read" on public.notifications;
 create policy "Customers can mark own notifications read" on public.notifications for update to authenticated using(customer_id=auth.uid()) with check(customer_id=auth.uid());
+
+drop policy if exists "Admins can manage notifications" on public.notifications;
+create policy "Admins can manage notifications" on public.notifications for all to authenticated using(public.is_admin()) with check(public.is_admin());
+
 drop policy if exists "Customers can view own quotations" on public.quotations;
-create policy "Customers can view own quotations" on public.quotations for select to authenticated using(customer_id=auth.uid());
+create policy "Customers can view own quotations" on public.quotations for select to authenticated using(customer_id=auth.uid() or public.is_admin());
+
+drop policy if exists "Admins can manage quotations" on public.quotations;
+create policy "Admins can manage quotations" on public.quotations for all to authenticated using(public.is_admin()) with check(public.is_admin());
+
 drop policy if exists "Sellers can view own seller profile" on public.seller_profiles;
-create policy "Sellers can view own seller profile" on public.seller_profiles for select to authenticated using(id=auth.uid());
+create policy "Sellers can view own seller profile" on public.seller_profiles for select to authenticated using(id=auth.uid() or public.is_admin());
+
 drop policy if exists "Sellers can update own seller profile" on public.seller_profiles;
-create policy "Sellers can update own seller profile" on public.seller_profiles for update to authenticated using(id=auth.uid()) with check(id=auth.uid());
+create policy "Sellers can update own seller profile" on public.seller_profiles for update to authenticated using(id=auth.uid() or public.is_admin()) with check(id=auth.uid() or public.is_admin());
+
 revoke update(account_type) on public.profiles from authenticated;
+
+insert into storage.buckets (id,name,public)
+values ('project-private','project-private',false)
+on conflict (id) do update set public=false;
+
+drop policy if exists "Admins can manage private project files" on storage.objects;
+create policy "Admins can manage private project files"
+on storage.objects for all to authenticated
+using(bucket_id='project-private' and public.is_admin())
+with check(bucket_id='project-private' and public.is_admin());
+
+drop policy if exists "Customers can read their private project files" on storage.objects;
+create policy "Customers can read their private project files"
+on storage.objects for select to authenticated
+using(
+  bucket_id='project-private'
+  and exists(
+    select 1
+    from public.project_documents d
+    where d.storage_path=name
+      and d.customer_id=auth.uid()
+  )
+);
+
 create index if not exists projects_customer_id_idx on public.projects(customer_id);
+create index if not exists project_reports_project_id_idx on public.project_reports(project_id);
+create index if not exists project_reports_customer_id_idx on public.project_reports(customer_id);
 create index if not exists project_documents_customer_id_idx on public.project_documents(customer_id);
 create index if not exists service_requests_customer_id_idx on public.service_requests(customer_id);
 create index if not exists notifications_customer_id_idx on public.notifications(customer_id);
