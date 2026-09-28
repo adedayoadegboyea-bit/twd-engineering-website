@@ -15,7 +15,7 @@ async function requireAdmin(){
 }
 async function loadAll(){
  const [c,p,r,q,w]=await Promise.all([
-  supabase.from("profiles").select("id,full_name,phone,account_type").order("created_at",{ascending:false}),
+  supabase.from("profiles").select("id,full_name,phone,email,account_type").order("created_at",{ascending:false}),
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
   supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
   supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100),
