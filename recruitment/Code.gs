@@ -642,40 +642,93 @@ function generateAptitudeQuestions_(position) {
     required:['questions']
   };
 
-  const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent';
   const payload={
     contents:[{parts:[{text:prompt}]}],
     generationConfig:{
       responseMimeType:'application/json',
       responseSchema:schema,
-      temperature:0.2,
       maxOutputTokens:30000
     }
   };
 
-  let response;
-  try{
-    response=UrlFetchApp.fetch(url,{
-      method:'post',
-      contentType:'application/json',
-      headers:{'x-goog-api-key':key},
-      muteHttpExceptions:true,
-      payload:JSON.stringify(payload)
-    });
-  }catch(fetchError){
-    throw new Error('Could not reach Gemini: '+fetchError.message);
+  /*
+   * Gemini can temporarily return HTTP 503 when model capacity is busy.
+   * Use bounded exponential backoff, then fall back to a lighter current
+   * Flash-Lite model. We never retry permanent 4xx configuration errors.
+   */
+  const modelsToTry=[model];
+  if(model!=='gemini-3.5-flash-lite'){
+    modelsToTry.push('gemini-3.5-flash-lite');
   }
 
-  const code=response.getResponseCode();
-  const body=response.getContentText();
+  let response=null;
+  let lastError='';
 
-  if(code<200||code>=300){
-    let detail=body;
-    try{
-      const apiErr=JSON.parse(body);
-      detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||body;
-    }catch(ignore){}
-    throw new Error('Gemini API error HTTP '+code+': '+String(detail).slice(0,900));
+  for(let modelIndex=0;modelIndex<modelsToTry.length;modelIndex++){
+    const activeModel=modelsToTry[modelIndex];
+    const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(activeModel)+':generateContent';
+
+    for(let attempt=0;attempt<4;attempt++){
+      try{
+        response=UrlFetchApp.fetch(url,{
+          method:'post',
+          contentType:'application/json',
+          headers:{'x-goog-api-key':key},
+          muteHttpExceptions:true,
+          payload:JSON.stringify(payload)
+        });
+      }catch(fetchError){
+        lastError='Could not reach Gemini ('+activeModel+'): '+fetchError.message;
+        response=null;
+      }
+
+      if(response){
+        const code=response.getResponseCode();
+        const body=response.getContentText();
+
+        if(code>=200&&code<300){
+          break;
+        }
+
+        let detail=body;
+        try{
+          const apiErr=JSON.parse(body);
+          detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||body;
+        }catch(ignore){}
+
+        lastError='Gemini API error HTTP '+code+' ('+activeModel+'): '+String(detail).slice(0,900);
+
+        /*
+         * Retry only transient server/rate-limit errors.
+         * 503 is the error currently being reported.
+         */
+        if(code===503 || code===429 || code===408 || code===500 || code===502 || code===504){
+          if(attempt<3){
+            const delay=(5000*Math.pow(2,attempt))+Math.floor(Math.random()*2000);
+            Utilities.sleep(delay);
+            continue;
+          }
+        }
+
+        response=null;
+        break;
+      }
+
+      break;
+    }
+
+    if(response && response.getResponseCode()>=200 && response.getResponseCode()<300){
+      break;
+    }
+
+    response=null;
+  }
+
+  if(!response){
+    throw new Error(
+      lastError ||
+      'Gemini could not generate the aptitude questions after the available retries.'
+    );
   }
 
   let outer;
