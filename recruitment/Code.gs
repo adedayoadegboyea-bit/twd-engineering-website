@@ -612,20 +612,30 @@ function onRecruitmentEdit(e) {
   const range = e.range;
   const sheet = range.getSheet();
 
-  if (sheet.getName() !== CONFIG.SHEET_NAME) return;
   if (range.getRow() === 1) return;
 
-  // Only react to edits touching the Status column.
-  if (range.getColumn() !== 14) return;
+  // Applicant recruitment status changes.
+  if (sheet.getName() === CONFIG.SHEET_NAME) {
+    if (range.getColumn() !== 14) return;
+    const rowNumber = range.getRow();
+    const row = sheet.getRange(rowNumber, 1, 1, HEADERS.length);
+    const status = String(sheet.getRange(rowNumber, 14).getValue() || '').trim();
+    if (!status) return;
+    sendStatusEmail(row);
+    return;
+  }
 
-  const rowNumber = range.getRow();
-  const row = sheet.getRange(rowNumber, 1, 1, HEADERS.length);
-
-  const status = String(sheet.getRange(rowNumber, 14).getValue() || '').trim();
-
-  if (!status) return;
-
-  sendStatusEmail(row);
+  // Aptitude result approval: management changes Admin Decision (column 14)
+  // to APPROVED after reviewing the AI score/report.
+  if (sheet.getName() === 'Aptitude Tests') {
+    if (range.getColumn() !== 13) return;
+    const decision = String(sheet.getRange(range.getRow(), 13).getValue() || '').trim().toUpperCase();
+    if (decision !== 'APPROVED') return;
+    const testId = String(sheet.getRange(range.getRow(), 1).getValue() || '').trim();
+    if (!testId) return;
+    approveAptitudeResult(testId, String(sheet.getRange(range.getRow(), 14).getValue() || '').trim());
+  }
+}
 }
 
 /**
