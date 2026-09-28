@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T09:13:07.129030+00:00",
+  "generated_at": "2026-09-28T09:42:53.625334+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,35 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Ekiti showcases tourist attractions, woos investors",
+      "summary": "Ekiti State Government is intensifying efforts to position tourism as a major economic driver, urging investors to develop sites like Arinta Waterfall. Read More: https://punchng.com/ekiti-showcases-tourist-attractions-woos-investors/",
+      "url": "https://punchng.com/ekiti-showcases-tourist-attractions-woos-investors/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T10:34:39+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "Rabies eradication: Veterinary council laments lack of funds, manpower",
+      "summary": "The Veterinary Council of Nigeria has identified a lack of funds, manpower, and vaccines as major challenges to rabies eradication in the country. Read More: https://punchng.com/rabies-eradication-veterinary-council-laments-lack-of-funds-manpower/",
+      "url": "https://punchng.com/rabies-eradication-veterinary-council-laments-lack-of-funds-manpower/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T10:32:28+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Tinubu won’t lose South-West in 2027 — Ex-senator",
+      "summary": "A former senator, Olusola Adeyeye, has expressed confidence that President Bola Tinubu will not lose the South-West in the 2027 presidential election. Read More: https://punchng.com/tinubu-wont-lose-south-west-in-2027-ex-senator/",
+      "url": "https://punchng.com/tinubu-wont-lose-south-west-in-2027-ex-senator/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T10:29:28+00:00",
+      "categories": []
+    },
     {
       "title": "2027: Northern candidates should wait till 2031 to contest – Kano gov",
       "summary": "Kano State Governor, Abba Yusuf, has urged northern presidential hopefuls to wait until 2031, calling for support for President Tinubu to complete a second Read More: https://punchng.com/2027-northern-candidates-should-wait-till-2031-to-contest-kano-gov/",
@@ -68,6 +97,14 @@
         "government",
         "lagos"
       ]
+    },
+    {
+      "title": "What records show about Anambra debt under Peter Obi, amid govt’s $123.7m claim",
+      "summary": "PREMIUM TIMES analysed DMO's records, Mr Obi's handover letter, his claims as well as the submissions of successive administrations in Anambra State to present our findings. The post What records show about Anambra debt under Peter Obi, amid govt’s $123.7m claim appeared first on Premium Times Niger",
+      "url": "https://www.premiumtimesng.com/regional/ssouth-east/912915-what-records-show-about-anambra-debt-under-peter-obi-amid-govts-123-7m-claim.html",
+      "source": "Premium Times",
+      "published": "2026-09-28T09:23:47+00:00",
+      "categories": []
     },
     {
       "title": "Ronaldo, Gyokeres, Haaland, 15 other Nations League hat-trick heroes",
@@ -253,42 +290,6 @@
       "source": "Premium Times",
       "published": "2026-09-28T07:54:07+00:00",
       "categories": []
-    },
-    {
-      "title": "Why Ronaldo missed Portugal’s victory against Norway – Coach Jorge",
-      "summary": "Portugal manager Jorge Jesus explains his tactical decision to keep Cristiano Ronaldo as an unused substitute in the 2-1 Nations League win over Norway. Read More: https://punchng.com/why-ronaldo-missed-portugals-victory-against-norway-coach-jorge/",
-      "url": "https://punchng.com/why-ronaldo-missed-portugals-victory-against-norway-coach-jorge/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T07:52:10+00:00",
-      "categories": []
-    },
-    {
-      "title": "Two Nigerian goalkeepers switch allegiance to Uganda",
-      "summary": "The Federation of Uganda Football Associations (FUFA) confirmed the pair’s allegiance move on Sunday as part of what it described as a broader plan to strengthen the country’s national teams. The post Two Nigerian goalkeepers switch allegiance to Uganda appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/912891-two-nigerian-goalkeepers-switch-allegiance-to-uganda.html",
-      "source": "Premium Times",
-      "published": "2026-09-28T07:45:17+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Messi scores 76th free-kick goal, moves within two of all-time record",
-      "summary": "Lionel Messi scored his 76th career free-kick goal for Inter Miami against Columbus Crew, moving him within two of the all-time record held by Marcelinho. Read More: https://punchng.com/messi-scores-76th-free-kick-goal-moves-within-two-of-all-time-record/",
-      "url": "https://punchng.com/messi-scores-76th-free-kick-goal-moves-within-two-of-all-time-record/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T07:35:57+00:00",
-      "categories": []
-    },
-    {
-      "title": "Fishers decry declining catches, polluted waters, disappearing mangroves in Cross River",
-      "summary": "Fishers in Cross River decry shrinking catches, polluted waters and disappearing mangroves as Peace Point Development Foundation and Health of Mother Earth Foundation train community members to document environmental threats, defend their rights and demand accountability. The post Fishers decry decl",
-      "url": "https://www.premiumtimesng.com/news/headlines/912886-fishers-decry-declining-catches-polluted-waters-disappearing-mangroves-in-cross-river.html",
-      "source": "Premium Times",
-      "published": "2026-09-28T07:33:57+00:00",
-      "categories": [
-        "engineering"
-      ]
     }
   ]
 }
