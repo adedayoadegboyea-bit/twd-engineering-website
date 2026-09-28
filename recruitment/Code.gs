@@ -806,7 +806,7 @@ function formatValue_(value, fallback) {
 
 const APTITUDE_HEADERS = [
   'Test ID','Application ID','Position','Applicant Email','Status',
-  'Started At','Expires At','Submitted At','Score','AI Assessment',
+  'Started At','Expires At','Submitted At','Score','Score Over 100','AI Assessment',
   'Questions JSON','Answers JSON','Admin Decision','Admin Notes'
 ];
 
@@ -979,7 +979,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
  * It generates 50 questions without creating an applicant or sending email.
  */
 function recruitmentBuildInfo(){
-  return 'TW&D RECRUITMENT BUILD 2026-09-28-EMAIL-GUARD-08';
+  return 'TW&D RECRUITMENT BUILD 2026-09-28-AI-LIVE-SCORE100-09';
 }
 
 function testAptitudeAI(){
@@ -1035,60 +1035,77 @@ function aptitudeClientPayload_(row) {
 }
 
 function submitAptitudeTest(testId, answers) {
-  const sheet=getAptitudeSheet_();
-  const data=sheet.getDataRange().getValues();
+  const sheet=getAptitudeSheet_(), data=sheet.getDataRange().getValues();
   let rowNumber=-1,row=null;
   for(let r=1;r<data.length;r++) if(String(data[r][0])===String(testId)){rowNumber=r+1;row=data[r];break;}
   if(rowNumber<0) throw new Error('Aptitude test not found.');
   if(String(row[4])!=='IN_PROGRESS') throw new Error('This aptitude test is no longer open.');
   const expired=new Date(row[6]).getTime()<Date.now();
-
   const questions=JSON.parse(String(row[10]||'[]'));
-  if(!Array.isArray(answers) || answers.length!==50) throw new Error('The aptitude test submission is incomplete.');
-  // -1 means the applicant did not answer that question. It is scored as incorrect.
-  // This is required so the test can be submitted automatically when the hour expires.
+  if(!Array.isArray(answers)||answers.length!==50) throw new Error('The aptitude test submission is incomplete.');
 
   const key=questions.map(function(q){return Number(q.answer);});
-  let score=0;
-  for(let i=0;i<50;i++) if(Number(answers[i])===key[i]) score++;
+  let correct=0;
+  for(let i=0;i<50;i++) if(Number(answers[i])===key[i]) correct++;
+  const score100=Math.round((correct/50)*100);
 
-  let assessment='Automatic score: '+score+'/50. AI assessment is pending administrator review.';
-  try { assessment=markAptitudeWithAI_(row[2],questions,answers,score); }
-  catch(aiError) { console.error('AI marking failed:',aiError); }
-  if(expired) assessment='Automatic score: '+score+'/50. '+assessment+' The test was submitted automatically at the end of the 1-hour window.';
+  let assessment='Automatic score: '+score100+'/100. AI assessment is pending administrator review.';
+  try{assessment=markAptitudeWithAI_(row[2],questions,answers,score100);}catch(aiError){console.error('AI marking failed:',aiError);}
+  if(expired) assessment='Automatic score: '+score100+'/100. '+assessment+' The test was submitted automatically at the end of the 1-hour window.';
 
   const submitted=new Date();
-  sheet.getRange(rowNumber,5,1,10).setValues([[
-    'SUBMITTED_AI_MARKED_PENDING_ADMIN',row[5],row[6],submitted,score,assessment,row[10],JSON.stringify(answers),'PENDING',row[13]||''
+  sheet.getRange(rowNumber,5,1,11).setValues([[
+    'SUBMITTED_AI_MARKED_PENDING_ADMIN',row[5],row[6],submitted,correct,score100,assessment,row[10],JSON.stringify(answers),'PENDING',row[13]||''
   ]]);
-  updateApplicationAptitude_(row[1],score,assessment,submitted);
-  notifyAptitudeAdmin_(row,score,assessment);
-
-  return {ok:true,score:score,total:50,status:'SUBMITTED_AI_MARKED_PENDING_ADMIN',message:'Your aptitude test has been submitted. Your application and result have been sent to TW&D management for review. The recruitment result will be communicated within 24 hours.'};
+  updateApplicationAptitude_(row[1],score100,assessment,submitted);
+  notifyAptitudeAdmin_(row,score100,assessment);
+  return {ok:true,score:score100,total:100,status:'SUBMITTED_AI_MARKED_PENDING_ADMIN',message:'Your aptitude test has been submitted. The AI-marked result has been sent to TW&D management for review. The result will be released after administrator approval, within 24 hours.'};
 }
 
-function markAptitudeWithAI_(position,questions,answers,score) {
-  const key=PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY');
-  if(!key) return 'Automatic score: '+score+'/50. AI assessment pending administrator review.';
-  const model=PropertiesService.getScriptProperties().getProperty('GEMINI_MODEL') || 'gemini-3.8-flash';
+
+function markAptitudeWithAI_(position,questions,answers,score100) {
+  const key=String(PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY')||'').trim();
+  if(!key) return 'Automatic score: '+score100+'/100. AI assessment is pending administrator review.';
+  const model=String(PropertiesService.getScriptProperties().getProperty('GEMINI_MODEL')||'gemini-3.8-flash').trim();
   const compact=questions.map(function(q,i){return {n:i+1,q:q.question,options:q.options,correct:q.answer,applicant:answers[i]};});
-  const prompt='Assess an applicant aptitude test for the role '+position+'. There are 50 multiple-choice questions. The automatic score is '+score+'/50. Review the answer pattern and provide a concise professional assessment for the administrator: strengths, notable gaps, safety/ethics concerns if any, and a suggested review focus. Do not make a final hiring decision. Return plain text. DATA: '+JSON.stringify(compact);
+  const prompt='Assess this 50-question aptitude test for the applicant position "'+position+'". The objective score is '+score100+'/100. Analyze the answer pattern and provide a concise administrator report with overall performance, strengths, technical gaps, safety/ethics concerns, and topics to verify at interview. Do not make a hiring decision and do not change the numeric score. Return plain text. DATA: '+JSON.stringify(compact);
   const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent?key='+encodeURIComponent(key);
   const response=UrlFetchApp.fetch(url,{method:'post',contentType:'application/json',headers:{'x-goog-api-key':key},muteHttpExceptions:true,payload:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.2}})});
-  const code=response.getResponseCode();
-  const raw=response.getContentText();
-  if(code<200 || code>=300){
-    let detail=raw;
-    try{
-      const apiErr=JSON.parse(raw);
-      detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||raw;
-    }catch(ignore){}
-    throw new Error('AI marking failed HTTP '+code+': '+String(detail).slice(0,500));
-  }
+  const code=response.getResponseCode(),raw=response.getContentText();
+  if(code<200||code>=300) throw new Error('AI marking failed HTTP '+code+': '+raw.slice(0,500));
   const body=JSON.parse(raw);
   const text=body.candidates&&body.candidates[0]&&body.candidates[0].content&&body.candidates[0].content.parts&&body.candidates[0].content.parts[0]&&body.candidates[0].content.parts[0].text;
-  return text || ('Automatic score: '+score+'/50.');
+  return text||('Automatic score: '+score100+'/100. AI assessment pending administrator review.');
 }
+
+function approveAptitudeResult(testId,adminNotes) {
+  const sheet=getAptitudeSheet_(),data=sheet.getDataRange().getValues();
+  for(let r=1;r<data.length;r++) if(String(data[r][0])===String(testId)){
+    const row=data[r];
+    if(String(row[4])!=='SUBMITTED_AI_MARKED_PENDING_ADMIN') throw new Error('This aptitude result is not awaiting administrator approval.');
+    const score100=Number(row[9]||0),assessment=String(row[10]||''),notes=String(adminNotes||row[13]||'').trim();
+    const releasedAt=new Date();
+    sheet.getRange(r+1,13,1,3).setValues([['APPROVED',notes,releasedAt]]);
+    sendAptitudeResultToApplicant_(row,score100,assessment,notes,releasedAt);
+    return 'Aptitude result approved and released to the applicant.';
+  }
+  throw new Error('Aptitude test not found.');
+}
+
+function sendAptitudeResultToApplicant_(row,score100,assessment,adminNotes,releasedAt) {
+  const email=String(row[3]||'').trim();
+  if(!email) throw new Error('Applicant email is missing.');
+  const subject='TW&D Aptitude Test Result — '+row[2];
+  const html='<h2>TW&D Engineering Consult &amp; Services Ltd — Aptitude Test Result</h2>'+
+    '<p>Dear Applicant,</p><p>Your aptitude test result has been reviewed and approved by TW&amp;D management.</p>'+
+    '<p><b>Position:</b> '+escapeHtml_(row[2])+'</p><p><b>Score:</b> '+score100+'/100</p>'+
+    '<h3>Assessment</h3><p>'+escapeHtml_(assessment).replace(/\n/g,'<br>')+'</p>'+
+    (adminNotes?'<h3>Management Note</h3><p>'+escapeHtml_(adminNotes).replace(/\n/g,'<br>')+'</p>':'')+
+    '<p>Your result has been released following the recruitment review process. Final recruitment communication is expected within 24 hours.</p>'+
+    '<p>Regards,<br><b>'+CONFIG.COMPANY_NAME+'</b></p>';
+  sendTransactionalEmail_(email,subject,html);
+}
+
 
 function updateApplicationAptitude_(applicationId,score,assessment,submitted) {
   const sheet=getApplicationsSheet_(getRecruitmentSpreadsheet_());
