@@ -51,44 +51,33 @@ function render() {
 
   const rows = listings.filter(item => {
     const seller = String(item.seller || "").toLowerCase();
-    const normalizedImages = Array.isArray(item.images) && item.images.length
-      ? item.images
-      : (item.image ? [item.image] : []);
-    const hasUploadedPhoto = normalizedImages.length > 0;
-    const isCompanyOrDemo =
-      seller.includes("tw&d") ||
-      seller.includes("twd engineering") ||
-      seller.includes("marketplace demo") ||
-      seller.includes("system test");
-
-    if (isCompanyOrDemo || !hasUploadedPhoto) return false;
+    const normalizedImages = Array.isArray(item.images) && item.images.length ? item.images : (item.image ? [item.image] : []);
+    const normalizedVideos = Array.isArray(item.videos) ? item.videos : [];
+    const hasUploadedMedia = normalizedImages.length > 0 || normalizedVideos.length > 0;
+    const isCompanyOrDemo = seller.includes("tw&d") || seller.includes("twd engineering") || seller.includes("marketplace demo") || seller.includes("system test");
+    if (isCompanyOrDemo || !hasUploadedMedia) return false;
     const haystack = [item.title,item.category,item.location,item.seller].join(" ").toLowerCase();
-    return (!search || haystack.includes(search))
-      && (!category || item.category === category)
-      && (!location || item.location.toLowerCase().includes(location.toLowerCase()));
+    return (!search || haystack.includes(search)) && (!category || item.category === category) && (!location || item.location.toLowerCase().includes(location.toLowerCase()));
   });
 
   grid.innerHTML = rows.map(item => {
     const title = escapeHtml(item.title);
-    const normalizedImages = Array.isArray(item.images) && item.images.length
-      ? item.images
-      : (item.image ? [item.image] : []);
+    const normalizedImages = Array.isArray(item.images) && item.images.length ? item.images : (item.image ? [item.image] : []);
     const images = normalizedImages.map(publicImageUrl);
+    const videos = Array.isArray(item.videos) ? item.videos.map(publicImageUrl).filter(Boolean) : [];
     const image = escapeHtml(publicImageUrl(images[0] || ""));
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
     const conditionText = escapeHtml(item.condition || "");
-    const wa = "https://wa.me/2348035774420?text=" +
-      encodeURIComponent("Hello TW&D Marketplace, I am interested in: " + item.title);
-
-    const gallery = images.slice(0, 5).map((src, index) =>
-      '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="eager" decoding="async" data-gallery-src="' + escapeHtml(src) + '">'
-    ).join("");
+    const wa = "https://wa.me/2348035774420?text=" + encodeURIComponent("Hello TW&D Marketplace, I am interested in: " + item.title);
+    const gallery = images.slice(0, 5).map((src, index) => '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="eager" decoding="async" data-gallery-src="' + escapeHtml(src) + '">').join("");
+    const videoBlock = videos.length ? '<div class="listing-videos">' + videos.slice(0, 2).map((src, index) => '<video controls preload="metadata" playsinline src="' + escapeHtml(src) + '" aria-label="' + title + ' advertisement video ' + (index + 1) + '"></video>').join("") + '</div>' : "";
 
     return `<article class="listing">
       <div class="listing-media">
-        <img class="listing-main-image" src="${image}" alt="${title}" loading="eager" decoding="async">
+        ${images.length ? '<img class="listing-main-image" src="' + image + '" alt="' + title + '" loading="eager" decoding="async">' : '<div class="listing-video-placeholder">VIDEO ADVERTISEMENT</div>'}
         ${images.length > 1 ? '<div class="listing-thumbs">' + gallery + '</div>' : ''}
+        ${videoBlock}
       </div>
       <div class="listing-body">
         <span class="tag">${categoryText}</span>
@@ -101,8 +90,6 @@ function render() {
   }).join("");
 
   empty.hidden = rows.length > 0;
-
-  // Let visitors switch through every uploaded listing photo.
   grid.querySelectorAll(".listing").forEach(card => {
     const main = card.querySelector(".listing-main-image");
     card.querySelectorAll(".listing-thumbs img").forEach(thumb => {
@@ -186,17 +173,25 @@ form.addEventListener("submit", async event => {
   const MAX_TOTAL = 15 * 1024 * 1024;
 
   if (!files.length) {
-    statusBox.textContent = "Please select at least one photo.";
+    statusBox.textContent = "Please select at least one photo or advertisement video.";
+    return;
+  }
+
+  const allowedImageTypes = ["image/jpeg","image/png","image/webp"];
+  const allowedVideoTypes = ["video/mp4","video/webm","video/quicktime"];
+  const invalid = files.find(file => !allowedImageTypes.includes(file.type) && !allowedVideoTypes.includes(file.type));
+  if (invalid) {
+    statusBox.textContent = "Only JPG, PNG, WEBP, MP4, WEBM or MOV videos are allowed.";
     return;
   }
 
   if (files.some(file => file.size > MAX)) {
-    statusBox.textContent = "Each photo must be 5 MB or smaller.";
+    statusBox.textContent = "Each photo or video must be 5 MB or smaller.";
     return;
   }
 
   if (files.reduce((sum,file) => sum + file.size, 0) > MAX_TOTAL) {
-    statusBox.textContent = "Please keep all photos together below 15 MB.";
+    statusBox.textContent = "Please keep all photos and videos together below 15 MB.";
     return;
   }
 
