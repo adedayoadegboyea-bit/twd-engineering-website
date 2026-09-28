@@ -688,9 +688,13 @@ function generateAptitudeQuestions_(position) {
   }
 
   const candidate=outer.candidates[0];
+  const finishReason=String(candidate.finishReason||'');
   const text=candidate.content&&candidate.content.parts&&candidate.content.parts[0]&&candidate.content.parts[0].text;
   if(!text){
-    throw new Error('Gemini returned no question content. Finish reason: '+(candidate.finishReason||'unknown'));
+    if(finishReason==='MAX_TOKENS'){
+      throw new Error('Gemini stopped before all 50 questions were generated. The response reached the output limit. Try again; the generator is configured to retry transient API failures.');
+    }
+    throw new Error('Gemini returned no question content. Finish reason: '+(finishReason||'unknown'));
   }
 
   let parsed;
@@ -795,10 +799,20 @@ function markAptitudeWithAI_(position,questions,answers,score) {
   const compact=questions.map(function(q,i){return {n:i+1,q:q.question,options:q.options,correct:q.answer,applicant:answers[i]};});
   const prompt='Assess an applicant aptitude test for the role '+position+'. There are 50 multiple-choice questions. The automatic score is '+score+'/50. Review the answer pattern and provide a concise professional assessment for the administrator: strengths, notable gaps, safety/ethics concerns if any, and a suggested review focus. Do not make a final hiring decision. Return plain text. DATA: '+JSON.stringify(compact);
   const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent?key='+encodeURIComponent(key);
-  const response=UrlFetchApp.fetch(url,{method:'post',contentType:'application/json',muteHttpExceptions:true,payload:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.2}})});
-  if(response.getResponseCode()<200 || response.getResponseCode()>=300) throw new Error('AI marking failed.');
-  const body=JSON.parse(response.getContentText());
-  return body.candidates[0].content.parts[0].text || ('Automatic score: '+score+'/50.');
+  const response=UrlFetchApp.fetch(url,{method:'post',contentType:'application/json',headers:{'x-goog-api-key':key},muteHttpExceptions:true,payload:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.2}})});
+  const code=response.getResponseCode();
+  const raw=response.getContentText();
+  if(code<200 || code>=300){
+    let detail=raw;
+    try{
+      const apiErr=JSON.parse(raw);
+      detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||raw;
+    }catch(ignore){}
+    throw new Error('AI marking failed HTTP '+code+': '+String(detail).slice(0,500));
+  }
+  const body=JSON.parse(raw);
+  const text=body.candidates&&body.candidates[0]&&body.candidates[0].content&&body.candidates[0].content.parts&&body.candidates[0].content.parts[0]&&body.candidates[0].content.parts[0].text;
+  return text || ('Automatic score: '+score+'/50.');
 }
 
 function updateApplicationAptitude_(applicationId,score,assessment,submitted) {
