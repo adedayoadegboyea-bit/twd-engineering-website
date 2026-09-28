@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T17:10:59.600410+00:00",
+  "generated_at": "2026-09-28T17:41:06.258501+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,11 +11,65 @@
   ],
   "articles": [
     {
+      "title": "Handle naira with care, pride, CBN urges Nigerians",
+      "summary": "The Central Bank of Nigeria has urged Nigerians to handle the naira with care and dignity to extend its lifespan and reduce the cost of replacing soiled no Read More: https://punchng.com/handle-naira-with-care-pride-cbn-urges-nigerians/",
+      "url": "https://punchng.com/handle-naira-with-care-pride-cbn-urges-nigerians/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T18:28:34+00:00",
+      "categories": []
+    },
+    {
+      "title": "Sokoto gov appoints eight district heads",
+      "summary": "Sokoto State Governor, Ahmed Aliyu, has approved the appointment of eight new district heads to fill vacant traditional positions across the state. Read More: https://punchng.com/sokoto-gov-appoints-eight-district-heads/",
+      "url": "https://punchng.com/sokoto-gov-appoints-eight-district-heads/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T18:27:59+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Nigeria’s budget too small for its population — Minister",
+      "summary": "The Minister of Budget and Economic Planning, Abubakar Bagudu, says Nigeria has one of the smallest national budgets among the world’s 10 most populous nat Read More: https://punchng.com/nigerias-budget-too-small-for-its-population-minister/",
+      "url": "https://punchng.com/nigerias-budget-too-small-for-its-population-minister/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T18:25:12+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: Allow Nigerians choose their leaders, Onaiyekan urges INEC",
+      "summary": "Ahead of the 2027 general elections, Cardinal John Onaiyekan has urged INEC and political actors to ensure Nigerians are allowed to freely choose their lea Read More: https://punchng.com/2027-allow-nigerians-choose-their-leaders-onaiyekan-urges-inec/",
+      "url": "https://punchng.com/2027-allow-nigerians-choose-their-leaders-onaiyekan-urges-inec/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T18:23:01+00:00",
+      "categories": []
+    },
+    {
+      "title": "Okpebholo’s security policy driving Edo economic growth — Deputy gov",
+      "summary": "Edo State Deputy Governor Dennis Idahosa says Governor Monday Okpebholo’s security policies have restored confidence and created a safer environment for in Read More: https://punchng.com/okpebholos-security-policy-driving-edo-economic-growth-deputy-gov/",
+      "url": "https://punchng.com/okpebholos-security-policy-driving-edo-economic-growth-deputy-gov/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-28T18:22:45+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Stakeholders seek evidence-driven strategy to improve healthcare access",
       "summary": "The National Health Insurance Authority has called for a locally led health financing research agenda to guide reforms and improve healthcare access for Ni Read More: https://punchng.com/stakeholders-seek-evidence-driven-strategy-to-improve-healthcare-access/",
       "url": "https://punchng.com/stakeholders-seek-evidence-driven-strategy-to-improve-healthcare-access/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-28T17:45:24+00:00",
+      "categories": []
+    },
+    {
+      "title": "‘Nigerians are suffering’ – Ogun group backs return of fuel subsidy",
+      "summary": "A political support group in Ogun State, Yayi Ni Wura Alliance Movement, has asked President Bola Tinubu to restore fuel subsidy, warning that the soaring cost of petrol has deepened hardship for ordinary Nigerians. The group made the call in Abeokuta while announcing that it has cut ties with PDP’s",
+      "url": "https://dailypost.ng/2026/09/28/nigerians-are-suffering-ogun-group-backs-return-of-fuel-subsidy/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T17:32:59+00:00",
       "categories": []
     },
     {
@@ -25,6 +79,26 @@
       "source": "PUNCH",
       "published": "2026-09-28T17:31:40+00:00",
       "categories": []
+    },
+    {
+      "title": "TUC asks DSS to arrest alleged ASCSN impersonators, warns of legal action",
+      "summary": "The Trade Union Congress, TUC, has asked the Department of State Services, DSS, to arrest individuals impersonating the leadership of its affiliate union, the Association of Senior Civil Servants of Nigeria, ASCSN. The Secretary-General of TUC, Comrade Nuhu Toro, made the appeal in a statement on Mo",
+      "url": "https://dailypost.ng/2026/09/28/tuc-asks-dss-to-arrest-alleged-ascsn-impersonators-warns-of-legal-action/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T17:31:23+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "‘I’m not a man of divided loyalty’ – Babachir Lawal on why he didn’t work with Atiku",
+      "summary": "A former Secretary to the Government of the Federation, SGF, Babachir Lawal, has disclosed that the African Democratic Congress, ADC, presidential candidate, Atiku Abubakar, wanted to work with him. Lawal disclosed that he could not work with Atiku because he was engaged in the administration of the",
+      "url": "https://dailypost.ng/2026/09/28/im-not-a-man-of-divided-loyalty-babachir-lawal-on-why-he-didnt-work-with-atiku/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-28T17:25:01+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "NDLEA, Army destroy cannabis farms, arrest two suspects in Edo",
@@ -64,6 +138,14 @@
       "categories": []
     },
     {
+      "title": "AFCON Qualifiers: Super Eagles seek to extend dominance over Guinea-Bissau",
+      "summary": "Nigeria have won three of their four previous official senior international encounters with the Wild Dogs The post AFCON Qualifiers: Super Eagles seek to extend dominance over Guinea-Bissau appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/sports/football/913021-afcon-qualifiers-super-eagles-seek-to-extend-dominance-over-guinea-bissau.html",
+      "source": "Premium Times",
+      "published": "2026-09-28T17:11:02+00:00",
+      "categories": []
+    },
+    {
       "title": "Ogun federal varsity targets 2027/28 take-off, adds 66 new programmes",
       "summary": "The Federal University of Technology, Ilaro, Ogun State, is targeting the 2027/2028 academic session for its take-off as a university from a polytechnic. Read More: https://punchng.com/ogun-federal-varsity-targets-2027-28-take-off-adds-66-new-programmes/",
       "url": "https://punchng.com/ogun-federal-varsity-targets-2027-28-take-off-adds-66-new-programmes/?utm_source=rss.punchng.com&utm_medium=web",
@@ -98,6 +180,17 @@
       "source": "PUNCH",
       "published": "2026-09-28T16:41:33+00:00",
       "categories": []
+    },
+    {
+      "title": "Fire guts Customs office in Lagos",
+      "summary": "The fire started at about 10:23 a.m. after an electrical surge in the conference room and spread to other parts of the building. The post Fire guts Customs office in Lagos appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/913010-fire-guts-customs-office-in-lagos.html",
+      "source": "Premium Times",
+      "published": "2026-09-28T16:35:44+00:00",
+      "categories": [
+        "engineering",
+        "lagos"
+      ]
     },
     {
       "title": "AFCON 2027Q: Usor reveals how Simon inspired match-winning goal against Madagascar",
@@ -188,104 +281,6 @@
       "categories": [
         "government"
       ]
-    },
-    {
-      "title": "Tinubu congratulates Osikoya, Awolowo on Black Market Guinness record",
-      "summary": "President Bola Tinubu has congratulated filmmakers Damilola Osikoya and Nora Awolowo on achieving the Guinness World Record for the largest film screening. Read More: https://punchng.com/tinubu-congratulates-osikoya-awolowo-on-black-market-guinness-record/",
-      "url": "https://punchng.com/tinubu-congratulates-osikoya-awolowo-on-black-market-guinness-record/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T15:44:48+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Raneen Awad’s Entrepreneurial Journey: From Starting at 16 to Building RENO",
-      "summary": "Raneen Awad has already started making transformative moves in her life at a time when many young people are still trying to figure out who they will be in the future. At the age of 16, she began her career in the beauty industry as a face model in various beauty salons. This early experience […] Ra",
-      "url": "https://dailypost.ng/2026/09/28/raneen-awads-entrepreneurial-journey-from-starting-at-16-to-building-reno/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:43:33+00:00",
-      "categories": [
-        "engineering",
-        "business"
-      ]
-    },
-    {
-      "title": "CBN urges Nigerians to handle Naira with care",
-      "summary": "This, according to the central bank, will extend its lifespan and reduce the cost of replacing soiled and mutilated notes. The post CBN urges Nigerians to handle Naira with care appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/913001-cbn-urges-nigerians-to-handle-naira-with-care.html",
-      "source": "Premium Times",
-      "published": "2026-09-28T15:34:11+00:00",
-      "categories": []
-    },
-    {
-      "title": "‘Nigeria can’t be run by delegation and press release’ — NDC blasts Tinubu",
-      "summary": "The Nigeria Democratic Congress, NDC, has criticised President Bola Tinubu over his absence from the 81st Session of the United Nations General Assembly, UNGA, in New York. The party, in a statement signed by its National Publicity Secretary, Osa Director, on Monday, described Tinubu’s absence as hi",
-      "url": "https://dailypost.ng/2026/09/28/nigeria-cant-be-run-by-delegation-and-press-release-ndc-blasts-tinubu/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:23:15+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: How Atiku asked me to make Peter Obi his running mate – Babachir Lawal",
-      "summary": "Former Secretary to the Government of the Federation, SGF, Babachir Lawal, has revealed that former Vice President, Atiku Abubakar, asked him to persuade Peter Obi to join the African Democratic Congress, ADC, and serve as his running mate in the 2027 presidential election. Lawal made this disclosur",
-      "url": "https://dailypost.ng/2026/09/28/2027-how-atiku-asked-me-to-make-peter-obi-his-running-mate-babachir-lawal/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:22:52+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Flooding: PDP accuses Sanwo-Olu govt of neglecting Jakande Estates",
-      "summary": "The Lagos State chapter of the Peoples Democratic Party, PDP, has accused the administration of Governor Babajide Sanwo-Olu of failing to adequately address the infrastructure challenges facing residents and property owners in Phases 1, 2, 3 and 4 of the Anikantamo Jakande Estates on Lagos Island. T",
-      "url": "https://dailypost.ng/2026/09/28/flooding-pdp-accuses-sanwo-olu-govt-of-neglecting-jakande-estates/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:18:41+00:00",
-      "categories": [
-        "engineering",
-        "government",
-        "property",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Kano court remands 11 youths over alleged killing of police officer",
-      "summary": "A Kano Magistrates’ Court has ordered the remand of 11 youths at a correctional facility over allegations of conspiracy, public disturbance, arson and the killing of a police officer. The court, presided over by Magistrate Auwal Yusuf Sulaiman of Magistrates’ Court No. 2, was told that the suspects ",
-      "url": "https://dailypost.ng/2026/09/28/kano-court-remands-11-youths-over-alleged-killing-of-police-officer/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:18:32+00:00",
-      "categories": []
-    },
-    {
-      "title": "Soldiers foil abduction attempts, rescue 10 in Zamfara",
-      "summary": "Troops of Operation Fansan Yamma have foiled two separate abduction attempts and rescued 10 victims in Maru and Tsafe Local Government Areas of Zamfara Sta Read More: https://punchng.com/soldiers-foil-abduction-attempts-rescue-10-in-zamfara/",
-      "url": "https://punchng.com/soldiers-foil-abduction-attempts-rescue-10-in-zamfara/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-28T15:17:35+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "CBN urges Kano traders, residents to handle naira notes properly",
-      "summary": "The Central Bank of Nigeria (CBN) has urged traders and residents in Kano State to handle naira notes properly, warning that careless handling increases the cost of replacing dirty and damaged currency. The apex bank made the call during a sensitisation campaign launched at major markets across the ",
-      "url": "https://dailypost.ng/2026/09/28/cbn-urges-kano-traders-residents-to-handle-naira-notes-properly/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:14:59+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "INEC begins 2027 election readiness assessment",
-      "summary": "The Independent National Electoral Commission (INEC) has begun assessing its preparedness for the 2027 general elections, with its chairman, Professor Joash O. Amupitan, SAN, calling on officials to address operational gaps and maintain neutrality. In a post on X, INEC said Amupitan made the call on",
-      "url": "https://dailypost.ng/2026/09/28/inec-begins-2027-election-readiness-assessment/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-28T15:14:53+00:00",
-      "categories": []
     }
   ]
 }
