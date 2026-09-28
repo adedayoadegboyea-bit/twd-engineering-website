@@ -699,36 +699,21 @@ function json(data) {
  */
 function testMarketplaceWrite() {
   const props = PropertiesService.getScriptProperties();
-  const folderId = props.getProperty("FOLDER_ID") || props.getProperty("MARKETPLACE_FOLDER_ID");
   const spreadsheetId = props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID");
-
-  if (!folderId || !spreadsheetId) {
-    throw new Error("Run setupMarketplace() first.");
-  }
+  if (!spreadsheetId) throw new Error("Run setupMarketplace() first.");
 
   const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
-  const sheet = spreadsheet.getSheetByName(CONFIG.SHEET_NAME);
-
-  if (!sheet) throw new Error("Marketplace Listings sheet was not found.");
+  let sheet = spreadsheet.getSheetByName("Marketplace Tests");
+  if (!sheet) sheet = spreadsheet.insertSheet("Marketplace Tests");
+  if (sheet.getLastRow() === 0) sheet.appendRow(["Timestamp","Test ID","Result","Message"]);
 
   const testId = "TEST-" + Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "yyyyMMdd-HHmmss");
   sheet.appendRow([
     new Date(),
     testId,
-    "TEST_ONLY",
-    "TW&D System Test",
-    CONFIG.MANAGEMENT_EMAIL,
-    "08035774420",
-    "Other",
-    "Ibadan, Oyo",
-    "Marketplace Backend Test",
-    "0",
-    "Test",
-    "This is a backend spreadsheet test. It is not a public listing.",
-    DriveApp.getFolderById(folderId).getUrl(),
-    0,
-    "[]"
+    "PASS",
+    "Backend spreadsheet write test. This test is intentionally kept out of Marketplace Listings."
   ]);
 
-  return "TEST PASSED: " + testId + " was written to Marketplace Listings.";
+  return "TEST PASSED: " + testId + " was written to Marketplace Tests. Marketplace Listings was not modified.";
 }
