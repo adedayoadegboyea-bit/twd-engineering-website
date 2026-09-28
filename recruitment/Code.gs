@@ -236,11 +236,6 @@ function submitApplication(data) {
 
   const folder = DriveApp.getFolderById(folderId);
 
-  const now = new Date();
-  const id =
-    'TWD-' +
-    Utilities.formatDate(now, CONFIG.TIMEZONE, 'yyyyMMdd-HHmmss');
-
   // IMPORTANT: record the application BEFORE processing optional files.
   // A Drive/file failure must never prevent the applicant from appearing in the spreadsheet.
   const now = new Date();
