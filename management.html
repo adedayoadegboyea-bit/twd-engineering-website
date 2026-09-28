@@ -6,6 +6,7 @@
 <title>TW&D Management Portal</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
 <link rel="stylesheet" href="account.css"><link rel="stylesheet" href="management.css">
+<link rel="stylesheet" href="global-access.css?v=20260928-1">
 </head>
 <body>
 <header class="mgmt-header"><div class="mgmt-nav"><a href="index.html" class="mgmt-brand"><img src="assets/twd-luxury-logo.svg" alt="TW&D Engineering"><span>TW&D ENGINEERING<br>MANAGEMENT</span></a><button id="signout" class="mgmt-signout" hidden>Sign Out</button></div></header>
@@ -28,4 +29,5 @@
 <section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">QUOTATIONS</span><h2>Customer quotations</h2></div></div><form id="quoteForm" class="mgmt-form"><div class="two-col"><label>Customer<select id="quoteCustomer" required></select></label><label>Project<select id="quoteProject"></select></label><label>Quotation No.<input id="quoteNumber" required></label><label>Amount<input id="quoteAmount" type="number" step="0.01" required></label><label>Status<select id="quoteStatus"><option>DRAFT</option><option>SENT</option><option>ACCEPTED</option><option>DECLINED</option></select></label></div><label>Notes<textarea id="quoteNotes" rows="3"></textarea></label><button class="mgmt-btn primary">Save Quotation & Notify Customer</button></form></section>
 </div></section></main>
 <script type="module" src="management.js"></script>
+<script src="global-access.js?v=20260928-1"></script>
 </body></html>
