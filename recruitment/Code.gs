@@ -286,6 +286,8 @@ function submitApplication(data) {
     ''
   ];
 
+  while (row.length < HEADERS.length) row.push('');
+
   const applicationRowNumber = sheet.getLastRow() + 1;
   sheet.getRange(applicationRowNumber, 1, 1, HEADERS.length).setValues([row]);
   SpreadsheetApp.flush();
