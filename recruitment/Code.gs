@@ -1,7 +1,7 @@
 const CONFIG = {
   SHEET_NAME: 'Applications',
   DRIVE_FOLDER_NAME: 'TW&D Recruitment Documents',
-  MANAGEMENT_EMAIL: 'admin@twdengineeringconsult.com',
+  MANAGEMENT_EMAIL: 'twedprivateschools@gmail.com',
   COMPANY_NAME: 'TW&D Engineering Consult & Services Ltd',
   TIMEZONE: 'Africa/Lagos'
 };
@@ -509,11 +509,20 @@ function testStatusEmail() {
 /**
  * Tests basic outgoing email without touching the Applications sheet.
  */
-function testApplicantConfirmationEmail(testRecipient) {
-  const to = String(testRecipient || '').trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) throw new Error('Enter a valid test recipient email.');
-  const result = sendTransactionalEmail_(to, 'TW&D Recruitment Email Diagnostic', '<p>This is a diagnostic email from the TW&D recruitment system.</p><p>If you received it, outgoing email is working.</p>');
-  return 'SUCCESS: confirmation-email transport is working for ' + to;
+function testApplicantConfirmationEmail() {
+  const to = CONFIG.MANAGEMENT_EMAIL;
+  const result = sendTransactionalEmail_(
+    to,
+    'TW&D Recruitment Email Diagnostic',
+    '<h2>TW&D Recruitment Email Diagnostic</h2>' +
+    '<p>This is a diagnostic email from the TW&D recruitment system.</p>' +
+    '<p>If you received this message, outgoing email is working.</p>' +
+    '<p><b>Recipient:</b> ' + escapeHtml_(to) + '</p>' +
+    '<p><b>Time:</b> ' +
+    escapeHtml_(Utilities.formatDate(new Date(), CONFIG.TIMEZONE, 'dd MMMM yyyy, HH:mm:ss')) +
+    '</p>'
+  );
+  return 'SUCCESS: confirmation-email transport is working. Test sent to ' + to;
 }
 
 function testRecruitmentEmail() {
@@ -884,22 +893,95 @@ function notifyAptitudeAdmin_(row,score,assessment) {
 
 function sendTransactionalEmail_(to,subject,htmlBody) {
   to = String(to || '').trim();
-  if (!to || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) throw new Error('Invalid recipient email address.');
-  const key = String(PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY') || '').trim();
+  if (!to || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) {
+    throw new Error('Invalid recipient email address.');
+  }
+
+  const key = String(
+    PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY') || ''
+  ).trim();
+
   if (key) {
     let lastError = '';
-    for (let attempt = 0; attempt < 2; attempt++) {
+
+    // Retry temporary Resend rate limits before giving up.
+    for (let attempt = 0; attempt < 4; attempt++) {
       try {
-        const response = UrlFetchApp.fetch('https://api.resend.com/emails',{method:'post',contentType:'application/json',headers:{Authorization:'Bearer '+key},muteHttpExceptions:true,payload:JSON.stringify({from:'TW&D Engineering Consult & Services Ltd <contact@twdengineeringconsult.com>',to:[to],subject:subject,html:htmlBody})});
-        const code=response.getResponseCode();
-        if(code>=200 && code<300) return true;
-        lastError='Resend HTTP '+code+': '+response.getContentText().slice(0,500);
-        if(attempt===0 && (code===408 || code===429 || code>=500)) Utilities.sleep(2000); else break;
-      } catch(e) { lastError='Resend request failed: '+(e.message || String(e)); if(attempt===0) Utilities.sleep(2000); }
+        const response = UrlFetchApp.fetch(
+          'https://api.resend.com/emails',
+          {
+            method: 'post',
+            contentType: 'application/json',
+            headers: { Authorization: 'Bearer ' + key },
+            muteHttpExceptions: true,
+            payload: JSON.stringify({
+              from: 'TW&D Engineering Consult & Services Ltd <contact@twdengineeringconsult.com>',
+              to: [to],
+              subject: subject,
+              html: htmlBody
+            })
+          }
+        );
+
+        const code = response.getResponseCode();
+        const raw = response.getContentText();
+
+        if (code >= 200 && code < 300) return true;
+
+        lastError = 'Resend HTTP ' + code + ': ' + raw.slice(0, 500);
+
+        if (
+          code === 408 || code === 429 ||
+          code === 500 || code === 502 ||
+          code === 503 || code === 504
+        ) {
+          if (attempt < 3) {
+            Utilities.sleep(4000 * Math.pow(2, attempt));
+            continue;
+          }
+        }
+
+        break;
+
+      } catch (e) {
+        lastError = 'Resend request failed: ' + (e.message || String(e));
+        if (attempt < 3) {
+          Utilities.sleep(4000 * Math.pow(2, attempt));
+          continue;
+        }
+      }
     }
-    console.warn(lastError+' Falling back to MailApp.');
+
+    // Do not hide a Resend rate-limit problem behind a second provider error.
+    if (lastError && /HTTP 429|rate.?limit/i.test(lastError)) {
+      throw new Error(
+        'Email provider rate limit reached. The application was saved successfully; the confirmation email will need to be retried.'
+      );
+    }
+
+    console.warn(lastError + ' Falling back to MailApp.');
   }
-  if(MailApp.getRemainingDailyQuota()<=0) throw new Error('Email quota exceeded.');
-  try { MailApp.sendEmail({to:to,subject:subject,htmlBody:htmlBody,body:String(htmlBody).replace(/<br\s*\/?>(\r?\n)?/gi,'\\n').replace(/<[^>]+>/g,'').trim()}); return true; }
-  catch(e) { throw new Error('MailApp delivery failed: '+(e.message || String(e))); }
+
+  if (MailApp.getRemainingDailyQuota() <= 0) {
+    throw new Error(
+      'MailApp daily email quota has been exceeded. The application was saved successfully.'
+    );
+  }
+
+  try {
+    MailApp.sendEmail({
+      to: to,
+      subject: subject,
+      htmlBody: htmlBody,
+      body: String(htmlBody)
+        .replace(/<br\s*\/?>(\r?\n)?/gi, '\n')
+        .replace(/<[^>]+>/g, '')
+        .trim()
+    });
+    return true;
+  } catch (e) {
+    throw new Error(
+      'MailApp delivery failed: ' + (e.message || String(e))
+    );
+  }
 }
