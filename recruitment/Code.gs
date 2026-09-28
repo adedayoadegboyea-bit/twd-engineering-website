@@ -34,7 +34,11 @@ const HEADERS = [
   'Management Email Status',
   'Email Error',
   'Email Attempts',
-  'Next Email Attempt At'
+  'Next Email Attempt At',
+  'Aptitude Username',
+  'Aptitude Password Hash',
+  'Aptitude Test Link',
+  'Approval Email Status'
 ];
 
 const VALID_STATUSES = [
@@ -49,9 +53,11 @@ const VALID_STATUSES = [
 /**
  * Public recruitment portal.
  */
-function doGet() {
-  return HtmlService.createHtmlOutputFromFile('Application')
-    .setTitle(CONFIG.COMPANY_NAME + ' Careers')
+function doGet(e) {
+  const page = e && e.parameter && String(e.parameter.page || '').toLowerCase();
+  const file = page === 'aptitude' ? 'Aptitude' : 'Application';
+  return HtmlService.createHtmlOutputFromFile(file)
+    .setTitle(page === 'aptitude' ? CONFIG.COMPANY_NAME + ' Aptitude Test' : CONFIG.COMPANY_NAME + ' Careers')
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
@@ -492,55 +498,87 @@ function sendApplicantReceiptEmail_(row) {
  * Expects a spreadsheet Range containing exactly one application row.
  */
 function sendStatusEmail(row) {
-  if (!row || typeof row.getValues !== 'function') {
-    throw new Error('No valid application row was supplied.');
+  if (!row || typeof row.getValues !== 'function') throw new Error('No valid application row was supplied.');
+  const values=row.getValues()[0];
+  const id=values[0], name=values[2], email=String(values[3]||'').trim(), position=values[5], status=String(values[13]||'').trim();
+  if(!email) throw new Error('This application does not contain an applicant email address.');
+  if(!status) throw new Error('This application does not contain a status.');
+
+  if(status==='Successful' || status==='Approved') return approveApplicantForAptitude_(row);
+
+  let subject='TW&D application update — '+status;
+  let body='<p>Dear '+escapeHtml_(name||'Applicant')+',</p><p>Your application with <b>'+CONFIG.COMPANY_NAME+'</b> has been updated.</p><p><b>Application Reference:</b> '+escapeHtml_(id)+'</p><p><b>Position:</b> '+escapeHtml_(position)+'</p><p><b>Status:</b> '+escapeHtml_(status)+'</p>';
+  if(status==='Interview Scheduled'){
+    body+='<h3>Interview Details</h3><p><b>Date:</b> '+formatValue_(values[14],'To be confirmed')+'</p><p><b>Time:</b> '+formatValue_(values[15],'To be confirmed')+'</p><p><b>Location:</b> '+escapeHtml_(values[16]||'To be confirmed')+'</p><p><b>Type:</b> '+escapeHtml_(values[17]||'To be confirmed')+'</p>';
   }
+  body+='<p>Thank you for your interest in joining TW&D Engineering Consult & Services Ltd.</p><p>Regards,<br><b>'+CONFIG.COMPANY_NAME+'</b></p>';
+  sendTransactionalEmail_(email,subject,body);
+  return 'Status email sent successfully to '+email;
+}
 
-  const values = row.getValues()[0];
+function approveApplicantForAptitude_(row) {
+  const values=row.getValues()[0], sheet=row.getSheet(), rowNumber=row.getRow();
+  const id=String(values[0]), name=String(values[2]||'Applicant'), email=String(values[3]||'').trim(), position=String(values[5]||'');
+  if(String(values[31]||'').trim()==='SENT') return 'Aptitude approval email has already been sent for '+id+'.';
 
-  const id = values[0];
-  const name = values[2];
-  const email = String(values[3] || '').trim();
-  const position = values[5];
-  const status = String(values[13] || '').trim();
-  const interviewDate = values[14];
-  const interviewTime = values[15];
-  const interviewLocation = values[16];
-  const interviewType = values[17];
+  const username=values[28]?String(values[28]):generateAptitudeUsername_(id);
+  const password=generateAptitudePassword_();
+  const passwordHash=hashAptitudePassword_(password);
+  const testUrl=getAptitudeTestUrl_();
+  sheet.getRange(rowNumber,29,1,4).setValues([[username,passwordHash,testUrl,'PENDING']]);
+  SpreadsheetApp.flush();
 
-  if (!email) {
-    throw new Error('This application does not contain an applicant email address.');
+  const html='<h2>TW&D Engineering Consult &amp; Services Ltd — Aptitude Test Invitation</h2>'+
+    '<p>Dear '+escapeHtml_(name)+',</p>'+
+    '<p>Your application for <b>'+escapeHtml_(position)+'</b> has been approved for the next stage of the recruitment process.</p>'+
+    '<p>Please use the credentials below to access your aptitude test:</p>'+
+    '<div style="background:#f4f7fb;padding:18px;border-left:4px solid #f7bd18">'+
+    '<p><b>Application Reference:</b> '+escapeHtml_(id)+'</p>'+
+    '<p><b>Username:</b> '+escapeHtml_(username)+'</p>'+
+    '<p><b>Temporary Password:</b> '+escapeHtml_(password)+'</p>'+
+    '<p><b>Test Link:</b> <a href="'+testUrl+'">'+testUrl+'</a></p></div>'+
+    '<h3>Test Instructions</h3><ul><li>50 position-related multiple-choice questions.</li><li>Time allowed: 1 hour.</li><li>The test submits automatically when the 1-hour period expires.</li><li>Only one submission is permitted.</li><li>Your score and AI assessment will be reviewed by TW&D management.</li></ul>'+
+    '<p>Please keep these login details private.</p><p>Regards,<br><b>'+CONFIG.COMPANY_NAME+'</b></p>';
+
+  try{
+    sendTransactionalEmail_(email,'Aptitude Test Approved — Your TW&D Test Login',html);
+    sheet.getRange(rowNumber,32).setValue('SENT');
+    return 'Approval email with aptitude login details sent successfully to '+email;
+  }catch(err){
+    sheet.getRange(rowNumber,32).setValue('PENDING');
+    sheet.getRange(rowNumber,26).setValue(('Aptitude approval email failed: '+(err.message||String(err))).slice(0,1000));
+    throw err;
   }
+}
 
-  if (!status) {
-    throw new Error('This application does not contain a status.');
-  }
-
-  let subject = 'TW&D application update — ' + status;
-
-  let body =
-    '<p>Dear ' + escapeHtml_(name || 'Applicant') + ',</p>' +
-    '<p>Your application with <b>' + CONFIG.COMPANY_NAME + '</b> has been updated.</p>' +
-    '<p><b>Application Reference:</b> ' + escapeHtml_(id) + '</p>' +
-    '<p><b>Position:</b> ' + escapeHtml_(position) + '</p>' +
-    '<p><b>Status:</b> ' + escapeHtml_(status) + '</p>';
-
-  if (status === 'Interview Scheduled') {
-    body +=
-      '<h3>Interview Details</h3>' +
-      '<p><b>Date:</b> ' + formatValue_(interviewDate, 'To be confirmed') + '</p>' +
-      '<p><b>Time:</b> ' + formatValue_(interviewTime, 'To be confirmed') + '</p>' +
-      '<p><b>Location:</b> ' + escapeHtml_(interviewLocation || 'To be confirmed') + '</p>' +
-      '<p><b>Type:</b> ' + escapeHtml_(interviewType || 'To be confirmed') + '</p>';
-  }
-
-  body +=
-    '<p>Thank you for your interest in joining TW&D Engineering Consult & Services Ltd.</p>' +
-    '<p>Regards,<br><b>' + CONFIG.COMPANY_NAME + '</b></p>';
-
-  sendTransactionalEmail_(email, subject, body);
-
-  return 'Status email sent successfully to ' + email;
+function generateAptitudeUsername_(applicationId){
+  return 'TWD-'+String(applicationId).replace(/[^A-Za-z0-9]/g,'').slice(-10).toUpperCase();
+}
+function generateAptitudePassword_(){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'; let p='';
+  for(let i=0;i<12;i++) p+=chars.charAt(Math.floor(Math.random()*chars.length));
+  return p;
+}
+function hashAptitudePassword_(password){
+  const bytes=Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256,String(password),Utilities.Charset.UTF_8);
+  return bytes.map(function(b){const v=(b<0?b+256:b).toString(16);return v.length===1?'0'+v:v;}).join('');
+}
+function getAptitudeTestUrl_(){
+  const configured=String(PropertiesService.getScriptProperties().getProperty('APTITUDE_TEST_URL')||'').trim();
+  if(configured) return configured;
+  const base=String(ScriptApp.getService().getUrl()||'').trim();
+  if(!base) throw new Error('Aptitude test URL is not configured. Set Script Property APTITUDE_TEST_URL.');
+  return base+'?page=aptitude';
+}
+function resendAptitudeApprovalForRow(rowNumber){
+  rowNumber=Number(rowNumber);
+  if(!rowNumber||rowNumber<2) throw new Error('Enter a valid application row number.');
+  const sheet=getApplicationsSheet_(SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty('SHEET_ID')));
+  if(rowNumber>sheet.getLastRow()) throw new Error('That row does not exist.');
+  const status=String(sheet.getRange(rowNumber,14).getValue()||'').trim();
+  if(status!=='Successful'&&status!=='Approved') throw new Error('Only an approved applicant can receive aptitude-test credentials.');
+  sheet.getRange(rowNumber,32).setValue('PENDING');
+  return approveApplicantForAptitude_(sheet.getRange(rowNumber,1,1,HEADERS.length));
 }
 
 /**
@@ -920,7 +958,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
  * It generates 50 questions without creating an applicant or sending email.
  */
 function recruitmentBuildInfo(){
-  return 'TW&D RECRUITMENT BUILD 2026-09-28-EMAIL-QUEUE-06';
+  return 'TW&D RECRUITMENT BUILD 2026-09-28-APTITUDE-APPROVAL-LOGIN-07';
 }
 
 function testAptitudeAI(){
@@ -929,30 +967,41 @@ function testAptitudeAI(){
 }
 
 function startAptitudeTest(applicationId, position, email) {
-  const sheet=getAptitudeSheet_();
-  const values=sheet.getDataRange().getValues();
-  for(let r=1;r<values.length;r++){
-    if(String(values[r][1])===String(applicationId)){
-      const status=String(values[r][4]||'');
-      if(status==='IN_PROGRESS' && values[r][6] && new Date(values[r][6]).getTime()>Date.now()) {
-        return aptitudeClientPayload_(values[r]);
-      }
-      if(status==='SUBMITTED_AI_MARKED_PENDING_ADMIN' || status==='APPROVED' || status==='REJECTED') {
-        return {ok:false,status:status,message:'This aptitude test has already been submitted.'};
-      }
-    }
+  const appSheet=getApplicationsSheet_(getRecruitmentSpreadsheet_()), appData=appSheet.getDataRange().getValues();
+  let approved=false, approvedPosition=position, approvedEmail=email;
+  for(let r=1;r<appData.length;r++) if(String(appData[r][0])===String(applicationId)){
+    const status=String(appData[r][13]||'').trim();
+    if(status!=='Successful'&&status!=='Approved') throw new Error('Your application has not yet been approved for the aptitude test.');
+    approved=true; approvedPosition=String(appData[r][5]||position); approvedEmail=String(appData[r][3]||email); break;
+  }
+  if(!approved) throw new Error('Approved application record not found.');
+
+  const sheet=getAptitudeSheet_(), values=sheet.getDataRange().getValues();
+  for(let r=1;r<values.length;r++) if(String(values[r][1])===String(applicationId)){
+    const status=String(values[r][4]||'');
+    if(status==='IN_PROGRESS'&&values[r][6]&&new Date(values[r][6]).getTime()>Date.now()) return aptitudeClientPayload_(values[r]);
+    if(status==='SUBMITTED_AI_MARKED_PENDING_ADMIN'||status==='APPROVED'||status==='REJECTED') return {ok:false,status:status,message:'This aptitude test has already been submitted.'};
   }
 
-  const questions=generateAptitudeQuestions_(position);
-  const now=new Date();
-  const expires=new Date(now.getTime()+60*60*1000);
+  const questions=generateAptitudeQuestions_(approvedPosition), now=new Date(), expires=new Date(now.getTime()+60*60*1000);
   const testId='APT-'+Utilities.formatDate(now,CONFIG.TIMEZONE,'yyyyMMdd-HHmmss')+'-'+Math.floor(1000+Math.random()*9000);
-  sheet.appendRow([testId,applicationId,position,email||'', 'IN_PROGRESS', now, expires, '', '', '', JSON.stringify(questions), '', 'PENDING', '']);
-  return {
-    ok:true,testId:testId,applicationId:applicationId,position:position,
-    startedAt:now.toISOString(),expiresAt:expires.toISOString(),
-    questions:questions.map(function(q){return {question:q.question,options:q.options};})
-  };
+  sheet.appendRow([testId,applicationId,approvedPosition,approvedEmail,'IN_PROGRESS',now,expires,'','','',JSON.stringify(questions),'','PENDING','']);
+  return {ok:true,testId:testId,applicationId:applicationId,position:approvedPosition,startedAt:now.toISOString(),expiresAt:expires.toISOString(),questions:questions.map(function(q){return {question:q.question,options:q.options};})};
+}
+
+function loginAptitude(username,password){
+  username=String(username||'').trim(); password=String(password||'');
+  if(!username||!password) throw new Error('Enter your aptitude-test username and password.');
+  const sheet=getApplicationsSheet_(getRecruitmentSpreadsheet_()), data=sheet.getDataRange().getValues();
+  for(let r=1;r<data.length;r++){
+    const row=data[r];
+    if(String(row[28]||'').trim()!==username) continue;
+    const status=String(row[13]||'').trim();
+    if(status!=='Successful'&&status!=='Approved') throw new Error('This application is not approved for the aptitude test.');
+    if(hashAptitudePassword_(password)!==String(row[29]||'').trim()) throw new Error('Invalid aptitude-test username or password.');
+    return startAptitudeTest(row[0],row[5],row[3]);
+  }
+  throw new Error('Invalid aptitude-test username or password.');
 }
 
 function aptitudeClientPayload_(row) {
