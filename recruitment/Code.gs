@@ -769,8 +769,12 @@ function getAptitudeSheet_() {
 function generateAptitudeQuestions_(position) {
   const props=PropertiesService.getScriptProperties();
   const key=String(props.getProperty('GEMINI_API_KEY')||'').trim();
-  if(!key) throw new Error('GEMINI_API_KEY is missing from Recruitment Apps Script → Project Settings → Script Properties.');
-  // Use a capacity-friendly stable model first. Do not let an old Script Property force a congested model.\n  const configuredModel='gemini-3.5-flash-lite';
+
+  // Gemini is optional. The built-in bank guarantees that every applicant
+  // receives an exam even when the API key is missing or Gemini is unavailable.
+  if(!key) return fallbackAptitudeQuestions_(position);
+
+  const configuredModel='gemini-3.5-flash-lite';
 
   const allQuestions=[];
   for(let batch=0;batch<5;batch++){
@@ -906,7 +910,9 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
     }
   }
 
-  // Gemini capacity errors must never prevent an applicant from getting an exam.\n  console.warn('All Gemini models unavailable for batch '+first+'-'+last+'. Using built-in aptitude bank. Last error: '+lastError);\n  return fallbackAptitudeQuestions_(position).slice(first-1,last);
+  // Gemini capacity errors must never prevent an applicant from getting an exam.
+  console.warn('All Gemini models unavailable for batch '+first+'-'+last+'. Using built-in aptitude bank. Last error: '+lastError);
+  return fallbackAptitudeQuestions_(position).slice(first-1,last);
 }
 
 /**
