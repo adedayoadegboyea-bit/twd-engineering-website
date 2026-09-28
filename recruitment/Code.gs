@@ -613,161 +613,96 @@ function generateAptitudeQuestions_(position) {
   const props=PropertiesService.getScriptProperties();
   const key=String(props.getProperty('GEMINI_API_KEY')||'').trim();
   if(!key) throw new Error('GEMINI_API_KEY is missing from Recruitment Apps Script → Project Settings → Script Properties.');
-
   const configuredModel=String(props.getProperty('GEMINI_MODEL')||'gemini-3.5-flash-lite').trim();
 
-  const prompt =
-    'Create exactly 50 concise multiple-choice aptitude questions for a Nigerian engineering and construction company applicant applying for the role: '+position+'. '+
-    'Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios appropriate to that role. '+
-    'Each question must have exactly 4 options and exactly one correct answer. Do not use private company information. '+
-    'Keep each question and option concise. Do not include explanations.';
+  const allQuestions=[];
+  for(let batch=0;batch<5;batch++){
+    const first=batch*10+1;
+    const last=first+9;
+    const questions=generateAptitudeBatch_(position,first,last,key,configuredModel);
+    questions.forEach(function(q){allQuestions.push(q);});
+  }
+  if(allQuestions.length!==50) throw new Error('AI generated '+allQuestions.length+' questions instead of exactly 50.');
+  allQuestions.forEach(function(q,i){
+    if(!q.question||!Array.isArray(q.options)||q.options.length!==4||typeof q.answer!=='number'||q.answer<0||q.answer>3)
+      throw new Error('Invalid AI question at number '+(i+1)+'.');
+  });
+  return allQuestions;
+}
 
-  const schema={
-    type:'OBJECT',
-    properties:{
-      questions:{
-        type:'ARRAY',
-        minItems:50,
-        maxItems:50,
-        items:{
-          type:'OBJECT',
-          properties:{
-            question:{type:'STRING'},
-            options:{type:'ARRAY',minItems:4,maxItems:4,items:{type:'STRING'}},
-            answer:{type:'INTEGER',minimum:0,maximum:3}
-          },
-          required:['question','options','answer']
-        }
-      }
-    },
-    required:['questions']
-  };
+function generateAptitudeBatch_(position,first,last,key,configuredModel){
+  const count=last-first+1;
+  const prompt='Create exactly '+count+' concise multiple-choice aptitude questions, numbered '+first+' through '+last+
+    ', for a Nigerian engineering and construction company applicant applying for the role: '+position+'. '+
+    'Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios. '+
+    'Each question must have exactly 4 options and exactly one correct answer. '+
+    'Do not use private company information. Keep questions and options concise. Do not include explanations.';
 
-  const payload={
-    contents:[{parts:[{text:prompt}]}],
-    generationConfig:{
-      responseMimeType:'application/json',
-      responseSchema:schema,
-      maxOutputTokens:24000
-    }
-  };
+  const schema={type:'OBJECT',properties:{questions:{type:'ARRAY',minItems:count,maxItems:count,items:{
+    type:'OBJECT',properties:{
+      question:{type:'STRING'},
+      options:{type:'ARRAY',minItems:4,maxItems:4,items:{type:'STRING'}},
+      answer:{type:'INTEGER',minimum:0,maximum:3}
+    },required:['question','options','answer']
+  }}},required:['questions']};
 
-  /*
-   * Try the configured model first, then lighter/current Flash models.
-   * 503/429/5xx responses receive bounded exponential backoff.
-   */
-  const modelsToTry=[];
-  [configuredModel,'gemini-3.5-flash-lite','gemini-3.7-flash','gemini-3.8-flash'].forEach(function(m){
-    if(m && modelsToTry.indexOf(m)===-1) modelsToTry.push(m);
+  const payload={contents:[{parts:[{text:prompt}]}],generationConfig:{
+    responseMimeType:'application/json',responseSchema:schema,maxOutputTokens:7000
+  }};
+
+  const models=[];
+  [configuredModel,'gemini-3.5-flash-lite','gemini-3.6-flash','gemini-3.7-flash','gemini-3.8-flash'].forEach(function(m){
+    if(m&&models.indexOf(m)===-1) models.push(m);
   });
 
   let lastError='';
-  let successfulBody='';
-
-  for(let modelIndex=0;modelIndex<modelsToTry.length;modelIndex++){
-    const activeModel=modelsToTry[modelIndex];
+  for(let mi=0;mi<models.length;mi++){
+    const activeModel=models[mi];
     const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(activeModel)+':generateContent';
 
     for(let attempt=0;attempt<4;attempt++){
       let response=null;
-
       try{
-        response=UrlFetchApp.fetch(url,{
-          method:'post',
-          contentType:'application/json',
-          headers:{'x-goog-api-key':key},
-          muteHttpExceptions:true,
-          payload:JSON.stringify(payload)
-        });
-      }catch(fetchError){
-        lastError='Could not reach Gemini ('+activeModel+'): '+fetchError.message;
-      }
+        response=UrlFetchApp.fetch(url,{method:'post',contentType:'application/json',
+          headers:{'x-goog-api-key':key},muteHttpExceptions:true,payload:JSON.stringify(payload)});
+      }catch(e){lastError='Could not reach Gemini ('+activeModel+'): '+e.message;}
 
       if(!response){
-        if(attempt<3){
-          Utilities.sleep((4000*Math.pow(2,attempt))+Math.floor(Math.random()*1500));
-          continue;
-        }
+        if(attempt<3){Utilities.sleep((3000*Math.pow(2,attempt))+Math.floor(Math.random()*1500));continue;}
         break;
       }
 
       const code=response.getResponseCode();
-      const responseBody=response.getContentText();
+      const raw=response.getContentText();
 
-      if(code>=200 && code<300){
-        successfulBody=responseBody;
-        break;
-      }
-
-      let detail=responseBody;
-      try{
-        const apiErr=JSON.parse(responseBody);
-        detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||responseBody;
-      }catch(ignore){}
-
-      lastError='Gemini API error HTTP '+code+' ('+activeModel+'): '+String(detail).slice(0,900);
-
-      if(code===503 || code===429 || code===408 || code===500 || code===502 || code===504){
-        if(attempt<3){
-          Utilities.sleep((4000*Math.pow(2,attempt))+Math.floor(Math.random()*1500));
-          continue;
+      if(code>=200&&code<300){
+        try{
+          const body=JSON.parse(raw);
+          const candidate=body.candidates&&body.candidates[0];
+          const text=candidate&&candidate.content&&candidate.content.parts&&candidate.content.parts[0]&&candidate.content.parts[0].text;
+          if(!text) throw new Error('Gemini returned no question content.');
+          const parsed=JSON.parse(text);
+          if(!parsed.questions||!Array.isArray(parsed.questions)||parsed.questions.length!==count)
+            throw new Error('Gemini generated '+((parsed.questions&&parsed.questions.length)||0)+' questions for batch '+first+'-'+last+'.');
+          return parsed.questions;
+        }catch(e){
+          lastError='Gemini response error ('+activeModel+'): '+e.message;
+          break;
         }
       }
 
+      let detail=raw;
+      try{const apiErr=JSON.parse(raw);detail=(apiErr.error&&(apiErr.error.message||apiErr.error.status))||raw;}catch(ignore){}
+      lastError='Gemini API error HTTP '+code+' ('+activeModel+'): '+String(detail).slice(0,700);
+
+      if(code===503||code===429||code===408||code===500||code===502||code===504){
+        if(attempt<3){Utilities.sleep((3000*Math.pow(2,attempt))+Math.floor(Math.random()*1500));continue;}
+      }
       break;
     }
-
-    if(successfulBody) break;
   }
 
-  if(!successfulBody){
-    throw new Error(
-      lastError ||
-      'Gemini could not generate the aptitude questions after trying the available models.'
-    );
-  }
-
-  let outer;
-  try{
-    outer=JSON.parse(successfulBody);
-  }catch(e){
-    throw new Error('Gemini returned invalid JSON: '+successfulBody.slice(0,700));
-  }
-
-  if(!outer.candidates||!outer.candidates.length){
-    const reason=outer.promptFeedback&&outer.promptFeedback.blockReason;
-    throw new Error('Gemini returned no candidate'+(reason?' — '+reason:'')+'.');
-  }
-
-  const candidate=outer.candidates[0];
-  const finishReason=String(candidate.finishReason||'');
-  const text=candidate.content&&candidate.content.parts&&candidate.content.parts[0]&&candidate.content.parts[0].text;
-
-  if(!text){
-    if(finishReason==='MAX_TOKENS'){
-      throw new Error('Gemini stopped before all 50 questions were generated. Try again.');
-    }
-    throw new Error('Gemini returned no question content. Finish reason: '+(finishReason||'unknown'));
-  }
-
-  let parsed;
-  try{
-    parsed=JSON.parse(text);
-  }catch(e){
-    throw new Error('Gemini structured response could not be parsed: '+text.slice(0,700));
-  }
-
-  if(!parsed.questions||!Array.isArray(parsed.questions)||parsed.questions.length!==50){
-    throw new Error('AI generated '+((parsed.questions&&parsed.questions.length)||0)+' questions instead of exactly 50.');
-  }
-
-  parsed.questions.forEach(function(q,i){
-    if(!q.question||!Array.isArray(q.options)||q.options.length!==4||typeof q.answer!=='number'||q.answer<0||q.answer>3){
-      throw new Error('Invalid AI question at number '+(i+1)+'.');
-    }
-  });
-
-  return parsed.questions;
+  throw new Error('Could not generate questions '+first+'-'+last+'. '+lastError);
 }
 
 /**
