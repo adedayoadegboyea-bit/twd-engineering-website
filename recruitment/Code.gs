@@ -32,7 +32,9 @@ const HEADERS = [
   'AI Assessment',
   'Applicant Email Status',
   'Management Email Status',
-  'Email Error'
+  'Email Error',
+  'Email Attempts',
+  'Next Email Attempt At'
 ];
 
 const VALID_STATUSES = [
@@ -288,6 +290,8 @@ function submitApplication(data) {
     '',
     'PENDING',
     'PENDING',
+    '',
+    0,
     ''
   ];
 
@@ -333,55 +337,82 @@ function reinstallRecruitmentEmailTrigger() {
  * Column 24 = applicant status, 25 = management status, 26 = error.
  */
 function processRecruitmentEmailQueue() {
-  const sheet = getApplicationsSheet_(getRecruitmentSpreadsheet_());
-  const lastRow = sheet.getLastRow();
-  if (lastRow < 2) return 'No recruitment emails pending.';
+  const lock = LockService.getScriptLock();
+  if (!lock.tryLock(5000)) return 'Another recruitment email worker is already running.';
 
-  const rows = sheet.getRange(2, 1, lastRow - 1, HEADERS.length).getValues();
-  let processed = 0;
+  try {
+    const sheet = getApplicationsSheet_(getRecruitmentSpreadsheet_());
+    const lastRow = sheet.getLastRow();
+    if (lastRow < 2) return 'No recruitment emails pending.';
 
-  for (let i = 0; i < rows.length && processed < 10; i++) {
-    const row = rows[i];
-    const applicantStatus = String(row[23] || 'PENDING').trim();
-    const managementStatus = String(row[24] || 'PENDING').trim();
+    const rows = sheet.getRange(2, 1, lastRow - 1, HEADERS.length).getValues();
+    let processed = 0;
+    const nowMs = Date.now();
 
-    if (applicantStatus === 'SENT' && managementStatus === 'SENT') continue;
+    for (let i = 0; i < rows.length && processed < 3; i++) {
+      const row = rows[i];
+      const applicantStatus = String(row[23] || 'PENDING').trim();
+      const managementStatus = String(row[24] || 'PENDING').trim();
+      const attempts = Number(row[26] || 0);
+      const nextAttempt = row[27] ? new Date(row[27]).getTime() : 0;
 
-    const rowNumber = i + 2;
-    let applicantError = '';
-    let managementError = '';
+      if (applicantStatus === 'SENT' && managementStatus === 'SENT') continue;
+      if (nextAttempt && nextAttempt > nowMs) continue;
 
-    if (applicantStatus !== 'SENT') {
-      try {
-        sendApplicantReceiptEmail_(row);
-        sheet.getRange(rowNumber, 24).setValue('SENT');
-      } catch (e) {
-        applicantError = e.message || String(e);
-        sheet.getRange(rowNumber, 24).setValue('PENDING');
+      const rowNumber = i + 2;
+      let applicantError = '';
+      let managementError = '';
+      let hadFailure = false;
+
+      if (applicantStatus !== 'SENT') {
+        try {
+          sendApplicantReceiptEmail_(row);
+          sheet.getRange(rowNumber, 24).setValue('SENT');
+        } catch (e) {
+          hadFailure = true;
+          applicantError = e.message || String(e);
+          sheet.getRange(rowNumber, 24).setValue('PENDING');
+        }
       }
-    }
 
-    if (managementStatus !== 'SENT') {
-      try {
-        sendManagementNewApplicationEmail_(row);
-        sheet.getRange(rowNumber, 25).setValue('SENT');
-      } catch (e) {
-        managementError = e.message || String(e);
-        sheet.getRange(rowNumber, 25).setValue('PENDING');
+      if (managementStatus !== 'SENT') {
+        try {
+          sendManagementNewApplicationEmail_(row);
+          sheet.getRange(rowNumber, 25).setValue('SENT');
+        } catch (e) {
+          hadFailure = true;
+          managementError = e.message || String(e);
+          sheet.getRange(rowNumber, 25).setValue('PENDING');
+        }
       }
+
+      const combinedError = [applicantError, managementError].filter(Boolean).join(' | ');
+      if (combinedError) {
+        sheet.getRange(rowNumber, 26).setValue(combinedError.slice(0, 1000));
+      } else {
+        sheet.getRange(rowNumber, 26).clearContent();
+      }
+
+      const newAttempts = hadFailure ? attempts + 1 : attempts;
+      sheet.getRange(rowNumber, 27).setValue(newAttempts);
+
+      if (hadFailure) {
+        const delayMinutes = Math.min(60, Math.pow(2, Math.min(newAttempts, 6)) * 5);
+        sheet.getRange(rowNumber, 28).setValue(
+          new Date(Date.now() + delayMinutes * 60 * 1000)
+        );
+      } else {
+        sheet.getRange(rowNumber, 28).clearContent();
+      }
+
+      processed++;
+      Utilities.sleep(500);
     }
 
-    const combinedError = [applicantError, managementError].filter(Boolean).join(' | ');
-    if (combinedError) {
-      sheet.getRange(rowNumber, 26).setValue(combinedError.slice(0, 1000));
-    } else {
-      sheet.getRange(rowNumber, 26).clearContent();
-    }
-
-    processed++;
+    return 'Processed ' + processed + ' recruitment email job(s).';
+  } finally {
+    lock.releaseLock();
   }
-
-  return 'Processed ' + processed + ' recruitment email job(s).';
 }
 
 /**
@@ -859,7 +890,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
  * It generates 50 questions without creating an applicant or sending email.
  */
 function recruitmentBuildInfo(){
-  return 'TW&D RECRUITMENT BUILD 2026-09-28-EMAIL-QUEUE-04';
+  return 'TW&D RECRUITMENT BUILD 2026-09-28-EMAIL-QUEUE-06';
 }
 
 function testAptitudeAI(){
