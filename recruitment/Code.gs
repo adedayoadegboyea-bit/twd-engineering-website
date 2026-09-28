@@ -386,6 +386,17 @@ function processRecruitmentEmailQueue() {
 
     for (let i = 0; i < rows.length && processed < 3; i++) {
       const row = rows[i];
+
+      // Ignore blank/test/incomplete rows. They must never become email jobs.
+      // A real application always has an Application ID, applicant name, email and position.
+      const rowId = String(row[0] || '').trim();
+      const rowName = String(row[2] || '').trim();
+      const rowEmail = String(row[3] || '').trim();
+      const rowPosition = String(row[5] || '').trim();
+      if (!rowId || !rowName || !rowEmail || !rowPosition) {
+        continue;
+      }
+
       const applicantStatus = String(row[23] || 'PENDING').trim();
       const managementStatus = String(row[24] || 'PENDING').trim();
       const attempts = Number(row[26] || 0);
@@ -454,12 +465,17 @@ function processRecruitmentEmailQueue() {
  * Email management when a new application arrives.
  */
 function sendManagementNewApplicationEmail_(row) {
-  const id = row[0];
-  const name = row[2];
-  const email = row[3];
-  const phone = row[4];
-  const position = row[5];
-  const location = row[6];
+  const id = String(row[0] || '').trim();
+  const name = String(row[2] || '').trim();
+  const applicantEmail = String(row[3] || '').trim();
+  const phone = String(row[4] || '').trim();
+  const position = String(row[5] || '').trim();
+  const location = String(row[6] || '').trim();
+
+  if (!id || !name || !applicantEmail || !position) {
+    throw new Error('Refusing to send an empty/incomplete management application email.');
+  }
+  const email = applicantEmail;
   const cvUrl = row[11];
   const docsUrl = row[12];
 
@@ -963,7 +979,7 @@ function generateAptitudeBatch_(position,first,last,key,configuredModel){
  * It generates 50 questions without creating an applicant or sending email.
  */
 function recruitmentBuildInfo(){
-  return 'TW&D RECRUITMENT BUILD 2026-09-28-APTITUDE-APPROVAL-LOGIN-07';
+  return 'TW&D RECRUITMENT BUILD 2026-09-28-EMAIL-GUARD-08';
 }
 
 function testAptitudeAI(){
@@ -1091,6 +1107,13 @@ function notifyAptitudeAdmin_(row,score,assessment) {
 
 function sendTransactionalEmail_(to,subject,htmlBody) {
   to = String(to || '').trim();
+  subject = String(subject || '').trim();
+  htmlBody = String(htmlBody || '').trim();
+
+  if (!subject) throw new Error('Refusing to send an email without a subject.');
+  if (!htmlBody || htmlBody.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, ' ').trim() === '') {
+    throw new Error('Refusing to send an email with an empty body.');
+  }
   if (!to || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) {
     throw new Error('Invalid recipient email address.');
   }
