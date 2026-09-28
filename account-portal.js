@@ -1,137 +1,56 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
-
 const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
 const list=(a,fn,e)=>a?.length?a.map(fn).join(""):e;
-const status=$("accountStatus"), portalStatus=$("portalStatus"), setup=$("setupWarning");
+const status=$("accountStatus"),portalStatus=$("portalStatus"),setup=$("setupWarning");
 let recoveryMode=false,currentUser=null;
-
 function msg(text,type=""){status.textContent=text;status.className="account-status show "+type}
 function pmsg(text,type=""){portalStatus.textContent=text;portalStatus.className="portal-status show "+type}
-function err(e){
- const m=String(e?.message||"").toLowerCase();
- if(m.includes("user already registered"))return"An account already exists with this email address.";
- if(m.includes("invalid login credentials"))return"The email or password is incorrect.";
- if(m.includes("password should be at least"))return"Please use a stronger password.";
- if(m.includes("unable to validate email address"))return"Please enter a valid email address.";
- if(m.includes("rate limit"))return"Too many requests. Please wait a little and try again.";
- if(m.includes("email not confirmed"))return"Please confirm your email address before signing in.";
- return e?.message||"The request could not be completed.";
-}
-function showSignedOut(){
- $("authPanel").style.display="";
- $("dashboardPanel").classList.remove("show");
-}
-function showRecoveryMode(){
- recoveryMode=true;$("authPanel").style.display="";$("dashboardPanel").classList.remove("show");
- $("passwordResetPanel").hidden=false;$("signinForm").hidden=true;$("signupForm").hidden=true;
- document.querySelector(".account-tabs").style.display="none";msg("Enter a new password for your TW&D account.");
-}
+function err(e){const m=String(e?.message||"").toLowerCase();if(m.includes("user already registered"))return"An account already exists with this email address.";if(m.includes("invalid login credentials"))return"The email or password is incorrect.";if(m.includes("email not confirmed"))return"Please confirm your email address before signing in.";return e?.message||"The request could not be completed."}
+function showSignedOut(){$("authPanel").style.display="";$("dashboardPanel").classList.remove("show")}
+function showRecoveryMode(){recoveryMode=true;$("authPanel").style.display="";$("dashboardPanel").classList.remove("show");$("passwordResetPanel").hidden=false;$("signinForm").hidden=true;$("signupForm").hidden=true;document.querySelector(".account-tabs").style.display="none";msg("Enter a new password for your TW&D account.")}
 async function loadDashboard(user){
- currentUser=user;
- $("authPanel").style.display="none";setup.classList.remove("show");$("dashboardPanel").classList.add("show");
- const name=user.user_metadata?.full_name||"";
- $("welcomeName").textContent=name?"Welcome, "+name:"Welcome";
- $("welcomeEmail").textContent=user.email||"";
- $("profileName").value=name;
- $("profilePhone").value=user.user_metadata?.phone||"";
- $("profileEmail").value=user.email||"";
+ currentUser=user;$("authPanel").style.display="none";setup.classList.remove("show");$("dashboardPanel").classList.add("show");
  const [p,pr,r,q,n]=await Promise.all([
   supabase.from("profiles").select("account_type,full_name,phone").eq("id",user.id).maybeSingle(),
-  supabase.from("projects").select("id,project_name,service_type,status,progress,location,description,updated_at").order("created_at",{ascending:false}).limit(20),
-  supabase.from("service_requests").select("subject,status").order("created_at",{ascending:false}).limit(5),
-  supabase.from("quotations").select("quotation_number,amount,currency,status").order("created_at",{ascending:false}).limit(5),
-  supabase.from("notifications").select("id,title,message,read").order("created_at",{ascending:false}).limit(5)
+  supabase.from("projects").select("id,project_name,service_type,status,progress,location,description,updated_at,created_at").order("created_at",{ascending:false}).limit(20),
+  supabase.from("service_requests").select("id,service_type,subject,status,message,created_at,updated_at").order("created_at",{ascending:false}).limit(10),
+  supabase.from("quotations").select("quotation_number,amount,status,description,valid_until,created_at").order("created_at",{ascending:false}).limit(10),
+  supabase.from("notifications").select("id,title,message,notification_type,is_read,created_at").order("created_at",{ascending:false}).limit(10)
  ]);
+ const firstErr=p.error||pr.error||r.error||q.error||n.error;
+ if(firstErr){pmsg(firstErr.message,"error");return}
+ if(p.data?.account_type)$("accountType").textContent=p.data.account_type.toUpperCase();
+ if(p.data?.account_type==="admin")$("adminPortalLink").hidden=false;
+ const name=p.data?.full_name||user.user_metadata?.full_name||"";$("welcomeName").textContent=name?"Welcome, "+name:"Welcome";$("welcomeEmail").textContent=user.email||"";$("profileName").value=name;$("profilePhone").value=p.data?.phone||user.user_metadata?.phone||"";$("profileEmail").value=user.email||"";
  window.__twProjects=pr.data||[];
-  if(p.data?.account_type)$("accountType").textContent=p.data.account_type.toUpperCase();
- if(p.data?.full_name&&!name){$("profileName").value=p.data.full_name;$("welcomeName").textContent="Welcome, "+p.data.full_name}
- if(p.data?.phone&&!$("profilePhone").value)$("profilePhone").value=p.data.phone;
  $("projectsList").innerHTML=list(pr.data,x=>'<button type="button" class="portal-row project-open" data-project-id="'+esc(x.id)+'"><strong>'+esc(x.project_name)+'</strong><span>'+esc(x.service_type||"Project")+" • "+esc(x.status)+" • "+(x.progress||0)+"%"+(x.location?" • "+esc(x.location):"")+'</span></button>','<div class="portal-empty">No projects assigned yet.</div>');
-document.querySelectorAll(".project-open").forEach(b=>b.onclick=()=>openProject(b.dataset.projectId));
- $("requestsList").innerHTML=list(r.data,x=>'<div class="portal-row"><strong>'+esc(x.subject)+'</strong><span>'+esc(x.status)+"</span></div>",'<div class="portal-empty">No service requests yet.</div>');
- $("quotesList").innerHTML=list(q.data,x=>'<div class="portal-row"><strong>'+esc(x.quotation_number||"Quotation")+'</strong><span>'+esc(x.currency)+" "+Number(x.amount||0).toLocaleString()+" • "+esc(x.status)+"</span></div>",'<div class="portal-empty">No quotations yet.</div>');
- $("notificationsList").innerHTML=list(n.data,x=>'<div class="portal-row '+(x.read?"":"unread")+'"><strong>'+esc(x.title)+'</strong><span>'+esc(x.message)+"</span></div>",'<div class="portal-empty">No notifications yet.</div>');
+ document.querySelectorAll(".project-open").forEach(b=>b.onclick=()=>openProject(b.dataset.projectId));
+ $("requestsList").innerHTML=list(r.data,x=>'<div class="portal-row"><strong>'+esc(x.subject)+'</strong><span>'+esc(x.service_type||"GENERAL ENQUIRY")+" • "+esc(x.status)+'</span><p>'+esc(x.message||"")+"</p></div>",'<div class="portal-empty">No service requests yet.</div>');
+ $("quotesList").innerHTML=list(q.data,x=>'<div class="portal-row"><strong>'+esc(x.quotation_number||"Quotation")+'</strong><span>₦'+Number(x.amount||0).toLocaleString()+" • "+esc(x.status)+"</span><small>"+esc(x.description||"")+"</small></div>",'<div class="portal-empty">No quotations yet.</div>');
+ $("notificationsList").innerHTML=list(n.data,x=>'<div class="portal-row '+(x.is_read?"":"unread")+'"><strong>'+esc(x.title)+'</strong><span>'+esc(x.message)+"</span></div>",'<div class="portal-empty">No notifications yet.</div>');
 }
-
 async function openProject(projectId){
- const project=(window.__twProjects||[]).find(x=>x.id===projectId); if(!project)return;
- $("projectDetailPanel").hidden=false;$("projectDetailTitle").textContent=project.project_name;$("projectDetailMeta").textContent=(project.service_type||"Project")+" • "+(project.status||"")+(project.location?" • "+project.location:"");
- $("projectProgressValue").textContent=(project.progress||0)+"%";$("projectProgressBar").style.width=Math.max(0,Math.min(100,Number(project.progress||0)))+"%";$("projectDetailDescription").textContent=project.description||"No project description has been published yet.";
- const [reports,docs]=await Promise.all([
-  supabase.from("project_reports").select("report_title,report_body,progress,report_date,created_at").eq("project_id",project.id).order("report_date",{ascending:false}),
-  supabase.from("project_documents").select("id,document_name,document_type,storage_path,description,uploaded_at").eq("project_id",project.id).order("uploaded_at",{ascending:false})
- ]);
- if(reports.error){pmsg(reports.error.message,"error");return}
- if(docs.error){pmsg(docs.error.message,"error");return}
- $("projectReports").innerHTML=list(reports.data,r=>'<article class="portal-report"><small>'+esc(r.report_date||"")+(r.progress!=null?" • "+r.progress+"%":"")+'</small><strong>'+esc(r.report_title)+'</strong><p>'+esc(r.report_body).replace(/\\n/g,"<br>")+'</p></article>','<div class="portal-empty">No progress reports have been published yet.</div>');
- $("projectDocuments").innerHTML=list(docs.data,d=>'<div class="portal-row"><strong>'+esc(d.document_name)+'</strong><span>'+esc(d.description||d.document_type||"Private project document")+' • '+esc(new Date(d.uploaded_at).toLocaleDateString())+'</span><button type="button" class="portal-action doc-download" data-path="'+esc(d.storage_path)+'">Open Secure Document</button></div>','<div class="portal-empty">No private documents have been uploaded yet.</div>');
- document.querySelectorAll(".doc-download").forEach(b=>b.onclick=async()=>{b.disabled=true;b.textContent="Opening…";const {data,error}=await supabase.storage.from("project-private").createSignedUrl(b.dataset.path,300);if(error){b.disabled=false;b.textContent="Open Secure Document";pmsg(error.message,"error");return}window.open(data.signedUrl,"_blank","noopener");b.disabled=false;b.textContent="Open Secure Document"});
+ const project=(window.__twProjects||[]).find(x=>x.id===projectId);if(!project)return;
+ $("projectDetailPanel").hidden=false;$("projectDetailTitle").textContent=project.project_name;$("projectDetailMeta").textContent=(project.service_type||"Project")+" • "+(project.status||"")+(project.location?" • "+project.location:"");$("projectProgressValue").textContent=(project.progress||0)+"%";$("projectProgressBar").style.width=Math.max(0,Math.min(100,Number(project.progress||0)))+"%";$("projectDetailDescription").textContent=project.description||"No project description has been published yet.";
+ const [reports,docs]=await Promise.all([supabase.from("project_reports").select("report_title,report_body,progress,report_date,created_at").eq("project_id",project.id).order("report_date",{ascending:false}),supabase.from("project_documents").select("id,document_name,document_type,storage_path,created_at").eq("project_id",project.id).order("created_at",{ascending:false})]);
+ if(reports.error||docs.error){pmsg((reports.error||docs.error).message,"error");return}
+ $("projectReports").innerHTML=list(reports.data,r=>'<article class="portal-report"><small>'+esc(r.report_date||"")+(r.progress!=null?" • "+r.progress+"%":"")+'</small><strong>'+esc(r.report_title)+'</strong><p>'+esc(r.report_body).replace(/\n/g,"<br>")+'</p></article>','<div class="portal-empty">No progress reports have been published yet.</div>');
+ $("projectDocuments").innerHTML=list(docs.data,d=>'<div class="portal-row"><strong>'+esc(d.document_name)+'</strong><span>'+esc(d.document_type||"Private project document")+" • "+new Date(d.created_at).toLocaleDateString()+'</span><button type="button" class="portal-action doc-download" data-path="'+esc(d.storage_path)+'">Open Secure Document</button></div>','<div class="portal-empty">No private documents have been uploaded yet.</div>');
+ document.querySelectorAll(".doc-download").forEach(b=>b.onclick=async()=>{b.disabled=true;b.textContent="Opening…";const {data,error}=await supabase.storage.from("project-private").createSignedUrl(b.dataset.path,300);if(error){pmsg(error.message,"error");b.disabled=false;b.textContent="Open Secure Document";return}window.open(data.signedUrl,"_blank","noopener");b.disabled=false;b.textContent="Open Secure Document"});
  $("projectDetailPanel").scrollIntoView({behavior:"smooth",block:"start"});
 }
 $("showSignup").onclick=()=>{$("signupForm").hidden=false;$("signinForm").hidden=true;$("showSignup").classList.add("active");$("showSignin").classList.remove("active");status.className="account-status"};
 $("showSignin").onclick=()=>{$("signupForm").hidden=true;$("signinForm").hidden=false;$("showSignup").classList.remove("active");$("showSignin").classList.add("active");status.className="account-status"};
-$("signupForm").addEventListener("submit",async e=>{
- e.preventDefault();
- const name=$("signupName").value.trim(),email=$("signupEmail").value.trim(),phone=$("signupPhone").value.trim(),password=$("signupPassword").value,confirm=$("signupConfirm").value;
- if(password!==confirm)return msg("The passwords do not match.","error");
- try{
-  msg("Creating your secure account…");
-  const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo:window.location.origin+"/account.html",data:{full_name:name,phone}}});
-  if(error)throw error;
-  if(data.session){msg("Account created successfully. You are now signed in.","success");await loadDashboard(data.user)}
-  else{msg("Account created. Please check your email and confirm your address before signing in.","success");$("signupForm").reset();$("showSignin").click();$("signinEmail").value=email}
- }catch(e){msg(err(e),"error")}
-});
-$("signinForm").addEventListener("submit",async e=>{
- e.preventDefault();
- try{msg("Signing you in securely…");const {data,error}=await supabase.auth.signInWithPassword({email:$("signinEmail").value.trim(),password:$("signinPassword").value});if(error)throw error;await loadDashboard(data.user);msg("Signed in successfully.","success")}catch(e){msg(err(e),"error")}
-});
-$("forgotPassword").onclick=async()=>{
- const email=$("signinEmail").value.trim();if(!email)return msg("Enter your email address first.","error");
- try{const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+"/account.html"});if(error)throw error;msg("Password-reset instructions have been sent to your email.","success")}catch(e){msg(err(e),"error")}
-};
-$("passwordResetForm").addEventListener("submit",async e=>{
- e.preventDefault();const password=$("newPassword").value,confirm=$("newPasswordConfirm").value;if(password!==confirm)return msg("The passwords do not match.","error");
- try{msg("Updating your password…");const {error}=await supabase.auth.updateUser({password});if(error)throw error;recoveryMode=false;$("passwordResetPanel").hidden=true;$("signinForm").hidden=false;document.querySelector(".account-tabs").style.display="";msg("Your password has been updated. You can now sign in.","success");await supabase.auth.signOut()}catch(e){msg(err(e),"error")}
-});
+$("signupForm").addEventListener("submit",async e=>{e.preventDefault();const name=$("signupName").value.trim(),email=$("signupEmail").value.trim(),phone=$("signupPhone").value.trim(),password=$("signupPassword").value,confirm=$("signupConfirm").value;if(password!==confirm)return msg("The passwords do not match.","error");try{msg("Creating your secure account…");const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo:window.location.origin+"/account.html",data:{full_name:name,phone}}});if(error)throw error;if(data.session){msg("Account created successfully. You are now signed in.","success");await loadDashboard(data.user)}else{msg("Account created. Please check your email and confirm your address before signing in.","success");$("signupForm").reset();$("showSignin").click();$("signinEmail").value=email}}catch(e){msg(err(e),"error")}});
+$("signinForm").addEventListener("submit",async e=>{e.preventDefault();try{msg("Signing you in securely…");const {data,error}=await supabase.auth.signInWithPassword({email:$("signinEmail").value.trim(),password:$("signinPassword").value});if(error)throw error;await loadDashboard(data.user);msg("Signed in successfully.","success")}catch(e){msg(err(e),"error")}});
+$("forgotPassword").onclick=async()=>{const email=$("signinEmail").value.trim();if(!email)return msg("Enter your email address first.","error");try{const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+"/account.html"});if(error)throw error;msg("Password-reset instructions have been sent to your email.","success")}catch(e){msg(err(e),"error")}};
+$("passwordResetForm").addEventListener("submit",async e=>{e.preventDefault();const password=$("newPassword").value,confirm=$("newPasswordConfirm").value;if(password!==confirm)return msg("The passwords do not match.","error");try{msg("Updating your password…");const {error}=await supabase.auth.updateUser({password});if(error)throw error;recoveryMode=false;$("passwordResetPanel").hidden=true;$("signinForm").hidden=false;document.querySelector(".account-tabs").style.display="";msg("Your password has been updated. You can now sign in.","success");await supabase.auth.signOut()}catch(e){msg(err(e),"error")}});
 $("signoutButton").onclick=async()=>{await supabase.auth.signOut();location.reload()};
-$("serviceRequestForm").addEventListener("submit",async e=>{
- e.preventDefault();if(!currentUser)return;
- try{
-  pmsg("Sending your request…");
-  const {error}=await supabase.from("service_requests").insert({customer_id:currentUser.id,request_type:$("requestType").value,subject:$("requestSubject").value.trim(),message:$("requestMessage").value.trim()});
-  if(error)throw error;
-  $("serviceRequestForm").reset();pmsg("Your service request has been sent to TW&D. We will review it through the customer service process.","success");await loadDashboard(currentUser);
- }catch(e){pmsg(err(e),"error")}
-});
-$("profileForm").addEventListener("submit",async e=>{
- e.preventDefault();if(!currentUser)return;
- try{
-  pmsg("Saving your profile…");
-  const name=$("profileName").value.trim(),phone=$("profilePhone").value.trim();
-  const {error}=await supabase.from("profiles").update({full_name:name,phone}).eq("id",currentUser.id);
-  if(error)throw error;
-  const {error:authError}=await supabase.auth.updateUser({data:{full_name:name,phone}});
-  if(authError)throw authError;
-  currentUser.user_metadata={...(currentUser.user_metadata||{}),full_name:name,phone};
-  $("welcomeName").textContent="Welcome, "+name;pmsg("Profile updated successfully.","success");
- }catch(e){pmsg(err(e),"error")}
-});
-$("markNotificationsRead").onclick=async()=>{
- if(!currentUser)return;
- try{
-  const {error}=await supabase.from("notifications").update({read:true}).eq("customer_id",currentUser.id).eq("read",false);
-  if(error)throw error;pmsg("Notifications marked as read.","success");await loadDashboard(currentUser);
- }catch(e){pmsg(err(e),"error")}
-};
-supabase.auth.onAuthStateChange((event,session)=>{
- if(event==="PASSWORD_RECOVERY"){showRecoveryMode();return}
- if(session?.user&&!recoveryMode)loadDashboard(session.user);else if(!recoveryMode)showSignedOut();
-});
-(async()=>{
- try{const {data,error}=await supabase.auth.getSession();if(error)throw error;if(data.session&&!recoveryMode)await loadDashboard(data.session.user)}
- catch(e){setup.classList.add("show");msg("The account service could not be reached. Please try again later.","error")}
-})();
+$("serviceRequestForm").addEventListener("submit",async e=>{e.preventDefault();if(!currentUser)return;try{pmsg("Sending your request…");const {error}=await supabase.from("service_requests").insert({customer_id:currentUser.id,service_type:$("requestType").value,subject:$("requestSubject").value.trim(),message:$("requestMessage").value.trim()});if(error)throw error;$("serviceRequestForm").reset();pmsg("Your service request has been sent to TW&D.","success");await loadDashboard(currentUser)}catch(e){pmsg(err(e),"error")}});
+$("profileForm").addEventListener("submit",async e=>{e.preventDefault();if(!currentUser)return;try{pmsg("Saving your profile…");const name=$("profileName").value.trim(),phone=$("profilePhone").value.trim();const {error}=await supabase.from("profiles").update({full_name:name,phone}).eq("id",currentUser.id);if(error)throw error;const {error:authError}=await supabase.auth.updateUser({data:{full_name:name,phone}});if(authError)throw authError;currentUser.user_metadata={...(currentUser.user_metadata||{}),full_name:name,phone};$("welcomeName").textContent="Welcome, "+name;pmsg("Profile updated successfully.","success")}catch(e){pmsg(err(e),"error")}});
+$("markNotificationsRead").onclick=async()=>{if(!currentUser)return;try{const {error}=await supabase.from("notifications").update({is_read:true}).eq("customer_id",currentUser.id).eq("is_read",false);if(error)throw error;pmsg("Notifications marked as read.","success");await loadDashboard(currentUser)}catch(e){pmsg(err(e),"error")}};
+supabase.auth.onAuthStateChange((event,session)=>{if(event==="PASSWORD_RECOVERY"){showRecoveryMode();return}if(session?.user&&!recoveryMode)loadDashboard(session.user);else if(!recoveryMode)showSignedOut()});
+(async()=>{try{const {data,error}=await supabase.auth.getSession();if(error)throw error;if(data.session&&!recoveryMode)await loadDashboard(data.session.user)}catch(e){setup.classList.add("show");msg("The account service could not be reached. Please try again later.","error")}})();
