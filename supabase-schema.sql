@@ -298,9 +298,7 @@ on public.workers for all to authenticated
 using(public.is_admin()) with check(public.is_admin());
 
 drop policy if exists "Workers can view active attendance codes" on public.attendance_codes;
-create policy "Workers can view active attendance codes"
-on public.attendance_codes for select to authenticated
-using(expires_at > now() and (exists(select 1 from public.workers w where w.id=auth.uid()) or public.is_admin()));
+drop policy if exists "Workers can read attendance codes" on public.attendance_codes;
 
 drop policy if exists "Admins can manage attendance codes" on public.attendance_codes;
 create policy "Admins can manage attendance codes"
@@ -352,3 +350,87 @@ create index if not exists attendance_codes_date_idx on public.attendance_codes(
 create index if not exists worker_attendance_worker_date_idx on public.worker_attendance(worker_id,work_date);
 create index if not exists worker_reports_worker_date_idx on public.worker_reports(worker_id,report_date);
 create index if not exists worker_payments_worker_period_idx on public.worker_payments(worker_id,pay_period);
+
+
+create or replace function public.worker_check_in(p_code text)
+returns json
+language plpgsql
+security definer
+set search_path=public
+as $$
+declare
+  code_row public.attendance_codes%rowtype;
+  existing public.worker_attendance%rowtype;
+begin
+  if not exists(select 1 from public.workers where id=auth.uid() and employment_status='ACTIVE') then
+    raise exception 'Worker account is not active.';
+  end if;
+
+  select * into code_row
+  from public.attendance_codes
+  where code=upper(trim(p_code))
+    and work_date=current_date
+    and expires_at>now()
+  order by created_at desc
+  limit 1;
+
+  if code_row.id is null then
+    raise exception 'Invalid or expired attendance code.';
+  end if;
+
+  select * into existing from public.worker_attendance
+  where worker_id=auth.uid() and work_date=current_date;
+
+  if existing.id is not null then
+    return json_build_object('ok',true,'message','Attendance already recorded for today.','check_in',existing.check_in);
+  end if;
+
+  insert into public.worker_attendance(worker_id,work_date,attendance_code_id,check_in,status)
+  values(auth.uid(),current_date,code_row.id,now(),'PRESENT');
+
+  return json_build_object('ok',true,'message','Check-in recorded successfully.','check_in',now());
+end;
+$$;
+
+revoke all on function public.worker_check_in(text) from public;
+grant execute on function public.worker_check_in(text) to authenticated;
+
+create or replace function public.worker_check_out()
+returns json
+language plpgsql
+security definer
+set search_path=public
+as $$
+declare
+  a public.worker_attendance%rowtype;
+begin
+  update public.worker_attendance
+  set check_out=now(), status='COMPLETED'
+  where worker_id=auth.uid() and work_date=current_date and check_out is null
+  returning * into a;
+  if a.id is null then raise exception 'No open attendance record was found for today.'; end if;
+  return json_build_object('ok',true,'message','Check-out recorded successfully.','check_out',a.check_out);
+end;
+$$;
+
+revoke all on function public.worker_check_out() from public;
+grant execute on function public.worker_check_out() to authenticated;
+
+create or replace function public.admin_generate_attendance_code()
+returns text
+language plpgsql
+security definer
+set search_path=public
+as $$
+declare c text;
+begin
+  if not public.is_admin() then raise exception 'Administrator access required.'; end if;
+  c := upper(substr(encode(gen_random_bytes(5),'hex'),1,8));
+  insert into public.attendance_codes(work_date,code,generated_by,expires_at)
+  values(current_date,c,auth.uid(),now()+interval '12 hours');
+  return c;
+end;
+$$;
+
+revoke all on function public.admin_generate_attendance_code() from public;
+grant execute on function public.admin_generate_attendance_code() to authenticated;
