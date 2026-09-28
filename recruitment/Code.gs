@@ -207,7 +207,7 @@ function submitApplication(data) {
 
   const email = String(data.email).trim();
 
-  if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     throw new Error('Please provide a valid email address.');
   }
 
