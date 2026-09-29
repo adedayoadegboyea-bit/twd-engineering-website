@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T05:41:47.995539+00:00",
+  "generated_at": "2026-09-29T06:13:03.391527+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,109 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Three Nigerians killed in South Africa within four days — Consulate",
+      "summary": "The Nigerian Consulate in Johannesburg has condemned the deaths of three Nigerians in separate incidents across South Africa between September 18 and 21, 2 Read More: https://punchng.com/three-nigerians-killed-in-south-africa-within-four-days-consulate/",
+      "url": "https://punchng.com/three-nigerians-killed-in-south-africa-within-four-days-consulate/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-29T07:06:27+00:00",
+      "categories": []
+    },
+    {
+      "title": "FG releases final approved textbooks for 2026–2028",
+      "summary": "The Federal Ministry of Education has released the final list of approved textbooks with QR tracking codes for Nigerian schools for the 2026–2028 period. Read More: https://punchng.com/fg-releases-final-approved-textbooks-for-2026-2028/",
+      "url": "https://punchng.com/fg-releases-final-approved-textbooks-for-2026-2028/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-29T07:04:12+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Why Nigerians should stop boiling eggs, rice together – Experts",
+      "summary": "Nutrition experts have urged Nigerians to stop boiling unpeeled eggs and rice together to avoid cross-contamination from bacteria like Salmonella and E. co Read More: https://punchng.com/why-nigerians-should-stop-boiling-eggs-rice-together-experts/",
+      "url": "https://punchng.com/why-nigerians-should-stop-boiling-eggs-rice-together-experts/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-29T06:54:45+00:00",
+      "categories": []
+    },
+    {
+      "title": "From classroom to construction site: The child labour journey from Benin Republic to Lagos",
+      "summary": "A 10-year-old from Benin Republic works on a Lagos construction site, raising questions about poverty, migration, and informal apprenticeships. Read More: https://punchng.com/from-classroom-to-construction-site-the-child-labour-journey-from-benin-republic-to-lagos/",
+      "url": "https://punchng.com/from-classroom-to-construction-site-the-child-labour-journey-from-benin-republic-to-lagos/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-29T06:53:33+00:00",
+      "categories": [
+        "engineering",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Hospital seeks to stop inquest into Chimamanda son’s death",
+      "summary": "A Lagos High Court has fixed a date to rule on an application by Euracare hospital seeking to stop the coroner’s inquest into the death of Nkanu Adichie. Read More: https://punchng.com/hospital-seeks-to-stop-inquest-into-chimamanda-sons-death/",
+      "url": "https://punchng.com/hospital-seeks-to-stop-inquest-into-chimamanda-sons-death/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-29T06:52:29+00:00",
+      "categories": [
+        "lagos"
+      ]
+    },
+    {
+      "title": "OpenAI cancels release of newest model due to safety concerns",
+      "summary": "OpenAI has cancelled the release of its newest AI model, Astra 6.1, after internal testing revealed it did not meet the company’s safety standards. Read More: https://punchng.com/openai-cancels-release-of-newest-model-due-to-safety-concerns/",
+      "url": "https://punchng.com/openai-cancels-release-of-newest-model-due-to-safety-concerns/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-29T06:40:46+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "Troops rescue 49 Kano travellers from suspected kidnappers in Zamfara",
+      "summary": "Troops of Operation FANSAN YAMMA have rescued 49 travellers from Kano State who were returning from Senegal after attending a Maulud programme following an attempted kidnap incident in Zamfara State. The rescue was contained in a post shared on X by security analyst, Zagazola Makama on Tuesday. Acco",
+      "url": "https://dailypost.ng/2026/09/29/troops-rescue-49-kano-travellers-from-suspected-kidnappers-in-zamfara/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-29T06:09:13+00:00",
+      "categories": []
+    },
+    {
+      "title": "N627bn revenue: Kebbi govt, Malami camp lock horns over alleged financial mismanagement",
+      "summary": "Ahead of the 2027 general elections, the management of Kebbi State’s finances has emerged as a major political issue, with the African Democratic Congress, ADC, demanding an account of funds it said accrued to the state between May 2023 and October 2025. The dispute centres on N627.14 billion, which",
+      "url": "https://dailypost.ng/2026/09/29/n627bn-revenue-kebbi-govt-malami-camp-lock-horns-over-alleged-financial-mismanagement/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-29T06:04:51+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "Consulate demands justice over alleged attacks, deaths of Nigerians in South Africa",
+      "summary": "The Nigerian Consulate General in Johannesburg has called for justice over the deaths of three Nigerian nationals in separate incidents across South Africa between September 18 and 21, 2026. The Consul-General, Amb. Ninikanwa Okey-Uche, urged South African authorities to investigate the circumstance",
+      "url": "https://dailypost.ng/2026/09/29/consulate-demands-justice-over-alleged-attacks-deaths-of-nigerians-in-south-africa/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-29T06:00:07+00:00",
+      "categories": []
+    },
+    {
+      "title": "You can get away with anything with political connections – Emir Sanusi faults El-Rufai’s detention",
+      "summary": "The Emir of Kano, Muhammadu Sanusi II, has said people can get away with almost anything in Nigeria when they have strong political connections. Sanusi made the comment during an interview with Channels Television in Lagos at the public presentation of Unexplained Wealth: A Trilogy of Nigerian Finan",
+      "url": "https://dailypost.ng/2026/09/29/you-can-get-away-with-anything-with-political-connections-emir-sanusi-faults-el-rufais-detention/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-29T05:50:53+00:00",
+      "categories": [
+        "lagos"
+      ]
+    },
+    {
+      "title": "NYSC Osun dismisses corps member disappearance report",
+      "summary": "The National Youth Service Corps, NYSC, Osun State, has clarified a report concerning the alleged disappearance of a corps member, Adewebi Opeoluwa, serving at St. James Grammar School, Ayetoro, Olorunda Local Government Area of the state. The NYSC said the corps member, identified with registration",
+      "url": "https://dailypost.ng/2026/09/29/nysc-osun-dismisses-corps-member-disappearance-report/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-29T05:42:07+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "World Heart Day: NOA urges Osun residents to prioritise heart health",
       "summary": "The National Orientation Agency, NOA, Osun State Directorate, has urged Nigerians to prioritise heart health and adopt healthier lifestyles to reduce the risk of cardiovascular diseases. The agency made the call in a statement by its spokesperson, Bunmi Olaseinde, on behalf of the State Director, Ad",
@@ -26,16 +129,6 @@
       "url": "https://dailypost.ng/2026/09/29/lasu-denies-failure-to-mobilise-law-graduates-for-nigerian-law-school/",
       "source": "Daily Post Nigeria",
       "published": "2026-09-29T05:35:40+00:00",
-      "categories": [
-        "lagos"
-      ]
-    },
-    {
-      "title": "Hospital seeks to stop inquest into Chimamanda son’s death",
-      "summary": "A Lagos High Court has fixed a date to rule on a bid by Euracare hospital to stop the coroner’s inquest into the death of author Chimamanda Adichie’s son. Read More: https://punchng.com/hospital-seeks-to-stop-inquest-into-chimamanda-sons-death/",
-      "url": "https://punchng.com/hospital-seeks-to-stop-inquest-into-chimamanda-sons-death/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T05:33:29+00:00",
       "categories": [
         "lagos"
       ]
@@ -59,30 +152,11 @@
       ]
     },
     {
-      "title": "From classroom to construction site: The child labour journey from Benin Republic to Lagos",
-      "summary": "A 10-year-old from Benin Republic works on a Lagos construction site, raising questions about poverty, migration, and informal apprenticeships. Read More: https://punchng.com/from-classroom-to-construction-site-the-child-labour-journey-from-benin-republic-to-lagos/",
-      "url": "https://punchng.com/from-classroom-to-construction-site-the-child-labour-journey-from-benin-republic-to-lagos/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T05:31:33+00:00",
-      "categories": [
-        "engineering",
-        "lagos"
-      ]
-    },
-    {
       "title": "Guinea-Bissau vs Nigeria: All you need to know about crucial 2027 AFCON qualifier",
       "summary": "Nigeria will face what is probably their toughest test so far in the 2027 Africa Cup of Nations qualifying series when they travel to Guinea-Bissau on Tuesday evening. Both teams picked up three points from their opening matches. The Super Eagles beat Madagascar 2-1, while the Djurtus defeated AFCON",
       "url": "https://dailypost.ng/2026/09/29/guinea-bissau-vs-nigeria-all-you-need-to-know-about-crucial-2027-afcon-qualifier/",
       "source": "Daily Post Nigeria",
       "published": "2026-09-29T05:30:48+00:00",
-      "categories": []
-    },
-    {
-      "title": "Why Nigerians should stop boiling eggs, rice together – Experts",
-      "summary": "Nutrition experts warn Nigerians to stop boiling eggs and rice together to avoid cross-contamination from bacteria like Salmonella on eggshells. Read More: https://punchng.com/why-nigerians-should-stop-boiling-eggs-rice-together-experts/",
-      "url": "https://punchng.com/why-nigerians-should-stop-boiling-eggs-rice-together-experts/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T05:30:45+00:00",
       "categories": []
     },
     {
@@ -212,88 +286,6 @@
       "source": "PUNCH",
       "published": "2026-09-29T01:24:43+00:00",
       "categories": []
-    },
-    {
-      "title": "GCIOBA, ipNX install broadband for 2,250 students, staff",
-      "summary": "The Government College Ibadan Old Boys Association has partnered with ipNX to install campus-wide broadband for over 2,250 students and staff at the colleg Read More: https://punchng.com/gcioba-ipnx-install-broadband-for-2250-students-staff/",
-      "url": "https://punchng.com/gcioba-ipnx-install-broadband-for-2250-students-staff/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:20:51+00:00",
-      "categories": [
-        "engineering",
-        "government",
-        "oyo"
-      ]
-    },
-    {
-      "title": "Ogun federal varsity targets 2027/28 take-off",
-      "summary": "The Federal University of Technology, Ilaro, Ogun State, has said its transition from a polytechnic is progressing, targeting the 2027/28 session for take- Read More: https://punchng.com/ogun-federal-varsity-targets-2027-28-take-off/",
-      "url": "https://punchng.com/ogun-federal-varsity-targets-2027-28-take-off/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:15:41+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "New LASU VC unveils eight-point agenda",
-      "summary": "The newly appointed Vice-Chancellor of Lagos State University, Prof Ayodeji Badejo, has unveiled an eight-point strategic agenda for her five-year tenure. Read More: https://punchng.com/new-lasu-vc-unveils-eight-point-agenda/",
-      "url": "https://punchng.com/new-lasu-vc-unveils-eight-point-agenda/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:14:39+00:00",
-      "categories": [
-        "lagos"
-      ]
-    },
-    {
-      "title": "Staff unions end month-long strike in Ondo varsities",
-      "summary": "Workers in Ondo State-owned tertiary institutions have suspended their one-month strike following an intervention by Governor Lucky Aiyedatiwa. Read More: https://punchng.com/staff-unions-end-month-long-strike-in-ondo-varsities/",
-      "url": "https://punchng.com/staff-unions-end-month-long-strike-in-ondo-varsities/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:13:37+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Abu Dhabi deepens AI drive with global summit",
-      "summary": "Abu Dhabi is set to host a global AI summit in October, gathering investors and tech firms to showcase its plan to become the world’s first AI-native gover Read More: https://punchng.com/abu-dhabi-deepens-ai-drive-with-global-summit/",
-      "url": "https://punchng.com/abu-dhabi-deepens-ai-drive-with-global-summit/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:10:55+00:00",
-      "categories": []
-    },
-    {
-      "title": "Orthopaedic surgeons seek multidisciplinary care for musculoskeletal diseases",
-      "summary": "Orthopaedic surgeons at a conference in Lagos have called for stronger collaboration among healthcare professionals to improve patient outcomes in musculos Read More: https://punchng.com/orthopaedic-surgeons-seek-multidisciplinary-care-for-musculoskeletal-diseases/",
-      "url": "https://punchng.com/orthopaedic-surgeons-seek-multidisciplinary-care-for-musculoskeletal-diseases/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:10:33+00:00",
-      "categories": [
-        "lagos"
-      ]
-    },
-    {
-      "title": "NACA urges journalists to deepen HIV awareness",
-      "summary": "The National Agency for the Control of AIDS has urged journalists to intensify public awareness of HIV prevention options like PrEP to improve access in Ni Read More: https://punchng.com/naca-urges-journalists-to-deepen-hiv-awareness/",
-      "url": "https://punchng.com/naca-urges-journalists-to-deepen-hiv-awareness/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:05:29+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Chinese firm donates home to Edo Catholic orphanage",
-      "summary": "A Chinese company, Yongxing Steel Company, has donated a fully furnished building to the Catholic Church-owned Charity Home for the Needy in Edo State. Read More: https://punchng.com/chinese-firm-donates-home-to-edo-catholic-orphanage/",
-      "url": "https://punchng.com/chinese-firm-donates-home-to-edo-catholic-orphanage/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:04:33+00:00",
-      "categories": [
-        "engineering",
-        "business",
-        "property"
-      ]
     }
   ]
 }
