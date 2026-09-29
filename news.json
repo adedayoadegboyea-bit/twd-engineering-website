@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T03:43:05.064213+00:00",
+  "generated_at": "2026-09-29T04:10:31.468886+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -84,6 +84,14 @@
       "categories": [
         "property"
       ]
+    },
+    {
+      "title": "Minna’s Cell of Death: Survivors recount how 37 mining suspect died in NSCDC custody",
+      "summary": "Nearly a week after the incident, Mr Isah carried bite marks on his arm left by a gasping cell mate in the last minutes of his life. The post Minna’s Cell of Death: Survivors recount how 37 mining suspect died in NSCDC custody appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/investigationspecial-reports/912942-minnas-cell-of-death-survivors-recount-how-37-mining-suspect-died-in-nscdc-custody.html",
+      "source": "Premium Times",
+      "published": "2026-09-29T04:00:02+00:00",
+      "categories": []
     },
     {
       "title": "FMN invests over N300m in food innovators",
@@ -280,16 +288,6 @@
       "source": "PUNCH",
       "published": "2026-09-29T01:00:28+00:00",
       "categories": []
-    },
-    {
-      "title": "UBEC unveils platform to track education funds, projects",
-      "summary": "UBEC has unveiled a digital platform for parents and communities to track basic education projects and funds accessed by states under its new 10-year roadm Read More: https://punchng.com/ubec-unveils-platform-to-track-education-funds-projects/",
-      "url": "https://punchng.com/ubec-unveils-platform-to-track-education-funds-projects/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-29T01:00:24+00:00",
-      "categories": [
-        "engineering"
-      ]
     }
   ]
 }
