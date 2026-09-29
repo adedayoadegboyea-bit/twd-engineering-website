@@ -17,6 +17,7 @@ jobs:
           cache: npm
           cache-dependency-path: mobile-app/package.json
       - run: npm install
+      - run: npm run build:web
       - run: npx cap add android
       - run: npx cap sync android
       - name: Build Android debug APK
@@ -40,6 +41,7 @@ jobs:
           cache: npm
           cache-dependency-path: mobile-app/package.json
       - run: npm install
+      - run: npm run build:web
       - run: npx cap add ios
       - run: npx cap sync ios
       - name: Build iOS simulator app
