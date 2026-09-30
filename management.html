@@ -25,7 +25,21 @@
 <form id="documentForm" class="mgmt-form"><span class="eyebrow">PRIVATE PROJECT DOCUMENT</span><h3>Upload to customer's secure account</h3><label>Document description<input id="documentDescription"></label><label>File<input id="projectFile" type="file" required></label><button class="mgmt-btn">Upload Private Document</button><small>Files are stored in a private Supabase bucket and are not part of the public gallery.</small></form></div>
 <div id="reportsList" class="mgmt-subsection"></div><div id="documentsList" class="mgmt-subsection"></div>
 </div></section>
-<section class="mgmt-card wide"><div class="section-head"><div><span class="eyebrow">WORKFORCE</span><h2>Worker accounts &amp; attendance</h2></div><button id="generateAttendanceCode" class="mgmt-btn small">Generate Today's Attendance Code</button></div>
+<section class="mgmt-card wide marketplace-admin-card">
+<div class="section-head"><div><span class="eyebrow">MARKETPLACE CONTROL CENTRE</span><h2>Marketplace administration</h2></div><button id="refreshMarketplaceAdmin" class="mgmt-btn small">Refresh</button></div>
+<p class="mgmt-note">Monitor marketplace accounts, listings, approvals, subscriptions and buyer/seller messages from the management portal.</p>
+<div id="marketplaceAdminLogin" class="mgmt-form"><label>Marketplace Admin Key<input id="marketplaceAdminKey" type="password" autocomplete="off" placeholder="Enter the Apps Script admin key"></label><button id="connectMarketplaceAdmin" type="button" class="mgmt-btn primary">Connect Marketplace Control Centre</button><div id="marketplaceAdminStatus" class="mgmt-status"></div></div>
+<div id="marketplaceAdminPanel" hidden>
+<div class="admin-stat-grid">
+<div class="admin-stat"><span>ACCOUNTS</span><strong id="mpStatUsers">0</strong></div><div class="admin-stat"><span>ACTIVE ACCOUNTS</span><strong id="mpStatActive">0</strong></div><div class="admin-stat"><span>APPROVED LISTINGS</span><strong id="mpStatApproved">0</strong></div><div class="admin-stat"><span>PENDING LISTINGS</span><strong id="mpStatPending">0</strong></div><div class="admin-stat"><span>SUBSCRIPTIONS</span><strong id="mpStatSubs">0</strong></div><div class="admin-stat"><span>MESSAGES</span><strong id="mpStatMessages">0</strong></div>
+</div>
+<div class="marketplace-admin-grid">
+<div><h3>Marketplace Accounts</h3><div id="mpAdminUsers" class="mgmt-list"></div></div>
+<div><h3>Listings & Ownership</h3><div id="mpAdminListings" class="mgmt-list"></div></div>
+<div><h3>Subscriptions</h3><div id="mpAdminSubscriptions" class="mgmt-list"></div></div>
+<div><h3>Buyer / Seller Messages</h3><div id="mpAdminMessages" class="mgmt-list"></div></div>
+</div></div>
+</section><section class="mgmt-card wide"><div class="section-head"><div><span class="eyebrow">WORKFORCE</span><h2>Worker accounts &amp; attendance</h2></div><button id="generateAttendanceCode" class="mgmt-btn small">Generate Today's Attendance Code</button></div>
 <p class="mgmt-note">Create or activate worker access for an existing authenticated account, record company bank details privately, issue the daily attendance code, review reports and record payments.</p>
 <div id="attendanceCodeResult" class="mgmt-status"></div>
 <div class="two-col"><form id="workerForm" class="mgmt-form"><label>Existing account<select id="workerUser" required></select></label><label>Employee Code<input id="employeeCode" required placeholder="e.g. TWD-EMP-001"></label><label>Job Title<input id="workerJobTitle" required></label><label>Department<input id="workerDepartment"></label><label>Bank Name<input id="workerBank"></label><label>Account Name<input id="workerAccountName"></label><label>Account Number<input id="workerAccountNumber" inputmode="numeric"></label><button class="mgmt-btn primary">Save / Activate Worker</button></form>
