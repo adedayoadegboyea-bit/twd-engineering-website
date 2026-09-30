@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T15:44:45.488688+00:00",
+  "generated_at": "2026-09-30T16:12:40.554093+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,40 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "NHIA, Senate push health taxes to fund healthcare, fight diseases",
+      "summary": "The National Health Insurance Authority and the Senate are pushing for stronger health tax reforms to fund healthcare and fight non-communicable diseases. Read More: https://punchng.com/nhia-senate-push-health-taxes-to-fund-healthcare-fight-diseases/",
+      "url": "https://punchng.com/nhia-senate-push-health-taxes-to-fund-healthcare-fight-diseases/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T17:05:27+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: If Tinubu loses FCT, Rivers, I will resign as minister —Wike",
+      "summary": "FCT Minister, Nyesom Wike, has vowed to resign from his position if President Bola Tinubu fails to win the 2027 presidential election in the FCT and Rivers Read More: https://punchng.com/2027-if-tinubu-loses-fct-rivers-i-will-resign-as-minister-wike/",
+      "url": "https://punchng.com/2027-if-tinubu-loses-fct-rivers-i-will-resign-as-minister-wike/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T17:00:27+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Nigeria@ 66: Prioritise peace, IPCR urges Nigerians",
+      "summary": "The Institute for Peace and Conflict Resolution has urged Nigerians to prioritise peace and unity for national development as the country marks its 66th an Read More: https://punchng.com/nigeria-66-prioritise-peace-ipcr-urges-nigerians/",
+      "url": "https://punchng.com/nigeria-66-prioritise-peace-ipcr-urges-nigerians/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T16:53:22+00:00",
+      "categories": []
+    },
+    {
+      "title": "Army chief seeks deeper regional defence partnerships",
+      "summary": "The Chief of Army Staff, Lt. Gen. Waidi Shaibu, has called for deeper regional defence partnerships among ECOWAS states to tackle security threats. Read More: https://punchng.com/army-chief-seeks-deeper-regional-defence-partnerships/",
+      "url": "https://punchng.com/army-chief-seeks-deeper-regional-defence-partnerships/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T16:46:20+00:00",
+      "categories": []
+    },
     {
       "title": "Alleged Coup trial: Military shifts ruling to October 5",
       "summary": "A General Court Martial has again postponed its ruling on the admissibility of statements in the alleged coup trial, shifting the date to October 5. Read More: https://punchng.com/alleged-coup-trial-military-shifts-ruling-to-october-5/",
@@ -44,6 +78,56 @@
       "url": "https://punchng.com/kwara-embraces-digital-technology-ai-to-transform-tourism-official/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-30T16:17:35+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Ogun, NNPC partner to revive OKLNG as $7bn port, marine economy project takes shape",
+      "summary": "Ogun State and the Nigerian National Petroleum Company Limited (NNPC) have opened discussions on the revival of the long-delayed Olokola Liquefied Natural Gas (OKLNG) project in Ogun Waterside, adding a major energy component to the emerging $7 billion maritime and industrial development taking shap",
+      "url": "https://dailypost.ng/2026/09/30/ogun-nnpc-partner-to-revive-oklng-as-7bn-port-marine-economy-project-takes-shape/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T16:12:27+00:00",
+      "categories": [
+        "engineering",
+        "business"
+      ]
+    },
+    {
+      "title": "Fresh crisis hits FUOYE as students, staff foil VC’s alleged arrest by police",
+      "summary": "The police allegedly stormed the vice-chancellor's residence in Ado-Ekiti at about 3 a.m. on Wednesday to arrest him. However, members of the university community, including academic and non-academic staff and students, stopped them. The post Fresh crisis hits FUOYE as students, staff foil VC’s alle",
+      "url": "https://www.premiumtimesng.com/regional/ssouth-west/913587-fresh-crisis-hits-fuoye-as-students-staff-foil-vcs-alleged-arrest-by-police.html",
+      "source": "Premium Times",
+      "published": "2026-09-30T16:06:25+00:00",
+      "categories": []
+    },
+    {
+      "title": "Court to rule on admissibility of FG’s exhibits against suspected coup plotters Dec 7",
+      "summary": "Justice Joyce Abdulmalik of the Federal High Court in Abuja has fixed December 7 to rule on the admissibility of exhibits sought to be tendered by the Federal Government in the trial of suspected coup plotters. The judge fixed the date on Wednesday after counsel for the prosecution, Maryam Okorie, a",
+      "url": "https://dailypost.ng/2026/09/30/court-to-rule-on-admissibility-of-fgs-exhibits-against-suspected-coup-plotters-dec-7/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T15:58:41+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "EFCC secures forfeiture of 431 phones linked to Chinese cyber-fraud convicts",
+      "summary": "The Economic and Financial Crimes Commission, EFCC, has secured the final forfeiture of 431 mobile phones linked to Chinese cyber-fraud operators previously convicted by a Federal High Court in Lagos. Justice Dehinde Dipeolu ordered the forfeiture on Tuesday following an application by the EFCC. The",
+      "url": "https://dailypost.ng/2026/09/30/efcc-secures-forfeiture-of-431-phones-linked-to-chinese-cyber-fraud-convicts/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T15:47:42+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
+    },
+    {
+      "title": "2027: If President Tinubu loses FCT, Rivers, I will resign as minister — Wike",
+      "summary": "The Minister of the Federal Capital Territory (FCT), Mr Nyesom Wike, has declared that he will step down from his cabinet position if President Bola Ahmed Tinubu fails to secure victory in both the FCT and Rivers State in the upcoming 2027 presidential election. Speaking during an engagement with le",
+      "url": "https://dailypost.ng/2026/09/30/2027-if-president-tinubu-loses-fct-rivers-i-will-resign-as-minister-wike/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T15:46:43+00:00",
       "categories": [
         "government"
       ]
@@ -196,87 +280,6 @@
       "url": "https://dailypost.ng/2026/09/30/wafu-b-nff-appeals-caf-cancellation-of-edo-queens-victory-over-ampem-darkoa/",
       "source": "Daily Post Nigeria",
       "published": "2026-09-30T14:37:48+00:00",
-      "categories": []
-    },
-    {
-      "title": "BREAKING: FG arraigns Adeyemi for forgery, impersonation over fake federal agency scandal",
-      "summary": "Mr Adeyemi, who is alleged to be behind the fake PFIPC, pleaded not guilty to all eight charges read to him before Judge Mohammed Umar of the Federal High Court in Abuja. The post BREAKING: FG arraigns Adeyemi for forgery, impersonation over fake federal agency scandal appeared first on Premium Time",
-      "url": "https://www.premiumtimesng.com/news/headlines/913558-breaking-fg-arraigns-adeyemi-for-forgery-impersonation-over-fake-federal-agency-scandal.html",
-      "source": "Premium Times",
-      "published": "2026-09-30T14:33:55+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Mocking Apostle Arome is unacceptable – Pastor Femi Lazarus warns VeryDarkMan",
-      "summary": "The founder of the Light Nation Church, Pastor Femi Lazarus, has warned controversial social media personality, VeryDarkMan, against mocking Apostle Arome Osayi. Apostle Arome who is the founder of the Remnant Christian Network, RCN, had during a recent sermon claimed that Nigeria’s national purpose",
-      "url": "https://dailypost.ng/2026/09/30/mocking-apostle-arome-is-unacceptable-pastor-femi-lazarus-warns-verydarkman/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T14:29:38+00:00",
-      "categories": []
-    },
-    {
-      "title": "Reps speaker sponsors NABTEB, NECO exams for 120 inmates",
-      "summary": "Speaker of the House of Reps, Tajudeen Abbas, has sponsored the registration of 120 inmates of the FCT Command for the 2026 NABTEB and NECO examinations. Read More: https://punchng.com/reps-speaker-sponsors-nabteb-neco-exams-for-120-inmates/",
-      "url": "https://punchng.com/reps-speaker-sponsors-nabteb-neco-exams-for-120-inmates/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T14:27:52+00:00",
-      "categories": []
-    },
-    {
-      "title": "BREAKING: Alleged fake agency DG Adeniyi Adeyemi arraigned over alleged forgery, others",
-      "summary": "The Federal Government has arraigned the Director-General of an alleged fake agency, the Presidential Foreign Investment Promotion Council, Adeniyi Adeyemi, over alleged forgery. Adeyemi was arraigned before Justice Muhammed Umar of the Federal High Court sitting in Abuja. He is facing an eight-coun",
-      "url": "https://dailypost.ng/2026/09/30/alleged-fake-agency-dg-adeniyi-adeyemi-arraigned-over-alleged-forgery-others/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T14:20:11+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "DLA faults FG as National Assembly extends 2025 budget to 2026",
-      "summary": "The Democratic and Leadership Alliance has faulted the Federal Government over the National Assembly’s decision to extend the 2025 budget to December 2026. Read More: https://punchng.com/dla-faults-fg-as-national-assembly-extends-2025-budget-to-2026/",
-      "url": "https://punchng.com/dla-faults-fg-as-national-assembly-extends-2025-budget-to-2026/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T14:19:37+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "AFCON qualifiers: Guinea-Bissau players react after 3-0 thrashing of Nigeria",
-      "summary": "Guinea-Bissau players have reacted to their unexpected 3-0 bashing of the Super Eagles of Nigeria. Speaking on behalf of the team after the game, Norberto Bercique Gomes Betuncal, commonly called Beto, said they must sustain their successful performance trajectory. Guinea-Bissau thrashed Nigeria 3-0",
-      "url": "https://dailypost.ng/2026/09/30/afcon-qualifiers-guinea-bissau-players-react-after-3-0-thrashing-of-nigeria/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T14:13:34+00:00",
-      "categories": []
-    },
-    {
-      "title": "Bandits reportedly kill three Kebbi vigilantes returning from Niger",
-      "summary": "Three vigilantes from Shanga Local Government Area of Kebbi State have reportedly been killed by bandits while returning from Agwara in Niger State. The incident was disclosed on Wednesday by crisis reporter in the North-West region, Bakatsine, in a post shared via his X handle. The victims were ide",
-      "url": "https://dailypost.ng/2026/09/30/bandits-reportedly-kill-three-kebbi-vigilantes-returning-from-niger/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T14:13:14+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Don’t punish Edo Queens for referee’s error, NFF tells CAF",
-      "summary": "The Nigeria Football Federation has appealed CAF’s decision to annul Edo Queens’ WAFU-B final victory, arguing the team shouldn’t be punished for a referee Read More: https://punchng.com/dont-punish-edo-queens-for-referees-error-nff-tells-caf/",
-      "url": "https://punchng.com/dont-punish-edo-queens-for-referees-error-nff-tells-caf/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T14:09:35+00:00",
-      "categories": []
-    },
-    {
-      "title": "EPL: Guardiola breaks silence as Man City are found guilty of charges",
-      "summary": "Former Manchester City manager, Pep Guardiola, has sent a message of support after the Premier League declared the club guilty of breaching financial rules. An independent commission found that City arranged “sham” contracts between 2009/10 and 2017/18 with a number of its commercial partners, as pa",
-      "url": "https://dailypost.ng/2026/09/30/epl-guardiola-breaks-silence-as-man-city-are-found-guilty-of-charges/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T14:08:51+00:00",
       "categories": []
     }
   ]
