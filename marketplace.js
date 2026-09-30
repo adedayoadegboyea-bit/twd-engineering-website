@@ -1,6 +1,8 @@
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
 
 let listings = [];
+const MARKETPLACE_TOKEN_KEY = "twd_marketplace_session_token";
+const getSessionToken = () => localStorage.getItem(MARKETPLACE_TOKEN_KEY) || "";
 
 const grid = document.querySelector("#listingGrid");
 const empty = document.querySelector("#empty");
@@ -167,6 +169,12 @@ document.querySelectorAll(".embedded-plan").forEach(card => {
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
+  const sessionToken = getSessionToken();
+  if (!sessionToken) {
+    statusBox.textContent = "Please create a marketplace account or sign in before submitting a listing.";
+    window.location.href = "marketplace-account.html?next=listing";
+    return;
+  }
 
   const files = [...form.photos.files];
   const MAX = 5 * 1024 * 1024;
@@ -203,6 +211,7 @@ form.addEventListener("submit", async event => {
       if (key !== "photos") payload[key] = value;
     });
 
+    payload.sessionToken = sessionToken;
     payload.photos = [];
     for (const file of files) {
       payload.photos.push({
