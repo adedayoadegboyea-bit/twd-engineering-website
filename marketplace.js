@@ -608,3 +608,6 @@ if (subscriptionForm) {
 
 render();
 loadApprovedListings();
+
+async function hydrateMarketplaceAccount(){const t=getSessionToken();const gate=document.querySelector("#sellerAccountGate");if(!t){return;}try{const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"me",sessionToken:t})});const d=await r.json();if(!d.ok)return;const u=d.user||{};const seller=form.querySelector("[name=\"sellerName\"]"),email=form.querySelector("[name=\"email\"]"),phone=form.querySelector("[name=\"phone\"]");if(seller){seller.value=u.businessName||u.fullName||"";seller.readOnly=true}if(email){email.value=u.email||"";email.readOnly=true}if(phone){phone.value=u.phone||"";phone.readOnly=true}if(gate)gate.innerHTML="<strong>Seller account connected</strong><p>"+escapeHtml(u.businessName||u.fullName)+" is signed in. Your listing will be attached to this account.</p><a href=\"marketplace-account.html\">Manage Account</a>"}catch(e){console.log(e)}}
+hydrateMarketplaceAccount();
