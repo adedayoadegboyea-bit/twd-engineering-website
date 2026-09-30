@@ -4,43 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#b8202a">
-<meta name="description" content="Official TW&D Engineering Consult & Services Ltd mobile app.">
+<meta name="description" content="TW&D Engineering Consult & Services Ltd — self-contained offline Android app.">
 <title>TW&D Engineering</title>
 <style>
-:root{--red:#b8202a;--red2:#8e1720;--ink:#252827;--muted:#6c706e;--dove:#e7e8e6;--white:#fff;--line:#dedfdd}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--dove);color:var(--ink)}
-header{background:#fff;padding:18px 18px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}.top{max-width:760px;margin:auto;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.04em}.brand span{color:var(--red)}
-main{max-width:760px;margin:auto;padding:18px 16px 90px}.hero{background:#fff;border-radius:22px;padding:30px 22px;box-shadow:0 8px 30px #0000000d}.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.5px;color:var(--red);margin:0 0 10px}
-h1{font-size:32px;line-height:1.03;letter-spacing:-1.4px;margin:0 0 12px}.hero p{color:var(--muted);line-height:1.55}.motto{font-weight:800!important;color:var(--red)!important}
-.primary{display:block;text-align:center;background:var(--red);color:#fff;border-radius:13px;padding:15px;font-weight:800;margin-top:18px;text-decoration:none}.primary:active{background:var(--red2)}
-.section-title{font-size:18px;margin:25px 3px 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px;min-height:112px;text-decoration:none;color:inherit}.card:active{transform:scale(.99)}.icon{font-size:21px}.card b{display:block;margin:8px 0 5px}.card small{color:var(--muted);line-height:1.35}
-.contact{background:#252827;color:#fff;border-radius:18px;padding:20px;margin-top:25px}.contact p{color:#d7d9d7;line-height:1.5}.contact a{color:#fff}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.action{padding:13px;border:1px solid #ffffff30;border-radius:11px;text-align:center;text-decoration:none;color:#fff;font-weight:700;font-size:13px}
-footer{text-align:center;color:var(--muted);font-size:11px;line-height:1.6;padding:4px 18px 20px}
-.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;z-index:20}.bottom-inner{width:100%;max-width:760px;display:grid;grid-template-columns:repeat(4,1fr)}.bottom a{text-align:center;padding:10px 3px 9px;text-decoration:none;color:var(--muted);font-size:10px;font-weight:700}.bottom a b{display:block;font-size:17px;margin-bottom:2px}.bottom a.active{color:var(--red)}
-@media(min-width:700px){main{padding-top:28px}.hero{padding:42px}.grid{grid-template-columns:repeat(3,1fr)}.bottom{display:none}}
+:root{--red:#b8202a;--red2:#8e1720;--navy:#062b59;--ink:#202524;--muted:#69716f;--paper:#fff;--bg:#eef0ee;--line:#dfe2df;--gold:#c79b32}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit}.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);padding:14px 16px}.top-inner{max-width:820px;margin:auto;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.05em}.brand span{color:var(--red)}.version{font-size:11px;color:var(--muted)}
+main{max-width:820px;margin:auto;padding:16px 15px 92px}.hero{background:linear-gradient(145deg,#062b59,#0b447d);color:#fff;border-radius:24px;padding:30px 22px;box-shadow:0 12px 35px #0002}.eyebrow{font-size:10px;font-weight:900;letter-spacing:1.7px;margin:0 0 10px;color:var(--gold)}h1{font-size:34px;line-height:1.02;letter-spacing:-1.6px;margin:0 0 14px}.hero h1 span{color:#f2d68a}.hero p{line-height:1.55;color:#e9eff6}.motto{font-weight:900!important;color:#fff!important}.offline{display:inline-flex;align-items:center;gap:7px;margin-top:8px;padding:7px 10px;border-radius:99px;background:#ffffff18;border:1px solid #ffffff2c;font-size:11px}.dot{width:7px;height:7px;border-radius:50%;background:#6ee7a0}.section-title{font-size:20px;margin:28px 3px 11px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:17px;text-decoration:none;min-height:128px}.card:active{transform:scale(.99)}.icon{font-size:23px}.card b{display:block;margin:8px 0 5px}.card small{color:var(--muted);line-height:1.4}.panel{background:#fff;border-radius:19px;border:1px solid var(--line);padding:20px;margin-top:12px}.panel h2{margin:0 0 9px;color:var(--navy);font-size:22px}.panel p{line-height:1.6;color:#4e5754}.service{padding:13px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center}.service:last-child{border-bottom:0}.num{font-size:11px;font-weight:900;color:var(--red);min-width:24px}.service strong{font-size:14px}.project{border:1px solid var(--line);border-radius:15px;padding:16px;margin-top:10px;background:#fff}.project .state{font-size:10px;font-weight:900;letter-spacing:1px;color:var(--red)}.project h3{margin:6px 0}.project p{margin:0;color:var(--muted);line-height:1.45;font-size:13px}.contact{background:#252827;color:#fff;border-radius:19px;padding:20px;margin-top:25px}.contact p{color:#d9dcda;line-height:1.55}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.action{padding:13px;border:1px solid #ffffff35;border-radius:11px;text-align:center;text-decoration:none;color:#fff;font-weight:800;font-size:13px}.note{font-size:12px;color:var(--muted);line-height:1.5}.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:30}.bottom-inner{max-width:820px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}.bottom a{text-align:center;padding:9px 3px 8px;text-decoration:none;color:var(--muted);font-size:10px;font-weight:800}.bottom a b{display:block;font-size:17px;margin-bottom:2px}.bottom a.active{color:var(--red)}footer{text-align:center;color:var(--muted);font-size:11px;line-height:1.6;padding:8px 18px 22px}@media(min-width:700px){main{padding-top:28px}.grid{grid-template-columns:repeat(3,1fr)}.bottom{display:none}}
 </style>
 </head>
 <body>
-<header><div class="top"><div class="brand">TW&D <span>ENGINEERING</span></div><div aria-label="App version">v1.0</div></div></header>
+<header class="top"><div class="top-inner"><div class="brand">TW&D <span>ENGINEERING</span></div><div class="version">v1.1 • OFFLINE</div></div></header>
 <main>
 <section class="hero" id="home">
-<p class="eyebrow">OFFICIAL MOBILE APP</p>
-<h1>Engineering.<br>Construction.<br>Development.</h1>
+<p class="eyebrow">TW&D ENGINEERING CONSULT & SERVICES LTD</p>
+<h1>Engineering.<br><span>Construction. Development.</span></h1>
 <p class="motto">We design and we build to last.</p>
-<p>Professional engineering, construction, consultancy and property development services from TW&D Engineering Consult & Services Ltd.</p>
-<a class="primary" href="https://twdengineeringconsult.com" target="_blank" rel="noopener">Open Full Website</a>
+<p>A self-contained mobile experience for company information, professional services, selected projects and contact details.</p>
+<div class="offline"><span class="dot"></span> Core app content available offline</div>
 </section>
-<h2 class="section-title" id="services">Explore TW&D</h2>
+
+<h2 class="section-title" id="explore">Explore TW&D</h2>
 <div class="grid">
-<a class="card" href="https://twdengineeringconsult.com/projects.html" target="_blank" rel="noopener"><span class="icon">🏗️</span><b>Projects</b><small>Explore our engineering and construction work.</small></a>
-<a class="card" href="https://twdengineeringconsult.com/services.html" target="_blank" rel="noopener"><span class="icon">⚙️</span><b>Services</b><small>Engineering, construction and consultancy services.</small></a>
-<a class="card" href="https://twdengineeringconsult.com/careers.html" target="_blank" rel="noopener"><span class="icon">💼</span><b>Careers</b><small>View vacancies and submit applications.</small></a>
-<a class="card" href="https://twdengineeringconsult.com/client-portal.html" target="_blank" rel="noopener"><span class="icon">🔐</span><b>Client Portal</b><small>Access client and project services.</small></a>
-<a class="card" href="https://twdengineeringconsult.com/news.html" target="_blank" rel="noopener"><span class="icon">📰</span><b>Bulletin</b><small>Read company updates and news.</small></a>
-<a class="card" href="https://wa.me/2348035774420" target="_blank" rel="noopener"><span class="icon">💬</span><b>WhatsApp</b><small>Contact TW&D Engineering directly.</small></a>
+<a class="card" href="#about"><span class="icon">🏢</span><b>About TW&D</b><small>Company profile, background and capabilities.</small></a>
+<a class="card" href="#services"><span class="icon">⚙️</span><b>Services</b><small>Engineering, construction, consultancy and development.</small></a>
+<a class="card" href="#projects"><span class="icon">🏗️</span><b>Projects</b><small>Selected project records across Nigeria.</small></a>
+<a class="card" href="#contact"><span class="icon">☎️</span><b>Contact</b><small>Company address, phone and email details.</small></a>
+<a class="card" href="#company"><span class="icon">📋</span><b>Company Details</b><small>Core business information kept inside the app.</small></a>
+<a class="card" href="#privacy"><span class="icon">🔒</span><b>Privacy</b><small>Read the app privacy information offline.</small></a>
 </div>
-<section class="contact" id="contact"><p class="eyebrow" style="color:#fff">CONTACT</p><h2>Let's discuss your project.</h2><p>TW&D Engineering Consult & Services Ltd<br>25 Engr Adedayo Close, Olateju Street, Akingbade Area, Ibadan, Oyo State, Nigeria.</p><div class="actions"><a class="action" href="tel:+2348035774420">Call 08035774420</a><a class="action" href="mailto:contacts@twdengineeringconsult.com">Email Us</a></div></section>
-<footer>© 2026 TW&D Engineering Consult & Services Ltd.<br><a href="https://twdengineeringconsult.com/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a></footer>
+
+<section class="panel" id="about">
+<p class="eyebrow">ABOUT</p><h2>Professional engineering and construction.</h2>
+<p>TW&D Engineering Consult & Services Ltd provides engineering, construction, consultancy and property development services from Ibadan, Oyo State, serving clients and projects across Nigeria.</p>
+<p class="note">This app stores its core company information locally. The website is separate and is not required to display these app sections.</p>
+</section>
+
+<section class="panel" id="services">
+<p class="eyebrow">OUR SERVICES</p><h2>Professional services</h2>
+<div class="service"><span class="num">01</span><strong>Building Construction</strong></div>
+<div class="service"><span class="num">02</span><strong>Civil Engineering</strong></div>
+<div class="service"><span class="num">03</span><strong>Electrical Engineering</strong></div>
+<div class="service"><span class="num">04</span><strong>Plumbing</strong></div>
+<div class="service"><span class="num">05</span><strong>Engineering Consultancy</strong></div>
+<div class="service"><span class="num">06</span><strong>Property Development / Real Estate</strong></div>
+<div class="service"><span class="num">07</span><strong>Geotechnical Survey</strong></div>
+<div class="service"><span class="num">08</span><strong>Borehole Drilling</strong></div>
+</section>
+
+<section class="panel" id="projects">
+<p class="eyebrow">PROJECT PORTFOLIO</p><h2>Selected project records</h2>
+<div class="project"><span class="state">OYO STATE</span><h3>Royal Garden Estate</h3><p>Residential / estate development project record.</p></div>
+<div class="project"><span class="state">OYO STATE</span><h3>Oore-Ofe Jagun</h3><p>Residential building project record.</p></div>
+<div class="project"><span class="state">LAGOS STATE</span><h3>First Dammy School Lagos</h3><p>Institutional building project record.</p></div>
+<div class="project"><span class="state">OYO STATE</span><h3>Tella, Akobo</h3><p>Residential / development project record.</p></div>
+<div class="project"><span class="state">OYO STATE</span><h3>Oloola, Akingbade</h3><p>Building development project record.</p></div>
+<div class="project"><span class="state">OYO STATE</span><h3>Ajoda Estate</h3><p>Estate development project record.</p></div>
+<div class="project"><span class="state">OYO STATE</span><h3>View Point Hotel</h3><p>Hospitality / building project record.</p></div>
+<div class="project"><span class="state">OYO STATE</span><h3>6-Bedroom Duplex — Idi-Ishin</h3><p>Residential client project record.</p></div>
+<p class="note" style="margin-top:14px">Project records above are stored in this app build. Future app releases can add more records and locally bundled photographs.</p>
+</section>
+
+<section class="panel" id="company">
+<p class="eyebrow">COMPANY DETAILS</p><h2>TW&D Engineering Consult & Services Ltd</h2>
+<p><strong>Address:</strong><br>25 Engr Adedayo Close, Olateju Street, off First Bank Area, Akingbade Area, Ibadan, Oyo State, Nigeria.</p>
+<p><strong>Phone:</strong> 0803 577 4420</p>
+<p><strong>Email:</strong> contacts@twdengineeringconsult.com</p>
+<p><strong>Motto:</strong> We design and we build to last.</p>
+</section>
+
+<section class="contact" id="contact">
+<p class="eyebrow">CONTACT</p><h2>Let's discuss your project.</h2>
+<p>The company contact information is available offline. Calling, email and WhatsApp buttons below are optional external actions and require an internet/phone service connection when used.</p>
+<div class="actions"><a class="action" href="tel:+2348035774420">Call</a><a class="action" href="mailto:contacts@twdengineeringconsult.com">Email</a></div>
+</section>
+
+<section class="panel" id="privacy">
+<p class="eyebrow">PRIVACY</p><h2>Privacy information</h2>
+<p>This mobile app provides locally bundled company information and does not intentionally collect personal information for advertising or sell personal information.</p>
+<p>When you choose an external contact action such as phone, email or WhatsApp, the relevant device or third-party service handles that action under its own policies.</p>
+<p><strong>Last updated:</strong> September 2026</p>
+</section>
+
+<footer>© 2026 TW&D Engineering Consult & Services Ltd.<br>This app's core content is bundled locally and does not depend on the TW&D website to display.</footer>
 </main>
-<nav class="bottom"><div class="bottom-inner"><a class="active" href="#home"><b>⌂</b>Home</a><a href="#services"><b>▦</b>Explore</a><a href="#contact"><b>☎</b>Contact</a><a href="https://twdengineeringconsult.com" target="_blank" rel="noopener"><b>↗</b>Website</a></div></nav>
-</body></html>
+<nav class="bottom"><div class="bottom-inner"><a class="active" href="#home"><b>⌂</b>Home</a><a href="#explore"><b>▦</b>Explore</a><a href="#projects"><b>🏗</b>Projects</a><a href="#contact"><b>☎</b>Contact</a></div></nav>
+</body>
+</html>
