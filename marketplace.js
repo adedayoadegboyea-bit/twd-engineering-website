@@ -55,7 +55,7 @@ function render() {
     const normalizedVideos = Array.isArray(item.videos) ? item.videos : [];
     const hasUploadedMedia = normalizedImages.length > 0 || normalizedVideos.length > 0;
     const isCompanyOrDemo = seller.includes("tw&d") || seller.includes("twd engineering") || seller.includes("marketplace demo") || seller.includes("system test");
-    if (isCompanyOrDemo || !hasUploadedMedia) return false;
+    if (isCompanyOrDemo) return false;
     const haystack = [item.title,item.category,item.location,item.seller].join(" ").toLowerCase();
     return (!search || haystack.includes(search)) && (!category || item.category === category) && (!location || item.location.toLowerCase().includes(location.toLowerCase()));
   });
