@@ -137,3 +137,21 @@ $("workerForm")?.addEventListener("submit",async e=>{
 $("paymentForm")?.addEventListener("submit",async e=>{
  e.preventDefault();const r=await supabase.from("worker_payments").insert({worker_id:$("paymentWorker").value,pay_period:$("payPeriod").value.trim(),amount:Number($("paymentAmount").value),status:$("paymentStatus").value,payment_date:$("paymentDate").value||null,reference:$("paymentReference").value.trim(),notes:$("paymentNotes").value.trim()});if(r.error){status(r.error.message,true);return}$("paymentForm").reset();status("Worker payment record saved.");await loadAll();
 });
+
+const MARKETPLACE_ADMIN_ENDPOINT="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
+const MARKETPLACE_ADMIN_KEY_STORE="twd_marketplace_admin_key";
+function marketplaceAdminStatus(message,bad){const el=$("marketplaceAdminStatus");if(!el)return;el.textContent=message||"";el.className="mgmt-status"+(bad?" error":"");}
+function renderMarketplaceAdmin(data){
+ const s=data.stats||{};$("mpStatUsers").textContent=s.users||0;$("mpStatActive").textContent=s.activeUsers||0;$("mpStatApproved").textContent=s.approvedListings||0;$("mpStatPending").textContent=s.pendingListings||0;$("mpStatSubs").textContent=s.subscriptions||0;$("mpStatMessages").textContent=s.messages||0;
+ $("mpAdminUsers").innerHTML=(data.users||[]).map(x=>"<div class='mgmt-row'><strong>"+esc(x.business||x.name||"Unnamed account")+"</strong><span>"+esc(x.name)+" • "+esc(x.status)+" • "+esc(x.email)+"</span><small>"+esc(x.id)+" • "+esc(x.phone||"No phone")+" • Created "+esc(x.created)+"</small></div>").join("")||"<p>No marketplace accounts.</p>";
+ $("mpAdminListings").innerHTML=(data.listings||[]).map(x=>{const st=String(x.status||"").toUpperCase(),cl=st==="APPROVED"?"mp-admin-status-approved":"mp-admin-status-pending";return "<div class='mgmt-row'><strong>"+esc(x.title||"Untitled listing")+"</strong><span>"+esc(x.seller||"Unknown seller")+" • <b class='"+cl+"'>"+esc(st)+"</b> • "+esc(x.category)+" • "+esc(x.location)+"</span><small>Listing ID: "+esc(x.id)+" • Owner Account ID: "+esc(x.accountId||"NOT LINKED")+" • Photos: "+esc(x.photos)+"</small></div>"}).join("")||"<p>No marketplace listings.</p>";
+ $("mpAdminSubscriptions").innerHTML=(data.subscriptions||[]).map(x=>"<div class='mgmt-row'><strong>"+esc(x.plan||"Subscription")+"</strong><span>"+esc(x.seller)+" • "+esc(x.status)+" • "+esc(x.paymentStatus)+"</span><small>"+esc(x.id)+" • "+esc(x.email)+" • Listing: "+esc(x.listingId||"—")+"</small></div>").join("")||"<p>No subscriptions.</p>";
+ $("mpAdminMessages").innerHTML=(data.messages||[]).map(x=>"<div class='mgmt-row'><strong>"+esc(x.listingId||"Marketplace enquiry")+"</strong><span>"+esc(x.from)+" → "+esc(x.to)+" • "+esc(x.status)+"</span><small>"+esc(x.timestamp)+" • "+esc(x.message)+"</small></div>").join("")||"<p>No marketplace messages.</p>";
+}
+async function loadMarketplaceAdmin(){
+ const key=$("marketplaceAdminKey")?.value.trim()||sessionStorage.getItem(MARKETPLACE_ADMIN_KEY_STORE)||"";if(!key){marketplaceAdminStatus("Enter the Marketplace Admin Key first.",true);return}
+ marketplaceAdminStatus("Connecting to Marketplace Control Centre…");
+ try{const r=await fetch(MARKETPLACE_ADMIN_ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"admin_summary",adminKey:key})});const d=await r.json();if(!d.ok)throw Error(d.message||"Marketplace administrator authentication failed.");sessionStorage.setItem(MARKETPLACE_ADMIN_KEY_STORE,key);$("marketplaceAdminKey").value=key;$("marketplaceAdminLogin").hidden=true;$("marketplaceAdminPanel").hidden=false;renderMarketplaceAdmin(d);marketplaceAdminStatus("Marketplace Control Centre connected. Last refresh: "+new Date().toLocaleTimeString())}catch(e){marketplaceAdminStatus(e.message||"Marketplace Control Centre could not be reached.",true)}
+}
+$("connectMarketplaceAdmin")?.addEventListener("click",loadMarketplaceAdmin);$("refreshMarketplaceAdmin")?.addEventListener("click",loadMarketplaceAdmin);
+(async()=>{if(sessionStorage.getItem(MARKETPLACE_ADMIN_KEY_STORE)&&$("marketplaceAdminKey")){$("marketplaceAdminKey").value=sessionStorage.getItem(MARKETPLACE_ADMIN_KEY_STORE);await loadMarketplaceAdmin();}})();
