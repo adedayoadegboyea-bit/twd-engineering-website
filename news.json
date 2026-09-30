@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T10:12:04.684804+00:00",
+  "generated_at": "2026-09-30T10:42:54.186683+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,35 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Ondo orders removal of abandoned heavy vehicles, equipment on roads",
+      "summary": "The Ondo State Government has ordered owners of abandoned heavy-duty vehicles and equipment on roads and waterways to remove them within seven days or risk Read More: https://punchng.com/ondo-orders-removal-of-abandoned-heavy-vehicles-equipment-on-roads/",
+      "url": "https://punchng.com/ondo-orders-removal-of-abandoned-heavy-vehicles-equipment-on-roads/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T11:37:45+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "Singapore unveils matchmaking service amid falling birth rate",
+      "summary": "Singapore has launched a government-backed matchmaking service, FirstDate, for public-sector workers to combat its record-low fertility rate. Read More: https://punchng.com/singapore-unveils-matchmaking-service-amid-falling-birth-rate/",
+      "url": "https://punchng.com/singapore-unveils-matchmaking-service-amid-falling-birth-rate/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T11:34:57+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "EPL: Everything Guardiola said about Man City’s 115 charges – Report",
+      "summary": "A report on everything Man City coach Pep Guardiola has said about the Premier League’s 115 charges, from his trust in the club to calls for a quick resolu Read More: https://punchng.com/epl-everything-guardiola-said-about-man-citys-115-charges-report/",
+      "url": "https://punchng.com/epl-everything-guardiola-said-about-man-citys-115-charges-report/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T11:14:24+00:00",
+      "categories": []
+    },
     {
       "title": "Building collapse kills one in Anambra",
       "summary": "A 25-year-old man has died after a building collapsed during demolition in Otolo-Nnewi, Nnewi North Local Government Area of Anambra State. Read More: https://punchng.com/building-collapse-kills-one-in-anambra/",
@@ -50,12 +79,61 @@
       ]
     },
     {
+      "title": "BREAKING: NNPCL filling stations reduce fuel price after Dangote Refinery cut",
+      "summary": "The Nigerian National Petroleum Company Limited, NNPCL, has reduced the pump price of Premium Motor Spirit, PMS, also known as petrol. A market survey by DAILY POST on Wednesday morning showed that NNPCL outlets in parts of Abuja and its environs had adjusted their petrol pump price downward to N1,3",
+      "url": "https://dailypost.ng/2026/09/30/nnpcl-filling-stations-reduce-fuel-price-after-dangote-refinery-cut/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:38:48+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "Three die, several injured in Niger Government House stampede",
+      "summary": "At least three people have been confirmed dead, while several others were injured following a stampede at the Niger State Government House in Minna. The incident reportedly occurred on Tuesday night when a crowd gathered at the Government House. The injured victims are currently receiving treatment ",
+      "url": "https://dailypost.ng/2026/09/30/three-die-several-injured-in-niger-government-house-stampede/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:30:52+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Why my grandson doesn’t want to work with me yet – Dangote",
+      "summary": "According to him, his grandson, an electrical engineer, wants to gain ample experience in notable multinational professional services consultancies before pitching his tent with the Dangote Group. The post Why my grandson doesn’t want to work with me yet – Dangote appeared first on Premium Times Nig",
+      "url": "https://www.premiumtimesng.com/business/business-news/913520-why-my-grandson-doesnt-want-to-work-with-me-yet-dangote.html",
+      "source": "Premium Times",
+      "published": "2026-09-30T10:28:04+00:00",
+      "categories": []
+    },
+    {
+      "title": "Independence Day amid the roar of the crowd: 1xCup 2026 is in full swing",
+      "summary": "On October 1, Nigeria celebrates Independence Day — a holiday dedicated to freedom, unity, and warm gatherings. The streets will come alive with music, concerts, and festive parades, while football fans in Lagos will join in the celebrations. 1xBet congratulates the country’s residents on this joyou",
+      "url": "https://dailypost.ng/2026/09/30/independence-day-amid-the-roar-of-the-crowd-1xcup-2026-is-in-full-swing/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:27:57+00:00",
+      "categories": [
+        "oyo",
+        "lagos"
+      ]
+    },
+    {
       "title": "RMD urges citizens to stop condemning Nigeria",
       "summary": "Veteran actor RMD has urged Nigerians to stop condemning the country and instead offer solutions, saying every citizen pays the price for Nigeria’s percept Read More: https://punchng.com/rmd-urges-citizens-to-stop-condemning-nigeria/",
       "url": "https://punchng.com/rmd-urges-citizens-to-stop-condemning-nigeria/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-30T10:25:59+00:00",
       "categories": []
+    },
+    {
+      "title": "‘We are all internally displaced’ — Obi decries poor conditions at Sokoto IDP camp",
+      "summary": "The Nigeria Democratic Congress, NDC, presidential candidate, Peter Obi, has criticised the government over the condition of more than 1,000 internally displaced persons at the Ramin Kura IDP Camp in Sokoto. Obi raised the concerns in a statement posted on his social media page after visiting the ca",
+      "url": "https://dailypost.ng/2026/09/30/we-are-all-internally-displaced-obi-decries-poor-conditions-at-sokoto-idp-camp/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:25:57+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "Nigeria at 66: Foundation urges Tinubu to act on inclusion, healthcare",
@@ -68,6 +146,24 @@
       ]
     },
     {
+      "title": "NPFL: Sporting Lagos ready for Ikorodu City showdown — Buter",
+      "summary": "Sporting Lagos head coach Jeffery Buter has promised that his team will be ready for their derby clash against Ikorodu City. Sporting Lagos will square up against Ikorodu City at the Mobolaji Johnson Arena, Onikan, on Wednesday (today). Buter said they would manage player fatigue in readiness for th",
+      "url": "https://dailypost.ng/2026/09/30/npfl-sporting-lagos-ready-for-ikorodu-city-showdown-buter/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:22:05+00:00",
+      "categories": [
+        "lagos"
+      ]
+    },
+    {
+      "title": "NPFL warns coaches, officials against discrediting comments",
+      "summary": "The Nigeria Premier Football League, NPFL, has warned club coaches and officials against making discrediting comments about referees. The NPFL gave the warning in a memo signed by the league’s Chief Operating Officer, Dr Ayo Abdulrahman. Abdulrahman reminded all clubs of acceptable standards for con",
+      "url": "https://dailypost.ng/2026/09/30/npfl-warns-coaches-officials-against-discrediting-comments/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:22:00+00:00",
+      "categories": []
+    },
+    {
       "title": "FG to rank tertiary institutions nationwide on 22 indicators",
       "summary": "The Federal Government will complete a national ranking of universities, polytechnics, and colleges of education by December 2026 to boost performance. Read More: https://punchng.com/fg-to-rank-tertiary-institutions-nationwide-on-22-indicators/",
       "url": "https://punchng.com/fg-to-rank-tertiary-institutions-nationwide-on-22-indicators/?utm_source=rss.punchng.com&utm_medium=web",
@@ -76,6 +172,53 @@
       "categories": [
         "government"
       ]
+    },
+    {
+      "title": "‘Peter Obi lies recklessly’ — Onanuga",
+      "summary": "President Bola Tinubu’s Special Adviser on Information and Strategy, Bayo Onanuga, has accused NDC presidential candidate Peter Obi of lying recklessly over his comments on Federal Government investment in sports. Onanuga made the accusation in a post on X while reacting to Obi’s call for increased ",
+      "url": "https://dailypost.ng/2026/09/30/peter-obi-lies-recklessly-onanuga/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:19:46+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "I didn’t want to be in the spotlight – Tems",
+      "summary": "Grammy-winning Nigerian singer Temilade Openiyi, popularly known as Tems, has revealed that despite wanting musical success, she was uncomfortable with fame. Speaking in an episode of The Boost Podcast, Tems disclosed that for a long time, she hid her identity from fans because she didn’t want to be",
+      "url": "https://dailypost.ng/2026/09/30/i-didnt-want-to-be-in-the-spotlight-tems/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:17:39+00:00",
+      "categories": []
+    },
+    {
+      "title": "Iran hangs two men over deadly anti-govt protests",
+      "summary": "Iranian authorities have executed two men over their alleged involvement in anti-government protests that peaked in January after initially erupting the previous month over economic hardships. The judiciary’s Mizan Online website identified the executed men as Ali Hemmati and Majid Nik-Andish, sayin",
+      "url": "https://dailypost.ng/2026/09/30/iran-hangs-two-men-over-deadly-anti-govt-protests/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:16:26+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Jigawa court jails 50-year-old man 10 years for raping 11-year-old girl",
+      "summary": "The Jigawa State High Court No. 11, sitting in Ringim, has sentenced a 50-year-old man, Abubakar Biniya, to 10 years’ imprisonment for raping an 11-year-old girl. Justice Muhammad El-Usman handed down the judgment on Tuesday, September 29, 2026, after finding Biniya, of Galadanchi Quarters, Ringim L",
+      "url": "https://dailypost.ng/2026/09/30/jigawa-court-jails-50-year-old-man-10-years-for-raping-11-year-old-girl/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:15:01+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "‘You’re a house slave’ — VDM blasts Arome Osayi over US representation",
+      "summary": "Social media activist VeryDarkMan has reacted to a post announcing an upcoming conference, where he claimed that Apostle Arome Osayi was presented as representing the United States. In a video shared on his social media page, VDM accused Arome of abandoning Nigeria after obtaining US permanent resid",
+      "url": "https://dailypost.ng/2026/09/30/youre-a-house-slave-vdm-blasts-arome-osayi-over-us-representation/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T10:13:10+00:00",
+      "categories": []
     },
     {
       "title": "Sowore knocks Abdulsalami over appearance in Indian hospital advert",
@@ -127,6 +270,14 @@
       ]
     },
     {
+      "title": "Fuel imports: We’re ready for court cases – Dangote",
+      "summary": "Aliko Dangote says he is prepared to confront legal challenges over the planned 700,000bpd refinery in Lamu, Kenya, following a court order. Read More: https://punchng.com/fuel-imports-were-ready-for-court-cases-dangote/",
+      "url": "https://punchng.com/fuel-imports-were-ready-for-court-cases-dangote/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T10:00:34+00:00",
+      "categories": []
+    },
+    {
       "title": "Morocco appoints first female prime minister",
       "summary": "Ms El Mansouri described her appointment as “truly historic.” The post Morocco appoints first female prime minister appeared first on Premium Times Nigeria .",
       "url": "https://www.premiumtimesng.com/foreign/913504-morocco-appoints-first-female-prime-minister.html",
@@ -143,154 +294,6 @@
       "source": "PUNCH",
       "published": "2026-09-30T09:46:16+00:00",
       "categories": []
-    },
-    {
-      "title": "Turkey freezes ex-minister’s assets over $26m ponzi scheme allegations",
-      "summary": "Turkish prosecutors have frozen the assets of former minister Fatma Betul Sayan Kaya over allegations she profited from a $26m ponzi-like scheme. Read More: https://punchng.com/turkey-freezes-ex-ministers-assets-over-26m-ponzi-scheme-allegations/",
-      "url": "https://punchng.com/turkey-freezes-ex-ministers-assets-over-26m-ponzi-scheme-allegations/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T09:44:03+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "FULL LIST: Covenant, UI, UNILAG named Nigeria’s top varsities in 2027 global ranking",
-      "summary": "Covenant University, UI, and UNILAG are Nigeria’s top universities in the 2027 Times Higher Education global rankings, all placed in the 801-1000 band. Read More: https://punchng.com/full-list-covenant-ui-unilag-named-nigerias-top-varsities-in-2027-global-ranking/",
-      "url": "https://punchng.com/full-list-covenant-ui-unilag-named-nigerias-top-varsities-in-2027-global-ranking/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T09:38:54+00:00",
-      "categories": []
-    },
-    {
-      "title": "Fuel price hike: Atiku condemns arrest of five Nigerians over ‘Tinubu Must Go’ T-Shirts",
-      "summary": "Former Vice President Atiku Abubakar has alleged that President Bola Ahmed Tinubu, who protested against fuel subsidy removal under former President Goodluck Jonathan, had five Nigerians wearing “Tinubu Must Go” T-shirts arrested in Borno State. In a statement by his spokesperson, Phrank Shaibu, Ati",
-      "url": "https://dailypost.ng/2026/09/30/fuel-price-hike-atiku-condemns-arrest-of-five-nigerians-over-tinubu-must-go-t-shirts/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:37:24+00:00",
-      "categories": []
-    },
-    {
-      "title": "Rival queries Pantami’s eligibility for Gombe PDP rerun primary",
-      "summary": "“Despite our warnings, the PDP went ahead and fielded Isa Ali, who, by his own showing, was not a member of the party at the time, 21 days before the primaries,” Mr Mailantarki said The post Rival queries Pantami’s eligibility for Gombe PDP rerun primary appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/regional/nnorth-east/913501-rival-queries-pantamis-eligibility-for-gombe-pdp-rerun-primary.html",
-      "source": "Premium Times",
-      "published": "2026-09-30T09:33:19+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027 AFCONQ: Super Eagles arrive in Abuja after 3-0 defeat to Guinea-Bissau",
-      "summary": "Players and coaches of the Super Eagles have arrived back in Abuja following their 3-0 loss to Guinea-Bissau in the 2027 Africa Cup of Nations qualifying series. The defeat on Tuesday was Nigeria’s first in the series, after they came from behind to beat Madagascar 2-1 last Friday. Franculino Djú ga",
-      "url": "https://dailypost.ng/2026/09/30/2027-afconq-super-eagles-arrive-in-abuja-after-3-0-defeat-to-guinea-bissau/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:29:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "Cholera Crisis: Nigeria among seven worst-hit nations as global deaths surge",
-      "summary": "Global deaths from cholera increased by 30 per cent in 2025 despite a decline in the number of reported infections, according to the World Health Organization. The WHO said 47 countries recorded 451,499 cholera cases and 7,870 deaths during the year, making 2025 the deadliest year for cholera report",
-      "url": "https://dailypost.ng/2026/09/30/cholera-crisis-nigeria-among-seven-worst-hit-nations-as-global-deaths-surge/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:28:21+00:00",
-      "categories": []
-    },
-    {
-      "title": "Osogbo residents cry out as flood overtakes homes",
-      "summary": "Residents of Osogbo have raised the alarm as rising waters from the Osun River flood their homes and communities. DAILY POST gathered that the most affected areas in the capital city included Oke-Jetu, Baruwa, some parts of Awosuru, and communities located along the banks of the Osun River. Affected",
-      "url": "https://dailypost.ng/2026/09/30/osogbo-residents-cry-out-as-flood-overtakes-homes/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:23:51+00:00",
-      "categories": [
-        "engineering",
-        "property"
-      ]
-    },
-    {
-      "title": "BBNaija Season 11: Keivo becomes second housemate to be disqualified",
-      "summary": "Keivo has become the second Big Brother Naija housemate to be disqualified from Season 11. This follows his physical altercation with fellow housemate, Tram. The fight broke out after Tram accused Keivo of taking one of his shirts. Keivo did not take the allegation of theft lightly, and the situatio",
-      "url": "https://dailypost.ng/2026/09/30/bbnaija-season-11-keivo-becomes-second-housemate-to-be-disqualified/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:22:43+00:00",
-      "categories": []
-    },
-    {
-      "title": "‎After NYSC: Finding my feet beyond service, ‎By Ifeanyi Favour Ogochukwu",
-      "summary": "‎I do not know exactly what awaits me after NYSC. It could begin with a job offer, the first serious steps towards building my own brand, further learning or simply another opportunity I cannot yet see… ‎What I know is that I am willing to begin… I hope life after NYSC brings meaningful work, peace,",
-      "url": "https://www.premiumtimesng.com/opinion/913493-after-nysc-finding-my-feet-beyond-service-by-ifeanyi-favour-ogochukwu.html",
-      "source": "Premium Times",
-      "published": "2026-09-30T09:17:59+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Nigeria at 66: NSCDC deploys 3,000 personnel across Abuja",
-      "summary": "The Nigeria Security and Civil Defence Corps, NSCDC, Federal Capital Territory Command, has deployed 3,000 personnel across the Federal Capital Territory as part of enhanced security measures for Nigeria’s 66th Independence Anniversary celebrations. The deployment was ordered by the FCT Commandant, ",
-      "url": "https://dailypost.ng/2026/09/30/nigeria-at-66-nscdc-deploys-3000-personnel-across-abuja/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:17:23+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "France trip: Tinubu has set bad precedent, NASS big rubber stamp – Rufai Oseni",
-      "summary": "Arise Television’s Morning Show anchor, Rufai Oseni, has criticised President Bola Tinubu over his failure to formally hand over power during his recent absence from Nigeria. Oseni said Tinubu had set a “bad precedent” by failing to hand over power after being away from the country for over 21 days.",
-      "url": "https://dailypost.ng/2026/09/30/france-trip-tinubu-has-set-bad-precedent-nass-big-rubber-stamp-rufai-oseni/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:16:32+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Trump orders US agencies to rename AI ‘Super Intelligence’",
-      "summary": "United States President Donald Trump has signed an executive order directing federal agencies to replace the terms “Artificial Intelligence” and “AI” with “Super Intelligence” and “SI” in official government communications. The order, signed on Tuesday, instructs executive departments and agencies t",
-      "url": "https://dailypost.ng/2026/09/30/trump-orders-us-agencies-to-rename-ai-super-intelligence/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:12:08+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "AFCON 2027 qualifiers: Results of all yesterday’s matches [Full list]",
-      "summary": "Several CAF Africa Cup of Nations 2027 qualifiers were played yesterday across the continent. DAILY POST brings you all the results from Tuesday’s matches played across Africa. Nigeria’s Super Eagles were defeated 3-0 by Guinea-Bissau on Tuesday evening at the 24 de Setembro National Stadium in Biss",
-      "url": "https://dailypost.ng/2026/09/30/afcon-2027-qualifiers-results-of-all-yesterdays-matches-full-list/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:07:51+00:00",
-      "categories": []
-    },
-    {
-      "title": "Kidnapping: Edo judge urges residents to install CCTV in homes, businesses",
-      "summary": "Justice Terry Momodu Aigbona of the Edo State Special Criminal Court has urged residents to install closed-circuit television (CCTV) cameras in their homes, shops, vehicles and business premises to help tackle crime. DAILY POST reports that the judge made the call on Tuesday, September 29, 2026, in ",
-      "url": "https://dailypost.ng/2026/09/30/kidnapping-edo-judge-urges-residents-to-install-cctv-in-homes-businesses/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T09:00:59+00:00",
-      "categories": [
-        "business",
-        "property"
-      ]
-    },
-    {
-      "title": "Kebbi warns civil servants against lateness, absenteeism",
-      "summary": "The Kebbi State Government has warned its civil servants against lateness and absenteeism, directing them to strictly observe the 8 am to 4 pm working hour Read More: https://punchng.com/kebbi-warns-civil-servants-against-lateness-absenteeism/",
-      "url": "https://punchng.com/kebbi-warns-civil-servants-against-lateness-absenteeism/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T08:58:09+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "UN extends mandate of Gang Suppression Force in Haiti",
-      "summary": "The United Nations Security Council has extended the mandate of the Gang Suppression Force, GSF, in Haiti amid incessant violence by criminal groups. The council voted on Tuesday to extend the GSF’s operation until March 31, 2027, as the UN seeks to dismantle armed gangs, protect civilians and secur",
-      "url": "https://dailypost.ng/2026/09/30/un-extends-mandate-of-gang-suppression-force-in-haiti/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T08:57:05+00:00",
-      "categories": [
-        "engineering"
-      ]
     }
   ]
 }
