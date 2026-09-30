@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T19:40:36.088655+00:00",
+  "generated_at": "2026-09-30T20:11:59.370149+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,53 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Minister tasks charcoal merchants on sustainable forestry",
+      "summary": "The Minister of Environment has charged charcoal merchants to embrace sustainable forestry practices to support the FG’s efforts to reverse deforestation. Read More: https://punchng.com/minister-tasks-charcoal-merchants-on-sustainable-forestry/",
+      "url": "https://punchng.com/minister-tasks-charcoal-merchants-on-sustainable-forestry/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T21:09:32+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "FG urges private investors to fund oil refining, gas projects",
+      "summary": "The Federal Government has called for stronger private sector investment in Nigeria’s midstream and downstream petroleum sectors to match rising crude outp Read More: https://punchng.com/fg-urges-private-investors-to-fund-oil-refining-gas-projects/",
+      "url": "https://punchng.com/fg-urges-private-investors-to-fund-oil-refining-gas-projects/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T21:07:09+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "Village club sets record crowd in FA Cup replay after referee mistake",
+      "summary": "A Norfolk village club, Mulbarton Wanderers, beat Woodford Town 2-0 in a rare FA Cup replay ordered after a refereeing error, drawing a record crowd. Read More: https://punchng.com/village-club-sets-record-crowd-in-fa-cup-replay-after-referee-mistake/",
+      "url": "https://punchng.com/village-club-sets-record-crowd-in-fa-cup-replay-after-referee-mistake/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T21:06:27+00:00",
+      "categories": []
+    },
+    {
+      "title": "IPCR, FES seek trust-building between citizens, security agencies",
+      "summary": "The Institute for Peace and Conflict Resolution and Friedrich Ebert Stiftung have called for social justice and inclusion to build trust and sustain peace Read More: https://punchng.com/ipcr-fes-seek-trust-building-between-citizens-security-agencies/",
+      "url": "https://punchng.com/ipcr-fes-seek-trust-building-between-citizens-security-agencies/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T20:52:45+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "2027: Ogun CP warns politicians against violence, recruiting cultists",
+      "summary": "The Ogun State Commissioner of Police, Bode Ojajuni, has warned politicians against violence, thuggery, and recruiting cultists for the 2027 elections. Read More: https://punchng.com/2027-ogun-cp-warns-politicians-against-violence-recruiting-cultists/",
+      "url": "https://punchng.com/2027-ogun-cp-warns-politicians-against-violence-recruiting-cultists/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T20:42:30+00:00",
+      "categories": []
+    },
     {
       "title": "2027: LP urges governors to emulate Otti’s leadership",
       "summary": "The Labour Party has urged governors and other political leaders to emulate the leadership style of Abia State Governor, Alex Otti, ahead of the 2027 elect Read More: https://punchng.com/2027-lp-urges-governors-to-emulate-ottis-leadership/",
@@ -42,11 +89,53 @@
       ]
     },
     {
+      "title": "‘They’ll have a problem’ – Denmark coach, Riemer predicts Portugal’s fate after Ronaldo’s retirement",
+      "summary": "Denmark head coach Brian Riemer has expressed concerns that Portugal will face a huge problem when Cristiano Ronaldo retires from international football. Ronaldo has served as a fundamental component of the Portugal national team for over two decades. Now 41, his departure from professional football",
+      "url": "https://dailypost.ng/2026/09/30/theyll-have-a-problem-denmark-coach-riemer-predicts-portugals-fate-after-ronaldos-retirement/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T20:06:58+00:00",
+      "categories": []
+    },
+    {
+      "title": "UNICEF commends Mbah’s consistent 33% allocation to education",
+      "summary": "The global Fund made the commendation as Enugu and UNICEF seek stronger partnership on education, child health and human development The post UNICEF commends Mbah’s consistent 33% allocation to education appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/promoted/913646-unicef-commends-mbahs-consistent-33-allocation-to-education.html",
+      "source": "Premium Times",
+      "published": "2026-09-30T20:06:12+00:00",
+      "categories": []
+    },
+    {
+      "title": "Healthcare: Kaduna to rehabilitate 17 centres of excellence",
+      "summary": "Kaduna State Government is rehabilitating 17 Primary Healthcare Centres(PHCs) into Centres of Excellence and has distributed standard tricycle ambulances to healthcare facilities to improve emergency referrals in rural and underserved communities. Secretary to the Kaduna State Government (SSG), Dr A",
+      "url": "https://dailypost.ng/2026/09/30/healthcare-kaduna-to-rehabilitate-17-centres-of-excellence/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T20:03:25+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Author Ajadi launches ‘Afrilition’, challenges negative narratives about Africa",
+      "summary": "Mr Ajadi explained that the idea for the book was partly influenced by his experience of what he described as “Afro-pessimism” — a tendency to view Africa mainly through its problems and crises. The post Author Ajadi launches ‘Afrilition’, challenges negative narratives about Africa appeared first o",
+      "url": "https://www.premiumtimesng.com/entertainment/artsbooks/913642-author-ajadi-launches-afrilition-challenges-negative-narratives-about-africa.html",
+      "source": "Premium Times",
+      "published": "2026-09-30T20:00:18+00:00",
+      "categories": []
+    },
+    {
       "title": "Nations League: Ronaldo leaves Portugal training camp",
       "summary": "Portugal captain Cristiano Ronaldo has announced his departure from the national team’s training camp, promising to reveal his reasons at a later date. Read More: https://punchng.com/nations-league-ronaldo-leaves-portugal-training-camp/",
       "url": "https://punchng.com/nations-league-ronaldo-leaves-portugal-training-camp/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-30T19:56:56+00:00",
+      "categories": []
+    },
+    {
+      "title": "BREAKING: Tinubu signs 2025 budget amendment bill",
+      "summary": "President Bola Tinubu has signed the Appropriation (Amendment) (No. 4) Bill, 2025 into law, pushing the 2025 budget implementation deadline from September 30, 2026 to December 31, 2026. The Special Adviser to the President on Information and Strategy, Bayo Onanuga, disclosed this in a statement on W",
+      "url": "https://dailypost.ng/2026/09/30/tinubu-signs-2025-budget-amendment-bill/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T19:56:25+00:00",
       "categories": []
     },
     {
@@ -56,6 +145,16 @@
       "source": "PUNCH",
       "published": "2026-09-30T19:55:43+00:00",
       "categories": []
+    },
+    {
+      "title": "Nollywood actor CJay Nwoks dies in Lagos hospital [VIDEO]",
+      "summary": "Nollywood actor, Chijioke Nwokafor, popularly known as CJay Nwoks is dead. CJay died on Wednesday, September 30, 2026, at an undisclosed hospital in the Badore area of Lagos State. The sad news was announced by actress Nkechi Blessing, who recently cast CJay as the lead actor in her new film. Speaki",
+      "url": "https://dailypost.ng/2026/09/30/nollywood-actor-cjay-nwoks-dies-in-lagos-hospital-video/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T19:42:03+00:00",
+      "categories": [
+        "lagos"
+      ]
     },
     {
       "title": "FG starts new power control centre to curb blackouts",
@@ -184,107 +283,6 @@
       "categories": [
         "government"
       ]
-    },
-    {
-      "title": "Kano anti-graft agency arrests suspect over N4.5m horse stable sale",
-      "summary": "Kano’s anti-graft agency has arrested a suspect, Tasiu Adamu Maje, for the alleged illegal sale and leasing of a government-owned horse stable for N4.5m. Read More: https://punchng.com/kano-anti-graft-agency-arrests-suspect-over-n4-5m-horse-stable-sale/",
-      "url": "https://punchng.com/kano-anti-graft-agency-arrests-suspect-over-n4-5m-horse-stable-sale/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T19:02:25+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Kano village head found dead days after abduction",
-      "summary": "The village head of Aujarawar Alkali in Gezawa Local Government Area of Kano State, Alhaji Ahmad Yakubu Ahmad, has been found dead days after he was abducted by suspected bandits. Ahmad was taken from his residence on September 17, 2026, when the attackers invaded the community at night. His remains",
-      "url": "https://dailypost.ng/2026/09/30/kano-village-head-found-dead-days-after-abduction/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T19:02:04+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Portugal boss denies ‘rift’ with Ronaldo",
-      "summary": "Portugal coach Jorge Jesus has denied any rift with Cristiano Ronaldo, saying the captain was just disappointed to be an unused substitute against Norway. Read More: https://punchng.com/portugal-boss-denies-rift-with-ronaldo/",
-      "url": "https://punchng.com/portugal-boss-denies-rift-with-ronaldo/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T18:59:34+00:00",
-      "categories": []
-    },
-    {
-      "title": "Burnham defends Man City owners despite guilty verdict in financial case",
-      "summary": "Mayor Andy Burnham has defended Manchester City’s owners, saying he would be concerned if they sold the club following the Premier League financial case. Read More: https://punchng.com/burnham-defends-man-city-owners-despite-guilty-verdict-in-financial-case/",
-      "url": "https://punchng.com/burnham-defends-man-city-owners-despite-guilty-verdict-in-financial-case/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T18:57:49+00:00",
-      "categories": []
-    },
-    {
-      "title": "Tinubu to address Nigerians at 7am on 66th Independence anniversary",
-      "summary": "President Bola Tinubu will address Nigerians at 7am. on Thursday, October 1, as the country marks its 66th Independence anniversary. The announcement was contained in a statement issued on Wednesday by Bayo Onanuga, Special Adviser to the President on Information and Strategy. Onanuga said televisio",
-      "url": "https://dailypost.ng/2026/09/30/tinubu-to-address-nigerians-at-7am-on-66th-independence-anniversary/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T18:56:15+00:00",
-      "categories": []
-    },
-    {
-      "title": "Yobe begins stakeholders’ consultations on N437bn 2027 budget",
-      "summary": "The Yobe State Government has commenced consultations with citizens and key stakeholders towards the preparation of the 2027 state budget, with the government proposing a N437 billion fiscal plan for the coming financial year. This is contained in a statement by the Focal Person, Digital and Strateg",
-      "url": "https://dailypost.ng/2026/09/30/yobe-begins-stakeholders-consultations-on-n437bn-2027-budget/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T18:55:34+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Wike’s Son Denies Involvement In Land Deal, Says His Signature Was Forged",
-      "summary": "Jordan Ezenwo Nyesom-Wike, son of the Minister of the Federal Capital Territory, FCT, Nyesom Wike, has denied involvement in an Abuja land deal. Jordan told an FCT High Court presided by Justice Silvanus Oriji that his signature on a document of the land deal presented in the court was forged. The m",
-      "url": "https://www.informationng.com/2026/09/wikes-son-denies-involvement-in-land-deal-says-his-signature-was-forged.html",
-      "source": "Information Nigeria",
-      "published": "2026-09-30T18:55:11+00:00",
-      "categories": [
-        "government",
-        "property"
-      ]
-    },
-    {
-      "title": "PFIPC: Adeniyi Ramanded In Kuje Prison After Peading Not Guilty To Forgery, Impersonation",
-      "summary": "The Director-General (DG) of the alleged fake Presidential Foreign Intervention Promotion Council (PFIPC), Adeniyi Adeyemi, has pleaded not guilty to forgery-related charges instituted against him by the Nigeria Police Force. He pleaded not guilty before Justice Umar Mohammed during his arraignment ",
-      "url": "https://www.informationng.com/2026/09/pfipc-adeniyi-ramanded-in-kuje-prison-after-peading-not-guilty-to-forgery-impersonation.html",
-      "source": "Information Nigeria",
-      "published": "2026-09-30T18:46:21+00:00",
-      "categories": []
-    },
-    {
-      "title": "Independence Anniversary: Tinubu to address Nigerians on Thursday",
-      "summary": "The address is to mark Nigeria's 66th Independence Anniversary The post Independence Anniversary: Tinubu to address Nigerians on Thursday appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/913632-independence-anniversary-tinubu-to-address-nigerians-on-thursday.html",
-      "source": "Premium Times",
-      "published": "2026-09-30T18:36:37+00:00",
-      "categories": []
-    },
-    {
-      "title": "All Set for ProTaxi Launch October 1 at Rainbow Event Center, Abuja",
-      "summary": "All is set for the official launch of ProTaxi, a Nigerian-owned technology-driven e-hailing platform powered by PromiseLand, on Thursday, October 1, 2026, at the Rainbow Event Center, Garki, Abuja. The launch, which coincides with Nigeria’s Independence Day celebration, will formally introduce ProTa",
-      "url": "https://dailypost.ng/2026/09/30/all-set-for-protaxi-launch-october-1-at-rainbow-event-center-abuja/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-09-30T18:29:23+00:00",
-      "categories": [
-        "engineering",
-        "business",
-        "property"
-      ]
-    },
-    {
-      "title": "Opposition can still unite behind single candidate for 2027 – APM chieftain",
-      "summary": "\"I see the 2027 general election not as a sprint. I see it as a marathon race. We still have October; we still have November. They can still come together if indeed they are sincere about rescuing Nigeria.” The post Opposition can still unite behind single candidate for 2027 – APM chieftain appeared",
-      "url": "https://www.premiumtimesng.com/news/more-news/913624-opposition-can-still-unite-behind-single-candidate-for-2027-apm-chieftain.html",
-      "source": "Premium Times",
-      "published": "2026-09-30T18:26:52+00:00",
-      "categories": []
     }
   ]
 }
