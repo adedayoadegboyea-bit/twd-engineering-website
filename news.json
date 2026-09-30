@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T05:42:11.439634+00:00",
+  "generated_at": "2026-09-30T06:13:35.498092+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,57 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Pastor who sang on American Idol found guilty of murdering wife",
+      "summary": "A former American Idol contestant and Ohio pastor, Caleb Flynn, has been found guilty of murdering his wife, Ashley Flynn, by shooting her in their home. Read More: https://punchng.com/pastor-who-sang-on-american-idol-found-guilty-of-murdering-wife/",
+      "url": "https://punchng.com/pastor-who-sang-on-american-idol-found-guilty-of-murdering-wife/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T07:05:24+00:00",
+      "categories": [
+        "property"
+      ]
+    },
+    {
+      "title": "UK national museums to remain free for local, foreign visitors",
+      "summary": "The UK Government has confirmed that national museums in England will remain free for all visitors, ruling out plans to charge overseas tourists. Read More: https://punchng.com/uk-national-museums-to-remain-free-for-local-foreign-visitors/",
+      "url": "https://punchng.com/uk-national-museums-to-remain-free-for-local-foreign-visitors/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T07:00:24+00:00",
+      "categories": [
+        "government",
+        "property"
+      ]
+    },
+    {
+      "title": "Lagos commissioner, Rhodes-Vivour disagree over waste management, flooding",
+      "summary": "Lagos Commissioner Tokunbo Wahab and Gbadebo Rhodes-Vivour disagree over the state’s waste management and flooding after the ADC candidate called Lagos ‘st Read More: https://punchng.com/lagos-commissioner-rhodes-vivour-disagree-over-waste-management-flooding/",
+      "url": "https://punchng.com/lagos-commissioner-rhodes-vivour-disagree-over-waste-management-flooding/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T06:51:14+00:00",
+      "categories": [
+        "lagos"
+      ]
+    },
+    {
+      "title": "Haaland, Gyokeres, Wissa, 11 other EPL players who scored on international duty",
+      "summary": "Fourteen Premier League players scored for their countries during the international break, with Man City’s Erling Haaland leading with three goals for Norw Read More: https://punchng.com/haaland-gyokeres-wissa-11-other-epl-players-who-scored-on-international-duty/",
+      "url": "https://punchng.com/haaland-gyokeres-wissa-11-other-epl-players-who-scored-on-international-duty/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T06:49:34+00:00",
+      "categories": [
+        "property"
+      ]
+    },
+    {
+      "title": "OpenAI says its AI wrongly accessed Australian govt systems",
+      "summary": "OpenAI has admitted an AI model gained unauthorised access to Australian government systems, including a Medicare portal where it retrieved internal files. Read More: https://punchng.com/openai-says-its-ai-wrongly-accessed-australian-govt-systems/",
+      "url": "https://punchng.com/openai-says-its-ai-wrongly-accessed-australian-govt-systems/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-09-30T06:40:52+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Workers set October strike over petrol price hike",
       "summary": "Public servants under the JNPSNC have threatened a three-day warning strike from October 2 if the FG fails to slash petrol prices and approve a wage award. Read More: https://punchng.com/workers-set-october-strike-over-petrol-price-hike/",
@@ -35,6 +86,93 @@
       "url": "https://punchng.com/iheanacho-named-best-player-in-turkey/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-09-30T06:16:28+00:00",
+      "categories": []
+    },
+    {
+      "title": "Four Yobe indigenes die in Algeria while seeking greener pastures",
+      "summary": "Four young men from Tsangai village, Moyori Ward, in Yusufari Local Government Area of Yobe State, have died in Algeria, where they had travelled in search of livelihood opportunities. The deaths were confirmed in a condolence statement issued by the Executive Chairman of Yusufari Local Government, ",
+      "url": "https://dailypost.ng/2026/09/30/four-yobe-indigenes-die-in-algeria-while-seeking-greener-pastures/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T06:12:11+00:00",
+      "categories": [
+        "government",
+        "oyo"
+      ]
+    },
+    {
+      "title": "Police charge five men over ‘Tinubu Must Go’ T-shirts",
+      "summary": "The five men were accused of criminal conspiracy, inciting disturbance, disturbing public peace and thuggery. The post Police charge five men over ‘Tinubu Must Go’ T-shirts appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/913440-police-charge-five-men-over-tinubu-must-go-t-shirts.html",
+      "source": "Premium Times",
+      "published": "2026-09-30T06:09:01+00:00",
+      "categories": []
+    },
+    {
+      "title": "Afrilition: Unveiling a distinct operating system and bridge into the African world, By Adéwálé Àjàdí",
+      "summary": "Afrilition is a defining and distinct operating system and transformative process of the African world’s contribution towards its own evolution and viability for collective humanity. The incoming generation needs new understanding in order to step into the fullness of their humanity. They no longer ",
+      "url": "https://www.premiumtimesng.com/opinion/913441-afrilition-unveiling-a-distinct-operating-system-and-bridge-into-the-african-world-by-adewale-ajadi.html",
+      "source": "Premium Times",
+      "published": "2026-09-30T06:06:42+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "‘Tinubu practicing voodoo economics, don’t believe him’ – Kenneth Okonkwo to Nigerians",
+      "summary": "Kenneth Okonkwo, a spokesman for African Democratic Congress, ADC, presidential candidate Atiku Abubakar, has accused President Bola Tinubu of practising voodoo economics. Okonkwo insisted that Tinubu’s administration is not performing, adding that it is manipulating figures to cover up the inflatio",
+      "url": "https://dailypost.ng/2026/09/30/tinubu-practicing-voodoo-economics-dont-believe-him-kenneth-okonkwo-to-nigerians/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T06:02:50+00:00",
+      "categories": []
+    },
+    {
+      "title": "Borno ADC faults arrest of five youths wearing ‘Tinubu Must Go’ T-shirts",
+      "summary": "Borno State chapter of the African Democratic Congress, ADC, has condemned the arrest of five youths in Maiduguri over T-shirts bearing the inscription, “Tinubu Must Go.” The party’s Publicity Secretary, Baba Ahmed Mustapha, made the position known in a statement on Tuesday night. Mustapha said the ",
+      "url": "https://dailypost.ng/2026/09/30/borno-adc-faults-arrest-of-five-youths-wearing-tinubu-must-go-t-shirts/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T05:57:58+00:00",
+      "categories": []
+    },
+    {
+      "title": "Messi to join Argentina camp – Coach Lionel Scaloni",
+      "summary": "Argentina head coach, Lionel Scaloni, has revealed that Lionel Messi is expected to join the team’s camp this weekend after their international friendly against Burkina Faso on Saturday. Scaloni also revealed that it would not be a problem if Messi also decided to play against Burkina Faso. “For sur",
+      "url": "https://dailypost.ng/2026/09/30/messi-to-join-argentina-camp-coach-lionel-scaloni/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T05:55:37+00:00",
+      "categories": []
+    },
+    {
+      "title": "EPL: Man City respond to Premier League guilty verdict, reveal next action",
+      "summary": "Manchester City have expressed disappointment and astonishment following a statement by the Premier League confirming that the club has been found culpable of all charges relating to significant violations of financial regulations. In a comprehensive statement, it was disclosed that the club had orc",
+      "url": "https://dailypost.ng/2026/09/30/epl-man-city-respond-to-premier-league-guilty-verdict-reveal-next-action/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T05:51:40+00:00",
+      "categories": []
+    },
+    {
+      "title": "UNL: Why I did Thierry Henry’s iconic celebration – Lamine Yamal",
+      "summary": "Barcelona winger, Lamine Yamal has explained why he replicated the club’s former striker, Thierry Henry’s iconic corner-flag celebration after scoring his second goal in Spain’s 4-1 win over Croatia in the UEFA Nations League on Tuesday. After scoring his brace during the match, Yamal held the corne",
+      "url": "https://dailypost.ng/2026/09/30/unl-why-i-did-thierry-henrys-iconic-celebration-lamine-yamal/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T05:50:44+00:00",
+      "categories": []
+    },
+    {
+      "title": "Morocco appoints first female prime minister",
+      "summary": "Morocco’s King Mohammed VI has appointed Fatima Ezzahra El Mansouri as the country’s first female prime minister and directed her to form a new government. The appointment came after the September 23 parliamentary election, in which El Mansouri’s Authenticity and Modernity Party, PAM, won the highes",
+      "url": "https://dailypost.ng/2026/09/30/morocco-appoints-first-female-prime-minister/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T05:47:23+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Tinubu borrowing Nigeria into slavery – Kenneth Okonkwo",
+      "summary": "A chieftain of the African Democratic Congress, ADC, Kenneth Okonkwo, has accused President Bola Tinubu of borrowing Nigeria into slavery. Okonkwo made the statement on Tuesday during an interview on Channels Television’s Politics Today. According to him, everything about the Tinubu administration i",
+      "url": "https://dailypost.ng/2026/09/30/tinubu-borrowing-nigeria-into-slavery-kenneth-okonkwo/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-09-30T05:43:02+00:00",
       "categories": []
     },
     {
@@ -140,144 +278,6 @@
       "published": "2026-09-30T04:00:09+00:00",
       "categories": [
         "property"
-      ]
-    },
-    {
-      "title": "Young Africans propose nine reforms to shape Africa’s health sector",
-      "summary": "Over 80 young professionals at the Ubuntu Rising 2026 event proposed nine reforms to address Africa’s health sector challenges, including a major workforce Read More: https://punchng.com/young-africans-propose-nine-reforms-to-shape-africas-health-sector/",
-      "url": "https://punchng.com/young-africans-propose-nine-reforms-to-shape-africas-health-sector/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T03:06:36+00:00",
-      "categories": []
-    },
-    {
-      "title": "Thales to develop Nigeria’s new satellite",
-      "summary": "Thales Alenia Space has signed a contract with Nigeria’s NIGCOMSAT Ltd to build NigComSat-2A, a new satellite to boost digital connectivity across Africa. Read More: https://punchng.com/thales-to-develop-nigerias-new-satellite/",
-      "url": "https://punchng.com/thales-to-develop-nigerias-new-satellite/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T03:05:35+00:00",
-      "categories": []
-    },
-    {
-      "title": "Kenya launches new coastal cable system",
-      "summary": "Kenya has launched the LuLu Coastal Cable System, its first fully protected submarine cable network, to connect five strategic points along its coastline. Read More: https://punchng.com/kenya-launches-new-coastal-cable-system/",
-      "url": "https://punchng.com/kenya-launches-new-coastal-cable-system/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T03:03:49+00:00",
-      "categories": []
-    },
-    {
-      "title": "SAP solutions adopted to strengthen HR systems",
-      "summary": "NTT DATA is adopting SAP SuccessFactors and Business Data Cloud solutions to unify its global HR systems, aiming to enhance employee experience and plannin Read More: https://punchng.com/sap-solutions-adopted-to-strengthen-hr-systems/",
-      "url": "https://punchng.com/sap-solutions-adopted-to-strengthen-hr-systems/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:59:02+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Foundation donates school bags, writing materials to C’River schools",
-      "summary": "The Joseph Ogogo Foundation has donated school bags, sandals, and writing materials to seven schools in Obanliku LGA of Cross River State to support pupils Read More: https://punchng.com/foundation-donates-school-bags-writing-materials-to-criver-schools/",
-      "url": "https://punchng.com/foundation-donates-school-bags-writing-materials-to-criver-schools/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:56:04+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: NRM’s Okereke targets hunger, insecurity",
-      "summary": "NRM presidential candidate, Dr Esther Okereke, has promised to rescue Nigeria from insecurity, hunger, and unemployment if elected in the 2027 elections. Read More: https://punchng.com/2027-nrms-okereke-targets-hunger-insecurity/",
-      "url": "https://punchng.com/2027-nrms-okereke-targets-hunger-insecurity/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:52:35+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ogun CP honours 39 officers, says policing stressful",
-      "summary": "The Ogun State Commissioner of Police, Bode Ojajuni, has honoured 39 officers for their distinguished service, describing the policing job as stressful. Read More: https://punchng.com/ogun-cp-honours-39-officers-says-policing-stressful/",
-      "url": "https://punchng.com/ogun-cp-honours-39-officers-says-policing-stressful/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:45:42+00:00",
-      "categories": []
-    },
-    {
-      "title": "Benue to formalise public relations in civil service",
-      "summary": "The Benue State Government is considering the formal recognition of public relations as a career structure in the state public service, the Chief Press Secretary to Governor Hyacinth Alia, Tersoo Kula, has said. Kula disclosed this on Tuesday when the leadership of the Nigerian Institute of Public R",
-      "url": "https://punchng.com/benue-to-formalise-public-relations-in-civil-service/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:16:54+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Nigeria should drive home-grown sickle cell solutions – Foundation",
-      "summary": "The Sickle Cell Foundation Nigeria has called for the country to lead in developing home-grown solutions to the disease at the launch of a new global partn Read More: https://punchng.com/nigeria-should-drive-home-grown-sickle-cell-solutions-foundation/",
-      "url": "https://punchng.com/nigeria-should-drive-home-grown-sickle-cell-solutions-foundation/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:13:21+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "Jigawa varsity gets NUC nod for 30 new programmes",
-      "summary": "The National Universities Commission has approved 30 new programmes for the Federal University Dutse, including Law, AI, and Medical Laboratory Science. Read More: https://punchng.com/jigawa-varsity-gets-nuc-nod-for-30-new-programmes/",
-      "url": "https://punchng.com/jigawa-varsity-gets-nuc-nod-for-30-new-programmes/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:12:36+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: Oyebanji, PDP’s Oluyede pledge Ekiti votes for Tinubu",
-      "summary": "Ekiti State Governor, Biodun Oyebanji, and PDP’s Oluwole Oluyede have pledged to deliver a minimum of 90% of the state’s votes for President Tinubu in 2027 Read More: https://punchng.com/2027-oyebanji-pdps-oluyede-pledge-ekiti-votes-for-tinubu/",
-      "url": "https://punchng.com/2027-oyebanji-pdps-oluyede-pledge-ekiti-votes-for-tinubu/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:10:52+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Kebbi not owing salaries, pensions, gratuities, says Idris",
-      "summary": "Kebbi State Governor, Nasir Idris, says his administration is up-to-date with payments of salaries, pensions, and gratuities to all workers and retirees. Read More: https://punchng.com/kebbi-not-owing-salaries-pensions-gratuities-says-idris/",
-      "url": "https://punchng.com/kebbi-not-owing-salaries-pensions-gratuities-says-idris/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:09:48+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "FCT revives abandoned Utako hospital, upgrades 14 others",
-      "summary": "The FCT Administration has approved the immediate renovation of 14 general hospitals and the resumption of work on the long-abandoned Utako General Hospita Read More: https://punchng.com/fct-revives-abandoned-utako-hospital-upgrades-14-others/",
-      "url": "https://punchng.com/fct-revives-abandoned-utako-hospital-upgrades-14-others/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:09:38+00:00",
-      "categories": []
-    },
-    {
-      "title": "AIICO: Learning, conference centre represents workplace infrastructure expansion",
-      "summary": "AIICO Insurance Plc has unveiled its transformed Learning and Conference Centre in Victoria Island, Lagos, to boost employee development and professional e Read More: https://punchng.com/aiico-learning-conference-centre-represents-workplace-infrastructure-expansion/",
-      "url": "https://punchng.com/aiico-learning-conference-centre-represents-workplace-infrastructure-expansion/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T02:00:42+00:00",
-      "categories": [
-        "engineering",
-        "property",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Chaos as Carter Efe, Speed Darlington face-off ahead clash",
-      "summary": "A press conference for the ‘Chaos in the Ring’ boxing event descended into chaos as Carter Efe and Speed Darlington traded threats ahead of their fight. Read More: https://punchng.com/chaos-as-carter-efe-speed-darlington-face-off-ahead-clash/",
-      "url": "https://punchng.com/chaos-as-carter-efe-speed-darlington-face-off-ahead-clash/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-09-30T01:55:31+00:00",
-      "categories": [
-        "business"
       ]
     }
   ]
