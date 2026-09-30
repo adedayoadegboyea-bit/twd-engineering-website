@@ -71,7 +71,8 @@ function render() {
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
     const conditionText = escapeHtml(item.condition || "");
-    const wa = "marketplace-listing.html?id=" + encodeURIComponent(item.id);
+    const ownerId = String(item.accountId || item.ownerId || "").trim();
+    const wa = "marketplace-listing.html?id=" + encodeURIComponent(item.id) + (ownerId ? "&owner=" + encodeURIComponent(ownerId) : "");
     const gallery = images.slice(0, 5).map((src, index) => '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="eager" decoding="async" data-gallery-src="' + escapeHtml(src) + '">').join("");
     const videoBlock = videos.length ? '<div class="listing-videos">' + videos.slice(0, 2).map((src, index) => '<video controls preload="metadata" playsinline src="' + escapeHtml(src) + '" aria-label="' + title + ' advertisement video ' + (index + 1) + '"></video>').join("") + '</div>' : "";
 
@@ -115,15 +116,17 @@ function render() {
 async function loadApprovedListings() {
   try {
     const response = await fetch(ENDPOINT + "?action=listings&_=" + Date.now(), {cache:"no-store"});
-    if (!response.ok) return;
+    if (!response.ok) throw new Error("Marketplace backend HTTP " + response.status);
 
     const data = await response.json();
-    if (data && Array.isArray(data.listings)) {
+    if (!data || data.ok === false) throw new Error(data.message || "Marketplace backend returned an error.");
+    if (Array.isArray(data.listings)) {
       listings = data.listings;
       render();
     }
   } catch (error) {
-    console.log("Approved marketplace listings are not available yet.", error);
+    console.error("Approved marketplace listings could not be loaded:", error);
+    if (empty) { empty.hidden = false; empty.textContent = "Marketplace listings could not be loaded right now. Please refresh and try again."; }
   }
 }
 
