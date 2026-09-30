@@ -71,7 +71,7 @@ function render() {
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
     const conditionText = escapeHtml(item.condition || "");
-    const wa = "https://wa.me/2348035774420?text=" + encodeURIComponent("Hello TW&D Marketplace, I am interested in: " + item.title);
+    const wa = "marketplace-listing.html?id=" + encodeURIComponent(item.id);
     const gallery = images.slice(0, 5).map((src, index) => '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="eager" decoding="async" data-gallery-src="' + escapeHtml(src) + '">').join("");
     const videoBlock = videos.length ? '<div class="listing-videos">' + videos.slice(0, 2).map((src, index) => '<video controls preload="metadata" playsinline src="' + escapeHtml(src) + '" aria-label="' + title + ' advertisement video ' + (index + 1) + '"></video>').join("") + '</div>' : "";
 
@@ -86,7 +86,7 @@ function render() {
         <h3>${title}</h3>
         <div class="price">${money(item.price)}</div>
         <div class="meta">${locationText} • ${conditionText}</div>
-        <a href="${wa}" target="_blank" rel="noopener">Ask about this listing →</a>
+        <a href="${wa}">View listing & seller →</a>
       </div>
     </article>`;
   }).join("");
