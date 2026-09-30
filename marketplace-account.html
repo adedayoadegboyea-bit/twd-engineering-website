@@ -13,7 +13,7 @@
 <div id="dashboard" class="dashboard"><h1>My Marketplace Account</h1><div id="profileBox" class="profile-box"></div><div class="account-links"><a class="gold" href="marketplace.html#sell">+ List an Item</a><button id="refreshMessages">Refresh Messages</button><button id="logoutButton">Sign Out</button></div><h2>Messages</h2><div id="messages" class="messages"></div></div>
 </section></div></div>
 <script>
-const ENDPOINT="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHNaql-ZmKmguOYP2TT1IH5/exec";
+const ENDPOINT="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
 const KEY="twd_marketplace_session_token"; const q=s=>document.querySelector(s);
 const esc=v=>String(v||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 async function post(data){const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});return r.json()}
