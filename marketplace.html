@@ -26,7 +26,7 @@
 <header class="mp-header">
   <div class="mp-container mp-nav">
     <a class="mp-brand" href="index.html"><img src="assets/twd-luxury-logo.svg" alt="TW&D Engineering Consult & Services Ltd"><span>MARKETPLACE</span></a>
-    <nav><a href="index.html">Company</a><a class="active" href="#listings">Browse Listings</a><a href="#sell">Advertise</a><a href="#plans">Subscriptions</a><a href="projects.html">Projects</a><a href="account.html">My Account</a><a href="index.html#contact">Contact</a></nav>
+    <nav><a href="index.html">Company</a><a class="active" href="#listings">Browse Listings</a><a href="#sell">Advertise</a><a href="#plans">Subscriptions</a><a href="projects.html">Projects</a><a href="marketplace-account.html">My Account</a><a href="index.html#contact">Contact</a></nav>
     <a class="mp-sell-btn" href="#sell">+ List an Item</a>
   </div>
 </header>
@@ -61,7 +61,7 @@
   <div><span class="eyebrow">SELL ON TW&D</span><h2>Put your property or product in front of buyers.</h2><p>Submit your listing details and photographs. Listings are recorded as <strong>pending review</strong> until TW&D approves them.</p>
    <ul><li>Houses, land and property</li><li>Cars and commercial vehicles</li><li>Home gadgets and electronics</li><li>Building materials and equipment</li></ul>
   </div>
-  <form id="listingForm" class="form-card">
+  <form id="listingForm" class="form-card"><div id="sellerAccountGate" class="account-gate"><strong>Seller account required</strong><p>Create a TW&D Marketplace account or sign in before submitting a listing.</p><a href="marketplace-account.html?next=listing">Create / Sign In</a></div>
    <div class="listing-choice-head">
     <span class="eyebrow">CHOOSE YOUR LISTING OPTION</span>
     <h3>How would you like to advertise?</h3>
@@ -112,7 +112,7 @@
 </section>
 
 <section class="safety mp-container"><div><span class="eyebrow">BUYER SAFETY</span><h2>Marketplace rules matter.</h2></div><p>TW&D may review submitted listings, but buyers should independently inspect property, verify ownership and documents, inspect vehicles or goods, and complete transactions safely. Do not send money solely because an item appears on this website.</p></section>
-</main>
+</main><div id="listingDetailModal" class="listing-detail-modal" hidden><div class="listing-detail-dialog"><button id="closeListingDetail" class="modal-close" type="button">×</button><div id="listingDetailContent"></div></div></div>
 
 <div id="subscriptionModal" class="subscription-modal" hidden>
   <div class="subscription-dialog" role="dialog" aria-modal="true" aria-labelledby="subscriptionTitle">
@@ -132,7 +132,7 @@
 </div>
 
 <footer><div class="mp-container"><strong>TW&D Engineering Consult & Services Ltd</strong><span>25 Engr Adedayo Close, Olateju Street, off First Bank Area, Akingbade Area, Ibadan, Oyo State, Nigeria</span><a href="https://wa.me/2348035774420">WhatsApp 08035774420</a></div></footer>
-<script src="marketplace.js?v=20260930-approval-fix"></script>
+<script src="marketplace.js?v=20260930-accounts1"></script>
 <script src="site-flow.js?v=20260928-1"></script><script src="global-access.js?v=20260928-1"></script>
 </body>
 </html>
