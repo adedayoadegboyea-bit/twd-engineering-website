@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T08:12:37.229899+00:00",
+  "generated_at": "2026-10-01T08:44:12.733648+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,81 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Nobel Peace Prize jury treads carefully after Trump campaign",
+      "summary": "Experts say Donald Trump’s intense campaigning for the Nobel Peace Prize has left the awarding committee treading carefully for this year’s selection. Read More: https://punchng.com/nobel-peace-prize-jury-treads-carefully-after-trump-campaign/",
+      "url": "https://punchng.com/nobel-peace-prize-jury-treads-carefully-after-trump-campaign/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T09:37:05+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nigeria at 66: Celebrating Development and Nation-Building",
+      "summary": "A spotlight on housing, infrastructure, and urban renewal projects across Nigeria’s 36 states under President Bola Ahmed Tinubu’s administration. Read More: https://punchng.com/nigeria-at-66-celebrating-development-and-nation-building/",
+      "url": "https://punchng.com/nigeria-at-66-celebrating-development-and-nation-building/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T09:36:38+00:00",
+      "categories": [
+        "engineering",
+        "property"
+      ]
+    },
+    {
+      "title": "2027: Ondo APC elders warn Aiyedatiwa, Tunji-Ojo supporters against division",
+      "summary": "Ondo APC elders have warned supporters of Governor Aiyedatiwa and Minister Tunji-Ojo to avoid actions that could cause division within the party. Read More: https://punchng.com/2027-ondo-apc-elders-warn-aiyedatiwa-tunji-ojo-supporters-against-division/",
+      "url": "https://punchng.com/2027-ondo-apc-elders-warn-aiyedatiwa-tunji-ojo-supporters-against-division/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T09:35:42+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Michael Jordan’s ‘last dance’ jersey sells for record $12.3m – Report",
+      "summary": "Michael Jordan’s Chicago Bulls jersey from the 1998 NBA Finals, his ‘Last Dance’ season, has sold for a record $12.3 million at auction. Read More: https://punchng.com/michael-jordans-last-dance-jersey-sells-for-record-12-3m-report/",
+      "url": "https://punchng.com/michael-jordans-last-dance-jersey-sells-for-record-12-3m-report/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T09:24:54+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nigeria@66: Plateau gov pardons 130 inmates",
+      "summary": "Plateau State Governor, Caleb Mutfwang, has pardoned 130 inmates and commuted four death sentences to mark Nigeria’s 66th Independence Anniversary. Read More: https://punchng.com/nigeria66-plateau-gov-pardons-130-inmates/",
+      "url": "https://punchng.com/nigeria66-plateau-gov-pardons-130-inmates/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T09:20:33+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Find, use new digital postcodes, FG urges Nigerians",
+      "summary": "The Federal Government has launched a new National Digital Alphanumeric Postcode System and urged Nigerians to find and begin using their unique codes. Read More: https://punchng.com/find-use-new-digital-postcodes-fg-urges-nigerians/",
+      "url": "https://punchng.com/find-use-new-digital-postcodes-fg-urges-nigerians/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T09:19:03+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Nigeria @66: Citizens can’t celebrate amid poverty, insecurity – Sowore",
+      "summary": "AAC presidential candidate, Omoyele Sowore, says Nigerians cannot genuinely celebrate the country’s 66th Independence Anniversary amid poverty and insecuri Read More: https://punchng.com/nigeria-66-citizens-cant-celebrate-amid-poverty-insecurity-sowore/",
+      "url": "https://punchng.com/nigeria-66-citizens-cant-celebrate-amid-poverty-insecurity-sowore/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T09:13:46+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nigeria @66: Keep hope alive, Kebbi gov urges Nigerians",
+      "summary": "Kebbi State Governor, Nasir Idris, has urged Nigerians to keep hope alive and remain united as the country marks its 66th Independence Anniversary. Read More: https://punchng.com/nigeria-66-keep-hope-alive-kebbi-gov-urges-nigerians/",
+      "url": "https://punchng.com/nigeria-66-keep-hope-alive-kebbi-gov-urges-nigerians/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T09:12:05+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Katsina gov signs N828.58bn 2027 appropriation law",
       "summary": "Katsina State Governor, Dikko Radda, has signed the state’s 2027 Appropriation Law of N828.58 billion after its passage by the House of Assembly. Read More: https://punchng.com/katsina-gov-signs-n828-58bn-2027-appropriation-law/",
@@ -39,6 +114,16 @@
       "categories": []
     },
     {
+      "title": "October 1: NLC presses FG on fresh wage, cheaper fuel",
+      "summary": "The Nigeria Labour Congress, NLC, has called for an immediate cut in petrol prices, a wage award for workers across the country and the commencement of talks on a new national minimum wage, saying the high cost of living has reduced workers’ purchasing power. The NLC made the call in its Independenc",
+      "url": "https://dailypost.ng/2026/10/01/october-1-nlc-presses-fg-on-fresh-wage-cheaper-fuel/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-01T08:38:16+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
       "title": "Army repels terrorist attacks, kills 16 in Adamawa",
       "summary": "Troops of the Nigerian Army have neutralised 16 terrorists and repelled attacks in Adamawa State during coordinated operations under Operation Hadin Kai. Read More: https://punchng.com/army-repels-terrorist-attacks-kills-16-in-adamawa/",
       "url": "https://punchng.com/army-repels-terrorist-attacks-kills-16-in-adamawa/?utm_source=rss.punchng.com&utm_medium=web",
@@ -55,11 +140,37 @@
       "categories": []
     },
     {
+      "title": "U.S. Woman Hospitalised After Surviving Two Lethal injections Failed To Executive Her",
+      "summary": "Tennessee woman Christa Pike was in a hospital Thursday after authorities “failed” to carry out her execution, her lawyers said, with witnesses reporting the convicted murderer was breathing despite the injections intended to kill her. Just hours earlier the US Supreme Court cleared the way for Pike",
+      "url": "https://www.informationng.com/2026/10/u-s-woman-hospitalised-after-surviving-two-lethal-injections-failed-to-executive-her.html",
+      "source": "Information Nigeria",
+      "published": "2026-10-01T08:26:15+00:00",
+      "categories": []
+    },
+    {
       "title": "Tinubu rules out return to fuel subsidy",
-      "summary": "President Bola Tinubu has ruled out a return to Nigeria’s petrol subsidy regime, defending his economic reforms in his Independence Day address to Nigerian Read More: https://punchng.com/tinubu-rules-out-return-to-fuel-subsidy/",
+      "summary": "President Bola Tinubu has ruled out a return to the petrol subsidy regime, defending his economic reforms in an Independence Day address to Nigerians. Read More: https://punchng.com/tinubu-rules-out-return-to-fuel-subsidy/",
       "url": "https://punchng.com/tinubu-rules-out-return-to-fuel-subsidy/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-01T08:23:04+00:00",
+      "categories": []
+    },
+    {
+      "title": "Troops rescue five abducted women in Katsina",
+      "summary": "Troops of Sector 2, Operation FANSAN YAMMA, have rescued five abducted women, including a mother and her infant, during an operation in Sabuwa Local Government Area of Katsina State. A military source said the troops acted on intelligence about the movement of terrorists around the Madaci Forest are",
+      "url": "https://dailypost.ng/2026/10/01/troops-rescue-five-abducted-women-in-katsina/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-01T08:18:22+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "RMD, Sobowale, Henshaw, Akindele, others gather for Olu Jacobs’ night of tributes",
+      "summary": "Jacobs, popularly known as the “Lion of Lufodo,\" died on 16 September at the age of 84. The post RMD, Sobowale, Henshaw, Akindele, others gather for Olu Jacobs’ night of tributes appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/913699-rmd-sobowale-henshaw-akindele-others-gather-for-olu-jacobs-night-of-tributes.html",
+      "source": "Premium Times",
+      "published": "2026-10-01T08:16:18+00:00",
       "categories": []
     },
     {
@@ -136,6 +247,17 @@
       "categories": []
     },
     {
+      "title": "Nigeria at 66: Celebrating Real Estate Excellence, Development and Nation-Building",
+      "summary": "As Nigeria marks 66 years, a special report spotlights real estate and infrastructure development under President Bola Tinubu’s administration. Read More: https://punchng.com/nigeria-at-66-celebrating-real-estate-excellence-development-and-nation-building/",
+      "url": "https://punchng.com/nigeria-at-66-celebrating-real-estate-excellence-development-and-nation-building/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T07:35:46+00:00",
+      "categories": [
+        "engineering",
+        "property"
+      ]
+    },
+    {
       "title": "Nigeria at 66: We’ve survived our challenges – Shehu Sani",
       "summary": "Former lawmaker, Senator Shehu Sani has said Nigeria has survived the various challenges and crises it has faced since gaining independence. Sani stated this in a post on X on Thursday while marking Nigeria’s 66th Independence Anniversary. According to him, although the country may not have met the ",
       "url": "https://dailypost.ng/2026/10/01/nigeria-at-66-weve-survived-our-challenges-shehu-sani/",
@@ -158,127 +280,6 @@
       "source": "PUNCH",
       "published": "2026-10-01T07:28:25+00:00",
       "categories": []
-    },
-    {
-      "title": "Nigeria’s economy grows over 4% in 2026 – Tinubu",
-      "summary": "According to the president, the oil and non-oil sectors contributed to the growth, with improved foreign exchange stability, lower inflation, and stronger non-oil exports. The post Nigeria’s economy grows over 4% in 2026 – Tinubu appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/913746-nigerias-economy-grows-over-4-in-2026-tinubu.html",
-      "source": "Premium Times",
-      "published": "2026-10-01T07:28:16+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Kano man arrested for allegedly inviting bandits for attack",
-      "summary": "Vigilantes under the command of Sadiq Mu’azu, the Tsaure area commander in Shanono Local Government Area of Kano State, have reportedly arrested a man identified as Sulaiman Fulani. Security expert Bakatsine disclosed this in a post on X. According to him, the arrest took place in Toronya community,",
-      "url": "https://dailypost.ng/2026/10/01/kano-man-arrested-for-allegedly-inviting-bandits-for-attack/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-01T07:27:59+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Wamakko urges unity, peace as Nigeria marks 66th independence",
-      "summary": "Former Sokoto Governor, Aliyu Wamakko, has called on Nigerians to promote unity, peace, and mutual understanding as the country marks its 66th anniversary. Read More: https://punchng.com/wamakko-urges-unity-peace-as-nigeria-marks-66th-independence/",
-      "url": "https://punchng.com/wamakko-urges-unity-peace-as-nigeria-marks-66th-independence/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-01T07:26:18+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Nkechi Blessing, others mourn as Nollywood actor Cjay Nwokafor dies",
-      "summary": "Nollywood actor Chijioke ‘Cjay’ Nwokafor has died. His colleague, Nkechi Blessing, announced his death on Instagram, mourning his sudden passing. Read More: https://punchng.com/nkechi-blessing-others-mourn-as-nollywood-actor-cjay-nwokafor-dies/",
-      "url": "https://punchng.com/nkechi-blessing-others-mourn-as-nollywood-actor-cjay-nwokafor-dies/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-01T07:26:13+00:00",
-      "categories": []
-    },
-    {
-      "title": "2026 Ballon d’Or: He’s the best – Courtois names player to win award",
-      "summary": "Real Madrid goalkeeper, Thibaut Courtois, has picked his team mate, Kylian Mbappe to win the 2026 Ballon d’Or. In an interview with Onda Cero’s Radioestadio Noche, Courtois insisted that Mbappe has been the best player in the world in the year under review. The Belgian also argued that the winner sh",
-      "url": "https://dailypost.ng/2026/10/01/2026-ballon-dor-hes-the-best-courtois-names-player-to-win-award/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-01T07:25:40+00:00",
-      "categories": []
-    },
-    {
-      "title": "Kenya Refinery: Obasanjo reveals French firm that tried to stop Dangote from succeeding in cement",
-      "summary": "Former Nigerian President Olusegun Obasanjo has revealed that a French firm never wanted Aliko Dangote, President of the Dangote Group, to succeed in cement production. He made this disclosure in his remarks at the groundbreaking ceremony of the Dangote East Africa Petroleum Refinery and Petrochemic",
-      "url": "https://dailypost.ng/2026/10/01/kenya-refinery-obasanjo-reveals-french-firm-that-tried-to-stop-dangote-from-succeeding-in-cement/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-01T07:23:56+00:00",
-      "categories": []
-    },
-    {
-      "title": "Oil theft has reduced, Tinubu says",
-      "summary": "Mr Tinubu said the reduction in oil theft had contributed to improvements in the oil sector. The post Oil theft has reduced, Tinubu says appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/business/business-news/913726-oil-theft-has-reduced-tinubu-says.html",
-      "source": "Premium Times",
-      "published": "2026-10-01T07:21:53+00:00",
-      "categories": []
-    },
-    {
-      "title": "October 1: Nigeria’s journey has been too hard for many – Tinubu",
-      "summary": "President Bola Tinubu has admitted that Nigeria’s journey has not been easy for many citizens. Tinubu made the statement on Thursday during his nationwide broadcast to mark Nigeria’s 66th Independence Anniversary. He said that many citizens have known moments of great hope and periods of profound di",
-      "url": "https://dailypost.ng/2026/10/01/october-1-nigerias-journey-has-been-too-hard-for-many-tinubu/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-01T07:20:22+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Our reforms didn’t create economic problems – Tinubu",
-      "summary": "\"Our reforms did not create the weaknesses in our economy. They confronted them,\" Mr Tinubu said. The post Our reforms didn’t create economic problems – Tinubu appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/913722-our-reforms-didnt-create-economic-problems-tinubu.html",
-      "source": "Premium Times",
-      "published": "2026-10-01T07:17:59+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Emergency phase of economic reforms over – Tinubu",
-      "summary": "President Bola Tinubu has defended the economic reforms implemented by his administration, saying Nigeria has reached a turning point after three years of difficult adjustments. In his Independence Day address, the President said the reforms were introduced to tackle longstanding economic distortion",
-      "url": "https://dailypost.ng/2026/10/01/emergency-phase-of-economic-reforms-over-tinubu/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-01T07:16:31+00:00",
-      "categories": []
-    },
-    {
-      "title": "UPDATED: Tinubu pledges to lower food, transport costs through support for farmers",
-      "summary": "The President said his administration will prioritise reducing the cost of living by lowering agricultural production and transportation costs, expanding mechanised farming and investing in infrastructure, as he defended the economic reforms introduced since 2023. The post UPDATED: Tinubu pledges to",
-      "url": "https://www.premiumtimesng.com/business/business-news/913727-updated-tinubu-pledges-to-lower-food-transport-costs-through-support-for-farmers.html",
-      "source": "Premium Times",
-      "published": "2026-10-01T07:16:10+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "My reforms did not create Nigeria’s economic problems – Tinubu",
-      "summary": "\"Our reforms did not create the weaknesses in our economy. They confronted them,\" Mr Tinubu said. The post My reforms did not create Nigeria’s economic problems – Tinubu appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/913716-my-reforms-did-not-create-nigerias-economic-problems-tinubu.html",
-      "source": "Premium Times",
-      "published": "2026-10-01T07:13:52+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Taraba boat mishap: Councillor calls for safer water transportation",
-      "summary": "The Councillor representing Kpambo Puri Ward in Ussa Local Government Area of Taraba State, Rimamshong Shamaki Kwefya, has appealed to the state government and Ussa local government to provide a boat and outboard engine to improve transportation across Fikyu river. The appeal followed a boat acciden",
-      "url": "https://dailypost.ng/2026/10/01/taraba-boat-mishap-councillor-calls-for-safer-water-transportation/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-01T07:13:02+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
     }
   ]
 }
