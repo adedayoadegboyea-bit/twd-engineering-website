@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T01:11:58.103558+00:00",
+  "generated_at": "2026-10-01T01:42:07.225401+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,24 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Sacked Rivers workers urge A’Court to enforce salary payment",
+      "summary": "Disengaged staff of the Rivers State Sustainable Development Agency have asked the Appeal Court to compel the state government to pay their salaries. Read More: https://punchng.com/sacked-rivers-workers-urge-acourt-to-enforce-salary-payment/",
+      "url": "https://punchng.com/sacked-rivers-workers-urge-acourt-to-enforce-salary-payment/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T02:38:45+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "PETROAN seeks fuel supply for Nigerians’ benefit",
+      "summary": "PETROAN has opened talks with Azikel Refinery for a partnership to supply locally refined petroleum products to retail outlets across Nigeria. Read More: https://punchng.com/petroan-seeks-fuel-supply-for-nigerians-benefit/",
+      "url": "https://punchng.com/petroan-seeks-fuel-supply-for-nigerians-benefit/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T02:27:30+00:00",
+      "categories": []
+    },
     {
       "title": "Solar wiring sparks fire in Kwara building",
       "summary": "A spark from solar wiring has reportedly caused a fire that gutted a room in a building in Ilorin, Kwara State, according to the state fire service. Read More: https://punchng.com/solar-wiring-sparks-fire-in-kwara-building-2/",
@@ -136,17 +154,6 @@
       ]
     },
     {
-      "title": "Dangote blames marketers, IOCs for Lamu refinery protests",
-      "summary": "Aliko Dangote has blamed local marketers and IOCs for protests over his proposed $16bn oil refinery in Lamu, Kenya, amid a court-ordered construction halt. Read More: https://punchng.com/dangote-blames-marketers-iocs-for-lamu-refinery-protests/",
-      "url": "https://punchng.com/dangote-blames-marketers-iocs-for-lamu-refinery-protests/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-01T01:02:58+00:00",
-      "categories": [
-        "engineering",
-        "business"
-      ]
-    },
-    {
       "title": "Support afforestation efforts, govt urges charcoal merchants",
       "summary": "The Nigerian government has urged charcoal merchants to support its afforestation efforts to reverse deforestation and restore the nation’s degraded forest Read More: https://punchng.com/support-afforestation-efforts-govt-urges-charcoal-merchants/",
       "url": "https://punchng.com/support-afforestation-efforts-govt-urges-charcoal-merchants/?utm_source=rss.punchng.com&utm_medium=web",
@@ -213,14 +220,6 @@
       "categories": []
     },
     {
-      "title": "Nigeria @66: Dashed hopes, fragile future",
-      "summary": "An editorial on Nigeria at 66, reflecting on dashed hopes, a fragile future, and unfulfilled potential due to poor leadership and over-reliance on oil. Read More: https://punchng.com/nigeria-66-dashed-hopes-fragile-future/",
-      "url": "https://punchng.com/nigeria-66-dashed-hopes-fragile-future/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-01T00:52:41+00:00",
-      "categories": []
-    },
-    {
       "title": "US stocks rise after stable inflation reading",
       "summary": "Wall Street stocks rose on Wednesday following a stable US inflation reading for August and better-than-expected private sector hiring data. Read More: https://punchng.com/us-stocks-rise-after-stable-inflation-reading/",
       "url": "https://punchng.com/us-stocks-rise-after-stable-inflation-reading/?utm_source=rss.punchng.com&utm_medium=web",
@@ -265,14 +264,6 @@
       ]
     },
     {
-      "title": "Nigeria @66: NLC demands new minimum wage, lower petrol prices",
-      "summary": "The Nigeria Labour Congress has demanded a new national minimum wage, a nationwide wage award, and an immediate reduction in petrol prices to combat rising Read More: https://punchng.com/nigeria-66-nlc-demands-new-minimum-wage-lower-petrol-prices/",
-      "url": "https://punchng.com/nigeria-66-nlc-demands-new-minimum-wage-lower-petrol-prices/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-01T00:46:19+00:00",
-      "categories": []
-    },
-    {
       "title": "VerveLife expands tech links with Truecaller partnership",
       "summary": "Verve has announced Truecaller as a strategic partner for the ninth edition of its VerveLife fitness event to strengthen its technology and lifestyle focus Read More: https://punchng.com/vervelife-expands-tech-links-with-truecaller-partnership/",
       "url": "https://punchng.com/vervelife-expands-tech-links-with-truecaller-partnership/?utm_source=rss.punchng.com&utm_medium=web",
@@ -288,6 +279,16 @@
       "published": "2026-10-01T00:42:15+00:00",
       "categories": [
         "business"
+      ]
+    },
+    {
+      "title": "Truck operators seek reforms to Lekki call-up system",
+      "summary": "Truck operators in Lagos are calling for a review of the Lekki call-up system to address traffic challenges and improve cargo evacuation from the ports. Read More: https://punchng.com/truck-operators-seek-reforms-to-lekki-call-up-system/",
+      "url": "https://punchng.com/truck-operators-seek-reforms-to-lekki-call-up-system/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-01T00:40:36+00:00",
+      "categories": [
+        "lagos"
       ]
     }
   ]
