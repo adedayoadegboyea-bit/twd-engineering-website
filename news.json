@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T04:44:27.987487+00:00",
+  "generated_at": "2026-10-01T05:10:58.509511+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -17,6 +17,16 @@
       "source": "PUNCH",
       "published": "2026-10-01T05:11:47+00:00",
       "categories": []
+    },
+    {
+      "title": "Nigerian Newspapers: 10 things you need to know Thursday morning",
+      "summary": "Good morning! Here is today’s summary from Nigerian Newspapers: 1. The Minister of the Federal Capital Territory, Nyesom Wike on Wednesday vowed to resign from the Federal Executive Council if President Bola Tinubu loses the 2027 presidential election in the FCT and Rivers State. Wike made the decla",
+      "url": "https://dailypost.ng/2026/10/01/nigerian-newspapers-10-things-you-need-to-know-thursday-morning-145/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-01T05:09:21+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "Teacher bags life jail for defiling eight-year-old pupil",
@@ -275,16 +285,6 @@
       "source": "PUNCH",
       "published": "2026-10-01T00:50:48+00:00",
       "categories": []
-    },
-    {
-      "title": "Uzoka-Anite to lead discourse on Africa’s sovereign credit ratings",
-      "summary": "Minister Doris Uzoka-Anite is set to lead a discourse on the reforms needed to strengthen Africa’s sovereign credit ratings at a DataPro webinar. Read More: https://punchng.com/uzoka-anite-to-lead-discourse-on-africas-sovereign-credit-ratings/",
-      "url": "https://punchng.com/uzoka-anite-to-lead-discourse-on-africas-sovereign-credit-ratings/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-01T00:50:08+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
