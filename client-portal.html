@@ -1,63 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Client Project Portal | TW&D Engineering Consult & Services Ltd</title>
-<meta name="description" content="Secure TW&D Engineering client project document submission portal.">
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
-<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="description" content="Secure TW&D Engineering client project account portal.">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="site-flow.css?v=20260930-1">
+<link rel="stylesheet" href="global-access.css?v=20260928-1">
 <style>
-.portal-page{background:#f7f9fc;min-height:100vh}.portal-wrap{max-width:980px;margin:auto;padding:60px 20px}.portal-card{background:#fff;border:1px solid #e7ded5;box-shadow:0 18px 55px rgba(30,20,20,.08);padding:42px}.portal-head{border-bottom:1px solid #e7ded5;padding-bottom:28px;margin-bottom:30px}.portal-head h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,5vw,58px);margin:8px 0;color:#181313}.portal-head p{color:#626870;line-height:1.7}.portal-kicker{color:#d7a62a;font-weight:800;letter-spacing:2px;font-size:12px}.portal-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.portal-field{display:flex;flex-direction:column;gap:8px}.portal-field.full{grid-column:1/-1}.portal-field label{font-weight:800;font-size:13px;color:#282020}.portal-field input,.portal-field select,.portal-field textarea{border:1px solid #d9d0c8;padding:14px;border-radius:0;font:inherit;background:#fff}.portal-field textarea{min-height:130px;resize:vertical}.upload-box{border:2px dashed #d4a52c;background:#fffaf0;padding:22px}.upload-box input{border:0;padding:0}.portal-note{font-size:12px;color:#72777e;line-height:1.6}.portal-submit{margin-top:24px}.portal-back{display:inline-block;margin-bottom:24px;color:#b51f2a;font-weight:800}.portal-status{margin-top:16px;padding:14px;background:#f4f0ea;color:#333;display:none}.portal-status.show{display:block}@media(max-width:700px){.portal-card{padding:24px}.portal-grid{grid-template-columns:1fr}.portal-field.full{grid-column:auto}}
+.portal-page{background:#f7f9fc;min-height:100vh}.portal-wrap{max-width:980px;margin:auto;padding:60px 20px}.portal-card{background:#fff;border:1px solid #e7ded5;box-shadow:0 18px 55px rgba(30,20,20,.08);padding:42px}.portal-head{border-bottom:1px solid #e7ded5;padding-bottom:28px;margin-bottom:30px}.portal-head h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,5vw,58px);margin:8px 0;color:#181313}.portal-head p{color:#626870;line-height:1.7}.portal-kicker{color:#d7a62a;font-weight:800;letter-spacing:2px;font-size:12px}.portal-actions{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}.portal-action{border:1px solid #e7ded5;padding:28px;background:#fff}.portal-action h2{margin-top:0}.portal-action p{color:#626870;line-height:1.7}.portal-note{margin-top:24px;padding:16px;background:#f4f0ea;color:#555;line-height:1.6;font-size:13px}@media(max-width:700px){.portal-card{padding:24px}.portal-actions{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="site-flow.css?v=20260930-1"><link rel="stylesheet" href="global-access.css?v=20260928-1">
 </head>
 <body class="portal-page">
 <div class="portal-wrap">
 <a class="portal-back" href="index.html">← Back to TW&D website</a>
 <div class="portal-card">
-<div class="portal-head"><div class="portal-kicker">TW&amp;D ENGINEERING CONSULT &amp; SERVICES LTD</div><h1>Client Project Portal</h1><p>Submit your project information, structural drawings, PDFs and site images for TW&amp;D’s technical review and project assessment.</p></div>
-<form id="clientPortalForm" action="PASTE_YOUR_CLIENT_PORTAL_WEB_APP_URL_HERE" method="post" target="portalSubmitFrame" enctype="application/x-www-form-urlencoded">
-<div class="portal-grid">
-<div class="portal-field"><label for="clientName">Client / Company Name *</label><input id="clientName" name="clientName" required></div>
-<div class="portal-field"><label for="email">Email Address *</label><input id="email" name="email" type="email" required></div>
-<div class="portal-field"><label for="phone">Phone / WhatsApp *</label><input id="phone" name="phone" required></div>
-<div class="portal-field"><label for="location">Project Location *</label><input id="location" name="location" required></div>
-<div class="portal-field"><label for="projectType">Project Type *</label><select id="projectType" name="projectType" required><option value="">Select</option><option>Structural Design Review</option><option>Building Construction</option><option>Civil Engineering</option><option>Electrical Engineering</option><option>Plumbing</option><option>Engineering Consultancy</option><option>Property Development</option><option>Other</option></select></div>
-<div class="portal-field"><label for="reference">Project Reference (optional)</label><input id="reference" name="reference"></div>
-<div class="portal-field full"><label for="description">Project / Technical Review Request *</label><textarea id="description" name="description" required placeholder="Tell TW&D what you want reviewed, designed, estimated or constructed."></textarea></div>
-<div class="portal-field full"><label for="files">PDFs and Images *</label><div class="upload-box"><input id="files" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp" multiple required><p class="portal-note">Accepted: PDF, JPG, JPEG, PNG and WEBP. The secure company storage backend will receive the submitted documents. Do not upload confidential material unless you are authorised to share it.</p></div></div>
-<input type="hidden" name="filesPayload" id="filesPayload">
-<input type="hidden" name="submittedFrom" value="TW&D Client Project Portal">
+<div class="portal-head"><div class="portal-kicker">TW&amp;D ENGINEERING CONSULT &amp; SERVICES LTD</div><h1>Client Project Portal</h1><p>Secure access to your TW&D customer account, project records, service requests, quotations, notifications and private project documents.</p></div>
+<div class="portal-actions">
+<section class="portal-action"><h2>Existing Client</h2><p>Sign in to your customer account to view your projects, project updates, quotations, service requests and private documents.</p><a class="btn btn-gold" href="account.html">Sign In to My Account →</a></section>
+<section class="portal-action"><h2>New Client</h2><p>Create your customer account first. Email confirmation is used before account access is activated.</p><a class="btn btn-gold" href="account.html">Create Client Account →</a></section>
 </div>
-<button class="btn btn-gold portal-submit" type="submit">Submit Project Documents →</button>
-<div id="portalStatus" class="portal-status">Your submission has been prepared. Please wait for confirmation.</div>
-</form>
-<iframe name="portalSubmitFrame" id="portalSubmitFrame" title="Submission response" style="display:none"></iframe>
+<div class="portal-note"><strong>Project documents:</strong> This page no longer sends files to an unverified web-app address. Use the secure customer account system for your private project records. A dedicated document-upload workflow will only be enabled after its backend is verified.</div>
 </div>
 </div>
-<script>
-const form=document.getElementById('clientPortalForm');
-const filesInput=document.getElementById('files');
-const payload=document.getElementById('filesPayload');
-const status=document.getElementById('portalStatus');
-form.addEventListener('submit',async e=>{
- e.preventDefault();
- const files=[...filesInput.files];
- if(!files.length){alert('Please select at least one PDF or image.');return;}
- if(files.some(f=>f.size>10*1024*1024)){alert('Each file must be 10MB or smaller.');return;}
- const encoded=[];
- for(const file of files){
-   const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result).split(',')[1]);r.onerror=reject;r.readAsDataURL(file);});
-   encoded.push({name:file.name,type:file.type,size:file.size,data});
- }
- payload.value=JSON.stringify(encoded);
- status.classList.add('show');
- status.textContent='Submitting your documents to TW&D secure project intake…';
- form.submit();
- setTimeout(()=>{status.textContent='Submission sent. TW&D will review the project information and contact you using the details supplied.';},2500);
-});
-</script>
 <script src="global-access.js?v=20260928-1"></script>
-</body></html>
+</body>
+</html>
