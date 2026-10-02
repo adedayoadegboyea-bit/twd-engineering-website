@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T08:12:11.711968+00:00",
+  "generated_at": "2026-10-02T08:42:11.035433+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,43 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Ekiti deploys CNG buses to cut transport fares by 50%",
+      "summary": "The Ekiti State Government has commenced the deployment of Compressed Natural Gas buses as part of measures to reduce transport fares by 50 per cent and ease the burden of transportation costs on residents. Governor Biodun Oyebanji announced the initiative on Thursday during the official flag-off of",
+      "url": "https://punchng.com/ekiti-deploys-cng-buses-to-cut-transport-fares-by-50/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-02T09:38:08+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "One killed, three injured in Lagos road crash",
+      "summary": "One person has died while three others sustained serious injuries in a road crash involving a Lexus Jeep 350 along the Coastal Road inward Eko Hotel, Lagos. The crash occurred earlier on Friday, according to a statement signed by the Director, Public Affairs and Enlightenment Department of the Lagos",
+      "url": "https://punchng.com/one-killed-three-injured-in-lagos-road-crash-2/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-02T09:28:38+00:00",
+      "categories": [
+        "engineering",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Phyna celebrates BBNaija win anniversary after making boxing history",
+      "summary": "Big Brother Naija winner, Phyna, has celebrated the fourth anniversary of her reality TV victory after making history as the winner of Nigeria’s first female celebrity boxing bout. Phyna, whose real name is Ijeoma Otabor, won the seventh season of Big Brother Naija, Level Up, on October 2, 2022. Fou",
+      "url": "https://punchng.com/phyna-celebrates-bbnaija-win-anniversary-after-making-boxing-history/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-02T09:20:59+00:00",
+      "categories": []
+    },
+    {
+      "title": "Army destroys terrorist hideout, recovers weapons in Anambra",
+      "summary": "Troops of the Joint Task Force South East, Operation UDO KA, have destroyed a terrorist hideout in Anambra State and recovered a cache of weapons and ammunition during an operation aimed at dismantling criminal networks in the region. In a post obtained from the Nigerian Army’s X handle on Friday, t",
+      "url": "https://punchng.com/army-destroys-terrorist-hideout-recovers-weapons-in-anambra/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-02T09:09:16+00:00",
+      "categories": []
+    },
     {
       "title": "FIFA blocks Argentina’s plan to retire Messi’s No. 10 shirt",
       "summary": "Argentina’s plan to retire Lionel Messi’s iconic No. 10 shirt has been blocked by FIFA regulations, according to GOAL.com reports on Thursday. The Argentine Football Association reportedly wanted to permanently retire the number following Messi’s retirement from international football. Messi announc",
@@ -35,11 +72,51 @@
       "categories": []
     },
     {
+      "title": "Police, army, teachers strengthen security partnership in Taraba",
+      "summary": "The Taraba State Commissioner of Police, Edwin Ogbeghagha, has reaffirmed the command’s commitment to strengthening collaboration with the Nigerian Army, educational institutions and other stakeholders to enhance security across the state. Ogbeghagha made the commitment in Jalingo on Wednesday when ",
+      "url": "https://dailypost.ng/2026/10/02/police-army-teachers-strengthen-security-partnership-in-taraba/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T08:38:52+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nigeria at 66, By Jibrin Ibrahim",
+      "summary": "Yesterday, President Tinubu addressed Nigerians on the occasion of our 66th independence anniversary. The content of the speech resembles what we expect to hear at each anniversary. Lots of optimism about a greater tomorrow but no clear pathway to that outcome. The title of the address was from refo",
+      "url": "https://www.premiumtimesng.com/opinion/914017-nigeria-at-66-by-jibrin-ibrahim.html",
+      "source": "Premium Times",
+      "published": "2026-10-02T08:31:22+00:00",
+      "categories": []
+    },
+    {
       "title": "Alex Ferguson opens up about recovery from brain haemorrhage",
       "summary": "Ex-Man United coach Sir Alex Ferguson has opened up about his recovery from a brain haemorrhage, recalling the fear and uncertainty he experienced after undergoing emergency surgery in 2018. The former Manchester United gaffer suffered the haemorrhage in May 2018 and returned to Old Trafford four mo",
       "url": "https://punchng.com/alex-ferguson-opens-up-about-recovery-from-brain-haemorrhage/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-02T08:25:49+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nations League: My conscience is clear – Jorge Jesus breaks silence on Ronaldo’s exit",
+      "summary": "Portugal head coach, Jorge Jesus, has insisted he has a “clear conscience” over his fallout with captain Cristiano Ronaldo. Ronaldo left the national team camp on Wednesday, ahead of their UEFA Nations League clash with Denmark. The 41-year-old was upset with Jesus over his remarks at a press confer",
+      "url": "https://dailypost.ng/2026/10/02/nations-league-my-conscience-is-clear-jorge-jesus-breaks-silence-on-ronaldos-exit/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T08:20:58+00:00",
+      "categories": []
+    },
+    {
+      "title": "VGN dismisses claims of factional reconciliation in Taraba",
+      "summary": "The Vigilante Group of Nigeria (VGN), Taraba State Command, has dismissed claims of a reconciliation between alleged factions of the organisation in the state, describing the claims as misleading and fraudulent. The command, in a statement signed by its Acting State Vice Public Relations Officer, Su",
+      "url": "https://dailypost.ng/2026/10/02/vgn-dismisses-claims-of-factional-reconciliation-in-taraba/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T08:20:17+00:00",
+      "categories": []
+    },
+    {
+      "title": "UNL: Portugal could ban Ronaldo from representing national team for six months",
+      "summary": "Portugal forward, Cristiano Ronaldo could be suspended from playing for the national team if he is found to have “abandoned” the team. According to the Daily Mail, the ban could last between one and six months. The Portuguese Football Federation’s disciplinary code states: “Any player who, having be",
+      "url": "https://dailypost.ng/2026/10/02/unl-portugal-could-ban-ronaldo-from-representing-national-team-for-six-months/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T08:13:56+00:00",
       "categories": []
     },
     {
@@ -195,93 +272,6 @@
       "source": "Daily Post Nigeria",
       "published": "2026-10-02T06:48:56+00:00",
       "categories": []
-    },
-    {
-      "title": "Obidient Movement gets new National Coordinator; Yunusa Tanko reassigned",
-      "summary": "\"With grace, humility, courage and determination, I accept the appointment to serve as National Coordinator of the Obidient Movement.\" The post Obidient Movement gets new National Coordinator; Yunusa Tanko reassigned appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/913994-obidient-movement-gets-new-national-coordinator-yunusa-tanko-reassigned.html",
-      "source": "Premium Times",
-      "published": "2026-10-02T06:47:20+00:00",
-      "categories": []
-    },
-    {
-      "title": "Troops kill 16 terrorists, lose three soldiers in Adamawa",
-      "summary": "Troops of Operation Hadin Kai have neutralised 16 terrorists in a coordinated ambush on a terrorist enclave in the Boima general area of Gombi Local Government Area of Adamawa State. This is as the Nigerian Army said it also lost three soldiers in terrorist attacks that occurred concurrently at troo",
-      "url": "https://punchng.com/troops-kill-16-terrorists-lose-three-soldiers-in-adamawa/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T06:46:55+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Hajj: Nigeria secures 10,000 extra slots, allocation hits 60,000",
-      "summary": "The National Hajj Commission of Nigeria said it has secured an additional 10,000 slots from Saudi Arabia for the 2027 Hajj, raising the country’s total allocation from 50,000 to 60,000 pilgrims. The commission, in a statement by its Head, Information and Publications Division, Shafii Mohammed, on Th",
-      "url": "https://punchng.com/hajj-nigeria-secures-10000-extra-slots-allocation-hits-60000/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T06:46:52+00:00",
-      "categories": []
-    },
-    {
-      "title": "Free zones attract $200bn FDI, create 500,000 jobs – FG",
-      "summary": "The Federal Government has said Nigeria’s free trade zones have attracted more than $200bn in foreign investment and over N900bn in domestic investment, while generating more than 100,000 direct jobs and over 500,000 jobs across supply chains, logistics networks and host communities. The Minister of",
-      "url": "https://punchng.com/free-zones-attract-200bn-fdi-create-500000-jobs-fg/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T06:46:23+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "Nigeria @66: CAN demands lower food, transport costs",
-      "summary": "The Christian Association of Nigeria has urged the Federal Government to prioritise reductions in the cost of food, transportation and energy as the country marks its 66th Independence Anniversary. It also asked the government to strengthen social protection and improve security, saying the benefits",
-      "url": "https://punchng.com/nigeria-66-can-demands-lower-food-transport-costs/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T06:45:45+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Tinubu’s CNG low-fare directive stalls, NNPC claims hit N11.2tn, other top stories",
-      "summary": "The implementation of the Federal Government’s CNG-powered transport initiative, a three-day warning strike by public workers, rising NNPC oil security claims, criticism of President Bola Tinubu’s prosperity claim and the cancellation of a planned Obi-Kwankwaso rally in Akwa Ibom are among the major",
-      "url": "https://punchng.com/tinubus-cng-low-fare-directive-stalls-nnpc-claims-hit-n11-2tn-other-top-stories/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T06:44:20+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Turkey: Orban wins Turkish Süper Lig Goal of the Month award",
-      "summary": "Nigeria forward, Gift Orban has won the Turkish Süper Lig Goal of the Month award for September. Orban won the award for his magnificent strike in Amedspor’s 3-2 home victory over Beşiktaş. The 24-year-old unleashed a powerful long-range shot in the 13th minute of the encounter to give Amedspor the ",
-      "url": "https://dailypost.ng/2026/10/02/turkey-orban-wins-turkish-super-lig-goal-of-the-month-award/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-02T06:43:34+00:00",
-      "categories": [
-        "engineering",
-        "property"
-      ]
-    },
-    {
-      "title": "Why it’s now more difficult for up-and-coming artistes to make it in Nigeria – Slimcase",
-      "summary": "Street artiste, Slimcase has expressed concern over the plight of up-and-coming artistes amid the rising cost of music promotion in Nigeria. Speaking in a recent interview with Echo Room, Slimcase lamented that it costs a whopping N265 million to properly promote one song in Nigeria. He also blamed ",
-      "url": "https://dailypost.ng/2026/10/02/why-its-now-more-difficult-for-up-and-coming-artistes-to-make-it-in-nigeria-slimcase/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-02T06:40:36+00:00",
-      "categories": []
-    },
-    {
-      "title": "NPFL: Warri Wolves urged to bounce back from Rangers defeat",
-      "summary": "Delta State Government has urged Nigeria Premier Football League, NPFL, side Warri Wolves to put behind them the 1-0 rescheduled Week Two defeat to Rangers. The state Commissioner for Sports, Onoriode Oborevwori, gave the charge after the encounter at the Southern Delta University Stadium, Ozoro. Ob",
-      "url": "https://dailypost.ng/2026/10/02/npfl-warri-wolves-urged-to-bounce-back-from-rangers-defeat/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-02T06:37:02+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
