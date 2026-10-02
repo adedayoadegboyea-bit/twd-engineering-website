@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T20:09:43.349168+00:00",
+  "generated_at": "2026-10-02T20:42:28.878275+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,12 +11,42 @@
   ],
   "articles": [
     {
-      "title": "I’ll quit ADC ticket, back Tinubu if petrol hits ₦600 – Amaechi",
-      "summary": "The ADC Vice Presidential candidate, Rotimi Amaechi, says he will quit his party’s ticket and campaign for President Tinubu if petrol price drops to ₦600. Read More: https://punchng.com/amaechi-challenges-tinubu-to-cut-petrol-price-to-%e2%82%a6600/",
-      "url": "https://punchng.com/amaechi-challenges-tinubu-to-cut-petrol-price-to-%e2%82%a6600/?utm_source=rss.punchng.com&utm_medium=web",
+      "title": "FG targets 10,000 jobs per abattoir, seeks end to live cattle transport",
+      "summary": "The Federal Government is targeting 10,000 jobs from each modern abattoir to transform the livestock sector from transporting live animals to local meat pr Read More: https://punchng.com/fg-targets-10000-jobs-from-each-modern-abattoir/",
+      "url": "https://punchng.com/fg-targets-10000-jobs-from-each-modern-abattoir/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
-      "published": "2026-10-02T20:57:44+00:00",
+      "published": "2026-10-02T21:32:35+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Wike questions Amaechi’s 24-year record in public office",
+      "summary": "FCT Minister Nyesom Wike has challenged his predecessor, Rotimi Amaechi, to show projects he attracted to Rivers State during his 24 years in public office Read More: https://punchng.com/wike-questions-amaechis-24-year-record-in-public-office/",
+      "url": "https://punchng.com/wike-questions-amaechis-24-year-record-in-public-office/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-02T21:31:44+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Five die after mine collapse in Turkey",
+      "summary": "Turkish rescuers on Friday recovered the bodies of three miners trapped in a mine collapse in western Turkey, raising the death toll to five, local authorities said. In a separate accident, another miner died on Friday during the collapse of an unlicensed mine in Kilimli, a town on Turkey’s northwes",
+      "url": "https://punchng.com/five-die-after-mine-collapse-in-turkey/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-02T21:18:48+00:00",
       "categories": []
+    },
+    {
+      "title": "Atiku govt will cut fuel, food costs within one year – Amaechi",
+      "summary": "Former Minister of Transportation and African Democratic Congress vice-presidential candidate, Rotimi Amaechi, has said an Atiku Abubakar-led administration would reduce the cost of transportation, fuel and food within its first year in office. Amaechi made the claim on Friday while appearing on Cha",
+      "url": "https://punchng.com/atiku-govt-will-cut-fuel-food-costs-within-one-year-amaechi/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-02T21:11:16+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "Evening recap: How suspect killed girlfriend, D’Banj donates campaign vehicles to Osun politician, other top stories",
@@ -38,6 +68,14 @@
       ]
     },
     {
+      "title": "Court remands man over alleged impersonation of JAMB registrar",
+      "summary": "The court ordered the remand of the alleged impersonator’s remand in Kuje Correctional Centre in Abuja, pending ruling on the defendant’s bail application. The post Court remands man over alleged impersonation of JAMB registrar appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/914137-court-remands-man-over-alleged-impersonation-of-jamb-registrar.html",
+      "source": "Premium Times",
+      "published": "2026-10-02T20:38:41+00:00",
+      "categories": []
+    },
+    {
       "title": "PHOTOS: Fire razes 21 shops, vehicle in Abuja furniture market",
       "summary": "A fire outbreak at the Kugbo Furniture Market in Abuja has destroyed 21 shops and a vehicle. The National Emergency Management Agency confirmed no casualti Read More: https://punchng.com/photos-fire-razes-21-shops-vehicle-in-abuja-furniture-market/",
       "url": "https://punchng.com/photos-fire-razes-21-shops-vehicle-in-abuja-furniture-market/?utm_source=rss.punchng.com&utm_medium=web",
@@ -45,6 +83,17 @@
       "published": "2026-10-02T20:37:47+00:00",
       "categories": [
         "business",
+        "government"
+      ]
+    },
+    {
+      "title": "NUJ draws govt’s attention to deplorable schools, roads in Cross River",
+      "summary": "The Nigerian Union of Journalists, NUJ, has expressed worry over the glaringly deplorable state of public schools in the state. Drawing the attention of the Cross River State Government to the situation, the NUJ Cross River State Council, led by Comrade Archibong Bassey, said that many roads in the ",
+      "url": "https://dailypost.ng/2026/10/02/nuj-draws-govts-attention-to-deplorable-schools-roads-in-cross-river/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T20:34:42+00:00",
+      "categories": [
+        "engineering",
         "government"
       ]
     },
@@ -68,11 +117,37 @@
       "categories": []
     },
     {
+      "title": "I have been in govt more than Tinubu – Rotimi Amaechi",
+      "summary": "The African Democratic Congress, ADC, presidential running mate, Rotimi Amaechi, on Friday disclosed that he has been in government longer than President Bola Tinubu. Amaechi disclosed that he spent more time as a governor, Speaker and minister, unlike Tinubu, who was a governor, senator and preside",
+      "url": "https://dailypost.ng/2026/10/02/i-have-been-in-govt-more-than-tinubu-rotimi-amaechi/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T20:30:57+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Osun cult clash leaves two dead, four injured",
-      "summary": "Two people have been confirmed dead and four others injured in Osogbo, Osun State, following a clash between suspected rival cult groups at a lounge. Read More: https://punchng.com/osun-cult-clash-leaves-two-dead-four-injured-in-osogbo/",
+      "summary": "Two people have been confirmed dead and four others injured in a suspected cult clash in Osogbo, Osun State, the police have confirmed. Read More: https://punchng.com/osun-cult-clash-leaves-two-dead-four-injured-in-osogbo/",
       "url": "https://punchng.com/osun-cult-clash-leaves-two-dead-four-injured-in-osogbo/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-02T20:29:48+00:00",
+      "categories": []
+    },
+    {
+      "title": "Police arrest 30-year-old man over alleged threat to father in Cross River",
+      "summary": "A 30-year-old man named Daniel Jackson has been arrested by the police. He was arrested at Ekori in Yakurr LGA of Cross River State following a report of an alleged threat of violence made at the Ekori Police Division on Friday. Police PRO, ASP Eitokpah Sunday Akata, said during the arrest, a locall",
+      "url": "https://dailypost.ng/2026/10/02/police-arrest-30-year-old-man-over-alleged-threat-to-father-in-cross-river/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T20:29:07+00:00",
+      "categories": []
+    },
+    {
+      "title": "I’ll quit ADC ticket, back Tinubu if petrol hits ₦600 – Amaechi",
+      "summary": "ADC Vice Presidential candidate, Rotimi Amaechi, says he will quit his party’s ticket and campaign for President Tinubu if petrol price drops to ₦600. Read More: https://punchng.com/amaechi-challenges-tinubu-to-cut-petrol-price-to-%e2%82%a6600/",
+      "url": "https://punchng.com/amaechi-challenges-tinubu-to-cut-petrol-price-to-%e2%82%a6600/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-02T20:27:44+00:00",
       "categories": []
     },
     {
@@ -84,11 +159,37 @@
       "categories": []
     },
     {
+      "title": "Only few rich Nigerians benefitting under Tinubu, the poor suffering – Amaechi",
+      "summary": "Former Minister of Transportation, Rotimi Amaechi, has said that only a few Nigerians are benefiting from the country’s independence, while the poor continue to suffer. Amaechi, vice presidential candidate of the African Democratic Congress (ADC), made the statement while speaking on Channels Televi",
+      "url": "https://dailypost.ng/2026/10/02/only-few-rich-nigerians-benefitting-under-tinubu-the-poor-suffering-amaechi/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T20:23:29+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "‘What have you ever done’ – Rio Ferdinand questions Portugal over Ronaldo",
+      "summary": "Manchester United legend Rio Ferdinand has questioned Portugal over Cristiano Ronaldo. Ferdinand posted on X, calling for respect for Ronaldo’s career as he questioned criticism directed at the Al-Nassr forward in recent years. This comes after Ronaldo left the Portugal team before their UEFA Nation",
+      "url": "https://dailypost.ng/2026/10/02/what-have-you-ever-done-rio-ferdinand-questions-portugal-over-ronaldo/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T20:15:35+00:00",
+      "categories": []
+    },
+    {
       "title": "I was BBNaija season 11’s villain, says Nomy",
       "summary": "BBNaija Season 11 housemate, Nomy, has described herself as the villain of the season, insisting she remains the main character despite her rebellious natu Read More: https://punchng.com/i-was-bbnaija-season-11s-villain-says-nomy/",
       "url": "https://punchng.com/i-was-bbnaija-season-11s-villain-says-nomy/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-02T20:13:29+00:00",
+      "categories": []
+    },
+    {
+      "title": "Independence: CAN Chairman tells Tinubu to urgently cut fuel, food prices",
+      "summary": "The Chairman of the Christian Association of Nigeria, CAN, Niger State chapter, Most Rev. Dr. Bulus Dauwa Yohanna, has urged President Bola Tinubu to urgently tackle the economic hardship in the country by reducing fuel and food prices and strengthening the naira. Yohanna, who is also the Catholic B",
+      "url": "https://dailypost.ng/2026/10/02/independence-can-chairman-tells-tinubu-to-urgently-cut-fuel-food-prices/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-02T20:13:13+00:00",
       "categories": []
     },
     {
@@ -180,109 +281,6 @@
       "categories": [
         "engineering",
         "government"
-      ]
-    },
-    {
-      "title": "I loved him more than life itself, Elon Musk’s partner breaks silence on breakup",
-      "summary": "Shivon Zilis, Elon Musk’s partner, has broken her silence on their breakup in a post on X, saying she loved him ‘more than life itself’. Read More: https://punchng.com/i-loved-him-more-than-life-itself-elon-musks-partner-breaks-silence-on-breakup/",
-      "url": "https://punchng.com/i-loved-him-more-than-life-itself-elon-musks-partner-breaks-silence-on-breakup/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T19:44:52+00:00",
-      "categories": []
-    },
-    {
-      "title": "US mum kills four-year-old daughter, self after losing custody battle",
-      "summary": "A 35-year-old woman in Houston, Texas, United States, killed her four-year-old daughter and later herself after losing a custody battle over the child, the New York Post reported on Friday. The woman, identified as Cibelle Savella, reportedly shot her daughter, Vivian, hours after a family court jud",
-      "url": "https://punchng.com/us-mum-kills-four-year-old-daughter-self-after-losing-custody-battle/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T19:37:16+00:00",
-      "categories": []
-    },
-    {
-      "title": "Sowore insists on having SSS director general summoned to testify in cyberbullying trial",
-      "summary": "Mr Sowore’s defence revived the request for Mr Ajayi to personally appear, as trial resumed this week after the SSS backpedalled on its decision to have proceedings suspended until after the general elections. The post Sowore insists on having SSS director general summoned to testify in cyberbullyin",
-      "url": "https://www.premiumtimesng.com/news/top-news/914106-sowore-insists-on-having-sss-director-general-summoned-to-testify-in-cyberbullying-trial.html",
-      "source": "Premium Times",
-      "published": "2026-10-02T19:23:04+00:00",
-      "categories": []
-    },
-    {
-      "title": "Argentina offers citizenship to foreigners investing $350,000",
-      "summary": "Argentina’s government has launched a citizenship by investment programme, offering passports to foreigners who contribute at least $350,000 to the country Read More: https://punchng.com/argentina-offers-citizenship-to-foreigners-investing-350000/",
-      "url": "https://punchng.com/argentina-offers-citizenship-to-foreigners-investing-350000/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T19:16:23+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "Friday Sermon: Great Nigeria at 66, the importance of nation-building and the value of prayer (Du’a)!, By Murtadha Gusau",
-      "summary": "In the Name of Allah, the Most-Merciful, the Ever-Merciful Alhamdulillah. All praise belongs to Allah, the Sustainer of the worlds, who created us into nations and tribes so that we may know one another. I bear witness that there is no deity worthy of worship except Allah, and Muhammad (Peace be upo",
-      "url": "https://www.premiumtimesng.com/opinion/914104-friday-sermon-great-nigeria-at-66-the-importance-of-nation-building-and-the-value-of-prayer-dua-by-murtadha-gusau.html",
-      "source": "Premium Times",
-      "published": "2026-10-02T19:15:07+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "“Walking Is Now Difficult For Me” – Pete Edochie",
-      "summary": "Veteran Nollywood actor, Pete Edochie, has said that he is currently struggling to walk and has been experiencing swelling in different parts of his body. Edochie made the disclosure while visiting ailing Ghanaian actor Emmanuel Armah in Accra, Ghana, on Thursday, in a video now circulating online. ",
-      "url": "https://www.informationng.com/2026/10/walking-is-now-difficult-for-me-pete-edochie.html",
-      "source": "Information Nigeria",
-      "published": "2026-10-02T19:15:02+00:00",
-      "categories": []
-    },
-    {
-      "title": "Fubara presents certificate to new Rivers monarch",
-      "summary": "Rivers State Governor, Siminalayi Fubara, has presented the Certificate of Recognition and Staff of Office to the new Amanyanabo of Opobo Kingdom, Jeki VI. Read More: https://punchng.com/fubara-presents-certificate-to-new-rivers-monarch/",
-      "url": "https://punchng.com/fubara-presents-certificate-to-new-rivers-monarch/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T19:11:21+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "I will make life affordable again, Atiku promises Nigerians",
-      "summary": "ADC presidential candidate, Atiku Abubakar, faults the government’s fuel subsidy removal, sympathising with Nigerians over high costs and promising to make Read More: https://punchng.com/i-will-make-life-affordable-again-atiku-promises-nigerians/",
-      "url": "https://punchng.com/i-will-make-life-affordable-again-atiku-promises-nigerians/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T19:11:16+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: Wike rallies Rivers support for Tinubu",
-      "summary": "FCT Minister, Nyesom Wike, has rallied political stakeholders in Rivers State to support President Bola Tinubu in the 2027 presidential election. Read More: https://punchng.com/2027-wike-rallies-rivers-support-for-tinubu/",
-      "url": "https://punchng.com/2027-wike-rallies-rivers-support-for-tinubu/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-02T19:08:52+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Ballon d’Or 2026: ‘He’s a phenomenon’ – Brighton’s Luka Vušković picks player to win award",
-      "summary": "Brighton defender, Luka Vušković, has picked the player to win the Ballon d’Or this month. The winner of the 2026 Ballon d’Or will be announced later this month in London, England. Speaking recently after Croatia’s UEFA Nations League defeat to Spain, Vušković picked Barcelona winger Lamine Yamal as",
-      "url": "https://dailypost.ng/2026/10/02/ballon-dor-2026-hes-a-phenomenon-brightons-luka-vuskovic-picks-player-to-win-award/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-02T19:00:55+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "PHOTOS: Super Eagles land in Moscow for Russia friendly",
-      "summary": "The Super Eagles have arrived in Moscow for Tuesday’s friendly against Russia, with Vince Osuji and John Otomewo replacing Wilfred Ndidi and Victory Akpe, who withdrew from the squad. The post PHOTOS: Super Eagles land in Moscow for Russia friendly appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/914091-photos-super-eagles-land-in-moscow-for-russia-friendly.html",
-      "source": "Premium Times",
-      "published": "2026-10-02T18:56:58+00:00",
-      "categories": [
-        "property"
       ]
     }
   ]
