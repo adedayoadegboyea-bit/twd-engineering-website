@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T04:42:25.648640+00:00",
+  "generated_at": "2026-10-03T05:09:52.361284+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,27 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Many feared dead in Plateau village fatal road accident",
+      "summary": "A fatal road accident at Tom village, also known as Hawan Kibo, in Sopp Bachi, Riyom Local Government Area of Plateau State, has reportedly claimed several lives. Preliminary information indicated that the accident occurred on Friday evening, resulting in multiple fatalities. Security analyst, Zagaz",
+      "url": "https://dailypost.ng/2026/10/03/many-feared-dead-in-plateau-village-fatal-road-accident/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-03T05:06:51+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "Kano Sharia Court remands woman over alleged killing of husband",
+      "summary": "A Sharia Court sitting in the Post Office area of Kano State has remanded Bilkisu Sani Rogo in prison over the alleged killing of her husband, Malam Hamisu, in Bakin Kasuwa, Rogo Local Government Area of the state. Bilkisu was arraigned before the court over allegations that she killed her husband a",
+      "url": "https://dailypost.ng/2026/10/03/kano-sharia-court-remands-woman-over-alleged-killing-of-husband/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-03T05:05:34+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Extrajudicial Killings: How police’s Operation Zenda became dreaded by Benue residents",
       "summary": "Benue police’s Operation Zenda has been accused of extrajudicial killings, enforced disappearances, and the killing of detainees, raising concerns over impunity and weak oversight. The post Extrajudicial Killings: How police’s Operation Zenda became dreaded by Benue residents appeared first on Premi",
@@ -263,24 +284,6 @@
       "published": "2026-10-03T00:53:47+00:00",
       "categories": [
         "business"
-      ]
-    },
-    {
-      "title": "Police unveil two hospitals in Kwara",
-      "summary": "The Kwara State Police Command has launched new hospitals in Offa and Omu-Aran to provide quality healthcare for its personnel and the host communities. Read More: https://punchng.com/police-unveil-two-hospitals-in-kwara/",
-      "url": "https://punchng.com/police-unveil-two-hospitals-in-kwara/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-03T00:53:38+00:00",
-      "categories": []
-    },
-    {
-      "title": "Kwara gov declares Monday work-free for teachers",
-      "summary": "Kwara State Governor, AbdulRahman AbdulRazaq, has declared Monday, October 5, 2026, a work-free day for teachers to commemorate World Teachers’ Day. Read More: https://punchng.com/kwara-gov-declares-monday-work-free-for-teachers/",
-      "url": "https://punchng.com/kwara-gov-declares-monday-work-free-for-teachers/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-03T00:52:46+00:00",
-      "categories": [
-        "government"
       ]
     }
   ]
