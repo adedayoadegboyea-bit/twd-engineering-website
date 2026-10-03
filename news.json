@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T08:45:00.594424+00:00",
+  "generated_at": "2026-10-03T09:11:51.109326+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,16 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Otti constitutes Abia LP 2027 campaign council",
+      "summary": "Abia State Governor, Alex Otti, has approved the constitution of the Labour Party 2027 Governorship Campaign Council, naming himself as chairman. Read More: https://punchng.com/otti-constitutes-abia-lp-2027-campaign-council/",
+      "url": "https://punchng.com/otti-constitutes-abia-lp-2027-campaign-council/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-03T10:08:02+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "APC youths hail Ooni for empowerment initiatives",
       "summary": "APC youths in the South-West have praised the Ooni of Ife, Oba Enitan Ogunwusi, for his sustained commitment to youth empowerment and economic development. Read More: https://punchng.com/apc-youths-hail-ooni-for-empowerment-initiatives/",
@@ -27,6 +37,70 @@
       "source": "PUNCH",
       "published": "2026-10-03T09:14:53+00:00",
       "categories": []
+    },
+    {
+      "title": "US lawmaker hails Nigeria over reported arrest of terrorist leader",
+      "summary": "United States lawmaker, Riley Moore has welcomed the reported arrest of Mahmoud Adam, who has been accused of involvement in attacks that killed Christians in Nigeria. Moore said the reported arrest was an indication that security cooperation between the United States and Nigeria was yielding result",
+      "url": "https://dailypost.ng/2026/10/03/us-lawmaker-hails-nigeria-over-reported-arrest-of-terrorist-leader/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-03T09:07:03+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Suspected phone thief dies after being run over by tipper truck in Kano",
+      "summary": "A man suspected of snatching a mobile phone has died after he was run over by a tipper truck while attempting to escape from people chasing him along IBB Road in Kantin Kwari Market, Kano. The incident was disclosed in a statement issued by the Special Adviser to the Kano State Governor on Kantin Kw",
+      "url": "https://dailypost.ng/2026/10/03/suspected-phone-thief-dies-after-being-run-over-by-tipper-truck-in-kano/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-03T09:05:32+00:00",
+      "categories": [
+        "engineering",
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "Kefas raises alarm over rising crime, drug abuse, attacks in Taraba",
+      "summary": "Governor Agbu Kefas of Taraba State has expressed concern over rising cases of criminal activities, illicit drug consumption and unprovoked attacks across the state. Kefas raised the concern on Friday at an emergency security meeting convened to address growing security challenges and other emerging",
+      "url": "https://dailypost.ng/2026/10/03/kefas-raises-alarm-over-rising-crime-drug-abuse-attacks-in-taraba/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-03T09:05:21+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Plateau Attacks: Mutfwang briefs Tinubu, says solution in sight",
+      "summary": "Plateau Governor Caleb Mutfwang says efforts to address insecurity in the state are yielding progress, following a meeting with President Bola Tinubu in Lagos. The post Plateau Attacks: Mutfwang briefs Tinubu, says solution in sight appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/914205-plateau-attacks-mutfwang-briefs-tinubu-says-solution-in-sight.html",
+      "source": "Premium Times",
+      "published": "2026-10-03T08:53:51+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Oyo: Kidnappers Of 19 NYSC Members Demand N950m Ransom",
+      "summary": "Abductors who seized 19 prospective NYSC members travelling from Ibadan, Oyo State, to their orientation camps in Abia and Akwa Ibom states have reportedly demanded N950m for their release. The victims were travelling in two buses when gunmen attacked them along the Owerri-Onitsha Road in Umunoha, I",
+      "url": "https://www.informationng.com/2026/10/oyo-kidnappers-of-19-nysc-members-demand-n950m-ransom.html",
+      "source": "Information Nigeria",
+      "published": "2026-10-03T08:52:25+00:00",
+      "categories": [
+        "engineering",
+        "oyo"
+      ]
+    },
+    {
+      "title": "Atiku govt will seek PIA amendment if law blocks production subsidy – Amaechi",
+      "summary": "The ADC vice-presidential candidate says an Atiku administration would send a bill to the National Assembly if existing petroleum law prevents it from implementing its proposed production subsidy. The post Atiku govt will seek PIA amendment if law blocks production subsidy – Amaechi appeared first o",
+      "url": "https://www.premiumtimesng.com/news/top-news/914217-atiku-govt-will-seek-pia-amendment-if-law-blocks-production-subsidy-amaechi.html",
+      "source": "Premium Times",
+      "published": "2026-10-03T08:45:54+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "NPFL: NFF demands fair officiating from referees",
@@ -217,74 +291,6 @@
       "published": "2026-10-03T07:05:27+00:00",
       "categories": [
         "lagos"
-      ]
-    },
-    {
-      "title": "Tinubu: Elon Musk’s Grok reveals whether Nigerian President’s Independence Day broadcast was AI-generated",
-      "summary": "United States tech, Grok, has responded to enquiry on whether President Bola Ahmed Tinubu’s Independence Day broadcast was generated by artificial intelligence. DAILY POST reports that President Bola Tinubu, in his Independence Day remarks on Thursday, declared that the difficulties facing Nigerians",
-      "url": "https://dailypost.ng/2026/10/03/tinubu-elon-musks-grok-reveals-whether-nigerian-presidents-independence-day-broadcast-was-ai-generated/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-03T07:01:32+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "‘Wise man should be willing to die for his woman’ – Odumodublvck",
-      "summary": "Nigerian rapper, Tochukwu Ojogwu, popularly known as Odumodublvck, has sparked reactions with his controversial claim that men who are not willing to make sacrifices for their partners, to the extent of laying down their lives, are “fools.” Speaking in a recent episode of the In Motion Podcast, the ",
-      "url": "https://dailypost.ng/2026/10/03/wise-man-should-be-willing-to-die-for-his-woman-odumodublvck/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-03T07:00:12+00:00",
-      "categories": []
-    },
-    {
-      "title": "IGP deploys DIG to rescue 20 corps members, others",
-      "summary": "The Inspector-General of Police, Olatunji Disu, has deployed the Deputy Inspector-General of Police in charge of Operations, DIG Shehu Nadada, to Imo State to oversee the search-and-rescue operation for 20 prospective National Youth Service Corps, NYSC, members and other passengers abducted along th",
-      "url": "https://dailypost.ng/2026/10/03/igp-deploys-dig-to-rescue-20-corps-members-others/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-03T06:58:36+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Ex-CAN president asks Tinubu to tackle hunger, insecurity",
-      "summary": "A former CAN President, Rev Samson Ayokunle, has urged President Bola Tinubu to urgently take decisive action to address the hunger and insecurity in Niger Read More: https://punchng.com/ex-can-president-asks-tinubu-to-tackle-hunger-insecurity/",
-      "url": "https://punchng.com/ex-can-president-asks-tinubu-to-tackle-hunger-insecurity/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-03T06:55:44+00:00",
-      "categories": []
-    },
-    {
-      "title": "Tinubu meets Dangote, Rabiu, Akpabio, Mutfwang in Lagos",
-      "summary": "President Bola Tinubu on Friday held separate meetings with prominent business and political figures at his residence in Ikoyi, Lagos. Among the visitors were President of the Dangote Group, Aliko Dangote, and the Founder and Chairman of BUA Group, Abdul Samad Rabiu. The President also received Plat",
-      "url": "https://dailypost.ng/2026/10/03/tinubu-meets-dangote-rabiu-akpabio-mutfwang-in-lagos/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-03T06:55:44+00:00",
-      "categories": [
-        "business",
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Mother demands sons’ bodies from Adeleke, IG",
-      "summary": "A mother has appealed to Osun Governor Adeleke and the IG of Police to release the bodies of her two sons killed in Akinlalu for burial, one year later. Read More: https://punchng.com/mother-demands-sons-bodies-from-adeleke-ig/",
-      "url": "https://punchng.com/mother-demands-sons-bodies-from-adeleke-ig/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-03T06:54:08+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Niger police arrest security guard over alleged killing of 11-year-old girl",
-      "summary": "The Niger State Police Command has arrested a 26-year-old security guard, Godwin Dauda, over the alleged killing of an 11-year-old girl, Christabel Albert, in Suleja. The girl was reported missing on September 19, 2026, after leaving home to attend a relative’s birthday celebration but failed to ret",
-      "url": "https://dailypost.ng/2026/10/03/niger-police-arrest-security-guard-over-alleged-killing-of-11-year-old-girl/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-03T06:45:27+00:00",
-      "categories": [
-        "property"
       ]
     }
   ]
