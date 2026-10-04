@@ -87,7 +87,7 @@ function render() {
         <h3>${title}</h3>
         <div class="price">${money(item.price)}</div>
         <div class="meta">${locationText} • ${conditionText}</div>
-        <a href="${wa}">View listing & seller →</a>
+        <a href="${wa}">VIEW FULL LISTING & CHAT SELLER →</a>
       </div>
     </article>`;
   }).join("");
