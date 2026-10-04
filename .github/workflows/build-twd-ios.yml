@@ -1,0 +1,63 @@
+name: Build TW&D Engineering iOS App
+
+on:
+  push:
+    paths:
+      - 'mobile-app/**'
+      - '.github/workflows/build-twd-ios.yml'
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout website repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install mobile dependencies
+        working-directory: mobile-app
+        run: npm install
+
+      - name: Prepare web assets
+        working-directory: mobile-app
+        run: npm run build:web
+
+      - name: Add iOS platform
+        working-directory: mobile-app
+        run: npx cap add ios
+
+      - name: Synchronize Capacitor iOS project
+        working-directory: mobile-app
+        run: npx cap sync ios
+
+      - name: Build unsigned iOS Simulator app
+        working-directory: mobile-app/ios/App
+        run: |
+          xcodebuild \
+            -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            build
+
+      - name: Package iOS Simulator app
+        working-directory: mobile-app/ios/App/build/Build/Products/Debug-iphonesimulator
+        run: zip -r twd-engineering-ios-simulator.zip App.app
+
+      - name: Upload iOS Simulator app
+        uses: actions/upload-artifact@v4
+        with:
+          name: twd-engineering-ios-simulator
+          path: mobile-app/ios/App/build/Build/Products/Debug-iphonesimulator/twd-engineering-ios-simulator.zip
+          if-no-files-found: error
+          retention-days: 30
