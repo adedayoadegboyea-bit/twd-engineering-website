@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TW&D Marketplace Admin Inbox</title>
+<link rel="stylesheet" href="marketplace.css">
+<style>
+.admin-page{min-height:100vh;background:#f5f8fc;padding:34px 0}.admin-shell{width:min(1180px,94%);margin:auto}.admin-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 20px 60px #10233d12;overflow:hidden}.admin-top{padding:24px 28px;background:#071d38;color:#fff;display:flex;justify-content:space-between;gap:18px;align-items:center}.admin-top h1{margin:5px 0}.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{padding:10px 14px;border:0;border-radius:7px;font-weight:900;cursor:pointer;text-decoration:none;background:#fff;color:#071d38}.btn.gold{background:#d7a62a}.toolbar{padding:20px 24px;border-bottom:1px solid #e2e8f0}.toolbar input{width:min(600px,100%);padding:12px;border:1px solid #dce4ed;border-radius:8px;font:inherit}.status{margin-top:10px;font-weight:800}.inbox{padding:24px;display:grid;gap:14px}.conversation{border:1px solid #e1e7ee;border-radius:14px;padding:16px}.conversation-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}.conversation-head strong{font-size:17px}.conversation-head small{color:#65758a}.message{padding:11px;border-radius:10px;background:#f3f6f9;margin:7px 0}.message.admin{background:#fff4cf}.message small{display:block;color:#65758a;margin-bottom:3px}.reply{display:flex;gap:8px;margin-top:12px}.reply textarea{flex:1;min-height:60px;padding:9px;border:1px solid #dce4ed;border-radius:8px;font:inherit}.empty{padding:40px;text-align:center;color:#65758a;background:#f7f9fc;border-radius:12px}
+</style>
+</head>
+<body>
+<main class="admin-page"><div class="admin-shell"><section class="admin-card">
+<header class="admin-top"><div><span class="eyebrow">TW&D MARKETPLACE</span><h1>Administrator Conversation Inbox</h1><p>All Marketplace buyer and seller conversations.</p></div><div class="admin-actions"><button class="btn" id="backButton">← Back</button><a class="btn gold" href="marketplace.html">Marketplace</a></div></header>
+<div class="toolbar"><input id="adminKey" type="password" placeholder="Enter Marketplace administrator key"><button class="btn gold" id="loadButton">Open Inbox</button><button class="btn" id="refreshButton">Refresh</button><div id="status" class="status"></div></div>
+<div id="inbox" class="inbox"><div class="empty">Enter the administrator key to view Marketplace conversations.</div></div>
+</section></div></main>
+<script>
+const ENDPOINT="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
+const KEY_NAME="twd_marketplace_admin_key";
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let messages=[];
+const keyInput=document.querySelector("#adminKey"),inbox=document.querySelector("#inbox"),status=document.querySelector("#status");
+keyInput.value=sessionStorage.getItem(KEY_NAME)||"";
+function back(){if(history.length>1)history.back();else location.href="marketplace.html"}
+async function post(data){const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});const raw=await r.text();if(raw.trim().startsWith("<"))throw Error("Marketplace server returned HTML. Redeploy the latest Marketplace Apps Script.");return JSON.parse(raw)}
+function groupMessages(){const groups={};messages.forEach(m=>{const users=[m.fromUserId,m.toUserId].sort().join("|");const key=String(m.listingId)+"|"+users;(groups[key]||(groups[key]=[])).push(m)});return Object.values(groups).sort((a,b)=>String(b[b.length-1].timestamp).localeCompare(String(a[a.length-1].timestamp)))}
+function render(){const groups=groupMessages();inbox.innerHTML=groups.map(rows=>{const last=rows[rows.length-1],replyTo=last.fromUserId==="MARKETPLACE_ADMIN"?last.toUserId:last.fromUserId;return "<article class='conversation'><div class='conversation-head'><div><strong>"+esc(last.fromUserId==="MARKETPLACE_ADMIN"?last.toName:last.fromName)+" ↔ "+esc(last.fromUserId==="MARKETPLACE_ADMIN"?"TW&D Marketplace Admin":last.toName==="TW&D Marketplace Admin"?last.fromName:last.toName)+"</strong><div>Listing: "+esc(last.listingId||"General")+"</div></div><small>"+esc(last.timestamp)+"</small></div>"+rows.map(m=>"<div class='message "+(m.fromUserId==="MARKETPLACE_ADMIN"?"admin":"")+"'><small>"+esc(m.fromName)+" → "+esc(m.toName)+" • "+esc(m.timestamp)+"</small><div>"+esc(m.message)+"</div></div>").join("")+"<div class='reply'><textarea placeholder='Reply to this conversation…'></textarea><button class='btn gold' data-to='"+esc(replyTo)+"' data-listing='"+esc(last.listingId||"")+"'>Send Reply</button></div></article>"}).join("")||"<div class='empty'>No Marketplace conversations yet.</div>";inbox.querySelectorAll("[data-to]").forEach(b=>b.onclick=async()=>{const box=b.parentElement.querySelector("textarea"),msg=box.value.trim();if(!msg)return;try{b.disabled=true;const d=await post({action:"admin_send_message",adminKey:keyInput.value.trim(),toUserId:b.dataset.to,listingId:b.dataset.listing,message:msg});if(!d.ok)throw Error(d.message);box.value="";await load()}catch(e){status.textContent=e.message}finally{b.disabled=false}})}
+async function load(){const key=keyInput.value.trim();if(!key){status.textContent="Enter the administrator key.";return}sessionStorage.setItem(KEY_NAME,key);status.textContent="Loading conversations…";try{const d=await post({action:"admin_messages",adminKey:key});if(!d.ok)throw Error(d.message);messages=d.messages||[];render();status.textContent="Loaded "+messages.length+" messages."}catch(e){status.textContent=e.message||"Unable to load administrator inbox.";inbox.innerHTML="<div class='empty'>Administrator access could not be verified.</div>"}}
+document.querySelector("#backButton").onclick=back;
+document.querySelector("#loadButton").onclick=load;
+document.querySelector("#refreshButton").onclick=load;
+</script>
+</body></html>
