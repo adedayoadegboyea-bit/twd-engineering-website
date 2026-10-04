@@ -127,7 +127,7 @@ function renderPortfolioProjects(rows){
   box.innerHTML=rows.map(x=>"<div class='mgmt-row'><strong>"+esc(x.title)+"</strong><span>"+esc(x.state)+" • "+esc(x.category||"")+" • "+esc(x.status)+"</span><small>"+esc(x.location||"")+" • "+esc(x.completion_date||"")+"</small><div style='display:flex;gap:8px;flex-wrap:wrap;margin-top:8px'><button type='button' class='mgmt-btn small portfolio-edit-project' data-id='"+esc(x.id)+"'>Edit</button><button type='button' class='mgmt-btn small portfolio-archive' data-id='"+esc(x.id)+"'>"+(x.status==="ARCHIVED"?"Archived":"Archive")+"</button></div></div>").join("")||"<p>No portfolio projects yet.</p>";
   box.querySelectorAll(".portfolio-edit-project").forEach(b=>b.onclick=()=>editPortfolioProject(b.dataset.id));
   box.querySelectorAll(".portfolio-archive").forEach(b=>b.onclick=async()=>{
-    if(x.status==="ARCHIVED")return;
+    if(b.textContent==="Archived")return;
     if(!confirm("Archive this public project?"))return;
     const q=await supabase.from("portfolio_projects").update({status:"ARCHIVED",updated_at:new Date().toISOString()}).eq("id",b.dataset.id);
     if(q.error){portfolioStatus(q.error.message,true);return}
