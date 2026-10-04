@@ -76,7 +76,23 @@ function refreshSell(){if(token){$('sellLogin').classList.add('hidden');$('sellW
 $('sellForm').onsubmit=async e=>{e.preventDefault();try{const j=await api('start_listing',{sessionToken:token,title:$('st').value,category:$('sc').value,location:$('sl').value,price:$('sp').value,condition:$('sn').value,description:$('sd').value});for(const f of [...$('sf').files]){if(f.size>20*1024*1024)throw Error(f.name+' is larger than 20 MB.');await api('upload_listing_photo',{sessionToken:token,listingId:j.listingId,photo:{name:f.name,size:f.size,type:f.type,data:await dataUrl(f)}})}const d=await api('finalize_listing',{sessionToken:token,listingId:j.listingId});show('sm',d.message+' Listing ID: '+d.listingId,true);$('sellForm').reset()}catch(x){show('sm',x.message)}};
 function dataUrl(f){return new Promise((a,b)=>{const r=new FileReader();r.onload=()=>a(r.result);r.onerror=b;r.readAsDataURL(f)})}
 async function messages(){if(!token){go('account');return}try{const j=await api('messages',{sessionToken:token});$('area').innerHTML='<div class="panel"><h3>Messages</h3><p class="note">'+esc(JSON.stringify(j.messages||[]))+'</p></div>'}catch(e){$('area').innerHTML='<div class="panel"><h3>Messages</h3><p class="note">'+esc(e.message)+'</p></div>'}go('account')}
-refreshAccount();loadListings();loadPortfolio();loadGallery();loadClientSession();
+function appBootError(message){
+  const status=$('status');
+  if(status){status.textContent='APP READY';status.style.color='#b82e2e'}
+  const home=$('home');
+  if(home)home.classList.add('active');
+  console.error(message);
+}
+window.addEventListener('error',function(e){appBootError('Startup error: '+(e.message||'Unknown error'))});
+window.addEventListener('unhandledrejection',function(e){appBootError('Startup request error: '+(e.reason?.message||e.reason||'Unknown error'))});
+function bootApp(){
+  try{
+    $('home').classList.add('active');
+    refreshAccount();
+    setTimeout(()=>{loadListings().catch(()=>{});loadPortfolio().catch(()=>{});loadGallery().catch(()=>{});loadClientSession().catch(()=>{});loadMobileApplicationPositions().catch(()=>{});},120);
+  }catch(e){appBootError(e.message||String(e))}
+}
 async function loadMobileApplicationPositions(){const s=$('appPosition');if(!s)return;s.innerHTML='<option value="">Loading positions…</option>';try{const r=await httpFetch(API+'?api=positions');const j=await r.json();if(!j.ok||!Array.isArray(j.positions))throw Error(j.error||'Could not load open positions.');s.innerHTML='<option value="">Select a position</option>';j.positions.forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;s.appendChild(o)})}catch(e){s.innerHTML='<option value="">Unable to load positions</option>';show('appMsg','Could not load the current TW&D position list: '+e.message)}} 
 document.addEventListener('DOMContentLoaded',function(){loadMobileApplicationPositions();const f=$('mobileApplicationForm');if(f)f.addEventListener('submit',async function(e){e.preventDefault();try{const j=await api('submit_application',{data:{name:$('appName').value.trim(),email:$('appEmail').value.trim(),phone:$('appPhone').value.trim(),position:$('appPosition').value,location:$('appLocation').value.trim(),qualifications:$('appQualifications').value.trim(),experience:$('appExperience').value.trim(),registration:$('appRegistration').value.trim(),letter:$('appLetter').value.trim()}});show('appMsg',j.message||'Application submitted successfully.',true);f.reset();await loadMobileApplicationPositions()}catch(x){show('appMsg',x.message)}})});
+bootApp();
 </script></body></html>
