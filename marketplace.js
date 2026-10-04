@@ -54,7 +54,7 @@ function render() {
   const rows = listings.filter(item => {
     const seller = String(item.seller || "").toLowerCase();
     const normalizedImages = Array.isArray(item.images) && item.images.length ? item.images : (item.image ? [item.image] : []);
-    const normalizedVideos = Array.isArray(item.videos) ? item.videos : [];
+    const types = Array.isArray(item.mediaTypes) ? item.mediaTypes : []; const normalizedVideos = types.reduce((out,t,i)=>String(t).toLowerCase()==="video" && normalizedImages[i] ? out.concat(normalizedImages[i]) : out, []);
     const hasUploadedMedia = normalizedImages.length > 0 || normalizedVideos.length > 0;
     const isCompanyOrDemo = seller.includes("marketplace demo") || seller.includes("system test");
     if (isCompanyOrDemo) return false;
@@ -67,7 +67,7 @@ function render() {
     const title = escapeHtml(item.title);
     const normalizedImages = Array.isArray(item.images) && item.images.length ? item.images : (item.image ? [item.image] : []);
     const images = normalizedImages.map(publicImageUrl);
-    const videos = Array.isArray(item.videos) ? item.videos.map(publicImageUrl).filter(Boolean) : [];
+    const videos = normalizedVideos.map(publicImageUrl).filter(Boolean);
     const image = escapeHtml(publicImageUrl(images[0] || ""));
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
@@ -181,78 +181,36 @@ form.addEventListener("submit", async event => {
   }
 
   const files = [...form.photos.files];
-  const MAX = 5 * 1024 * 1024;
-  const MAX_TOTAL = 15 * 1024 * 1024;
+  const MAX = 20 * 1024 * 1024;
+  const MAX_TOTAL = 50 * 1024 * 1024;
 
-  if (!files.length) {
-    statusBox.textContent = "Please select at least one photo or advertisement video.";
-    return;
-  }
-
-  const allowedImageTypes = ["image/jpeg","image/png","image/webp"];
-  const allowedVideoTypes = ["video/mp4","video/webm","video/quicktime"];
-  const invalid = files.find(file => !allowedImageTypes.includes(file.type) && !allowedVideoTypes.includes(file.type));
-  if (invalid) {
-    statusBox.textContent = "Only JPG, PNG, WEBP, MP4, WEBM or MOV videos are allowed.";
-    return;
-  }
-
-  if (files.some(file => file.size > MAX)) {
-    statusBox.textContent = "Each photo or video must be 5 MB or smaller.";
-    return;
-  }
-
-  if (files.reduce((sum,file) => sum + file.size, 0) > MAX_TOTAL) {
-    statusBox.textContent = "Please keep all photos and videos together below 15 MB.";
-    return;
-  }
-
-  statusBox.textContent = "Uploading your listing securely…";
-
+  if (!files.length) { statusBox.textContent = "Please select at least one photo or advertisement video."; return; }
+  const allowedTypes = ["image/jpeg","image/png","image/webp","video/mp4","video/webm","video/quicktime"];
+  const invalid = files.find(file => !allowedTypes.includes(file.type));
+  if (invalid) { statusBox.textContent = "Only JPG, PNG, WEBP, MP4, WEBM or MOV videos are allowed."; return; }
+  if (files.some(file => file.size > MAX)) { statusBox.textContent = "Each photo or video must be 20 MB or smaller."; return; }
+  if (files.reduce((sum,file) => sum + file.size, 0) > MAX_TOTAL) { statusBox.textContent = "Please keep all photos and videos together below 50 MB."; return; }
+  statusBox.textContent = "Creating your listing…";
   try {
-    const payload = {};
-    new FormData(form).forEach((value,key) => {
-      if (key !== "photos") payload[key] = value;
-    });
-
-    payload.sessionToken = sessionToken;
-    payload.photos = [];
-    for (const file of files) {
-      payload.photos.push({
-        name:file.name,
-        type:file.type,
-        size:file.size,
-        data:await toBase64(file)
-      });
+    const payload = {}; new FormData(form).forEach((value,key) => { if (key !== "photos") payload[key] = value; }); payload.sessionToken = sessionToken;
+    const startResponse = await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"start_listing",sessionToken,category:payload.category,location:payload.location,title:payload.title,price:payload.price,condition:payload.condition,description:payload.description})});
+    const startData = await startResponse.json();
+    if (!startData.ok) throw new Error(startData.message || "Could not create the listing.");
+    for (let i=0;i<files.length;i++) {
+      const file=files[i]; statusBox.textContent="Uploading file "+(i+1)+" of "+files.length+" — "+file.name;
+      const uploadResponse=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"upload_listing_photo",sessionToken,listingId:startData.listingId,photo:{name:file.name,type:file.type,size:file.size,data:await toBase64(file)}})});
+      const uploadData=await uploadResponse.json(); if (!uploadData.ok) throw new Error(uploadData.message || ("Upload failed for "+file.name));
     }
-
-    const response = await fetch(ENDPOINT, {
-      method:"POST",
-      headers:{"Content-Type":"text/plain;charset=utf-8"},
-      body:JSON.stringify(payload)
-    });
-
-    const data = await response.json();
-
-    if (!data.ok) {
-      throw new Error(data.message || "The marketplace rejected the submission.");
-    }
-
-    statusBox.textContent = data.message + (data.listingId ? " Reference: " + data.listingId : "");
-    const option = form.querySelector('input[name="listingOption"]:checked')?.value || "free";
-    const selectedPlan = document.querySelector(".embedded-plan.selected")?.dataset.embeddedPlan || "Business — ₦15,000/month";
-    form.reset();
-    document.querySelector('input[name="listingOption"][value="free"]').checked = true;
-    setListingOption("free");
-    if (option === "subscription") {
-      openSubscription(selectedPlan, data.listingId || "");
-    }
-  } catch (error) {
-    console.error(error);
-    statusBox.textContent = error.message || "Submission failed. Please try again.";
-  }
+    statusBox.textContent="Submitting listing for TW&D review…";
+    const finalResponse=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"finalize_listing",sessionToken,listingId:startData.listingId})});
+    const data=await finalResponse.json(); if (!data.ok) throw new Error(data.message || "The marketplace rejected the submission.");
+    statusBox.textContent=data.message+(data.listingId ? " Reference: "+data.listingId : "");
+    const option=form.querySelector('input[name="listingOption"]:checked')?.value || "free";
+    const selectedPlan=document.querySelector(".embedded-plan.selected")?.dataset.embeddedPlan || "Business — ₦15,000/month";
+    form.reset(); document.querySelector('input[name="listingOption"][value="free"]').checked=true; setListingOption("free");
+    if (option==="subscription") openSubscription(selectedPlan,data.listingId || "");
+  } catch (error) { console.error(error); statusBox.textContent=error.message || "Submission failed. Please try again."; }
 });
-
 function toBase64(file) {
   return new Promise((resolve,reject) => {
     const reader = new FileReader();
