@@ -25,6 +25,45 @@
 <form id="documentForm" class="mgmt-form"><span class="eyebrow">PRIVATE PROJECT DOCUMENT</span><h3>Upload to customer's secure account</h3><label>Document description<input id="documentDescription"></label><label>File<input id="projectFile" type="file" required></label><button class="mgmt-btn">Upload Private Document</button><small>Files are stored in a private Supabase bucket and are not part of the public gallery.</small></form></div>
 <div id="reportsList" class="mgmt-subsection"></div><div id="documentsList" class="mgmt-subsection"></div>
 </div></section>
+<section class="mgmt-card wide portfolio-admin-card">
+<div class="section-head"><div><span class="eyebrow">PUBLIC WEBSITE CONTENT</span><h2>Projects &amp; Gallery Control Centre</h2></div><button id="refreshPortfolio" class="mgmt-btn small" type="button">Refresh</button></div>
+<p class="mgmt-note">Only authorised TW&amp;D administrators can publish or update the public project portfolio and visual gallery. Uploaded images are stored in the public portfolio storage area.</p>
+<div id="portfolioStatus" class="mgmt-status"></div>
+<div class="portfolio-admin-grid">
+<div class="mgmt-panel">
+<h3>Publish New Project</h3>
+<form id="portfolioProjectForm" class="mgmt-form">
+<label>Project Title<input id="portfolioTitle" required placeholder="e.g. Construction of 3 Bedroom Bungalow"></label>
+<div class="two-col">
+<label>State<input id="portfolioState" required placeholder="Oyo State"></label>
+<label>Location<input id="portfolioLocation" placeholder="Ibadan, Oyo State"></label>
+<label>Category<select id="portfolioCategory"><option>Building Construction</option><option>Civil Engineering</option><option>Road &amp; Drainage</option><option>Electrical Engineering</option><option>Plumbing</option><option>Property Development</option><option>Renovation</option><option>Hospitality</option><option>Other</option></select></label>
+<label>Client<input id="portfolioClient" placeholder="Client / Organisation"></label>
+<label>Completion Date<input id="portfolioDate" type="date"></label>
+<label>Project Value (₦)<input id="portfolioValue" type="number" min="0" step="0.01"></label>
+</div>
+<label>Description<textarea id="portfolioDescription" rows="5" required placeholder="Describe the completed work, scope and delivery."></textarea></label>
+<label>Project Photographs<input id="portfolioProjectFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple required></label>
+<label>Status<select id="portfolioProjectStatus"><option value="PUBLISHED">Publish immediately</option><option value="DRAFT">Save as draft</option></select></label>
+<button class="mgmt-btn primary" type="submit">Publish Project</button>
+</form>
+</div>
+<div class="mgmt-panel">
+<h3>Update Website Gallery</h3>
+<form id="portfolioGalleryForm" class="mgmt-form">
+<label>Gallery Title<input id="galleryTitle" placeholder="e.g. Construction Progress"></label>
+<label>Category<select id="galleryCategory"><option>Architecture</option><option>Construction</option><option>Engineering</option><option>Site Visit</option><option>Residential Design</option><option>Commercial Design</option><option>Infrastructure</option><option>Other</option></select></label>
+<label>Caption<input id="galleryCaption" placeholder="Short description shown to visitors"></label>
+<label>Gallery Images<input id="galleryFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple required></label>
+<button class="mgmt-btn primary" type="submit">Add to Gallery</button>
+</form>
+</div>
+</div>
+<div class="portfolio-admin-lists">
+<div><h3>Published / Draft Projects</h3><div id="portfolioProjectsList" class="mgmt-list"></div></div>
+<div><h3>Recent Gallery Items</h3><div id="portfolioGalleryList" class="mgmt-list"></div></div>
+</div>
+</section>
 <section class="mgmt-card wide marketplace-admin-card">
 <div class="section-head"><div><span class="eyebrow">MARKETPLACE CONTROL CENTRE</span><h2>Marketplace administration</h2></div><button id="refreshMarketplaceAdmin" class="mgmt-btn small">Refresh</button></div>
 <p class="mgmt-note">Monitor marketplace accounts, listings, approvals, subscriptions and buyer/seller messages from the management portal.</p>
