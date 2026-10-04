@@ -1,0 +1,55 @@
+name: Build TW&D Engineering Android App
+
+on:
+  push:
+    paths:
+      - 'mobile-app/**'
+      - '.github/workflows/build-twd-android.yml'
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout website repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install mobile dependencies
+        working-directory: mobile-app
+        run: npm install
+
+      - name: Prepare offline web assets
+        working-directory: mobile-app
+        run: npm run build:web
+
+      - name: Add Android platform
+        working-directory: mobile-app
+        run: npx cap add android
+
+      - name: Synchronize Capacitor Android project
+        working-directory: mobile-app
+        run: npx cap sync android
+
+      - name: Build Android debug APK
+        working-directory: mobile-app/android
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: twd-engineering-android
+          path: mobile-app/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
