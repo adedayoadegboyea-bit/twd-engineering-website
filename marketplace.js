@@ -63,6 +63,7 @@ function render() {
   });
 
   grid.innerHTML = rows.map(item => {
+    try { sessionStorage.setItem("twd_marketplace_listing_" + String(item.id), JSON.stringify(item)); } catch (e) {}
     const title = escapeHtml(item.title);
     const normalizedImages = Array.isArray(item.images) && item.images.length ? item.images : (item.image ? [item.image] : []);
     const images = normalizedImages.map(publicImageUrl);
