@@ -40,7 +40,7 @@ async function httpFetch(url, options={}){
     const body=typeof r.data==='string'?r.data:JSON.stringify(r.data??'');
     return {ok:Number(r.status||200)>=200&&Number(r.status||200)<300,status:Number(r.status||200),text:async()=>body,json:async()=>{try{return typeof r.data==='string'?JSON.parse(r.data):r.data}catch(e){throw e}}};
   }
-  return httpFetch(url,options);
+  return window.fetch(url,options);
 }
 const API='https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHNaql-ZmKmguOYP2TT1IH5/exec';let token=localStorage.getItem('twd_market_session')||'',user=null;
 const TWdOpenPositions=['Site Engineer / Project Engineer','Civil Engineering Technician','Electrical Engineering Technician','Plumber / Building Services Technician','Quantity Surveying / Estimating Support','Project Administration / Documentation','Accounts / Office Support','Skilled Construction Workers','Driver','Personal Assistant','Cleaner / Office Assistant','Other Position as Required'];
