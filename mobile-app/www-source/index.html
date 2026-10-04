@@ -3,101 +3,108 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#b8202a">
-<meta name="description" content="TW&D Engineering Consult & Services Ltd — official online mobile app.">
-<title>TW&D Engineering</title>
-<script>
-(function(){
-  var LIVE_SITE="https://twdengineeringconsult.com/";
-  var isCapacitor=location.protocol==="capacitor:" || location.protocol==="ionic:" || location.protocol==="file:";
-  if(!isCapacitor) return;
-  function openLive(){ try{ location.replace(LIVE_SITE); }catch(e){ window.location.href=LIVE_SITE; } }
-  if(navigator.onLine){ fetch(LIVE_SITE,{method:"HEAD",mode:"no-cors",cache:"no-store"}).then(openLive).catch(function(){}); }
-  window.addEventListener("online",openLive,{once:true});
-})();
-</script>
+<meta name="theme-color" content="#062b59">
+<meta name="description" content="TW&D Engineering Consult & Services Ltd official mobile app — full access to the live website, Marketplace, accounts, listings, careers, client portal, projects and services.">
+<title>TW&D Engineering — Mobile App</title>
 <style>
-:root{--red:#b8202a;--red2:#8e1720;--navy:#062b59;--ink:#202524;--muted:#69716f;--paper:#fff;--bg:#eef0ee;--line:#dfe2df;--gold:#c79b32}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
-a{color:inherit}.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);padding:14px 16px}.top-inner{max-width:820px;margin:auto;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.05em}.brand span{color:var(--red)}.version{font-size:11px;color:var(--muted)}
-main{max-width:820px;margin:auto;padding:16px 15px 92px}.hero{background:linear-gradient(145deg,#062b59,#0b447d);color:#fff;border-radius:24px;padding:30px 22px;box-shadow:0 12px 35px #0002}.eyebrow{font-size:10px;font-weight:900;letter-spacing:1.7px;margin:0 0 10px;color:var(--gold)}h1{font-size:34px;line-height:1.02;letter-spacing:-1.6px;margin:0 0 14px}.hero h1 span{color:#f2d68a}.hero p{line-height:1.55;color:#e9eff6}.motto{font-weight:900!important;color:#fff!important}.offline{display:inline-flex;align-items:center;gap:7px;margin-top:8px;padding:7px 10px;border-radius:99px;background:#ffffff18;border:1px solid #ffffff2c;font-size:11px}.dot{width:7px;height:7px;border-radius:50%;background:#6ee7a0}.section-title{font-size:20px;margin:28px 3px 11px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:17px;text-decoration:none;min-height:128px}.card:active{transform:scale(.99)}.icon{font-size:23px}.card b{display:block;margin:8px 0 5px}.card small{color:var(--muted);line-height:1.4}.panel{background:#fff;border-radius:19px;border:1px solid var(--line);padding:20px;margin-top:12px}.panel h2{margin:0 0 9px;color:var(--navy);font-size:22px}.panel p{line-height:1.6;color:#4e5754}.service{padding:13px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center}.service:last-child{border-bottom:0}.num{font-size:11px;font-weight:900;color:var(--red);min-width:24px}.service strong{font-size:14px}.project{border:1px solid var(--line);border-radius:15px;padding:16px;margin-top:10px;background:#fff}.project .state{font-size:10px;font-weight:900;letter-spacing:1px;color:var(--red)}.project h3{margin:6px 0}.project p{margin:0;color:var(--muted);line-height:1.45;font-size:13px}.contact{background:#252827;color:#fff;border-radius:19px;padding:20px;margin-top:25px}.contact p{color:#d9dcda;line-height:1.55}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.action{padding:13px;border:1px solid #ffffff35;border-radius:11px;text-align:center;text-decoration:none;color:#fff;font-weight:800;font-size:13px}.note{font-size:12px;color:var(--muted);line-height:1.5}.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:30}.bottom-inner{max-width:820px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}.bottom a{text-align:center;padding:9px 3px 8px;text-decoration:none;color:var(--muted);font-size:10px;font-weight:800}.bottom a b{display:block;font-size:17px;margin-bottom:2px}.bottom a.active{color:var(--red)}footer{text-align:center;color:var(--muted);font-size:11px;line-height:1.6;padding:8px 18px 22px}@media(min-width:700px){main{padding-top:28px}.grid{grid-template-columns:repeat(3,1fr)}.bottom{display:none}}
+:root{--navy:#062b59;--navy2:#0b447d;--gold:#f7bd18;--ink:#18232f;--muted:#667085;--bg:#f4f7fb;--line:#e1e7ef;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.topin{max-width:900px;margin:auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;color:var(--navy);letter-spacing:.03em}.brand span{color:var(--gold)}.ver{font-size:10px;color:var(--muted);font-weight:800}
+main{max-width:900px;margin:auto;padding:16px 15px 90px}.hero{background:linear-gradient(135deg,#031b38,#062b59 60%,#0b447d);color:#fff;border-radius:25px;padding:30px 22px;box-shadow:0 20px 50px #062b5926}.eyebrow{font-size:10px;font-weight:900;letter-spacing:.17em;color:var(--gold)}h1{font-size:38px;line-height:1;letter-spacing:-.045em;margin:12px 0 16px}.hero p{line-height:1.6;color:#e7edf5}.motto{font-weight:900!important;color:#fff!important}.online{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:8px 11px;border:1px solid #ffffff2c;border-radius:99px;font-size:11px}.dot{width:8px;height:8px;border-radius:50%;background:#65e39a}
+.section{margin-top:25px}.section h2{font-size:23px;margin:0 0 12px;color:var(--navy)}.section p.lead{color:var(--muted);line-height:1.55;margin-top:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px;min-height:125px;box-shadow:0 7px 24px #062b5908}.card .ico{font-size:24px}.card strong{display:block;margin:9px 0 5px;color:var(--navy)}.card small{display:block;color:var(--muted);line-height:1.45}.card:active{transform:scale(.985)}
+.market{border:2px solid #d7a62a;background:linear-gradient(145deg,#fff,#fffaf0)}.market strong{color:#8b6500}.feature-list{display:grid;gap:10px}.feature{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px}.feature b{display:block;color:var(--navy);margin-bottom:4px}.feature span{font-size:12px;color:var(--muted);line-height:1.45}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.btn{padding:13px 10px;text-align:center;border-radius:11px;font-size:12px;font-weight:900;border:1px solid var(--line);background:#fff}.btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}.btn.gold{background:var(--gold);color:#071d36;border-color:var(--gold)}
+.note{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;color:var(--muted);font-size:12px;line-height:1.55}.contact{background:#222b35;color:#fff;border-radius:20px;padding:20px}.contact p{color:#d9e0e8;line-height:1.55}.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:60}.bottomin{max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr)}.bottom a{text-align:center;padding:9px 2px 8px;color:var(--muted);font-size:9px;font-weight:800}.bottom b{display:block;font-size:17px;margin-bottom:2px}.bottom a.active{color:var(--navy)}footer{text-align:center;color:var(--muted);font-size:10px;line-height:1.6;padding:20px 10px}
+@media(min-width:700px){main{padding-top:28px}.grid{grid-template-columns:repeat(3,1fr)}.bottom{display:none}.hero{padding:42px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="top-inner"><div class="brand">TW&D <span>ENGINEERING</span></div><div class="version">v2.0 • ONLINE</div></div></header>
+<header class="top"><div class="topin"><div class="brand">TW&D <span>ENGINEERING</span></div><div class="ver">FULL ONLINE APP</div></div></header>
 <main>
 <section class="hero" id="home">
-<p class="eyebrow">TW&D ENGINEERING CONSULT & SERVICES LTD</p>
-<h1>Engineering.<br><span>Construction. Development.</span></h1>
+<div class="eyebrow">TW&D ENGINEERING CONSULT & SERVICES LTD</div>
+<h1>Everything TW&D.<br>In one mobile app.</h1>
 <p class="motto">We design and we build to last.</p>
-<p>The official mobile gateway to the live TW&D Engineering website, including services, projects, Marketplace, Careers, Client Portal, accounts, news and contact services.</p>
-<div class="offline"><span class="dot"></span> Online-first • Live TW&amp;D website when connected</div>
+<p>This app is a mobile gateway to the live TW&D Engineering website. Every page below opens the real online website, so Marketplace accounts, listings, messages, applications, client services and website updates are not limited to a simplified offline screen.</p>
+<div class="online"><span class="dot"></span> LIVE WEBSITE ACCESS</div>
 </section>
 
-<h2 class="section-title" id="explore">Explore TW&D</h2>
+<section class="section" id="explore">
+<h2>Company</h2>
 <div class="grid">
-<a class="card" href="#about"><span class="icon">🏢</span><b>About TW&D</b><small>Company profile, background and capabilities.</small></a>
-<a class="card" href="#services"><span class="icon">⚙️</span><b>Services</b><small>Engineering, construction, consultancy and development.</small></a>
-<a class="card" href="#projects"><span class="icon">🏗️</span><b>Projects</b><small>Selected project records across Nigeria.</small></a>
-<a class="card" href="#contact"><span class="icon">☎️</span><b>Contact</b><small>Company address, phone and email details.</small></a>
-<a class="card" href="#company"><span class="icon">📋</span><b>Company Details</b><small>Core business information kept inside the app.</small></a>
-<a class="card" href="#privacy"><span class="icon">🔒</span><b>Privacy</b><small>Read the app privacy information offline.</small></a>
+<a class="card" href="https://twdengineeringconsult.com/"><span class="ico">⌂</span><strong>Home</strong><small>Full company homepage and navigation.</small></a>
+<a class="card" href="https://twdengineeringconsult.com/about.html"><span class="ico">🏢</span><strong>About TW&D</strong><small>Company profile, background and capabilities.</small></a>
+<a class="card" href="https://twdengineeringconsult.com/services.html"><span class="ico">⚙️</span><strong>Services</strong><small>Engineering, construction, consultancy and development.</small></a>
+<a class="card" href="https://twdengineeringconsult.com/projects.html"><span class="ico">🏗️</span><strong>Projects</strong><small>Completed projects and project details across Nigeria.</small></a>
+<a class="card" href="https://twdengineeringconsult.com/news.html"><span class="ico">📰</span><strong>News / Insight</strong><small>Company news, updates and insights.</small></a>
+<a class="card" href="https://twdengineeringconsult.com/index.html#contact"><span class="ico">☎️</span><strong>Contact</strong><small>Call, email and company contact information.</small></a>
 </div>
-
-<section class="panel" id="about">
-<p class="eyebrow">ABOUT</p><h2>Professional engineering and construction.</h2>
-<p>TW&D Engineering Consult & Services Ltd provides engineering, construction, consultancy and property development services from Ibadan, Oyo State, serving clients and projects across Nigeria.</p>
-<p class="note">When internet access is available, the app opens the live TW&D website so website updates and online services are used directly. The bundled company information remains available as an offline fallback.</p>
 </section>
 
-<section class="panel" id="services">
-<p class="eyebrow">OUR SERVICES</p><h2>Professional services</h2>
-<div class="service"><span class="num">01</span><strong>Building Construction</strong></div>
-<div class="service"><span class="num">02</span><strong>Civil Engineering</strong></div>
-<div class="service"><span class="num">03</span><strong>Electrical Engineering</strong></div>
-<div class="service"><span class="num">04</span><strong>Plumbing</strong></div>
-<div class="service"><span class="num">05</span><strong>Engineering Consultancy</strong></div>
-<div class="service"><span class="num">06</span><strong>Property Development / Real Estate</strong></div>
-<div class="service"><span class="num">07</span><strong>Geotechnical Survey</strong></div>
-<div class="service"><span class="num">08</span><strong>Borehole Drilling</strong></div>
+<section class="section" id="marketplace">
+<h2>TW&D Marketplace</h2>
+<p class="lead">The complete live Marketplace is available from the app — not a separate simplified version.</p>
+<div class="feature-list">
+<div class="feature"><b>🛒 Browse ALL approved listings</b><span>Open the live Marketplace to search listings by title, category and location. Listing photos, prices, seller information and listing details are loaded online.</span></div>
+<div class="feature"><b>👤 Create Marketplace account</b><span>Register with your email, complete email verification, sign in and manage your Marketplace account.</span></div>
+<div class="feature"><b>➕ Sell an item</b><span>Create a listing from inside your authenticated account, upload listing photographs/media, submit it for review and track its status.</span></div>
+<div class="feature"><b>📋 My Listings</b><span>View your existing listings, listing IDs, status and details from your account.</span></div>
+<div class="feature"><b>💬 Buyer ↔ Seller messages</b><span>Use the Marketplace account area to receive enquiries and reply to buyers or sellers.</span></div>
+<div class="feature"><b>💳 Seller subscriptions</b><span>Access Starter, Business and Pro subscription options and the existing payment flow.</span></div>
+<div class="feature"><b>📄 Individual listing pages</b><span>Open any approved listing to view its complete details and seller contact/chat options.</span></div>
+</div>
+<div class="buttons">
+<a class="btn gold" href="https://twdengineeringconsult.com/marketplace.html">OPEN MARKETPLACE</a>
+<a class="btn primary" href="https://twdengineeringconsult.com/marketplace-account.html">CREATE ACCOUNT / SIGN IN</a>
+<a class="btn" href="https://twdengineeringconsult.com/marketplace.html#sell">SELL AN ITEM</a>
+<a class="btn" href="https://twdengineeringconsult.com/marketplace-account.html?next=listing">MY ACCOUNT / MY LISTINGS</a>
+</div>
 </section>
 
-<section class="panel" id="projects">
-<p class="eyebrow">PROJECT PORTFOLIO</p><h2>Selected project records</h2>
-<div class="project"><span class="state">OYO STATE</span><h3>Royal Garden Estate</h3><p>Residential / estate development project record.</p></div>
-<div class="project"><span class="state">OYO STATE</span><h3>Oore-Ofe Jagun</h3><p>Residential building project record.</p></div>
-<div class="project"><span class="state">LAGOS STATE</span><h3>First Dammy School Lagos</h3><p>Institutional building project record.</p></div>
-<div class="project"><span class="state">OYO STATE</span><h3>Tella, Akobo</h3><p>Residential / development project record.</p></div>
-<div class="project"><span class="state">OYO STATE</span><h3>Oloola, Akingbade</h3><p>Building development project record.</p></div>
-<div class="project"><span class="state">OYO STATE</span><h3>Ajoda Estate</h3><p>Estate development project record.</p></div>
-<div class="project"><span class="state">OYO STATE</span><h3>View Point Hotel</h3><p>Hospitality / building project record.</p></div>
-<div class="project"><span class="state">OYO STATE</span><h3>6-Bedroom Duplex — Idi-Ishin</h3><p>Residential client project record.</p></div>
-<p class="note" style="margin-top:14px">Project records above are stored in this app build. Future app releases can add more records and locally bundled photographs.</p>
+<section class="section" id="careers">
+<h2>Careers & Recruitment</h2>
+<div class="grid">
+<a class="card" href="https://twdengineeringconsult.com/careers.html"><span class="ico">💼</span><strong>Careers</strong><small>Vacancies, requirements and recruitment information.</small></a>
+<a class="card" href="https://script.google.com/macros/s/AKfycby3IUokJR9f7lufO9vXF845KReC2IMdavtdnnrjXDT21lw5pb6y1n641kiAdUO9u8Jqlg/exec"><span class="ico">📝</span><strong>Application</strong><small>Use the existing TW&D recruitment application system.</small></a>
+<a class="card" href="https://script.google.com/macros/s/AKfycby3IUokJR9f7lufO9vXF845KReC2IMdavtdnnrjXDT21lw5pb6y1n641kiAdUO9u8Jqlg/exec?page=aptitude"><span class="ico">✍️</span><strong>Aptitude Test</strong><small>Open the existing aptitude system used by recruitment.</small></a>
+</div>
 </section>
 
-<section class="panel" id="company">
-<p class="eyebrow">COMPANY DETAILS</p><h2>TW&D Engineering Consult & Services Ltd</h2>
+<section class="section" id="client">
+<h2>Client & Account Services</h2>
+<div class="grid">
+<a class="card" href="https://twdengineeringconsult.com/client-portal.html"><span class="ico">🔐</span><strong>Client Portal</strong><small>Access the live client project portal.</small></a>
+<a class="card" href="https://twdengineeringconsult.com/account.html"><span class="ico">👤</span><strong>Website Account</strong><small>Sign in to the main website account area.</small></a>
+<a class="card" href="https://twdengineeringconsult.com/management.html"><span class="ico">🛡️</span><strong>Management Portal</strong><small>Authorised management access only.</small></a>
+</div>
+<div class="note" style="margin-top:11px"><strong>Security:</strong> Management and client pages continue to use their existing authentication and access controls. The mobile app does not bypass them.</div>
+</section>
+
+<section class="section" id="projects">
+<h2>Project Portfolio</h2>
+<p class="lead">The live Projects page contains the complete project catalogue and individual project pages.</p>
+<div class="buttons">
+<a class="btn primary" href="https://twdengineeringconsult.com/projects.html">VIEW ALL PROJECTS</a>
+<a class="btn" href="https://twdengineeringconsult.com/projects.html#gallery">PROJECT GALLERY</a>
+</div>
+</section>
+
+<section class="section" id="contact" class="contact">
+<div class="contact">
+<div class="eyebrow">CONTACT TW&D</div><h2 style="margin:8px 0;color:#fff">Let's discuss your project.</h2>
 <p><strong>Address:</strong><br>25 Engr Adedayo Close, Olateju Street, off First Bank Area, Akingbade Area, Ibadan, Oyo State, Nigeria.</p>
-<p><strong>Phone:</strong> 0803 577 4420</p>
-<p><strong>Email:</strong> contacts@twdengineeringconsult.com</p>
-<p><strong>Motto:</strong> We design and we build to last.</p>
+<p><strong>Phone:</strong> 0803 577 4420<br><strong>Email:</strong> contacts@twdengineeringconsult.com</p>
+<div class="buttons"><a class="btn gold" href="tel:+2348035774420">CALL</a><a class="btn" href="mailto:contacts@twdengineeringconsult.com">EMAIL</a></div>
+</div>
 </section>
 
-<section class="contact" id="contact">
-<p class="eyebrow">CONTACT</p><h2>Let's discuss your project.</h2>
-<p>The company contact information is available offline. Calling, email and WhatsApp buttons below are optional external actions and require an internet/phone service connection when used.</p>
-<div class="actions"><a class="action" href="tel:+2348035774420">Call</a><a class="action" href="mailto:contacts@twdengineeringconsult.com">Email</a></div>
-</section>
-
-<section class="panel" id="privacy">
-<p class="eyebrow">PRIVACY</p><h2>Privacy information</h2>
-<p>This mobile app provides access to the official TW&D Engineering website and its online services. When connected, website content and online services are loaded from twdengineeringconsult.com. The app does not intentionally collect personal information for advertising or sell personal information.</p>
-<p>When you choose an external contact action such as phone, email or WhatsApp, the relevant device or third-party service handles that action under its own policies.</p>
-<p><strong>Last updated:</strong> September 2026</p>
-</section>
-
-<footer>© 2026 TW&D Engineering Consult & Services Ltd.<br>When online, this app connects directly to the official TW&D Engineering website. If there is no connection, bundled company information remains available.</footer>
+<footer>© 2026 TW&D Engineering Consult & Services Ltd.<br>This mobile app connects to the live official website for online services and current content.</footer>
 </main>
-<nav class="bottom"><div class="bottom-inner"><a class="active" href="#home"><b>⌂</b>Home</a><a href="#explore"><b>▦</b>Explore</a><a href="#projects"><b>🏗</b>Projects</a><a href="#contact"><b>☎</b>Contact</a></div></nav>
+<nav class="bottom"><div class="bottomin">
+<a class="active" href="#home"><b>⌂</b>Home</a>
+<a href="#marketplace"><b>🛒</b>Market</a>
+<a href="#careers"><b>💼</b>Careers</a>
+<a href="#client"><b>👤</b>Account</a>
+<a href="#contact"><b>☎</b>Contact</a>
+</div></nav>
 </body>
 </html>
