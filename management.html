@@ -31,8 +31,9 @@
 <div id="portfolioStatus" class="mgmt-status"></div>
 <div class="portfolio-admin-grid">
 <div class="mgmt-panel">
-<h3>Publish New Project</h3>
+<h3 id="portfolioProjectFormHeading">Publish New Project</h3>
 <form id="portfolioProjectForm" class="mgmt-form">
+<input id="portfolioProjectEditId" type="hidden" value="">
 <label>Project Title<input id="portfolioTitle" required placeholder="e.g. Construction of 3 Bedroom Bungalow"></label>
 <div class="two-col">
 <label>State<input id="portfolioState" required placeholder="Oyo State"></label>
@@ -43,19 +44,22 @@
 <label>Project Value (₦)<input id="portfolioValue" type="number" min="0" step="0.01"></label>
 </div>
 <label>Description<textarea id="portfolioDescription" rows="5" required placeholder="Describe the completed work, scope and delivery."></textarea></label>
-<label>Project Photographs<input id="portfolioProjectFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple required></label>
+<label>Project Photographs<input id="portfolioProjectFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+<small id="portfolioProjectFilesHint">Select one or more images when creating a new project. When editing, selected images will be added to the existing project gallery.</small>
 <label>Status<select id="portfolioProjectStatus"><option value="PUBLISHED">Publish immediately</option><option value="DRAFT">Save as draft</option></select></label>
-<button class="mgmt-btn primary" type="submit">Publish Project</button>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button id="portfolioProjectSubmit" class="mgmt-btn primary" type="submit">Publish Project</button><button id="portfolioProjectCancel" class="mgmt-btn" type="button" hidden>Cancel Edit</button></div>
 </form>
 </div>
 <div class="mgmt-panel">
 <h3>Update Website Gallery</h3>
 <form id="portfolioGalleryForm" class="mgmt-form">
+<input id="galleryEditId" type="hidden" value="">
 <label>Gallery Title<input id="galleryTitle" placeholder="e.g. Construction Progress"></label>
 <label>Category<select id="galleryCategory"><option>Architecture</option><option>Construction</option><option>Engineering</option><option>Site Visit</option><option>Residential Design</option><option>Commercial Design</option><option>Infrastructure</option><option>Other</option></select></label>
 <label>Caption<input id="galleryCaption" placeholder="Short description shown to visitors"></label>
-<label>Gallery Images<input id="galleryFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple required></label>
-<button class="mgmt-btn primary" type="submit">Add to Gallery</button>
+<label>Gallery Images<input id="galleryFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+<small id="galleryFilesHint">Select images to add new gallery items. When editing, selecting an image will replace the existing image.</small>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button id="portfolioGallerySubmit" class="mgmt-btn primary" type="submit">Add to Gallery</button><button id="portfolioGalleryCancel" class="mgmt-btn" type="button" hidden>Cancel Edit</button></div>
 </form>
 </div>
 </div>
