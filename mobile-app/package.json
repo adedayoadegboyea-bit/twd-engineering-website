@@ -1,6 +1,6 @@
 {
   "name": "twd-engineering-mobile",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "TW&D Engineering Consult & Services Ltd mobile app",
   "scripts": {
@@ -15,6 +15,7 @@
     "@capacitor/ios": "^7.4.3"
   },
   "devDependencies": {
-    "@capacitor/cli": "^7.4.3"
+    "@capacitor/cli": "^7.4.3",
+    "typescript": "^5.9.3"
   }
 }
