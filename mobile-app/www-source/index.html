@@ -4,8 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#b8202a">
-<meta name="description" content="TW&D Engineering Consult & Services Ltd — self-contained offline Android app.">
+<meta name="description" content="TW&D Engineering Consult & Services Ltd — official online mobile app.">
 <title>TW&D Engineering</title>
+<script>
+(function(){
+  var LIVE_SITE="https://twdengineeringconsult.com/";
+  var isCapacitor=location.protocol==="capacitor:" || location.protocol==="ionic:" || location.protocol==="file:";
+  if(!isCapacitor) return;
+  function openLive(){ try{ location.replace(LIVE_SITE); }catch(e){ window.location.href=LIVE_SITE; } }
+  if(navigator.onLine){ fetch(LIVE_SITE,{method:"HEAD",mode:"no-cors",cache:"no-store"}).then(openLive).catch(function(){}); }
+  window.addEventListener("online",openLive,{once:true});
+})();
+</script>
 <style>
 :root{--red:#b8202a;--red2:#8e1720;--navy:#062b59;--ink:#202524;--muted:#69716f;--paper:#fff;--bg:#eef0ee;--line:#dfe2df;--gold:#c79b32}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
@@ -14,14 +24,14 @@ main{max-width:820px;margin:auto;padding:16px 15px 92px}.hero{background:linear-
 </style>
 </head>
 <body>
-<header class="top"><div class="top-inner"><div class="brand">TW&D <span>ENGINEERING</span></div><div class="version">v1.1 • OFFLINE</div></div></header>
+<header class="top"><div class="top-inner"><div class="brand">TW&D <span>ENGINEERING</span></div><div class="version">v2.0 • ONLINE</div></div></header>
 <main>
 <section class="hero" id="home">
 <p class="eyebrow">TW&D ENGINEERING CONSULT & SERVICES LTD</p>
 <h1>Engineering.<br><span>Construction. Development.</span></h1>
 <p class="motto">We design and we build to last.</p>
-<p>A self-contained mobile experience for company information, professional services, selected projects and contact details.</p>
-<div class="offline"><span class="dot"></span> Core app content available offline</div>
+<p>The official mobile gateway to the live TW&D Engineering website, including services, projects, Marketplace, Careers, Client Portal, accounts, news and contact services.</p>
+<div class="offline"><span class="dot"></span> Online-first • Live TW&amp;D website when connected</div>
 </section>
 
 <h2 class="section-title" id="explore">Explore TW&D</h2>
@@ -37,7 +47,7 @@ main{max-width:820px;margin:auto;padding:16px 15px 92px}.hero{background:linear-
 <section class="panel" id="about">
 <p class="eyebrow">ABOUT</p><h2>Professional engineering and construction.</h2>
 <p>TW&D Engineering Consult & Services Ltd provides engineering, construction, consultancy and property development services from Ibadan, Oyo State, serving clients and projects across Nigeria.</p>
-<p class="note">This app stores its core company information locally. The website is separate and is not required to display these app sections.</p>
+<p class="note">When internet access is available, the app opens the live TW&D website so website updates and online services are used directly. The bundled company information remains available as an offline fallback.</p>
 </section>
 
 <section class="panel" id="services">
@@ -81,12 +91,12 @@ main{max-width:820px;margin:auto;padding:16px 15px 92px}.hero{background:linear-
 
 <section class="panel" id="privacy">
 <p class="eyebrow">PRIVACY</p><h2>Privacy information</h2>
-<p>This mobile app provides locally bundled company information and does not intentionally collect personal information for advertising or sell personal information.</p>
+<p>This mobile app provides access to the official TW&D Engineering website and its online services. When connected, website content and online services are loaded from twdengineeringconsult.com. The app does not intentionally collect personal information for advertising or sell personal information.</p>
 <p>When you choose an external contact action such as phone, email or WhatsApp, the relevant device or third-party service handles that action under its own policies.</p>
 <p><strong>Last updated:</strong> September 2026</p>
 </section>
 
-<footer>© 2026 TW&D Engineering Consult & Services Ltd.<br>This app's core content is bundled locally and does not depend on the TW&D website to display.</footer>
+<footer>© 2026 TW&D Engineering Consult & Services Ltd.<br>When online, this app connects directly to the official TW&D Engineering website. If there is no connection, bundled company information remains available.</footer>
 </main>
 <nav class="bottom"><div class="bottom-inner"><a class="active" href="#home"><b>⌂</b>Home</a><a href="#explore"><b>▦</b>Explore</a><a href="#projects"><b>🏗</b>Projects</a><a href="#contact"><b>☎</b>Contact</a></div></nav>
 </body>
