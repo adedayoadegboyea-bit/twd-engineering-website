@@ -24,7 +24,7 @@ async function loadAll(){
  const firstErr=c.error||p.error||r.error||q.error||w.error;
  if(firstErr){status(firstErr.message,true);return}
  customers=c.data||[];projects=p.data||[];requests=r.data||[];quotations=q.data||[];workers=w.data||[];
- renderCustomers();renderProjects();renderRequests();renderQuotations();renderWorkers();renderWorkerAttendance();renderWorkerReports();populateCustomerSelects();populateQuoteProjects();populateWorkerSelects();
+ renderCustomers();renderProjects();renderRequests();renderQuotations();renderWorkers();renderWorkerAttendance();renderWorkerReports();populateCustomerSelects();populateQuoteProjects();populateWorkerSelects();loadPortfolio();
 }
 function renderCustomers(){
  $("customersList").innerHTML=customers.map(x=>'<div class="mgmt-row"><strong>'+esc(x.full_name||"Unnamed customer")+'</strong><span>'+esc(x.phone||"No phone")+" • "+esc(x.account_type||"customer")+" • "+esc(x.id)+'</span></div>').join("")||"<p>No accounts yet.</p>";
@@ -69,6 +69,89 @@ async function respondToRequest(id){
  if(n.error){status(n.error.message,true);return}
  status("Response sent and customer notified.");await loadAll();
 }
+
+async function portfolioUploadFile(file,folder){
+  const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+  const path=folder+"/"+Date.now()+"-"+Math.random().toString(36).slice(2,8)+"-"+safe;
+  const up=await supabase.storage.from("public-portfolio").upload(path,file,{upsert:false,contentType:file.type});
+  if(up.error)throw up.error;
+  const pub=supabase.storage.from("public-portfolio").getPublicUrl(path);
+  return {path,url:pub.data.publicUrl};
+}
+async function loadPortfolio(){
+  const p=await supabase.from("portfolio_projects").select("*").order("updated_at",{ascending:false});
+  const g=await supabase.from("portfolio_gallery").select("*").order("created_at",{ascending:false}).limit(100);
+  if(p.error||g.error){
+    const msg=(p.error||g.error).message||"Portfolio database is not ready.";
+    if($("portfolioStatus")){ $("portfolioStatus").textContent=msg+" Run the supplied Supabase portfolio setup SQL once."; $("portfolioStatus").className="mgmt-status error"; }
+    return;
+  }
+  renderPortfolioProjects(p.data||[]);
+  renderPortfolioGallery(g.data||[]);
+}
+function renderPortfolioProjects(rows){
+  const box=$("portfolioProjectsList"); if(!box)return;
+  box.innerHTML=rows.map(x=>"<div class='mgmt-row'><strong>"+esc(x.title)+"</strong><span>"+esc(x.state)+" • "+esc(x.category||"")+" • "+esc(x.status)+"</span><small>"+esc(x.location||"")+" • "+esc(x.completion_date||"")+"</small><button type='button' class='mgmt-btn small portfolio-archive' data-id='"+esc(x.id)+"'>"+(x.status==="ARCHIVED"?"Archived":"Archive")+"</button></div>").join("")||"<p>No portfolio projects yet.</p>";
+  box.querySelectorAll(".portfolio-archive").forEach(b=>b.onclick=async()=>{
+    if(!confirm("Archive this public project?"))return;
+    const q=await supabase.from("portfolio_projects").update({status:"ARCHIVED",updated_at:new Date().toISOString()}).eq("id",b.dataset.id);
+    if(q.error){portfolioStatus(q.error.message,true);return}
+    portfolioStatus("Project archived.");await loadPortfolio();
+  });
+}
+function renderPortfolioGallery(rows){
+  const box=$("portfolioGalleryList"); if(!box)return;
+  box.innerHTML=rows.map(x=>"<div class='mgmt-row portfolio-gallery-row'><img src='"+esc(x.image_url)+"' alt='"+esc(x.title||"Gallery image")+"' loading='lazy'><strong>"+esc(x.title||"Untitled gallery image")+"</strong><span>"+esc(x.category||"")+" • "+esc(x.status)+"</span><small>"+esc(x.caption||"")+"</small><button type='button' class='mgmt-btn small portfolio-delete-gallery' data-id='"+esc(x.id)+"' data-url='"+esc(x.image_url)+"'>Remove</button></div>").join("")||"<p>No gallery items yet.</p>";
+  box.querySelectorAll(".portfolio-delete-gallery").forEach(b=>b.onclick=async()=>{
+    if(!confirm("Remove this gallery image from the public website?"))return;
+    const q=await supabase.from("portfolio_gallery").delete().eq("id",b.dataset.id);
+    if(q.error){portfolioStatus(q.error.message,true);return}
+    portfolioStatus("Gallery item removed.");await loadPortfolio();
+  });
+}
+function portfolioStatus(t,bad=false){const el=$("portfolioStatus");if(el){el.textContent=t||"";el.className="mgmt-status"+(bad?" error":"")}}
+$("refreshPortfolio")?.addEventListener("click",loadPortfolio);
+$("portfolioProjectForm")?.addEventListener("submit",async e=>{
+  e.preventDefault();portfolioStatus("Creating project record and uploading photographs…");
+  try{
+    const files=Array.from($("portfolioProjectFiles").files||[]);
+    if(!files.length)throw Error("Select at least one project photograph.");
+    const q=await supabase.from("portfolio_projects").insert({
+      title:$("portfolioTitle").value.trim(),state:$("portfolioState").value.trim(),location:$("portfolioLocation").value.trim()||null,
+      category:$("portfolioCategory").value,client:$("portfolioClient").value.trim()||null,description:$("portfolioDescription").value.trim()||null,
+      completion_date:$("portfolioDate").value||null,project_value:$("portfolioValue").value?Number($("portfolioValue").value):null,status:$("portfolioProjectStatus").value
+    }).select().single();
+    if(q.error)throw q.error;
+    const project=q.data,uploaded=[];
+    try{
+      for(let i=0;i<files.length;i++){portfolioStatus("Uploading photograph "+(i+1)+" of "+files.length+"…");uploaded.push(await portfolioUploadFile(files[i],"projects/"+project.id));}
+      const imgs=await supabase.from("portfolio_project_images").insert(uploaded.map((x,i)=>({project_id:project.id,image_url:x.url,sort_order:i})));
+      if(imgs.error)throw imgs.error;
+      const upd=await supabase.from("portfolio_projects").update({cover_image_url:uploaded[0].url,updated_at:new Date().toISOString()}).eq("id",project.id);
+      if(upd.error)throw upd.error;
+    }catch(err){
+      await supabase.from("portfolio_projects").delete().eq("id",project.id);
+      throw err;
+    }
+    $("portfolioProjectForm").reset();portfolioStatus("Project saved successfully.");await loadPortfolio();
+  }catch(err){portfolioStatus(err.message||"Project upload failed.",true)}
+});
+$("portfolioGalleryForm")?.addEventListener("submit",async e=>{
+  e.preventDefault();portfolioStatus("Uploading gallery images…");
+  try{
+    const files=Array.from($("galleryFiles").files||[]);if(!files.length)throw Error("Select at least one gallery image.");
+    for(let i=0;i<files.length;i++){
+      portfolioStatus("Uploading gallery image "+(i+1)+" of "+files.length+"…");
+      const up=await portfolioUploadFile(files[i],"gallery");
+      const q=await supabase.from("portfolio_gallery").insert({
+        title:$("galleryTitle").value.trim()||null,category:$("galleryCategory").value,caption:$("galleryCaption").value.trim()||null,image_url:up.url,sort_order:i,status:"PUBLISHED"
+      });
+      if(q.error)throw q.error;
+    }
+    $("portfolioGalleryForm").reset();portfolioStatus("Gallery updated successfully.");await loadPortfolio();
+  }catch(err){portfolioStatus(err.message||"Gallery upload failed.",true)}
+});
+
 $("loginForm").onsubmit=async e=>{e.preventDefault();loginStatus("Signing in…");const {error}=await supabase.auth.signInWithPassword({email:$("adminEmail").value.trim(),password:$("adminPassword").value});if(error){loginStatus(error.message,true);return}await requireAdmin()};
 $("signout").onclick=async()=>{await supabase.auth.signOut();location.reload()};
 $("newProjectBtn").onclick=()=>{window.selectedProjectId=null;$("projectEditor").hidden=false;$("selectedProjectTitle").textContent="New Project";$("projectForm").reset();$("projectProgress").value=0;$("projectStatus").value="REQUESTED";$("reportForm").reset();$("reportDate").value=new Date().toISOString().slice(0,10)};
