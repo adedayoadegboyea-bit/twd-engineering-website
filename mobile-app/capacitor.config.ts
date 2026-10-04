@@ -7,6 +7,11 @@ const config: CapacitorConfig = {
   bundledWebRuntime: false,
   server: {
     cleartext: false
+  },
+  plugins: {
+    CapacitorHttp: {
+      enabled: true
+    }
   }
 };
 
