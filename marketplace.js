@@ -66,6 +66,8 @@ function render() {
     try { sessionStorage.setItem("twd_marketplace_listing_" + String(item.id), JSON.stringify(item)); } catch (e) {}
     const title = escapeHtml(item.title);
     const normalizedImages = Array.isArray(item.images) && item.images.length ? item.images : (item.image ? [item.image] : []);
+    const types = Array.isArray(item.mediaTypes) ? item.mediaTypes : [];
+    const normalizedVideos = types.reduce((out,t,i)=>String(t).toLowerCase()==="video" && normalizedImages[i] ? out.concat(normalizedImages[i]) : out, []);
     const images = normalizedImages.map(publicImageUrl);
     const videos = normalizedVideos.map(publicImageUrl).filter(Boolean);
     const image = escapeHtml(publicImageUrl(images[0] || ""));
