@@ -79,10 +79,10 @@ jobs:
               if marker not in s:
                   raise SystemExit("Could not locate Android buildTypes block.")
               s = s.replace(marker, block + marker, 1)
+          target = "    buildTypes {\n        release {"
           if "signingConfig signingConfigs.release" not in s:
-              target = "        release {"
               if target not in s:
-                  raise SystemExit("Could not locate Android release build type.")
+                  raise SystemExit("Could not locate Android buildTypes.release block.")
               s = s.replace(target, target + "\n            signingConfig signingConfigs.release", 1)
           p.write_text(s)
           PY
