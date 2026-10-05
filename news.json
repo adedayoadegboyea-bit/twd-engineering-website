@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T07:45:29.266396+00:00",
+  "generated_at": "2026-10-05T08:13:50.283850+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,12 +11,90 @@
   ],
   "articles": [
     {
+      "title": "Denmark probes hack of national database affecting 8.8m people",
+      "summary": "Hackers have breached Denmark’s national registry, gaining access to the personal information of about 8.8 million people, the government has confirmed. Read More: https://punchng.com/denmark-probes-hack-of-national-database-affecting-8-8m-people/",
+      "url": "https://punchng.com/denmark-probes-hack-of-national-database-affecting-8-8m-people/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T09:06:13+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Extreme heat threatens pregnancy, birth safety — UN official",
+      "summary": "A UN official warns that extreme heat from climate change is a fatal threat to pregnant women and newborns, citing a survey of healthcare professionals. Read More: https://punchng.com/extreme-heat-threatens-pregnancy-birth-safety-un-official/",
+      "url": "https://punchng.com/extreme-heat-threatens-pregnancy-birth-safety-un-official/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T08:59:12+00:00",
+      "categories": []
+    },
+    {
+      "title": "World Teachers’ Day: ADC gov candidate urges urgent action on Sokoto teachers’ salaries, welfare",
+      "summary": "ADC governorship candidate, Manir Dan’iya, has urged the Sokoto govt to urgently address salary delays and welfare concerns affecting teachers in the state Read More: https://punchng.com/world-teachers-day-adc-gov-candidate-urges-urgent-action-on-sokoto-teachers-salaries-welfare/",
+      "url": "https://punchng.com/world-teachers-day-adc-gov-candidate-urges-urgent-action-on-sokoto-teachers-salaries-welfare/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T08:51:23+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Zulum denies ordering arrest of ‘TinubuMustGo’ protesters",
       "summary": "Borno State governor, Babagana Zulum, has denied ordering the arrest of “Tinubu Must Go” protesters, clarifying his threats were for criminals. Read More: https://punchng.com/zulum-denies-ordering-arrest-of-tinubumustgo-protesters/",
       "url": "https://punchng.com/zulum-denies-ordering-arrest-of-tinubumustgo-protesters/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-05T08:39:00+00:00",
       "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Peter Obi not a threat to Tinubu in 2027 -Umahi",
+      "summary": "Mr Umahi, a former governor of Ebonyi State, said the APC could win all five South-East states in 2027, arguing that the Tinubu administration has addressed the marginalisation of the region under the previous administration. The post Peter Obi not a threat to Tinubu in 2027 -Umahi appeared first on",
+      "url": "https://www.premiumtimesng.com/regional/ssouth-east/914546-peter-obi-not-a-threat-to-tinubu-in-2027-umahi.html",
+      "source": "Premium Times",
+      "published": "2026-10-05T08:13:15+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Notorious insurgent leader, others eliminated in Ondo forest",
+      "summary": "An intelligence-led operation by a combined team of troops from the Nigerian Army, Department of State Services, DSS, and Western Nigeria Security Network, also known as Amotekun, at the weekend in Owo forest, Ondo State, eliminated a senior leader of the Islamic State West Africa Province (ISWAP), ",
+      "url": "https://dailypost.ng/2026/10/05/notorious-insurgent-leader-others-eliminated-in-ondo-forest/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-05T08:10:06+00:00",
+      "categories": []
+    },
+    {
+      "title": "Troops rescue two abducted victims in Zamfara",
+      "summary": "Troops of Sector 2, Operation FANSAN YAMMA, have rescued two persons abducted by terrorists along the Anka–Gadan Manya Road in Anka Local Government Area of Zamfara State. The victims were rescued after troops responded swiftly to an attack on two persons travelling on a motorcycle on September 4, 2",
+      "url": "https://dailypost.ng/2026/10/05/troops-rescue-two-abducted-victims-in-zamfara/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-05T08:07:33+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "Somaliland slams Somalia’s opposition to Israeli military presence",
+      "summary": "Somaliland has criticized the comments by Somalia’s President Hassan Sheikh Mohamud regarding Israel’s plan to establish a military unit in the Horn of Africa. In an interview with Al Jazeera, Mohamud declared that his country will “never accept the presence of Israel in Somalia under any circumstan",
+      "url": "https://dailypost.ng/2026/10/05/somaliland-slams-somalias-opposition-to-israeli-military-presence/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-05T08:07:09+00:00",
+      "categories": [
+        "property"
+      ]
+    },
+    {
+      "title": "Shettima flags off women’s business support fund in Katsina as govt approves additional N4bn",
+      "summary": "Vice President Kashim Shettima says more than 40,000 women are to receive business capital under the Nigeria for Women Programme Scale-Up, while Governor Dikko Radda says Katsina has contributed over N4 billion and approved another N4 billion for the programme. The post Shettima flags off women’s bu",
+      "url": "https://www.premiumtimesng.com/news/top-news/914541-shettima-flags-off-womens-business-support-fund-in-katsina-as-govt-approves-additional-n4bn.html",
+      "source": "Premium Times",
+      "published": "2026-10-05T08:01:13+00:00",
+      "categories": [
+        "business",
         "government"
       ]
     },
@@ -205,90 +283,6 @@
       "source": "PUNCH",
       "published": "2026-10-05T06:44:47+00:00",
       "categories": []
-    },
-    {
-      "title": "Gunmen kill one, injure seven traders in Plateau",
-      "summary": "The Plateau State chairman of the Miyetti Allah Cattle Breeders Association of Nigeria (MACBAN), Ibrahim Babayo, also confirmed the attack The post Gunmen kill one, injure seven traders in Plateau appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/regional/north-central/914522-gunmen-kill-one-injure-seven-traders-in-plateau.html",
-      "source": "Premium Times",
-      "published": "2026-10-05T06:42:25+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Nigerians tackle Gov Okpebholo over N3000 fuel price comment",
-      "summary": "The recent statement by the Edo State Governor, Monday Okpebholo, that Nigerians are lucky and should rejoice that the petrol pump price per litre still hovers between N1,400 and N1,500 has continued to attract public condemnation and criticism. Okpebholo stirred the hornet’s nest and attracted publ",
-      "url": "https://dailypost.ng/2026/10/05/nigerians-tackle-gov-okpebholo-over-n3000-fuel-price-comment/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-05T06:21:46+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: El-Rufai’s detention could hurt APC, generate sympathy – SEDSAC director, other analysts express views",
-      "summary": "The continued detention of former Kaduna State Governor, Nasir El-Rufai, has sparked debate over its potential impact on the political fortunes of the All Progressives Congress, APC, in Northern Nigeria ahead of the 2027 elections. While some political analysts believe the detention could weaken the",
-      "url": "https://dailypost.ng/2026/10/05/2027-el-rufais-detention-could-hurt-apc-generate-sympathy-sedsac-director-other-analysts-express-views/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-05T06:20:25+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: INEC to address Nigerians as election countdown hits 100 days",
-      "summary": "INEC has scheduled the 2027 presidential and National Assembly elections for 16 January 2027, while the governorship and State Houses of Assembly elections will hold on 6 February 2027. The post 2027: INEC to address Nigerians as election countdown hits 100 days appeared first on Premium Times Niger",
-      "url": "https://www.premiumtimesng.com/news/top-news/914520-2027-inec-to-address-nigerians-as-election-countdown-hits-100-days.html",
-      "source": "Premium Times",
-      "published": "2026-10-05T06:14:37+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "DisCos earn N603bn as power offtake drops",
-      "summary": "Electricity distribution companies in Nigeria collected N603.64bn in Q2 2026 despite a 3.4% drop in power offtake, a new NERC report has revealed. Read More: https://punchng.com/discos-earn-n603bn-as-power-offtake-drops/",
-      "url": "https://punchng.com/discos-earn-n603bn-as-power-offtake-drops/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T06:04:58+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Osun disputes accounts restriction over $13.9m award",
-      "summary": "The Osun State Government has asked a Federal High Court in Lagos to set aside an order restricting its bank accounts over a $13.9m arbitration award. Read More: https://punchng.com/osun-disputes-accounts-restriction-over-13-9m-award/",
-      "url": "https://punchng.com/osun-disputes-accounts-restriction-over-13-9m-award/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T06:04:33+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "LAWMA clears traders from unauthorised trading spots",
-      "summary": "The Lagos Waste Management Authority (LAWMA) has dislodged street traders from unauthorised spots at Tafawa Balewa Square and the Costain Under Bridge axis Read More: https://punchng.com/lawma-clears-traders-from-unauthorised-trading-spots/",
-      "url": "https://punchng.com/lawma-clears-traders-from-unauthorised-trading-spots/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T06:03:27+00:00",
-      "categories": [
-        "engineering",
-        "business",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Nigeria’s gas turned into working assets",
-      "summary": "In under two years since its first Final Investment Decisions, MDGIF has approved an estimated ₦671 billion in FIDs, catalysed ₦1.6 trillion in total investments, and built a portfolio spanning 31 projects and 205 infrastructure assets. The post Nigeria’s gas turned into working assets appeared firs",
-      "url": "https://www.premiumtimesng.com/promoted/914129-nigerias-gas-turned-into-working-assets.html",
-      "source": "Premium Times",
-      "published": "2026-10-05T06:00:07+00:00",
-      "categories": [
-        "engineering",
-        "business"
-      ]
     }
   ]
 }
