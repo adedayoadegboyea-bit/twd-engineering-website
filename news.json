@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T21:43:37.250704+00:00",
+  "generated_at": "2026-10-05T22:10:31.542673+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,34 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Police arrest suspected gun-runner with two AK-47 rifles, 42 bullets in Kwara",
+      "summary": "Kwara State Police have arrested a 30-year-old suspected gun-runner with two AK-47 rifles, three magazines and 42 rounds of live ammunition in Ilorin. Read More: https://punchng.com/police-arrest-suspected-gun-runner-with-two-ak-47-rifles-42-bullets-in-kwara/",
+      "url": "https://punchng.com/police-arrest-suspected-gun-runner-with-two-ak-47-rifles-42-bullets-in-kwara/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T22:51:26+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nine die in Ijebu-Ode-Benin Expressway crash",
+      "summary": "Nine people were killed in a fatal road crash involving a bus and a truck along the Ijebu-Ode-Benin Expressway in Ogun State on Monday, the FRSC has said. Read More: https://punchng.com/nine-die-in-ijebu-ode-benin-expressway-crash/",
+      "url": "https://punchng.com/nine-die-in-ijebu-ode-benin-expressway-crash/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T22:50:40+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Gambia buys two mega generators to deal with crippling power cuts",
+      "summary": "The Gambia has received two new 10.5-megawatt generators from China to address a crippling electricity crisis that has caused prolonged blackouts since Jun Read More: https://punchng.com/gambia-buys-two-mega-generators-to-deal-with-crippling-power-cuts/",
+      "url": "https://punchng.com/gambia-buys-two-mega-generators-to-deal-with-crippling-power-cuts/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T22:49:01+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
     {
       "title": "Dickson won’t betray Obi, Kwankwaso — NDC",
       "summary": "The Nigeria Democratic Congress has dismissed allegations that its National Leader, Seriake Dickson, is secretly working with the APC to undermine its tick Read More: https://punchng.com/dickson-wont-betray-obi-kwankwaso-ndc/",
@@ -268,35 +296,6 @@
       "categories": [
         "government",
         "lagos"
-      ]
-    },
-    {
-      "title": "EFCC hands over N107m recovered from property fraud to Lagos victim",
-      "summary": "The EFCC said its investigation led to the recovery of N107 million, which was returned to the petitioner on 30 September. The post EFCC hands over N107m recovered from property fraud to Lagos victim appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/914780-efcc-hands-over-n107m-recovered-from-property-fraud-to-lagos-victim.html",
-      "source": "Premium Times",
-      "published": "2026-10-05T20:32:20+00:00",
-      "categories": [
-        "property",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Tinubu declares three-day mourning for Air Force personnel killed in crash",
-      "summary": "President Bola Ahmed Tinubu has declared three days of national mourning for Air Force personnel who died in the crash of a military aircraft on Monday. This was disclosed by the Special Adviser to the President on Information and Strategy, Bayo Onanuga, on Monday. He also directed that flags be flo",
-      "url": "https://dailypost.ng/2026/10/05/tinubu-declares-three-day-mourning-for-air-force-personnel-killed-in-crash/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-05T20:30:46+00:00",
-      "categories": []
-    },
-    {
-      "title": "World Teachers’ Day: Labour Party calls for state of emergency in teaching sector",
-      "summary": "The Labour Party, LP, has called on the Nigerian government to take a critical look at the pitiable condition of teachers in the country and declare a national state of emergency in the teaching sector. The party said no nation could genuinely grow where those entrusted with moulding the future gene",
-      "url": "https://dailypost.ng/2026/10/05/world-teachers-day-labour-party-calls-for-state-of-emergency-in-teaching-sector/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-05T20:28:08+00:00",
-      "categories": [
-        "government"
       ]
     }
   ]
