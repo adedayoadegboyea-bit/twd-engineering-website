@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T17:10:02.438603+00:00",
+  "generated_at": "2026-10-05T17:43:59.560632+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,45 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Turkish football chief denies role in referee scandal",
+      "summary": "Turkey’s Football Federation chief has denied involvement in a graft scandal that has seen the country’s top refereeing official arrested. Read More: https://punchng.com/turkish-football-chief-denies-role-in-referee-scandal/",
+      "url": "https://punchng.com/turkish-football-chief-denies-role-in-referee-scandal/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T18:37:26+00:00",
+      "categories": []
+    },
+    {
+      "title": "Delta teachers demand more staff, others",
+      "summary": "The Nigeria Union of Teachers in Delta State has called on the government to address teacher shortages, insecurity, and inadequate teaching materials. Read More: https://punchng.com/delta-teachers-demand-more-staff-others/",
+      "url": "https://punchng.com/delta-teachers-demand-more-staff-others/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T18:30:02+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Why I refused to pay ransom after bandits abducted my brothers – Zamfara gov",
+      "summary": "Zamfara State Governor, Dauda Lawal, has revealed why he refused to pay ransom to bandits who abducted his brothers, insisting he will not give money to cr Read More: https://punchng.com/why-i-refused-to-pay-ransom-after-bandits-abducted-my-brothers-zamfara-gov/",
+      "url": "https://punchng.com/why-i-refused-to-pay-ransom-after-bandits-abducted-my-brothers-zamfara-gov/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T18:22:24+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Makinde distributes motorcycles, notebooks across 33 Oyo LGs",
+      "summary": "Oyo State Governor, Seyi Makinde, has distributed motorcycles to school officers and 72,000 notebooks to learners across 33 LGAs to boost education. Read More: https://punchng.com/makinde-distributes-motorcycles-notebooks-across-33-oyo-lgs/",
+      "url": "https://punchng.com/makinde-distributes-motorcycles-notebooks-across-33-oyo-lgs/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T18:11:49+00:00",
+      "categories": [
+        "government",
+        "oyo"
+      ]
+    },
     {
       "title": "IG, INTERPOL chief meet in France, deepen fight against transnational crime",
       "summary": "Nigeria’s Inspector-General of Police, Olatunji Disu, met with INTERPOL’s chief in France to deepen cooperation in the fight against transnational crime. Read More: https://punchng.com/ig-interpol-chief-meet-in-france-deepen-fight-against-transnational-crime/",
@@ -44,6 +83,14 @@
       "url": "https://punchng.com/nigerian-playwright-wins-37092-uea-scholarship/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-05T17:39:33+00:00",
+      "categories": []
+    },
+    {
+      "title": "What we know about Nigerian military aircraft that fatally crashed Monday",
+      "summary": "The aircraft was configured primarily for maritime patrol and Intelligence, Surveillance, and Reconnaissance (ISR) missions. The post What we know about Nigerian military aircraft that fatally crashed Monday appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/headlines/914659-what-we-know-about-nigerian-military-aircraft-that-fatally-crashed-monday.html",
+      "source": "Premium Times",
+      "published": "2026-10-05T17:36:01+00:00",
       "categories": []
     },
     {
@@ -106,6 +153,32 @@
       "categories": [
         "government",
         "oyo"
+      ]
+    },
+    {
+      "title": "NNPC’s Federation receivables fall to ₦11.2 trillion after energy security costs offset",
+      "summary": "The accounts also show that other receivables from the Federation rose to ₦11.2 trillion from ₦8.84 trillion. The post NNPC’s Federation receivables fall to ₦11.2 trillion after energy security costs offset appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/business/business-news/914712-nnpcs-federation-receivables-fall-to-%e2%82%a611-2-trillion-after-energy-security-costs-offset.html",
+      "source": "Premium Times",
+      "published": "2026-10-05T17:20:28+00:00",
+      "categories": []
+    },
+    {
+      "title": "‘I’ve no regrets supporting Peter Obi’ – Datti Baba-Ahmed",
+      "summary": "Former Labour Party vice-presidential candidate, Datti Baba-Ahmed, has said he has no regrets about being Peter Obi’s running mate in the 2023 presidential election, insisting that the decision was based on the need to promote unity, forgiveness and trust in Nigeria. Baba-Ahmed spoke on Monday while",
+      "url": "https://dailypost.ng/2026/10/05/ive-no-regrets-supporting-peter-obi-datti-baba-ahmed/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-05T17:20:04+00:00",
+      "categories": []
+    },
+    {
+      "title": "16-year-old girl killed while returning from river in Plateau",
+      "summary": "Unidentified assailants have killed a 16-year-old girl, identified as Salomi Ishaya, in Bassa Local Government Area of Plateau State. The young girl was returning from a river in Luwaran village, Kawam District, Bassa Local Government Area, when she encountered the assailants. Security analyst Zagaz",
+      "url": "https://dailypost.ng/2026/10/05/16-year-old-girl-killed-while-returning-from-river-in-plateau/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-05T17:16:00+00:00",
+      "categories": [
+        "government"
       ]
     },
     {
@@ -180,9 +253,9 @@
       ]
     },
     {
-      "title": "JUST IN: Nigerian Aircraft Crash: All 32 passengers, crew believed dead, Tinubu mourns",
-      "summary": "\"The President extends his deepest condolences to the family of the 25 passengers and seven crew members involved...\" The post JUST IN: Nigerian Aircraft Crash: All 32 passengers, crew believed dead, Tinubu mourns appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/914697-just-in-nigerian-aircraft-crash-all-32-passengers-crew-believed-dead-tinubu-mourns.html",
+      "title": "Nigerian Aircraft Crash: All 32 passengers, crew believed dead, Tinubu mourns",
+      "summary": "\"The President extends his deepest condolences to the family of the 25 passengers and seven crew members involved...\" The post Nigerian Aircraft Crash: All 32 passengers, crew believed dead, Tinubu mourns appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/914697-nigerian-aircraft-crash-all-32-passengers-crew-believed-dead-tinubu-mourns.html",
       "source": "Premium Times",
       "published": "2026-10-05T16:49:50+00:00",
       "categories": []
@@ -226,76 +299,6 @@
         "government",
         "property",
         "lagos"
-      ]
-    },
-    {
-      "title": "Nigeria’s registered voters rise above 103m ahead of 2027 elections – INEC",
-      "summary": "The Independent National Electoral Commission (INEC) says Nigeria’s registered voters have increased to more than 103 million ahead of the 2027 general elections. INEC Chairman, Prof. Joash Amupitan, disclosed this on Monday in Abuja at a strategic workshop for media executives organised by the Nige",
-      "url": "https://dailypost.ng/2026/10/05/nigerias-registered-voters-rise-above-103m-ahead-of-2027-elections-inec/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-05T16:41:51+00:00",
-      "categories": []
-    },
-    {
-      "title": "JAMB to hold UTME in Canada from 2027",
-      "summary": "The Joint Admissions and Matriculation Board plans to establish a UTME centre in Ottawa, Canada, to serve Nigerians in North America from 2027. Read More: https://punchng.com/jamb-to-hold-utme-in-canada-from-2027/",
-      "url": "https://punchng.com/jamb-to-hold-utme-in-canada-from-2027/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T16:38:03+00:00",
-      "categories": []
-    },
-    {
-      "title": "Security forces kill ISWAP commander in Ondo forest",
-      "summary": "Abdulssamad Ohide was killed on Sunday during an operation in a forest located in Owo, in the northern part of the state. The post Security forces kill ISWAP commander in Ondo forest appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/914688-security-forces-kill-iswap-commander-in-ondo-forest.html",
-      "source": "Premium Times",
-      "published": "2026-10-05T16:36:45+00:00",
-      "categories": []
-    },
-    {
-      "title": "14 Super Falcons in camp ahead of Comoros Olympic qualifier",
-      "summary": "Fourteen Super Falcons players have reported to camp for the 2028 Olympic qualifying match against Comoros, scheduled to be played in Ikenne-Remo. Read More: https://punchng.com/14-super-falcons-in-camp-ahead-of-comoros-olympic-qualifier/",
-      "url": "https://punchng.com/14-super-falcons-in-camp-ahead-of-comoros-olympic-qualifier/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T16:34:14+00:00",
-      "categories": []
-    },
-    {
-      "title": "NITDA warns Nigerians against sharing NIN, BVN, others with AI platforms",
-      "summary": "Nigeria’s IT agency, NITDA, has warned citizens against sharing sensitive personal data like NIN, BVN, and bank details with AI platforms like ChatGPT. Read More: https://punchng.com/nitda-warns-nigerians-against-sharing-nin-bvn-others-with-ai-platforms/",
-      "url": "https://punchng.com/nitda-warns-nigerians-against-sharing-nin-bvn-others-with-ai-platforms/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T16:30:51+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "INEC targets simultaneous voting across polling units in 2027 polls",
-      "summary": "The Independent National Electoral Commission says it is targeting the commencement of voting simultaneously across all polling units for the 2027 election Read More: https://punchng.com/inec-targets-simultaneous-voting-across-polling-units-in-2027-polls/",
-      "url": "https://punchng.com/inec-targets-simultaneous-voting-across-polling-units-in-2027-polls/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T16:30:10+00:00",
-      "categories": []
-    },
-    {
-      "title": "ADC guber candidate, Dan’iya urges action on Sokoto teachers’ salaries",
-      "summary": "The African Democratic Congress, ADC, governorship candidate in Sokoto State, Manir Dan’iya, has called on the state government to urgently address salary delays and employment uncertainties affecting teachers. Dan’iya made the call in a statement issued on Monday by his media aide, Aminu Abdullahi,",
-      "url": "https://dailypost.ng/2026/10/05/adc-guber-candidate-daniya-urges-action-on-sokoto-teachers-salaries/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-05T16:28:04+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Aiyedatiwa directs search, rescue operations after Ondo air crash",
-      "summary": "Ondo State Governor, Lucky Aiyedatiwa, has directed emergency agencies to support search and rescue operations after a Nigerian Air Force aircraft crashed Read More: https://punchng.com/aiyedatiwa-directs-search-rescue-operations-after-ondo-air-crash/",
-      "url": "https://punchng.com/aiyedatiwa-directs-search-rescue-operations-after-ondo-air-crash/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T16:27:31+00:00",
-      "categories": [
-        "government"
       ]
     }
   ]
