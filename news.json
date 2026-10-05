@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T03:11:57.484069+00:00",
+  "generated_at": "2026-10-05T03:46:20.423711+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,45 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "New Army formations will strengthen response to insecurity — Tinubu",
+      "summary": "President Bola Tinubu says the Nigerian Army has operationalised new formations in Zamfara, Kebbi, Oyo and Osun states to improve response to threats. Read More: https://punchng.com/new-army-formations-will-strengthen-response-to-insecurity-tinubu-2/",
+      "url": "https://punchng.com/new-army-formations-will-strengthen-response-to-insecurity-tinubu-2/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T04:06:50+00:00",
+      "categories": [
+        "oyo"
+      ]
+    },
+    {
+      "title": "INEC to brief Nigerians as 2027 polls enter 100-day countdown",
+      "summary": "INEC will hold a national stakeholders’ meeting and press conference to provide updates on its preparations as the 2027 general elections enter a 100-day c Read More: https://punchng.com/inec-to-brief-nigerians-as-2027-polls-enter-100-day-countdown/",
+      "url": "https://punchng.com/inec-to-brief-nigerians-as-2027-polls-enter-100-day-countdown/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T04:05:40+00:00",
+      "categories": []
+    },
+    {
+      "title": "DisCos earn N603bn as power offtake drops",
+      "summary": "Electricity distribution companies in Nigeria collected N603.64bn in Q2 2026 despite a 3.40% drop in power offtake, a new NERC report has revealed. Read More: https://punchng.com/discos-earn-n603bn-as-power-offtake-drops/",
+      "url": "https://punchng.com/discos-earn-n603bn-as-power-offtake-drops/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T04:04:58+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Osun disputes accounts restriction over $13.9m award",
+      "summary": "The Osun State Government has asked a Federal High Court in Lagos to set aside an order restricting its bank accounts over a $13.9m arbitration award. Read More: https://punchng.com/osun-disputes-accounts-restriction-over-13-9m-award/",
+      "url": "https://punchng.com/osun-disputes-accounts-restriction-over-13-9m-award/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T04:04:33+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
+    },
     {
       "title": "Greenwich Bank expands, opens three Lagos branches",
       "summary": "Greenwich Bank has opened its first three commercial banking branches in Lagos, a move commended by the state government for supporting financial inclusion Read More: https://punchng.com/greenwich-bank-expands-opens-three-lagos-branches/",
@@ -98,16 +137,6 @@
       "source": "PUNCH",
       "published": "2026-10-05T00:50:49+00:00",
       "categories": []
-    },
-    {
-      "title": "DisCos earn N603bn as power offtake drops",
-      "summary": "Nigerian electricity distribution companies collected N603.64bn in the second quarter of 2026 despite a 3.40% drop in power offtake, a NERC report shows. Read More: https://punchng.com/discos-earn-n603bn-as-power-offtake-drops/",
-      "url": "https://punchng.com/discos-earn-n603bn-as-power-offtake-drops/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T00:48:58+00:00",
-      "categories": [
-        "engineering"
-      ]
     },
     {
       "title": "Peak educates consumers through campaign",
@@ -267,36 +296,6 @@
       "published": "2026-10-05T00:25:31+00:00",
       "categories": [
         "property"
-      ]
-    },
-    {
-      "title": "CBN’s three-year reforms face real economy test",
-      "summary": "Three years into Olayemi Cardoso’s tenure, the CBN’s reforms have boosted reserves but face a real economy test with high credit costs and a weaker naira. Read More: https://punchng.com/cbns-three-year-reforms-face-real-economy-test/",
-      "url": "https://punchng.com/cbns-three-year-reforms-face-real-economy-test/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T00:25:04+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "INEC to brief Nigerians as 2027 polls enter 100-day countdown",
-      "summary": "The Independent National Electoral Commission will hold a press conference to provide updates on its preparations as the 2027 general elections enter a 100 Read More: https://punchng.com/inec-to-brief-nigerians-as-2027-polls-enter-100-day-countdown/",
-      "url": "https://punchng.com/inec-to-brief-nigerians-as-2027-polls-enter-100-day-countdown/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T00:24:40+00:00",
-      "categories": []
-    },
-    {
-      "title": "LAWMA clears traders from unauthorised trading spots",
-      "summary": "The Lagos Waste Management Authority has dislodged street traders from unauthorised locations at Tafawa Balewa Square and the Costain Under Bridge axis. Read More: https://punchng.com/lawma-clears-traders-from-unauthorised-trading-spots/",
-      "url": "https://punchng.com/lawma-clears-traders-from-unauthorised-trading-spots/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T00:24:27+00:00",
-      "categories": [
-        "engineering",
-        "business",
-        "lagos"
       ]
     }
   ]
