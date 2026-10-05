@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T02:44:08.286944+00:00",
+  "generated_at": "2026-10-05T03:11:57.484069+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -40,6 +40,16 @@
       "published": "2026-10-05T01:30:43+00:00",
       "categories": [
         "property"
+      ]
+    },
+    {
+      "title": "Group distributes Lagos history book to schools",
+      "summary": "A socio-political group, BATKORRECT, has distributed a book on the history of Lagos street names to secondary school students across Lagos State. Read More: https://punchng.com/group-distributes-lagos-history-book-to-schools/",
+      "url": "https://punchng.com/group-distributes-lagos-history-book-to-schools/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T01:22:20+00:00",
+      "categories": [
+        "lagos"
       ]
     },
     {
@@ -212,6 +222,16 @@
       ]
     },
     {
+      "title": "Political risks expose gaps in Nigeria’s insurance coverage",
+      "summary": "Political instability and insecurity in Nigeria, like the Rivers State crisis, are exposing gaps in insurance protection for businesses against political r Read More: https://punchng.com/political-risks-expose-gaps-in-nigerias-insurance-coverage/",
+      "url": "https://punchng.com/political-risks-expose-gaps-in-nigerias-insurance-coverage/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-05T00:33:15+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
       "title": "Stanbic IBTC Insurance emerges stronger after recapitalisation",
       "summary": "Stanbic IBTC Insurance has strengthened its financial capacity after meeting the N10bn minimum capital requirement set by NAICOM for Nigeria’s insurers. Read More: https://punchng.com/stanbic-ibtc-insurance-emerges-stronger-after-recapitalisation/",
       "url": "https://punchng.com/stanbic-ibtc-insurance-emerges-stronger-after-recapitalisation/?utm_source=rss.punchng.com&utm_medium=web",
@@ -277,31 +297,6 @@
         "engineering",
         "business",
         "lagos"
-      ]
-    },
-    {
-      "title": "Lagos waterfronts attract investors as blue economy expands",
-      "summary": "Stakeholders say Lagos waterways offer major opportunities for property investment and tourism, urging private investors to explore waterfront developments Read More: https://punchng.com/lagos-waterfronts-attract-investors-as-blue-economy-expands/",
-      "url": "https://punchng.com/lagos-waterfronts-attract-investors-as-blue-economy-expands/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T00:23:28+00:00",
-      "categories": [
-        "engineering",
-        "business",
-        "property",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Poor funding, rising costs stall 250,000 housing projects",
-      "summary": "Stakeholders blame poor funding and rising construction costs for 250,000 abandoned housing projects in Nigeria as the government plans to recover them. Read More: https://punchng.com/poor-funding-rising-costs-stall-250000-housing-projects/",
-      "url": "https://punchng.com/poor-funding-rising-costs-stall-250000-housing-projects/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-05T00:22:26+00:00",
-      "categories": [
-        "engineering",
-        "government",
-        "property"
       ]
     }
   ]
