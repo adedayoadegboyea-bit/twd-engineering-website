@@ -12,7 +12,8 @@
   "dependencies": {
     "@capacitor/core": "^7.4.3",
     "@capacitor/android": "^7.4.3",
-    "@capacitor/ios": "^7.4.3"
+    "@capacitor/ios": "^7.4.3",
+    "@capacitor/http": "^7.4.3"
   },
   "devDependencies": {
     "@capacitor/cli": "^7.4.3",
