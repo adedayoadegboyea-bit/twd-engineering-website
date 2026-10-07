@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T14:12:07.269578+00:00",
+  "generated_at": "2026-10-07T14:44:12.807170+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,40 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Enforcement of Copyright Act reducing piracy in Nigeria, says NCC",
+      "summary": "The Nigerian Copyright Commission says increased enforcement of the new Copyright Act is significantly strengthening anti-piracy efforts in Nigeria. Read More: https://punchng.com/enforcement-of-copyright-act-reducing-piracy-in-nigeria-says-ncc/",
+      "url": "https://punchng.com/enforcement-of-copyright-act-reducing-piracy-in-nigeria-says-ncc/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T15:39:48+00:00",
+      "categories": []
+    },
+    {
+      "title": "INEC begins training for supervisors",
+      "summary": "INEC has commenced a training of trainers for state coordinating supervisors to improve the speed and accuracy of incident reporting for the 2027 election. Read More: https://punchng.com/inec-begins-training-for-supervisors/",
+      "url": "https://punchng.com/inec-begins-training-for-supervisors/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T15:35:10+00:00",
+      "categories": []
+    },
+    {
+      "title": "UNIOSUN releases 2026/2027 cut-off marks, warns admission seekers against fraudsters",
+      "summary": "Osun State University has released its approved cut-off marks for the 2026/2027 academic session, with Nursing and Law having the highest thresholds. Read More: https://punchng.com/uniosun-releases-2026-2027-cut-off-marks-warns-admission-seekers-against-fraudsters/",
+      "url": "https://punchng.com/uniosun-releases-2026-2027-cut-off-marks-warns-admission-seekers-against-fraudsters/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T15:34:02+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: I’ll reduce petrol price to N300 per litre if elected, says Duke",
+      "summary": "Former Cross River Governor, Donald Duke, says he will reduce the price of petrol to N300 per litre if elected president in the 2027 general election. Read More: https://punchng.com/2027-ill-reduce-petrol-price-to-n300-per-litre-if-elected-says-duke/",
+      "url": "https://punchng.com/2027-ill-reduce-petrol-price-to-n300-per-litre-if-elected-says-duke/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T15:18:03+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Don seeks to promote feedback literacy among teachers, students",
       "summary": "A professor at Bamidele Olumilua University has called for the promotion of feedback literacy and formative assessment among teachers and students in Niger Read More: https://punchng.com/don-seeks-to-promote-feedback-literacy-among-teachers-students/",
@@ -42,6 +76,88 @@
       "url": "https://punchng.com/ondo-community-appeals-to-aiyedatiwa-for-development-projects/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-07T14:48:11+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Hoodlums attack army officer, wife, steal N300,000 in Lagos",
+      "summary": "Hoodlums has allegedly attacked a Nigerian Army officer and his wife after blocking their vehicle and dispossessing them of N300,000 in the Itire area of Lagos State. The Lagos State Commissioner of Police, Tijani Fatai, disclosed this during a press briefing on the notable operational successes rec",
+      "url": "https://dailypost.ng/2026/10/07/hoodlums-attack-army-officer-wife-steal-n300000-in-lagos/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T14:34:13+00:00",
+      "categories": [
+        "lagos"
+      ]
+    },
+    {
+      "title": "Atiku’s production subsidy: Has politics overtaken economics?, By Kayode Oladele",
+      "summary": "Alhaji Atiku Abubakar, former Vice President of Nigeria and presidential candidate of the African Democratic Congress, (ADC), has returned to the centre of Nigeria’s economic debate with a proposal that deserves careful scrutiny. In his Independence Day policy statement, Alhaji Atiku Abubakar promis",
+      "url": "https://www.premiumtimesng.com/opinion/915258-atikus-production-subsidy-has-politics-overtaken-economics-by-kayode-oladele.html",
+      "source": "Premium Times",
+      "published": "2026-10-07T14:32:08+00:00",
+      "categories": []
+    },
+    {
+      "title": "Tambuwal sues Sokoto govt over withheld inquiry report",
+      "summary": "Former Sokoto State Governor and Senator representing Sokoto South, Aminu Tambuwal, has sued the Sokoto State Government over its alleged failure to release the report of the Judicial Commission of Inquiry set up to investigate his administration between 2015 and 2023. Tambuwal, through his counsel,",
+      "url": "https://dailypost.ng/2026/10/07/tambuwal-sues-sokoto-govt-over-withheld-inquiry-report/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T14:27:08+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Edo varsity lecturer dies after hotel encounter with sex worker",
+      "summary": "A senior lecturer at Ambrose Alli University, Ekpoma, Matthew Uwuigbe, died in a hotel in Ekpoma after an encounter with a 21-year-old sex worker. Police arrested three people as investigations continue to determine the circumstances of his death. The post Edo varsity lecturer dies after hotel encou",
+      "url": "https://www.premiumtimesng.com/regional/south-south-regional/915253-edo-varsity-lecturer-dies-after-hotel-encounter-with-sex-worker.html",
+      "source": "Premium Times",
+      "published": "2026-10-07T14:25:58+00:00",
+      "categories": []
+    },
+    {
+      "title": "Rivers ADC explains why its guber aspirant joined Wike’s Rainbow Coalition",
+      "summary": "The Rivers State chapter of the African Democratic Congress, ADC has said its governorship aspirant in the May 2026 primary election, Dr Sokonte Davies, was disappointed after failing to secure the party’s primary election. The party was reacting to Davies’ decision to shift his alliance to the Rain",
+      "url": "https://dailypost.ng/2026/10/07/rivers-adc-explains-why-its-guber-aspirant-joined-wikes-rainbow-coalition/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T14:22:27+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "25-year-old remanded over alleged N15m cattle robbery in Benue",
+      "summary": "A Makurdi Magistrates’ Court has ordered the remand of a 25-year-old man, Shaibu Usman, over the alleged robbery of 16 cattle estimated at N15 million in Benue State. Usman, a resident of Ekwerege in Ado Local Government Area of the state, is facing allegations bordering on criminal conspiracy, arme",
+      "url": "https://dailypost.ng/2026/10/07/25-year-old-remanded-over-alleged-n15m-cattle-robbery-in-benue/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T14:22:12+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "The Anthony Kila affair: How fake titles captured a university and what it says about Nigeria, By Austin Aigbe",
+      "summary": "A true Professor in Nigeria spends at least 10-15 years as Assistant Lecturer, Lecturer II, Lecturer I, Senior Lecturer, Reader, then Professor. He publishes, survives external assessment, and defends his work before the university Senate. It is brutal. Then someone prints a certificate from a centr",
+      "url": "https://www.premiumtimesng.com/opinion/915228-the-anthony-kila-affair-how-fake-titles-captured-a-university-and-what-it-says-about-nigeria-by-austin-aigbe.html",
+      "source": "Premium Times",
+      "published": "2026-10-07T14:21:53+00:00",
+      "categories": []
+    },
+    {
+      "title": "FCT promotion exam: 33-year-old man caught writing test for father",
+      "summary": "A 33-year-old man, Monsuru Musa, has been arrested for allegedly sitting a promotion examination on behalf of his father, Musa Mohammed, an employee of the FCT Fire Service. Monsuru was caught on Wednesday during the third day of the promotion examination organised by the FCT Civil Service Commissio",
+      "url": "https://dailypost.ng/2026/10/07/fct-promotion-exam-33-year-old-man-caught-writing-test-for-father/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T14:16:27+00:00",
+      "categories": []
+    },
+    {
+      "title": "N124.86bn withdrawn by CBN from Consolidated Fund not traced to Emefiele – EFCC witness tells court",
+      "summary": "A witness of the Economic and Financial Crimes Commission, EFCC, Dr Ali Mohammed, on Wednesday, admitted at the High Court of the Federal Capital Territory, FCT, that the ₦124.86 billion withdrawn by the Central Bank of Nigeria, CBN, from the Consolidated Revenue Account of the federal government wa",
+      "url": "https://dailypost.ng/2026/10/07/n124-86bn-withdrawn-by-cbn-from-consolidated-fund-not-traced-to-emefiele-efcc-witness-tells-court/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T14:15:41+00:00",
       "categories": [
         "government"
       ]
@@ -158,128 +274,6 @@
       "published": "2026-10-07T13:35:12+00:00",
       "categories": [
         "government"
-      ]
-    },
-    {
-      "title": "2027: Mass defection hits Adamawa NNPP as 200 members join SDP",
-      "summary": "At least 200 members of the New Nigeria Peoples Party, NNPP, in Adamawa State have joined the Social Democratic Party, SDP. The defectors said they will support the SDP governorship candidate, Christopher Nathaniel. Speaking for the defectors, Mustapha Abbo said they decided to join SDP because of N",
-      "url": "https://dailypost.ng/2026/10/07/2027-mass-defection-hits-adamawa-nnpp-as-200-members-join-sdp/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T13:32:40+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Passenger dies aboard Kenya Airways flight from Nairobi to Lagos",
-      "summary": "According to the airline, the passenger died after becoming unresponsive about 20 minutes before landing in Lagos, with police investigating the circumstances. The post Passenger dies aboard Kenya Airways flight from Nairobi to Lagos appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/business/business-news/915231-passenger-dies-aboard-kenya-airways-flight-from-nairobi-to-lagos.html",
-      "source": "Premium Times",
-      "published": "2026-10-07T13:29:02+00:00",
-      "categories": [
-        "property",
-        "lagos"
-      ]
-    },
-    {
-      "title": "NPFL: Rangers unveil eight-man shortlist for September POTM",
-      "summary": "Rangers have unveiled eight nominees for their Player of the Month, POTM, award for September. The nominees are Igwillo Chimaobi, Azeez Falolu, Daniel Itodo, Oputa Chibueze, Austin Opara, Iwundu Chidozie, Abuchi Okeke and Lucky Jimoh. The Enugu-based club announced that voting is open to fans to dec",
-      "url": "https://dailypost.ng/2026/10/07/npfl-rangers-unveil-eight-man-shortlist-for-september-potm/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T13:22:48+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: INEC targets 7:30 a.m. readiness at polling units",
-      "summary": "Mr Ifogah said the commission’s chairman, Joash Amupitan, had emphasised that election officials and materials should not arrive late at polling units. The post 2027: INEC targets 7:30 a.m. readiness at polling units appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/915229-2027-inec-targets-730-a-m-readiness-at-polling-units.html",
-      "source": "Premium Times",
-      "published": "2026-10-07T13:21:44+00:00",
-      "categories": []
-    },
-    {
-      "title": "Nothing more to say after reading Ronaldo’s statement – Coach Jesus",
-      "summary": "Portugal coach Jorge Jesus says he has read Cristiano Ronaldo’s statement detailing their dispute but has nothing more to say on the matter. Read More: https://punchng.com/nothing-more-to-say-after-reading-ronaldos-statement-coach-jesus/",
-      "url": "https://punchng.com/nothing-more-to-say-after-reading-ronaldos-statement-coach-jesus/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-07T13:20:32+00:00",
-      "categories": []
-    },
-    {
-      "title": "Plateau gov’s defection to APC yielding results, says LG chair",
-      "summary": "A Plateau LG chairman says Gov Caleb Mutfwang’s defection to the APC is already yielding results, citing federal road projects and other approvals. Read More: https://punchng.com/plateau-govs-defection-to-apc-yielding-results-says-lg-chair/",
-      "url": "https://punchng.com/plateau-govs-defection-to-apc-yielding-results-says-lg-chair/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-07T13:19:38+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Peter Obi mourns Secretary-General of Sharia Council, Nafiu Baba-Ahmed",
-      "summary": "The presidential candidate of the Nigerian Democratic Congress, NDC, Peter Obi, has mourned the death of Mallam Nafiu Baba-Ahmed, Secretary-General of the Supreme Council for Sharia in Nigeria. Obi, in a post on his X handle on Wednesday, described the deceased as a lawyer, scholar and administrator",
-      "url": "https://dailypost.ng/2026/10/07/peter-obi-mourns-secretary-general-of-sharia-council-nafiu-baba-ahmed/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T13:15:23+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: PVC is your power, use it wisely – Makinde to Nigerians",
-      "summary": "With 99 days to the 2027 general elections, the Allied Peoples Movement, APM, presidential candidate, Seyi Makinde, has described the Permanent Voters Cards, PVCs, as the power Nigerians have. Makinde, who is the Governor of Oyo State, urged Nigerians to use their PVCs wisely during the 2027 general",
-      "url": "https://dailypost.ng/2026/10/07/2027-pvc-is-your-power-use-it-wisely-makinde-to-nigerians/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T13:14:59+00:00",
-      "categories": [
-        "engineering",
-        "government",
-        "oyo"
-      ]
-    },
-    {
-      "title": "Declare state of emergency on drug abuse – Ogun psychiatrist tells FG",
-      "summary": "A consultant psychiatrist at the Federal Neuropsychiatric Hospital, Aro, Abeokuta, Dr Abayomi Oluseyi Olajide, has called on the Federal Government to declare a state of emergency on substance abuse in Nigeria. Olajide made the call on Wednesday in Abeokuta during the Mental Health Awareness Walk Ra",
-      "url": "https://dailypost.ng/2026/10/07/declare-state-of-emergency-on-drug-abuse-ogun-psychiatrist-tells-fg/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T13:11:42+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Zamfara: NDC condemns fresh bandits’ attack in Bindin",
-      "summary": "The National Democratic Congress, NDC, Zamfara State chapter, has condemned the recent bandits’ attack on Bindin community in Maru Local Government Area of the state. The party also called on the international community to take note of what it described as the deteriorating security situation in Zam",
-      "url": "https://dailypost.ng/2026/10/07/zamfara-ndc-condemns-fresh-bandits-attack-in-bindin/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T13:11:13+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Domestic violence matter in authorities’ hands, says Ghanaian actress Nana Addo’s lawyers",
-      "summary": "Lawyers for Ghanaian actress Nana Addo say the domestic dispute involving her and her children, seen in viral videos, is now with the appropriate authoriti Read More: https://punchng.com/domestic-violence-matter-in-authorities-hands-says-ghanaian-actress-nana-addos-lawyers/",
-      "url": "https://punchng.com/domestic-violence-matter-in-authorities-hands-says-ghanaian-actress-nana-addos-lawyers/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-07T12:59:49+00:00",
-      "categories": []
-    },
-    {
-      "title": "Give Ronaldo proper farewell, Modric tells Portugal",
-      "summary": "Croatia captain Luka Modric has urged Portugal to give Cristiano Ronaldo a proper farewell, calling him the greatest player in the country’s history. Read More: https://punchng.com/give-ronaldo-proper-farewell-modric-tells-portugal/",
-      "url": "https://punchng.com/give-ronaldo-proper-farewell-modric-tells-portugal/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-07T12:56:33+00:00",
-      "categories": []
-    },
-    {
-      "title": "NUPRC offers 40 oil blocks in 2026 licensing round after 2025 controversy",
-      "summary": "The Nigerian Upstream Petroleum Regulatory Commission, NUPRC, has announced the 2026 Licensing Round, offering 40 oil and gas blocks to investors. The development is coming months after the conclusion of the 2025 licensing round, which was marred by controversy. NUPRC Chief Executive, Oritsemeyiwa E",
-      "url": "https://dailypost.ng/2026/10/07/nuprc-offers-40-oil-blocks-in-2026-licensing-round-after-2025-controversy/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T12:54:25+00:00",
-      "categories": [
-        "lagos"
       ]
     }
   ]
