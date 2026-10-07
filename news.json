@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T22:09:50.072539+00:00",
+  "generated_at": "2026-10-07T22:42:29.348700+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Tinubu will win 2027 election by bigger margin — Presidential aide",
+      "summary": "Presidential aide Daniel Bwala has predicted that President Bola Tinubu will secure a wider victory margin over his opponents in the 2027 election. Read More: https://punchng.com/tinubu-will-win-2027-election-by-bigger-margin-presidential-aide/",
+      "url": "https://punchng.com/tinubu-will-win-2027-election-by-bigger-margin-presidential-aide/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T23:36:29+00:00",
+      "categories": []
+    },
     {
       "title": "Makinde hails release of abducted Oyo corps members",
       "summary": "Governor Seyi Makinde has expressed joy over the release of prospective NYSC members of Oyo State origin who were abducted in Imo State last Thursday. Read More: https://punchng.com/makinde-hails-release-of-abducted-oyo-corps-members/",
@@ -73,6 +81,16 @@
       "url": "https://punchng.com/kano-gov-reconciles-barau-bichi-ahead-of-2027/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-07T22:21:55+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Poor record-keeping caused confusion over NAF crash manifest – Ex-SSS director",
+      "summary": "NAF released the names of 25 people aboard the aircraft, rather than the 32 earlier reported by government officials. The post Poor record-keeping caused confusion over NAF crash manifest – Ex-SSS director appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/more-news/915348-poor-record-keeping-caused-confusion-over-naf-crash-manifest-ex-sss-director.html",
+      "source": "Premium Times",
+      "published": "2026-10-07T22:16:30+00:00",
       "categories": [
         "government"
       ]
@@ -256,24 +274,6 @@
       "source": "Information Nigeria",
       "published": "2026-10-07T20:56:26+00:00",
       "categories": []
-    },
-    {
-      "title": "Three dead, 36 wounded as Houthi attacks hit Saudi airports",
-      "summary": "Yemen’s Houthi fighters claimed responsibility for attacks on two Saudi international airports, killing three people and wounding 36, authorities said. Read More: https://punchng.com/three-dead-36-wounded-as-houthi-attacks-hit-saudi-airports/",
-      "url": "https://punchng.com/three-dead-36-wounded-as-houthi-attacks-hit-saudi-airports/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-07T20:55:18+00:00",
-      "categories": []
-    },
-    {
-      "title": "Dollar to Naira exchange rate today, October 7, 2026: Naira resumes depreciation against USD",
-      "summary": "The naira has resumed its depreciation against the dollar after recording a gain a day earlier at the official foreign exchange market. Central Bank of Nigeria data on Wednesday showed that the naira dropped to N1,331.77 per dollar from N1,330.87. This means that, on a day-to-day basis, the naira we",
-      "url": "https://dailypost.ng/2026/10/07/dollar-to-naira-exchange-rate-today-october-7-2026-naira-resumes-depreciation-against-usd/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T20:55:10+00:00",
-      "categories": [
-        "business"
-      ]
     }
   ]
 }
