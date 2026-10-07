@@ -67,6 +67,24 @@
 .home-jobs-note{margin-top:12px;color:#718198;font-size:11px;line-height:1.7}
 @media(max-width:1000px){.home-jobs-live{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.home-jobs-live{grid-template-columns:1fr}.home-jobs-footer{align-items:flex-start;flex-direction:column}.home-jobs-footer .btn{width:100%;text-align:center}}
+</style><style>
+/* Homepage jobs: polished responsive treatment */
+.home-jobs-highlight{position:relative;overflow:hidden}
+.home-jobs-highlight:before{content:"";position:absolute;right:-180px;top:-180px;width:420px;height:420px;border:1px solid rgba(6,43,89,.08);border-radius:50%;box-shadow:0 0 0 70px rgba(247,189,24,.035),0 0 0 140px rgba(6,43,89,.025);pointer-events:none}
+.home-jobs-highlight .container{position:relative;z-index:1}
+.home-jobs-live{align-items:stretch}
+.home-jobs-live .home-job-card{position:relative;min-height:235px;border-radius:16px}
+.home-jobs-live .home-job-card:after{content:"→";position:absolute;right:22px;bottom:20px;font-size:18px;font-weight:900;color:#d7a62a;opacity:.75}
+.home-jobs-live .home-job-card-dark:after{color:#f7bd18}
+.home-jobs-live .home-job-card strong{max-width:90%;line-height:1.08}
+.home-jobs-live .home-job-card b{padding-right:25px}
+.home-jobs-footer{border-radius:14px;box-shadow:0 16px 35px rgba(6,43,89,.12)}
+@media(max-width:650px){
+.home-jobs-highlight{padding-top:62px;padding-bottom:62px}
+.home-jobs-highlight .section-head{margin-bottom:28px}
+.home-jobs-live .home-job-card{min-height:205px;padding:24px}
+.home-jobs-footer{padding:20px}
+}
 </style></head>
 <body>
 <header class="site-header">
