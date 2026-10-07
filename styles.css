@@ -17,3 +17,23 @@ footer{background:#242625;color:#d7dad8;padding-top:50px}.footer-grid{display:gr
 
 /* TW&D luxury visual foundation v1 */
 .btn-red{background:var(--navy);box-shadow:0 10px 24px rgba(6,43,89,.18)}.btn-red:hover{background:var(--navy-deep)}.btn-outline:hover{border-color:var(--gold);color:var(--navy)}.eyebrow{color:var(--gold)}.text-link{color:var(--navy)}.service-list a:hover{color:var(--navy)}.service-list b,.service-list i{color:var(--gold)}.quick-grid span,.bulletin-cards span{color:var(--gold)}.floating-wa{background:var(--navy)}#scrollProgress{background:var(--gold)}
+/* TW&D Solar services */
+.solar-services{margin-top:56px;padding:42px;background:linear-gradient(135deg,#f8fbff 0%,#fff 55%,#fff8e6 100%);border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.solar-services:before{content:"";position:absolute;width:220px;height:220px;right:-90px;top:-100px;border-radius:50%;background:rgba(247,189,24,.16)}
+.solar-intro{display:flex;justify-content:space-between;align-items:end;gap:35px;position:relative;z-index:1}
+.solar-intro h2{font-size:clamp(28px,3.5vw,46px);line-height:1.08;letter-spacing:-1.8px;max-width:760px;margin:0}
+.solar-intro p:not(.eyebrow){max-width:800px;color:var(--muted);margin:18px 0 0}
+.solar-intro .btn{flex:0 0 auto}
+.solar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;position:relative;z-index:1}
+.solar-card{background:rgba(255,255,255,.94);border:1px solid var(--line);padding:24px;min-height:180px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.solar-card:hover{transform:translateY(-4px);box-shadow:0 14px 35px rgba(3,27,56,.10);border-color:#e5c35c}
+.solar-card-featured{background:linear-gradient(145deg,#062b59,#0b447f);color:#fff;border-color:#062b59}
+.solar-card-featured p{color:#dce8f5}
+.solar-capacity{display:inline-block;color:var(--gold);font-size:11px;font-weight:900;letter-spacing:1.2px}
+.solar-card h3{font-size:18px;line-height:1.2;margin:13px 0 8px}
+.solar-card p{font-size:12px;color:var(--muted);margin:0}
+.solar-footer{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);position:relative;z-index:1}
+.solar-footer strong{color:var(--navy);margin-right:5px}
+.solar-footer span:before{content:"•";color:var(--gold);margin-right:7px}
+@media(max-width:800px){.solar-services{padding:28px 22px}.solar-intro{display:block}.solar-intro .btn{margin-top:22px}.solar-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.solar-services{margin-top:42px;padding:24px 18px}.solar-grid{grid-template-columns:1fr}.solar-card{min-height:auto}.solar-footer{display:block}.solar-footer span{display:inline-block;margin:5px 12px 0 0}}
