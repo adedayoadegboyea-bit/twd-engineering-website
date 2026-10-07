@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T09:45:02.815872+00:00",
+  "generated_at": "2026-10-07T10:12:09.639805+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Hypertension, stress raise heart disease risk among military personnel – Doctor",
+      "summary": "A military cardiologist says hypertension and stress increase heart disease risk among personnel, urging regular checks, exercise, and healthy diets. Read More: https://punchng.com/hypertension-stress-raise-heart-disease-risk-among-military-personnel-doctor/",
+      "url": "https://punchng.com/hypertension-stress-raise-heart-disease-risk-among-military-personnel-doctor/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T11:05:10+00:00",
+      "categories": []
+    },
     {
       "title": "Ghana to join BRICS, says foreign minister",
       "summary": "Ghana’s cabinet has approved a decision to formally apply to join the BRICS economic bloc, the country’s foreign minister has announced. Read More: https://punchng.com/ghana-to-join-brics-says-foreign-minister/",
@@ -39,6 +47,26 @@
       "categories": []
     },
     {
+      "title": "Kano fire service PRO, Abdullahi is dead",
+      "summary": "The Public Relations Officer of the Kano State Fire Service, Saminu Yusuf Abdullahi, has died. Abdullahi died on Wednesday in Kano State. His death was confirmed by PFS2 Muhammad Ibrahim Nasiru, head of the Fire Service formation in Danbatta Local Government Area. Abdullahi was buried at about 8:30 ",
+      "url": "https://dailypost.ng/2026/10/07/kano-fire-service-pro-abdullahi-is-dead/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T10:08:23+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: 1000 Islamic clerics ask Tinubu to withdraw from race",
+      "summary": "More than 1000 Islamic clerics have asked President Bola Tinubu not to contest in 2027. The clerics, in a communique after a meeting in Kano, said the poor state of the economy and insecurity have made life hard for Nigerians. The meeting was tagged ‘An Assessment of the State of the Nation under Pr",
+      "url": "https://dailypost.ng/2026/10/07/2027-1000-islamic-clerics-ask-tinubu-to-withdraw-from-race/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T10:08:23+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
       "title": "Delta warns taxpayers against fake tax notices, fraudulent revenue collectors",
       "summary": "The Delta State Internal Revenue Service has warned taxpayers against fake tax demand notices and fraudulent revenue collectors operating in the state. Read More: https://punchng.com/delta-warns-taxpayers-against-fake-tax-notices-fraudulent-revenue-collectors/",
       "url": "https://punchng.com/delta-warns-taxpayers-against-fake-tax-notices-fraudulent-revenue-collectors/?utm_source=rss.punchng.com&utm_medium=web",
@@ -52,6 +80,52 @@
       "url": "https://punchng.com/army-repels-iswap-attack-in-borno-kills-25-terrorists/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-07T10:06:08+00:00",
+      "categories": []
+    },
+    {
+      "title": "School attendance figures masking learning crisis among Nigerian children – FG raises concern",
+      "summary": "The Nigerian government has expressed concern over the practice of assessing children based only on their physical presence in schools, noting that the system may be counting the number of attendees rather than the quality of learning received. Raising the concern, the Minister of State for Educatio",
+      "url": "https://dailypost.ng/2026/10/07/school-attendance-figures-masking-learning-crisis-among-nigerian-children-fg-raises-concern/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T10:04:48+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "11 suspected drug peddlers arrested in Yobe",
+      "summary": "Troops of the Forward Operating Base (FOB) Potiskum, in collaboration with operatives of the National Drug Law Enforcement Agency (NDLEA), have arrested 11 suspected drug peddlers in Fika Local Government Area of Yobe State. The suspects were arrested during a joint raid conducted on Monday, in Gand",
+      "url": "https://dailypost.ng/2026/10/07/11-suspected-drug-peddlers-arrested-in-yobe/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T10:04:37+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Timeline of eight Nigerian Air Force aircraft crashes in six years",
+      "summary": "The Nigerian military has recorded several aircraft crashes and operational incidents in the past six years, resulting in the deaths of military personnel and as well as raising concerns over aviation safety. DAILY POST reports that the incidents involved fighter jets, helicopters, trainer aircraft ",
+      "url": "https://dailypost.ng/2026/10/07/timeline-of-eight-nigerian-air-force-aircraft-crashes-in-six-years/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T10:01:56+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nnamdi Kanu: Nigerian Govt abandoned appeal, time has elapsed – Defence team",
+      "summary": "A lawyer, Onyedikachi Ifedi, has declared that the Nigerian government has abandoned the appeal filed by the leader of the Indigenous People of Biafra, IPOB, Nnamdi Kanu, to challenge his conviction. Ifedi, a member of the Mazi Nnamdi Global Legal Consortium, in a statement on Tuesday, said the time",
+      "url": "https://dailypost.ng/2026/10/07/nnamdi-kanu-nigerian-govt-abandoned-appeal-time-has-elapsed-defence-team/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T09:59:42+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Ngozi Ezeonu, Ruth Kadiri, others call out NAFDAC over alleged fake drugs in circulation",
+      "summary": "“If you are one of the people who are doing these fake drugs, please stop. People are dying. Our children are dying. Right now, I'm speaking as a mother. I am begging every one of you…” The post Ngozi Ezeonu, Ruth Kadiri, others call out NAFDAC over alleged fake drugs in circulation appeared first o",
+      "url": "https://www.premiumtimesng.com/entertainment/naija-fashion/915185-ngozi-ezeonu-ruth-kadiri-others-call-out-nafdac-over-alleged-fake-drugs-in-circulation.html",
+      "source": "Premium Times",
+      "published": "2026-10-07T09:50:33+00:00",
       "categories": []
     },
     {
@@ -210,83 +284,6 @@
       "published": "2026-10-07T09:05:04+00:00",
       "categories": [
         "engineering"
-      ]
-    },
-    {
-      "title": "2027: Ebonyi PDP governorship candidate vows never to step down for Gov Nwifuru",
-      "summary": "The Minister of Works, David Umahi recently declared that he would ask the PDP candidate, Ifeanyi Odii to step down for the APC candidate, Governor Nwifuru, ahead of the 2027 general elections. The post 2027: Ebonyi PDP governorship candidate vows never to step down for Gov Nwifuru appeared first on",
-      "url": "https://www.premiumtimesng.com/news/top-news/915158-2027-ebonyi-pdp-governorship-candidate-vows-never-to-step-down-for-gov-nwifuru.html",
-      "source": "Premium Times",
-      "published": "2026-10-07T08:53:08+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Oyo police arrest three suspects over killing of six family members",
-      "summary": "The police alleged that the suspects killed the family members and dumped their bodies in a nearby river. The post Oyo police arrest three suspects over killing of six family members appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/915160-oyo-police-arrest-three-suspects-over-killing-of-six-family-members.html",
-      "source": "Premium Times",
-      "published": "2026-10-07T08:53:05+00:00",
-      "categories": [
-        "oyo"
-      ]
-    },
-    {
-      "title": "Two suspects arrested for theft of road signs – Police",
-      "summary": "Others were arrested for alleged vandalism and theft of solar streetlight in Enugu. The post Two suspects arrested for theft of road signs – Police appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/915142-two-suspects-arrested-for-theft-of-road-signs-police.html",
-      "source": "Premium Times",
-      "published": "2026-10-07T08:53:03+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "2027: INEC announces date to release final list of Gov, Assembly candidates",
-      "summary": "The Independent National Electoral Commission, INEC, says it will publish the final list of candidates contesting the 2027 governorship and State Houses of Assembly elections on Saturday, October 10, 2026. In a post on X on Wednesday, the commission said its chairman, Professor Joash Amupitan, made ",
-      "url": "https://dailypost.ng/2026/10/07/2027-inec-announces-date-to-release-final-list-of-gov-assembly-candidates/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T08:44:33+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Messi signs off with goal, two assists as Argentina beat Benin 3-0",
-      "summary": "In front of more than 85,000 supporters, Messi delivered one final masterclass in the famous blue and white shirt before saying goodbye to the Argentina national team after 21 years of international football The post Messi signs off with goal, two assists as Argentina beat Benin 3-0 appeared first o",
-      "url": "https://www.premiumtimesng.com/sports/football/915152-messi-signs-off-with-goal-two-assists-as-argentina-beat-benin-3-0.html",
-      "source": "Premium Times",
-      "published": "2026-10-07T08:34:14+00:00",
-      "categories": []
-    },
-    {
-      "title": "Amaechi, Atiku suffer setback as ADC guber aspirant joins Wike’s Rainbow Coalition",
-      "summary": "A governorship aspirant of the African Democratic Congress, ADC, in Rivers State, Dr Sokonte Davies, has joined the Rainbow Coalition, a multi-party political group championed by the Minister of the Federal Capital Territory, FCT, Nyesom Wike. Wike’s media aide, Lere Olayinka, disclosed this in a so",
-      "url": "https://dailypost.ng/2026/10/07/amaechi-atiku-suffer-setback-as-adc-guber-aspirant-joins-wikes-rainbow-coalition/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T08:30:41+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Ebola: NCDC warns of importation risk after Kenya confirms first case",
-      "summary": "The case makes Kenya the fourth country to report a case linked to the current Bundibugyo virus outbreak, following the DRC, Uganda, and France. The post Ebola: NCDC warns of importation risk after Kenya confirms first case appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/health/health-news/915149-ebola-ncdc-warns-of-importation-risk-after-kenya-confirms-first-case.html",
-      "source": "Premium Times",
-      "published": "2026-10-07T08:20:22+00:00",
-      "categories": []
-    },
-    {
-      "title": "Benue: Suspected gunmen shoot commercial driver dead on Anyiin-Ayilamo road",
-      "summary": "A commercial driver identified as Igba Agenewe has been killed by suspected armed men along the Anyiin-Ayilamo road in Logo Local Government Area of Benue State. Three soldiers who were travelling in Agenewe’s vehicle were also reportedly abducted during the attack. Agenewe, a member of the National",
-      "url": "https://dailypost.ng/2026/10/07/benue-suspected-gunmen-shoot-commercial-driver-dead-on-anyiin-ayilamo-road/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T08:17:44+00:00",
-      "categories": [
-        "engineering",
-        "government"
       ]
     }
   ]
