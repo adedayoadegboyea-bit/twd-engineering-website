@@ -25,7 +25,7 @@ async function loadDashboard(user){
  const firstErr=p.error||pr.error||r.error||q.error||n.error;
  if(firstErr){pmsg(firstErr.message,"error");return}
  if(p.data?.account_type)$("accountType").textContent=p.data.account_type.toUpperCase();
- if(p.data?.account_type==="admin")$("adminPortalLink").hidden=false;
+ if(p.data?.account_type==="admin"){$("adminPortalLink").hidden=false;document.getElementById("adminAdvertLink")?.removeAttribute("hidden");}
  const name=p.data?.full_name||user.user_metadata?.full_name||"";$("welcomeName").textContent=name?"Welcome, "+name:"Welcome";$("welcomeEmail").textContent=user.email||"";$("profileName").value=name;$("profilePhone").value=p.data?.phone||user.user_metadata?.phone||"";$("profileEmail").value=user.email||"";
  window.__twProjects=pr.data||[];
  $("projectsList").innerHTML=list(pr.data,x=>'<button type="button" class="portal-row project-open" data-project-id="'+esc(x.id)+'"><strong>'+esc(x.project_name)+'</strong><span>'+esc(x.service_type||"Project")+" • "+esc(x.status)+" • "+(x.progress||0)+"%"+(x.location?" • "+esc(x.location):"")+'</span></button>','<div class="portal-empty">No projects assigned yet.</div>');
