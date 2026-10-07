@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T20:11:26.511470+00:00",
+  "generated_at": "2026-10-07T20:44:10.889354+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,32 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Arteta ranks as Arsenal’s most successful manager by win rate",
+      "summary": "Mikel Arteta has the best win percentage of any Arsenal manager with over 50 matches, with his 60.9% record putting him ahead of club legend Arsene Wenger. Read More: https://punchng.com/arteta-ranks-as-arsenals-most-successful-manager-by-win-rate/",
+      "url": "https://punchng.com/arteta-ranks-as-arsenals-most-successful-manager-by-win-rate/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T21:37:01+00:00",
+      "categories": []
+    },
+    {
+      "title": "Gombe begins mass livestock vaccination",
+      "summary": "The Gombe State Government has commenced a statewide vaccination campaign for livestock to prevent major diseases, strengthen food security and protect hum Read More: https://punchng.com/gombe-begins-mass-livestock-vaccination/",
+      "url": "https://punchng.com/gombe-begins-mass-livestock-vaccination/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T21:27:58+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Five arraigned over assault on policemen in Ogun",
+      "summary": "The Ogun State Police Command has arraigned five suspects in court for allegedly attacking police officers on duty in Ota, leading to injuries. Read More: https://punchng.com/five-arraigned-over-assault-on-policemen-in-ogun/",
+      "url": "https://punchng.com/five-arraigned-over-assault-on-policemen-in-ogun/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-07T21:21:33+00:00",
+      "categories": []
+    },
     {
       "title": "Nine-year-old boy sets family house ablaze in Yobe, kills stepmothers, sisters",
       "summary": "A nine-year-old boy has allegedly set his family house ablaze in Yobe State, killing his two stepmothers and two sisters in retaliation for a beating. Read More: https://punchng.com/nine-year-old-boy-sets-family-house-ablaze-in-yobe-kills-stepmothers-sisters/",
@@ -91,6 +117,14 @@
       ]
     },
     {
+      "title": "Former Barcelona, Chelsea forward Pedro retires at 39",
+      "summary": "Former Barcelona and Chelsea forward, Pedro, has officially hung up his boots at the age of 39. The former Spain international confirmed his decision to retire four months after the conclusion of his final professional contract with Serie A side Lazio. In a post on Instagram, Pedro expressed gratitu",
+      "url": "https://dailypost.ng/2026/10/07/former-barcelona-chelsea-forward-pedro-retires-at-39/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T20:43:00+00:00",
+      "categories": []
+    },
+    {
       "title": "C’River seeks cheaper drone delivery for vaccines in remote areas",
       "summary": "The Cross River State Government has asked Zipline, a drone delivery company, to reduce the cost of its services to expand vaccine delivery to remote areas Read More: https://punchng.com/criver-seeks-cheaper-drone-delivery-for-vaccines-in-remote-areas/",
       "url": "https://punchng.com/criver-seeks-cheaper-drone-delivery-for-vaccines-in-remote-areas/?utm_source=rss.punchng.com&utm_medium=web",
@@ -110,11 +144,47 @@
       "categories": []
     },
     {
+      "title": "Troops arrest nine suspected terrorist collaborators in Yobe",
+      "summary": "Nine suspected terrorist collaborators have been apprehended by troops of 233 Tank Battalion in Yobe State. The suspected terrorist collaborators were arrested by the troops during a covert operation in Damaturu, Yobe State. Security analyst Zagazola Makama, in his posts on X on Wednesday, quoted se",
+      "url": "https://dailypost.ng/2026/10/07/troops-arrest-nine-suspected-terrorist-collaborators-in-yobe/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T20:26:38+00:00",
+      "categories": []
+    },
+    {
       "title": "2027: A’Ibom ex-militants group backs Tinubu’s re-election",
       "summary": "The Akwa Ibom Ex-Militants Forum has reaffirmed its support for President Bola Tinubu’s re-election in 2027 under the Renewed Hope Agenda. Read More: https://punchng.com/2027-aibom-ex-militants-group-backs-tinubus-re-election/",
       "url": "https://punchng.com/2027-aibom-ex-militants-group-backs-tinubus-re-election/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-07T20:24:43+00:00",
+      "categories": []
+    },
+    {
+      "title": "Troops arrest high-profile terrorist hiding in Borno community",
+      "summary": "Troops of the 109 Special Forces Battalion, in collaboration with members of the Civilian Joint Task Force, CJTF, have arrested a suspected high-profile terrorist in Magumeri Local Government Area of Borno State. In a post on X, counter-terrorism expert Zagazola Makama said the suspect, identified a",
+      "url": "https://dailypost.ng/2026/10/07/troops-arrest-high-profile-terrorist-hiding-in-borno-community/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T20:19:17+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Stop using court to destabilise ADC – Ogun chapter warns politicians",
+      "summary": "The African Democratic Congress, ADC, Ogun State chapter has raised alarm over what it described as attempts to use the Federal High Court sitting in Abeokuta to destabilise the party ahead of the 2027 general elections. The State Publicity Secretary of the party, Olumide Onabajo, in a statement on ",
+      "url": "https://dailypost.ng/2026/10/07/stop-using-court-to-destabilise-adc-ogun-chapter-warns-politicians/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-07T20:13:47+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Afrilition and the prophesy of an African renaissance, By Adéwálé Àjàdì",
+      "summary": "Afrilition is a call to service to be the generation that is willing to sacrifice comfort so that posterity will stand in excellence. Like the story of Joseph, prophecy is not determinism but a call to duty and commitment in faith so that our vision becomes our fate. Afrilition expresses ancestral p",
+      "url": "https://www.premiumtimesng.com/opinion/915319-afrilition-and-the-prophesy-of-an-african-rennaisance-by-adewale-ajadi.html",
+      "source": "Premium Times",
+      "published": "2026-10-07T20:13:18+00:00",
       "categories": []
     },
     {
@@ -204,77 +274,6 @@
       "url": "https://punchng.com/you-left-me-partner-of-naf-co-pilot-killed-in-ondo-crash-mourns/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-07T19:33:56+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ekiti at 30: Stakeholders harp on unity, collective action for prosperity",
-      "summary": "Stakeholders in Ekiti State have called for greater unity, active citizenship and collective action to consolidate the gains of the last 30 years and build a more prosperous, opportunity-driven state. They made the call on Wednesday at a public hearing organised by the Ekiti State House of Assembly ",
-      "url": "https://dailypost.ng/2026/10/07/ekiti-at-30-stakeholders-harp-on-unity-collective-action-for-prosperity/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T19:32:30+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Trump proposes $70,000 fee for international students seeking to work in US",
-      "summary": "The Trump administration has proposed a $70,000 fee for international students seeking to work in the US under the Optional Practical Training programme. Read More: https://punchng.com/trump-proposes-70000-fee-for-international-students-seeking-to-work-in-us/",
-      "url": "https://punchng.com/trump-proposes-70000-fee-for-international-students-seeking-to-work-in-us/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-07T19:30:27+00:00",
-      "categories": []
-    },
-    {
-      "title": "Whose archive, whose history? Reclaiming the African past, By Toyin Falola",
-      "summary": "At its deepest level, therefore, “Whose History?” is a question about power. Who has the power to record history? Who has the power to preserve it? Who has the power to classify it? Who has the power to interpret it? Who has the power to teach it? And who has the power to define what […] The post Wh",
-      "url": "https://www.premiumtimesng.com/opinion/915302-whose-archive-whose-history-reclaiming-the-african-past-by-toyin-falola.html",
-      "source": "Premium Times",
-      "published": "2026-10-07T19:30:19+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Insecurity: Five Borno communities return home as farming, schools resume",
-      "summary": "Five communities in Kukawa Local Government Area of Borno State have been resettled after years of displacement caused by the Boko Haram insurgency, with farming, education and fishing activities gradually resuming. The Executive Chairman of Kukawa Local Government Area, Mustapha Muhammad, disclosed",
-      "url": "https://dailypost.ng/2026/10/07/insecurity-five-borno-communities-return-home-as-farming-schools-resume/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T19:29:14+00:00",
-      "categories": [
-        "government",
-        "property"
-      ]
-    },
-    {
-      "title": "Ex NCAC director general warns against AI misuse on social media",
-      "summary": "Former NCAC DG, Olusegun Runsewe, has warned against the misuse of Artificial Intelligence on social media to spread fake news and cause social tension. Read More: https://punchng.com/ex-ncac-director-general-warns-against-ai-misuse-on-social-media/",
-      "url": "https://punchng.com/ex-ncac-director-general-warns-against-ai-misuse-on-social-media/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-07T19:22:10+00:00",
-      "categories": []
-    },
-    {
-      "title": "Argentina: You gave your all – Ronaldinho sends message to Messi as he retires",
-      "summary": "Brazil legend Ronaldinho has sent a message to Lionel Messi as the Inter Miami forward retires from Argentina. Messi played his last match for Argentina in a friendly farewell encounter earlier on Wednesday. In a post on Instagram, Ronaldinho extended his best wishes to the 39-year-old, insisting th",
-      "url": "https://dailypost.ng/2026/10/07/argentina-you-gave-your-all-ronaldinho-sends-message-to-messi-as-he-retires/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T19:18:59+00:00",
-      "categories": []
-    },
-    {
-      "title": "Imo CSOs reject November 7 council polls, demand ISIEC chairman’s sack",
-      "summary": "A coalition of Imo State civil society organisations, CSOs, has expressed concern about the choice of November 7 as the new date for the conduct of council elections in the state, as fixed by the State Independent Electoral Commission. The group pointed out that the 33-day notice is in violation of ",
-      "url": "https://dailypost.ng/2026/10/07/imo-csos-reject-november-7-council-polls-demand-isiec-chairmans-sack/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T19:16:42+00:00",
-      "categories": []
-    },
-    {
-      "title": "INEC Ondo engages stakeholders ahead of 2027 general election",
-      "summary": "The Independent National Electoral Commission, INEC, in Ondo State has engaged stakeholders in the Ondo North Senatorial District as part of preparations for the 2027 General Election. The stakeholders’ meeting was held in Owo, in the Ondo North Senatorial District, with representatives of political",
-      "url": "https://dailypost.ng/2026/10/07/inec-ondo-engages-stakeholders-ahead-of-2027-general-election/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-07T19:13:35+00:00",
       "categories": []
     }
   ]
