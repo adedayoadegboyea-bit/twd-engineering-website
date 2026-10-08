@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T22:43:31.782603+00:00",
+  "generated_at": "2026-10-08T23:10:33.027617+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,8 +11,27 @@
   ],
   "articles": [
     {
+      "title": "DigivantPay trains staff on customer experience during Service Week",
+      "summary": "DigivantPay, a microfinance bank, has trained its staff on using AI and data to improve customer experience during its 2024 Customer Service Week in Lagos. Read More: https://punchng.com/digivantpay-trains-staff-on-customer-experience-during-service-week/",
+      "url": "https://punchng.com/digivantpay-trains-staff-on-customer-experience-during-service-week/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T00:05:18+00:00",
+      "categories": [
+        "business",
+        "lagos"
+      ]
+    },
+    {
+      "title": "NGE defends Obi’s conference participation, denies partisanship",
+      "summary": "The Nigerian Guild of Editors has rejected allegations of partisanship over its decision to allow Peter Obi to address its 22nd conference in Enugu. Read More: https://punchng.com/nge-defends-obis-conference-participation-denies-partisanship/",
+      "url": "https://punchng.com/nge-defends-obis-conference-participation-denies-partisanship/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T00:01:34+00:00",
+      "categories": []
+    },
+    {
       "title": "FAAN proposes 25-day closure of Owerri airport runway for repairs",
-      "summary": "The Federal Airports Authority of Nigeria has proposed a temporary closure of the runway at Sam Mbakwe International Cargo Airport, Owerri, Imo State, for 25 days. According to a statement issued by FAAN’s Director of Public Affairs and Consumer Protection, Henry Agbebire, on Thursday, via its X han",
+      "summary": "The Federal Airports Authority of Nigeria has proposed a 25-day closure of the runway at Sam Mbakwe Airport, Owerri, for repairs from October 20, 2026. Read More: https://punchng.com/faan-proposes-25-day-closure-of-owerri-airport-runway-for-repairs/",
       "url": "https://punchng.com/faan-proposes-25-day-closure-of-owerri-airport-runway-for-repairs/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-08T23:38:36+00:00",
@@ -263,27 +282,6 @@
       "source": "Daily Post Nigeria",
       "published": "2026-10-08T20:54:47+00:00",
       "categories": []
-    },
-    {
-      "title": "Panic-driven publicity stunt – Atiku blasts Tinubu’s 30-day fuel discount",
-      "summary": "The African Democratic Congress, ADC, presidential candidate, Atiku Abubakar, has criticised the Federal Government over the planned 30-day fuel discount at NNPC stations. In a statement issued Thursday by his media aide, Phrank Shaibu, Atiku said the proposal was nothing but a desperate, short-term",
-      "url": "https://dailypost.ng/2026/10/08/panic-driven-publicity-stunt-atiku-blasts-tinubus-30-day-fuel-discount/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-08T20:49:00+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "MTN outage: Subscribers in Lagos, Abuja, Rivers, two other states hit by disruption",
-      "summary": "Telecommunications subscribers in some parts of Nigeria are facing a network outage as telecoms operator MTN Nigeria confirmed a network disruption. In a statement on X to subscribers on Thursday, MTN Nigeria confirmed the network outage. The country’s largest telecoms operator said the network outa",
-      "url": "https://dailypost.ng/2026/10/08/mtn-outage-subscribers-in-lagos-abuja-rivers-two-other-states-hit-by-disruption/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-08T20:48:14+00:00",
-      "categories": [
-        "oyo",
-        "lagos"
-      ]
     }
   ]
 }
