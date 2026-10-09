@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T06:51:13.091554+00:00",
+  "generated_at": "2026-10-09T07:13:35.314807+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "LeBron James begins final NBA season with defeat to Nets",
+      "summary": "LeBron James began his final NBA season with a defeat as his new team, the Philadelphia 76ers, lost 114-108 to the Brooklyn Nets in a pre-season game. Read More: https://punchng.com/lebron-james-begins-final-nba-season-with-defeat-to-nets/",
+      "url": "https://punchng.com/lebron-james-begins-final-nba-season-with-defeat-to-nets/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T08:05:59+00:00",
+      "categories": []
+    },
     {
       "title": "Trump rules out new Iran attack before US midterm elections",
       "summary": "US President Donald Trump has ruled out attacking Iran before the November 3 midterm elections, stating that Washington is holding productive discussions w Read More: https://punchng.com/trump-rules-out-new-iran-attack-before-us-midterm-elections-2/",
@@ -33,6 +41,33 @@
       "source": "PUNCH",
       "published": "2026-10-09T07:18:15+00:00",
       "categories": []
+    },
+    {
+      "title": "Zlatan Ibile releases pre-wedding video, announces wedding date",
+      "summary": "Nigerian singer, Zlatan Ibile, has announced October 24, 2026, as his wedding date with his longtime partner, Davita Lamai. He released a pre-wedding video ahead of their marriage. The Zanku crooner shared the video alongside the hashtag #DTTheUnion, giving fans a glimpse of the couple’s preparation",
+      "url": "https://dailypost.ng/2026/10/09/zlatan-ibile-releases-pre-wedding-video-announces-wedding-date/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T07:05:09+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nigeria records 263 Lassa fever deaths, 1,115 confirmed cases across 24 states",
+      "summary": "Nigeria has recorded 1,115 confirmed cases of Lassa fever and 263 deaths across 24 states, with the disease’s case fatality rate rising to 23.6 per cent, according to the Nigeria Centre for Disease Control and Prevention (NCDC). The figures were contained in the NCDC’s situation report for epidemiol",
+      "url": "https://dailypost.ng/2026/10/09/nigeria-records-263-lassa-fever-deaths-1115-confirmed-cases-across-24-states/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T07:02:01+00:00",
+      "categories": []
+    },
+    {
+      "title": "Troops neutralise two explosive devices in Zamfara",
+      "summary": "Troops of Operation Fansan Yamma have neutralised two explosive devices planted by suspected terrorists along the Magami–Hannutara–Dansadau road in Maru Local Government Area of Zamfara State. The operation followed credible intelligence about explosives planted along the route, prompting troops att",
+      "url": "https://dailypost.ng/2026/10/09/troops-neutralise-two-explosive-devices-in-zamfara/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T07:01:53+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
     },
     {
       "title": "Execution of military base shooter to be ‘public’ — Pentagon chief",
@@ -249,43 +284,6 @@
       "categories": [
         "property"
       ]
-    },
-    {
-      "title": "Lagos mobilises youths for military recruitment",
-      "summary": "The Lagos State Government has called on youths aged 18 to 26 to apply for the ongoing military recruitment to help the state meet its quota. Read More: https://punchng.com/lagos-mobilises-youths-for-military-recruitment/",
-      "url": "https://punchng.com/lagos-mobilises-youths-for-military-recruitment/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T06:04:11+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Turkey: Nigeria coach, Chelle makes U-turn on Osimhen transfer",
-      "summary": "Super Eagles head coach, Eric Chelle, has made a U-turn on his earlier comments suggesting Victor Osimhen could leave Galatasaray. Chelle insisted that Osimhen is happy at Galatasaray, adding that he loves the Turkish Super Lig club. He spoke following Nigeria’s recent international friendly 3-3 dra",
-      "url": "https://dailypost.ng/2026/10/09/turkey-nigeria-coach-chelle-makes-u-turn-on-osimhen-transfer/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-09T06:03:08+00:00",
-      "categories": []
-    },
-    {
-      "title": "Osun senator installs 1,500 solar lights, empowers 600 artisans",
-      "summary": "Senator Lere Oyewumi has installed 1,500 solar lights and provided N50,000 cash grants to 600 artisans across the Osun West Senatorial District. Read More: https://punchng.com/osun-senator-installs-1500-solar-lights-empowers-600-artisans/",
-      "url": "https://punchng.com/osun-senator-installs-1500-solar-lights-empowers-600-artisans/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T06:03:06+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "2027: ADC activates presidential campaign machinery",
-      "summary": "The African Democratic Congress is set to inaugurate its Presidential Campaign Council in Abuja, formally activating its campaign for the 2027 elections. Read More: https://punchng.com/2027-adc-activates-presidential-campaign-machinery/",
-      "url": "https://punchng.com/2027-adc-activates-presidential-campaign-machinery/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T06:02:03+00:00",
-      "categories": []
     }
   ]
 }
