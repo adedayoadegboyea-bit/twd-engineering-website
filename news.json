@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T01:45:01.884161+00:00",
+  "generated_at": "2026-10-09T02:11:05.082068+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -83,6 +83,16 @@
       "published": "2026-10-09T01:12:41+00:00",
       "categories": [
         "government"
+      ]
+    },
+    {
+      "title": "Suspected fake Oyo fertility doctor nabbed",
+      "summary": "The Oyo State Police Command has arrested a 45-year-old man, Adeniyi Benjamin, for allegedly operating an unlicensed fertility clinic in Ibadan. Read More: https://punchng.com/suspected-fake-oyo-fertility-doctor-nabbed/",
+      "url": "https://punchng.com/suspected-fake-oyo-fertility-doctor-nabbed/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T00:50:57+00:00",
+      "categories": [
+        "oyo"
       ]
     },
     {
@@ -276,14 +286,6 @@
       "categories": [
         "engineering"
       ]
-    },
-    {
-      "title": "Ondo crash: Air chief pleads for patience as investigation begins",
-      "summary": "The Chief of the Air Staff, Air Marshal Sunday Aneke, has appealed for patience as the NAF begins investigating the Ondo crash that killed 25 people. Read More: https://punchng.com/ondo-crash-air-chief-pleads-for-patience-as-investigation-begins/",
-      "url": "https://punchng.com/ondo-crash-air-chief-pleads-for-patience-as-investigation-begins/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T00:12:03+00:00",
-      "categories": []
     }
   ]
 }
