@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T15:45:51.199181+00:00",
+  "generated_at": "2026-10-09T16:12:14.471176+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,35 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "CAF president hints at return to AFCON’s two-year cycle",
+      "summary": "CAF President Patrice Motsepe says the confederation is considering a return to holding the Africa Cup of Nations every two years, after a planned switch. Read More: https://punchng.com/caf-president-hints-at-return-to-afcons-two-year-cycle/",
+      "url": "https://punchng.com/caf-president-hints-at-return-to-afcons-two-year-cycle/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T17:00:54+00:00",
+      "categories": []
+    },
+    {
+      "title": "Benue seals two schools over forced textbook purchases",
+      "summary": "The Benue State Government has sealed Orenda and Opal Schools for allegedly forcing parents to buy textbooks directly from them, violating state policy. Read More: https://punchng.com/benue-seals-two-schools-over-forced-textbook-purchases/",
+      "url": "https://punchng.com/benue-seals-two-schools-over-forced-textbook-purchases/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T16:56:58+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "NBTI showcases 298 Nigerian innovators to global investors in London",
+      "summary": "The National Board for Technology Incubation has showcased 298 Nigerian innovators from the 36 states and the Federal Capital Territory to international investors and potential business partners in London, United Kingdom, as part of efforts to commercialise indigenous technologies and expand access ",
+      "url": "https://punchng.com/nbti-showcases-298-nigerian-innovators-to-global-investors-in-london/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T16:47:14+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
     {
       "title": "Police arrest inspector, two others in Imo over viral extortion video",
       "summary": "Imo State Police have arrested an inspector and two civil guard corps personnel after a viral video showed them allegedly extorting a motorist in Owerri. Read More: https://punchng.com/police-arrest-inspector-two-others-in-imo-over-viral-extortion-video/",
@@ -54,6 +83,22 @@
       "categories": []
     },
     {
+      "title": "Ex-DSS Director reveals why military planes keep crashing in Nigeria",
+      "summary": "Former Director of the Department of State Services, DSS, has identified factors behind the frequent military aircraft crashes in Nigeria. Speaking during an interview on Arise Television on Friday, Mike Ejiofor lamented the recurring issue of aircraft crashes and the urgent need for improved mainte",
+      "url": "https://dailypost.ng/2026/10/09/ex-dss-director-reveals-why-military-planes-keep-crashing-in-nigeria/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T16:10:57+00:00",
+      "categories": []
+    },
+    {
+      "title": "Asari’s pipeline allegations: Coalition warns against fresh crisis in Niger Delta",
+      "summary": "Following a recent allegations made by a former Niger Delta militant, Asari Dokubo, over the alleged award of pipeline surveillance contracts to some individuals and companies, the Coalition of Civil Society Organisations for Good Governance, CCSOGG, has raised concerns over the danger of a fresh cr",
+      "url": "https://dailypost.ng/2026/10/09/asaris-pipeline-allegations-coalition-warns-against-fresh-crisis-in-niger-delta/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T16:08:21+00:00",
+      "categories": []
+    },
+    {
       "title": "Army graduates new Special Forces battalion in Nasarawa",
       "summary": "The Nigerian Army has graduated a new Special Forces battalion in Nasarawa State to strengthen counter-terrorism operations and tackle emerging security th Read More: https://punchng.com/army-strengthens-counter-terrorism-operations-with-new-special-forces-battalion/",
       "url": "https://punchng.com/army-strengthens-counter-terrorism-operations-with-new-special-forces-battalion/?utm_source=rss.punchng.com&utm_medium=web",
@@ -62,12 +107,32 @@
       "categories": []
     },
     {
+      "title": "No terrorist colony in Niger – Gov Bago insists",
+      "summary": "Mohammed Umaru-Bago of Niger State says there is no colony of any terrorist group in the state. Bago disclosed this on Friday during an interview with newsmen shortly after receiving a delegation from the Niger Development Forum on a courtesy visit at the State’s liaison office in Abuja. The forum w",
+      "url": "https://dailypost.ng/2026/10/09/no-terrorist-colony-in-niger-gov-bago-insists/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T16:04:39+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "How losing 2023 election led me to pastoral work in US — Banky W",
       "summary": "Nigerian singer and politician Banky W says losing the 2023 election led him to reflect on his purpose and begin pastoral work in the United States. Read More: https://punchng.com/how-losing-2023-election-led-me-to-pastoral-work-in-us-banky-w/",
       "url": "https://punchng.com/how-losing-2023-election-led-me-to-pastoral-work-in-us-banky-w/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-09T16:02:02+00:00",
       "categories": []
+    },
+    {
+      "title": "Suspected Boko Haram terrorists kill one, burn church, car in Adamawa",
+      "summary": "Attackers suspected to be Boko Haram terrorists have struck Adamawa State again, this time in a village in Gombi Local Government Area. DAILY POST learnt on Friday afternoon that the attackers launched an assault on Bala-Tela village in Gombi, a local government area bordering Hong LGA, which has fr",
+      "url": "https://dailypost.ng/2026/10/09/suspected-boko-haram-terrorists-kill-one-burn-church-car-in-adamawa/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T15:58:15+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "Police foil transformer vandalism, arrest suspect in Bauchi",
@@ -83,6 +148,14 @@
       "url": "https://punchng.com/anambra-attorney-general-probes-police-court-bailiffs-clash/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-09T15:55:44+00:00",
+      "categories": []
+    },
+    {
+      "title": "Troops arrest suspected collaborator, destroy IEDs, recover 73 livestock",
+      "summary": "Troops of the Joint Task Force North-West, Operation FANSAN YAMMA, have arrested a suspected terrorist collaborator in Kaduna State, destroyed three improvised explosive devices (IEDs) and recovered 73 livestock abandoned by fleeing terrorists in Zamfara State. On October 8, 2026, troops of Sector 1",
+      "url": "https://dailypost.ng/2026/10/09/troops-arrest-suspected-collaborator-destroy-ieds-recover-73-livestock/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T15:53:29+00:00",
       "categories": []
     },
     {
@@ -103,6 +176,27 @@
         "engineering",
         "business",
         "property"
+      ]
+    },
+    {
+      "title": "Lagos Assembly sets up committee to recover govt assets",
+      "summary": "The Lagos State House of Assembly has set up an eight-member ad hoc committee to identify, document and facilitate the recovery of government-owned assets across the state. The committee is also tasked with determining the status of both documented and undocumented properties and other assets belong",
+      "url": "https://dailypost.ng/2026/10/09/lagos-assembly-sets-up-committee-to-recover-govt-assets/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T15:48:53+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Ogun declares war on building collapse as regulators, artisans unite in Ilaro",
+      "summary": "As part of efforts to avert building collapse and combat the use of substandard building materials, the Ogun State Building Production Management Authority, OGBPMA, and the Building Collapse Prevention Guild, BCPG, have brought bricklayers, carpenters, welders, architects, engineers, builders, commu",
+      "url": "https://dailypost.ng/2026/10/09/ogun-declares-war-on-building-collapse-as-regulators-artisans-unite-in-ilaro/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-09T15:48:43+00:00",
+      "categories": [
+        "engineering"
       ]
     },
     {
@@ -188,94 +282,6 @@
       "published": "2026-10-09T15:07:31+00:00",
       "categories": [
         "government"
-      ]
-    },
-    {
-      "title": "Man City case creating uncertainty in Premier League — Iraola",
-      "summary": "Liverpool boss Andoni Iraola says the lack of clarity over Manchester City’s future after being found guilty of financial breaches is causing uncertainty. Read More: https://punchng.com/man-city-case-creating-uncertainty-in-premier-league-iraola/",
-      "url": "https://punchng.com/man-city-case-creating-uncertainty-in-premier-league-iraola/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T15:06:05+00:00",
-      "categories": []
-    },
-    {
-      "title": "Pillay jokes about sharing Nobel prize with Trump as tributes pour in",
-      "summary": "South African human rights champion Navi Pillay has won the Nobel Peace Prize for her work against war crimes, joking she might share it with Donald Trump. Read More: https://punchng.com/pillay-jokes-about-sharing-nobel-prize-with-trump-as-tributes-pour-in/",
-      "url": "https://punchng.com/pillay-jokes-about-sharing-nobel-prize-with-trump-as-tributes-pour-in/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T15:05:08+00:00",
-      "categories": []
-    },
-    {
-      "title": "Kayefi headlines Tales & Tunes as ID Cabasa leads music direction in Sheffield",
-      "summary": "Nigerian producer ID Cabasa directed the event's music. The post Kayefi headlines Tales & Tunes as ID Cabasa leads music direction in Sheffield appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/entertainment/music/915679-kayefi-headlines-tales-tunes-as-id-cabasa-leads-music-direction-in-sheffield.html",
-      "source": "Premium Times",
-      "published": "2026-10-09T15:03:16+00:00",
-      "categories": []
-    },
-    {
-      "title": "Kenneth Okonkwo hails Atiku, defends subsidy plan",
-      "summary": "ADC campaign spokesperson, Kenneth Okonkwo, has described former VP Atiku Abubakar as the country’s clear leader, praising his economic record and subsidy Read More: https://punchng.com/kenneth-okonkwo-hails-atiku-defends-subsidy-plan/",
-      "url": "https://punchng.com/kenneth-okonkwo-hails-atiku-defends-subsidy-plan/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T15:03:08+00:00",
-      "categories": []
-    },
-    {
-      "title": "Over 80,000 tickets for Fury-Joshua bout sell out in 60 minutes",
-      "summary": "Over 80,000 tickets for the heavyweight bout between Tyson Fury and Anthony Joshua at Cardiff’s Principality Stadium have sold out within 60 minutes. Read More: https://punchng.com/over-80000-tickets-for-fury-joshua-bout-sell-out-in-60-minutes/",
-      "url": "https://punchng.com/over-80000-tickets-for-fury-joshua-bout-sell-out-in-60-minutes/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T14:59:56+00:00",
-      "categories": []
-    },
-    {
-      "title": "FAAN proposes 25-day closure of Owerri airport runway for repairs",
-      "summary": "The airport authority says the repairs will address potholes and surface cracks worsened by heavy rainfall, while plans also include extending the runway to accommodate larger aircraft. The post FAAN proposes 25-day closure of Owerri airport runway for repairs appeared first on Premium Times Nigeria",
-      "url": "https://www.premiumtimesng.com/business/business-news/915677-faan-proposes-25-day-closure-of-owerri-airport-runway-for-repairs.html",
-      "source": "Premium Times",
-      "published": "2026-10-09T14:56:46+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ondo begins distribution of relief materials to 7,000 disaster victims",
-      "summary": "The Ondo State Government has started distributing relief materials and cash assistance to over 7,000 victims of natural and fire disasters in the state. Read More: https://punchng.com/ondo-begins-distribution-of-relief-materials-to-7000-disaster-victims/",
-      "url": "https://punchng.com/ondo-begins-distribution-of-relief-materials-to-7000-disaster-victims/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T14:51:17+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Airtel Money commences conditional trading on London Stock Exchange",
-      "summary": "“The commencement of unconditional dealings in the Airtel Money shares on the London Stock Exchange is expected to occur at 8.00 a.m. on 14 October 2026,” Airtel Africa stated. The post Airtel Money commences conditional trading on London Stock Exchange appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/business/business-news/915675-airtel-money-commences-conditional-trading-on-london-stock-exchange.html",
-      "source": "Premium Times",
-      "published": "2026-10-09T14:48:06+00:00",
-      "categories": []
-    },
-    {
-      "title": "Collaboration, Infrastructure and Trust as Drivers of Digital Growth – FCMB",
-      "summary": "The Chief Technology Officer of First City Monument Bank (FCMB), Blessing Ehize, has called for stronger collaboration among financial institutions, technology companies, regulators, and infrastructure providers to accelerate Nigeria’s digital transformation and build a more resilient digital econom",
-      "url": "https://dailypost.ng/2026/10/09/collaboration-infrastructure-and-trust-as-drivers-of-digital-growth-fcmb/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-09T14:46:07+00:00",
-      "categories": [
-        "engineering",
-        "business"
-      ]
-    },
-    {
-      "title": "Lagos assembly sets up committee to recover government assets",
-      "summary": "The committee chair said the exercise was part of the assembly’s oversight responsibilities to promote accountability and ensure prudent management of public resources. The post Lagos assembly sets up committee to recover government assets appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/915671-lagos-assembly-sets-up-committee-to-recover-government-assets.html",
-      "source": "Premium Times",
-      "published": "2026-10-09T14:42:59+00:00",
-      "categories": [
-        "government",
-        "lagos"
       ]
     }
   ]
