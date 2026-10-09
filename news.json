@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T18:12:23.025875+00:00",
+  "generated_at": "2026-10-09T18:47:09.806321+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,26 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Trump forms panel to probe Fed reserve governor Lisa Cook",
+      "summary": "US President Donald Trump has set up a committee to probe Federal Reserve Governor Lisa Cook over alleged false statements linked to mortgages. Read More: https://punchng.com/trump-forms-panel-to-probe-fed-reserve-governor-lisa-cook/",
+      "url": "https://punchng.com/trump-forms-panel-to-probe-fed-reserve-governor-lisa-cook/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T19:38:30+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "EPL: Alonso confirms James, Palmer, Caicedo fit for Bournemouth clash",
+      "summary": "Chelsea manager Xabi Alonso has confirmed that Reece James, Cole Palmer and Joao Pedro are available for selection ahead of Saturday’s Premier League clash against Bournemouth at Stamford Bridge. The trio returned to training during the extended international break, providing Chelsea with a boost as",
+      "url": "https://punchng.com/epl-alonso-confirms-james-palmer-caicedo-fit-for-bournemouth-clash/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-09T19:36:54+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
     {
       "title": "Police arrest ex-convict over robbery of POS operators in Anambra",
       "summary": "Anambra State Police have arrested a 27-year-old ex-convict, Chidera Eleh, for his alleged involvement in motorcycle-assisted robberies of POS operators in Read More: https://punchng.com/police-arrest-ex-convict-over-robbery-of-pos-operators-in-anambra/",
@@ -46,6 +66,14 @@
       "categories": []
     },
     {
+      "title": "Bus driver overruns, kills VIO on duty in Ondo",
+      "summary": "Police said the victim, reportedly on routine patrol with his team, flagged down the driver for a routine inspection of the vehicle's particulars when the incident occurred. The post Bus driver overruns, kills VIO on duty in Ondo appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/more-news/915718-bus-driver-overruns-kills-vio-on-duty-in-ondo.html",
+      "source": "Premium Times",
+      "published": "2026-10-09T18:39:52+00:00",
+      "categories": []
+    },
+    {
       "title": "Buying vehicles from unregistered suppliers is criminal offence, BPP warns MDAs",
       "summary": "The Bureau of Public Procurement has warned MDAs that procuring vehicles from suppliers not registered with the NADDC is a criminal offence subject to pros Read More: https://punchng.com/buying-vehicles-from-unregistered-suppliers-is-criminal-offence-bpp-warns-mdas/",
       "url": "https://punchng.com/buying-vehicles-from-unregistered-suppliers-is-criminal-offence-bpp-warns-mdas/?utm_source=rss.punchng.com&utm_medium=web",
@@ -73,13 +101,20 @@
       ]
     },
     {
+      "title": "Court remands Nigerien man in Abuja for alleged supply of AK-47 ammunition for terrorism",
+      "summary": "The Niger Republic citizen pleaded not guilty to four counts, including terrorism and fraudulent acquisition of a Nigerian identification number. The post Court remands Nigerien man in Abuja for alleged supply of AK-47 ammunition for terrorism appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/915716-court-remands-nigerien-man-in-abuja-for-alleged-supply-of-ak-47-ammunition-for-terrorism.html",
+      "source": "Premium Times",
+      "published": "2026-10-09T18:28:20+00:00",
+      "categories": []
+    },
+    {
       "title": "FG rejects immediate solar import ban to protect energy transition, savings",
-      "summary": "The Federal Government has rejected an immediate ban on solar panel imports to protect Nigeria’s energy transition and prevent higher electricity costs. Read More: https://punchng.com/fg-rejects-immediate-solar-import-ban-to-protect-energy-transition-savings/",
+      "summary": "The Federal Government has rejected an immediate ban on solar panel imports, following warnings it could raise costs and slow Nigeria’s energy transition. Read More: https://punchng.com/fg-rejects-immediate-solar-import-ban-to-protect-energy-transition-savings/",
       "url": "https://punchng.com/fg-rejects-immediate-solar-import-ban-to-protect-energy-transition-savings/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-09T18:26:14+00:00",
       "categories": [
-        "engineering",
         "government"
       ]
     },
@@ -114,6 +149,14 @@
         "government",
         "lagos"
       ]
+    },
+    {
+      "title": "Military Plane Crash: NAF begins search for black box, recorders",
+      "summary": "NAF said the Flight Data Recorder (FDR), commonly known as the \"black box,\" and the Cockpit Voice Recorder (CVR) are expected to provide crucial evidence for investigators seeking to reconstruct the aircraft’s final moments and determine the factors that led to the crash. The post Military Plane Cra",
+      "url": "https://www.premiumtimesng.com/news/headlines/915711-military-plane-crash-naf-begins-search-for-black-box-recorders.html",
+      "source": "Premium Times",
+      "published": "2026-10-09T18:11:26+00:00",
+      "categories": []
     },
     {
       "title": "EPL: Alonso makes demands ahead of Chelsea vs Bournemouth game",
@@ -233,48 +276,6 @@
       "url": "https://punchng.com/meet-nigerias-overall-best-teacher-from-ogun/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-09T17:19:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "Police return recovered car, motorcycle to owners in Kano",
-      "summary": "The Kano State Police Command has handed over a recovered orange Vibe motor vehicle and an ash-coloured Haojue motorcycle to their rightful owners following intelligence-led operations. The Police Public Relations Officer, CSP Abdullahi Haruna Kiyawa, disclosed this in a statement on Friday. Accordi",
-      "url": "https://dailypost.ng/2026/10/09/police-return-recovered-car-motorcycle-to-owners-in-kano/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-09T17:06:36+00:00",
-      "categories": []
-    },
-    {
-      "title": "Banky W becomes ordained pastor in US",
-      "summary": "“So yes, I'm still a filmmaker, musician, and entrepreneur; but…” The post Banky W becomes ordained pastor in US appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/entertainment/naija-fashion/915695-banky-w-becomes-ordained-pastor-in-us.html",
-      "source": "Premium Times",
-      "published": "2026-10-09T17:04:41+00:00",
-      "categories": []
-    },
-    {
-      "title": "CAF president hints at return to AFCON’s two-year cycle",
-      "summary": "CAF President Patrice Motsepe says the body is considering a return to holding the Africa Cup of Nations every two years, after previously planning a switc Read More: https://punchng.com/caf-president-hints-at-return-to-afcons-two-year-cycle/",
-      "url": "https://punchng.com/caf-president-hints-at-return-to-afcons-two-year-cycle/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T17:01:54+00:00",
-      "categories": []
-    },
-    {
-      "title": "Benue seals two schools over forced textbook purchases",
-      "summary": "The Benue State Government has sealed Orenda and Opal Schools for allegedly violating its textbook policy and victimising pupils over book purchases. Read More: https://punchng.com/benue-seals-two-schools-over-forced-textbook-purchases/",
-      "url": "https://punchng.com/benue-seals-two-schools-over-forced-textbook-purchases/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-09T16:56:58+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "IGP Disu approves fresh police postings, names new PPROs",
-      "summary": "The Inspector-General of Police, Olatunji Rilwan Disu, has approved the deployment of newly appointed Police Public Relations Officers, PPROs, and Public Relations Liaison Officers to designated commands and formations throughout the Nigeria Police Force. On Friday, October 9, 2026, the Force Public",
-      "url": "https://dailypost.ng/2026/10/09/igp-disu-approves-fresh-police-postings-names-new-ppros/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-09T16:54:57+00:00",
       "categories": []
     }
   ]
