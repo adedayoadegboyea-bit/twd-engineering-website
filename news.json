@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T22:09:22.625877+00:00",
+  "generated_at": "2026-10-10T22:41:46.031504+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Ronaldo, Messi among 66 players with over 1,000 career games",
+      "summary": "Cristiano Ronaldo and Lionel Messi are among 66 footballers with over 1,000 career games, a milestone highlighting remarkable longevity and consistency. Read More: https://punchng.com/ronaldo-messi-among-66-players-with-over-1000-career-games/",
+      "url": "https://punchng.com/ronaldo-messi-among-66-players-with-over-1000-career-games/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-10T23:30:43+00:00",
+      "categories": []
+    },
     {
       "title": "Pantami’s camp urges calm as INEC omits name from Gombe list",
       "summary": "Supporters of former minister Isa Pantami have been urged to remain calm after INEC omitted his name and the PDP from its Gombe governorship list. Read More: https://punchng.com/pantamis-camp-urges-calm-as-inec-omits-name-from-gombe-list/",
@@ -275,16 +283,6 @@
       "published": "2026-10-10T19:46:35+00:00",
       "categories": [
         "business"
-      ]
-    },
-    {
-      "title": "INEC lists 16 candidates for Gombe governorship race, omits PDP’s Pantami",
-      "summary": "Pantami emerged as the PDP candidate in a fresh primary election in September, after a court voided his earlier nomination. The post INEC lists 16 candidates for Gombe governorship race, omits PDP’s Pantami appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/regional/nnorth-east/916020-inec-lists-16-candidates-for-gombe-governorship-race-omits-pdps-pantami.html",
-      "source": "Premium Times",
-      "published": "2026-10-10T19:42:58+00:00",
-      "categories": [
-        "government"
       ]
     }
   ]
