@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T03:44:27.692587+00:00",
+  "generated_at": "2026-10-10T04:10:48.892724+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "AI and the Rise of Synthetic Media: Is Nigeria ready for 2027?",
+      "summary": "Nigeria has lived with propaganda and fabricated claims for decades. What artificial intelligence changes is how cheaply convincing material can be produced and how far it can travel. The post AI and the Rise of Synthetic Media: Is Nigeria ready for 2027? appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/features-and-interviews/915734-ai-and-the-rise-of-synthetic-media-is-nigeria-ready-for-2027.html",
+      "source": "Premium Times",
+      "published": "2026-10-10T04:00:26+00:00",
+      "categories": []
+    },
     {
       "title": "Royal Air Maroc partners Thales on digital aviation solutions",
       "summary": "Royal Air Maroc has partnered with Thales to deploy digital aviation solutions aimed at improving flight safety, efficiency, and sustainability. Read More: https://punchng.com/royal-air-maroc-partners-thales-on-digital-aviation-solutions/",
@@ -272,16 +280,6 @@
       "source": "PUNCH",
       "published": "2026-10-10T00:13:29+00:00",
       "categories": []
-    },
-    {
-      "title": "Shehu Sani warns north against seeking power in 2027",
-      "summary": "Former Senator Shehu Sani has warned northern politicians against seeking the presidency in 2027, arguing it could reignite separatist agitations. Read More: https://punchng.com/shehu-sani-warns-north-against-seeking-power-in-2027/",
-      "url": "https://punchng.com/shehu-sani-warns-north-against-seeking-power-in-2027/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-10T00:13:18+00:00",
-      "categories": [
-        "engineering"
-      ]
     }
   ]
 }
