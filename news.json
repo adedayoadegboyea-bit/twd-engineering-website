@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T17:08:51.718677+00:00",
+  "generated_at": "2026-10-10T17:41:00.346469+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Ronaldo will return to Portugal squad in November — Official",
+      "summary": "Portuguese Football Federation president Pedro Proença says Cristiano Ronaldo is expected to return to the national team for the November international bre Read More: https://punchng.com/ronaldo-will-return-to-portugal-squad-in-november-official/",
+      "url": "https://punchng.com/ronaldo-will-return-to-portugal-squad-in-november-official/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-10T18:34:18+00:00",
+      "categories": []
+    },
     {
       "title": "South African court sentences 71-year-old woman to 20 years for killing three great-grandchildren",
       "summary": "A South African court has sentenced 71-year-old Susana De Villiers to 20 years in prison for murdering her three great-grandchildren in 2021. Read More: https://punchng.com/south-african-court-sentences-71-year-old-woman-to-20-years-for-killing-three-great-grandchildren/",
@@ -51,11 +59,27 @@
       "categories": []
     },
     {
+      "title": "South African court jails 71-year-old woman for killing three great-grandchildren",
+      "summary": "A 71-year-old South African woman, Susana “Sarie” De Villiers, has been sentenced to 20 years in prison for killing her three great-grandchildren. According to South African news outlet Nova News, De Villiers pleaded guilty to the three murders in March 2025. The Worcester Regional Court in the West",
+      "url": "https://dailypost.ng/2026/10/10/south-african-court-jails-71-year-old-woman-for-killing-three-great-grandchildren/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-10T17:24:53+00:00",
+      "categories": []
+    },
+    {
       "title": "I won’t be watching livestream of US shooter’s execution — Vice President Vance",
       "summary": "US Vice-President JD Vance says he will not watch the proposed livestream of the execution of Nidal Hasan, the ex-Army psychiatrist who killed 13 in 2009. Read More: https://punchng.com/i-wont-be-watching-livestream-of-us-shooters-execution-vice-president-vance/",
       "url": "https://punchng.com/i-wont-be-watching-livestream-of-us-shooters-execution-vice-president-vance/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-10T17:20:47+00:00",
+      "categories": []
+    },
+    {
+      "title": "Regina Daniels reveals why she’s celebrating her 25th birthday in wheelchair",
+      "summary": "“It started as something minor, very minor, but eventually led to this…” The post Regina Daniels reveals why she’s celebrating her 25th birthday in wheelchair appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/entertainment/naija-fashion/916000-regina-daniels-reveals-why-shes-celebrating-her-25th-birthday-in-wheelchair.html",
+      "source": "Premium Times",
+      "published": "2026-10-10T17:11:18+00:00",
       "categories": []
     },
     {
@@ -90,7 +114,7 @@
     },
     {
       "title": "Augsburg’s midfielder scores fastest goal in Bundesliga history against Bayern Munich",
-      "summary": "Augsburg’s Robin Fellhauer scored the fastest goal in Bundesliga history, netting in under nine seconds after a mistake by Bayern Munich’s Manuel Neuer. Read More: https://punchng.com/augsburgs-midfielder-scores-fastest-goal-in-bundesliga-history-against-bayern-munich/",
+      "summary": "Augsburg midfielder Robin Fellhauer scored the fastest goal in Bundesliga history, netting in under nine seconds against Bayern Munich in a 2-2 draw. Read More: https://punchng.com/augsburgs-midfielder-scores-fastest-goal-in-bundesliga-history-against-bayern-munich/",
       "url": "https://punchng.com/augsburgs-midfielder-scores-fastest-goal-in-bundesliga-history-against-bayern-munich/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-10T16:49:55+00:00",
@@ -249,32 +273,6 @@
       "source": "PUNCH",
       "published": "2026-10-10T15:46:21+00:00",
       "categories": []
-    },
-    {
-      "title": "Police arrest ex-convict who allegedly robbed POS operators",
-      "summary": "The arrest of the suspect happened days after a CCTV footage surfaced online and showed some armed robbers attacking some POS operators in Awka, the state capital. The post Police arrest ex-convict who allegedly robbed POS operators appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/915980-police-arrest-ex-convict-who-allegedly-robbed-pos-operators.html",
-      "source": "Premium Times",
-      "published": "2026-10-10T15:44:00+00:00",
-      "categories": []
-    },
-    {
-      "title": "IPAC warns Katsina voters against selling PVCs ahead of 2027 elections",
-      "summary": "The Chairman of the Inter-Party Advisory Council (IPAC) in Katsina State, Alhaji Salimu Lawal Boyi, has warned eligible voters against selling their Permanent Voter Cards (PVCs) ahead of the 2027 general elections. Boyi, who is also the state chairman of the Accord Party, gave the warning while spea",
-      "url": "https://dailypost.ng/2026/10/10/ipac-warns-katsina-voters-against-selling-pvcs-ahead-of-2027-elections/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-10T15:37:21+00:00",
-      "categories": []
-    },
-    {
-      "title": "Dangote Refinery increases diesel price days after reduction",
-      "summary": "Dangote Refinery has increased the price of its gantry Automotive Gas Oil, AGO, also known as diesel, a few days after reducing the cost of the commodity. Market survey by DAILY POST on Saturday showed that Dangote Refinery increased its diesel price to N1,800 per litre from N1,700. This means that ",
-      "url": "https://dailypost.ng/2026/10/10/dangote-refinery-increases-diesel-price-days-after-reduction/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-10T15:37:11+00:00",
-      "categories": [
-        "business"
-      ]
     }
   ]
 }
