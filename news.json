@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T07:11:31.500952+00:00",
+  "generated_at": "2026-10-11T07:43:03.692657+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,32 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Iran executes man for killing police officer",
+      "summary": "Iranian authorities have executed a man convicted of intentionally killing a police officer by running him over with a vehicle during clashes in 2022. Read More: https://punchng.com/iran-executes-man-for-killing-police-officer/",
+      "url": "https://punchng.com/iran-executes-man-for-killing-police-officer/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-11T08:26:52+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ndigbo need mindset shift for collective progress, says Soludo",
+      "summary": "Anambra Governor, Chukwuma Soludo, has called for a mindset shift among Ndigbo, urging a transition from individual hustle to collective institutions. Read More: https://punchng.com/ndigbo-need-mindset-shift-for-collective-progress-says-soludo/",
+      "url": "https://punchng.com/ndigbo-need-mindset-shift-for-collective-progress-says-soludo/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-11T08:23:39+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Regular consumption of eggs can curb child malnutrition — Experts",
+      "summary": "Experts urge Nigerians to make eggs a regular part of their diet, saying their rich nutritional content can help tackle child malnutrition and stunted grow Read More: https://punchng.com/regular-consumption-of-eggs-can-curb-child-malnutrition-experts/",
+      "url": "https://punchng.com/regular-consumption-of-eggs-can-curb-child-malnutrition-experts/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-11T08:19:59+00:00",
+      "categories": []
+    },
     {
       "title": "Tiger attacks, kills man at UK zoo",
       "summary": "A man has died after being attacked by a tiger upon entering its enclosure at Yorkshire Wildlife Park in northern England, South Yorkshire Police have conf Read More: https://punchng.com/tiger-attacks-kills-man-at-uk-zoo/",
@@ -56,12 +82,59 @@
       ]
     },
     {
+      "title": "Oshiomhole tackles Umahi over road projects",
+      "summary": "Edo North Senator, Adams Oshiomhole has accused Works Minister, David Umahi of bias in how funds for federal road projects are shared, insisting that fixing bad existing roads should come before building new ones. Oshiomhole spoke during a podcast interview circulating on social media, where he revi",
+      "url": "https://dailypost.ng/2026/10/11/oshiomhole-tackles-umahi-over-road-projects/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-11T07:40:34+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "Bursaspor Coach reveals how club beat Celtic to sign Iheanacho",
+      "summary": "Iheanacho’s impressive start has earned praise from Bursaspor manager Er, who acknowledged the work that went into bringing the experienced striker to the club The post Bursaspor Coach reveals how club beat Celtic to sign Iheanacho appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/sports/football/916075-bursaspor-coach-reveals-how-club-beat-celtic-to-sign-iheanacho.html",
+      "source": "Premium Times",
+      "published": "2026-10-11T07:40:17+00:00",
+      "categories": []
+    },
+    {
+      "title": "Shooting Stars’ poor run: Is sacking Salisu Yusuf the answer?",
+      "summary": "Shooting Stars’ difficult start has prompted calls to sack coach Salisu Yusuf, but is it too early to dismiss him? The post Shooting Stars’ poor run: Is sacking Salisu Yusuf the answer? appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/sports/sports-features/916071-shooting-stars-poor-run-is-sacking-salisu-yusuf-the-answer.html",
+      "source": "Premium Times",
+      "published": "2026-10-11T07:35:57+00:00",
+      "categories": []
+    },
+    {
+      "title": "Suspected herdsmen attack Benue communities, kill six, others missing",
+      "summary": "At least six people have reportedly been killed, while several others remain unaccounted for following fresh attacks by suspected armed herdsmen on communities in Ukum Local Government Area of Benue State. The affected areas include Tse-Nyaku, Biliji and other communities in Mbatian and Mbazum distr",
+      "url": "https://dailypost.ng/2026/10/11/suspected-herdsmen-attack-benue-communities-kill-six-others-missing/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-11T07:33:56+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Tinubu will deliver more prosperity if re-elected — First Lady",
       "summary": "First Lady Oluremi Tinubu has assured Nigerians that President Bola Tinubu will deliver more prosperity if re-elected for a second term in 2027. Read More: https://punchng.com/tinubu-will-deliver-more-prosperity-if-re-elected-first-lady/",
       "url": "https://punchng.com/tinubu-will-deliver-more-prosperity-if-re-elected-first-lady/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-11T07:26:23+00:00",
       "categories": []
+    },
+    {
+      "title": "Euromatch NPFL: Bendel Insurance confirm Baba’s return ahead Sporting Lagos clash",
+      "summary": "Bendel Insurance have confirmed the return of goalkeeper, Joshua Baba ahead of their Nigeria Premier Football League, NPFL, Matchday 8 fixture against Sporting Lagos. The return comes after the club declared Baba absent without official leave (AWOL). He had failed to report for duty after an approve",
+      "url": "https://dailypost.ng/2026/10/11/euromatch-npfl-bendel-insurance-confirm-babas-return-ahead-sporting-lagos-clash/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-11T07:25:32+00:00",
+      "categories": [
+        "lagos"
+      ]
     },
     {
       "title": "No court ordered arrest of Araraume, Okorocha — Group",
@@ -206,76 +279,6 @@
       "source": "Premium Times",
       "published": "2026-10-11T05:56:58+00:00",
       "categories": []
-    },
-    {
-      "title": "Russian diesel cargo heads for US after Trump-Putin deal",
-      "summary": "The first Russian diesel cargo going to the United States is expected to reach the East Coast this week after a deal between President Donald Trump and President Vladimir Putin. The Greek-flagged tanker MINERVA ZEN, carrying about 275,000 barrels of oil, reportedly left St. Petersburg in late Septem",
-      "url": "https://dailypost.ng/2026/10/11/russian-diesel-cargo-heads-for-us-after-trump-putin-deal/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T05:55:29+00:00",
-      "categories": []
-    },
-    {
-      "title": "Tolu Arokodare reveals what Osimhen told him to do for injured Ajax teammate",
-      "summary": "Ajax striker, Tolu Arokodare, has revealed what Galatasaray striker, Victor Osimhen told him to do for injured teammate, Kasper Dolberg. Speaking after Ajax’s 1-1 draw with NEC on Saturday, Arokodare said Osimhen told him to show the jersey of Dolberg to the fans in the stands after scoring against ",
-      "url": "https://dailypost.ng/2026/10/11/tolu-arokodare-reveals-what-osimhen-told-him-to-do-for-injured-ajax-teammate/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T05:52:03+00:00",
-      "categories": []
-    },
-    {
-      "title": "EPL: Paul Merson snubs Declan Rice, names best holding midfielder in the world",
-      "summary": "Arsenal legend, Paul Merson has named Chelsea midfielder, Moisés Caicedo as the best holding midfielder in the world after the Blues’ 5-1 win over Bournemouth. Chelsea had endured a run of three consecutive Premier League matches without a victory. However, they bounced back in commanding fashion af",
-      "url": "https://dailypost.ng/2026/10/11/epl-paul-merson-snubs-declan-rice-names-best-holding-midfielder-in-the-world/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T05:46:41+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: Ogun PDP alleges APC pressure over Adebutu’s omission from INEC list",
-      "summary": "Ogun State chapter of the Peoples Democratic Party, PDP, has urged its members and supporters to remain calm following the exclusion of its governorship candidate, Oladipupo Adebutu, from a list released by the Independent National Electoral Commission, INEC. It expressed confidence that the matter ",
-      "url": "https://dailypost.ng/2026/10/11/2027-ogun-pdp-alleges-apc-pressure-over-adebutus-omission-from-inec-list/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T05:45:47+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "US lawmakers prepare bill to block Trump’s Russian oil deal",
-      "summary": "Some United States lawmakers are moving to pull the plug on President Donald Trump’s reversal on Russian oil embargo after a deal between Washington and Russia. Rep. Brian Fitzpatrick, a Republican representing Pennsylvania, announced he would present a cross-party bill aimed at stopping the U.S. go",
-      "url": "https://dailypost.ng/2026/10/11/us-lawmakers-prepare-bill-to-block-trumps-russian-oil-deal/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T05:40:10+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Ballon d’Or 2026: He did extraordinary things – Fabio Cannavaro names player to win award",
-      "summary": "Italy legend, Fabio Cannavaro has named the player he believes should win the 2026 Ballon d’Or. The winner of this year’s Ballon d’Or will be announced in London on October 26. However, Cannavaro believes Paris Saint-Germain winger Khvicha Kvaratskhelia deserves to win the 2026 Ballon d’Or because h",
-      "url": "https://dailypost.ng/2026/10/11/ballon-dor-2026-he-did-extraordinary-things-fabio-cannavaro-names-player-to-win-award/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T05:38:28+00:00",
-      "categories": []
-    },
-    {
-      "title": "UCL: They’re world’s best team currently – Osimhen predicts Galatasaray vs Barcelona clash",
-      "summary": "Galatasaray striker, Victor Osimhen has predicted that his side’s UEFA Champions League clash against Barcelona will be a “tough game.” Osimhen also described the LaLiga giants as currently the best team in the world. The Nigerian international spoke during a post-match interview after Galatasaray d",
-      "url": "https://dailypost.ng/2026/10/11/ucl-theyre-worlds-best-team-currently-osimhen-predicts-galatasaray-vs-barcelona-clash/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T05:37:35+00:00",
-      "categories": []
-    },
-    {
-      "title": "FG warns hoteliers against illegal activities ahead of elections",
-      "summary": "The Federal Government has warned hotel owners against allowing illegal activities in their facilities as preparations for the 2027 general election begin. Read More: https://punchng.com/fg-warns-hoteliers-against-illegal-activities-ahead-of-elections/",
-      "url": "https://punchng.com/fg-warns-hoteliers-against-illegal-activities-ahead-of-elections/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-11T05:30:45+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
