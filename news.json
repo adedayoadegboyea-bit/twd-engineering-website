@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T23:40:52.507951+00:00",
+  "generated_at": "2026-10-11T00:15:27.290533+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "NBBF electoral committee completes screening of candidates",
+      "summary": "The NBBF electoral committee has cleared four presidential aspirants for its October 15 congress in Abuja, disqualifying one for late submission. Read More: https://punchng.com/nbbf-electoral-committee-completes-screening-of-candidates/",
+      "url": "https://punchng.com/nbbf-electoral-committee-completes-screening-of-candidates/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-11T01:09:01+00:00",
+      "categories": []
+    },
     {
       "title": "2027: Protest, relief as INEC releases final candidates’ list",
       "summary": "INEC has released the final list of candidates for the 2027 general elections, sparking mixed reactions over the omission of prominent figures like Isa Pan Read More: https://punchng.com/2027-protest-relief-as-inec-releases-final-candidates-list/",
@@ -280,16 +288,6 @@
       "source": "PUNCH",
       "published": "2026-10-10T22:32:08+00:00",
       "categories": []
-    },
-    {
-      "title": "INEC releases final list of Kwara NASS candidates for 2027",
-      "summary": "INEC has released the final list of candidates for the 2027 National Assembly elections in Kwara, featuring Governor AbdulRazaq and Senator Saliu Mustapha. Read More: https://punchng.com/inec-releases-final-list-of-kwara-nass-candidates-for-2027/",
-      "url": "https://punchng.com/inec-releases-final-list-of-kwara-nass-candidates-for-2027/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-10T22:27:21+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
