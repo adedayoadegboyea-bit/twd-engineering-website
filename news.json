@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T22:10:09.290510+00:00",
+  "generated_at": "2026-10-11T22:43:01.598205+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,16 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Army, Anambra pay final tribute to first African UN military adviser",
+      "summary": "The Nigerian Army and Anambra State Government have paid their final respects to retired Lt. Gen. Chikaidibia Obiakor, the first African UN military advise Read More: https://punchng.com/army-anambra-pay-final-tribute-to-first-african-un-military-adviser/",
+      "url": "https://punchng.com/army-anambra-pay-final-tribute-to-first-african-un-military-adviser/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-11T23:32:59+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Ex-Rep praises Tinubu’s reforms, demands direct revenue allocation to LGs",
       "summary": "A former lawmaker, Sam Onuigbo, has urged Nigerians to hold governors accountable for increased revenues from subsidy removal, demanding direct allocation Read More: https://punchng.com/ex-rep-praises-tinubus-reforms-demands-direct-revenue-allocation-to-lgs/",
@@ -273,16 +283,6 @@
       "source": "Information Nigeria",
       "published": "2026-10-11T19:58:04+00:00",
       "categories": []
-    },
-    {
-      "title": "Kwankwasiyya urges NDC to seek legal redress over Gwarzo’s omission from INEC list",
-      "summary": "The Kwankwasiyya Movement has urged the Nigeria Democratic Congress (NDC) to seek legal redress over the omission of its Kano State governorship candidate, Comrade Aminu Abdussalam Gwarzo, and his running mate, Mustapha Rabi’u Kwankwaso, from the list published by the Independent National Electoral ",
-      "url": "https://dailypost.ng/2026/10/11/kwankwasiyya-urges-ndc-to-seek-legal-redress-over-gwarzos-omission-from-inec-list/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T19:56:15+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
