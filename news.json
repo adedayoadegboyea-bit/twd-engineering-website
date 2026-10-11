@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T18:10:49.168809+00:00",
+  "generated_at": "2026-10-11T18:46:42.687336+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,27 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Four injured as part of 60-year-old building collapses in Rivers",
+      "summary": "Four persons were injured after a part of a 60-year-old building collapsed in Port Harcourt, Rivers State, prompting authorities to evacuate occupants. Read More: https://punchng.com/four-injured-as-part-of-60-year-old-building-collapses-in-rivers/",
+      "url": "https://punchng.com/four-injured-as-part-of-60-year-old-building-collapses-in-rivers/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-11T19:16:09+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Oyo 2027: PDP announces Aderoju as Gbolarumi’s running mate",
+      "summary": "The Oyo State chapter of the Peoples Democratic Party, PDP, has announced Prince Emmanuel Ademola Aderoju as the party’s deputy governorship candidate. The party made the announcement in a statement signed by its chairman, Professor Abdulrahman Akinoso. The statement was made available to DAILY POST",
+      "url": "https://dailypost.ng/2026/10/11/oyo-2027-pdp-announces-aderoju-as-gbolarumis-running-mate/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-11T18:46:32+00:00",
+      "categories": [
+        "government",
+        "oyo"
+      ]
+    },
     {
       "title": "EPL: Man City shrug off uncertain future to beat 10-man Liverpool 3-0",
       "summary": "Manchester City beat 10-man Liverpool 3-0 in their first game since being found guilty of over 100 breaches of Premier League financial rules. Read More: https://punchng.com/epl-man-city-shrug-off-uncertain-future-to-beat-10-man-liverpool-3-0/",
@@ -24,6 +45,63 @@
       "url": "https://punchng.com/abuad-urges-end-to-import-unveils-three-locally-made-herbal-medicines/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-11T18:43:40+00:00",
+      "categories": []
+    },
+    {
+      "title": "Police defend blockade of Tinubu Must Go meeting venue in Kano",
+      "summary": "The Kano State Commissioner of Police, Ibrahim Adamu Bakori, has defended the police blockade of a venue booked for a meeting of the Tinubu Must Go (TMG) movement, saying the action was aimed at protecting the organisers and residents of the state. Members of the movement protested against the polic",
+      "url": "https://dailypost.ng/2026/10/11/police-defend-blockade-of-tinubu-must-go-meeting-venue-in-kano/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-11T18:43:39+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: Enugu alleges opposition plot to import armed thugs, bandits",
+      "summary": "Enugu State Government has alleged that some opposition elements are plotting to bring armed thugs and bandits into the state to create panic and insecurity ahead of the 2027 general elections. The government also blamed the Nigeria Democratic Congress, NDC, for the crisis at the Akanu Ibiam Interna",
+      "url": "https://dailypost.ng/2026/10/11/2027-enugu-alleges-opposition-plot-to-import-armed-thugs-bandits/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-11T18:39:04+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "PDP speaks on candidates’ omission from INEC’s list, says it will be addressed",
+      "summary": "The party urged affected candidates, members, and supporters to remain calm and patient while it engages with the electoral commission. The post PDP speaks on candidates’ omission from INEC’s list, says it will be addressed appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/916179-pdp-speaks-on-candidates-omission-from-inecs-list-says-it-will-be-addressed.html",
+      "source": "Premium Times",
+      "published": "2026-10-11T18:34:12+00:00",
+      "categories": []
+    },
+    {
+      "title": "Suspected militia kill four cows in Plateau",
+      "summary": "Four cows belonging to Alhaji Isa were reportedly shot dead by suspected Berom militia members at Dorowan Babuje in Barkin Ladi Local Government Area of Plateau State. Security analyst Zagazola Makama, in posts on X on Sunday, quoted security sources as saying, “The incident took place on Sunday, Oc",
+      "url": "https://dailypost.ng/2026/10/11/suspected-militia-kill-four-cows-in-plateau/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-11T18:30:37+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Sanwo-Olu targets 3,000MW electricity supply for Lagos by March 2027",
+      "summary": "Governor Sanwo-Olu said the state planned to add about 2,000 megawatts through a combination of electricity from the national grid, independent power projects, energy hubs, power barges, energy traders and embedded generation. The post Sanwo-Olu targets 3,000MW electricity supply for Lagos by March ",
+      "url": "https://www.premiumtimesng.com/regional/ssouth-west/916178-sanwo-olu-targets-3000mw-electricity-supply-for-lagos-by-march-2027.html",
+      "source": "Premium Times",
+      "published": "2026-10-11T18:30:21+00:00",
+      "categories": [
+        "engineering",
+        "business",
+        "government",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Ballon d’Or 2026: I’ve no doubt – Getafe manager Jose Bordalas names award winner",
+      "summary": "Getafe manager, Jose Bordalas, has named the player to win the 2026 Ballon d’Or. Speaking after Getafe’s 3-0 defeat to Barcelona in the LaLiga on Saturday, Bordalas named Spain international Lamine Yamal as the player to win the 2026 Ballon d’Or later this month. According to him, he doesn’t doubt t",
+      "url": "https://dailypost.ng/2026/10/11/ballon-dor-2026-ive-no-doubt-getafe-manager-jose-bordalas-names-award-winner/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-11T18:28:06+00:00",
       "categories": []
     },
     {
@@ -218,81 +296,6 @@
       "source": "Daily Post Nigeria",
       "published": "2026-10-11T16:31:54+00:00",
       "categories": []
-    },
-    {
-      "title": "Xenophobia: FG evacuates 111 more Nigerians from South Africa",
-      "summary": "The Federal Government has evacuated another 111 distressed Nigerians from South Africa amid xenophobic attacks, bringing the total number of returnees to Read More: https://punchng.com/xenophobia-fg-evacuates-111-more-nigerians-from-south-africa/",
-      "url": "https://punchng.com/xenophobia-fg-evacuates-111-more-nigerians-from-south-africa/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-11T16:25:07+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Police arrest four suspects, recover three stolen vehicles in Kano",
-      "summary": "The Kano State Police Command has arrested four suspects and recovered three stolen vehicles in separate operations conducted between October 8 and 9, 2026. The command said the operations formed part of its ongoing efforts to tackle vehicle theft through intelligence gathering, technical support an",
-      "url": "https://dailypost.ng/2026/10/11/police-arrest-four-suspects-recover-three-stolen-vehicles-in-kano/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T16:25:01+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ogun East’s economic transformation will boost Nigeria’s growth – Abiodun",
-      "summary": "Abiodun said the convergence of strategic assets and economic opportunities in Ogun East would not only accelerate economic growth in Ogun State but also strengthen Nigeria’s maritime trade, industrial capacity, logistics network, employment generation and investment prospects. The post Ogun East’s ",
-      "url": "https://www.premiumtimesng.com/promoted/916146-ogun-easts-economic-transformation-will-boost-nigerias-growth-abiodun.html",
-      "source": "Premium Times",
-      "published": "2026-10-11T16:21:04+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "2027: Kwara APC women rally support for Tinubu, AbdulRazaq, others",
-      "summary": "APC women in Kwara Central held a rally in Ilorin to mobilise support for President Tinubu and Governor AbdulRazaq ahead of the 2027 elections. Read More: https://punchng.com/2027-kwara-apc-women-rally-support-for-tinubu-abdulrazaq-others/",
-      "url": "https://punchng.com/2027-kwara-apc-women-rally-support-for-tinubu-abdulrazaq-others/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-11T16:19:15+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Xenophobia: FG repatriates 111 Nigerians from South Africa",
-      "summary": "The Federal Government has repatriated 111 Nigerians from South Africa, bringing the total number of citizens evacuated from the country since June to 2,037 amid concerns over xenophobic and Afrophobic attacks. The Ministry of Foreign Affairs disclosed this in a statement on Sunday. According to the",
-      "url": "https://dailypost.ng/2026/10/11/xenophobia-fg-repatriates-111-nigerians-from-south-africa/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T16:16:03+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "2026 Ballon d’Or: Hainer names two players that deserve to win award",
-      "summary": "Bayern Munich president, Herbert Hainer, has named two footballers that deserve to win the 2026 Ballon d’Or. Speaking with BILD, Hainer picked two players from the current squad. According to him, both Harry Kane and Michael Olise should be the top candidates for the award. Hainer however admitted t",
-      "url": "https://dailypost.ng/2026/10/11/2026-ballon-dor-hainer-names-two-players-that-deserve-to-win-award/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T16:09:36+00:00",
-      "categories": []
-    },
-    {
-      "title": "Atiku’s fuel subsidy plan unrealistic, says Presidency",
-      "summary": "The Presidency on Sunday dismissed former Vice President Atiku Abubakar’s proposed production subsidy on petrol as “a dangerous mathematical fantasy wrapped in political deceit,” saying Nigeria does not have the crude oil volumes to fund it. Special Adviser to the President on Media and Public Commu",
-      "url": "https://punchng.com/atikus-fuel-subsidy-plan-unrealistic-says-presidency/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-11T16:00:49+00:00",
-      "categories": []
-    },
-    {
-      "title": "Gov Mbah’s aide reacts to attack on NDC supporters in Enugu",
-      "summary": "Dan Nwomeh, the Senior Special Assistant on Mainstream Media to Enugu State Governor, Peter Mbah, has questioned the approval for a political gathering at the Akanu Ibiam International Airport in Enugu following an attack on members of the Nigeria Democratic Congress, NDC. DAILY POST had earlier rep",
-      "url": "https://dailypost.ng/2026/10/11/gov-mbahs-aide-reacts-to-attack-on-ndc-supporters-in-enugu/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-11T15:57:20+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
