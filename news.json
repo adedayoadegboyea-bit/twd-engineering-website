@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T01:46:40.424365+00:00",
+  "generated_at": "2026-10-12T02:12:33.642467+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,16 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Ekiti federal tech varsity resumes",
+      "summary": "The Federal University of Technology, Iyin-Ekiti, has announced October 12 as the resumption date for returning students for the 2026/2027 academic session Read More: https://punchng.com/ekiti-federal-tech-varsity-resumes/",
+      "url": "https://punchng.com/ekiti-federal-tech-varsity-resumes/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-12T01:51:12+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Falola warns social media weakens human relationships",
       "summary": "Professor Toyin Falola warns that social media creates an illusion of connection, weakening the meaningful relationships and community bonds needed for sup Read More: https://punchng.com/falola-warns-social-media-weakens-human-relationships/",
@@ -265,16 +275,6 @@
       "categories": [
         "engineering",
         "government"
-      ]
-    },
-    {
-      "title": "Three suspects in Oyo police custody over alleged robbery",
-      "summary": "Oyo State Police have arrested three suspected armed robbers in Ibadan following a distress call. A pistol, cartridge and motorcycle were recovered. Read More: https://punchng.com/three-suspects-in-oyo-police-custody-over-alleged-robbery/",
-      "url": "https://punchng.com/three-suspects-in-oyo-police-custody-over-alleged-robbery/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T00:31:07+00:00",
-      "categories": [
-        "oyo"
       ]
     }
   ]
