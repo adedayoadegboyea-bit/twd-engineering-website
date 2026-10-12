@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T21:10:23.346478+00:00",
+  "generated_at": "2026-10-12T21:45:17.218753+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Coventry beat Newcastle 4-1 to climb out of relegation zone",
+      "summary": "Coventry City climbed out of the Premier League relegation zone with a stylish 4-1 win against Newcastle on Monday, their second successive victory. Read More: https://punchng.com/coventry-beat-newcastle-4-1-to-climb-out-of-relegation-zone/",
+      "url": "https://punchng.com/coventry-beat-newcastle-4-1-to-climb-out-of-relegation-zone/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-12T22:33:01+00:00",
+      "categories": []
+    },
     {
       "title": "Breaking Bad actor RJ Mitte dies at 34",
       "summary": "American actor RJ Mitte, best known for playing Walter White Jr. in the series Breaking Bad, has died at the age of 34, according to US media reports. Read More: https://punchng.com/breaking-bad-actor-rj-mitte-dies-at-34/",
@@ -27,12 +35,30 @@
       "categories": []
     },
     {
+      "title": "Nigeria records 268 Lassa fever deaths as fatality rate rises to 23.6%- NCDC",
+      "summary": "The figures highlight the continued burden of the disease despite a sharp decline in newly confirmed infections in the latest reporting week The post Nigeria records 268 Lassa fever deaths as fatality rate rises to 23.6%- NCDC appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/916572-nigeria-records-268-lassa-fever-deaths-as-fatality-rate-rises-to-23-6-ncdc.html",
+      "source": "Premium Times",
+      "published": "2026-10-12T21:41:55+00:00",
+      "categories": []
+    },
+    {
       "title": "How Spider-Man actor officiated ex-wife’s wedding to Nigerian billionaire’s son",
       "summary": "Hollywood actor Tobey Maguire officiated the wedding of his ex-wife, Jennifer Meyer, to Geoffrey Ogunlesi, son of a Nigerian billionaire, in Hawaii. Read More: https://punchng.com/how-spider-man-actor-officiated-ex-wifes-wedding-to-nigerian-billionaires-son/",
       "url": "https://punchng.com/how-spider-man-actor-officiated-ex-wifes-wedding-to-nigerian-billionaires-son/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-12T21:27:59+00:00",
       "categories": []
+    },
+    {
+      "title": "Gov Mbah tasks SEDC on gas pipeline, regional railways, support for industrial programme",
+      "summary": "The governor made the calls on Monday when he received the Senate Committee on the South East Development Commission led by its Chairman, Senator Orji Uzor Kalu. The post Gov Mbah tasks SEDC on gas pipeline, regional railways, support for industrial programme appeared first on Premium Times Nigeria ",
+      "url": "https://www.premiumtimesng.com/promoted/916569-gov-mbah-tasks-sedc-on-gas-pipeline-regional-railways-support-for-industrial-programme.html",
+      "source": "Premium Times",
+      "published": "2026-10-12T21:23:45+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "US actress Selma Blair arrested after in-flight altercation",
@@ -259,34 +285,6 @@
       "published": "2026-10-12T19:48:52+00:00",
       "categories": [
         "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "I wish I had my dad’s brain — DJ Cuppy",
-      "summary": "Nigerian disc jockey, DJ Cuppy, says she wishes she had her father, Femi Otedola’s brain, praising his investment decisions and approach to wealth creation Read More: https://punchng.com/i-wish-i-had-my-dads-brain-dj-cuppy/",
-      "url": "https://punchng.com/i-wish-i-had-my-dads-brain-dj-cuppy/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T19:47:58+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Retired soldiers threaten protest over disputed pension formula",
-      "summary": "Retired military personnel have threatened to protest at the Military Pensions Board in Abuja over a disputed pension adjustment formula and delayed paymen Read More: https://punchng.com/retired-soldiers-threaten-protest-over-disputed-pension-formula/",
-      "url": "https://punchng.com/retired-soldiers-threaten-protest-over-disputed-pension-formula/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T19:47:02+00:00",
-      "categories": []
-    },
-    {
-      "title": "Oyebanji dissolves cabinet, retains SSG, two others",
-      "summary": "Ekiti State Governor, Biodun Oyebanji, has dissolved the State Executive Council ahead of his second year in office, retaining three key aides. Read More: https://punchng.com/oyebanji-dissolves-cabinet-retains-ssg-two-others/",
-      "url": "https://punchng.com/oyebanji-dissolves-cabinet-retains-ssg-two-others/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T19:45:49+00:00",
-      "categories": [
         "government"
       ]
     }
