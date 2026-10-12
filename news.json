@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T16:45:21.238450+00:00",
+  "generated_at": "2026-10-12T17:11:51.478358+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,46 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "VIDEO: Police arrest man travelling to avenge brother’s death in Oyo",
+      "summary": "The Oyo State police command has arrested a man who allegedly travelled from Anambra State to avenge his brother’s death, recovering a pistol and a cartridge from him. The suspect was intercepted by operatives of the Safer Highway Patrol during a stop and search operation along Ife Road while travel",
+      "url": "https://punchng.com/video-police-arrest-man-travelling-to-avenge-brothers-death-in-oyo/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-12T18:00:02+00:00",
+      "categories": [
+        "engineering",
+        "oyo"
+      ]
+    },
+    {
+      "title": "EFCC arraigns firm over money laundering",
+      "summary": "The EFCC has arraigned the Aluminium Smelter Company of Nigeria, ALSCON Plc, before a Federal High Court in Abuja over alleged N582.43m money laundering. Read More: https://punchng.com/efcc-arraigns-firm-over-money-laundering/",
+      "url": "https://punchng.com/efcc-arraigns-firm-over-money-laundering/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-12T17:56:03+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "EFCC arraigns Nigerian-American over $680,000 vehicle import scam",
+      "summary": "The EFCC has arraigned a Nigerian-American, Oluwatobi Adegoke, before a Lagos court over an alleged $680,000 vehicle import scam. He pleaded not guilty. Read More: https://punchng.com/efcc-arraigns-nigerian-american-over-680000-vehicle-import-scam/",
+      "url": "https://punchng.com/efcc-arraigns-nigerian-american-over-680000-vehicle-import-scam/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-12T17:51:31+00:00",
+      "categories": [
+        "lagos"
+      ]
+    },
+    {
+      "title": "APC slams Atiku for calling Tinubu ‘Bola’",
+      "summary": "The APC has accused former VP Atiku Abubakar of disrespecting the presidency by addressing President Bola Tinubu by his first name, ‘Bola’. Read More: https://punchng.com/apc-slams-atiku-for-calling-tinubu-bola/",
+      "url": "https://punchng.com/apc-slams-atiku-for-calling-tinubu-bola/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-12T17:43:02+00:00",
+      "categories": []
+    },
     {
       "title": "30 countries condemn Iran over UK airbase incident",
       "summary": "Foreign ministers from 30 countries, including the UK and US, have condemned Iran over alleged hostile activities and an incident at an RAF airbase. Read More: https://punchng.com/30-countries-condemn-iran-over-uk-airbase-incident/",
@@ -76,12 +116,44 @@
       "categories": []
     },
     {
+      "title": "Months after PREMIUM TIMES report, work begins on health facilities in Lagos flood-prone communities",
+      "summary": "Videos and photographs shared with PREMIUM TIMES show workers at the facility, along with construction equipment, including a concrete mixer and a drilling machine, on site. The post Months after PREMIUM TIMES report, work begins on health facilities in Lagos flood-prone communities appeared first o",
+      "url": "https://www.premiumtimesng.com/health/health-news/916462-months-after-premium-times-report-work-begins-on-health-facilities-in-lagos-flood-prone-communities.html",
+      "source": "Premium Times",
+      "published": "2026-10-12T17:04:16+00:00",
+      "categories": [
+        "engineering",
+        "lagos"
+      ]
+    },
+    {
+      "title": "2027: There’ll be consequences for not voting Tinubu – Soludo warns Anambra people",
+      "summary": "Anambra State Governor Chukwuma Soludo has warned voters in the state about the consequences of not voting for President Bola Tinubu in 2027. Soludo warned that voters in the state would lose something if they failed to re-elect Tinubu in 2027. Speaking to some of his supporters in a video, the gove",
+      "url": "https://dailypost.ng/2026/10/12/2027-therell-be-consequences-for-not-voting-tinubu-soludo-warns-anambra-people/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T17:03:00+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "2027: Ex-gov Yahaya Bello, Badaru, Lalong meet Shettima behind closed doors",
       "summary": "Former governors Yahaya Bello, Abubakar Badaru, and Simon Lalong have held a closed-door meeting with Vice President Kashim Shettima at the Aso Villa, Abuj Read More: https://punchng.com/2027-ex-gov-yahaya-bello-badaru-lalong-meet-shettima-behind-closed-doors/",
       "url": "https://punchng.com/2027-ex-gov-yahaya-bello-badaru-lalong-meet-shettima-behind-closed-doors/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-12T17:01:39+00:00",
       "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Court dismisses Aisha Achimugu’s N10bn suit against EFCC",
+      "summary": "The Federal High Court in Abuja has dismissed a fundamental rights enforcement suit filed by Abuja-based businesswoman Aisha Achimugu against the Economic and Financial Crimes Commission (EFCC) over the search of her residence and the seizure of vehicles, jewellery and other items. In the suit, mark",
+      "url": "https://dailypost.ng/2026/10/12/court-dismisses-aisha-achimugus-n10bn-suit-against-efcc/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T17:00:20+00:00",
+      "categories": [
+        "business",
         "government"
       ]
     },
@@ -96,6 +168,46 @@
       ]
     },
     {
+      "title": "‘What has Seyi Tinubu contributed’ — Sowore slams colloquium",
+      "summary": "The presidential candidate of the African Action Congress, AAC, Omoyele Sowore, has questioned the achievements of President Bola Tinubu’s son, Seyi Tinubu, over a colloquium held in his honour and broadcast on major television stations. Sowore, in a post on X, criticised the event, asking what Seyi",
+      "url": "https://dailypost.ng/2026/10/12/what-has-seyi-tinubu-contributed-sowore-slams-colloquium/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T16:57:35+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "2027: Omission of opposition politicians shows your incompetency – MURIC tackles INEC",
+      "summary": "Muslim Rights Concern, MURIC, has expressed displeasure over the omission of some opposition politicians from the list of governorship candidates released by the Independent National Electoral Commission, INEC. MURIC said the omission reflected what it described as the commission’s incompetence. The",
+      "url": "https://dailypost.ng/2026/10/12/2027-omission-of-opposition-politicians-shows-your-incompetency-muric-tackles-inec/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T16:56:23+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Adopt modern farming technologies to tackle climate change – Gov Namadi urges farmers",
+      "summary": "Jigawa State Governor Malam Umar Namadi has warned that traditional farming methods can no longer withstand the growing threats posed by climate change, calling for the adoption of modern agricultural technologies to guarantee food security in Nigeria. The governor stated this on Monday while delive",
+      "url": "https://dailypost.ng/2026/10/12/adopt-modern-farming-technologies-to-tackle-climate-change-gov-namadi-urges-farmers/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T16:55:08+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Okpebholo grants amnesty to 500 repentant cultists",
+      "summary": "Edo State Governor, Monday Okpebholo, has granted amnesty to no fewer than 500 persons who voluntarily renounced cultism in the state. DAILY POST reports that the renunciation of cultism by the youths took place on Monday, October 12, 2026, in Benin City. Speaking at the event organised by the Edo S",
+      "url": "https://dailypost.ng/2026/10/12/okpebholo-grants-amnesty-to-500-repentant-cultists/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T16:53:29+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Kwara steps up Ebola, diphtheria surveillance",
       "summary": "The Kwara State Government has stepped up efforts to improve the detection and reporting of Ebola and diphtheria cases through training for health workers. Read More: https://punchng.com/kwara-steps-up-ebola-diphtheria-surveillance/",
       "url": "https://punchng.com/kwara-steps-up-ebola-diphtheria-surveillance/?utm_source=rss.punchng.com&utm_medium=web",
@@ -104,6 +216,45 @@
       "categories": [
         "government"
       ]
+    },
+    {
+      "title": "Reverse fuel subsidy removal or sack Finance Minister, Oyedele – Lawyer tells Tinubu",
+      "summary": "Activist lawyer Maduabuchi Idam has charged President Bola Tinubu to reverse the removal of the fuel subsidy or sack the Minister of Finance and Coordinating Minister of the Economy, Taiwo Oyedele, for insubordination. Idam explained that Tinubu has a choice to make if he must redeem the credibility",
+      "url": "https://dailypost.ng/2026/10/12/reverse-fuel-subsidy-removal-or-sack-finance-minister-oyedele-lawyer-tells-tinubu/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T16:49:20+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "Why Nigeria should worry about decline in snake population – Biodiversity expert",
+      "summary": "Edem Eniang says habitat destruction, indiscriminate killings and neglect of snake research threaten Nigeria’s reptiles, warning that the country lacks reliable data to measure the decline. The post Why Nigeria should worry about decline in snake population – Biodiversity expert appeared first on Pr",
+      "url": "https://www.premiumtimesng.com/regional/south-south-regional/916457-why-nigeria-should-worry-about-decline-in-snake-population-biodiversity-expert.html",
+      "source": "Premium Times",
+      "published": "2026-10-12T16:48:12+00:00",
+      "categories": []
+    },
+    {
+      "title": "Why Tinubu diverted Lagos-Calabar Coastal Road towards East-West — Umahi",
+      "summary": "The Minister of Works, David Umahi, said President Bola Tinubu decided to link the next phase of the Lagos-Calabar Coastal Highway to the existing East-West Road to address the effects of climate change and create a more durable route. Umahi said the move became necessary due to the condition of the",
+      "url": "https://dailypost.ng/2026/10/12/why-tinubu-diverted-lagos-calabar-coastal-road-towards-east-west-umahi/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T16:47:49+00:00",
+      "categories": [
+        "engineering",
+        "government",
+        "lagos"
+      ]
+    },
+    {
+      "title": "‘He’s first-class accounting graduate’ – Presidency hits Atiku for calling Tinubu ‘dull’",
+      "summary": "Special Adviser to President Bola Tinubu on Media and Public Communications, Sunday Dare, has tackled the African Democratic Congress, ADC, presidential candidate, Atiku Abubakar, for describing the president as a dull student. Dare described Atiku’s remark as sheer absurdity, stressing that Tinubu ",
+      "url": "https://dailypost.ng/2026/10/12/hes-first-class-accounting-graduate-presidency-hits-atiku-for-calling-tinubu-dull/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-12T16:45:45+00:00",
+      "categories": []
     },
     {
       "title": "Desola Afod retracts warning to film practitioner amid backlash",
@@ -154,149 +305,6 @@
       "published": "2026-10-12T16:16:13+00:00",
       "categories": [
         "government",
-        "property"
-      ]
-    },
-    {
-      "title": "‘You cannot erase my experiences’ — Fola Tinubu speaks on Lizzy Anjorin",
-      "summary": "Fola Tinubu, the former wife of Nollywood actress Lizzy Anjorin’s husband, has spoken out over what she described as years of bullying, threats and emotional distress, saying she will not be intimidated into silence. Fola, a mother of four, made the claims in a lengthy Instagram post in which she re",
-      "url": "https://dailypost.ng/2026/10/12/you-cannot-erase-my-experiences-fola-tinubu-speaks-on-lizzy-anjorin/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-12T16:11:14+00:00",
-      "categories": []
-    },
-    {
-      "title": "Soldiers kill Lakurawa militant in Sokoto, recover AK-47 rifle",
-      "summary": "Troops have neutralised a suspected Lakurawa militant and recovered an AK-47 rifle in Soruro village, Tangaza Local Government Area of Sokoto State. Read More: https://punchng.com/soldiers-kill-lakurawa-militant-in-sokoto-recover-ak-47-rifle/",
-      "url": "https://punchng.com/soldiers-kill-lakurawa-militant-in-sokoto-recover-ak-47-rifle/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T16:08:59+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "TikTok denies responsibility for limited access in Northern Nigeria",
-      "summary": "“We can confirm that this restriction was not implemented by TikTok,” she said. The post TikTok denies responsibility for limited access in Northern Nigeria appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/916449-tiktok-denies-responsibility-for-limited-access-in-northern-nigeria.html",
-      "source": "Premium Times",
-      "published": "2026-10-12T16:04:20+00:00",
-      "categories": []
-    },
-    {
-      "title": "Atiku urges security agencies to rescue kidnapped Kaduna man, wife, baby",
-      "summary": "Former Vice-President Atiku Abubakar has expressed concern over a disturbing video of Ahmed Zakka, who was reportedly kidnapped alongside his wife and their baby in Kaduna State. Atiku described the video as heartbreaking, saying it reflected the security challenges facing Nigeria. “It is unfortunat",
-      "url": "https://dailypost.ng/2026/10/12/atiku-urges-security-agencies-to-rescue-kidnapped-kaduna-man-wife-baby/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-12T15:58:34+00:00",
-      "categories": []
-    },
-    {
-      "title": "Alaafin lauds Oyo community for preserving Yoruba twin heritage",
-      "summary": "The Alaafin of Oyo, Oba Akeem Owoade, has lauded the people of Igbo Ora town in Ibarapa Central Area of Oyo State for their sense of history, heritage and culture, which he said has turned the community into a tourist destination. Owoade, according to a statement issued by his Director of Media and ",
-      "url": "https://punchng.com/alaafin-lauds-oyo-community-for-preserving-yoruba-twin-heritage/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T15:54:29+00:00",
-      "categories": [
-        "oyo"
-      ]
-    },
-    {
-      "title": "Saudi says resilience tested, vows response after Houthi airport attacks",
-      "summary": "Saudi Arabia’s energy minister has vowed a serious response after a series of Houthi attacks on airports in Riyadh and Dammam left 18 people dead. Read More: https://punchng.com/saudi-says-resilience-tested-vows-response-after-houthi-airport-attacks/",
-      "url": "https://punchng.com/saudi-says-resilience-tested-vows-response-after-houthi-airport-attacks/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T15:52:36+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Ballon d’Or 2026: Ex-Leeds United winger, Mike Grella names winner, top five",
-      "summary": "Former Leeds United and Brentford winger, Mike Grella, has named the player he believes should win the 2026 Ballon d’Or. Grella also named the players he believes should finish in the top five of the Ballon d’Or ranking. “Kylian Mbappe [fifth position], impossible to deny his talent and number. His ",
-      "url": "https://dailypost.ng/2026/10/12/ballon-dor-2026-ex-leeds-united-winger-mike-grella-names-winner-top-five/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-12T15:52:13+00:00",
-      "categories": []
-    },
-    {
-      "title": "Bashir Aliyu: How Kaduna is taking shape under Uba Sani",
-      "summary": "For a long time, Kaduna was spoken of with a worried tone, as a state defined by its divisions. Since Governor Uba Sani took office in May 2023, that conversation has been changing. It is no longer only about what went wrong. People now talk about roads, clinics, classrooms and, above all, a peace t",
-      "url": "https://dailypost.ng/2026/10/12/bashir-aliyu-how-kaduna-is-taking-shape-under-uba-sani/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-12T15:52:04+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Lawyer seeks transfer of Wike’s son’s $2.1m suit over bias concerns",
-      "summary": "Counsel to Safwan Garba GY and GY Global Oil and Gas Nigeria Limited, Ibrahim Waru, has asked the Chief Judge of the Federal Capital Territory High Court, Justice Husseini Baba-Yusuf, to transfer an alleged $2.1m land deal suit involving Jordan Wike, son of the FCT Minister, Nyesom Wike, over concer",
-      "url": "https://punchng.com/lawyer-seeks-transfer-of-wikes-sons-2-1m-suit-over-bias-concerns/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T15:50:29+00:00",
-      "categories": [
-        "government",
-        "property"
-      ]
-    },
-    {
-      "title": "VIDEO: I can’t shake you, Lagos Rep snubs APC rival Oshinowo",
-      "summary": "A video shows House of Reps member, Kafilat Ogbara, refusing to shake hands with Mayor Dele Oshinowo, who defeated her in the APC primary for Kosofe. Read More: https://punchng.com/video-i-cant-shake-you-lagos-rep-snubs-apc-rival-oshinowo/",
-      "url": "https://punchng.com/video-i-cant-shake-you-lagos-rep-snubs-apc-rival-oshinowo/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T15:49:46+00:00",
-      "categories": [
-        "lagos"
-      ]
-    },
-    {
-      "title": "Pope to undergo lung surgery Tuesday",
-      "summary": "Pope Leo XIV will be admitted to hospital on Tuesday for an operation to remove a pulmonary nodule, a small growth, from his lung, the Vatican has said. Read More: https://punchng.com/pope-to-undergo-lung-surgery-tuesday/",
-      "url": "https://punchng.com/pope-to-undergo-lung-surgery-tuesday/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T15:49:20+00:00",
-      "categories": []
-    },
-    {
-      "title": "Taraba NLC urges workers to channel grievances through unions",
-      "summary": "The leadership of organised labour in Taraba State has urged workers with complaints or grievances to channel them through their respective affiliate unions for onward submission to the state councils of the Nigeria Labour Congress (NLC) or the Trade Union Congress (TUC) for prompt attention and res",
-      "url": "https://dailypost.ng/2026/10/12/taraba-nlc-urges-workers-to-channel-grievances-through-unions/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-12T15:46:11+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Makinde’s media chat ‘waste of time’ — Oyo APC",
-      "summary": "The All Progressives Congress in Oyo State has described Governor Seyi Makinde’s recent media chat as a waste of time, alleging he failed to address key is Read More: https://punchng.com/makindes-media-chat-waste-of-time-oyo-apc/",
-      "url": "https://punchng.com/makindes-media-chat-waste-of-time-oyo-apc/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T15:43:52+00:00",
-      "categories": [
-        "government",
-        "oyo"
-      ]
-    },
-    {
-      "title": "IPOB dismisses ‘intelligence report’ on planned resumption of sit-at-home",
-      "summary": "The Indigenous People of Biafra, IPOB, has dismissed reports that the group, alongside the Eastern Security Network, ESN, is planning to resume the enforcement of the sit-at-home order in the South-East on Monday, October 12, 2026. The alleged plan was disclosed in an intelligence report released by",
-      "url": "https://dailypost.ng/2026/10/12/ipob-dismisses-intelligence-report-on-planned-resumption-of-sit-at-home/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-12T15:43:48+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "UCL: Usor doubtful for LASK’s home clash against Liverpool",
-      "summary": "Nigeria winger, Moses Usor, is a major doubt for LASK’s UEFA Champions League clash against Liverpool The Austrian champions will host Liverpool in a matchday two encounter at the Raiffeisen Arena on Wednesday. Usor sustained a shoulder injury during LASK’s 2-0 home defeat to Rapid Wien on Sunday. T",
-      "url": "https://dailypost.ng/2026/10/12/ucl-usor-doubtful-for-lasks-home-clash-against-liverpool/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-12T15:43:41+00:00",
-      "categories": [
         "property"
       ]
     }
