@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T02:12:33.642467+00:00",
+  "generated_at": "2026-10-12T02:46:13.910524+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -157,6 +157,16 @@
       ]
     },
     {
+      "title": "Nigeria’s revolving-door budgeting",
+      "summary": "An editorial on the Nigerian government’s repeated extension of the 2025 budget, which creates overlapping cycles and undermines fiscal accountability. Read More: https://punchng.com/nigerias-revolving-door-budgeting/",
+      "url": "https://punchng.com/nigerias-revolving-door-budgeting/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-12T00:43:30+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Pension row: Military retirees question new payment formula",
       "summary": "Nigerian military retirees have expressed dissatisfaction with the new payment formula adopted by the Military Pensions Board, stating it falls short of ex Read More: https://punchng.com/pension-row-military-retirees-question-new-payment-formula/",
       "url": "https://punchng.com/pension-row-military-retirees-question-new-payment-formula/?utm_source=rss.punchng.com&utm_medium=web",
@@ -264,17 +274,6 @@
       "published": "2026-10-12T00:33:11+00:00",
       "categories": [
         "lagos"
-      ]
-    },
-    {
-      "title": "Rivers seals 60-year-old building after collapse injures four",
-      "summary": "The Rivers State Government has sealed a 60-year-old building in Port Harcourt after part of it collapsed, injuring four people at a bar on the ground floo Read More: https://punchng.com/rivers-seals-60-year-old-building-after-collapse-injures-four/",
-      "url": "https://punchng.com/rivers-seals-60-year-old-building-after-collapse-injures-four/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-12T00:32:09+00:00",
-      "categories": [
-        "engineering",
-        "government"
       ]
     }
   ]
