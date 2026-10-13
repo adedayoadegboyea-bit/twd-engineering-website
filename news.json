@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T04:13:16.850464+00:00",
+  "generated_at": "2026-10-13T04:48:53.809491+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Military Plane Crash: Divers, rescue team intensify search for victims’ bodies, black box",
+      "summary": "Unconfirmed reports say the searchers have recovered the pilot's dismembered body. The post Military Plane Crash: Divers, rescue team intensify search for victims’ bodies, black box appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/916581-military-plane-crash-divers-rescue-team-intensify-search-for-victims-bodies-black-box.html",
+      "source": "Premium Times",
+      "published": "2026-10-13T04:38:19+00:00",
+      "categories": []
+    },
     {
       "title": "17.9m Nigerians fall into poverty in three years – Report",
       "summary": "An additional 17.9 million Nigerians fell into multidimensional poverty between 2021 and 2024, the world’s largest increase, a new UN report reveals. Read More: https://punchng.com/17-9m-nigerians-fall-into-poverty-in-three-years-report/",
@@ -123,7 +131,7 @@
     },
     {
       "title": "Pension row: Military retirees protest today",
-      "summary": "Military veterans are set to protest at the Military Pensions Board in Abuja today over alleged disparities in pension payments and calculation methods. Read More: https://punchng.com/pension-row-military-retirees-protest-today/",
+      "summary": "Military veterans are set to protest at the Military Pensions Board in Abuja over alleged disparities in pension payments following recent adjustments. Read More: https://punchng.com/pension-row-military-retirees-protest-today/",
       "url": "https://punchng.com/pension-row-military-retirees-protest-today/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-13T01:56:20+00:00",
@@ -273,14 +281,6 @@
       "categories": [
         "lagos"
       ]
-    },
-    {
-      "title": "Boniface to get Bundesliga chance – Report",
-      "summary": "Bayer Leverkusen’s Victor Boniface may get more Bundesliga game time despite walking to the dressing room early after being an unused substitute against Ma Read More: https://punchng.com/boniface-to-get-bundesliga-chance-report/",
-      "url": "https://punchng.com/boniface-to-get-bundesliga-chance-report/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-13T01:02:18+00:00",
-      "categories": []
     }
   ]
 }
