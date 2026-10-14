@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0759c7">
+<title>TW&D BOQ & Quotation Desk</title>
+<link rel="stylesheet" href="boq.css?v=1">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html">TW&D <span>ENGINEERING</span></a><nav><a href="index.html">Website home</a><a href="management.html">Management</a></nav></header>
+<main class="wrap">
+<section class="hero"><div><p class="eyebrow">ENGINEERING COST CONTROL</p><h1>Bill of Quantities &<br>Quotation Desk</h1><p>Prepare itemised project estimates using TW&D-approved rates. All quotations remain drafts until reviewed and issued by an authorised TW&D estimator.</p></div><div class="secure"><span class="dot"></span><span id="authState">Checking secure sign-in…</span></div></section>
+<section id="loginPanel" class="panel hidden">
+<h2>Sign in to continue</h2><p>Use your existing TW&D website account. Access to rates and saved estimates follows your account permissions.</p>
+<form id="loginForm" class="form-grid"><label>Email<input type="email" id="loginEmail" required autocomplete="username"></label><label>Password<input type="password" id="loginPassword" required autocomplete="current-password"></label><button class="primary" type="submit">Sign in securely</button></form><p id="loginMessage" class="message"></p>
+</section>
+<div id="app" class="hidden">
+<div class="notice"><strong>Estimate status:</strong> <span id="statusText">Draft — not an official quotation</span><span class="muted"> Rates must be reviewed against current supplier quotations, drawings and site conditions.</span></div>
+<section class="panel">
+<div class="section-head"><div><p class="eyebrow">01 / PROJECT BRIEF</p><h2>Project information</h2></div><span class="step">Project setup</span></div>
+<div class="form-grid">
+<label>Project type<select id="projectType" required><option value="">Select project type</option><option>Residential building construction</option><option>Commercial building construction</option><option>Renovation and refurbishment</option><option>Road construction and rehabilitation</option><option>Drainage and culverts</option><option>Solar power installation</option><option>Electrical installation</option><option>Plumbing and water supply</option><option>Painting and finishing</option><option>Roofing works</option><option>Borehole and water works</option><option>Landscaping and external works</option><option>Other engineering project</option></select></label>
+<label>Project / job name<input id="projectName" required placeholder="e.g. Proposed 3-bedroom bungalow"></label>
+<label>Client full name<input id="clientName" required placeholder="Client or organisation"></label>
+<label>Client email<input id="clientEmail" type="email" placeholder="client@example.com"></label>
+<label>Client phone<input id="clientPhone" type="tel" placeholder="+234…"></label>
+<label>Project location<input id="projectLocation" placeholder="Town, state"></label>
+<label class="wide">Scope, assumptions and site notes<textarea id="scopeNotes" rows="3" placeholder="Describe drawings, specifications, exclusions and site conditions…"></textarea></label>
+</div>
+<div class="measurements"><h3>Measurement inputs (where applicable)</h3><p class="muted">These values record the design basis. Do not treat them as a complete engineering take-off; each BOQ line must be checked against drawings and actual site measurements.</p><div class="form-grid compact">
+<label>Length (m)<input type="number" id="dimLength" min="0" step="0.001" placeholder="0"></label><label>Width (m)<input type="number" id="dimWidth" min="0" step="0.001" placeholder="0"></label><label>Height / depth (m)<input type="number" id="dimHeight" min="0" step="0.001" placeholder="0"></label><label>Number of floors / units<input type="number" id="dimUnits" min="1" step="1" value="1"></label>
+</div></div>
+</section>
+<section class="panel">
+<div class="section-head"><div><p class="eyebrow">02 / MEASURED WORKS</p><h2>Bill of Quantities</h2></div><button id="addLine" class="secondary" type="button">+ Add BOQ line</button></div>
+<p class="muted">Choose an item from the approved rate database or enter a custom description. Quantities are entered and verified by the estimator; line amounts and totals calculate automatically.</p>
+<div class="table-scroll"><table><thead><tr><th>Section / work description</th><th>Unit</th><th>Quantity</th><th>Rate (₦)</th><th>Amount (₦)</th><th></th></tr></thead><tbody id="boqRows"></tbody></table></div>
+<div class="totals-wrap"><div class="totals">
+<label>Contingency (%)<input id="contingencyPercent" type="number" min="0" max="100" step="0.1" value="0"></label><label>Tax (%) if applicable<input id="taxPercent" type="number" min="0" max="100" step="0.1" value="0"></label>
+<div class="total-row"><span>BOQ subtotal</span><strong id="subtotal">₦0.00</strong></div><div class="total-row"><span>Contingency</span><strong id="contingencyAmount">₦0.00</strong></div><div class="total-row"><span>Tax</span><strong id="taxAmount">₦0.00</strong></div><div class="total-row grand"><span>Estimated total</span><strong id="grandTotal">₦0.00</strong></div>
+</div></div>
+<div class="form-grid compact terms"><label>Quotation validity (days)<input id="validityDays" type="number" min="1" max="365" value="14"></label><label class="wide">Payment terms<textarea id="paymentTerms" rows="2" placeholder="e.g. Payment milestones subject to contract agreement"></textarea></label></div>
+<div class="actions"><button id="saveDraft" class="secondary" type="button">Save estimate draft</button><button id="submitApproval" class="primary" type="button">Submit for TW&D approval</button><button id="printQuote" class="secondary hidden" type="button">Print / Save approved quotation</button></div><p id="estimateMessage" class="message"></p>
+</section>
+<section id="adminPanel" class="panel hidden">
+<div class="section-head"><div><p class="eyebrow">03 / AUTHORISED STAFF</p><h2>Rate database & approval queue</h2></div><span class="admin-tag">Admin / estimator</span></div>
+<div class="admin-grid"><div><h3>Add approved price</h3><form id="rateForm" class="form-grid compact"><label>Category<input id="rateCategory" required placeholder="Concrete / Electrical / Solar"></label><label>Item code (optional)<input id="rateCode"></label><label class="wide">Description<input id="rateDescription" required></label><label>Unit<select id="rateUnit"><option>item</option><option>m</option><option>m²</option><option>m³</option><option>kg</option><option>tonne</option><option>bag</option><option>litre</option><option>day</option><option>hour</option><option>point</option><option>set</option><option>LS</option></select></label><label>Unit rate (₦)<input id="rateValue" type="number" min="0" step="0.01" required></label><button class="primary" type="submit">Add to rate database</button></form><p id="rateMessage" class="message"></p></div><div><h3>Active rates</h3><div id="rateList" class="rate-list"><p class="muted">Loading rates…</p></div></div></div>
+<h3>Estimates awaiting review</h3><div id="approvalQueue" class="queue"><p class="muted">Loading approval queue…</p></div>
+</section>
+</div>
+<footer>TW&D Engineering Consult & Services Ltd · Internal cost planning and quotation workflow · Verify all quantities, rates, taxes and engineering specifications before issue.</footer>
+</main>
+<script type="module" src="boq.js?v=1"></script>
+</body></html>
