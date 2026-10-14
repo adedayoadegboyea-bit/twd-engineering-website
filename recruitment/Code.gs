@@ -908,6 +908,8 @@ function generateAptitudeQuestions_(position) {
     }
   }
   if(allQuestions.length!==50) throw new Error('AI generated '+allQuestions.length+' questions instead of exactly 50.');
+  const seenQuestions={};
+  for(let i=0;i<allQuestions.length;i++){const key=String(allQuestions[i].question||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(!key||seenQuestions[key]){console.warn('Duplicate/empty AI aptitude question detected; using the unique fallback bank.');return fallbackAptitudeQuestions_(position);}seenQuestions[key]=true;}
   allQuestions.forEach(function(q,i){
     if(!q.question||!Array.isArray(q.options)||q.options.length!==4||typeof q.answer!=='number'||q.answer<0||q.answer>3)
       throw new Error('Invalid AI question at number '+(i+1)+'.');
@@ -917,52 +919,103 @@ function generateAptitudeQuestions_(position) {
 
 
 function fallbackAptitudeQuestions_(position){
-  const bank=[
-    ["Before starting excavation work, what should be confirmed first?",["The approved drawings, permits and underground-service information","The paint colour for the site office","The lunch schedule","The number of visitors"],0],
-    ["What is the main purpose of a risk assessment?",["To identify hazards and establish suitable controls","To increase paperwork without changing work","To replace all site supervision","To determine staff salaries"],0],
-    ["A worker notices damaged electrical insulation. What is the safest action?",["Stop using the equipment and report it for isolation and repair","Cover it with paper and continue","Ignore it if the equipment still works","Ask another worker to use it"],0],
-    ["Why are PPE requirements important on a construction site?",["They reduce exposure to identified workplace hazards","They remove the need for training","They guarantee that accidents cannot happen","They replace safe work procedures"],0],
-    ["What should a project engineer do when site conditions differ materially from the drawings?",["Document the difference and seek the appropriate technical review before proceeding","Change the drawings personally without approval","Continue regardless of the difference","Delete the affected drawing"],0],
-    ["What is the best response to a near miss?",["Report and investigate it so controls can be improved","Hide it because nobody was injured","Wait until the end of the project","Blame the nearest worker"],0],
-    ["Why is concrete curing important?",["It supports proper strength development and durability","It makes concrete change colour","It eliminates the need for reinforcement","It prevents all cracking"],0],
-    ["What should be checked before lifting a heavy load?",["Load weight, lifting equipment capacity, rigging and the lifting plan","Only the colour of the crane","The weather forecast alone","The worker's phone battery"],0],
-    ["What does good quality control primarily achieve?",["Conformance of work and materials with specified requirements","Faster work regardless of defects","Elimination of project documentation","Automatic approval of all variations"],0],
-    ["If a drawing revision is issued, what should happen to obsolete copies?",["They should be controlled or withdrawn so the current revision is used","They should remain on every workbench","They should be mixed with current drawings","They should be given to visitors"],0],
-    ["What is a key reason for keeping accurate site records?",["They provide traceable evidence of work, decisions and progress","They make meetings longer","They replace engineering calculations","They prevent every dispute"],0],
-    ["What should an employee do if asked to falsify a project record?",["Refuse and report the concern through the appropriate channel","Sign it immediately","Delete the original record","Ask a colleague to sign it"],0],
-    ["What is the purpose of a method statement?",["To describe how a task will be carried out safely and correctly","To advertise the contractor","To replace the contract","To calculate employee salaries"],0],
-    ["What is the safest approach when a worker is unsure about a procedure?",["Pause and seek clarification from the responsible supervisor or competent person","Guess and continue","Copy an unrelated procedure","Ignore the uncertainty"],0],
-    ["What is a practical purpose of surveying before construction?",["To establish reliable positions, levels and site information","To choose staff uniforms","To replace structural design","To determine electricity tariffs"],0],
-    ["What does a borehole drilling investigation help determine?",["Subsurface conditions and groundwater information relevant to the investigation","The colour of a building facade","The project payroll","The office seating plan"],0],
-    ["Why is geotechnical investigation important to building design?",["It helps characterize soil and groundwater conditions for foundation decisions","It guarantees zero construction cost changes","It replaces architectural drawings","It removes the need for site inspection"],0],
-    ["What should happen when a safety control is found ineffective?",["Work should be reviewed and the control strengthened before unsafe work continues","The finding should be ignored","The control should be removed permanently","The worker should be blamed"],0],
-    ["What is the purpose of a toolbox talk?",["To communicate task-specific hazards, controls and expectations before work","To approve staff leave","To replace all formal training","To discuss private matters"],0],
-    ["Why should materials be inspected on delivery?",["To verify identity, condition and required specifications before use","To increase storage time","To avoid keeping records","To change the project scope"],0],
-    ["What should a project manager do when a delay is identified?",["Assess its cause and impact, document it and coordinate corrective action","Hide it from the client","Stop all unrelated work automatically","Change the completion date without review"],0],
-    ["What is the purpose of a bill of quantities?",["To describe measured work items and quantities for pricing and control","To replace architectural drawings","To record employee attendance","To certify every completed activity"],0],
-    ["What is a professional way to handle a client complaint?",["Listen, document the issue and respond through the appropriate project process","Argue with the client","Delete the complaint","Promise an outcome without checking facts"],0],
-    ["Why should site access be controlled?",["To manage safety, security and authorized movement around the work area","To prevent all deliveries","To avoid keeping attendance records","To reduce the need for supervision"],0],
-    ["What is the main purpose of a project programme?",["To plan activities, sequencing, resources and target dates","To replace the contract","To determine employee passwords","To eliminate inspections"],0]
+  const role=String(position||'').toLowerCase();
+  const driverRole=/driver|chauffeur|delivery|vehicle operator|transport/.test(role);
+  const common=[
+    ["What should you do if a supervisor gives an instruction that appears unsafe?",["Pause and clarify the safe procedure before proceeding","Follow it without question","Ask an untrained colleague to decide","Ignore the hazard"],0],
+    ["Why should incidents and near misses be reported?",["To identify causes and prevent similar events","Only to assign blame","To avoid maintaining records","Only when equipment is destroyed"],0],
+    ["What is the best way to protect confidential company information?",["Share it only with authorised people for a legitimate work purpose","Post it publicly","Send it to any personal contact","Leave it visible in a public area"],0],
+    ["A customer raises a complaint. What is the most professional response?",["Listen, record the facts and follow the correct reporting process","Argue immediately","Promise anything to end the discussion","Delete the complaint"],0],
+    ["What should you do when you discover a mistake in a work record?",["Report it and correct it transparently using the approved process","Hide the original entry","Change unrelated records","Ask someone to conceal it"],0],
+    ["Why is punctuality important at work?",["It supports reliable service and team coordination","It removes the need for quality checks","It guarantees promotion","It means breaks are unnecessary"],0],
+    ["What should you do if you do not understand a work instruction?",["Ask the responsible person to explain it","Guess and hope it is correct","Ignore the instruction","Copy an unrelated task"],0],
+    ["How should company tools or equipment be treated?",["Use them correctly, inspect them and report defects","Lend them without permission","Ignore damage","Use them for any personal purpose"],0],
+    ["What is a good response to a workplace disagreement?",["Discuss the facts respectfully and use the proper escalation route if needed","Threaten the other person","Spread rumours","Stop sharing important safety information"],0],
+    ["Why should workers follow approved procedures?",["They help maintain consistent, safe and accountable work","They eliminate all need for judgement","They guarantee no delays","They replace every form of training"],0],
+    ["What should you do if you notice a spill that may cause a slip?",["Warn others, secure the area if safe and report or arrange proper cleanup","Walk away without telling anyone","Cover it with paper and leave it","Wait for an accident"],0],
+    ["How should you handle a request to falsify attendance or work records?",["Decline and report the request through the proper channel","Comply to avoid questions","Erase the records","Ask a coworker to do it"],0],
+    ["What is the purpose of personal protective equipment?",["To reduce exposure to specific hazards when correctly selected and used","To replace every other safety control","To guarantee that no injury is possible","To remove the need for training"],0],
+    ["What should happen before using unfamiliar equipment?",["Receive suitable instruction and confirm authorisation","Try it at full speed","Ask a bystander to guess","Remove warning labels"],0],
+    ["Why should work-related handovers be clear?",["They help the next person understand status, risks and outstanding tasks","They replace all written records","They prevent every future issue","They are needed only after a failure"],0],
+    ["What is the correct response to a conflict of interest?",["Disclose it to the appropriate manager and follow company policy","Hide it if a deal is profitable","Use company resources for personal gain","Ask a client to keep it secret"],0],
+    ["How can an employee reduce avoidable waste?",["Use materials responsibly and follow approved storage and disposal practices","Discard usable supplies without checking","Order duplicates without approval","Ignore leaks and damage"],0],
+    ["What should you do when a task is beyond your training or authorisation?",["Stop and seek a competent authorised person","Attempt it secretly","Let an unqualified person do it","Remove safety controls"],0],
+    ["Why should customer information be checked before processing a request?",["To reduce errors and ensure the request is assigned correctly","To delay the work unnecessarily","To avoid documenting decisions","To share the data more widely"],0],
+    ["What makes a useful workplace report?",["Accurate facts, clear timing and relevant actions taken","Rumours and assumptions presented as facts","Only personal opinions","Missing dates and details"],0],
+    ["What should you do when two urgent tasks conflict?",["Inform the supervisor and clarify priorities","Silently abandon one task","Choose randomly without telling anyone","Claim both are complete"],0],
+    ["How should a worker respond to a safety warning sign?",["Observe it and follow the stated restriction or instruction","Move it to make the route easier","Ignore it if busy","Cover it from view"],0],
+    ["Why is respectful communication important in a team?",["It improves coordination and helps resolve issues constructively","It removes the need to do the work","It means concerns should never be raised","It guarantees everyone will agree"],0],
+    ["What should you do if company property is lost or damaged?",["Report it promptly with accurate details","Conceal the loss","Create a false replacement record","Wait until someone else notices"],0],
+    ["What is the best way to respond to feedback about your work?",["Consider it professionally and clarify practical improvements","Reject all feedback automatically","Blame a colleague","Stop reporting progress"],0]
   ];
-  const questions=[];
-  for(let i=0;i<50;i++){
-    const base=bank[i%bank.length];
-    const cycle=Math.floor(i/bank.length);
-    questions.push({
-      question:(i+1)+'. '+base[0]+' Role focus: '+position+'.',
-      options:base[1].slice(),
-      answer:base[2]
-    });
-  }
-  return questions;
+  const driver=[
+    ["What should a driver check before starting a company vehicle?",["Tyres, brakes, lights, mirrors, fluid leaks and required safety equipment","Only the radio volume","Only the paintwork","The passenger seats only"],0],
+    ["What should you do if the brakes feel abnormal before a trip?",["Do not drive; report the defect and arrange inspection","Drive slowly and hope they improve","Carry passengers to test them","Ignore it if the route is short"],0],
+    ["What is the safest action when you feel sleepy while driving?",["Stop at a safe place and report the need to rest","Open the window and continue regardless","Drive faster to finish sooner","Use a phone to stay awake"],0],
+    ["How should a driver approach a pedestrian crossing?",["Slow down, observe carefully and give way as required","Accelerate through it","Sound the horn continuously instead of slowing","Overtake another vehicle at the crossing"],0],
+    ["What should you do after a road traffic collision?",["Stop safely, protect people from further danger, seek assistance and report it","Leave without checking anyone","Argue before checking for injuries","Hide the company vehicle"],0],
+    ["Why is maintaining a safe following distance important?",["It provides time and space to react and brake","It allows tailgating","It reduces the need to observe traffic","It guarantees faster arrival"],0],
+    ["When should a driver use a seat belt?",["Before moving the vehicle and throughout the journey","Only on highways","Only when carrying a manager","Only when traffic is heavy"],0],
+    ["What should you do if a tyre is visibly damaged before a journey?",["Do not use the vehicle until the tyre is assessed and made safe","Inflate it beyond its rating","Hide the damage with a cover","Drive at high speed"],0],
+    ["What is the correct approach to speed limits?",["Obey posted limits and drive slower when conditions require it","Exceed them when running late","Follow the fastest vehicle","Ignore limits on familiar roads"],0],
+    ["What should you do with a mobile phone while driving?",["Avoid handling it; stop in a safe legal place if communication is necessary","Text while moving slowly","Hold it near the steering wheel","Read messages at traffic lights regardless of safety"],0],
+    ["How should cargo be carried in a vehicle?",["Secure it and keep within the vehicle's rated load capacity","Stack it so it blocks the driver's view","Leave heavy items loose","Overload if the trip is short"],0],
+    ["What should you do if visibility becomes poor in heavy rain?",["Reduce speed, increase following distance and stop safely if necessary","Use high speed to leave the rain sooner","Follow closely behind a truck","Switch off the headlights at night"],0],
+    ["Why should vehicle documents be checked before an assigned trip?",["To ensure required documents are valid and available","To avoid vehicle inspection","To replace a pre-trip check","To determine the passenger's job title"],0],
+    ["What should a driver do if a warning light indicates a serious fault?",["Stop safely when appropriate and follow the vehicle fault-reporting procedure","Cover the warning light","Continue until the engine stops","Disconnect the dashboard"],0],
+    ["What is defensive driving?",["Anticipating hazards and allowing for mistakes by other road users","Assuming everyone will follow the rules","Driving aggressively to claim space","Using the horn instead of observing"],0],
+    ["When reversing a vehicle in a restricted area, what should you do?",["Check all around, use a guide if needed and reverse slowly","Reverse quickly to reduce exposure","Rely only on the horn","Look only in one mirror"],0],
+    ["What should you do if a passenger is not wearing a required seat belt?",["Ensure the issue is addressed before moving where legally and safely required","Start moving immediately","Ask the passenger to hold the belt","Ignore it on short journeys"],0],
+    ["Why should fuel purchases and mileage be recorded accurately?",["To support accountability, maintenance planning and cost control","To allow records to be estimated later","To conceal excessive fuel use","To avoid checking vehicle condition"],0],
+    ["What should a driver do when approaching an emergency vehicle using warning signals?",["Give way safely according to traffic rules and the situation","Race ahead of it","Block its path","Stop abruptly in a dangerous position"],0],
+    ["How should a driver handle an unfamiliar route?",["Plan the route before departure and use navigation without unsafe distraction","Study a phone while driving","Make sudden turns without checking","Speed to recover missed turns"],0],
+    ["What should you do when a vehicle begins to aquaplane?",["Ease off the accelerator, avoid sudden manoeuvres and regain control smoothly","Brake hard and jerk the steering","Accelerate sharply","Turn the steering repeatedly"],0],
+    ["Why is regular vehicle maintenance important?",["It helps identify wear and faults before they create unsafe or costly failures","It removes the need for daily checks","It guarantees no breakdown can occur","It is needed only after a collision"],0],
+    ["What should you do if asked to carry more passengers than the vehicle is designed for?",["Decline the unsafe overload and report the request","Accept if the journey is short","Ask passengers to stand","Hide passengers from inspection"],0],
+    ["What should a driver do at a railway crossing?",["Follow signals, stop when required and cross only when it is safe and permitted","Race the train","Stop on the tracks to check directions","Follow the vehicle ahead without observing signals"],0],
+    ["What is the safest way to manage a delivery schedule?",["Plan realistic travel time and communicate delays instead of driving recklessly","Speed whenever behind schedule","Skip vehicle checks","Use the phone while driving"],0]
+  ];
+  const bank=[
+    ["What is the purpose of a bill of quantities?",["To describe measured work items and quantities for pricing and control","To replace architectural drawings","To record employee attendance","To certify every completed activity"],0],
+    ["What should be confirmed before excavation starts?",["Approved drawings, permits and underground-service information","The paint colour for the site office","The lunch schedule","The number of visitors"],0],
+    ["What is a practical purpose of surveying before construction?",["To establish reliable positions, levels and site information","To choose staff uniforms","To replace structural design","To determine electricity tariffs"],0],
+    ["Why is concrete curing important?",["It supports proper strength development and durability","It changes the colour of concrete","It eliminates reinforcement","It prevents every crack"],0],
+    ["What should happen when site conditions differ from the drawings?",["Document the difference and seek technical review before proceeding","Change drawings without approval","Continue regardless","Delete the affected drawing"],0],
+    ["What is the main purpose of a project programme?",["To plan activities, sequencing, resources and target dates","To replace the contract","To determine passwords","To eliminate inspections"],0],
+    ["What should be checked before lifting a heavy load?",["Load weight, equipment capacity, rigging and the lifting plan","Only the crane colour","Only the weather","The phone battery"],0],
+    ["Why inspect materials when they arrive?",["To verify identity, condition and specifications before use","To increase storage time","To avoid records","To change project scope"],0],
+    ["What is the purpose of a method statement?",["To explain how a task will be performed safely and correctly","To advertise the contractor","To replace the contract","To calculate salaries"],0],
+    ["What should happen to obsolete drawing revisions?",["Control or withdraw them so the current revision is used","Keep them at every workstation","Mix them with current drawings","Give them to visitors"],0],
+    ["What does quality control primarily achieve?",["Work and materials conform to specified requirements","Faster work regardless of defects","No project documentation","Automatic approval of variations"],0],
+    ["Why are accurate site records important?",["They provide traceable evidence of work, decisions and progress","They lengthen meetings","They replace calculations","They prevent every dispute"],0],
+    ["What should happen if a safety control is ineffective?",["Review the task and strengthen the control before unsafe work continues","Ignore the finding","Remove the control permanently","Blame the worker"],0],
+    ["What is the purpose of a toolbox talk?",["To discuss task-specific hazards and controls before work","To approve leave","To replace all formal training","To discuss private matters"],0],
+    ["What should a project manager do when a delay is identified?",["Assess cause and impact, document it and coordinate corrective action","Hide it from the client","Stop all unrelated work automatically","Change the date without review"],0],
+    ["What is a professional way to handle a client complaint?",["Listen, document the issue and respond through the project process","Argue with the client","Delete the complaint","Promise an outcome without checking facts"],0],
+    ["What does a risk assessment help a team do?",["Identify hazards and establish suitable controls","Increase paperwork without changing work","Replace all supervision","Set salaries"],0],
+    ["What should an employee do if asked to falsify a project record?",["Refuse and report the concern appropriately","Sign it immediately","Delete the original","Ask a colleague to sign"],0],
+    ["What does geotechnical investigation help establish?",["Soil and groundwater conditions relevant to foundation decisions","Building facade colour","Payroll totals","Office seating"],0],
+    ["Why should site access be controlled?",["To manage safety, security and authorised movement","To prevent all deliveries","To avoid attendance records","To remove supervision"],0],
+    ["What should you do before using unfamiliar equipment?",["Receive suitable instruction and confirm authorisation","Try it at full speed","Guess how it works","Remove warning labels"],0],
+    ["How should work priorities be handled when deadlines conflict?",["Clarify priorities with the responsible supervisor","Silently abandon one task","Choose randomly","Claim both are complete"],0],
+    ["Why should project variations be documented?",["To record the change, its approval and its cost or time impact","To avoid client communication","To replace all drawings","To remove accountability"],0],
+    ["What is the best response to a near miss?",["Report and investigate it to improve controls","Hide it because no one was hurt","Wait until the project ends","Blame the nearest worker"],0],
+    ["What should be done when a worker is unsure about a procedure?",["Pause and seek clarification from a competent supervisor","Guess and continue","Copy an unrelated procedure","Ignore the uncertainty"],0]
+  ];
+  const selected=driverRole?driver:bank;
+  const questions=selected.concat(common).map(function(q){return {question:q[0],options:q[1].slice(),answer:q[2]};});
+  const seen={};
+  const unique=questions.filter(function(q){const key=q.question.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(seen[key])return false;seen[key]=true;return true;});
+  if(unique.length<50) throw new Error('The built-in aptitude question bank needs at least 50 unique questions.');
+  return unique.slice(0,50).map(function(q,i){return {question:(i+1)+'. '+q.question,options:q.options,answer:q.answer};});
 }
 
 function generateAptitudeBatch_(position,first,last,key,configuredModel){
   const count=last-first+1;
   const prompt='Live generation seed: '+Utilities.getUuid()+'. Create exactly '+count+' concise multiple-choice aptitude questions, numbered '+first+' through '+last+
     ', for a Nigerian engineering and construction company applicant applying for the role: '+position+'. '+
-    'Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios. '+
-    'Generate a fresh randomized question set for this applicant; do not reuse a fixed question order. '+
+    'Every question must directly match the applicant role. For a Driver, use driving rules, vehicle checks, road safety, passenger/cargo handling, trip records and defensive driving; do not ask quantity-surveying or engineering-calculation questions. Cover role knowledge, practical judgement, safety, problem solving, ethics and workplace scenarios. '+
+    'Generate a fresh randomized question set for this applicant. Do not repeat or paraphrase any question within the 50-question exam, including across batches; each question must test a distinct skill or scenario. '+
     'Each question must have exactly 4 options and exactly one correct answer. '+
     'Do not use private company information. Keep questions and options concise. Do not include explanations.';
 
