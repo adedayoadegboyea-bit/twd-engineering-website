@@ -94,6 +94,21 @@ jobs:
           ./gradlew clean assembleRelease --no-daemon
           cp "app/build/outputs/apk/release/app-release.apk" "app/build/outputs/apk/release/TWD-Engineering.apk"
 
+      - name: Build installable Android debug APK
+        working-directory: mobile-app/android
+        shell: bash
+        run: |
+          ./gradlew assembleDebug --no-daemon
+          cp "app/build/outputs/apk/debug/app-debug.apk" "app/build/outputs/apk/debug/TWD-Engineering-TEST.apk"
+
+      - name: Upload installable test APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: twd-engineering-installable-test-apk
+          path: mobile-app/android/app/build/outputs/apk/debug/TWD-Engineering-TEST.apk
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Upload company-named release APK
         uses: actions/upload-artifact@v4
         with:
