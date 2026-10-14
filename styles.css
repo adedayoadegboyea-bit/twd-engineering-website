@@ -109,3 +109,28 @@ footer a:hover{color:var(--tw-gold-bright)!important}
   .site-header nav.open{background:#fff!important}
   .site-header nav a{color:var(--tw-blue-deep)!important}
 }
+
+
+/* TW&D NAVY REPLACEMENT: BRILLIANT BLUE */
+:root{
+  --navy:#006BFF;
+  --navy-deep:#0047B3;
+  --red:#006BFF;
+  --red-dark:#0047B3;
+  --gold:#FFC107;
+  --gold-bright:#FFD54F;
+  --shadow:0 18px 55px rgba(0,71,179,.14);
+}
+.topbar{background:linear-gradient(100deg,#0047B3,#006BFF)!important;color:#fff!important}
+.site-header nav a:hover,.site-header nav a.active{color:#006BFF!important}
+.site-header nav a.active:after{background:linear-gradient(90deg,#006BFF,#00C853)!important}
+.nav-cta,.btn-red,.floating-wa{background:linear-gradient(120deg,#006BFF,#0047B3)!important;color:#fff!important}
+.nav-cta:hover,.btn-red:hover{background:linear-gradient(120deg,#00C853,#009640)!important;color:#062b25!important}
+.hero h1 span{color:#006BFF!important}
+.eyebrow,.text-link{color:#006BFF!important}
+.quick-grid span,.service-list b,.service-list i,.bulletin-cards span{color:#006BFF!important}
+.contact-strip{background:linear-gradient(120deg,#0047B3 0%,#006BFF 58%,#009640 100%)!important}
+footer{background:linear-gradient(135deg,#0047B3 0%,#006BFF 58%,#064D37 100%)!important}
+.solar-card-featured{background:linear-gradient(145deg,#0047B3,#006BFF 68%,#008E52)!important;border-color:#006BFF!important}
+.solar-capacity{color:#FFC107!important}
+.site-flow-bar{background:linear-gradient(100deg,#0047B3,#006BFF 65%,#007B48)!important}
