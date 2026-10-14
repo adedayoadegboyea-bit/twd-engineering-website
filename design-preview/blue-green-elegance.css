@@ -1,0 +1,55 @@
+/* TW&D Engineering — Blue & Green Elegance (isolated design preview)
+   This file is NOT loaded by the live site. Apply only after review. */
+:root {
+  --twd-blue:#075bdb;
+  --twd-blue-deep:#0643a3;
+  --twd-green:#00b86b;
+  --twd-green-deep:#087d51;
+  --twd-navy:#082c52;
+  --twd-gold:#f3b83f;
+  --twd-mist:#f4faff;
+  --twd-line:#dbeaf2;
+  --navy:var(--twd-blue);
+  --navy-deep:var(--twd-navy);
+  --gold:var(--twd-green);
+  --gold-bright:var(--twd-gold);
+  --red:var(--twd-blue);
+  --red-dark:var(--twd-blue-deep);
+  --dove2:var(--twd-mist);
+  --line:var(--twd-line);
+}
+body{color:var(--twd-navy)}
+.topbar{background:var(--twd-navy)}
+.site-header{border-bottom-color:var(--twd-line);box-shadow:0 8px 24px rgba(8,44,82,.07)}
+.site-header nav a:hover,.site-header nav a.active{color:var(--twd-blue)}
+.site-header nav a.active:after{background:var(--twd-green)}
+.nav-cta,.btn-red{background:linear-gradient(110deg,var(--twd-blue),var(--twd-blue-deep));color:white}
+.nav-cta:hover,.btn-red:hover{background:var(--twd-navy)}
+.hero-premium{background:linear-gradient(125deg,#edf7ff 0%,#fff 52%,#e8fff4 100%);color:var(--twd-navy)}
+.hero-premium:before{background:radial-gradient(circle,rgba(0,184,107,.19),transparent 68%)}
+.hero-premium h1,.premium-about h2,.premium-head h2{color:var(--twd-navy)}
+.hero-premium h1 em,.premium-head h2 span{color:var(--twd-green-deep)}
+.hero-kicker,.hero-trust>span,.service-card .service-number,.service-card>span{color:var(--twd-green-deep)}
+.hero-kicker span{background:var(--twd-green)}
+.hero-visual:after{border-color:rgba(0,184,107,.45)}
+.hero-visual-card{border-left-color:var(--twd-green)}
+.hero-visual-card span{color:var(--twd-green-deep)}
+.hero-visual-label{background:rgba(8,44,82,.92)}
+.hero-visual-label span{color:#73e6ac}
+.btn-gold{background:var(--twd-green)!important;border-color:var(--twd-green)!important;color:#062e22!important;box-shadow:0 12px 26px rgba(0,184,107,.2)}
+.btn-gold:hover{background:#20d48b!important}
+.btn-outline-light{color:var(--twd-blue)!important;border-color:#b6d1ea!important}
+.premium-quick span,.premium-quick small b{color:var(--twd-green-deep)}
+.service-card{border-color:var(--twd-line);background:linear-gradient(160deg,#fff,#f4faff)}
+.service-card:after{background:rgba(0,184,107,.09)}
+.service-card:hover,.solar-card:hover{border-color:var(--twd-green)}
+.service-card-dark,.solar-card-featured{background:linear-gradient(140deg,var(--twd-navy),var(--twd-blue));color:#fff}
+.service-card-dark .service-number,.service-card-dark>span,.service-letter{color:#75f2b2}
+.home-jobs-highlight,.app-download-section,.solar-services{background:linear-gradient(120deg,#f0f8ff,#fff 55%,#ecfff5)}
+.home-job-card:hover{border-color:var(--twd-green)}
+.contact-strip{background:linear-gradient(120deg,var(--twd-navy),var(--twd-blue-deep))}
+footer{background:#061e37}
+.floating-wa{background:var(--twd-green-deep);color:white}
+#scrollProgress{background:linear-gradient(90deg,var(--twd-blue),var(--twd-green))}
+a:focus-visible,button:focus-visible{outline:3px solid var(--twd-green);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.service-card,.home-job-card{transition:none}}
