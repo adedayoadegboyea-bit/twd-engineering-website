@@ -7,6 +7,9 @@ on:
       - '.github/workflows/build-twd-android.yml'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-android:
     runs-on: ubuntu-latest
@@ -47,6 +50,21 @@ jobs:
         run: |
           ./gradlew assembleDebug --no-daemon
           cp "app/build/outputs/apk/debug/app-debug.apk" "app/build/outputs/apk/debug/TWD-Engineering-TEST.apk"
+
+      - name: Publish tested APK to website downloads
+        shell: bash
+        run: |
+          mkdir -p downloads
+          cp "mobile-app/android/app/build/outputs/apk/debug/TWD-Engineering-TEST.apk" "downloads/twd-engineering.apk"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/twd-engineering.apk
+          if git diff --cached --quiet; then
+            echo "Published APK is already up to date."
+          else
+            git commit -m "Publish latest tested TW&D Android APK"
+            git push
+          fi
 
       - name: Upload installable test APK
         uses: actions/upload-artifact@v4
