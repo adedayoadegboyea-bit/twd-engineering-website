@@ -1114,7 +1114,23 @@ function startAptitudeTest(applicationId, position, email) {
   const sheet=getAptitudeSheet_(), values=sheet.getDataRange().getValues();
   for(let r=1;r<values.length;r++) if(String(values[r][1])===String(applicationId)){
     const status=String(values[r][4]||'');
-    if(status==='IN_PROGRESS'&&values[r][6]&&new Date(values[r][6]).getTime()>Date.now()) return aptitudeClientPayload_(values[r]);
+    if(status==='IN_PROGRESS'&&values[r][6]&&new Date(values[r][6]).getTime()>Date.now()){
+      // Repair older active tests that were created with generic or repeated questions.
+      let savedQuestions=[];
+      try{savedQuestions=JSON.parse(String(values[r][10]||'[]'));}catch(ignore){}
+      const seenSaved={};
+      let hasDuplicate=false;
+      savedQuestions.forEach(function(q){const key=String(q.question||'').replace(/^\\s*\\d+\\.\\s*/,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(!key||seenSaved[key])hasDuplicate=true;seenSaved[key]=true;});
+      const isDriver=/driver|chauffeur|delivery|vehicle operator|transport/i.test(approvedPosition);
+      const driverTerms=/\\b(vehicle|brakes|tyres?|traffic|seat belt|driving|road|pedestrian|cargo|mileage|fuel|reversing|speed limit|aquaplaning|railway crossing)\\b/i;
+      const driverRelevant=savedQuestions.filter(function(q){return driverTerms.test(String(q.question||''));}).length;
+      if(savedQuestions.length!==50||hasDuplicate||(isDriver&&driverRelevant<8)){
+        const repaired=generateAptitudeQuestions_(approvedPosition);
+        sheet.getRange(r+1,11).setValue(JSON.stringify(repaired));
+        values[r][10]=JSON.stringify(repaired);
+      }
+      return aptitudeClientPayload_(values[r]);
+    }
     if(status==='SUBMITTED_AI_MARKED_PENDING_ADMIN'||status==='APPROVED'||status==='REJECTED') return {ok:false,status:status,message:'This aptitude test has already been submitted.'};
   }
 
