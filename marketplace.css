@@ -65,3 +65,13 @@
 
 /* 2026-10-07 — luxury marketplace listing presentation */
 .listing{position:relative;isolation:isolate;border-color:rgba(6,43,89,.12);box-shadow:0 16px 38px rgba(16,35,61,.08);transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}.listing:before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:12px;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.55) 48%,transparent 72%);transform:translateX(-130%);transition:transform .7s ease}.listing:hover{transform:translateY(-7px);border-color:rgba(215,166,42,.65);box-shadow:0 25px 55px rgba(6,43,89,.15)}.listing:hover:before{transform:translateX(130%)}.listing-media{position:relative}.listing-media:after{content:"TW&D MARKETPLACE";position:absolute;left:10px;top:10px;padding:5px 8px;border-radius:999px;background:rgba(3,27,56,.78);color:#ffd34d;font-size:8px;font-weight:900;letter-spacing:1px;backdrop-filter:blur(7px)}.listing-main-image{transition:transform .55s ease,filter .55s ease}.listing:hover .listing-main-image{transform:scale(1.045);filter:saturate(1.08) contrast(1.04)}.listing-body{position:relative;background:linear-gradient(180deg,#fff,#fbfdff)}.listing h3{letter-spacing:-.2px}.price{letter-spacing:-.5px}.filters{padding:12px;border:1px solid rgba(6,43,89,.08);border-radius:14px;background:linear-gradient(135deg,#f9fbfd,#fff8e6);box-shadow:0 12px 30px rgba(16,35,61,.05)}.filters input,.filters select{background:rgba(255,255,255,.92)}@media(prefers-reduced-motion:reduce){.listing,.listing:before,.listing-main-image{transition:none}}
+
+
+/* TW&D SITE-WIDE BRILLIANT BLUE + GREEN + GOLD THEME */
+:root{--navy:#006BFF;--navy2:#0047B3;--red:#006BFF;--red-dark:#0047B3;--gold:#FFC107;--gold-bright:#FFD54F;--green:#00C853;--sky:#006BFF;--pink:#00C853;--soft:#F2F7FF;--line:#D8E5F5}
+body{accent-color:#006BFF}
+a:hover{color:#006BFF}
+button,.primary,.mp-sell-btn,.account-tab.active,.account-submit,.submit-btn,.mgmt-btn-primary,.download-btn{background:linear-gradient(120deg,#006BFF,#0047B3)!important;border-color:#006BFF!important;color:#fff}
+button:hover,.primary:hover,.mp-sell-btn:hover,.account-submit:hover,.submit-btn:hover,.mgmt-btn-primary:hover,.download-btn:hover{background:linear-gradient(120deg,#00C853,#009640)!important;border-color:#00C853!important;color:#052a19}
+input:focus,select:focus,textarea:focus{border-color:#006BFF!important;outline-color:#006BFF!important;box-shadow:0 0 0 3px rgba(0,107,255,.12)!important}
+.eyebrow,.section-kicker,.mp-brand span,.account-brand,.account-back,.text-link{color:#006BFF}
