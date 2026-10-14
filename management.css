@@ -4,3 +4,13 @@ body{margin:0;background:radial-gradient(circle at 80% 10%,rgba(70,126,180,.16),
 
 /* Public Projects & Gallery Control Centre */
 .portfolio-admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px}.mgmt-panel{padding:18px;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:rgba(255,255,255,.025)}.portfolio-admin-lists{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}.portfolio-gallery-row{display:grid;grid-template-columns:72px 1fr;gap:5px 12px;align-items:center}.portfolio-gallery-row img{width:72px;height:58px;object-fit:cover;border-radius:8px;grid-row:1 / span 4}.portfolio-gallery-row .mgmt-btn{grid-column:2;justify-self:start}.portfolio-admin-card small{color:#91a7bb}@media(max-width:800px){.portfolio-admin-grid,.portfolio-admin-lists{grid-template-columns:1fr}.portfolio-gallery-row{grid-template-columns:62px 1fr}.portfolio-gallery-row img{width:62px;height:52px}}
+
+
+/* TW&D SITE-WIDE BRILLIANT BLUE + GREEN + GOLD THEME */
+:root{--navy:#006BFF;--navy2:#0047B3;--red:#006BFF;--red-dark:#0047B3;--gold:#FFC107;--gold-bright:#FFD54F;--green:#00C853;--sky:#006BFF;--pink:#00C853;--soft:#F2F7FF;--line:#D8E5F5}
+body{accent-color:#006BFF}
+a:hover{color:#006BFF}
+button,.primary,.mp-sell-btn,.account-tab.active,.account-submit,.submit-btn,.mgmt-btn-primary,.download-btn{background:linear-gradient(120deg,#006BFF,#0047B3)!important;border-color:#006BFF!important;color:#fff}
+button:hover,.primary:hover,.mp-sell-btn:hover,.account-submit:hover,.submit-btn:hover,.mgmt-btn-primary:hover,.download-btn:hover{background:linear-gradient(120deg,#00C853,#009640)!important;border-color:#00C853!important;color:#052a19}
+input:focus,select:focus,textarea:focus{border-color:#006BFF!important;outline-color:#006BFF!important;box-shadow:0 0 0 3px rgba(0,107,255,.12)!important}
+.eyebrow,.section-kicker,.mp-brand span,.account-brand,.account-back,.text-link{color:#006BFF}
