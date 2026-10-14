@@ -37,3 +37,27 @@ footer{background:#242625;color:#d7dad8;padding-top:50px}.footer-grid{display:gr
 .solar-footer span:before{content:"•";color:var(--gold);margin-right:7px}
 @media(max-width:800px){.solar-services{padding:28px 22px}.solar-intro{display:block}.solar-intro .btn{margin-top:22px}.solar-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.solar-services{margin-top:42px;padding:24px 18px}.solar-grid{grid-template-columns:1fr}.solar-card{min-height:auto}.solar-footer{display:block}.solar-footer span{display:inline-block;margin:5px 12px 0 0}}
+
+/* TW&D brilliant blue + emerald theme — color-only overrides */
+:root{--navy:#0756d9;--navy-deep:#063b9e;--gold:#d4af37;--red:#00a878;--line:#dbe7f3;--muted:#61748b;--shadow:0 18px 48px rgba(7,86,217,.12)}
+body{color:#17324f;background:#fff}
+.site-header,.site-header nav{background:#fff}
+.site-header nav a:hover,.site-header nav a.active{color:#0756d9}
+.topbar{background:linear-gradient(90deg,#063b9e,#0756d9 58%,#00a878);color:#fff}
+.btn-red,.floating-wa{background:linear-gradient(110deg,#0756d9,#00a878);color:#fff}
+.btn-red:hover,.floating-wa:hover{background:linear-gradient(110deg,#063b9e,#00845e)}
+.btn-outline{border-color:#0756d9;color:#0756d9}
+.btn-outline:hover{background:#eaf3ff}
+.eyebrow,.quick-grid span,.bulletin-cards span,.service-list b,.service-list i{color:#00a878}
+.text-link,.back-top{color:#0756d9}
+.quick-grid a:hover,.service-list a:hover{background:#effbf6}
+.contact-strip{background:linear-gradient(115deg,#063b9e,#0756d9 65%,#00845e)}
+footer{background:#071d3c}
+.footer-brand span{color:#00c58a}
+footer a:hover{color:#62e7bd}
+#scrollProgress{background:linear-gradient(90deg,#0756d9,#00c58a)}
+.solar-services{background:linear-gradient(135deg,#edf5ff 0%,#fff 52%,#eafff5 100%);border-color:#d7e6f6}
+.solar-services:before{background:rgba(0,168,120,.14)}
+.solar-card-featured{background:linear-gradient(145deg,#063b9e,#0756d9 65%,#00845e);border-color:#0756d9}
+.solar-capacity,.solar-footer span:before{color:#00a878}
+.solar-card:hover{border-color:#00a878}
