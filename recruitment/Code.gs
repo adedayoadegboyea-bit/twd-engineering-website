@@ -909,7 +909,7 @@ function generateAptitudeQuestions_(position) {
   }
   if(allQuestions.length!==50) throw new Error('AI generated '+allQuestions.length+' questions instead of exactly 50.');
   const seenQuestions={};
-  for(let i=0;i<allQuestions.length;i++){const key=String(allQuestions[i].question||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(!key||seenQuestions[key]){console.warn('Duplicate/empty AI aptitude question detected; using the unique fallback bank.');return fallbackAptitudeQuestions_(position);}seenQuestions[key]=true;}
+  for(let i=0;i<allQuestions.length;i++){const key=String(allQuestions[i].question||'').replace(/^\s*\d+\.\s*/,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(!key||seenQuestions[key]){console.warn('Duplicate/empty AI aptitude question detected; using the unique fallback bank.');return fallbackAptitudeQuestions_(position);}seenQuestions[key]=true;}
   allQuestions.forEach(function(q,i){
     if(!q.question||!Array.isArray(q.options)||q.options.length!==4||typeof q.answer!=='number'||q.answer<0||q.answer>3)
       throw new Error('Invalid AI question at number '+(i+1)+'.');
