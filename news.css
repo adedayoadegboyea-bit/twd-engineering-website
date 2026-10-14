@@ -27,3 +27,13 @@
 @media(max-width:900px){.news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.news-grid{grid-template-columns:1fr}.news-card{min-height:250px}.news-toolbar{margin-top:20px}.news-filter{padding:9px 12px}.news-footer{align-items:flex-start;flex-direction:column}.news-card h3{font-size:19px}}
 @media(prefers-reduced-motion:reduce){.news-card,.news-filter{transition:none}.news-loading span{animation:none}}
+
+
+/* TW&D SITE-WIDE BRILLIANT BLUE + GREEN + GOLD THEME */
+:root{--navy:#006BFF;--navy2:#0047B3;--red:#006BFF;--red-dark:#0047B3;--gold:#FFC107;--gold-bright:#FFD54F;--green:#00C853;--sky:#006BFF;--pink:#00C853;--soft:#F2F7FF;--line:#D8E5F5}
+body{accent-color:#006BFF}
+a:hover{color:#006BFF}
+button,.primary,.mp-sell-btn,.account-tab.active,.account-submit,.submit-btn,.mgmt-btn-primary,.download-btn{background:linear-gradient(120deg,#006BFF,#0047B3)!important;border-color:#006BFF!important;color:#fff}
+button:hover,.primary:hover,.mp-sell-btn:hover,.account-submit:hover,.submit-btn:hover,.mgmt-btn-primary:hover,.download-btn:hover{background:linear-gradient(120deg,#00C853,#009640)!important;border-color:#00C853!important;color:#052a19}
+input:focus,select:focus,textarea:focus{border-color:#006BFF!important;outline-color:#006BFF!important;box-shadow:0 0 0 3px rgba(0,107,255,.12)!important}
+.eyebrow,.section-kicker,.mp-brand span,.account-brand,.account-back,.text-link{color:#006BFF}
