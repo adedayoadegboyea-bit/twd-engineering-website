@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>TW&D Finance Desk | Invoices & Receipts</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{--navy:#062b59;--blue:#0757b8;--green:#07834b;--gold:#d9a928;--ink:#172536;--muted:#637083;--line:#dce4ed}
+*{box-sizing:border-box}body{margin:0;background:#f2f6fb;color:var(--ink);font-family:Inter,Arial,sans-serif}.topbar{background:linear-gradient(110deg,#062b59,#087b62);color:#fff;padding:18px max(20px,calc((100% - 1180px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:900;letter-spacing:.3px}.top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.btn{border:0;border-radius:8px;background:var(--gold);color:#12243a;padding:11px 15px;font-weight:800;cursor:pointer}.btn.secondary{background:#e8eef6;color:var(--navy)}.btn.danger{background:#e8eef6;color:#9c2430}.wrap{max-width:1180px;margin:26px auto;padding:0 18px}.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 10px 35px #0b2c5010;margin-bottom:18px}.login{max-width:460px;margin:60px auto}.hidden{display:none!important}.status{padding:10px 0;color:var(--green);font-weight:700}.status.error{color:#b42318}h1,h2,h3{margin-top:0}.sub{color:var(--muted);line-height:1.6}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:750}.field input,.field textarea,.field select{width:100%;border:1px solid #cbd6e3;border-radius:7px;padding:11px;font:inherit;font-weight:500;min-width:0;background:#fff}.field textarea{resize:vertical}.wide{grid-column:span 2}.section-title{font-size:12px;letter-spacing:1.4px;color:var(--green);font-weight:900;margin:25px 0 12px}.switcher{display:flex;gap:8px;flex-wrap:wrap}.switcher button{background:#e8eef6;color:var(--navy)}.switcher button.active{background:var(--navy);color:#fff}.items-wrap{overflow-x:auto}.items{width:100%;border-collapse:collapse;min-width:650px}.items th{background:var(--navy);color:#fff;text-align:left;padding:11px}.items td{border-bottom:1px solid var(--line);padding:7px}.items input{width:100%;min-width:65px;border:1px solid #d4deea;border-radius:5px;padding:9px;font:inherit}.items .desc{min-width:220px}.totals{margin:18px 0 0 auto;max-width:370px}.totals div{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line)}.totals .grand{font-size:21px;font-weight:900;color:var(--navy);border-bottom:3px solid var(--gold)}.doc{max-width:900px;margin:22px auto;background:#fff;border:1px solid var(--line);padding:42px;box-shadow:0 10px 35px #0b2c5010}.doc-head{display:flex;justify-content:space-between;gap:20px;border-bottom:4px solid var(--green);padding-bottom:20px}.doc-head h2{font-size:27px;color:var(--navy);margin:0 0 8px}.doc-kind{text-align:right}.doc-kind h1{font-size:35px;color:var(--green);margin:0 0 8px}.doc-kind strong{display:block;color:var(--muted);font-size:13px}.doc-meta{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin:25px 0}.doc-meta h3{font-size:11px;letter-spacing:1px;color:var(--green);margin-bottom:8px}.doc-meta p{margin:5px 0;white-space:pre-wrap;overflow-wrap:anywhere}.doc-table{width:100%;border-collapse:collapse;margin-top:18px}.doc-table th{background:#edf3f9;color:var(--navy);padding:11px;text-align:left}.doc-table td{padding:11px;border-bottom:1px solid var(--line)}.doc-table td:not(:first-child),.doc-table th:not(:first-child){text-align:right}.doc-notes{margin-top:25px;padding:16px;background:#f4f8fc;border-left:4px solid var(--gold);white-space:pre-wrap}.doc-foot{border-top:1px solid var(--line);margin-top:25px;padding-top:15px;font-size:11px;color:var(--muted)}.doc-status{display:inline-block;background:#e2f6eb;color:#087744;border-radius:5px;padding:6px 9px;font-weight:900;font-size:12px}.only-print{display:none}.toolbar-note{font-size:12px;color:var(--muted)}@media(max-width:720px){.fields{grid-template-columns:1fr}.wide{grid-column:span 1}.doc{padding:22px;margin:14px auto}.doc-head{flex-direction:column}.doc-kind{text-align:left}.doc-meta{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.panel{padding:18px}}@media print{body{background:#fff}.topbar,.editor,.toolbar-note,.no-print,#loginPanel{display:none!important}.wrap{max-width:none;margin:0;padding:0}.panel{border:0;box-shadow:none;padding:0;margin:0}.doc{border:0;box-shadow:none;margin:0;padding:8mm;max-width:none}.only-print{display:block}.doc-head,.doc-table,.doc-meta,.doc-notes{break-inside:avoid}a{color:inherit;text-decoration:none}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand">TW&amp;D ENGINEERING · FINANCE DESK</div><div class="top-actions"><a class="btn secondary" href="management.html" style="text-decoration:none">Management Portal</a><button id="signout" class="btn danger hidden" type="button">Sign Out</button></div></header>
+<main class="wrap">
+<section id="loginPanel" class="panel login"><h1>Administrator sign-in</h1><p class="sub">Invoices and receipts are restricted to authorised TW&amp;D administrators.</p><form id="loginForm"><label class="field">Administrator email<input id="email" type="email" autocomplete="username" required></label><br><label class="field">Password<input id="password" type="password" autocomplete="current-password" required></label><br><button class="btn" type="submit">Sign in securely</button></form><div id="loginStatus" class="status" role="status"></div></section>
+<div id="financeApp" class="hidden">
+<section class="panel editor">
+<h1>Generate an invoice or payment receipt</h1><p class="sub">Complete the fields, review the document preview, then use Print / Save PDF. Generating a document here does not record a bank transaction or confirm payment with a bank.</p>
+<div class="switcher no-print"><button id="invoiceMode" class="btn active" type="button">Invoice</button><button id="receiptMode" class="btn" type="button">Payment Receipt</button></div>
+<div class="section-title">DOCUMENT DETAILS</div>
+<div class="fields">
+<label class="field">Document number<input id="docNumber" required></label>
+<label class="field">Issue date<input id="docDate" type="date" required></label>
+<label class="field" id="dueWrap">Payment due date<input id="dueDate" type="date"></label>
+<label class="field">Customer / company<input id="customer" placeholder="Customer full name" required></label>
+<label class="field">Customer phone / email<input id="contact" placeholder="Phone or email"></label>
+<label class="field">Customer address<input id="address" placeholder="Billing address"></label>
+<label class="field">Project / service<input id="project" placeholder="Project or service name" required></label>
+<label class="field">Project location<input id="location" placeholder="Location"></label>
+<label class="field">Reference / PO number<input id="reference" placeholder="Optional reference"></label>
+</div>
+<div class="section-title">ITEMS / SERVICES</div>
+<div class="items-wrap"><table class="items"><thead><tr><th>Description</th><th>Qty</th><th>Unit price (₦)</th><th>Amount (₦)</th><th class="no-print">Remove</th></tr></thead><tbody id="itemRows"></tbody></table></div>
+<div class="top-actions no-print" style="margin-top:12px"><button class="btn secondary" id="addItem" type="button">+ Add item</button></div>
+<div class="fields" style="margin-top:18px">
+<label class="field">Tax / VAT amount (₦)<input id="tax" type="number" min="0" step=".01" value="0"></label>
+<label class="field" id="paidWrap">Amount received (₦)<input id="paid" type="number" min="0" step=".01" value="0"></label>
+<label class="field" id="methodWrap">Payment method<select id="method"><option>Bank transfer</option><option>POS</option><option>Cash</option><option>Cheque</option><option>Online payment</option><option>Other</option></select></label>
+<label class="field" id="paymentDateWrap">Payment date<input id="paymentDate" type="date"></label>
+<label class="field" id="paymentRefWrap">Payment transaction reference<input id="paymentRef" placeholder="Bank / POS transaction reference"></label>
+<label class="field">Prepared by<input id="preparedBy" placeholder="Authorised staff name"></label>
+<label class="field wide">Notes / terms<textarea id="notes" rows="3" placeholder="Payment terms, scope, or receipt notes"></textarea></label>
+</div>
+<div class="status" id="formStatus" role="status"></div>
+<div class="top-actions no-print"><button class="btn" id="printDoc" type="button">Print / Save PDF</button><button class="btn secondary" id="newDoc" type="button">New document</button></div>
+<p class="toolbar-note">The document is generated in this browser for printing. This version does not save an accounting ledger or automatically verify transfers.</p>
+</section>
+<section class="doc" id="documentPreview" aria-label="Document preview">
+<div class="doc-head"><div><h2>TW&amp;D ENGINEERING</h2><strong>TW&amp;D Engineering Consult &amp; Services Ltd</strong><p>25 Engr Adedayo Close, Olateju Olanase Street,<br>Akingbade Area, Ibadan, Oyo State, Nigeria</p><p>Phone: 08035774420<br>Email: accounts@twdengineeringconsult.com</p></div><div class="doc-kind"><h1 id="previewTitle">INVOICE</h1><strong id="previewNumber"></strong><p id="previewDate"></p><p id="previewDue"></p><span id="previewStatus" class="doc-status hidden"></span></div></div>
+<div class="doc-meta"><div><h3>BILL TO / RECEIVED FROM</h3><p id="previewCustomer"></p><p id="previewContact"></p><p id="previewAddress"></p></div><div><h3>PROJECT / SERVICE</h3><p id="previewProject"></p><p id="previewLocation"></p><p id="previewReference"></p></div></div>
+<table class="doc-table"><thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Amount (₦)</th></tr></thead><tbody id="previewItems"></tbody></table>
+<div class="totals"><div><span>Subtotal</span><strong id="previewSubtotal"></strong></div><div><span>Tax / VAT</span><strong id="previewTax"></strong></div><div class="grand"><span>Total</span><strong id="previewTotal"></strong></div><div id="previewPaidRow"><span>Amount received</span><strong id="previewPaid"></strong></div><div id="previewBalanceRow"><span>Balance outstanding</span><strong id="previewBalance"></strong></div></div>
+<div id="previewPayment" class="doc-notes hidden"></div><div id="previewNotes" class="doc-notes hidden"></div>
+<div class="doc-foot">Thank you for engaging TW&amp;D Engineering Consult &amp; Services Ltd. Please retain this document for your records. A receipt confirms the amount recorded as received by TW&amp;D; it is not independent bank verification.</div>
+</section>
+</div>
+</main>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
+const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN"}).format(Number(n)||0);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let mode="invoice";
+function setStatus(id,msg,bad=false){$(id).textContent=msg;$(id).className="status"+(bad?" error":"")}
+async function verifyAdmin(){
+ const {data:{session}}=await supabase.auth.getSession();
+ if(!session)return false;
+ const {data:profile,error}=await supabase.from("profiles").select("account_type").eq("id",session.user.id).maybeSingle();
+ if(error||profile?.account_type!=="admin"){await supabase.auth.signOut();setStatus("loginStatus","This account is not authorised for finance access.",true);return false}
+ $("loginPanel").classList.add("hidden");$("financeApp").classList.remove("hidden");$("signout").classList.remove("hidden");return true;
+}
+$("loginForm").addEventListener("submit",async e=>{e.preventDefault();setStatus("loginStatus","Signing in…");const {error}=await supabase.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});if(error){setStatus("loginStatus",error.message,true);return}if(!await verifyAdmin())return;});
+$("signout").addEventListener("click",async()=>{await supabase.auth.signOut();location.reload()});
+function newNumber(){const d=new Date(),date=d.toISOString().slice(0,10).replaceAll("-","");return (mode==="invoice"?"TWD-INV-":"TWD-RCT-")+date+"-"+String(Date.now()).slice(-5)}
+function addItem(description="",qty=1,price=0){const tr=document.createElement("tr");tr.innerHTML='<td><input class="desc" aria-label="Item description" placeholder="Service / materials" value="'+esc(description)+'"></td><td><input class="qty" aria-label="Quantity" type="number" min="0" step=".01" value="'+qty+'"></td><td><input class="price" aria-label="Unit price" type="number" min="0" step=".01" value="'+price+'"></td><td class="lineTotal">₦0.00</td><td class="no-print"><button class="btn secondary removeItem" type="button" aria-label="Remove item">×</button></td>';tr.querySelectorAll("input").forEach(i=>i.addEventListener("input",render));tr.querySelector(".removeItem").addEventListener("click",()=>{if($("itemRows").children.length>1)tr.remove();render()});$("itemRows").appendChild(tr);render()}
+function val(id){return $(id).value.trim()}
+function render(){
+ let subtotal=0,lines=[];$("itemRows").querySelectorAll("tr").forEach(tr=>{const description=tr.querySelector(".desc").value;const qty=Math.max(0,Number(tr.querySelector(".qty").value)||0);const price=Math.max(0,Number(tr.querySelector(".price").value)||0);const amount=qty*price;subtotal+=amount;tr.querySelector(".lineTotal").textContent=money(amount);if(description||amount)lines.push({description,qty,price,amount})});
+ const tax=Math.max(0,Number($("tax").value)||0),total=subtotal+tax,paid=Math.max(0,Number($("paid").value)||0),balance=Math.max(0,total-paid);
+ $("previewTitle").textContent=mode==="invoice"?"INVOICE":"PAYMENT RECEIPT";$("previewNumber").textContent="No. "+val("docNumber");$("previewDate").textContent=(mode==="invoice"?"Issue date: ":"Receipt date: ")+val("docDate");$("previewDue").textContent=mode==="invoice"&&val("dueDate")?"Due date: "+val("dueDate"):"";
+ $("previewCustomer").textContent=val("customer");$("previewContact").textContent=val("contact");$("previewAddress").textContent=val("address");$("previewProject").textContent=val("project");$("previewLocation").textContent=val("location");$("previewReference").textContent=val("reference")?"Reference: "+val("reference"):"";
+ $("previewItems").innerHTML=lines.map(x=>"<tr><td>"+esc(x.description)+"</td><td>"+x.qty.toLocaleString("en-NG")+"</td><td>"+money(x.price)+"</td><td>"+money(x.amount)+"</td></tr>").join("")||"<tr><td colspan='4'>No items added</td></tr>";
+ $("previewSubtotal").textContent=money(subtotal);$("previewTax").textContent=money(tax);$("previewTotal").textContent=money(total);$("previewPaid").textContent=money(paid);$("previewBalance").textContent=money(balance);
+ $("previewPaidRow").classList.toggle("hidden",mode==="invoice");$("previewBalanceRow").classList.toggle("hidden",mode==="invoice");
+ $("previewStatus").classList.toggle("hidden",mode==="invoice");$("previewStatus").textContent=balance<=0&&total>0?"PAID":paid>0?"PART PAYMENT":"PAYMENT RECEIVED"; 
+ const paymentText="Payment method: "+val("method")+"\nPayment date: "+val("paymentDate")+"\nTransaction reference: "+(val("paymentRef")||"Not provided")+"\nPrepared by: "+(val("preparedBy")||"TW&D Authorised Representative");
+ $("previewPayment").textContent=paymentText;$("previewPayment").classList.toggle("hidden",mode==="invoice");
+ $("previewNotes").textContent=val("notes");$("previewNotes").classList.toggle("hidden",!val("notes"));
+ $("dueWrap").classList.toggle("hidden",mode!=="invoice");$("paidWrap").classList.toggle("hidden",mode==="invoice");$("methodWrap").classList.toggle("hidden",mode==="invoice");$("paymentDateWrap").classList.toggle("hidden",mode==="invoice");$("paymentRefWrap").classList.toggle("hidden",mode==="invoice");
+ $("invoiceMode").classList.toggle("active",mode==="invoice");$("receiptMode").classList.toggle("active",mode==="receipt");
+}
+$("tax").addEventListener("input",render);$("paid").addEventListener("input",render);
+$("addItem").addEventListener("click",()=>addItem());
+$("invoiceMode").addEventListener("click",()=>{mode="invoice";$("docNumber").value=newNumber();render()});
+$("receiptMode").addEventListener("click",()=>{mode="receipt";$("docNumber").value=newNumber();$("paymentDate").value=new Date().toISOString().slice(0,10);render()});
+$("printDoc").addEventListener("click",()=>{if(!val("customer")||!val("project")){setStatus("formStatus","Enter the customer name and project/service before printing.",true);return}if(mode==="receipt"&&Number($("paid").value)<=0){setStatus("formStatus","Enter the amount actually received before issuing a receipt.",true);return}setStatus("formStatus",mode==="receipt"?"Receipt prepared. Please confirm the payment was received before printing.":"Invoice prepared for review.");window.print()});
+$("newDoc").addEventListener("click",()=>{if(!confirm("Clear this document and start a new one?"))return;document.querySelectorAll("#financeApp input,#financeApp textarea").forEach(el=>{if(el.id==="tax"||el.id==="paid")el.value="0";else if(el.id==="docDate"||el.id==="paymentDate")el.value=new Date().toISOString().slice(0,10);else if(el.id==="docNumber")el.value=newNumber();else if(el.id==="method")el.value="Bank transfer";else el.value=""});$("itemRows").innerHTML="";addItem();setStatus("formStatus","");render()});
+$("docDate").value=new Date().toISOString().slice(0,10);$("paymentDate").value=new Date().toISOString().slice(0,10);$("docNumber").value=newNumber();addItem();
+verifyAdmin();
+</script>
+</body></html>
