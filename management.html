@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="global-access.css?v=20260928-1">
 </head>
 <body>
-<header class="mgmt-header"><div class="mgmt-nav"><a href="index.html" class="mgmt-brand"><img src="assets/twd-luxury-logo.svg" alt="TW&D Engineering"><span>TW&D ENGINEERING<br>MANAGEMENT</span></a><button id="signout" class="mgmt-signout" hidden>Sign Out</button></div></header>
+<header class="mgmt-header"><div class="mgmt-nav"><a href="index.html" class="mgmt-brand"><img src="assets/twd-luxury-logo.svg" alt="TW&D Engineering"><span>TW&D ENGINEERING<br>MANAGEMENT</span></a><a href="finance.html" class="mgmt-signout" style="text-decoration:none;margin-right:10px" hidden id="financeDeskLink">Invoices &amp; Receipts</a><button id="signout" class="mgmt-signout" hidden>Sign Out</button></div></header>
 <main class="mgmt-shell">
 <section id="loginPanel" class="mgmt-card"><span class="eyebrow">PRIVATE MANAGEMENT ACCESS</span><h1>TW&D Project Management</h1><p>Only authorised TW&D administrators can access customer projects, reports, private documents and service requests.</p><form id="loginForm" class="mgmt-form"><label>Email<input id="adminEmail" type="email" required autocomplete="username"></label><label>Password<input id="adminPassword" type="password" required autocomplete="current-password"></label><button class="mgmt-btn primary">Sign In to Management</button></form><div id="loginStatus" class="mgmt-status"></div></section>
 <section id="appPanel" hidden>
@@ -102,5 +102,6 @@
 </section>
 </div></section></main>
 <script type="module" src="management.js?v=20260928-3"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{const signout=document.getElementById("signout"),link=document.getElementById("financeDeskLink");if(signout&&link){const show=()=>{link.hidden=signout.hidden};new MutationObserver(show).observe(signout,{attributes:true,attributeFilter:["hidden"]});show();}});</script>
 <script src="global-access.js?v=20260928-1"></script>
 </body></html>
