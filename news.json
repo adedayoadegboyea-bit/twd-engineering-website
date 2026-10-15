@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T05:26:39.005636+00:00",
+  "generated_at": "2026-10-15T05:58:55.203233+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,11 +11,91 @@
   ],
   "articles": [
     {
+      "title": "Family confirms death of gospel singer Toluwanisings",
+      "summary": "The family of Nigerian gospel singer, Olayemi Bolaji, popularly known as Toluwanisings, has announced his death on October 14, 2026. Read More: https://punchng.com/family-confirms-death-of-gospel-singer-toluwanisings/",
+      "url": "https://punchng.com/family-confirms-death-of-gospel-singer-toluwanisings/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-15T06:25:07+00:00",
+      "categories": []
+    },
+    {
       "title": "2027: Don’t snatch ballot boxes for politicians, youths warned",
       "summary": "A Baptist Convention leader has warned Nigerian youths against being used by politicians for ballot-box snatching and other electoral violence in the 2027 Read More: https://punchng.com/2027-dont-snatch-ballot-boxes-for-politicians-youths-warned/",
       "url": "https://punchng.com/2027-dont-snatch-ballot-boxes-for-politicians-youths-warned/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-15T06:00:34+00:00",
+      "categories": []
+    },
+    {
+      "title": "Trump’s new press secretary under fire over lawyer claims",
+      "summary": "The White House faced growing scrutiny on Wednesday over the legal qualifications of its new press secretary, Katie Zacharia, after she failed to give a clear response when asked where she had passed the bar examination on her first day in the role. The controversy intensified after the Campaign for",
+      "url": "https://dailypost.ng/2026/10/15/trumps-new-press-secretary-under-fire-over-lawyer-claims/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-15T05:57:12+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027 presidency: Peter Obi will humiliate Tinubu in some Southern part – Dele Momodu",
+      "summary": "A chieftain of the African Democratic Congress, ADC, Dele Momodu, has expressed optimism that the Nigeria Democratic Congress, NDC, presidential candidate, Peter Obi, will defeat President Bola Tinubu in some southern part of Nigeria. Momodu made the statement on Wednesday during an interview on Ari",
+      "url": "https://dailypost.ng/2026/10/15/2027-presidency-peter-obi-will-humiliate-tinubu-in-some-southern-part-dele-momodu/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-15T05:54:55+00:00",
+      "categories": []
+    },
+    {
+      "title": "EPL: Why Zadok Yohanna, Femi Azeez have not been playing – Brighton boss, Hürzeler",
+      "summary": "Brighton & Hove Albion manager, Fabian Hürzeler has explained why Nigerian duo, Femi Azeez and Yohanna Zadok are yet to make their debuts for the English Premier League side. Addressing the press on Wednesday ahead of Brighton’s UEFA Conference League encounter with Kauno Žalgiris at the Amex Stadiu",
+      "url": "https://dailypost.ng/2026/10/15/epl-why-zadok-yohanna-femi-azeez-have-not-been-playing-brighton-boss-hurzeler/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-15T05:50:56+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: Tinubu won’t agree if he loses, but we’ll chase him out – Dele Momodu",
+      "summary": "Stalwart of the African Democratic Congress, ADC, and veteran journalist, Dele Momodu, has said that nobody trusts President Bola Tinubu to conduct a free and fair election, including the President’s own supporters. Momodu further stated that there is a belief that if the President does not win in 2",
+      "url": "https://dailypost.ng/2026/10/15/2027-tinubu-wont-agree-if-he-loses-but-well-chase-him-out-dele-momodu/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-15T05:46:15+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Tinubu has done worse than Abacha – Dele Momodu",
+      "summary": "A chieftain of the African Democratic Congress, ADC, Dele Momodu, has likened President Bola Tinubu to the late former military Head of State, General Sani Abacha. Momodu said this on Wednesday while fielding questions during an interview on Arise Television’s Prime Time. He stated that Tinubu was c",
+      "url": "https://dailypost.ng/2026/10/15/tinubu-has-done-worse-than-abacha-dele-momodu/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-15T05:43:27+00:00",
+      "categories": []
+    },
+    {
+      "title": "Lagos govt sets date to demolish distressed 25-storey GNI House",
+      "summary": "Lagos State Government has announced plans to begin the controlled demolition of the distressed Great Nigeria Insurance House on Lagos Island on Thursday, October 15, 2026, to prevent potential threats to lives and property. The Permanent Secretary of the Lagos State Emergency Management Agency, LAS",
+      "url": "https://dailypost.ng/2026/10/15/lagos-govt-sets-date-to-demolish-distressed-25-storey-gni-house/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-15T05:42:54+00:00",
+      "categories": [
+        "government",
+        "property",
+        "lagos"
+      ]
+    },
+    {
+      "title": "UCL: Why Man City lost 4-2 to PSG – Maresca",
+      "summary": "Manchester City manager, Enzo Maresca, has admitted the two early goals they conceded against Paris Saint-Germain affected their morale in the Champions League clash. PSG went into the break three goals up on Wednesday night, thanks to goals from Desire Doue, Ousmane Dembele and Vitinha. Although Er",
+      "url": "https://dailypost.ng/2026/10/15/ucl-why-man-city-lost-4-2-to-psg-maresca/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-15T05:38:56+00:00",
+      "categories": [
+        "property"
+      ]
+    },
+    {
+      "title": "UCL: Mourinho speaks on Vinicius’ angry reaction to being substituted against Roma",
+      "summary": "Real Madrid manager, Jose Mourinho, has said it is “normal” for Vinicius Junior to react angrily to being substituted during their Champions League clash at Roma. Vinicius Jr was taken off as Madrid fought back from 3-1 down to in 4-3 and replaced with Endrick. As he walked towards the bench, Vinici",
+      "url": "https://dailypost.ng/2026/10/15/ucl-mourinho-speaks-on-vinicius-angry-reaction-to-being-substituted-against-roma/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-15T05:32:42+00:00",
       "categories": []
     },
     {
@@ -204,88 +284,6 @@
       "url": "https://punchng.com/experts-slam-tinubus-n100-5bn-airport-reimbursement-plan-for-yobe/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-15T00:50:31+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ex-IYC president urges govs to ensure cheaper transport cost",
-      "summary": "A former IYC President, Udengs Eradiri, has urged state governors to comply with President Tinubu’s directive to reduce high transport costs for Nigerians. Read More: https://punchng.com/ex-iyc-president-urges-govs-to-ensure-cheaper-transport-cost/",
-      "url": "https://punchng.com/ex-iyc-president-urges-govs-to-ensure-cheaper-transport-cost/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:49:20+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Electricity tariffs reflect 40% losses, inefficiencies — Presidential aide",
-      "summary": "Presidential aide on Power, Lanre Babalola, says Nigeria’s high electricity tariffs reflect about 40% operational losses and system inefficiencies. Read More: https://punchng.com/electricity-tariffs-reflect-40-losses-inefficiencies-presidential-aide/",
-      "url": "https://punchng.com/electricity-tariffs-reflect-40-losses-inefficiencies-presidential-aide/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:45:18+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Foundation takes free medical outreach to Lagos",
-      "summary": "Pistis Foundation is holding a free medical and surgical outreach for underserved communities in Lagos from October 19 to 23, offering various services. Read More: https://punchng.com/foundation-takes-free-medical-outreach-to-lagos/",
-      "url": "https://punchng.com/foundation-takes-free-medical-outreach-to-lagos/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:43:24+00:00",
-      "categories": [
-        "lagos"
-      ]
-    },
-    {
-      "title": "Women accountants restate commitment to protecting girls’ rights",
-      "summary": "The Society of Women Accountants of Nigeria (SWAN) has restated its commitment to protecting girls’ rights through scholarships, mentorship and training. Read More: https://punchng.com/women-accountants-restate-commitment-to-protecting-girls-rights/",
-      "url": "https://punchng.com/women-accountants-restate-commitment-to-protecting-girls-rights/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:43:01+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "Firm expands domestic cloud capacity",
-      "summary": "Cloudvantage Limited is expanding its domestic cloud capacity to help Nigerian financial institutions meet the CBN’s January 2027 data localisation rule. Read More: https://punchng.com/firm-expands-domestic-cloud-capacity/",
-      "url": "https://punchng.com/firm-expands-domestic-cloud-capacity/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:42:33+00:00",
-      "categories": []
-    },
-    {
-      "title": "EU backs Nigeria’s broadband expansion with €14m grant",
-      "summary": "The European Union has committed a €14m grant to support Nigeria’s plan to deploy 90,000km of fibre-optic cable for nationwide broadband expansion. Read More: https://punchng.com/eu-backs-nigerias-broadband-expansion-with-e14m-grant/",
-      "url": "https://punchng.com/eu-backs-nigerias-broadband-expansion-with-e14m-grant/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:39:43+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "EAPEAN prioritises practical skills over certificates",
-      "summary": "The Employers Association for Private Employment Agencies of Nigeria says practical skills, not just certificates, are key to solving Nigeria’s unemploymen Read More: https://punchng.com/eapean-prioritises-practical-skills-over-certificates/",
-      "url": "https://punchng.com/eapean-prioritises-practical-skills-over-certificates/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:38:09+00:00",
-      "categories": []
-    },
-    {
-      "title": "Nigerian leaders viciously greedy, self-loving – Osofisan",
-      "summary": "Playwright Femi Osofisan has described Nigeria’s political leaders as “viciously greedy” and indifferent, warning their disposition is a danger to the coun Read More: https://punchng.com/nigerian-leaders-viciously-greedy-self-loving-osofisan/",
-      "url": "https://punchng.com/nigerian-leaders-viciously-greedy-self-loving-osofisan/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:37:35+00:00",
-      "categories": []
-    },
-    {
-      "title": "War drains 2bn barrels of Middle East oil output — Kpler",
-      "summary": "The ongoing war in the Middle East has caused over 2 billion barrels in crude oil production outages, with 5 million bpd still offline, says Kpler. Read More: https://punchng.com/war-drains-2bn-barrels-of-middle-east-oil-output-kpler/",
-      "url": "https://punchng.com/war-drains-2bn-barrels-of-middle-east-oil-output-kpler/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:37:17+00:00",
       "categories": []
     }
   ]
