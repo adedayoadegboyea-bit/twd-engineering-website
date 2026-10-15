@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T23:50:13.926062+00:00",
+  "generated_at": "2026-10-15T00:22:58.234006+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,24 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Experts slam Tinubu’s N100.5bn airport reimbursement plan for Yobe",
+      "summary": "Aviation experts have criticised President Tinubu’s plan to reimburse Yobe State N100.5bn for its airport, citing concerns over economic viability. Read More: https://punchng.com/experts-slam-tinubus-n100-5bn-airport-reimbursement-plan-for-yobe/",
+      "url": "https://punchng.com/experts-slam-tinubus-n100-5bn-airport-reimbursement-plan-for-yobe/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-15T00:50:31+00:00",
+      "categories": []
+    },
+    {
+      "title": "Electricity tariffs reflect 40% losses, inefficiencies — Presidential aide",
+      "summary": "Presidential aide on Power, Lanre Babalola, says Nigeria’s high electricity tariffs reflect about 40% operational losses and system inefficiencies. Read More: https://punchng.com/electricity-tariffs-reflect-40-losses-inefficiencies-presidential-aide/",
+      "url": "https://punchng.com/electricity-tariffs-reflect-40-losses-inefficiencies-presidential-aide/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-15T00:45:18+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
     {
       "title": "FG approves new grid to curb collapses",
       "summary": "The Federal Government has approved plans to build a new Eastern-Western electricity grid to address Nigeria’s recurring power grid collapses, an official Read More: https://punchng.com/fg-approves-new-grid-to-curb-collapses/",
@@ -136,6 +154,14 @@
       ]
     },
     {
+      "title": "PUNCHman emerges best print journalist at PenCom awards",
+      "summary": "A Chief Correspondent with The PUNCH, Sami Tunji, has emerged as the winner of the Print Category of the 2026 National Pension Commission Media Excellence Award, held in Abuja on Tuesday. Tunji received the recognition at the 2026 Annual PenCom Media Conference, where journalists were honoured for t",
+      "url": "https://punchng.com/punchman-emerges-best-print-journalist-at-pencom-awards/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-15T00:29:39+00:00",
+      "categories": []
+    },
+    {
       "title": "2027: Police to build on past election successes, IGP says",
       "summary": "The Inspector General of Police, Olatunji Disu, has assured Nigerians that the police will build on past successes and ensure professionalism in the 2027 p Read More: https://punchng.com/2027-police-to-build-on-past-election-successes-igp-says/",
       "url": "https://punchng.com/2027-police-to-build-on-past-election-successes-igp-says/?utm_source=rss.punchng.com&utm_medium=web",
@@ -250,35 +276,6 @@
       "url": "https://punchng.com/nigerian-arrested-in-canada-over-alleged-sexual-assault/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-15T00:21:02+00:00",
-      "categories": []
-    },
-    {
-      "title": "NPA pushes inland dry port modernisation",
-      "summary": "The Nigerian Ports Authority is pushing to upgrade inland dry port infrastructure and technical capacity to complement the ongoing modernisation of seaport Read More: https://punchng.com/npa-pushes-inland-dry-port-modernisation/",
-      "url": "https://punchng.com/npa-pushes-inland-dry-port-modernisation/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:20:57+00:00",
-      "categories": [
-        "engineering",
-        "property"
-      ]
-    },
-    {
-      "title": "Okorocha camp disputes police account of arrest, bail",
-      "summary": "Former Imo Governor Rochas Okorocha’s camp denies his arrest, while police confirm he was arrested and bailed over allegations of forgery and conspiracy. Read More: https://punchng.com/okorocha-camp-disputes-police-account-of-arrest-bail/",
-      "url": "https://punchng.com/okorocha-camp-disputes-police-account-of-arrest-bail/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:20:28+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Bauchi man chops off 24-year-old’s wrist, flees",
-      "summary": "A man, Mamman Gore, has allegedly chopped off the wrist of a 24-year-old, Usman Idris, with a machete during a political clash in Bauchi metropolis. Read More: https://punchng.com/bauchi-man-chops-off-24-year-olds-wrist-flees/",
-      "url": "https://punchng.com/bauchi-man-chops-off-24-year-olds-wrist-flees/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T00:20:15+00:00",
       "categories": []
     }
   ]
