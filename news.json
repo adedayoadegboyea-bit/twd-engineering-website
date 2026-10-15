@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T21:31:11.260746+00:00",
+  "generated_at": "2026-10-15T22:20:39.931405+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,11 +11,23 @@
   ],
   "articles": [
     {
+      "title": "NAFDAC raids five shops, seizes fake brand packaging worth ₦200m in Aba",
+      "summary": "The National Agency for Food and Drug Administration and Control has seized counterfeit packaging materials worth over ₦200m from five shops at Old Court Road Market in Aba, Abia State. The agency said the materials, allegedly intended for the production and supply of counterfeit alcoholic beverages",
+      "url": "https://punchng.com/nafdac-raids-five-shops-seizes-fake-brand-packaging-worth-%e2%82%a6200m-in-aba/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-15T22:53:05+00:00",
+      "categories": [
+        "engineering",
+        "business",
+        "government"
+      ]
+    },
+    {
       "title": "US sanctions Cuban bank accused of ties to Iran bank",
       "summary": "The United States has imposed sanctions on Cuba’s Banco Internacional de Comercio S.A. (BICSA) due to its alleged ties with Iran’s Karafarin Bank. Read More: https://punchng.com/us-sanctions-cuban-bank-accused-of-ties-to-iran-bank/",
       "url": "https://punchng.com/us-sanctions-cuban-bank-accused-of-ties-to-iran-bank/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
-      "published": "2026-10-15T22:05:21+00:00",
+      "published": "2026-10-15T22:52:21+00:00",
       "categories": []
     },
     {
@@ -23,23 +35,67 @@
       "summary": "Jigawa State University of Medical and Allied Health Sciences has banned smartwatches and other electronic devices in exam halls to curb misconduct. Read More: https://punchng.com/jigawa-varsity-bans-smartwatches-others-during-exams/",
       "url": "https://punchng.com/jigawa-varsity-bans-smartwatches-others-during-exams/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
-      "published": "2026-10-15T22:02:41+00:00",
+      "published": "2026-10-15T22:51:41+00:00",
       "categories": []
     },
     {
       "title": "Meta unveils new AI model Muse Spark Open",
-      "summary": "Meta has launched Muse Spark Open, a new open-weight AI model it claims rivals top Chinese developers and is optimised to run on Apple’s M5 Ultra chips. Read More: https://punchng.com/meta-unveils-new-ai-model-muse-spark-open/",
+      "summary": "Meta has launched Muse Spark Open, a new open-weight AI model it claims is the most capable from the US, rivalling top Chinese developers. Read More: https://punchng.com/meta-unveils-new-ai-model-muse-spark-open/",
       "url": "https://punchng.com/meta-unveils-new-ai-model-muse-spark-open/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
-      "published": "2026-10-15T21:47:38+00:00",
+      "published": "2026-10-15T22:49:38+00:00",
       "categories": []
     },
     {
       "title": "Germany jails two over alleged Iran-backed plots, Tehran denies claims",
-      "summary": "A German court has jailed two men for planning attacks on pro-Israel figures and spying on Jews on behalf of Iranian secret services, which Tehran denies. Read More: https://punchng.com/germany-jails-two-over-alleged-iran-backed-plots-tehran-denies-claims/",
+      "summary": "A German court has jailed two men for planning attacks on pro-Israel figures and spying on Jews on behalf of Iranian secret services, a claim Tehran denies Read More: https://punchng.com/germany-jails-two-over-alleged-iran-backed-plots-tehran-denies-claims/",
       "url": "https://punchng.com/germany-jails-two-over-alleged-iran-backed-plots-tehran-denies-claims/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
-      "published": "2026-10-15T21:28:08+00:00",
+      "published": "2026-10-15T22:48:08+00:00",
+      "categories": []
+    },
+    {
+      "title": "One in four children under five stunted in Akwa Ibom, survey shows",
+      "summary": "A national survey found that 24.1 per cent of children under five in Akwa Ibom are stunted. In response, the state is establishing nutrition committees across all 31 local government areas to tackle chronic malnutrition. The post One in four children under five stunted in Akwa Ibom, survey shows app",
+      "url": "https://www.premiumtimesng.com/regional/south-south-regional/917468-one-in-four-children-under-five-stunted-in-akwa-ibom-survey-shows.html",
+      "source": "Premium Times",
+      "published": "2026-10-15T22:17:04+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Senate probes death of ex-SUG president in Enugu NYSC camp",
+      "summary": "PREMIUM TIMES earlier reported that Mr Daniel died while undergoing his compulsory three-week orientation course at the NYSC camp in Enugu State. The post Senate probes death of ex-SUG president in Enugu NYSC camp appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/regional/ssouth-east/917466-senate-probes-death-of-ex-sug-president-in-enugu-nysc-camp.html",
+      "source": "Premium Times",
+      "published": "2026-10-15T22:01:22+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: On election day, APC will realise they’ve made very serious mistakes – Kwankwaso",
+      "summary": "Rabiu Kwankwaso, the Nigeria Democratic Congress’s 2027 vice-presidential candidate, argued that the governors and President Tinubu were joining forces ahead of the 2027 general elections because they lacked confidence in their ability to win re-election on their own. The post 2027: On election day,",
+      "url": "https://www.premiumtimesng.com/regional/ssouth-east/917463-2027-on-election-day-apc-will-realise-theyve-made-very-serious-mistakes-kwankwaso.html",
+      "source": "Premium Times",
+      "published": "2026-10-15T21:53:33+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Will a Nobel solve the world’s Trump problem? The president thinks so, By Azu Ishiekwene",
+      "summary": "US President Donald Trump doesn’t just think a Nobel will solve the world’s Trump-inflicted problems. He believes it. He has said, quite clearly, that he deserves a Nobel Peace Prize for his extraordinary labour of peace, especially in his second term. He claims he has ended eight wars, from the Isr",
+      "url": "https://www.premiumtimesng.com/opinion/917457-will-a-nobel-solve-the-worlds-trump-problem-the-president-thinks-so-by-azu-ishiekwene.html",
+      "source": "Premium Times",
+      "published": "2026-10-15T21:32:09+00:00",
+      "categories": []
+    },
+    {
+      "title": "Anambra ‌‌demands more benefits from oil, gas sector",
+      "summary": "Law Mefor, Anambra Commissioner for Information and value reformation, said it was unfortunate that as an oil-producing state, Anambra was yet to be fully integrated into the nation’s oil and gas master plan. The post Anambra ‌‌demands more benefits from oil, gas sector appeared first on Premium Tim",
+      "url": "https://www.premiumtimesng.com/news/more-news/917455-anambra-%e2%81%a0%e2%81%a0%e2%81%a0%e2%81%a0demands-more-benefits-from-oil-gas-sector.html",
+      "source": "Premium Times",
+      "published": "2026-10-15T21:29:53+00:00",
       "categories": []
     },
     {
@@ -225,63 +281,6 @@
       "url": "https://dailypost.ng/2026/10/15/ucl-what-mourinho-told-me-before-my-winning-goal-against-roma-espi/",
       "source": "Daily Post Nigeria",
       "published": "2026-10-15T20:44:20+00:00",
-      "categories": []
-    },
-    {
-      "title": "Odinkalu makes inaccurate claim over Tinubu’s APC campaign council appearance; Presidency reacts",
-      "summary": "The Presidency and Aviation Minister Festus Keyamo dismissed the claim, while Premium Times independently confirmed the president’s physical presence at the event. The post Odinkalu makes inaccurate claim over Tinubu’s APC campaign council appearance; Presidency reacts appeared first on Premium Time",
-      "url": "https://www.premiumtimesng.com/news/top-news/917446-odinkalu-makes-inaccurate-claim-over-tinubus-apc-campaign-council-appearance-presidency-reacts.html",
-      "source": "Premium Times",
-      "published": "2026-10-15T20:43:03+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: Vote for competence, reject political gamblers, Wike urges Nigerians",
-      "summary": "FCT Minister Nyesom Wike has urged Nigerians to prioritise competence and track records over ethnic loyalty in the 2027 elections, advising them to reject Read More: https://punchng.com/2027-vote-for-competence-reject-political-gamblers-wike-urges-nigerians/",
-      "url": "https://punchng.com/2027-vote-for-competence-reject-political-gamblers-wike-urges-nigerians/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T20:38:23+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Nigerian lawmakers amend Federal Polytechnic Act, empower polytechnics to award bachelor’s degrees",
-      "summary": "HND holders have historically faced restrictions in some public and private sector establishments, including differences in recruitment grades, promotion prospects and eligibility for certain positions. The post Nigerian lawmakers amend Federal Polytechnic Act, empower polytechnics to award bachelor",
-      "url": "https://www.premiumtimesng.com/news/headlines/917444-nigerian-lawmakers-amend-federal-polytechnic-act-empower-polytechnics-to-award-bachelors-degrees.html",
-      "source": "Premium Times",
-      "published": "2026-10-15T20:36:32+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "‘We’ll do whatever is necessary’ – Kwankwaso reveals NDC’s ‘position’ on fuel price",
-      "summary": "The vice-presidential candidate of the Nigeria Democratic Congress (NDC), Rabiu Kwankwaso, has said the party would consider reintroducing fuel subsidy, among other measures, to reduce petrol prices if elected in 2027. Kwankwaso disclosed this on Thursday while featuring on Channels Television’s Pol",
-      "url": "https://dailypost.ng/2026/10/15/well-do-whatever-is-necessary-kwankwaso-reveals-ndcs-position-on-fuel-price/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-15T20:35:36+00:00",
-      "categories": []
-    },
-    {
-      "title": "‎Kaduna gov signs law establishing nursing college",
-      "summary": "Kaduna State Governor, Uba Sani, has signed a law establishing the College of Post-Basic Nursing Sciences in Rigasa to address specialist nurse shortages. Read More: https://punchng.com/kaduna-gov-signs-law-establishing-nursing-college/",
-      "url": "https://punchng.com/kaduna-gov-signs-law-establishing-nursing-college/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-15T20:33:45+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "EPL: Michael Carrick told to drop Lisandro Martinez from Man United squad",
-      "summary": "Former Premier League striker Jimmy Floyd Hasselbaink has called on Manchester United to suspend Lisandro Martinez for publicly criticising the club’s hierarchy. Speaking on Sky Sports, Hasselbaink said that although he agreed with the defender’s concerns, Martinez should face consequences for airin",
-      "url": "https://dailypost.ng/2026/10/15/epl-michael-carrick-told-to-drop-lisandro-martinez-from-man-united-squad/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-15T20:32:55+00:00",
       "categories": []
     }
   ]
