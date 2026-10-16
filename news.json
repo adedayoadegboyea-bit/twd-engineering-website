@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T21:55:59.853883+00:00",
+  "generated_at": "2026-10-16T22:22:07.136789+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,9 +11,29 @@
   ],
   "articles": [
     {
-      "title": "DSS arrests Maina’s son after returning to Nigeria, hands him over to EFCC",
-      "summary": "The DSS has arrested Faisal Maina, son of the ex-pension boss, after he secretly returned to Nigeria and handed him over to the EFCC to serve his jail term Read More: https://punchng.com/dss-arrests-mainas-son-after-returning-to-nigeria-hands-him-over-to-efcc/",
-      "url": "https://punchng.com/dss-arrests-mainas-son-after-returning-to-nigeria-hands-him-over-to-efcc/?utm_source=rss.punchng.com&utm_medium=web",
+      "title": "Skills alone can’t build sustainable businesses — Expert",
+      "summary": "A business strategist, Dr Stephen Enike-Matthew, says acquiring skills alone is not enough to build sustainable businesses without business knowledge and s Read More: https://punchng.com/skills-alone-cant-build-sustainable-businesses-expert/",
+      "url": "https://punchng.com/skills-alone-cant-build-sustainable-businesses-expert/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-16T23:17:14+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "Tinubu hails Oyebanji on second-term inauguration",
+      "summary": "President Tinubu has hailed Ekiti State Governor Biodun Oyebanji on his second-term inauguration, describing his reelection as a reward for performance. Read More: https://punchng.com/tinubu-hails-oyebanji-on-second-term-inauguration/",
+      "url": "https://punchng.com/tinubu-hails-oyebanji-on-second-term-inauguration/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-16T22:56:47+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "DSS arrests convicted Maina’s son, hands him over to EFCC",
+      "summary": "The DSS has arrested Faisal Maina, son of the ex-pension boss, who was convicted for money laundering and had been on the run since 2020. Read More: https://punchng.com/dss-arrests-convicted-mainas-son-hands-him-over-to-efcc/",
+      "url": "https://punchng.com/dss-arrests-convicted-mainas-son-hands-him-over-to-efcc/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-16T22:07:34+00:00",
       "categories": []
@@ -264,26 +284,6 @@
       "source": "Daily Post Nigeria",
       "published": "2026-10-16T19:57:35+00:00",
       "categories": []
-    },
-    {
-      "title": "Niger miners’ deaths: Suspended NSCDC Commandant apologises; lawyer says advice on minors was ignored",
-      "summary": "The suspended Niger State Commandant of the Nigeria Security and Civil Defence Corps, NSCDC, Suberu Siyaka Aniviye, has admitted that the deaths of suspected illegal miners in custody could have been avoided, apologising to their families and the Niger State Government. Aniviye tendered the apology ",
-      "url": "https://dailypost.ng/2026/10/16/niger-miners-deaths-suspended-nscdc-commandant-apologises-lawyer-says-advice-on-minors-was-ignored/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T19:47:25+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "NDC accuses INEC official of issuing conflicting reports on Kano governorship primary",
-      "summary": "The Nigeria Democratic Congress (NDC) in Kano State has accused an official of the Independent National Electoral Commission (INEC) of producing different reports on its governorship primary election, which the party claims contain contradictory information about its candidates. The party made the a",
-      "url": "https://dailypost.ng/2026/10/16/ndc-accuses-inec-official-of-issuing-conflicting-reports-on-kano-governorship-primary/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T19:44:52+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
