@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T13:33:09.888022+00:00",
+  "generated_at": "2026-10-16T14:25:12.554534+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,6 +11,51 @@
   ],
   "articles": [
     {
+      "title": "Police arrest four over electricity infrastructure theft in Calabar",
+      "summary": "Police in Cross River State have arrested four suspects in connection with the alleged vandalism and theft of electricity infrastructure in Calabar. Read More: https://punchng.com/police-arrest-four-over-electricity-infrastructure-theft-in-calabar/",
+      "url": "https://punchng.com/police-arrest-four-over-electricity-infrastructure-theft-in-calabar/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-16T15:11:04+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Ogoni cleanup: Reps demand more funds for HYPREP",
+      "summary": "The House of Reps Committee on Host Communities has called for increased funding for HYPREP to complete outstanding projects in the Ogoni cleanup exercise. Read More: https://punchng.com/ogoni-cleanup-reps-demand-more-funds-for-hyprep/",
+      "url": "https://punchng.com/ogoni-cleanup-reps-demand-more-funds-for-hyprep/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-16T15:07:16+00:00",
+      "categories": []
+    },
+    {
+      "title": "Agbara Nla grosses N307m, ranks fourth among 2026 Nollywood films",
+      "summary": "Nollywood faith-based film, Agbara Nla: The Return, has grossed over N307.2m at the box office, making it the fourth highest-grossing film of 2026. Read More: https://punchng.com/agbara-nla-grosses-n307m-ranks-fourth-among-2026-nollywood-films/",
+      "url": "https://punchng.com/agbara-nla-grosses-n307m-ranks-fourth-among-2026-nollywood-films/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-16T15:02:54+00:00",
+      "categories": []
+    },
+    {
+      "title": "Real Madrid demand resignation of La Liga president",
+      "summary": "Real Madrid has demanded the immediate resignation of La Liga president Javier Tebas over comments comparing the club’s media methods to Nazi propaganda. Read More: https://punchng.com/madrid-demand-resignation-of-la-liga-president/",
+      "url": "https://punchng.com/madrid-demand-resignation-of-la-liga-president/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-16T14:42:12+00:00",
+      "categories": []
+    },
+    {
+      "title": "Handwashing Day: Foundation urges govts to provide hygiene facilities in public schools",
+      "summary": "The Safe Hands Foundation has urged governments to provide hygiene facilities like running water in public schools across Rivers State to promote handwashi Read More: https://punchng.com/handwashing-day-foundation-urges-govts-to-provide-hygiene-facilities-in-public-schools/",
+      "url": "https://punchng.com/handwashing-day-foundation-urges-govts-to-provide-hygiene-facilities-in-public-schools/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-16T14:32:41+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
       "title": "Fintech company exits agent banking but stays in Nigeria",
       "summary": "Fintech company Onafriq is shutting down its Baxi agent banking business in Nigeria, citing rising costs, naira depreciation, and growing competition. Read More: https://punchng.com/fintech-company-exits-agent-banking-but-stays-in-nigeria/",
       "url": "https://punchng.com/fintech-company-exits-agent-banking-but-stays-in-nigeria/?utm_source=rss.punchng.com&utm_medium=web",
@@ -18,6 +63,16 @@
       "published": "2026-10-16T14:26:53+00:00",
       "categories": [
         "business"
+      ]
+    },
+    {
+      "title": "Protest erupts at Kano INEC office over omission of NDC guber candidate’s name",
+      "summary": "Supporters of the Nigeria Democratic Congress, NDC, in Kano State on Friday staged a peaceful protest at the office of the Independent National Electoral Commission, INEC, over the omission of the party’s governorship candidate, Aminu Gwarzo, and his running mate, Mustapha Rabiu, from the final list",
+      "url": "https://dailypost.ng/2026/10/16/protest-erupts-at-kano-inec-office-over-omission-of-ndc-guber-candidates-name/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-16T14:21:24+00:00",
+      "categories": [
+        "government"
       ]
     },
     {
@@ -70,6 +125,68 @@
       ]
     },
     {
+      "title": "Troops rescue 50-year-old man after attack on farmers in Zamfara",
+      "summary": "Troops of Operation FANSAN YAMMA have rescued a 50-year-old man, Mallam Ibrahim Suleiman, following an attack on farmers in Dutsen Maru community, Maru Local Government Area of Zamfara State. The rescue was reported in a post shared on X on Friday by security analyst Bakatsine. According to the post",
+      "url": "https://dailypost.ng/2026/10/16/troops-rescue-50-year-old-man-after-attack-on-farmers-in-zamfara/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-16T13:58:53+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Kwankwasiyya accuses INEC staff of colluding to substitute Kano candidates",
+      "summary": "The Kwankwasiyya Movement has accused a staff member of the Independent National Electoral Commission (INEC) of colluding with unauthorised persons to facilitate the substitution of some of its candidates in Kano State. The accusation was made during a protest by hundreds of Kwankwasiyya Movement su",
+      "url": "https://dailypost.ng/2026/10/16/kwankwasiyya-accuses-inec-staff-of-colluding-to-substitute-kano-candidates/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-16T13:58:38+00:00",
+      "categories": []
+    },
+    {
+      "title": "EPL: Xabi Alonso picks new Chelsea captains with Reece James out until 2027",
+      "summary": "Chelsea manager, Xabi Alonso, has named two players that would wear the captain’s armband in the absence of Reece James. Earlier on Friday, the Premier League club confirmed James has undergone knee surgery. The defender is expected to be unavailable until 2027. Alonso was asked during his press con",
+      "url": "https://dailypost.ng/2026/10/16/epl-xabi-alonso-picks-new-chelsea-captains-with-reece-james-out-until-2027/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-16T13:55:52+00:00",
+      "categories": []
+    },
+    {
+      "title": "EPL: Arteta reveals Saliba’s reaction to exclusion from Arsenal team photo",
+      "summary": "Arsenal manager, Mikel Arteta, has claimed that William Saliba has no issues with being excluded from the official team photo that was taken this week. The Premier League champions had claimed that Saliba missed the shoot due to a “medical appointment”. Arteta has also explained why the shoot contin",
+      "url": "https://dailypost.ng/2026/10/16/epl-arteta-reveals-salibas-reaction-to-exclusion-from-arsenal-team-photo/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-16T13:42:26+00:00",
+      "categories": []
+    },
+    {
+      "title": "Self confessed Boko Haram terrorist, Abubakar Goni jailed for 30 years",
+      "summary": "A self confessed Boko Haram member, Abubakar Goni, has been sentenced to 30 years imprisonment by the Federal High Court in Abuja. Goni of Daira village in Gubi Local Government Area of Yobe State, was jailed by Justice Binta Nyako on Friday following his admission that he knowingly joined the prosc",
+      "url": "https://dailypost.ng/2026/10/16/self-confessed-boko-haram-terrorist-abubakar-goni-jailed-for-30-years/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-16T13:38:25+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Police, INEC strengthen partnership to ensure peaceful elections in Taraba",
+      "summary": "The Taraba State Police Command has reaffirmed its commitment to working closely with the Independent National Electoral Commission (INEC) and other relevant stakeholders to maintain law and order before, during and after elections in the state. The Commissioner of Police, Edwin Ogbeghagha, gave the",
+      "url": "https://dailypost.ng/2026/10/16/police-inec-strengthen-partnership-to-ensure-peaceful-elections-in-taraba/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-16T13:36:38+00:00",
+      "categories": []
+    },
+    {
+      "title": "Cross River: Police arrest three more suspects over electricity materials theft",
+      "summary": "The Cross River State Police Command has arrested three additional suspects in connection with the alleged theft and vandalism of electricity infrastructure in Calabar. The development follows the earlier arrest of the prime suspect, Peter Adie, 36, over the alleged vandalism of electricity infrastr",
+      "url": "https://dailypost.ng/2026/10/16/cross-river-police-arrest-three-more-suspects-over-electricity-materials-theft/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-16T13:36:05+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
       "title": "“We Can’t Have Criminal Justice System Run By Criminals – Adebayo",
       "summary": "Presidential candidate of the Social Democratic Party, SDP, Prince Adewole Adebayo, has vowed to overhaul Nigeria’s criminal justice system if elected in 2027. Adebayo said the system as presently run helps rich criminals and corrupt public officials escape justice while jailing the poor for petty o",
       "url": "https://www.informationng.com/2026/10/we-cant-have-criminal-justice-system-run-by-criminals-adebayo.html",
@@ -88,6 +205,16 @@
       "categories": [
         "government",
         "oyo"
+      ]
+    },
+    {
+      "title": "RMB Nigeria Asset Management Wins Excellence in Investment Management at the 2026 BAFI Awards",
+      "summary": "RMB Nigeria Asset Management Limited has been honoured with the Excellence in Investment Management award at the 2026 Banks and Other Financial Institution Read More: https://punchng.com/rmb-nigeria-asset-management-wins-excellence-in-investment-management-at-the-2026-bafi-awards/",
+      "url": "https://punchng.com/rmb-nigeria-asset-management-wins-excellence-in-investment-management-at-the-2026-bafi-awards/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-16T13:23:00+00:00",
+      "categories": [
+        "business"
       ]
     },
     {
@@ -164,132 +291,6 @@
       "source": "Daily Post Nigeria",
       "published": "2026-10-16T13:00:36+00:00",
       "categories": []
-    },
-    {
-      "title": "PTDF vows to strengthen research, development in universities",
-      "summary": "The PTDF has reiterated its commitment to strengthening research and human capital development in Nigerian universities, focusing on renewable energy solut Read More: https://punchng.com/ptdf-vows-to-strengthen-research-development-in-universities/",
-      "url": "https://punchng.com/ptdf-vows-to-strengthen-research-development-in-universities/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-16T12:59:35+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ododo congratulates Abdullahi on election as NBBF president",
-      "summary": "Kogi State Governor, Ahmed Ododo, has congratulated Dr Mustapha Abdullahi on his election as the new president of the Nigeria Basketball Federation (NBBF). Read More: https://punchng.com/ododo-congratulates-abdullahi-on-election-as-nbbf-president/",
-      "url": "https://punchng.com/ododo-congratulates-abdullahi-on-election-as-nbbf-president/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-16T12:59:08+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "JAMB reopens NIN alignment service for data correction",
-      "summary": "JAMB has reopened its NIN alignment service, offering candidates a one-time opportunity to correct discrepancies between their exam records and NIMC data. Read More: https://punchng.com/jamb-reopens-nin-alignment-service-for-data-correction/",
-      "url": "https://punchng.com/jamb-reopens-nin-alignment-service-for-data-correction/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-16T12:57:50+00:00",
-      "categories": []
-    },
-    {
-      "title": "IPOB embraces solidarity with Hausa, other northern ethnic nationalities",
-      "summary": "The Indigenous People of Biafra, IPOB, on Friday announced that it has embraced solidarity with the Hausa and other northern ethnic nationalities. The declaration followed the solidarity extended to the pro-Biafra group by the northern youths and the Northern Nigeria Rescue Movement, NNRM. IPOB stat",
-      "url": "https://dailypost.ng/2026/10/16/ipob-embraces-solidarity-with-hausa-other-northern-ethnic-nationalities/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T12:55:31+00:00",
-      "categories": []
-    },
-    {
-      "title": "JAMB reopens NIN alignment service for candidates to correct biodata errors",
-      "summary": "The Joint Admissions and Matriculation Board, JAMB, has reopened its NIN Alignment Service, allowing eligible candidates to correct discrepancies in their biodata records. The service is being offered in collaboration with the National Identity Management Commission, NIMC, to help candidates align t",
-      "url": "https://dailypost.ng/2026/10/16/jamb-reopens-nin-alignment-service-for-candidates-to-correct-biodata-errors/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T12:55:22+00:00",
-      "categories": []
-    },
-    {
-      "title": "WWE star Montez Ford sued over alleged sexualised lap dance on guard",
-      "summary": "WWE star Montez Ford is facing a lawsuit from a security guard who accused him of performing a sexualised lap dance on him during a live broadcast of Monday Night Raw on Netflix. The guard, Noel Lucas, filed the lawsuit against Ford, whose real name is Kenneth Crawford, and WWE, alleging assault, ba",
-      "url": "https://dailypost.ng/2026/10/16/wwe-star-montez-ford-sued-over-alleged-sexualised-lap-dance-on-guard/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T12:52:22+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Nathaniel Bassey reacts to death of gospel singer, Toluwanisings",
-      "summary": "Nigerian gospel singer and pastor, Nathaniel Bassey, has reacted to the death of music minister, Toluwanisings. DAILY POST reports that Toluwanisings slumped and died on Wednesday after being rejected by eight hospitals. Following reports on the circumstances surrounding his death, netizens have cal",
-      "url": "https://dailypost.ng/2026/10/16/nathaniel-bassey-reacts-to-death-of-gospel-singer-toluwanisings/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T12:51:02+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Police raid criminal hideout, arrest suspected drug dealer, recover cable wires in Uyo",
-      "summary": "Operatives of the Akwa Ibom State Police Command have raided a criminal den along Aka Itiam Street, Uyo Local Government Area, arresting a suspect and recovering a cache of Indian hemp. The command’s Public Relations Officer, DSP Timfon John, who disclosed this in a statement on Friday, said the rai",
-      "url": "https://dailypost.ng/2026/10/16/police-raid-criminal-hideout-arrest-suspected-drug-dealer-recover-cable-wires-in-uyo/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T12:48:00+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Tinubu celebrates aide Basheer Lado at 60",
-      "summary": "President Tinubu described Mr Lado, a former senator, as a dependable public servant and accomplished legislator who served in the Senate for four years before becoming his liaison officer in the National Assembly's Upper Chamber. The post Tinubu celebrates aide Basheer Lado at 60 appeared first on ",
-      "url": "https://www.premiumtimesng.com/news/more-news/917615-tinubu-celebrates-aide-basheer-lado-at-60.html",
-      "source": "Premium Times",
-      "published": "2026-10-16T12:45:47+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: Adebayo’s camp faults Tinubu’s reported campaign absence",
-      "summary": "The camp of the presidential candidate of the Social Democratic Party, SDP, Adewole Adebayo, has urged Nigerians to scrutinise those aspiring to lead the country ahead of the 2027 general election while faulting President Bola Tinubu over reports that he will be absent from the campaigns. The Moveme",
-      "url": "https://dailypost.ng/2026/10/16/2027-adebayos-camp-faults-tinubus-reported-campaign-absence/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T12:45:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "PHOTOS: Army honours departing senior officers",
-      "summary": "The GOC 1 Division, Nigerian Army, Maj Gen Abubakar Wase, has commended three departing senior officers for their professionalism and loyalty in Kaduna. Read More: https://punchng.com/photos-army-honours-departing-senior-officers/",
-      "url": "https://punchng.com/photos-army-honours-departing-senior-officers/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-16T12:37:24+00:00",
-      "categories": []
-    },
-    {
-      "title": "How Bakassi Boys arrested ‘Issakaba’ distributor, accosted Sam Dede — Lancelot Imasuen",
-      "summary": "Mr Imasuen revisited the encounters ahead of the November cinema release of Issakaba Returns, more than two decades after the original film. The post How Bakassi Boys arrested ‘Issakaba’ distributor, accosted Sam Dede — Lancelot Imasuen appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/entertainment/nollywood/917611-how-bakassi-boys-arrested-issakaba-distributor-accosted-sam-dede-lancelot-imasuen.html",
-      "source": "Premium Times",
-      "published": "2026-10-16T12:35:23+00:00",
-      "categories": []
-    },
-    {
-      "title": "Tope Alabi, Yinka Alaseyori, Bidemi Olaoba, Ebuka Songs mourn gospel singer, Toluwanisings",
-      "summary": "Nigerian gospel singers, Tope Alabi, Yinka Alaseyori, Bidemi Olaoba, Peterson and Ebuka Songs have mourned the death of their colleague, Toluwanisings. DAILY reports that Toluwanisings slumped at his Ibadan residence on Wednesday while about taking his children to school. According to his PA, Babadu",
-      "url": "https://dailypost.ng/2026/10/16/tope-alabi-yinka-alaseyori-bidemi-olaoba-ebuka-songs-mourn-gospel-singer-toluwanisings/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-16T12:25:46+00:00",
-      "categories": [
-        "oyo"
-      ]
-    },
-    {
-      "title": "Report illegal dumping of waste, LAWMA urges residents",
-      "summary": "The Lagos Waste Management Authority (LAWMA) has urged residents to report illegal waste dumping to curb environmental and public health risks in the state Read More: https://punchng.com/2273837-2/",
-      "url": "https://punchng.com/2273837-2/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-16T12:11:44+00:00",
-      "categories": [
-        "lagos"
-      ]
     }
   ]
 }
