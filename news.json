@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T18:15:40.777356+00:00",
+  "generated_at": "2026-10-17T18:55:01.309194+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,24 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Nigerian-made bionic arm named among TIME’s best inventions of 2026",
+      "summary": "A Nigerian-made bionic arm, the Ubokobong Bionic Arm, has been named among TIME magazine’s Best Inventions of 2026 for its accessibility and design. Read More: https://punchng.com/nigerian-made-bionic-arm-named-among-times-best-inventions-of-2026/",
+      "url": "https://punchng.com/nigerian-made-bionic-arm-named-among-times-best-inventions-of-2026/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-17T19:46:14+00:00",
+      "categories": []
+    },
+    {
+      "title": "DLA disowns Taraba gov candidate over Tinubu endorsement, summons him for discipline",
+      "summary": "The Democratic Leadership Alliance has disowned its Taraba governorship candidate, Aboki Bayonga, for endorsing President Tinubu for a second term. Read More: https://punchng.com/dla-disowns-taraba-gov-candidate-over-tinubu-endorsement-summons-him-for-discipline/",
+      "url": "https://punchng.com/dla-disowns-taraba-gov-candidate-over-tinubu-endorsement-summons-him-for-discipline/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-17T19:43:57+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "PSG fight back to beat Strasbourg after Dembele penalty miss",
       "summary": "Paris Saint-Germain fought back to beat Strasbourg 3-1 in Ligue 1, going top of the table despite Ousmane Dembele missing a penalty. Read More: https://punchng.com/psg-fight-back-to-beat-strasbourg-after-dembele-penalty-miss/",
@@ -119,6 +137,14 @@
       "categories": [
         "government"
       ]
+    },
+    {
+      "title": "Covenant varsity, experts seek solutions to Nigeria’s food crisis",
+      "summary": "Covenant University and development experts have called for increased research into food preservation and distribution to address Nigeria’s food crisis. Read More: https://punchng.com/covenant-varsity-experts-seek-solutions-to-nigerias-food-crisis/",
+      "url": "https://punchng.com/covenant-varsity-experts-seek-solutions-to-nigerias-food-crisis/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-17T17:54:19+00:00",
+      "categories": []
     },
     {
       "title": "Wrong choices of politicians kept Nigeria like this - Ex-NCDC boss, Ihekweazu charges students not to lose hope",
@@ -258,34 +284,6 @@
       "source": "Premium Times",
       "published": "2026-10-17T17:08:43+00:00",
       "categories": []
-    },
-    {
-      "title": "Two officers killed as gunmen attack police station in Abia",
-      "summary": "PREMIUM TIMES gathered that the attackers invaded the police facility at about 2 a.m. on Saturday. The post Two officers killed as gunmen attack police station in Abia appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/917846-two-officers-killed-as-gunmen-attack-police-station-in-abia.html",
-      "source": "Premium Times",
-      "published": "2026-10-17T17:00:09+00:00",
-      "categories": []
-    },
-    {
-      "title": "Use data to curb road crashes, Sultan tells FRSC marshals",
-      "summary": "The Sultan of Sokoto has urged FRSC Special Marshals to adopt data-driven strategies and partnerships to reduce road traffic crashes and save lives in Nige Read More: https://punchng.com/use-data-to-curb-road-crashes-sultan-tells-frsc-marshals/",
-      "url": "https://punchng.com/use-data-to-curb-road-crashes-sultan-tells-frsc-marshals/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-17T16:55:06+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "'We will protect valid votes in Kogi LG election’ – KOSIEC Chairman",
-      "summary": "The Chairman of the Kogi State Independent Electoral Commission (KOSIEC), Mamman Nda-Eri, has assured voters and political parties that the commission will protect valid votes and ensure they are counted in Saturday’s local government election. Nda-Eri gave the assurance while monitoring the exercis",
-      "url": "https://dailypost.ng/2026/10/17/kogi-lg-poll-kosiec-vows-ro-protect-valid-votes/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-17T16:54:02+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
