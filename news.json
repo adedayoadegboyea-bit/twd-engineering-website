@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T00:22:27.750800+00:00",
+  "generated_at": "2026-10-18T01:08:23.367065+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,25 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Why husbands should be in labour rooms with wives — Gynaecologists",
+      "summary": "Nigerian gynaecologists explain why husbands should be in labour rooms, citing WHO guidelines. Their presence offers emotional support and can improve outc Read More: https://punchng.com/why-husbands-should-be-in-labour-rooms-with-wives-gynaecologists/",
+      "url": "https://punchng.com/why-husbands-should-be-in-labour-rooms-with-wives-gynaecologists/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T01:51:21+00:00",
+      "categories": []
+    },
+    {
+      "title": "Tanker crushes five Oyo residents",
+      "summary": "At least five people have been killed after a diesel tanker lost its brake and crashed into several vehicles along the Iwo Road-Ojoo Expressway in Ibadan. Read More: https://punchng.com/tanker-crushes-five-oyo-residents/",
+      "url": "https://punchng.com/tanker-crushes-five-oyo-residents/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T01:30:21+00:00",
+      "categories": [
+        "engineering",
+        "oyo"
+      ]
+    },
     {
       "title": "CEO shares journey to buliding $200m firm",
       "summary": "CITA Energies Chairman, Dr Thomas Ogungbangbe, recounts how the aviation fuel supplier grew from his living room into an enterprise with facilities valued Read More: https://punchng.com/ceo-shares-journey-to-buliding-200m-firm/",
@@ -86,6 +105,14 @@
       "url": "https://punchng.com/petrol-transporters-raise-fares-commuters-groan/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-18T00:02:47+00:00",
+      "categories": []
+    },
+    {
+      "title": "Gunmen raze Abia police station, kill two cops",
+      "summary": "Gunmen have attacked the Uratta Police Station in Aba, Abia State, killing two officers and injuring three others in an early morning raid on Saturday. Read More: https://punchng.com/gunmen-raze-abia-police-station-kill-two-cops/",
+      "url": "https://punchng.com/gunmen-raze-abia-police-station-kill-two-cops/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T00:02:12+00:00",
       "categories": []
     },
     {
@@ -248,33 +275,6 @@
       "categories": [
         "government",
         "oyo"
-      ]
-    },
-    {
-      "title": "APC network secretariat",
-      "summary": "The APC Youth Network West Africa has inaugurated its secretariat to expand youth mobilisation and promote community development ahead of the 2027 election Read More: https://punchng.com/apc-network-secretariat/",
-      "url": "https://punchng.com/apc-network-secretariat/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T00:00:32+00:00",
-      "categories": []
-    },
-    {
-      "title": "Final-year project hell: Graduates expose lecturers’ money, sex demands",
-      "summary": "Nigerian graduates share harrowing experiences of victimisation, psychological stress, and financial demands from lecturers supervising their final-year pr Read More: https://punchng.com/final-year-project-hell-graduates-expose-lecturers-money-sex-demands/",
-      "url": "https://punchng.com/final-year-project-hell-graduates-expose-lecturers-money-sex-demands/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T00:00:30+00:00",
-      "categories": []
-    },
-    {
-      "title": "Marketers seek role in FG’s cooking gas schemes",
-      "summary": "The Nigerian Association of Liquefied Petroleum Gas Marketers has asked the Federal Government to involve its members in cooking gas penetration initiative Read More: https://punchng.com/marketers-seek-role-in-fgs-cooking-gas-schemes/",
-      "url": "https://punchng.com/marketers-seek-role-in-fgs-cooking-gas-schemes/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T00:00:28+00:00",
-      "categories": [
-        "business",
-        "government"
       ]
     }
   ]
