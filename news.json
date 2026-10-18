@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T19:16:40.791031+00:00",
+  "generated_at": "2026-10-18T19:47:59.590320+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,24 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Police arrest man over cult-related killing in Imo",
+      "summary": "The Imo State Police Command has arrested a 22-year-old man, Bright Adiene, in connection with the suspected cult-related murder of Nnamdi Okeke in Owerri. Read More: https://punchng.com/police-arrest-man-over-cult-related-killing-in-imo/",
+      "url": "https://punchng.com/police-arrest-man-over-cult-related-killing-in-imo/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T20:30:51+00:00",
+      "categories": []
+    },
+    {
+      "title": "Dele Cole stood firmly with Niger Delta aspirations, Ibori mourns",
+      "summary": "Former Delta State Governor, James Ibori, has mourned the death of prominent Niger Delta leader, Dele Cole, praising his commitment to resource control. Read More: https://punchng.com/dele-cole-stood-firmly-with-niger-delta-aspirations-ibori-mourns/",
+      "url": "https://punchng.com/dele-cole-stood-firmly-with-niger-delta-aspirations-ibori-mourns/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T20:25:00+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Army chief’s wife urges soldiers’ families to prioritise cancer detection",
       "summary": "The President of the Nigerian Army Officers’ Wives Association, Dr Safiyyah Shaibu, has urged military families to prioritise early breast cancer detection Read More: https://punchng.com/army-chiefs-wife-urges-soldiers-families-to-prioritise-cancer-detection/",
@@ -55,6 +73,16 @@
       "categories": [
         "engineering",
         "lagos"
+      ]
+    },
+    {
+      "title": "LASU professor Tunde Akanni inducted as peace studies fellow",
+      "summary": "The Federal Competition and Consumer Protection Commission (FCCPC), where Mr Akanni is currently on sabbatical, also congratulated him on the recognition. The post LASU professor Tunde Akanni inducted as peace studies fellow appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/education/918115-lasu-professor-tunde-akanni-inducted-as-peace-studies-fellow.html",
+      "source": "Premium Times",
+      "published": "2026-10-18T19:27:51+00:00",
+      "categories": [
+        "government"
       ]
     },
     {
@@ -248,36 +276,6 @@
       "categories": [
         "government"
       ]
-    },
-    {
-      "title": "Police arrest two suspected robbers in Bauchi, recover stolen valuables",
-      "summary": "Police operatives have arrested two suspected armed robbers and recovered some stolen valuables following a robbery at a compound housing Cozy Resort Hotel in Birshi Gandu, Bauchi State. The suspects, Abdulshakur Adamu, 20, also known as Dan Oga, of Jahun, and Rabiu Usman, 21, of Sabon Layi, Bauchi,",
-      "url": "https://dailypost.ng/2026/10/18/police-arrest-two-suspected-robbers-in-bauchi-recover-stolen-valuables/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T18:09:36+00:00",
-      "categories": [
-        "engineering",
-        "property"
-      ]
-    },
-    {
-      "title": "Two killed, two injured in Lagos road crash – LASTMA",
-      "summary": "LASTMA said its operatives responded to the scene, coordinated rescue efforts and secured the area. The post Two killed, two injured in Lagos road crash – LASTMA appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/top-news/918071-two-killed-two-injured-in-lagos-road-crash-lastma.html",
-      "source": "Premium Times",
-      "published": "2026-10-18T18:08:53+00:00",
-      "categories": [
-        "engineering",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Nollywood actress Tenia Abraham dies at 32, buried in Abuja",
-      "summary": "Nollywood actress and beauty queen, Tenia Abraham, has died at the age of 32 after battling a kidney infection. She was buried in Abuja on October 17. Read More: https://punchng.com/nollywood-actress-tenia-abraham-dies-at-32-buried-in-abuja/",
-      "url": "https://punchng.com/nollywood-actress-tenia-abraham-dies-at-32-buried-in-abuja/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T17:57:17+00:00",
-      "categories": []
     }
   ]
 }
