@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T08:54:44.275785+00:00",
+  "generated_at": "2026-10-18T09:19:01.923088+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,27 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Ogun FRSC sector commander dies",
+      "summary": "The Federal Road Safety Corps has announced the death of its Ogun State Sector Commander, Oludare Ogunjobi, following a brief illness. Read More: https://punchng.com/ogun-frsc-sector-commander-dies/",
+      "url": "https://punchng.com/ogun-frsc-sector-commander-dies/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T10:08:58+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "SERAP sues INEC over failure to account for ‘missing ₦126bn electoral funds’",
+      "summary": "SERAP has sued INEC at the Federal High Court, Abuja, over its failure to account for over ₦126bn allegedly diverted or mismanaged electoral funds. Read More: https://punchng.com/serap-sues-inec-over-failure-to-account-for-missing-%e2%82%a6126bn-electoral-funds/",
+      "url": "https://punchng.com/serap-sues-inec-over-failure-to-account-for-missing-%e2%82%a6126bn-electoral-funds/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T10:02:20+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Anambra first lady urges collective action against poverty",
       "summary": "Anambra State’s First Lady, Nonye Soludo, has called for a collective effort to tackle poverty through job creation, empowerment and technology initiatives Read More: https://punchng.com/anambra-first-lady-urges-collective-action-against-poverty/",
@@ -45,6 +66,14 @@
       "categories": [
         "engineering"
       ]
+    },
+    {
+      "title": "Health workers’ strike disrupts hospital services in Katsina",
+      "summary": "Patients and caregivers have expressed concern over disrupted healthcare services as health professionals in Katsina State embark on a one-week warning strike over welfare and remuneration. The post Health workers’ strike disrupts hospital services in Katsina appeared first on Premium Times Nigeria ",
+      "url": "https://www.premiumtimesng.com/news/top-news/917957-health-workers-strike-disrupts-hospital-services-in-katsina.html",
+      "source": "Premium Times",
+      "published": "2026-10-18T09:02:31+00:00",
+      "categories": []
     },
     {
       "title": "Address striking doctors’ demands, Kwara PDP urges AbdulRazaq",
@@ -246,35 +275,6 @@
       "url": "https://www.premiumtimesng.com/news/top-news/917923-accord-chairman-seeks-clarification-over-adelekes-role-in-tinubus-campaign.html",
       "source": "Premium Times",
       "published": "2026-10-18T07:08:11+00:00",
-      "categories": []
-    },
-    {
-      "title": "Banditry: Tinubu approves fresh security equipment to secure trains",
-      "summary": "President Bola Tinubu has approved the purchase of additional train coaches and security equipment to boost railway services and tackle banditry, kidnapping and vandalism. The approval includes more coaches to increase passenger and freight capacity, and surveillance systems to secure rail infrastru",
-      "url": "https://dailypost.ng/2026/10/18/banditry-tinubu-approves-fresh-security-equipment-to-secure-trains/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T06:58:02+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Barcelona's Rodri names strongest team in Europe",
-      "summary": "Manchester City midfielder, Rodri has named Paris Saint-Germain as the strongest team in Europe at the moment. According to the Spanish international, PSG will give everything at home when they face Barcelona in the Champions League in Paris on Tuesday. The former Manchester City star spoke to Barce",
-      "url": "https://dailypost.ng/2026/10/18/barcelonas-rodri-names-strongest-team-in-europe/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T06:56:42+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "ISWAP fighter flees enclave, surrenders with wife, son in Borno",
-      "summary": "An Islamic State West Africa Province, ISWAP, fighter has surrendered to Nigerian Army troops in Borno State, alongside his wife and son after reportedly escaping from a terrorist enclave. The fighter surrendered at about 6:30am. on October 16, 2026, to troops of the 202 Battalion ahead of the Bravo",
-      "url": "https://dailypost.ng/2026/10/18/iswap-fighter-flees-enclave-surrenders-with-wife-son-in-borno/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T06:55:19+00:00",
       "categories": []
     }
   ]
