@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T14:52:09.420420+00:00",
+  "generated_at": "2026-10-18T15:17:14.915753+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,24 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "2027: Kwankwaso says NDC won’t withdraw for ADC, other parties",
+      "summary": "Senator Rabiu Kwankwaso has ruled out any possibility of the Nigeria Democratic Congress withdrawing its presidential ticket for the ADC in the 2027 electi Read More: https://punchng.com/2027-kwankwaso-says-ndc-wont-withdraw-for-adc-other-parties/",
+      "url": "https://punchng.com/2027-kwankwaso-says-ndc-wont-withdraw-for-adc-other-parties/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T15:59:43+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: Ogun PDP chieftain disowns lawyer, governorship bid",
+      "summary": "An Ogun State PDP chieftain, Topa Peter, has disowned reports identifying him as a governorship aspirant, alleging his name was used without his consent. Read More: https://punchng.com/2027-ogun-pdp-chieftain-disowns-lawyer-governorship-bid/",
+      "url": "https://punchng.com/2027-ogun-pdp-chieftain-disowns-lawyer-governorship-bid/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T15:57:29+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Sokoto defends Tinubu’s INEC nominee, insists appointment on merit, not family ties",
       "summary": "The Sokoto State Government has defended President Tinubu’s nomination of Professor Mustapha Aliyu as an INEC commissioner, insisting it was based on merit Read More: https://punchng.com/sokoto-defends-tinubus-inec-nominee-insists-appointment-on-merit-not-family-ties/",
@@ -262,24 +280,6 @@
       "categories": [
         "business"
       ]
-    },
-    {
-      "title": "Multiple casualties as fire hits Canadian military base",
-      "summary": "A major fire at Canadian Forces Base Wainwright in Alberta has resulted in multiple fatalities and injuries, according to the country’s defence minister. Read More: https://punchng.com/multiple-casualties-as-fire-hits-canadian-military-base/",
-      "url": "https://punchng.com/multiple-casualties-as-fire-hits-canadian-military-base/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T13:13:33+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027: Ex-Niger commissioner, Jonathan Vatsa dumps APC",
-      "summary": "Former Niger State Commissioner for Information, Culture and Tourism, Jonathan Vatsa, has resigned his membership of the All Progressives Congress, APC, after years of serving in key positions within the party and successive administrations in the state. Vatsa, a former APC Publicity Secretary in Ni",
-      "url": "https://dailypost.ng/2026/10/18/ex-niger-commissioner-jonathan-vatsa-dumps-apc/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T13:11:27+00:00",
-      "categories": []
     }
   ]
 }
