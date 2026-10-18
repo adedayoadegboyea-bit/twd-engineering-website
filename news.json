@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T13:01:31.291846+00:00",
+  "generated_at": "2026-10-18T13:52:54.330752+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,6 +11,80 @@
   ],
   "articles": [
     {
+      "title": "Lagos water network reaches only 1.03% of residents — LWC",
+      "summary": "The Lagos Water Corporation says its network serves only 1.03% of the state’s 20 million residents, with many spending thousands on alternative sources. Read More: https://punchng.com/lagos-water-network-reaches-only-1-03-of-residents-lwc/",
+      "url": "https://punchng.com/lagos-water-network-reaches-only-1-03-of-residents-lwc/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T14:19:57+00:00",
+      "categories": [
+        "engineering",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Ogun gov, NUJ mourn late FRSC commander",
+      "summary": "Ogun State Governor, Dapo Abiodun, and the NUJ have mourned the sudden death of FRSC Sector Commander, Oludare Ogunjobi, after a brief illness. Read More: https://punchng.com/ogun-gov-nuj-mourn-late-frsc-commander/",
+      "url": "https://punchng.com/ogun-gov-nuj-mourn-late-frsc-commander/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T14:15:20+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: Kwara PDP dismisses fears over leaders’ support for Tinubu",
+      "summary": "The Kwara State PDP has dismissed fears that its leaders’ support for President Tinubu’s re-election could harm its NASS candidates in the 2027 polls. Read More: https://punchng.com/2027-kwara-pdp-dismisses-fears-over-leaders-support-for-tinubu/",
+      "url": "https://punchng.com/2027-kwara-pdp-dismisses-fears-over-leaders-support-for-tinubu/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T14:14:07+00:00",
+      "categories": []
+    },
+    {
+      "title": "Niger deaths: NSCDC Mining Marshals deny involvement",
+      "summary": "John Onoja Attah, Commander of the Mining Marshals, has said that his unit of the Nigerian Security and Civil Defence Corps, NSCDC, was not involved in the deaths of 37 suspected illegal miners in custody in Niger State on September 16, 2026. Attah made this clarification in a statement on Sunday. H",
+      "url": "https://dailypost.ng/2026/10/18/niger-deaths-nscdc-mining-marshals-deny-involvement/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:48:50+00:00",
+      "categories": []
+    },
+    {
+      "title": "Niger APC chieftain Jonathan Vasta resigns from party",
+      "summary": "A prominent member of the All Progressives Congress (APC) in Niger State, Jonathan Vasta, has resigned from the party less than 100 days before the 2027 general elections. Vasta announced his decision in a resignation letter addressed to the APC chairman of Gulu Angwa-Gulu Ward in Lapai Local Govern",
+      "url": "https://dailypost.ng/2026/10/18/niger-apc-chieftain-jonathan-vasta-resigns/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:46:42+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Unknown gunmen attack Aba police station, kill two officers",
+      "summary": "Unidentified gunmen on Saturday attacked the Uratta Eziukwu Police Station in Aba, killing two policemen and injuring three others. The hoodlums who arrived with improvised explosive devices, set a police van ablaze, destroyed a vehicle and power generating set and some other property in the buildin",
+      "url": "https://dailypost.ng/2026/10/18/unknown-gunmen-attack-aba-police-station-kill-two-officers/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:45:43+00:00",
+      "categories": [
+        "engineering",
+        "property"
+      ]
+    },
+    {
+      "title": "Catholic priest dies after cross falls on him during Mass",
+      "summary": "Tragedy has struck the Catholic Archdiocese of Guayaquil, Ecuador, as a priest died after a crucifix fell on him. The incident happened when the priest, Rev Fr Patricio Alfredo Sánchez Molinari, was celebrating the Holy Mass The priest was being live-streamed when the incident occurred. The video of",
+      "url": "https://dailypost.ng/2026/10/18/catholic-priest-dies-after-cross-falls-on-him-during-mass/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:42:51+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: Leave Peter Obi alone, face Shettima - Kwankwaso fires back at Atiku’s ADC",
+      "summary": "The vice-presidential candidate of the Nigeria Democratic Congress, NDC, Rabiu Kwankwaso, has urged the African Democratic Congress, ADC, to focus on allegations made against its presidential candidate by Vice-President Kashim Shettima instead of attacking him and his running mate, Peter Obi. Kwankw",
+      "url": "https://dailypost.ng/2026/10/18/2027-leave-peter-obi-alone-face-shettima-kwankwaso-fires-back-at-atikus-adc/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:41:02+00:00",
+      "categories": []
+    },
+    {
       "title": "Second term: Oyebanji pledges shared prosperity for Ekiti",
       "summary": "Ekiti State Governor, Biodun Oyebanji, has pledged shared prosperity for the state following his inauguration for a second term in office. Read More: https://punchng.com/second-term-oyebanji-pledges-shared-prosperity-for-ekiti/",
       "url": "https://punchng.com/second-term-oyebanji-pledges-shared-prosperity-for-ekiti/?utm_source=rss.punchng.com&utm_medium=web",
@@ -21,12 +95,69 @@
       ]
     },
     {
+      "title": "France burning, act now before it's too late - Trump warns Macron",
+      "summary": "United States President, Donald Trump, has warned France to take urgent measures to address immigration, claiming that the influx of migrants from different cultural backgrounds has contributed to unrest in the European country. Trump issued the warning in a post on his Truth Social platform on Sund",
+      "url": "https://dailypost.ng/2026/10/18/france-burning-act-now-before-its-too-late-trump-warns-macron/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:30:45+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027 Polls: Katsina governor seeks forgiveness, urges APC unity – News Agency of Nigeria",
+      "summary": "The governor urged party members to close ranks, mobilise voters and intensify grassroots campaigns to secure victory for APC candidates. The post 2027 Polls: Katsina governor seeks forgiveness, urges APC unity – News Agency of Nigeria appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/918024-2027-polls-katsina-governor-seeks-forgiveness-urges-apc-unity-news-agency-of-nigeria.html",
+      "source": "Premium Times",
+      "published": "2026-10-18T13:28:43+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Police arrest 11 suspects in nationwide operations, rescue six abducted persons",
+      "summary": "The Nigeria Police Force has said it has achieved noteworthy operational successes across states, apprehending 11 suspects, eliminating two suspected bandits, and liberating six kidnapped individuals during security operations executed on Sunday, October 18, 2026. Police news updates These operation",
+      "url": "https://dailypost.ng/2026/10/18/police-arrest-11-suspects-in-nationwide-operations-rescue-six-abducted-persons/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:28:40+00:00",
+      "categories": []
+    },
+    {
       "title": "Ogun CP summons four officers over viral assault video",
       "summary": "The Ogun State Commissioner of Police has summoned four officers to the command headquarters over a viral video showing them assaulting a young man in Sang Read More: https://punchng.com/ogun-cp-summons-four-officers-over-viral-assault-video/",
       "url": "https://punchng.com/ogun-cp-summons-four-officers-over-viral-assault-video/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-18T13:26:17+00:00",
       "categories": []
+    },
+    {
+      "title": "Lagos water corporation serves only 1.03% of population — Official",
+      "summary": "“Based on these records, actual daily production is three per cent of the installed capacity,” the official said. The post Lagos water corporation serves only 1.03% of population — Official appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/918019-lagos-water-corporation-serves-only-1-03-of-population-official.html",
+      "source": "Premium Times",
+      "published": "2026-10-18T13:23:50+00:00",
+      "categories": [
+        "engineering",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Pope Leo XIV discharged from hospital after lung cancer surgery",
+      "summary": "Pope Leo XIV was discharged from Rome’s Gemelli Hospital on Saturday, four days after undergoing surgery for lung cancer, and returned to the Vatican. The 71-year-old pontiff walked to his vehicle without assistance and briefly interacted with well-wishers gathered outside the hospital before depart",
+      "url": "https://dailypost.ng/2026/10/18/pope-leo-xiv-discharged-from-hospital-after-lung-cancer-surgery/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:22:59+00:00",
+      "categories": []
+    },
+    {
+      "title": "NIPR trains hotel operators ahead of WPRF Abuja 2026",
+      "summary": "As the World Public Relations Forum, WPRF Abuja 2026 draws nearer, the host institute, the Nigerian Institute of Public Relations, NIPR, has organised a one-day conference for top executives of hotels and other hospitality companies in Abuja, the nation's capital. The conference was aimed at prepari",
+      "url": "https://dailypost.ng/2026/10/18/nipr-trains-hotel-operators-ahead-of-wprf-abuja-2026/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:19:46+00:00",
+      "categories": [
+        "business"
+      ]
     },
     {
       "title": "France counts cost of violent protests as 1,800 arrested",
@@ -46,6 +177,69 @@
       "published": "2026-10-18T13:13:33+00:00",
       "categories": [
         "government"
+      ]
+    },
+    {
+      "title": "2027: Ex-Niger commissioner, Jonathan Vatsa dumps APC",
+      "summary": "Former Niger State Commissioner for Information, Culture and Tourism, Jonathan Vatsa, has resigned his membership of the All Progressives Congress, APC, after years of serving in key positions within the party and successive administrations in the state. Vatsa, a former APC Publicity Secretary in Ni",
+      "url": "https://dailypost.ng/2026/10/18/ex-niger-commissioner-jonathan-vatsa-dumps-apc/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:11:27+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: Jigawa Fulani community endorses Tinubu, Namadi, commends livestock development initiatives",
+      "summary": "The endorsement was announced during a community gathering organised under the leadership of Shehu Hadejia, at the Manpower Development Institute, Dutse, to appreciate the Jigawa State Government for its efforts to promote peaceful coexistence between farmers and herders The post 2027: Jigawa Fulani",
+      "url": "https://www.premiumtimesng.com/promoted/918016-2027-jigawa-fulani-community-endorses-tinubu-namadi-commends-livestock-development-initiatives.html",
+      "source": "Premium Times",
+      "published": "2026-10-18T13:10:53+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "Man rapes woman, demands N15,000 payment from victim in Cross River",
+      "summary": "A 26-year-old man, Emmanuel Adoga, from Ogoja Local Government Area of Cross River State, has been arrested after raping a woman and demanding N15,000 payment from her. The incident happened on 9 October 2026 and suspect was arrested on October 12, 2026, three days after the father of survivor submi",
+      "url": "https://dailypost.ng/2026/10/18/man-rapes-woman-demands-n15000-payment-from-victim-in-cross-river/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:09:55+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Abiodun mourns",
+      "summary": "The governor described the passing of Corps Commander Oludare Ogunjobi as a painful loss to the Corps, the road safety community and the nation. The post Abiodun mourns appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/promoted/918013-abiodun-mourns.html",
+      "source": "Premium Times",
+      "published": "2026-10-18T13:06:23+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "Abiodun mourns Ogun FRSC sector commander Ogunjobi",
+      "summary": "Ogun State Governor, Prince Dapo Abiodun, has expressed deep sorrow over the death of the Ogun State Sector Commander of the Federal Road Safety Corps (FRSC), Corps Commander Oludare Ogunjobi, describing his passing as a painful loss to the Corps, the road safety community and the nation. Governor A",
+      "url": "https://dailypost.ng/2026/10/18/abiodun-mourns-ogun-frsc-sector-commander-ogunjobi/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:05:38+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "$7bn Deep Seaport: Ogun govt hits PDP candidate over ‘broken promise’ remark",
+      "summary": "The Ogun State Government has strongly condemned the description of the proposed $7 billion Gateway Deep Seaport investment as “another broken promise” by the Peoples Democratic Party (PDP) senatorial candidate for Ogun East, Alhaji Abdul-Hameed Omotayo, describing the remark as a reckless distortio",
+      "url": "https://dailypost.ng/2026/10/18/7bn-deep-seaport-ogun-govt-hits-pdp-candidate-over-broken-promise-remark/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-18T13:03:11+00:00",
+      "categories": [
+        "business",
+        "government",
+        "property"
       ]
     },
     {
@@ -104,201 +298,6 @@
       "source": "Information Nigeria",
       "published": "2026-10-18T12:42:51+00:00",
       "categories": []
-    },
-    {
-      "title": "2027: Kebbi APC stakeholders back Tinubu, Idris",
-      "summary": "APC stakeholders in Zuru Emirate, Kebbi State, have reaffirmed their support for President Bola Tinubu and Governor Nasir Idris for re-election in 2027. Read More: https://punchng.com/2027-kebbi-apc-stakeholders-back-tinubu-idris/",
-      "url": "https://punchng.com/2027-kebbi-apc-stakeholders-back-tinubu-idris/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T12:39:15+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Bauchi health agency boss, four children die in car crash",
-      "summary": "Bauchi State Governor, Bala Mohammed, has mourned the death of the state’s health agency boss, Ibrahim Duguri, who died in a car crash with four children. Read More: https://punchng.com/bauchi-health-agency-boss-four-children-die-in-car-crash/",
-      "url": "https://punchng.com/bauchi-health-agency-boss-four-children-die-in-car-crash/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T12:38:49+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Hunters eliminate two bandits, recover N10m ransom in Kano forest",
-      "summary": "Two suspected bandits have been killed by hunters, who also recovered N10 million in ransom money in Falgore Forest, Doguwa Local Government Area of Kano State. The suspects were reportedly ambushed while returning to their hideout, while a third member of the group escaped with injuries. The incide",
-      "url": "https://dailypost.ng/2026/10/18/hunters-overpower-eliminate-two-bandits-recover-n10m-ransom-in-kano-forest/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T12:34:35+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Ballon d'Or 2026: He's phenomenal - Ex-France defender, Lizarazu names player to win award",
-      "summary": "Former France defender, Bixente Lizarazu, has named the player to win the 2026 Ballon d'Or. Lizarazu picked Barcelona's Lamine Yamal to win the Ballon d'Or ahead of other contenders like Bayern Munich's Harry Kane and Real Madrid's Kylian Mbappe. He described the Spanish international as a phenomena",
-      "url": "https://dailypost.ng/2026/10/18/ballon-dor-2026-hes-phenomenal-ex-france-defender-lizarazu-names-player-to-win-award/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T12:32:51+00:00",
-      "categories": []
-    },
-    {
-      "title": "Scavengers stole wires from N3bn power line — Zulum",
-      "summary": "Borno State Governor, Babagana Zulum, says scavengers stole all the wires from a N3bn power line, prompting a ban on the scrap metal trade in the state. Read More: https://punchng.com/scavengers-stole-wires-from-n3bn-power-line-zulum/",
-      "url": "https://punchng.com/scavengers-stole-wires-from-n3bn-power-line-zulum/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T12:31:41+00:00",
-      "categories": [
-        "engineering",
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "NDLEA seizes N7bn tramadol at Lagos port, arrests 85-year-old grandmother",
-      "summary": "The National Drug Law Enforcement Agency, NDLEA, has seized 8,725kg of powdered tramadol worth over N6.98 billion at the Apapa port in Lagos and arrested an 85-year-old woman with 179kg of cannabis in Edo State. The agency also intercepted cannabis concealed in a gallon of palm oil at the Mallam Ami",
-      "url": "https://dailypost.ng/2026/10/18/test-ndlea-seizes-n7bn-tramadol-at-lagos-port-arrests-85-year-old-grandmother/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T12:30:35+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Turkey: 'I don't like his body language' - Ex-Galatasaray forward, Ateş slams Osimhen",
-      "summary": "Former Galatasaray forward, Necati Ateş, has slammed Super Eagles striker Victor Osimhen over his body language during Saturday afternoon's 1-0 win against Gençlerbirliği. Osimhen played the entire ninety minutes but neither scored nor provided an assist for the first time this season. During an app",
-      "url": "https://dailypost.ng/2026/10/18/turkey-i-dont-like-his-body-language-ex-galatasaray-forward-ates-slams-osimhen/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T12:26:28+00:00",
-      "categories": []
-    },
-    {
-      "title": "“Love Yourself Enough To Walk Away, You Don’t Have To Die There” — Uche Ogbodo Tells Women",
-      "summary": "Nollywood actress Uche Ogbodo has urged women in unhappy marriages to recognise their worth, love themselves and walk away from relationships where their needs are no longer being met. In an interview with Saturday Beats, Ogbodo, who described herself as an advocate of fairness in marriage, insisted",
-      "url": "https://www.informationng.com/2026/10/love-yourself-enough-to-walk-away-you-dont-have-to-die-there-uche-ogbodo-tells-women.html",
-      "source": "Information Nigeria",
-      "published": "2026-10-18T12:24:01+00:00",
-      "categories": []
-    },
-    {
-      "title": "Osun monarch, Alawo speaks against harmful traditional practices",
-      "summary": "The Alawo of Awo in Egbedore Local Government Area of Osun State, Oba Abdulrazaq Taiwo Adegboye, has criticised the practice of incisions and other indigenous customs, including aspects of traditional religion. Oba Adegboye, in a video obtained by DAILY POST, recorded during a recent Islamic event i",
-      "url": "https://dailypost.ng/2026/10/18/osun-monarch-alawo-speaks-against-traditional-other-harmful-indigenous-practices/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T12:11:26+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "ABUAD VC seeks stronger partnerships on clean energy",
-      "summary": "The VC of Afe Babalola University, Prof. Smaranda Olarinde, has called for stronger partnerships among government, academia and industry on clean energy. Read More: https://punchng.com/abuad-vc-seeks-stronger-partnerships-on-clean-energy/",
-      "url": "https://punchng.com/abuad-vc-seeks-stronger-partnerships-on-clean-energy/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T12:05:02+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "2027: Akpabio’s aide, youth leaders warn against using youths as thugs",
-      "summary": "Godswill Akpabio’s aide, Dauda Makama, and other youth leaders have warned youths against allowing politicians to use them as thugs for the 2027 elections. Read More: https://punchng.com/2027-akpabios-aide-youth-leaders-warn-against-using-youths-as-thugs/",
-      "url": "https://punchng.com/2027-akpabios-aide-youth-leaders-warn-against-using-youths-as-thugs/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T12:03:35+00:00",
-      "categories": []
-    },
-    {
-      "title": "Petrol tanker explodes in Delta [VIDEO]",
-      "summary": "There was pandemonium in Agbor, headquarters of Ika South Local Government Area of Delta State, on Sunday, when a petrol tanker suffered brake failure, collided with another tanker and burst into flames, destroying properties worth millions of naira. The incident happened along the Old Lagos-Asaba R",
-      "url": "https://dailypost.ng/2026/10/18/breaking-petrol-tanker-explodes-in-delta-video/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T11:50:27+00:00",
-      "categories": [
-        "engineering",
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "2027: Rainbow coalition won’t win votes in Kwara — Accord Party",
-      "summary": "The Accord Party in Kwara State has predicted that the Rainbow Coalition will fail in the 2027 elections, citing a lack of grassroots support and a clear m Read More: https://punchng.com/2027-rainbow-coalition-wont-win-votes-in-kwara-accord-party/",
-      "url": "https://punchng.com/2027-rainbow-coalition-wont-win-votes-in-kwara-accord-party/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T11:48:22+00:00",
-      "categories": []
-    },
-    {
-      "title": "NDLEA intercepts N6.98bn tramadol shipment at Lagos port, arrests suspects across states",
-      "summary": "The NDLEA said the consignment comprised 349 bags, which laboratory analysis confirmed contained tramadol hydrochloride. The post NDLEA intercepts N6.98bn tramadol shipment at Lagos port, arrests suspects across states appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/regional/ssouth-west/917972-ndlea-intercepts-n6-98bn-tramadol-shipment-at-lagos-port-arrests-suspects-across-states.html",
-      "source": "Premium Times",
-      "published": "2026-10-18T11:47:17+00:00",
-      "categories": [
-        "lagos"
-      ]
-    },
-    {
-      "title": "Scavengers stole ₦3bn power line wires in Borno - Zulum",
-      "summary": "Borno State Governor, Babagana Umara Zulum, has said the state lost electricity distribution wires worth billions of naira to metal scavengers, including materials used for a power line project valued at over ₦3 billion. Zulum said the loss was among the security and infrastructure concerns that for",
-      "url": "https://dailypost.ng/2026/10/18/scavengers-stole-3bn-power-line-wires-in-borno-zulum/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T11:45:41+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Iran's new defense minister Mehrdad Ketabchi cautions US",
-      "summary": "Iran's new Minister of Defense and Armed Forces Logistics, Mehrdad Akhlaghi Ketabchi, warned the United States on Sunday after his confirmation by the parliament. \"If their slogans turn into action, you’ll see the result,\" Ketabchi said in response to threats of renewed bombing. \"There will be massi",
-      "url": "https://dailypost.ng/2026/10/18/irans-new-defense-minister-mehrdad-ketabchi-cautions-us/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T11:41:22+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "What the next WHO director-general must learn from Nigeria’s health reforms, By Chinedu Moghalu",
-      "summary": "By October 2026, the National Health Insurance Authority reported that 80,000 women had received emergency maternal care by August; insurance enrolment exceeded 23 million by September. The transferable lesson is a method of accountability: follow allocations through releases to services, examine th",
-      "url": "https://www.premiumtimesng.com/opinion/917982-what-the-next-who-director-general-must-learn-from-nigerias-health-reforms-by-chinedu-moghalu.html",
-      "source": "Premium Times",
-      "published": "2026-10-18T11:15:48+00:00",
-      "categories": []
-    },
-    {
-      "title": "Stalled wind farm project in Katsina typifies Nigeria’s struggle to build renewable-energy industry",
-      "summary": "This report examines why Nigeria has struggled to turn renewable energy projects into a sustained industry, citing the Lambar-Rimi wind farm project in Katsina State. The post Stalled wind farm project in Katsina typifies Nigeria’s struggle to build renewable-energy industry appeared first on Premiu",
-      "url": "https://www.premiumtimesng.com/news/headlines/917951-stalled-wind-farm-project-in-katsina-typifies-nigerias-struggle-to-build-renewable-energy-industry.html",
-      "source": "Premium Times",
-      "published": "2026-10-18T11:00:23+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Bauchi health agency boss, four children die in auto crash",
-      "summary": "The Executive Secretary of the Bauchi State Health Contributory Management Agency (BASHCMA), Alhaji Ibrahim Ladan Duguri, and four of his children have died in a fatal motor accident at Yalwan Duguri in Alkaleri Local Government Area of the state. The accident reportedly occurred on Saturday evening",
-      "url": "https://dailypost.ng/2026/10/18/bauchi-health-agency-boss-four-children-die-in-auto-crash/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T10:59:00+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Cooperation among ethnic groups would strengthen collective voice - Nyame",
-      "summary": "Former Taraba State Governor, Rev. Jolly Nyame, has called on the Yandang, Mumuye and other ethnic groups across Yorro Local Government Area of the state to unite in pursuit of common political interests and sustainable development. Nyame warned that persistent disunity among the communities could d",
-      "url": "https://dailypost.ng/2026/10/18/greater-cooperation-among-ethnic-groups-would-strengthen-collective-voice-nyame/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-18T10:56:06+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
