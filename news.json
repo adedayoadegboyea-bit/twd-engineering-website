@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T20:51:51.581448+00:00",
+  "generated_at": "2026-10-18T21:16:22.993416+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,26 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Gospel singer Olaoba recalls Toluwanisings’ final ministration",
+      "summary": "Gospel singer Bidemi Olaoba mourns his colleague Toluwanisings, recalling his final performance in Ibadan a day before he slumped and died. Read More: https://punchng.com/gospel-singer-olaoba-recalls-toluwanisings-final-ministration/",
+      "url": "https://punchng.com/gospel-singer-olaoba-recalls-toluwanisings-final-ministration/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T22:08:32+00:00",
+      "categories": [
+        "oyo"
+      ]
+    },
+    {
+      "title": "2027: Wike, lawmakers meet Fubara in Rivers",
+      "summary": "FCT Minister Nyesom Wike, state lawmakers, and council chairmen have met with Governor Siminalayi Fubara in Port Harcourt to discuss reconciliation. Read More: https://punchng.com/2027-wike-lawmakers-meet-fubara-in-rivers/",
+      "url": "https://punchng.com/2027-wike-lawmakers-meet-fubara-in-rivers/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-18T21:56:55+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Father, son die in Plateau tricycle crash",
       "summary": "A man and his son have died after their commercial tricycle was hit by another vehicle and caught fire in Jos South Local Government Area of Plateau State. Read More: https://punchng.com/father-son-die-in-plateau-tricycle-crash/",
@@ -46,6 +66,14 @@
       "url": "https://punchng.com/apm-campaign-council-faults-presidency-over-n250bn-nlng-fund-comment/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-18T21:03:56+00:00",
+      "categories": []
+    },
+    {
+      "title": "‘Please forgive me’: Fatai Okoya begs billionaire father after 40 years apart",
+      "summary": "Mr Fatai, who identifies himself as Razaq Okoya’s first child, sought reconciliation without disclosing the cause of their estrangement. The post ‘Please forgive me’: Fatai Okoya begs billionaire father after 40 years apart appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/entertainment/naija-fashion/918140-please-forgive-me-fatai-okoya-begs-billionaire-father-after-40-years-apart.html",
+      "source": "Premium Times",
+      "published": "2026-10-18T21:00:40+00:00",
       "categories": []
     },
     {
@@ -257,35 +285,6 @@
       "categories": [
         "government"
       ]
-    },
-    {
-      "title": "Gridlock leaves motorists, commuters stranded on Benin-Lagos Expressway",
-      "summary": "Motorists and commuters were stranded for over three hours on the Benin-Lagos Expressway on Sunday due to a gridlock caused by an accident and bad roads. Read More: https://punchng.com/gridlock-leaves-motorists-commuters-stranded-on-benin-lagos-expressway/",
-      "url": "https://punchng.com/gridlock-leaves-motorists-commuters-stranded-on-benin-lagos-expressway/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T19:28:43+00:00",
-      "categories": [
-        "engineering",
-        "lagos"
-      ]
-    },
-    {
-      "title": "LASU professor Tunde Akanni inducted as peace studies fellow",
-      "summary": "The Federal Competition and Consumer Protection Commission (FCCPC), where Mr Akanni is currently on sabbatical, also congratulated him on the recognition. The post LASU professor Tunde Akanni inducted as peace studies fellow appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/education/918115-lasu-professor-tunde-akanni-inducted-as-peace-studies-fellow.html",
-      "source": "Premium Times",
-      "published": "2026-10-18T19:27:51+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Former El-Rufai ally, others defect to APC in Kaduna",
-      "summary": "Muhammad Sa’idu, a former ally of Nasir El-Rufai, has defected to the APC in Kaduna, declaring the ADC dead in the state after leaving with his supporters. Read More: https://punchng.com/former-el-rufai-ally-others-defect-to-apc-in-kaduna/",
-      "url": "https://punchng.com/former-el-rufai-ally-others-defect-to-apc-in-kaduna/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-18T19:27:15+00:00",
-      "categories": []
     }
   ]
 }
