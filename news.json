@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T09:59:57.240808+00:00",
+  "generated_at": "2026-10-20T10:30:40.742103+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,43 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Kwara doctors lament poor pay, illegal salary deductions",
+      "summary": "The Nigeria Medical Association in Kwara has raised alarm over poor pay, illegal salary deductions, and severe manpower shortages in the state’s hospitals. Read More: https://punchng.com/kwara-doctors-lament-poor-pay-illegal-salary-deductions/",
+      "url": "https://punchng.com/kwara-doctors-lament-poor-pay-illegal-salary-deductions/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T11:25:43+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Gombe transport denies bus attack, passenger abduction reports",
+      "summary": "Gombe State Transport Services has denied reports that one of its buses was attacked and passengers abducted between Ayere and Kabba, calling it false. Read More: https://punchng.com/gombe-transport-denies-bus-attack-passenger-abduction-reports/",
+      "url": "https://punchng.com/gombe-transport-denies-bus-attack-passenger-abduction-reports/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T11:20:02+00:00",
+      "categories": []
+    },
+    {
+      "title": "ICYMI: Tinubu makes history as first Nigerian President to receive proposed UN budget",
+      "summary": "President Bola Tinubu has made history as the first Nigerian president in 66 years to receive the proposed United Nations budget, presented by Jimoh Ibrahi Read More: https://punchng.com/tinubu-makes-history-as-first-nigerian-president-to-receive-proposed-un-budget/",
+      "url": "https://punchng.com/tinubu-makes-history-as-first-nigerian-president-to-receive-proposed-un-budget/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T11:08:18+00:00",
+      "categories": []
+    },
+    {
+      "title": "ICYMI [EXCLUSIVE] Lagos waste crisis: Sanwo-Olu orders LAWMA MD to resign",
+      "summary": "Lagos State Governor, Babajide Sanwo-Olu, has reportedly ordered LAWMA MD, Dr Muyiwa Gbadegesin, to resign over the worsening waste crisis in the state. Read More: https://punchng.com/exclusive-lagos-waste-crisis-sanwo-olu-orders-lawma-md-to-resign/",
+      "url": "https://punchng.com/exclusive-lagos-waste-crisis-sanwo-olu-orders-lawma-md-to-resign/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T11:04:39+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
+    },
     {
       "title": "Things to know about Nigeria’s youngest female SAN, Ehinfun-Adekunle",
       "summary": "Meet Olamide Mojigbotoluwa Ehinfun-Adekunle, who made history as Nigeria’s youngest female Senior Advocate of Nigeria (SAN) at the age of 40. Read More: https://punchng.com/things-to-know-about-nigerias-youngest-female-san-ehinfun-adekunle/",
@@ -240,41 +277,6 @@
       "source": "Daily Post Nigeria",
       "published": "2026-10-20T09:17:25+00:00",
       "categories": []
-    },
-    {
-      "title": "I removed fuel subsidy to prevent Nigeria going bankrupt - Tinubu",
-      "summary": "President Bola Tinubu has explained why he removed fuel subsidy upon assumption of office in 2023. Tinubu explained that he removed the subsidy on fuel to prevent Nigeria from going bankrupt. He issued the explanation during a meeting with the City Boys Movement in Abuja on Monday. The president als",
-      "url": "https://dailypost.ng/2026/10/20/i-removed-fuel-subsidy-to-prevent-nigeria-going-bankrupt-tinubu/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T09:15:57+00:00",
-      "categories": []
-    },
-    {
-      "title": "Benue spends N160m treating IDPs for snakebites amid healthcare gaps – SEMA",
-      "summary": "Benue says it spent over N160 million treating displaced people for snakebites in six months, while PREMIUM TIMES’ investigation documented closed camp clinics, medicine shortages and barriers to affordable healthcare. The post Benue spends N160m treating IDPs for snakebites amid healthcare gaps – S",
-      "url": "https://www.premiumtimesng.com/regional/north-central/918458-benue-spends-n160m-treating-idps-for-snakebites-amid-healthcare-gaps-sema.html",
-      "source": "Premium Times",
-      "published": "2026-10-20T09:14:19+00:00",
-      "categories": []
-    },
-    {
-      "title": "Fuel subsidy: Atiku right when he asked Tinubu to return to school - Ibe",
-      "summary": "Paul Ibe, a media aide to the African Democratic Congress, ADC, presidential candidate, Atiku Abubakar on Tuesday said his principal was right when he asked President Bola Tinubu to return to school. Ibe made the remark while responding to Tinubu's statement that Nigeria will not go back to the era ",
-      "url": "https://dailypost.ng/2026/10/20/fuel-subsidy-atiku-right-when-he-asked-tinubu-to-return-to-school-aide-ibe-2/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T09:13:14+00:00",
-      "categories": []
-    },
-    {
-      "title": "NPFL: Buter reveals winning formula behind Sporting Lagos’ victory at Plateau United",
-      "summary": "Sporting Lagos head coach, Jeffrey Buter has credited his tactical switch for the club's 3-2 away victory over Plateau United, DAILY POST reports. The Tech Boys continued their impressive away form with a battling performance at the New Jos Stadium on Sunday. The win against Plateau United was their",
-      "url": "https://dailypost.ng/2026/10/20/npfl-buter-reveals-winning-formula-behind-sporting-lagos-victory-at-plateau-united/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T09:11:34+00:00",
-      "categories": [
-        "engineering",
-        "lagos"
-      ]
     }
   ]
 }
