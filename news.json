@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T08:04:25.326942+00:00",
+  "generated_at": "2026-10-20T09:04:06.898197+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,77 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "UK unemployment rate drops unexpectedly to 4.7%",
+      "summary": "Britain’s unemployment rate fell unexpectedly to 4.7 per cent in the three months to August, official data shows, despite concerns over youth joblessness. Read More: https://punchng.com/uk-unemployment-rate-drops-unexpectedly-to-4-7/",
+      "url": "https://punchng.com/uk-unemployment-rate-drops-unexpectedly-to-4-7/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T09:29:25+00:00",
+      "categories": []
+    },
+    {
+      "title": "Kalu mourns ex-Abia APGA governorship candidate Ibe",
+      "summary": "Deputy Speaker Benjamin Kalu has mourned the death of Professor Gregory Ibe, the founder of Gregory University and APGA governorship candidate in Abia Stat Read More: https://punchng.com/kalu-mourns-ex-abia-apga-governorship-candidate-ibe/",
+      "url": "https://punchng.com/kalu-mourns-ex-abia-apga-governorship-candidate-ibe/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T09:27:45+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "US judge denies Saudi engineer held in OpenAI case bail",
+      "summary": "A US judge has denied bail for a former OpenAI employee, Abdulrahman Alfozan, deeming the Saudi engineer a flight risk in a case involving a recording devi Read More: https://punchng.com/us-judge-denies-saudi-engineer-held-in-openai-case-bail/",
+      "url": "https://punchng.com/us-judge-denies-saudi-engineer-held-in-openai-case-bail/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T09:22:01+00:00",
+      "categories": []
+    },
+    {
+      "title": "Airline boss donates health centre, borehole to Ekiti community",
+      "summary": "United Nigeria Airlines Chairman, Prof. Obiora Okonkwo, has donated a primary healthcare centre and a solar-powered borehole to Aso-Ayegunle in Ekiti State Read More: https://punchng.com/airline-boss-donates-health-centre-borehole-to-ekiti-community/",
+      "url": "https://punchng.com/airline-boss-donates-health-centre-borehole-to-ekiti-community/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T09:22:00+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Obi mourns Uduaghan, recalls role in Second Niger Bridge project",
+      "summary": "Peter Obi has mourned former Delta State Governor, Emmanuel Uduaghan, recalling their joint effort to advocate for the Second Niger Bridge project. Read More: https://punchng.com/obi-mourns-uduaghan-recalls-role-in-second-niger-bridge-project/",
+      "url": "https://punchng.com/obi-mourns-uduaghan-recalls-role-in-second-niger-bridge-project/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T09:03:33+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "44 years later, British royal family hosts Sultan of Oman",
+      "summary": "King Charles III is set to welcome Sultan Haitham bin Tarik Al Said of Oman to the UK for a state visit at Windsor Castle, the first in 44 years. Read More: https://punchng.com/44-years-later-british-royal-family-hosts-sultan-of-oman/",
+      "url": "https://punchng.com/44-years-later-british-royal-family-hosts-sultan-of-oman/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-20T09:03:16+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027 elections will be more than a test - Former INEC Commissioner, Mike Igini",
+      "summary": "A former Resident Electoral Commissioner, REC, of the Independent National Electoral Commission, INEC, Mike Igini, says the 2027 general elections will be more than a test for the Nigeria's democracy. Igini made this assertion on Tuesday while fielding questions in an interview on Arise Television's",
+      "url": "https://dailypost.ng/2026/10/20/2027-elections-will-be-more-than-a-test-former-inec-commissioner-mike-igini/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-20T08:46:52+00:00",
+      "categories": []
+    },
+    {
+      "title": "Police detain 22-year-old over alleged cult-related murder",
+      "summary": "“The suspect is currently in police custody, while efforts are ongoing to apprehend one Anyima, who is also connected with the incident,” the police said. The post Police detain 22-year-old over alleged cult-related murder appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/918448-police-detain-22-year-old-over-alleged-cult-related-murder.html",
+      "source": "Premium Times",
+      "published": "2026-10-20T08:46:20+00:00",
+      "categories": []
+    },
     {
       "title": "NASENI, Kaduna give 500 residents solar kits, cookstoves",
       "summary": "NASENI and the Kaduna State Government have empowered 500 residents with solar home systems and clean cooking stoves to improve livelihoods and ease burden Read More: https://punchng.com/naseni-kaduna-give-500-residents-solar-kits-cookstoves/",
@@ -23,11 +94,60 @@
       ]
     },
     {
+      "title": "Stallion Group companies remain unaffected and fully operational",
+      "summary": "Group reaffirms its commitment to meeting lawful obligations The post Stallion Group companies remain unaffected and fully operational appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/promoted/918445-stallion-group-companies-remain-unaffected-and-fully-operational.html",
+      "source": "Premium Times",
+      "published": "2026-10-20T08:40:51+00:00",
+      "categories": []
+    },
+    {
+      "title": "Kwara distributes farm inputs to 49,337 beneficiaries",
+      "summary": "Kwara government says the latest distribution brings the total number of beneficiaries under the FADAMA CARES programme to more than 235,000. The post Kwara distributes farm inputs to 49,337 beneficiaries appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/agriculture/agric-news/918442-kwara-distributes-farm-inputs-to-49337-beneficiaries.html",
+      "source": "Premium Times",
+      "published": "2026-10-20T08:34:20+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "“If Buhari, A Retired General, Couldn’t End Insecurity, What Do You Expect Of Tinubu?” – APC Campaign DG",
+      "summary": "The Director-General of the All Progressives Congress (APC) Presidential Campaign Council (PCC), Senator Abdulaziz Yari, says President Bola Tinubu cannot be blamed solely for the widespread insecurity. Speaking, on Monday, during a visit to Kebbi, where he met with Governor Nasir Idris, traditional",
+      "url": "https://www.informationng.com/2026/10/if-buhari-a-retired-general-couldnt-end-insecurity-what-do-you-expect-of-tinubu-apc-campaign-dg.html",
+      "source": "Information Nigeria",
+      "published": "2026-10-20T08:33:21+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Uduaghan’s legacy will endure, Delta NDC gov candidate mourns",
       "summary": "NDC governorship candidate in Delta State, Chris Iyovwaye, has mourned the death of former governor, Dr Emmanuel Uduaghan, who died at 71. Read More: https://punchng.com/uduaghans-legacy-will-endure-delta-ndc-gov-candidate-mourns/",
       "url": "https://punchng.com/uduaghans-legacy-will-endure-delta-ndc-gov-candidate-mourns/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-20T08:33:04+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "“Nigerians Will Pay Fuel Tax When Economy Becomes Stable” — Finance Minister Taiwo Oyedele",
+      "summary": "Nigeria’s Minister of Finance and Coordinating Minister of the Economy, Taiwo Oyedele, has said the Federal Government will introduce fuel taxes when the economy stabilises and citizens’ incomes can accommodate the extra costs. He disclosed this in an interview with ARISE News on the sidelines of th",
+      "url": "https://www.informationng.com/2026/10/nigerians-will-pay-fuel-tax-when-economy-becomes-stable-finance-minister-taiwo-oyedele.html",
+      "source": "Information Nigeria",
+      "published": "2026-10-20T08:29:33+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "Taraba council chairman sued over alleged threats to workers",
+      "summary": "The suit, filed by Hajara Sule at the Federal High Court in Jalingo on 19 October, followed the circulation of a video in which Mr Ubandoma allegedly warned government workers against engaging in political activities he considered contrary to the interests of the Governor Agbu Kefas administration. ",
+      "url": "https://www.premiumtimesng.com/regional/north-central/918440-taraba-council-chairman-sued-over-alleged-threats-to-workers.html",
+      "source": "Premium Times",
+      "published": "2026-10-20T08:26:53+00:00",
       "categories": [
         "government"
       ]
@@ -41,12 +161,63 @@
       "categories": []
     },
     {
+      "title": "Abandoned newborn rescued at Plateau mining site",
+      "summary": "The baby, who was found with his umbilical cord still attached, was discovered along Ardo Lane after children playing near the building heard his cries and alerted residents The post Abandoned newborn rescued at Plateau mining site appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/regional/north-central/918438-abandoned-newborn-rescued-at-plateau-mining-site.html",
+      "source": "Premium Times",
+      "published": "2026-10-20T08:18:32+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Life is better in Egypt than Nigeria - Rufai slams Tinubu over fuel subsidy comment",
+      "summary": "Arise News anchor, Rufai Oseni, has taken a swipe at President Bola Tinubu over his latest comment on fuel subsidy, where he said Nigeria would not return to fuel subsidy. Speaking during Arise Television's 'Morning Show', Rufai said Egypt has constant power supply and good roads. Recall that Presid",
+      "url": "https://dailypost.ng/2026/10/20/life-is-better-in-egypt-than-nigeria-rufai-slams-tinubu-over-fuel-subsidy-comment/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-20T08:13:54+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Tinubu urges City Boy Movement to mobilise youth for 2027",
+      "summary": "Mr Tinubu said his administration inherited severe financial challenges, including unpaid obligations to airlines and dwindling reserves, which required difficult decisions to stabilise the economy. The post Tinubu urges City Boy Movement to mobilise youth for 2027 appeared first on Premium Times Ni",
+      "url": "https://www.premiumtimesng.com/news/more-news/918436-tinubu-urges-city-boy-movement-to-mobilise-youth-for-2027.html",
+      "source": "Premium Times",
+      "published": "2026-10-20T08:12:02+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "Banditry: Zamfara seeks more FG intervention as attacks escalate",
+      "summary": "Mr Dantawasa expressed concern over the hardship experienced by families, farmers, traders and other residents, particularly those in rural communities whose daily activities have been disrupted by escalating insecurity. The post Banditry: Zamfara seeks more FG intervention as attacks escalate appea",
+      "url": "https://www.premiumtimesng.com/regional/nwest/918434-banditry-zamfara-seeks-more-fg-intervention-as-attacks-escalate.html",
+      "source": "Premium Times",
+      "published": "2026-10-20T08:05:47+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
       "title": "Police chief meets with herders, farmers over security breach in Abuja",
       "summary": "\"Maintain peace and refrain from any actions capable of reigniting tensions,” he advised the communities. The Commissioner of Police (CP) in charge of the Federal Capital Territory (FCT), Ahmed Sanusi, has met with farmers and herders in Dabiri and Paiko communities over a security breach. The post ",
       "url": "https://www.premiumtimesng.com/regional/north-central/918432-police-chief-meets-with-herders-farmers-over-security-breach-in-abuja.html",
       "source": "Premium Times",
       "published": "2026-10-20T07:58:51+00:00",
       "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Stallion Group companies remain unaffected, fully operational",
+      "summary": "Group reaffirms its commitment to meeting lawful obligations Stallion Group wishes to reassure its customers, bankers, business partners, suppliers and other stakeholders that the Federal High Court judgment obtained by United Bank for Africa Plc (UBA) concerns Stallion Nigeria Limited and certain o",
+      "url": "https://dailypost.ng/2026/10/20/stallion-group-companies-remain-unaffected-fully-operational/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-20T07:58:33+00:00",
+      "categories": [
+        "business",
         "government"
       ]
     },
@@ -117,186 +288,12 @@
       "categories": []
     },
     {
-      "title": "Transfer: Monday Gift unveiled by NWSL club, Boston Legacy FC",
-      "summary": "National Women's Soccer League, NWSL, club, Boston Legacy FC have unveiled Super Falcons striker, Gift Monday. Monday, who penned a five-year contract with Boston Legacy FC side will wear the number 22 jersey at her new club. It would be recalled that Boston Legacy announced the forward's signing fr",
-      "url": "https://dailypost.ng/2026/10/20/transfer-monday-unveiled-by-nwsl-club-boston-legacy-fc/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:32:02+00:00",
-      "categories": []
-    },
-    {
       "title": "Nigeria vs Puerto Rico Preview: Flamingos target first win at 2026 FIFA U-17 Women’s World Cup",
       "summary": "With both teams searching for their first points of the tournament, Tuesday’s clash presents Nigeria with an opportunity to respond to their opening setback and strengthen their chances of reaching the Round of 16 The post Nigeria vs Puerto Rico Preview: Flamingos target first win at 2026 FIFA U-17 ",
       "url": "https://www.premiumtimesng.com/news/top-news/918418-nigeria-vs-puerto-rico-preview-flamingos-target-first-win-at-2026-fifa-u-17-womens-world-cup.html",
       "source": "Premium Times",
       "published": "2026-10-20T07:30:39+00:00",
       "categories": []
-    },
-    {
-      "title": "Razaq Okoya’s son begs billionaire father for forgiveness after 40 years",
-      "summary": "Fatai Okoya, who identifies himself as the first child of billionaire businessman, Razaq Okoya, has appealed to his father for forgiveness after 40 years of estrangement. Fatai, during a TikTok Live session with blogger, Yeye Kudi Court Room on Monday, attributed their disagreement to a money disput",
-      "url": "https://dailypost.ng/2026/10/20/after-40-years-apart-razaq-okoyas-son-begs-billionaire-father-for-forgiveness/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:30:37+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Adamawa PDP chairmen, 226 councillors defect to APC",
-      "summary": "Twenty-one local government area chairmen and 226 councillors in Adamawa State, all elected on the platform of the Peoples Democratic Party (PDP), have defected to the All Progressives Congress (APC). The wave of resignations began making headlines late on Monday, October 19, and continued into the ",
-      "url": "https://dailypost.ng/2026/10/20/all-21-adamawa-council-chairmen-226-counsellors-defect-to-apc/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:28:16+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Peter Obi mourns, recalls past efforts of late ex-Gov Uduaghan",
-      "summary": "The Nigeria Democratic Congress, NDC, presidential candidate, Peter Obi, has mourned the death of former Delta State Governor, Dr Emmanuel Eweta Uduaghan, describing him as a dear elder brother. Obi expressed sadness in a condolence message via his X handle on Tuesday, recalling the cordial relation",
-      "url": "https://dailypost.ng/2026/10/20/peter-obi-reacts-to-death-of-ex-delta-gov-uduaghan/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:27:29+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Billionaire Razaq Okoya’s son, Idris marries partner, Rukoyah in private ceremony",
-      "summary": "Idris Okoya, son of Nigerian billionaire businessman, Chief Razaq Okoya, has married his partner, Rukoyah. The wedding reportedly took place in a private setting, with the couple keeping details of the ceremony away from the public. Idris is one of the children of Razaq Okoya, the founder of Eleganz",
-      "url": "https://dailypost.ng/2026/10/20/billionaire-razaq-okoyas-son-idris-marries-partner-rukoyah-in-private-ceremony/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:24:34+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Uba Sani breaks ground for NASENI Skill Development Centre in Kaduna",
-      "summary": "Governor Uba Sani disclosed that the Institute secured accreditation from the National Board for Technical Education, while instructors received training as Quality Assurance Assessors and Internal Quality Assurance Managers. The post Uba Sani breaks ground for NASENI Skill Development Centre in Kad",
-      "url": "https://www.premiumtimesng.com/promoted/918411-uba-sani-breaks-ground-for-naseni-skill-development-centre-in-kaduna.html",
-      "source": "Premium Times",
-      "published": "2026-10-20T07:21:55+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Zelensky protests US 'strange stories' as restrictions impede Ukraine",
-      "summary": "President Volodymyr Zelensky on Monday expressed his frustration over the continued disruption of the United States' assistance Ukraine relies on to bolster its military operations. Zelensky held a virtual meeting with a bipartisan delegation from the U.S. Senate and House of Representatives, during",
-      "url": "https://dailypost.ng/2026/10/20/zelensky-protests-us-strange-stories-as-restrictions-impede-ukraine/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:18:24+00:00",
-      "categories": []
-    },
-    {
-      "title": "EPL: Alan Shearer names good replacement for Carrick at Man Utd",
-      "summary": "Former England international, Alan Shearer has named Brighton boss, Fabian Hurzeler a good replacement for current Manchester United manager, Michael Carrick. Carrick is under pressure at Old Trafford, and his job is not one hundred per cent certain after the Red Devils' poor start to the Premier Le",
-      "url": "https://dailypost.ng/2026/10/20/epl-alan-shearer-names-good-replacement-for-carrick-at-man-utd-2/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:16:21+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "Kwara Revenue Service workers threaten strike over poor welfare",
-      "summary": "Staff of the Kwara State Internal Revenue Service, KWIRS, have decried poor welfare conditions, rising living costs and stagnant salaries, despite their contributions to the state’s revenue generation. In a circular issued by the KWIRS chapter of the Association of Senior Civil Servants of Nigeria, ",
-      "url": "https://dailypost.ng/2026/10/20/kwara-revenue-service-workers-threaten-strike-over-poor-welfare/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:15:01+00:00",
-      "categories": []
-    },
-    {
-      "title": "Champions League: Bayern face Arsenal test without Olise",
-      "summary": "Bayern Munich are set to face Arsenal in the Champions League without suspended winger Michael Olise, with Harry Kane calling on the squad to step up. Read More: https://punchng.com/champions-league-bayern-face-arsenal-test-without-olise/",
-      "url": "https://punchng.com/champions-league-bayern-face-arsenal-test-without-olise/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-20T07:12:48+00:00",
-      "categories": []
-    },
-    {
-      "title": "Why Katsina will vote for Tinubu in 2027 — Radda",
-      "summary": "Katsina State Governor, Dikko Radda, says the state will support President Bola Tinubu’s re-election in 2027, citing his longstanding political ties. Read More: https://punchng.com/why-katsina-will-vote-for-tinubu-in-2027-radda/",
-      "url": "https://punchng.com/why-katsina-will-vote-for-tinubu-in-2027-radda/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-20T07:11:26+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "FG showcases $125m housing PPP model to African nations",
-      "summary": "The Federal Government has showcased its $125m Renewed Hope Housing PPP model to African nations, attracting interest for its use of private investment. Read More: https://punchng.com/fg-showcases-125m-housing-ppp-model-to-african-nations/",
-      "url": "https://punchng.com/fg-showcases-125m-housing-ppp-model-to-african-nations/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-20T07:10:25+00:00",
-      "categories": [
-        "engineering",
-        "business",
-        "government",
-        "property"
-      ]
-    },
-    {
-      "title": "Broda Shaggi sheds tears as he returns to social media months after being shot",
-      "summary": "Nigerian content creator, Broda Shaggi has finally returned to social media months after his sudden disappearance. DAILY POST reports that the skit maker has been absent online since March 2026, after he was shot while filming at Sango Ota Bridge, Ogun State. Confirming the news, the Lagos State pol",
-      "url": "https://dailypost.ng/2026/10/20/broda-shaggi-shed-tears-as-he-returns-to-social-media-months-after-being-shot-video/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:07:24+00:00",
-      "categories": [
-        "engineering",
-        "lagos"
-      ]
-    },
-    {
-      "title": "I never asked Nigerians abroad to abandon families — Obi",
-      "summary": "Peter Obi, presidential candidate of the Nigeria Democratic Congress, has clarified his remarks urging Nigerians abroad to reject money requests from home. Read More: https://punchng.com/i-never-asked-nigerians-abroad-to-abandon-families-obi/",
-      "url": "https://punchng.com/i-never-asked-nigerians-abroad-to-abandon-families-obi/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-20T07:05:23+00:00",
-      "categories": [
-        "engineering",
-        "property"
-      ]
-    },
-    {
-      "title": "Kano CP presents ₦7.57m to families of 17 fallen police officers",
-      "summary": "The Kano State Commissioner of Police, Ibrahim Adamu Bakori, has presented cheques worth ₦7.57 million to 17 families of police officers who died in the line of duty. The Kano State Police Command disclosed this in a statement issued by its spokesperson, CSP Abdullahi Haruna Kiyawa. According to the",
-      "url": "https://dailypost.ng/2026/10/20/kano-cp-presents-7-57m-to-families-of-17-fallen-police-officers/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:04:32+00:00",
-      "categories": []
-    },
-    {
-      "title": "Okoya’s son seeks forgiveness after 40-year separation",
-      "summary": "Fatai Okoya, son of billionaire Razaq Okoya, has publicly appealed for forgiveness after a 40-year rift, citing a past money dispute and his marriage. Read More: https://punchng.com/okoyas-son-seeks-forgiveness-after-40-year-separation/",
-      "url": "https://punchng.com/okoyas-son-seeks-forgiveness-after-40-year-separation/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-20T07:04:03+00:00",
-      "categories": []
-    },
-    {
-      "title": "Nigeria has done lots of damage to Igbos - Odumeje",
-      "summary": "Popular Anambra-based cleric, Chukwuemeka Ohanaemere, widely known as Odumeje, has criticised the Federal Government for not allocating any international airport or seaport to the Southeast despite the Igbos being the country's foremost traders. Speaking in a recent episode of The Honest Bunch Podca",
-      "url": "https://dailypost.ng/2026/10/20/nigeria-has-done-lots-of-damage-to-igbos-odumeje/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-20T07:03:32+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "Malnutrition: UNICEF gives Gombe 11,580 cartons of therapeutic food",
-      "summary": "The United Nations Children’s Fund has handed over 11,580 cartons of Ready-to-Use Therapeutic Food to the Gombe State Government to treat child malnutritio Read More: https://punchng.com/malnutrition-unicef-gives-gombe-11580-cartons-of-therapeutic-food/",
-      "url": "https://punchng.com/malnutrition-unicef-gives-gombe-11580-cartons-of-therapeutic-food/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-20T06:47:41+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
