@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T21:30:16.786377+00:00",
+  "generated_at": "2026-10-21T22:21:40.611005+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,120 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Protests banned in parts of Paris as Macron criticises Trump",
+      "summary": "French police have banned protests in key areas of Paris following recent riots, as President Emmanuel Macron criticises Donald Trump for exploiting the un Read More: https://punchng.com/protests-banned-in-parts-of-paris-as-macron-criticises-trump/",
+      "url": "https://punchng.com/protests-banned-in-parts-of-paris-as-macron-criticises-trump/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T23:16:40+00:00",
+      "categories": []
+    },
+    {
+      "title": "Defence lawyer claims doctor innocent in Maradona death case",
+      "summary": "A lawyer for Dr. Leopoldo Luque, charged in Diego Maradona’s 2020 death, claims his client is innocent and a ‘scapegoat’ in the ongoing trial. Read More: https://punchng.com/defence-lawyer-claims-doctor-innocent-in-maradona-death-case/",
+      "url": "https://punchng.com/defence-lawyer-claims-doctor-innocent-in-maradona-death-case/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T23:10:25+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ex-deputy govs seek ex-convicts’ reintegration, better teachers’ pay",
+      "summary": "The Forum of Former Deputy Governors of Nigeria has called on the FG to establish a programme for ex-convicts’ reintegration and improve teachers’ pay. Read More: https://punchng.com/ex-deputy-govs-seek-ex-convicts-reintegration-better-teachers-pay/",
+      "url": "https://punchng.com/ex-deputy-govs-seek-ex-convicts-reintegration-better-teachers-pay/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T23:09:37+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Cambridge Analytica case: Judge orders Meta to pay $25bn to New Mexico",
+      "summary": "A New Mexico judge has ordered Meta to pay the state $25 billion after a jury found the company deceived users in a case related to the Cambridge Analytica Read More: https://punchng.com/cambridge-analytica-case-judge-orders-meta-to-pay-25bn-to-new-mexico/",
+      "url": "https://punchng.com/cambridge-analytica-case-judge-orders-meta-to-pay-25bn-to-new-mexico/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T23:04:58+00:00",
+      "categories": [
+        "engineering",
+        "business"
+      ]
+    },
+    {
+      "title": "UK pays £5.7bn first term student loans in new academic year",
+      "summary": "The UK has paid £5.7bn in student finance for the first term of the 2026/27 academic year, the Student Loans Company has disclosed in a new report. Read More: https://punchng.com/uk-pays-5-7bn-first-term-student-loans-in-new-academic-year/",
+      "url": "https://punchng.com/uk-pays-5-7bn-first-term-student-loans-in-new-academic-year/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T22:50:35+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "Youngest Yoruba king graduates from university",
+      "summary": "The Arujale-Ojima of Okeluse Kingdom in Ondo State, Oba Oloyede Adekoya Akinghare II, on Wednesday graduated from Afe Babalola University, Ado-Ekiti, Ekiti State, with a degree in Political Science. The 23-year-old monarch, widely recognised as one of the youngest traditional rulers in Yorubaland, g",
+      "url": "https://punchng.com/youngest-yoruba-king-graduates-from-university/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T22:48:32+00:00",
+      "categories": [
+        "property"
+      ]
+    },
+    {
+      "title": "Ebola: Edo urges calm, preventive measures",
+      "summary": "The Edo State Government has urged residents to remain calm and observe preventive measures following the confirmation of a new Ebola virus case in Nigeria Read More: https://punchng.com/ebola-edo-urges-calm-preventive-measures/",
+      "url": "https://punchng.com/ebola-edo-urges-calm-preventive-measures/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T22:44:28+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: FRSC bars political escorts, restricts officers to traffic duties",
+      "summary": "The Federal Road Safety Corps has barred its personnel from escorting politicians during campaigns for the 2027 general elections, restricting them to traf Read More: https://punchng.com/2027-frsc-bars-political-escorts-restricts-officers-to-traffic-duties/",
+      "url": "https://punchng.com/2027-frsc-bars-political-escorts-restricts-officers-to-traffic-duties/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T22:30:03+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "NDDC, UNIPORT partner to promote Niger Delta creative industry",
+      "summary": "The NDDC is partnering with the University of Port Harcourt to promote the Niger Delta’s creative industry through a technical training programme for filmm Read More: https://punchng.com/nddc-uniport-partner-to-promote-niger-delta-creative-industry/",
+      "url": "https://punchng.com/nddc-uniport-partner-to-promote-niger-delta-creative-industry/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T22:28:56+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "Ebola: Medical expert demands contact tracing for all travellers, no VIP exemptions",
+      "summary": "A medical expert, Prof Oladapo Ashiru, has called for mandatory Ebola contact tracing for all travellers in Nigeria, with no VIP exemptions at airports. Read More: https://punchng.com/ebola-medical-expert-demands-contact-tracing-for-all-travellers-no-vip-exemptions/",
+      "url": "https://punchng.com/ebola-medical-expert-demands-contact-tracing-for-all-travellers-no-vip-exemptions/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T22:25:31+00:00",
+      "categories": []
+    },
+    {
+      "title": "Gatefield warns financial hardship, corruption are undermining Nigerians’ health",
+      "summary": "Presenting findings from the LiveWell Longevity Factor Report on Wednesday in Abuja, Mr Emoruwa said the factors determining how long Nigerians live extend beyond the immediate causes of illness to include the cost of treatment, experiences with public services and exposure to pollution The post Gat",
+      "url": "https://www.premiumtimesng.com/health/health-news/919051-gatefield-warns-financial-hardship-corruption-are-undermining-nigerians-health.html",
+      "source": "Premium Times",
+      "published": "2026-10-21T22:13:02+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ebola: FG orders 46 exposed persons on 21-day no-fly list",
+      "summary": "The Federal Government has placed 46 persons exposed to Nigeria’s first Ebola case since 2014 on a 21-day no-fly list to contain the virus’s spread. Read More: https://punchng.com/ebola-fg-orders-46-exposed-persons-on-21-day-no-fly-list/",
+      "url": "https://punchng.com/ebola-fg-orders-46-exposed-persons-on-21-day-no-fly-list/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T22:12:16+00:00",
+      "categories": [
+        "government"
+      ]
+    },
     {
       "title": "Police arrest 18 over murder, defilement, other crimes in Edo",
       "summary": "The Edo State Police Command has arrested 18 suspects for various crimes including murder, defilement, armed robbery, car theft, and cultism in the state. Read More: https://punchng.com/police-arrest-18-over-murder-defilement-other-crimes-in-edo/",
@@ -35,11 +149,27 @@
       "categories": []
     },
     {
+      "title": "Senate panel summons NMDPRA, NNPC, NEITI over discrepancies in petrol import records",
+      "summary": "The organisations are to explain the significant differences between the PMS import figures presented by the NMDPRA and those recorded by NNPCL for 2022 and 2023. The post Senate panel summons NMDPRA, NNPC, NEITI over discrepancies in petrol import records appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/top-news/919047-senate-panel-summons-nmdpra-nnpc-neiti-over-discrepancies-in-petrol-import-records.html",
+      "source": "Premium Times",
+      "published": "2026-10-21T21:57:14+00:00",
+      "categories": []
+    },
+    {
       "title": "US issues fresh warning as Houthi attacks disrupt Saudi airports",
       "summary": "The US has warned its citizens in Saudi Arabia to exercise extreme caution following attacks by Iranian-supported Houthis on civilian airports and infrastr Read More: https://punchng.com/us-issues-fresh-warning-as-houthi-attacks-disrupt-saudi-airports/",
       "url": "https://punchng.com/us-issues-fresh-warning-as-houthi-attacks-disrupt-saudi-airports/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-21T21:56:25+00:00",
+      "categories": []
+    },
+    {
+      "title": "‘I didn’t want to die’ — Broda Shaggi opens up about stray-bullet shooting, surgery",
+      "summary": "The skit maker said the March shooting disrupted his career and left him uncertain whether he would walk or perform again. The post ‘I didn’t want to die’ — Broda Shaggi opens up about stray-bullet shooting, surgery appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/entertainment/naija-fashion/919041-i-didnt-want-to-die-broda-shaggi-opens-up-about-stray-bullet-shooting-surgery.html",
+      "source": "Premium Times",
+      "published": "2026-10-21T21:49:06+00:00",
       "categories": []
     },
     {
@@ -66,6 +196,38 @@
       "url": "https://punchng.com/broda-shaggi-recounts-survival-after-stray-bullet-injury/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-21T21:36:06+00:00",
+      "categories": []
+    },
+    {
+      "title": "CAF Champions League: MC Alger supporters face travel ban call after Abeokuta incident",
+      "summary": "Algerian sports analyst, Shuaib Kahal has called for a travel ban on MC Alger supporters following recent incidents involving the club's fans. The call comes after MC Alger's CAF Champions League second preliminary round match against Nigerian champions, Rangers in Abeokuta, where the supporters of ",
+      "url": "https://dailypost.ng/2026/10/21/caf-champions-league-mc-alger-supporters-face-travel-ban-call-after-abeokuta-incident/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T21:33:26+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ebola Outbreak: Lawmakers move to amend Nigeria’s 100-year-old Quarantine Act",
+      "summary": "The senators resolve to treat the proposed amendment as an urgent matter to strengthen the country’s response to the Ebola outbreak and prevent further spread of the disease. The post Ebola Outbreak: Lawmakers move to amend Nigeria’s 100-year-old Quarantine Act appeared first on Premium Times Nigeri",
+      "url": "https://www.premiumtimesng.com/news/top-news/919037-ebola-outbreak-lawmakers-move-to-amend-nigerias-100-year-old-quarantine-act.html",
+      "source": "Premium Times",
+      "published": "2026-10-21T21:32:25+00:00",
+      "categories": []
+    },
+    {
+      "title": "UCL: Why Atletico Madrid failed to beat Stuttgart - Ademola Lookman",
+      "summary": "Atletico Madrid forward, Ademola Lookman has explained why his team played 1-1 with VfB Stuttgart in the Champions League on Tuesday. Lookman featured as goals from Jamie Leweling and Julian Alvarez ensured both teams drew in Germany. The Super Eagles star made an impact, providing the assist for Al",
+      "url": "https://dailypost.ng/2026/10/21/post-62/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T21:31:24+00:00",
+      "categories": []
+    },
+    {
+      "title": "Champions League: Arsenal hold Bayern Munich, Real Madrid thrash RB Leipzig",
+      "summary": "Arsenal and Bayern Munich played out a thrilling 2-2 draw in the Champions League on Wednesday night. The Gunners arrived in Germany with an unbeaten record and having not conceded a single goal in the competition. Eberechi Eze opened the scoring with a fierce low drive past Manuel Neuer in the firs",
+      "url": "https://dailypost.ng/2026/10/21/champions-league-arsenal-hold-bayern-munich-real-madrid-trash-rb-leipzig/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T21:30:15+00:00",
       "categories": []
     },
     {
@@ -114,170 +276,6 @@
       "url": "https://dailypost.ng/2026/10/21/ucl-osimhen-hails-galatasarays-victory-against-lille/",
       "source": "Daily Post Nigeria",
       "published": "2026-10-21T20:52:32+00:00",
-      "categories": []
-    },
-    {
-      "title": "Sultan urges intelligence-led policing to curb insecurity in Sokoto",
-      "summary": "The Sultan of Sokoto, Sa’ad Abubakar III, has called for stronger intelligence-led policing to address security challenges in Sokoto and other parts of Nig Read More: https://punchng.com/sultan-urges-intelligence-led-policing-to-curb-insecurity-in-sokoto/",
-      "url": "https://punchng.com/sultan-urges-intelligence-led-policing-to-curb-insecurity-in-sokoto/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T20:51:33+00:00",
-      "categories": []
-    },
-    {
-      "title": "Dangote unveils $50bn Africa investment Plan, acquires 25% stake in Kenya pipeline network",
-      "summary": "President and Chief Executive of Dangote Industries Limited, Aliko Dangote, has unveiled an ambitious plan to establish an extensive petroleum distribution network across Africa, with investments in pipelines, storage facilities and strategic supply corridors, while calling on African governments to",
-      "url": "https://dailypost.ng/2026/10/21/dangote-unveils-50bn-africa-investment-plan-acquires-25-stake-in-kenya-pipeline-network/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-21T20:49:19+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "Sokoto to strengthen social protection policy",
-      "summary": "The Sokoto State Government has reaffirmed its commitment to strengthening social protection policies and programmes to reduce poverty and improve resident Read More: https://punchng.com/sokoto-to-strengthen-social-protection-policy/",
-      "url": "https://punchng.com/sokoto-to-strengthen-social-protection-policy/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T20:48:33+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Immigration boss seeks joint action against irregular migration",
-      "summary": "The Nigeria Immigration Service CG, Kemi Nandap, has called for joint action against irregular migration, saying even sophisticated systems can’t solve it Read More: https://punchng.com/immigration-boss-seeks-joint-action-against-irregular-migration/",
-      "url": "https://punchng.com/immigration-boss-seeks-joint-action-against-irregular-migration/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T20:44:56+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ebola: NOA urges Jigawa residents to stay calm, observe preventive measures",
-      "summary": "‎The National Orientation Agency, NOA, in Jigawa State has urged residents to remain calm and observe necessary preventive measures following reports of a confirmed Ebola virus case in Abuja, the Federal Capital Territory, FCT. ‎ ‎The state director of the agency, Mallam Ahmed Tijjani Ibrahim, made ",
-      "url": "https://dailypost.ng/2026/10/21/ebola-noa-urges-jigawa-residents-to-remain-calm-vigilant/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-21T20:42:26+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "2027 Campaign Flag Off: Kaduna ready to host Mr President – LOC",
-      "summary": "Chairperson of the Local Organising Committee, Dr Balarabe disclosed this after she and members of her team inspected facilities at the Kaduna Township Stadium, the venue of the flag-off, on Wednesday evening. The post 2027 Campaign Flag Off: Kaduna ready to host Mr President – LOC appeared first on",
-      "url": "https://www.premiumtimesng.com/promoted/919024-2027-campaign-flag-off-kaduna-ready-to-host-mr-president-loc.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T20:42:20+00:00",
-      "categories": []
-    },
-    {
-      "title": "The altar of fire, a heart of meekness: The uncompromising ministry of Pastor Jerry Eze, By Dan Aibangbe",
-      "summary": "Ultimately, Pastor Jerry Eze stands as a profound testament to the power of a life fully surrendered to God, proving that true spiritual dominion is born not of human strategy, but of relentless consecration and genuine love for humanity. As he continues to kindle the fires of revival across the glo",
-      "url": "https://www.premiumtimesng.com/opinion/919022-the-altar-of-fire-a-heart-of-meekness-the-uncompromising-ministry-of-pastor-jerry-eze-by-dan-aibangbe.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T20:38:39+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Jollof rice cost drops 11.5%, households still struggle – Report",
-      "summary": "The average cost of preparing jollof rice in Nigeria fell by 11.5% in Q3 2026, but households still struggle with stagnant incomes, a new report says. Read More: https://punchng.com/jollof-rice-cost-drops-11-5-households-still-struggle-report/",
-      "url": "https://punchng.com/jollof-rice-cost-drops-11-5-households-still-struggle-report/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T20:35:57+00:00",
-      "categories": []
-    },
-    {
-      "title": "Adamawa prison decongestion committee frees 55 inmates, bails 51",
-      "summary": "The Adamawa State Jail Delivery Committee has freed 55 inmates and granted bail to 51 others. Only minor civil disputes, infractions and petty theft usually get favourable review by the jail delivery committee, while critical violations such as culpable homicide, rape, and gang-related offenses are ",
-      "url": "https://dailypost.ng/2026/10/21/adamawa-prison-decongestion-committee-frees-55-inmates-bails-51/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-21T20:35:27+00:00",
-      "categories": []
-    },
-    {
-      "title": "Presidency expands skills training to curb crime, insecurity",
-      "summary": "The Presidency is expanding its skills acquisition and entrepreneurship training as a non-kinetic approach to curbing crime and insecurity among young Nige Read More: https://punchng.com/presidency-expands-skills-training-to-curb-crime-insecurity/",
-      "url": "https://punchng.com/presidency-expands-skills-training-to-curb-crime-insecurity/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T20:29:01+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: Gov Adeleke, Akande, Oyetola unite for Tinubu at presidential campaign council inauguration Thursday",
-      "summary": "Osun State Governor Ademola Adeleke, former governor Bisi Akande and former governor Adegboyega Oyetola are among prominent political leaders expected to participate in the inauguration of the Osun State chapter of the Tinubu Presidential Campaign Council scheduled to hold in Osogbo on Thursday, Oct",
-      "url": "https://dailypost.ng/2026/10/21/2027-gov-adeleke-akande-oyetola-unite-for-tinubu-for-presidential-campaign-council-inauguration-thursday/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-21T20:25:31+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "UCL: Osimhen fires Galatasaray to first win as Como hand Man United heavy defeat",
-      "summary": "Osimhen’s goal sealed Galatasaray’s first victory of the campaign, ending their five-game losing run away from home The post UCL: Osimhen fires Galatasaray to first win as Como hand Man United heavy defeat appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/headlines/919017-ucl-osimhen-fires-galatasaray-to-first-win-as-como-hand-man-united-heavy-defeat.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T20:24:55+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "Delta union mourns Uduaghan, hails his legacy",
-      "summary": "The Urhobo Progress Union has mourned the death of former Delta State Governor, Dr Emmanuel Uduaghan, hailing him as a compassionate leader. Read More: https://punchng.com/delta-union-mourns-uduaghan-hails-his-legacy/",
-      "url": "https://punchng.com/delta-union-mourns-uduaghan-hails-his-legacy/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T20:24:05+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Ballon d'Or 2026: Carragher names two players to win award this year",
-      "summary": "Liverpool legend, Jamie Carragher, has identified two players who may win the Ballon d'Or this year. Carragher spoke after Paris Saint-Germain defeated Barcelona 4-2 in the Champions League on Tuesday. The Englishman noted that Real Madrid's Kylian Mbappe or Bayern Munich's Harry Kane may win the 20",
-      "url": "https://dailypost.ng/2026/10/21/post-64/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-21T20:22:37+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ogun probes recurring gas emissions, urges calm",
-      "summary": "The Ogun State Government is investigating recurring gas emissions in the Ijebu axis after over 100 students were hospitalised on Wednesday after inhaling Read More: https://punchng.com/ogun-probes-recurring-gas-emissions-urges-calm/",
-      "url": "https://punchng.com/ogun-probes-recurring-gas-emissions-urges-calm/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T20:22:04+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Dollar-to-Naira exchange rate Today, October 21, 2026: Naira depreciates against USD",
-      "summary": "The naira depreciated against the United States dollar at the official foreign exchange market on Wednesday. Data from the Central Bank of Nigeria, CBN, showed that the naira weakened to N1,334.72 per dollar on Wednesday, down from N1,333.65 recorded on Tuesday. This means that the naira lost N1.07 ",
-      "url": "https://dailypost.ng/2026/10/21/dollar-to-naira-exchange-rate-today-october-21-2026-naira-depreciates-against-usd/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-21T20:21:28+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Petrol imports: Senate rejects NMDPRA figures, summons NNPCL, NEITI",
-      "summary": "The Senate has rejected petrol import figures from the NMDPRA for 2022 and 2023 due to wide discrepancies with records from the NNPCL, summoning both. Read More: https://punchng.com/petrol-imports-senate-rejects-nmdpra-figures-summons-nnpcl-neiti/",
-      "url": "https://punchng.com/petrol-imports-senate-rejects-nmdpra-figures-summons-nnpcl-neiti/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T20:20:46+00:00",
-      "categories": []
-    },
-    {
-      "title": "How a hit-and-run driver nearly took our Suleman, By Yushau A. Shuaib",
-      "summary": "That gesture — that small, defiant raising of a hand by Suleman in pain just to reassure his father — tells me everything I need to know about the son I raised, and the son I intend to see fully recovered… We pray that Suleman will walk out of Cedarcrest Hospital whole after the next […] The post Ho",
-      "url": "https://www.premiumtimesng.com/opinion/919005-how-a-hit-and-run-driver-nearly-took-our-suleman-by-yushau-a-shuaib.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T20:18:53+00:00",
       "categories": []
     }
   ]
