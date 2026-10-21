@@ -1,0 +1,68 @@
+/* TW&D High-Resolution Visual Upgrade — additive overrides only.
+   Designed to preserve page structure, forms, scripts and existing navigation. */
+:root{
+  --twd-blue:#0757d8;
+  --twd-blue-deep:#063b98;
+  --twd-green:#00a878;
+  --twd-green-deep:#007c5a;
+  --twd-cyan:#27c5e8;
+  --twd-gold:#f5bd35;
+  --twd-ink:#10233b;
+  --twd-muted:#52657d;
+  --twd-line:#d7e4f0;
+  --twd-surface:#f4f9ff;
+  --twd-shadow:0 18px 48px rgba(5,44,100,.12);
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+html{scroll-behavior:smooth;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+body{color:var(--twd-ink);background:#fff}
+img,svg,video,canvas{max-width:100%}
+img{image-rendering:auto;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+a,button,input,select,textarea{ -webkit-tap-highlight-color:transparent}
+a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease}
+:where(h1,h2,h3,h4){text-wrap:balance}
+:where(p,li){text-wrap:pretty}
+:where(button,.btn,[type=button],[type=submit],[role=button]){transition:background-color .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease}
+:where(button,.btn,[type=button],[type=submit],[role=button]):focus-visible,
+:where(a,input,select,textarea):focus-visible{outline:3px solid rgba(39,197,232,.85);outline-offset:3px}
+:where(.site-header,.header,.navbar,header){border-color:var(--twd-line)}
+:where(.site-header nav a:hover,.site-header nav a.active,.text-link,.eyebrow,.quick-grid span,.service-list b,.bulletin-cards span){color:var(--twd-blue)}
+:where(.nav-cta,.btn-red,.btn-primary,.primary-btn,.cta-button){background:linear-gradient(115deg,var(--twd-blue),var(--twd-green));color:#fff;border-color:transparent;box-shadow:0 7px 18px rgba(0,115,150,.18)}
+:where(.nav-cta,.btn-red,.btn-primary,.primary-btn,.cta-button):hover{background:linear-gradient(115deg,var(--twd-blue-deep),var(--twd-green-deep));box-shadow:0 10px 24px rgba(0,90,130,.25);transform:translateY(-1px)}
+:where(.hero,.hero-section,.page-hero,.about-teaser,.bulletin-teaser){background:linear-gradient(135deg,#f4f9ff 0%,#effcf7 100%)}
+:where(.hero h1,.page-hero h1) span{color:var(--twd-blue)}
+:where(.hero-image,.project-image,.gallery-item,.card-image){overflow:hidden}
+:where(.hero-image img,.project-image img,.gallery-item img,.card-image img){display:block;width:100%;height:100%;object-fit:cover;transform:translateZ(0);transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+:where(.hero-image:hover img,.project-image:hover img,.gallery-item:hover img,.card-image:hover img){transform:scale(1.025)}
+:where(.card,.service-card,.project-card,.job-card,.listing-card,.bulletin-cards a){border-color:var(--twd-line);box-shadow:0 6px 24px rgba(7,45,90,.055)}
+:where(.card:hover,.service-card:hover,.project-card:hover,.job-card:hover,.listing-card:hover){box-shadow:var(--twd-shadow)}
+:where(.section-head h2,.teaser-grid h2,.bulletin-teaser h2){color:var(--twd-ink)}
+:where(.quick-grid a:hover,.service-list a:hover,.bulletin-cards a:hover){background:linear-gradient(135deg,#f4f9ff,#effcf7)}
+:where(.topbar){background:linear-gradient(90deg,#062b59,#0757d8 62%,#007c5a);color:#fff}
+:where(.site-footer,footer){border-top:3px solid transparent;border-image:linear-gradient(90deg,var(--twd-blue),var(--twd-green),var(--twd-cyan)) 1}
+:where(input,select,textarea){max-width:100%}
+:where(.container,.wrap,.page-container){min-width:0}
+@media (min-resolution:1.5dppx){
+  img{image-rendering:auto}
+}
+@media (max-width:760px){
+  :where(.container,.wrap,.page-container){width:min(100% - 28px,1160px)}
+  :where(.hero h1,.page-hero h1){letter-spacing:-.035em}
+  :where(.hero-image){min-height:220px}
+  :where(button,.btn,[type=button],[type=submit]){min-height:42px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+/* Clean print/PDF rendering when users print a public page from the browser. */
+@media print{
+  @page{size:A4;margin:14mm}
+  html,body{background:#fff!important;color:#101820!important;font-size:10.5pt!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  :where(.topbar,.site-header nav,.menu-toggle,.nav-cta,.floating-actions,.global-access,.site-flow,.chat-widget,.cookie-banner,.back-to-top,.no-print){display:none!important}
+  a{color:inherit!important;text-decoration:none!important}
+  img{max-width:100%!important;break-inside:avoid;page-break-inside:avoid}
+  :where(.section,.card,.project-card,.job-card,.listing-card){break-inside:avoid;page-break-inside:avoid;box-shadow:none!important}
+  :where(h1,h2,h3){break-after:avoid;page-break-after:avoid}
+  :where(.container,.wrap,.page-container){width:100%!important;max-width:none!important}
+}
