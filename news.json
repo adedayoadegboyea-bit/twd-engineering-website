@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T17:02:41.951240+00:00",
+  "generated_at": "2026-10-21T17:58:05.730720+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,68 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "NITDA warns of AI manipulation ahead of 2027 elections",
+      "summary": "NITDA has warned that AI-powered misinformation and deepfakes could be used to manipulate Nigerians ahead of the 2027 general elections. Read More: https://punchng.com/nitda-warns-of-ai-manipulation-ahead-of-2027-elections/",
+      "url": "https://punchng.com/nitda-warns-of-ai-manipulation-ahead-of-2027-elections/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T18:51:03+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "Ebola: Anambra monitors seven persons of interest",
+      "summary": "The Anambra State government says its Epidemiology Unit is monitoring seven persons of interest following a reported Ebola case in Abuja. Read More: https://punchng.com/ebola-anambra-monitors-seven-persons-of-interest/",
+      "url": "https://punchng.com/ebola-anambra-monitors-seven-persons-of-interest/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T18:42:35+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Ebola: Firm urges vigilance, warns against misinformation",
+      "summary": "SUNU Health Nigeria has urged vigilance following the confirmation of an Ebola case in the FCT, advising citizens to follow preventive measures. Read More: https://punchng.com/ebola-firm-urges-vigilance-warns-against-misinformation/",
+      "url": "https://punchng.com/ebola-firm-urges-vigilance-warns-against-misinformation/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T18:40:26+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ekiti Assembly passes state police bill",
+      "summary": "The Ekiti State House of Assembly has passed a bill for the establishment of State Police Services in Nigeria to address national security challenges. Read More: https://punchng.com/ekiti-assembly-passes-state-police-bill/",
+      "url": "https://punchng.com/ekiti-assembly-passes-state-police-bill/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T18:38:48+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "UCL: Barcelona report PSG to UEFA over controversial banner",
+      "summary": "Barcelona have reported Paris Saint-Germain to UEFA over a controversial banner displayed by fans which depicted a chainsaw destroying the club’s crest. Read More: https://punchng.com/ucl-barcelona-report-psg-to-uefa-over-controversial-banner/",
+      "url": "https://punchng.com/ucl-barcelona-report-psg-to-uefa-over-controversial-banner/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T18:33:35+00:00",
+      "categories": []
+    },
+    {
+      "title": "2027: APC PCC unveils diaspora strategy for Tinubu’s re-election",
+      "summary": "The APC Presidential Campaign Council has unveiled a five-point strategy to mobilise Nigerians in the diaspora for President Bola Tinubu’s re-election in 2 Read More: https://punchng.com/2027-apc-pcc-unveils-diaspora-strategy-for-tinubus-re-election/",
+      "url": "https://punchng.com/2027-apc-pcc-unveils-diaspora-strategy-for-tinubus-re-election/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T18:16:39+00:00",
+      "categories": []
+    },
+    {
+      "title": "Akpabio seeks stronger Nigeria-UK legislative ties",
+      "summary": "Senate President Godswill Akpabio has called for stronger Nigeria-UK legislative ties through increased parliamentary cooperation and exchanges. Read More: https://punchng.com/akpabio-seeks-stronger-nigeria-uk-legislative-ties/",
+      "url": "https://punchng.com/akpabio-seeks-stronger-nigeria-uk-legislative-ties/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-21T18:08:41+00:00",
+      "categories": []
+    },
     {
       "title": "NDC candidate demands audit of Kwara social investment spending",
       "summary": "NDC governorship candidate, Abdulmumin Ajia, has called for an independent audit of Kwara social investment spending over alleged political use of funds. Read More: https://punchng.com/ndc-candidate-demands-audit-of-kwara-social-investment-spending/",
@@ -49,6 +111,16 @@
       "categories": []
     },
     {
+      "title": "Benue Assembly passes state police bill, seeks constitutional amendment",
+      "summary": "Benue Assembly passes state police bill, seeks constitutional amendment The Benue State House of Assembly has passed a bill seeking to amend the Nigerian Constitution to allow the establishment of state police, adding its voice to ongoing efforts to decentralise policing and address the country’s se",
+      "url": "https://dailypost.ng/2026/10/21/benue-assembly-passes-state-police-bill-seeks-constitutional-amendment/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T17:00:37+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Wike defends Tinubu’s removal of petrol subsidy",
       "summary": "FCT Minister Nyesom Wike has defended President Tinubu’s removal of the petrol subsidy, saying past leaders knew it was a scam but lacked courage to end it Read More: https://punchng.com/wike-defends-tinubus-removal-of-petrol-subsidy/",
       "url": "https://punchng.com/wike-defends-tinubus-removal-of-petrol-subsidy/?utm_source=rss.punchng.com&utm_medium=web",
@@ -59,11 +131,11 @@
       ]
     },
     {
-      "title": "Kidnappers kill seven-year-old boy after demanding ₦2.5m ransom",
-      "summary": "The boy was found dead in Jos North Local Government Area of Plateau State, hours after suspected kidnappers reportedly demanded a ₦2.5 million ransom from his family. The post Kidnappers kill seven-year-old boy after demanding ₦2.5m ransom appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/regional/north-central/918948-kidnappers-kill-seven-year-old-boy-after-demanding-%e2%82%a62-5m-ransom.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:58:15+00:00",
+      "title": "'Political differences won’t affect my affection for you' - Tinubu congratulates Kwankwaso at 70",
+      "summary": "President Bola Tinubu has congratulated former Kano State Governor and presidential candidate, Rabiu Musa Kwankwaso, on his 70th birthday, saying their political differences will not change the affection he has for him. Tinubu’s message was released on Wednesday by his spokesman, Bayo Onanuga. The p",
+      "url": "https://dailypost.ng/2026/10/21/tinubu-celebrates-kwankwaso-at-70-despite-political-differences/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T16:58:39+00:00",
       "categories": [
         "government"
       ]
@@ -78,18 +150,10 @@
     },
     {
       "title": "JAMB plans to introduce life skills, critical thinking into UTME",
-      "summary": "The Joint Admissions and Matriculation Board (JAMB) is considering plans to introduce life skills and critical thinking into the UTME to improve assessment Read More: https://punchng.com/jamb-plans-to-introduce-life-skills-critical-thinking-into-utme/",
+      "summary": "The Joint Admissions and Matriculation Board (JAMB) is considering plans to introduce life skills and critical thinking into the UTME, says Prof. Segun Ain Read More: https://punchng.com/jamb-plans-to-introduce-life-skills-critical-thinking-into-utme/",
       "url": "https://punchng.com/jamb-plans-to-introduce-life-skills-critical-thinking-into-utme/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-21T16:50:24+00:00",
-      "categories": []
-    },
-    {
-      "title": "NIBSS, Transactility’s partnership delivers National Payment Stack",
-      "summary": "NPS is a next-generation ISO-20022 instant payments platform designed and developed by NIBSS for Nigeria’s payments ecosystem. The post NIBSS, Transactility’s partnership delivers National Payment Stack appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/business/business-news/918939-nibss-transactilitys-partnership-delivers-national-payment-stack.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:46:00+00:00",
       "categories": []
     },
     {
@@ -101,16 +165,18 @@
       "categories": []
     },
     {
-      "title": "First Lady Oluremi Tinubu to inaugurate PBAT Door-to-Door Movement’s Abuja office",
-      "summary": "The PBAT Door-to-Door Movement is establishing a presence in 36 states and the FCT. The post First Lady Oluremi Tinubu to inaugurate PBAT Door-to-Door Movement’s Abuja office appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/news/more-news/918933-first-lady-oluremi-tinubu-to-inaugurate-pbat-door-to-door-movements-abuja-office.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:41:04+00:00",
-      "categories": []
+      "title": "Gombe treats 74 cholera patients, declares outbreak",
+      "summary": "The Gombe State Government has confirmed a cholera outbreak in Kedo village, Todi Ward, Billiri Local Government Area, after diarrhoea and vomiting reportedly killed two people on October 4, 2026. The state Commissioner for Health, Prof. Adamu-Danladi Bojude, announced this during a media briefing i",
+      "url": "https://dailypost.ng/2026/10/21/gombe-treats-74-cholera-patients-declares-outbreak/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T16:42:40+00:00",
+      "categories": [
+        "government"
+      ]
     },
     {
       "title": "Tinubu celebrates Kwankwaso at 70",
-      "summary": "President Bola Tinubu has congratulated former Kano State Governor, Rabiu Kwankwaso, on his 70th birthday, calling him a longstanding political associate. Read More: https://punchng.com/tinubu-celebrates-kwankwaso-at-70/",
+      "summary": "President Bola Tinubu has congratulated former Kano State Governor, Rabiu Kwankwaso, on his 70th birthday, saying their political differences will not dimi Read More: https://punchng.com/tinubu-celebrates-kwankwaso-at-70/",
       "url": "https://punchng.com/tinubu-celebrates-kwankwaso-at-70/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-21T16:40:59+00:00",
@@ -119,13 +185,13 @@
       ]
     },
     {
-      "title": "Nigeria’s Gaming Gold Rush: FSGRN’s ₦150m licence offers a competitive gateway to Africa’s largest population, By Micheal Eja",
-      "summary": "The future of Nigeria's gaming industry will be defined not merely by the number of operators entering the market, but by the quality of investment, strength of regulatory oversight and sustainability of the industry we collectively build. The post Nigeria’s Gaming Gold Rush: FSGRN’s ₦150m licence o",
-      "url": "https://www.premiumtimesng.com/promoted/918921-nigerias-gaming-gold-rush-fsgrns-%e2%82%a6150m-licence-offers-a-competitive-gateway-to-africas-largest-population-by-micheal-eja.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:39:49+00:00",
+      "title": "ACF demands full disclosure of Nigeria-US critical minerals agreement",
+      "summary": "The Arewa Consultative Forum, ACF, has expressed concern at what it views as \"the refusal or reluctance of the Federal Government of Nigeria (FGN) to disclose details of the agreement widely reported in the national and international press, to have been signed with the United States on 23rd Septembe",
+      "url": "https://dailypost.ng/2026/10/21/acf-laments-fgn-refusal-to-disclose-agreement-with-us-on-exploitation-of-minerals-in-nigeria/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T16:40:31+00:00",
       "categories": [
-        "business"
+        "government"
       ]
     },
     {
@@ -147,17 +213,6 @@
       ]
     },
     {
-      "title": "Emerging African creatives seek greater visibility, income opportunities at Lagos festival",
-      "summary": "Organisers say the maiden festival was created to connect talent with industry professionals and help turn creative skills into sustainable careers and businesses. The post Emerging African creatives seek greater visibility, income opportunities at Lagos festival appeared first on Premium Times Nige",
-      "url": "https://www.premiumtimesng.com/entertainment/naija-fashion/918923-emerging-african-creatives-seek-greater-visibility-income-opportunities-at-lagos-festival.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:31:12+00:00",
-      "categories": [
-        "business",
-        "lagos"
-      ]
-    },
-    {
       "title": "Reps urge FG to end BEDC dispute, restore power in four states",
       "summary": "The House of Representatives has urged the Federal Government to intervene in the dispute between electricity workers and the BEDC to restore power in Edo, Read More: https://punchng.com/reps-urge-fg-to-end-bedc-dispute-restore-power-in-four-states/",
       "url": "https://punchng.com/reps-urge-fg-to-end-bedc-dispute-restore-power-in-four-states/?utm_source=rss.punchng.com&utm_medium=web",
@@ -169,22 +224,19 @@
       ]
     },
     {
-      "title": "Lagos State Butchers Association unveils new executive leadership under Ismaila Babalola",
-      "summary": "The Association further set a 7-point agenda for industry modernisation and members’ welfare The post Lagos State Butchers Association unveils new executive leadership under Ismaila Babalola appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/promoted/918912-lagos-state-butchers-association-unveils-new-executive-leadership-under-ismaila-babalola.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:23:03+00:00",
-      "categories": [
-        "business",
-        "lagos"
-      ]
+      "title": "Police arrest mechanic found with stolen N8m car in Kano",
+      "summary": "The Kano State Police Command has arrested a 24-year-old mechanic, Mubarak Muktar, after he was allegedly found with a stolen Kia Optima valued at N8 million. The Command’s spokesperson, CSP Abdullahi Haruna Kiyawa, disclosed this in a statement issued on Wednesday. According to the statement, the p",
+      "url": "https://dailypost.ng/2026/10/21/kano-police-arrest-mechanic-found-with-stolen-8m-car/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T16:19:16+00:00",
+      "categories": []
     },
     {
-      "title": "INEC violates Electoral Act, fails to publish voter register 90 days before election",
-      "summary": "Since the 2027 general elections are scheduled to begin on 16 January 2027, with the presidential and National Assembly elections, the deadline for INEC to announce the seven days for displaying the voters’ register was Sunday, 18 October. The post INEC violates Electoral Act, fails to publish voter",
-      "url": "https://www.premiumtimesng.com/news/top-news/918916-inec-violates-electoral-act-fails-to-publish-voter-register-90-days-before-election.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:20:20+00:00",
+      "title": "How Wike’s aide, Lere Olayinka got my N1m giveaway — Isaac Fayose [VIDEO]",
+      "summary": "Isaac Fayose, younger brother of former Ekiti State Governor, Ayodele Fayose, has disclosed that Lere Olayinka, media aide to the FCT Minister, Nyesom Wike, was among more than 10,000 Nigerians who submitted their account details after he invited people to participate in a giveaway. In a video he po",
+      "url": "https://dailypost.ng/2026/10/21/how-wikes-aide-lere-olayinka-got-my-n1m-giveaway-isaac-fayose-video/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-21T16:15:58+00:00",
       "categories": [
         "government"
       ]
@@ -198,29 +250,11 @@
       "categories": []
     },
     {
-      "title": "Vehicle accidents, congestion worsen on Abuja roads as traffic lights malfunction",
-      "summary": "Commercial drivers say malfunctioning traffic lights at some of the intersections are creating confusion and increasing the risk of road crashes. The post Vehicle accidents, congestion worsen on Abuja roads as traffic lights malfunction appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/features-and-interviews/918885-vehicle-accidents-congestion-worsen-on-abuja-roads-as-traffic-lights-malfunction.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:15:05+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
       "title": "Senate Declares Emergency On Ebola",
       "summary": "The Senate, on Wednesday, moved to prevent a full-blown Ebola crisis in Nigeria, adopting sweeping resolutions for compulsory health screening of all international travelers, immediate emergency funding from the Service Wide Vote, and the urgent repeal of the 100-year-old Quarantine Act of 1926. The",
       "url": "https://www.informationng.com/2026/10/senate-declares-emergency-on-ebola.html",
       "source": "Information Nigeria",
       "published": "2026-10-21T16:13:23+00:00",
-      "categories": []
-    },
-    {
-      "title": "Sowore’s AAC asks Tinubu for Villa venue, logistics for 5,000 campaign council members",
-      "summary": "“We believe that granting this request would demonstrate the Presidency's commitment to fairness, equal access, and the principle that public institutions must serve all Nigerians without partisan discrimination,” the AAC said. The post Sowore’s AAC asks Tinubu for Villa venue, logistics for 5,000 c",
-      "url": "https://www.premiumtimesng.com/news/top-news/918901-sowores-aac-asks-tinubu-for-villa-venue-logistics-for-5000-campaign-council-members.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:12:50+00:00",
       "categories": []
     },
     {
@@ -234,60 +268,22 @@
       ]
     },
     {
-      "title": "Dele Cole & Emmanuel Uduaghan: Memories of two departed great men, By Mathew Hassan Kukah",
-      "summary": "Bishop Kukah shares personal memories of Dele Cole and Emmanuel Uduaghan, two eminent Nigerians who recently passed away. The post Dele Cole & Emmanuel Uduaghan: Memories of two departed great men, By Mathew Hassan Kukah appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/features-and-interviews/918892-dele-cole-emmanuel-uduaghan-memories-of-two-departed-great-men-by-mathew-hassan-kukah.html",
-      "source": "Premium Times",
-      "published": "2026-10-21T16:00:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "Pharaoh can’t lead Nigeria to promised land - Makinde's camp blasts Tinubu",
-      "summary": "The Makinde-Daura Presidential Campaign Organisation, MDPCO, has said President Bola Tinubu cannot lead Nigeria to the promised land, describing his administration as a Pharaoh-like regime that has inflicted hardship on Nigerians. The campaign team said this in a statement by its Director of Strateg",
-      "url": "https://dailypost.ng/2026/10/21/pharaoh-cant-lead-nigeria-to-promised-land-makindes-camp-blasts-tinubu/",
+      "title": "2027: Atiku more experienced than Peter Obi, Tinubu - Dele Momodu",
+      "summary": "A chieftain of the African Democratic Congress, ADC, Dele Momodu, has described former Vice-President Atiku Abubakar as the most experienced among the leading contenders for the 2027 presidential election. Momodu said Atiku's experience at the national level distinguishes him from President Bola Tin",
+      "url": "https://dailypost.ng/2026/10/21/2027-atiku-more-experienced-than-peter-obi-tinubu-dele-momodu/",
       "source": "Daily Post Nigeria",
-      "published": "2026-10-21T15:52:46+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "Reps want federal relief for Edo tanker explosion victims",
-      "summary": "The House of Representatives has urged the Federal Government to provide relief materials and financial aid to victims of the Edo tanker explosion in Oluku Read More: https://punchng.com/reps-want-federal-relief-for-edo-tanker-explosion-victims/",
-      "url": "https://punchng.com/reps-want-federal-relief-for-edo-tanker-explosion-victims/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T15:44:09+00:00",
+      "published": "2026-10-21T16:11:37+00:00",
       "categories": [
         "government"
       ]
     },
     {
-      "title": "Greek basketball chief held in match-fixing probe",
-      "summary": "Greece’s basketball federation chief, Vangelis Liolios, has been held in a broad match-fixing probe involving several suspects and dozens of games. Read More: https://punchng.com/greek-basketball-chief-held-in-match-fixing-probe/",
-      "url": "https://punchng.com/greek-basketball-chief-held-in-match-fixing-probe/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T15:44:07+00:00",
-      "categories": [
-        "engineering"
-      ]
-    },
-    {
-      "title": "Fresh gas emissions hit Ogun school, send hundreds of students to hospital",
-      "summary": "A fresh outbreak of offensive gas odour has hit secondary schools in Ijebu-Ode, Ijebu-Igbo and Ago-Iwoye areas of Ogun State, leaving several students hospitalised. The incident, which happens to be the fourth this year, occurred on Wednesday morning. It affected students at Anglican Girls Grammar S",
-      "url": "https://dailypost.ng/2026/10/21/fresh-gas-emissions-hit-ogun-school-sends-hundreds-of-students-to-hospital/",
+      "title": "JAMB introduces measures to reduce admission anxiety, warns against identity fraud",
+      "summary": "The Joint Admissions and Matriculation Board, JAMB, has introduced measures to make the admission process less stressful for candidates while warning against attempts to manipulate personal information. JAMB Registrar, Professor Segun Aina, disclosed this on Wednesday during an interaction with cand",
+      "url": "https://dailypost.ng/2026/10/21/jamb-introduces-measures-to-reduce-admission-anxiety-warns-candidates-against-identity-fraud/",
       "source": "Daily Post Nigeria",
-      "published": "2026-10-21T15:35:36+00:00",
+      "published": "2026-10-21T16:10:45+00:00",
       "categories": []
-    },
-    {
-      "title": "Army foils pipeline vandalism attempt, arrests 18-Year-old suspect in Benue",
-      "summary": "Troops of Operation WHIRL STROKE have foiled a pipeline vandalism attempt in Benue State, arresting an 18-year-old suspect in Logo Local Government Area. Read More: https://punchng.com/army-foils-pipeline-vandalism-attempt-arrests-18-year-old-suspect-in-benue/",
-      "url": "https://punchng.com/army-foils-pipeline-vandalism-attempt-arrests-18-year-old-suspect-in-benue/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-21T15:34:08+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
