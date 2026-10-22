@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T03:00:30.045830+00:00",
+  "generated_at": "2026-10-22T04:03:23.682057+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,26 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "SPECIAL REPORT: Beyond tuition, extra school charges deepen financial strain on Nigerian parents",
+      "summary": "From Abuja to Lagos, Kaduna, Katsina and Benue, parents described additional bills for graduation ceremonies, textbooks, costumes, feeding, extra lessons, photographs, parties and other activities. The post SPECIAL REPORT: Beyond tuition, extra school charges deepen financial strain on Nigerian pare",
+      "url": "https://www.premiumtimesng.com/education/918972-special-report-beyond-tuition-extra-school-charges-deepen-financial-strain-on-nigerian-parents.html",
+      "source": "Premium Times",
+      "published": "2026-10-22T04:00:14+00:00",
+      "categories": [
+        "lagos"
+      ]
+    },
+    {
+      "title": "Why Nigeria’s improved growth forecasts still aren’t enough, By Posi Olatubosun",
+      "summary": "A growth rate measures the pace at which total output expands, not how evenly that growth is distributed. Nigeria’s population grows by approximately 2.5 per cent annually. With the economy expanding at just over 4 per cent, output per person increases by perhaps 1.5 to 2 per cent a year. At that ra",
+      "url": "https://www.premiumtimesng.com/opinion/919087-why-nigerias-improved-growth-forecasts-still-arent-enough-by-posi-olatubosun.html",
+      "source": "Premium Times",
+      "published": "2026-10-22T03:57:49+00:00",
+      "categories": [
+        "business"
+      ]
+    },
     {
       "title": "Ondo crash: Residents lament non-fumigation of site",
       "summary": "Residents of Igbokoda, Ondo State, lament the non-fumigation of a military plane crash site, citing foul odour, water pollution, and losses to fishing. Read More: https://punchng.com/ondo-crash-residents-lament-non-fumigation-of-site/",
@@ -259,24 +279,6 @@
       "published": "2026-10-22T00:37:38+00:00",
       "categories": [
         "engineering",
-        "business"
-      ]
-    },
-    {
-      "title": "Top NGX performers shortlisted for 2026 PEARL Awards",
-      "summary": "PEARL Awards Nigeria has unveiled the nominees for its 2026 awards, shortlisting top-performing companies quoted on the Nigerian Exchange Limited. Read More: https://punchng.com/top-ngx-performers-shortlisted-for-2026-pearl-awards/",
-      "url": "https://punchng.com/top-ngx-performers-shortlisted-for-2026-pearl-awards/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-22T00:36:36+00:00",
-      "categories": []
-    },
-    {
-      "title": "NGX sheds N516bn as market reverses gains",
-      "summary": "The Nigerian equities market shed N516bn on Wednesday, reversing previous gains due to heavy selling pressure in major banking and financial stocks. Read More: https://punchng.com/ngx-sheds-n516bn-as-market-reverses-gains/",
-      "url": "https://punchng.com/ngx-sheds-n516bn-as-market-reverses-gains/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-22T00:35:30+00:00",
-      "categories": [
         "business"
       ]
     }
