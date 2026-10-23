@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T22:56:14.788558+00:00",
+  "generated_at": "2026-10-23T23:20:33.222342+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,32 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Monarch denies Ogun allegations",
+      "summary": "The Eselu of Iselu, Oba Akintunde Akinyemi, has denied allegations of partisan politics levelled against him by the Ogun State Government, demanding proof. Read More: https://punchng.com/monarch-denies-ogun-allegations/",
+      "url": "https://punchng.com/monarch-denies-ogun-allegations/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-24T00:09:33+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Beauty brand signs Mercy Eke as ambassador",
+      "summary": "Luxury hair brand, TOL Luxe Hairs, has signed reality TV star and entrepreneur, Mercy Eke, as its new brand ambassador to expand its reach in Nigeria. Read More: https://punchng.com/beauty-brand-signs-mercy-eke-as-ambassador/",
+      "url": "https://punchng.com/beauty-brand-signs-mercy-eke-as-ambassador/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-24T00:03:09+00:00",
+      "categories": []
+    },
+    {
+      "title": "Fame doesn’t give people access to my love life— Peju Johnson",
+      "summary": "Nollywood actress and filmmaker, Peju Johnson, explains why she deliberately keeps her love life, family matters, and personal struggles private from the p Read More: https://punchng.com/fame-doesnt-give-people-access-to-my-love-life-peju-johnson/",
+      "url": "https://punchng.com/fame-doesnt-give-people-access-to-my-love-life-peju-johnson/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-24T00:01:06+00:00",
+      "categories": []
+    },
     {
       "title": "Protests expected in Rome, Milan under heavy security",
       "summary": "Italian security forces are deploying massively in Rome and Milan for planned protests over budget cuts and cost of living after previous demonstrations tu Read More: https://punchng.com/protests-expected-in-rome-milan-under-heavy-security/",
@@ -62,6 +88,16 @@
       "source": "PUNCH",
       "published": "2026-10-23T22:27:38+00:00",
       "categories": []
+    },
+    {
+      "title": "'Atiku’s push for return of power to North is insult' — Laolu Akande",
+      "summary": "Former presidential aide Laolu Akande has criticised the African Democratic Congress, ADC, presidential candidate Atiku Abubakar's reported position on power returning to the North, describing the argument as an insult to Nigerians from the region. Akande, a former Senior Special Assistant to the Pr",
+      "url": "https://dailypost.ng/2026/10/23/its-an-insult-ex-presidential-aide-laolu-slams-atiku-over-north-push-to-reclaim-power/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T22:20:36+00:00",
+      "categories": [
+        "engineering"
+      ]
     },
     {
       "title": "Electricity workers threaten nationwide strike over Edo assault",
@@ -241,38 +277,6 @@
       "url": "https://www.premiumtimesng.com/news/top-news/919718-one-killed-three-injured-as-gunmen-attack-ndc-candidates-convoy.html",
       "source": "Premium Times",
       "published": "2026-10-23T20:51:36+00:00",
-      "categories": []
-    },
-    {
-      "title": "NPFL: Bendel Insurance's Ibrahim returns to training after injury layoff",
-      "summary": "Bendel Insurance midfielder Sabiu Mohammed Ibrahim has returned to team training after an injury layoff, DAILY POST reports. Ibrahim was sidelined for nearly two months with a clavicle fracture. The midfielder picked up the injury against Abia Warriors in a warm-up match and has been undergoing reha",
-      "url": "https://dailypost.ng/2026/10/23/npfl-bendel-insurances-ibrahim-returns-to-training-after-injury-layoff/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T20:50:57+00:00",
-      "categories": []
-    },
-    {
-      "title": "Okoya’s estranged son still receives support — Family",
-      "summary": "The family of billionaire Razaq Okoya has disputed claims by his estranged son, Fatai, stating that he continues to receive financial support from his fath Read More: https://punchng.com/okoyas-estranged-son-still-receives-support-family/",
-      "url": "https://punchng.com/okoyas-estranged-son-still-receives-support-family/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T20:44:29+00:00",
-      "categories": []
-    },
-    {
-      "title": "NPFL suspends Kun Khalifat media officer for five matches",
-      "summary": "The Nigeria Premier Football League, NPFL, has suspended Kun Khalifat FC media officer, Saviola Godwin Otu, for five matches over an unprofessional publication and failure to honour the league’s invitation. Otu was also fined N200,000 by the league. The sanction followed a video posted on X showing ",
-      "url": "https://dailypost.ng/2026/10/23/npfl-suspends-kun-khalifat-media-officer-for-five-matches/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T20:43:09+00:00",
-      "categories": []
-    },
-    {
-      "title": "2026 U-17 WWC: Flamingos captain Oduntan urges humility after victory over North Korea",
-      "summary": "Flamingos captain Azeezat Oduntan has urged her teammates to remain humble and focused despite their impressive victory over North Korea at the 2026 FIFA U-17 Women’s World Cup. The Flamingos stunned the defending champions 3-1 in their final Group B encounter on Friday night to secure a place in th",
-      "url": "https://dailypost.ng/2026/10/23/2026-u-17-wwc-flamingos-captain-oduntan-urges-humility-after-victory-over-north-korea/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T20:40:56+00:00",
       "categories": []
     }
   ]
