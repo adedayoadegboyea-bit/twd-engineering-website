@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T11:30:42.821569+00:00",
+  "generated_at": "2026-10-23T12:22:42.341669+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,11 +11,88 @@
   ],
   "articles": [
     {
-      "title": "24 state assemblies approve state police amendment — Gbajabiamila",
-      "summary": "24 of 36 state assemblies have approved the constitutional amendment for a dual policing system in Nigeria, meeting the required two-thirds threshold. Read More: https://punchng.com/24-state-assemblies-approve-state-police-amendment-gbajabiamila/",
-      "url": "https://punchng.com/24-state-assemblies-approve-state-police-amendment-gbajabiamila/?utm_source=rss.punchng.com&utm_medium=web",
+      "title": "Ebola patient in Nigeria is Swiss diplomat’s wife — Report",
+      "summary": "A Ugandan-born woman, married to a Swiss diplomat, has tested positive for Ebola in Nigeria after a trip to Uganda, marking the country’s first case in a d Read More: https://punchng.com/ebola-patient-in-nigeria-is-swiss-diplomats-wife-report/",
+      "url": "https://punchng.com/ebola-patient-in-nigeria-is-swiss-diplomats-wife-report/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
-      "published": "2026-10-23T12:26:11+00:00",
+      "published": "2026-10-23T13:13:00+00:00",
+      "categories": []
+    },
+    {
+      "title": "Lagos-Calabar highway to be completed in three years – Umahi",
+      "summary": "The Minister of Works, David Umahi, has projected that the 750km Lagos-Calabar Coastal Highway will be completed within three years, around 2029. Read More: https://punchng.com/lagos-calabar-highway-to-be-completed-in-three-years-umahi/",
+      "url": "https://punchng.com/lagos-calabar-highway-to-be-completed-in-three-years-umahi/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T13:08:32+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Army sends 600 soldiers to India for training",
+      "summary": "The Nigerian Army has deployed 600 personnel to India for specialised jungle and mountain warfare training to enhance combat proficiency in difficult terra Read More: https://punchng.com/army-sends-600-soldiers-to-india-for-training/",
+      "url": "https://punchng.com/army-sends-600-soldiers-to-india-for-training/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T12:57:06+00:00",
+      "categories": []
+    },
+    {
+      "title": "CNG buses slash transport fares by up to 50% – FG",
+      "summary": "The Federal Government says its CNG bus programme has led to transport fare reductions of 15-50% on participating routes, with 670 buses deployed nationwid Read More: https://punchng.com/cng-buses-slash-transport-fares-by-up-to-50-fg/",
+      "url": "https://punchng.com/cng-buses-slash-transport-fares-by-up-to-50-fg/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T12:54:31+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: PDP chieftain urges Makinde to showcase achievements",
+      "summary": "A PDP chieftain, Oluwole Oluyede, has challenged Governor Seyi Makinde to showcase his achievements for his 2027 presidential bid, not youthful energy. Read More: https://punchng.com/2027-pdp-chieftain-urges-makinde-to-showcase-achievements/",
+      "url": "https://punchng.com/2027-pdp-chieftain-urges-makinde-to-showcase-achievements/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T12:46:08+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Lagos-Calabar highway has no single engineering design – Umahi",
+      "summary": "The Minister of Works, David Umahi, has disclosed that the 750km Lagos-Calabar Coastal Highway has no single engineering design for the entire route. Read More: https://punchng.com/lagos-calabar-highway-has-no-single-engineering-design-umahi/",
+      "url": "https://punchng.com/lagos-calabar-highway-has-no-single-engineering-design-umahi/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T12:39:56+00:00",
+      "categories": [
+        "engineering",
+        "government",
+        "lagos"
+      ]
+    },
+    {
+      "title": "2027: Soludo convenes APGA, APC stakeholders’ meeting in Anambra",
+      "summary": "Anambra Governor, Chukwuma Soludo, has summoned a joint stakeholders’ meeting of APGA and APC in the state ahead of the 2027 general elections. Read More: https://punchng.com/2027-soludo-convenes-apga-apc-stakeholders-meeting-in-anambra/",
+      "url": "https://punchng.com/2027-soludo-convenes-apga-apc-stakeholders-meeting-in-anambra/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T12:39:43+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Group to improve taxpayer information system in Abia",
+      "summary": "The International Budget Partnership Nigeria is working with the Abia State Internal Revenue Service to improve the existing taxpayer information system. Read More: https://punchng.com/group-to-improve-taxpayer-information-system-in-abia/",
+      "url": "https://punchng.com/group-to-improve-taxpayer-information-system-in-abia/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T12:37:09+00:00",
+      "categories": []
+    },
+    {
+      "title": "Police arrest three Ogun secondary school students during cult initiation",
+      "summary": "Ogun State Police have arrested three secondary school students aged 12 and 18 during a suspected cult initiation in Owode-Yewa, the command has said. Read More: https://punchng.com/police-arrest-three-ogun-secondary-school-students-during-cult-initiation/",
+      "url": "https://punchng.com/police-arrest-three-ogun-secondary-school-students-during-cult-initiation/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T12:33:54+00:00",
       "categories": []
     },
     {
@@ -35,6 +112,38 @@
       "categories": []
     },
     {
+      "title": "Obi, Kwankwaso to hold Middle Belt town hall meeting in Jos",
+      "summary": "The presidential candidate of the Nigerian Democratic Congress, NDC, in the 2027 general election, Peter Obi, and his running mate, Senator Rabiu Musa Kwankwaso, are expected to arrive in Jos, Plateau State today, Friday, October 23, 2026, for a scheduled Middle Belt town hall meeting. According to ",
+      "url": "https://dailypost.ng/2026/10/23/obi-kwankwaso-arrive-in-jos-hold-middle-belt-town-hall-meeting/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T12:16:05+00:00",
+      "categories": []
+    },
+    {
+      "title": "Tinubu rejected in North - Reactions as police, others guard President's campaign billboard",
+      "summary": "Some Nigerians have criticised President Bola Tinubu over reports alleging that security operatives are guarding his campaign billboards in Kaduna State. Daily Trust had reported that heavily armed security personnel were protecting the President's campaign posters and billboards ahead of the launch",
+      "url": "https://dailypost.ng/2026/10/23/tinubu-rejected-in-north-reactions-as-police-others-guard-apc-campaign-billboard/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T12:08:00+00:00",
+      "categories": []
+    },
+    {
+      "title": "24 state assemblies approve state police amendment — Gbajabiamila",
+      "summary": "The proposed constitutional amendment to establish a dual policing system in Nigeria has been approved by 24 state assemblies, says Femi Gbajabiamila. Read More: https://punchng.com/24-state-assemblies-approve-state-police-amendment-gbajabiamila/",
+      "url": "https://punchng.com/24-state-assemblies-approve-state-police-amendment-gbajabiamila/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-23T12:07:11+00:00",
+      "categories": []
+    },
+    {
+      "title": "Notorious bandit kingpin Ado Allero’s brother killed in Zamfara clash",
+      "summary": "More than 40 armed bandits, including the younger brother of notorious bandit kingpin Ado Allero, identified as “Senator”, have reportedly been killed in an internal clash among rival factions in Zamfara State. The deadly confrontation occurred in the eastern Mada axis of the state amid escalating t",
+      "url": "https://dailypost.ng/2026/10/23/notorious-bandit-kingpin-ado-alleros-brother-killed-in-zamfara-clash/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T12:04:08+00:00",
+      "categories": []
+    },
+    {
       "title": "Ogogo’s daughters announce plans to enter Nollywood",
       "summary": "Daughters of the late Nollywood actor Taiwo Hassan, known as Ogogo, have announced their decision to pursue acting and filmmaking to continue his legacy. Read More: https://punchng.com/ogogos-daughters-announce-plans-to-enter-nollywood/",
       "url": "https://punchng.com/ogogos-daughters-announce-plans-to-enter-nollywood/?utm_source=rss.punchng.com&utm_medium=web",
@@ -51,6 +160,51 @@
       "categories": []
     },
     {
+      "title": "Africa CDC probes possible link between Ebola cases in Nigeria, Kenya",
+      "summary": "The Africa Centres for Disease Control and Prevention (Africa CDC) said both patients travelled through Entebbe International Airport on 3 October, prompting investigations into whether they shared equipment or had other forms of contact The post Africa CDC probes possible link between Ebola cases i",
+      "url": "https://www.premiumtimesng.com/health/health-news/919551-africa-cdc-probes-possible-link-between-ebola-cases-in-nigeria-kenya.html",
+      "source": "Premium Times",
+      "published": "2026-10-23T12:02:09+00:00",
+      "categories": []
+    },
+    {
+      "title": "El Clásico: Pique predicts scoreline of Barcelona vs Real Madrid",
+      "summary": "Barcelona legend, Gerard Pique, has backed his old club to beat Real Madrid when both teams clash in El Clásico in the LaLiga on Sunday. The former Spain defender insisted that Barcelona will beat Los Blancos 4-1 at Camp Nou as he recalled what happened in the past when Jose Mourinho's side faced th",
+      "url": "https://dailypost.ng/2026/10/23/el-clasico-pique-predicts-scoreline-of-barcelona-vs-real-madrid/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T11:56:50+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ebola: Nigerian govt urges 15 states to speed up preparedness",
+      "summary": "Mr Pate said 21 states had already updated their Ebola response plans, while the remaining 15 states are expected to expedite the establishment of appropriate preparedness and response mechanisms. The post Ebola: Nigerian govt urges 15 states to speed up preparedness appeared first on Premium Times ",
+      "url": "https://www.premiumtimesng.com/health/health-news/919549-ebola-nigerian-govt-urges-15-states-to-speed-up-preparedness.html",
+      "source": "Premium Times",
+      "published": "2026-10-23T11:51:55+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ogun transport workers seek Abiodun's help to stop impending crisis",
+      "summary": "Stakeholders in the Ogun State transport sector have raised alarm over an impending crisis capable of leading to widespread destruction of lives and property if not urgently addressed. The stakeholders, operating under the Ogun State Parks Management, PAM, issued a strong cry for help to the Ogun St",
+      "url": "https://dailypost.ng/2026/10/23/ogun-transport-workers-seek-abioduns-help-to-stop-impending-crisis/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T11:51:35+00:00",
+      "categories": [
+        "government",
+        "property"
+      ]
+    },
+    {
+      "title": "Family Announces Burial Date For Late Afenifere Leader Fasoranti",
+      "summary": "The family of the late leader of Afenifere, Pa Reuben Famuyide Fasoranti, has announced that the elder statesman will be buried on December 17, 2026. The burial arrangements were contained in a programme of activities signed by his son, Dr. Taiwo Fasoranti, who is also the Secretary to the Ondo Stat",
+      "url": "https://www.informationng.com/2026/10/family-announces-burial-date-for-late-afenifere-leader-fasoranti.html",
+      "source": "Information Nigeria",
+      "published": "2026-10-23T11:51:26+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
       "title": "Bruno Fernandes’ home burgled while in Italy for Como match",
       "summary": "Manchester United captain Bruno Fernandes’ home in Cheshire was burgled while he was away in Italy for a match against Como, according to a BBC report. Read More: https://punchng.com/bruno-fernandes-home-burgled-while-in-italy-for-como-match/",
       "url": "https://punchng.com/bruno-fernandes-home-burgled-while-in-italy-for-como-match/?utm_source=rss.punchng.com&utm_medium=web",
@@ -59,6 +213,24 @@
       "categories": [
         "property"
       ]
+    },
+    {
+      "title": "Tension in Rivers over forced virginity tests on schoolgirls",
+      "summary": "Tension has erupted in Taabaa community, Khana Local Government Area of Rivers State, following allegations that the paramount ruler subjected female students of Government Comprehensive High School, Taabaa, to forced virginity tests. The school management has condemned the alleged practice, describ",
+      "url": "https://dailypost.ng/2026/10/23/tension-in-rivers-over-forced-virginity-tests-on-schoolgirls/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T11:43:04+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Presidential election: There may be run-off - Osita Okechukwu",
+      "summary": "A founding member of the All Progressives Congress, APC, Osita Okechukwu, on Friday hinted that there might be a run-off in the 2027 presidential election. Okechukwu disclosed that anybody advising President Bola Tinubu otherwise is not telling him the truth. The former Director General of the Voice",
+      "url": "https://dailypost.ng/2026/10/23/presidential-election-there-may-be-run-off-i-hear-drum-of-violence-osita-okechukwu-to-tinubu-atiku-peter-obi/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T11:40:25+00:00",
+      "categories": []
     },
     {
       "title": "Umahi says South-East will vote differently in 2027 over Tinubu’s projects",
@@ -71,212 +243,39 @@
       ]
     },
     {
+      "title": "Seven dead, 11 injured in Gombe road crash",
+      "summary": "The crash, which occurred at Tashan Magariya Junction along the Gombe–Billiri road at about 5:30 p.m. on Thursday, involved a heavy-duty truck, two Volkswagen Golf cars and five motorcycles. The post Seven dead, 11 injured in Gombe road crash appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/regional/nnorth-east/919546-seven-dead-11-injured-in-gombe-road-crash.html",
+      "source": "Premium Times",
+      "published": "2026-10-23T11:33:27+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "NNL announces new date for 2026-27 kick-off",
+      "summary": "The Nigeria National League, NNL, has rescheduled the opening fixture of the 2026-27 season, DAILY POST reports. The opening match between Heartland and Crown FC initially scheduled for Saturday, October 31 at Dan Anyiam Stadium, Owerri, will now hold on Sunday, November 1, at the same venue, with k",
+      "url": "https://dailypost.ng/2026/10/23/nnl-announces-new-date-for-2026-27-kick-off/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T11:31:12+00:00",
+      "categories": [
+        "property"
+      ]
+    },
+    {
+      "title": "Jubilating over people's afflictions diabolical - Kemi Afolabi fumes amid battle with lupus",
+      "summary": "Nigerian actress, Kemi Afolabi, has described the act of jubilating over someone else's afflictions or death as diabolical. Stating this in an Instagram post on Friday, she noted that everyone is going to die eventually. Expressing anger over some people's reactions to others' pain, she wrote, \"We a",
+      "url": "https://dailypost.ng/2026/10/23/jubilating-over-peoples-afflictions-or-death-is-diabolical-kemi-afolabi-fumes-amid-battle-with-lupus/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-23T11:23:04+00:00",
+      "categories": []
+    },
+    {
       "title": "Seven die in Gombe multiple crash",
       "summary": "Seven people have been killed and 11 others injured in a multiple-vehicle crash involving a trailer, two cars and five motorcycles in Kumo, Gombe State. Read More: https://punchng.com/seven-die-in-gombe-multiple-crash/",
       "url": "https://punchng.com/seven-die-in-gombe-multiple-crash/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-23T11:16:34+00:00",
-      "categories": []
-    },
-    {
-      "title": "NAFDAC uncovers building storing bottles for fake alcohol in Lagos",
-      "summary": "NAFDAC has uncovered a residential building in Lagos storing over 100 sacks of empty bottles intended for producing counterfeit alcoholic beverages. Read More: https://punchng.com/nafdac-uncovers-building-storing-bottles-for-fake-alcohol-in-lagos/",
-      "url": "https://punchng.com/nafdac-uncovers-building-storing-bottles-for-fake-alcohol-in-lagos/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T11:14:53+00:00",
-      "categories": [
-        "engineering",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Full List Of 24 States That Approved State Police Bill",
-      "summary": "Full List Of 24 States That Approved State Police Bill The states that have approved state police are now 24. So, the constitutionally-required 24-state endorsement benchmark needed for the state police bill to become law has been met. Vanguard gathered that more states will conclude deliberations n",
-      "url": "https://www.informationng.com/2026/10/full-list-of-24-states-that-approved-state-police-bill.html",
-      "source": "Information Nigeria",
-      "published": "2026-10-23T11:13:09+00:00",
-      "categories": []
-    },
-    {
-      "title": "'You claim Nigerians love you, yet your billboards need guards' – Atiku tackles Tinubu",
-      "summary": "Presidential candidate of the African Democratic Congress, ADC, Atiku Abubakar has criticised President Bola Tinubu over the security arrangements around his campaign billboards in Kaduna State, questioning the government’s priorities amid worsening insecurity. Atiku accused the president of priorit",
-      "url": "https://dailypost.ng/2026/10/23/you-claim-nigerians-love-you-yet-your-billboards-need-guards-atiku-tackles-tinubu/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T11:11:50+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "EPL: Man Utd board pick two managers to replace Carrick",
-      "summary": "Manchester United board have identified two managers to replace Michael Carrick if they decide to part ways with the Englishman. According to The Guardian, the two main candidates to succeed Carrick as head coach are Unai Emery and Julian Nagelsmann. Man United have had their worst start to a season",
-      "url": "https://dailypost.ng/2026/10/23/post-80/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T11:03:50+00:00",
-      "categories": []
-    },
-    {
-      "title": "‘I’m In Debt After Spending Over ₦300m On Cinema Film Without Making Profit” — Veteran Actor Jide Kosoko",
-      "summary": "Veteran Nollywood actor Jide Kosoko has revealed how he and his investors suffered financial losses after taking his movie, Leko Esu Gbayi, to the cinema. Speaking during an interview, the actor disclosed that producing and releasing the film cost more than ₦300 million, stressing that the money was",
-      "url": "https://www.informationng.com/2026/10/im-in-debt-after-spending-over-%e2%82%a6300m-on-cinema-film-without-making-profit-veteran-actor-jide-kosoko.html",
-      "source": "Information Nigeria",
-      "published": "2026-10-23T10:59:32+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: Governor Namadi to lead Jigawa APC campaign council",
-      "summary": "The establishment of the council followed extensive consultations with party leaders across the state's three senatorial districts and was approved by the APC State Working Committee. The post 2027: Governor Namadi to lead Jigawa APC campaign council appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/promoted/919542-2027-governor-namadi-to-lead-jigawa-apc-campaign-council.html",
-      "source": "Premium Times",
-      "published": "2026-10-23T10:54:54+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Asian football confederation backs Infantino’s re-election bid",
-      "summary": "The Asian Football Confederation has pledged its support for Gianni Infantino’s bid for re-election as FIFA president, giving him a significant boost. Read More: https://punchng.com/asian-football-confederation-backs-infantinos-re-election-bid/",
-      "url": "https://punchng.com/asian-football-confederation-backs-infantinos-re-election-bid/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:50:41+00:00",
-      "categories": []
-    },
-    {
-      "title": "Drama on Arise TV as Umahi tells anchor ‘let me educate you'",
-      "summary": "A mild drama ensued on Arise Television on Friday when Minister of Works, David Umahi, told anchor Ojy Okpe ‘let me educate you'. This occurred during an exclusive interview which centered on the Lagos-Calabar Coastal Highway. The presenter had asked the minister about complaints that the highway wa",
-      "url": "https://dailypost.ng/2026/10/23/drama-on-arise-tv-as-umahi-tells-anchor-let-me-educate-you-2/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T10:50:07+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "2027: Police promise adequate security in Plateau",
-      "summary": "The Plateau State Police Command has assured residents of adequate security for the 2027 elections, vowing to disappoint those predicting violence in the s Read More: https://punchng.com/2027-police-promise-adequate-security-in-plateau/",
-      "url": "https://punchng.com/2027-police-promise-adequate-security-in-plateau/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:48:08+00:00",
-      "categories": []
-    },
-    {
-      "title": "Troops discover, detonate two IEDs along Pulka-Firgi road in Borno",
-      "summary": "Two Improvised Explosive Devices, IEDs planted by suspected terrorists along the Pulka-Firgi Road in Gwoza Local Government Area of Borno State have been safely detonated by troops of the Nigerian Army. Security analyst Zagazola Makama, in a post on X on Friday, said sources revealed that the device",
-      "url": "https://dailypost.ng/2026/10/23/troops-discover-detonate-two-ieds-along-pulka-firgi-road-in-borno/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T10:42:46+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Some ministers pay billions to get appointed — APC campaign spokesman",
-      "summary": "An APC campaign spokesman, Alwan Hassan, has alleged that some ministers pay billions to get appointed and then seek to recoup the money after their appoin Read More: https://punchng.com/some-ministers-pay-billions-to-get-appointed-apc-campaign-spokesman/",
-      "url": "https://punchng.com/some-ministers-pay-billions-to-get-appointed-apc-campaign-spokesman/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:40:56+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Edo woos Saudi investors for 2027 agric, livestock summit",
-      "summary": "The Edo State Government is courting Saudi Arabian investors for its agricultural and livestock sectors ahead of a major investment summit planned for 2027 Read More: https://punchng.com/edo-woos-saudi-investors-for-2027-agric-livestock-summit/",
-      "url": "https://punchng.com/edo-woos-saudi-investors-for-2027-agric-livestock-summit/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:40:22+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "Domestic abuse: Court remands Nana Akua Addo's husband, grants custody of children",
-      "summary": "Harold Duodu Norman, the husband of Ghanaian actress, Nana Akua Addo has been remanded. He was remanded for two weeks as proceedings in their domestic abuse case continue. According to a report by GhanaWeb, the court also granted Nana custody of their children to ensure their welfare while the case ",
-      "url": "https://dailypost.ng/2026/10/23/domestic-abuse-court-remand-nana-akua-addos-husband-granted-her-full-custody-of-their-children/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T10:38:25+00:00",
-      "categories": []
-    },
-    {
-      "title": "Peter Obi can never be South-East’s best — Umahi",
-      "summary": "Minister of Works, David Umahi, says Peter Obi can never be the South-East’s best presidential candidate, defending regional leaders who support President Read More: https://punchng.com/peter-obi-can-never-be-south-easts-best-umahi/",
-      "url": "https://punchng.com/peter-obi-can-never-be-south-easts-best-umahi/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:35:53+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Ebola: MDCAN urges hospitals to activate isolation centres, boost surveillance",
-      "summary": "MDCAN has urged Nigerian hospitals to activate isolation centres and boost surveillance following the confirmation of an Ebola Bundibugyo virus case in the Read More: https://punchng.com/ebola-mdcan-urges-hospitals-to-activate-isolation-centres-boost-surveillance/",
-      "url": "https://punchng.com/ebola-mdcan-urges-hospitals-to-activate-isolation-centres-boost-surveillance/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:32:48+00:00",
-      "categories": []
-    },
-    {
-      "title": "Health workers begin strike mobilisation over 19 months’ allowance arrears",
-      "summary": "Nigerian health workers have been directed to begin strike mobilisation over the FG’s failure to pay 19 months’ allowance arrears and adjust salaries. Read More: https://punchng.com/health-workers-begin-strike-mobilisation-over-19-months-allowance-arrears/",
-      "url": "https://punchng.com/health-workers-begin-strike-mobilisation-over-19-months-allowance-arrears/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:32:16+00:00",
-      "categories": []
-    },
-    {
-      "title": "El Clásico: UNILAG to host watch party as Barcelona face Real Madrid",
-      "summary": "Sunday’s encounter at Barcelona’s Spotify Camp Nou carries early implications for the LaLiga title race. The post El Clásico: UNILAG to host watch party as Barcelona face Real Madrid appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/sports/football/919538-el-clasico-unilag-to-host-watch-party-as-barcelona-face-real-madrid.html",
-      "source": "Premium Times",
-      "published": "2026-10-23T10:25:40+00:00",
-      "categories": []
-    },
-    {
-      "title": "MURIC petitions Police over alleged killing of man inside Oyo mosque",
-      "summary": "The Muslim Rights Concern, MURIC, has petitioned the Commissioner of Police in Oyo State, Abimbola Olugbenga over alleged killing of one person inside a mosque. MURIC in the petition alleged that Pa Biliaminu Taiwo was killed inside a mosque in Fiditi, Afijio local government area of the state in 20",
-      "url": "https://dailypost.ng/2026/10/23/muric-petitions-police-over-alleged-killing-of-man-inside-oyo-mosque/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T10:23:02+00:00",
-      "categories": [
-        "government",
-        "oyo"
-      ]
-    },
-    {
-      "title": "Russia says Ukraine, US talks ‘planned’ for Abu Dhabi",
-      "summary": "The Kremlin says trilateral talks between Russia, Ukraine, and the US to end the war are planned for the first half of November in Abu Dhabi. Read More: https://punchng.com/russia-says-ukraine-us-talks-planned-for-abu-dhabi/",
-      "url": "https://punchng.com/russia-says-ukraine-us-talks-planned-for-abu-dhabi/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:20:46+00:00",
-      "categories": []
-    },
-    {
-      "title": "370 books in 20 months: S’African author defends her use of AI",
-      "summary": "South African author Coral Hart defends her use of AI to publish over 370 books in 20 months, a process that has earned her over $1 million this year. Read More: https://punchng.com/370-books-in-20-months-safrican-author-defends-her-use-of-ai/",
-      "url": "https://punchng.com/370-books-in-20-months-safrican-author-defends-her-use-of-ai/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:18:48+00:00",
-      "categories": []
-    },
-    {
-      "title": "NLC gives FG four-day deadline to reduce fuel price, review minimum wage",
-      "summary": "The Nigeria Labour Congress, NLC, has given the Federal Government until October 27, 2026, to meet its demands or face a possible nationwide shutdown of economic activities. The NLC’s Acting General Secretary, Benson Upah, disclosed this in a statement on Thursday following a meeting with the Minist",
-      "url": "https://dailypost.ng/2026/10/23/nlc-gives-fg-four-day-deadline-to-reduce-fuel-price-review-minimum-wage/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-23T10:18:48+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Messi reveals advice Ronaldinho gave him at 16",
-      "summary": "Lionel Messi reveals how Ronaldinho and other senior Barcelona players advised him to ignore pressure and enjoy football when he was a nervous 16-year-old. Read More: https://punchng.com/messi-reveals-advice-ronaldinho-gave-him-at-16/",
-      "url": "https://punchng.com/messi-reveals-advice-ronaldinho-gave-him-at-16/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-23T10:18:01+00:00",
       "categories": []
     }
   ]
