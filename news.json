@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T04:56:58.758304+00:00",
+  "generated_at": "2026-10-24T05:23:26.406091+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -77,6 +77,16 @@
       "source": "PUNCH",
       "published": "2026-10-24T05:06:14+00:00",
       "categories": []
+    },
+    {
+      "title": "They doff their hats to Ladbone, By Kunle Ajibade",
+      "summary": "The book is inspiring and enlightening. It is implicitly an affirmation of visionary power and a celebration of significant values. As a treasure trove of lessons in competence and commitment, Ladbone: A Life in Print is a master class for those who aspire to excellent public service. In his tribute",
+      "url": "https://www.premiumtimesng.com/opinion/919761-they-doff-their-hats-to-ladbone-by-kunle-ajibade.html",
+      "source": "Premium Times",
+      "published": "2026-10-24T05:03:11+00:00",
+      "categories": [
+        "engineering"
+      ]
     },
     {
       "title": "Namadi attends Hadejia development forum, inaugurates board of trustees",
@@ -263,16 +273,6 @@
       "source": "PUNCH",
       "published": "2026-10-24T00:37:45+00:00",
       "categories": []
-    },
-    {
-      "title": "Ebola: Nigeria’s case linked to Kenya – Pate",
-      "summary": "Nigeria’s Health Minister, Muhammad Pate, says genomic analysis shows the country’s confirmed Ebola case is closely related to the virus found in Kenya. Read More: https://punchng.com/ebola-nigerias-case-linked-to-kenya-pate/",
-      "url": "https://punchng.com/ebola-nigerias-case-linked-to-kenya-pate/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-24T00:36:43+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
