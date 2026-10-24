@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T17:19:18.147193+00:00",
+  "generated_at": "2026-10-24T17:51:09.587188+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,16 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "2027: AA presidential candidate vows to end poverty, revive economy",
+      "summary": "The Action Alliance presidential candidate, Adekunle Omoaje, has flagged off his 2027 campaign, vowing to revive Nigeria’s economy and end poverty if elect Read More: https://punchng.com/2027-aa-presidential-candidate-vows-to-end-poverty-revive-economy/",
+      "url": "https://punchng.com/2027-aa-presidential-candidate-vows-to-end-poverty-revive-economy/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-24T18:34:20+00:00",
+      "categories": [
+        "business"
+      ]
+    },
     {
       "title": "2027: Tinubu deserves second term to consolidate reforms – Yilwatda",
       "summary": "The APC National Chairman, Nentawe Yilwatda, says President Bola Tinubu deserves a second term in 2027 to consolidate his administration’s reforms. Read More: https://punchng.com/2027-tinubu-deserves-second-term-to-consolidate-reforms-yilwatda/",
@@ -70,6 +80,17 @@
       "published": "2026-10-24T17:37:20+00:00",
       "categories": [
         "government"
+      ]
+    },
+    {
+      "title": "APC Rally: Shettima, Yari urge Nigerians to re-elect Tinubu, cite APC’s record",
+      "summary": "Vice President Kashim Shettima urged Kaduna voters to renew the APC’s mandate, citing investments in education and infrastructure, while Senator Abdul’aziz Yari pledged northern support for President Bola Tinubu’s re-election in 2027. The post APC Rally: Shettima, Yari urge Nigerians to re-elect Tin",
+      "url": "https://www.premiumtimesng.com/news/top-news/919914-apc-rally-shettima-yari-urge-nigerians-to-re-elect-tinubu-cite-apcs-record.html",
+      "source": "Premium Times",
+      "published": "2026-10-24T17:31:56+00:00",
+      "categories": [
+        "engineering",
+        "business"
       ]
     },
     {
@@ -270,22 +291,6 @@
       "categories": [
         "business"
       ]
-    },
-    {
-      "title": "Tinubu slams opponents in Kaduna, says they created hunger, poverty",
-      "summary": "President Bola Tinubu has blamed his political opponents for creating hunger and poverty in Nigeria, speaking at an APC campaign rally in Kaduna. Read More: https://punchng.com/tinubu-slams-opponents-in-kaduna-says-they-created-hunger-poverty/",
-      "url": "https://punchng.com/tinubu-slams-opponents-in-kaduna-says-they-created-hunger-poverty/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-24T16:00:59+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: Ekiti ex-PDP scribe rallies support for Tinubu’s re-election",
-      "summary": "A former Ekiti State PDP secretary, Funmilayo Ogun, has defected to the APC and canvassed support for the re-election of President Bola Tinubu in 2027. Read More: https://punchng.com/2027-ekiti-ex-pdp-scribe-rallies-support-for-tinubus-re-election/",
-      "url": "https://punchng.com/2027-ekiti-ex-pdp-scribe-rallies-support-for-tinubus-re-election/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-24T15:40:12+00:00",
-      "categories": []
     }
   ]
 }
