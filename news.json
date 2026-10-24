@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T06:25:50.513778+00:00",
+  "generated_at": "2026-10-24T07:11:24.013051+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,17 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Morning recap: Ebola updates, looming petrol price hike, Lagos building collapse, other top stories",
+      "summary": "Read the latest on Nigeria’s Ebola screening, a looming petrol price hike, the Lagos building collapse, and a WHO vaccine trial in DR Congo. Read More: https://punchng.com/morning-recap-ebola-updates-looming-petrol-price-hike-lagos-building-collapse-other-top-stories/",
+      "url": "https://punchng.com/morning-recap-ebola-updates-looming-petrol-price-hike-lagos-building-collapse-other-top-stories/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-24T07:38:11+00:00",
+      "categories": [
+        "engineering",
+        "lagos"
+      ]
+    },
     {
       "title": "Ebola: Traveller had no symptoms before leaving Uganda — Govt",
       "summary": "The Ugandan Ministry of Health says a traveller who tested positive for Bundibugyo virus in Nigeria did not show symptoms before departing the country. Read More: https://punchng.com/ebola-traveller-had-no-symptoms-before-leaving-uganda-govt/",
@@ -29,12 +40,41 @@
       "categories": []
     },
     {
+      "title": "FG, Benue to expand Makurdi flyover to dual carriageway",
+      "summary": "The federal and Benue governments plan to expand the Wurukum Flyover in Makurdi to improve traffic flow, as construction reaches 69.87 per cent completion. The post FG, Benue to expand Makurdi flyover to dual carriageway appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/regional/north-central/919779-fg-benue-to-expand-makurdi-flyover-to-dual-carriageway.html",
+      "source": "Premium Times",
+      "published": "2026-10-24T07:05:53+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "2026 U-17 WWC: Flamingos to face Mexico, Chile or Australia in Round of 16",
+      "summary": "Nigeria's Flamingos will tonight know their opponents in the Round of 16 of the ongoing 2026 FIFA U-17 Women's World Cup. Akeem Busari's side finished second in Group B following Friday's stunning 3-1 victory over defending champions, North Korea in Rabat. The West Africans recorded six points from ",
+      "url": "https://dailypost.ng/2026/10/24/2026-u-17-wwc-flamingos-to-face-mexico-chile-or-australia-in-round-of-16/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-24T07:01:08+00:00",
+      "categories": []
+    },
+    {
       "title": "North Korea’s Kim orders training of world’s ‘strongest’ military",
       "summary": "North Korean leader Kim Jong Un has urged his military to train to become the strongest in the world at a meeting of commanders in Pyongyang, state media s Read More: https://punchng.com/north-koreas-kim-orders-training-of-worlds-strongest-military/",
       "url": "https://punchng.com/north-koreas-kim-orders-training-of-worlds-strongest-military/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-24T06:56:39+00:00",
       "categories": []
+    },
+    {
+      "title": "Senator Natasha renews call to revive Ajaokuta steel plant",
+      "summary": "Senator Natasha Akpoti-Uduaghan used a visit by four European ambassadors to Kogi Central to highlight Ajaokuta Steel Company’s potential, but said the delegation could not access the facility. The post Senator Natasha renews call to revive Ajaokuta steel plant appeared first on Premium Times Nigeri",
+      "url": "https://www.premiumtimesng.com/news/919775-senator-natasha-renews-call-to-revive-ajaokuta-steel-plant.html",
+      "source": "Premium Times",
+      "published": "2026-10-24T06:55:59+00:00",
+      "categories": [
+        "business"
+      ]
     },
     {
       "title": "Nigeria has fewer than 4,000 practising physiotherapists — Registrar",
@@ -45,12 +85,51 @@
       "categories": []
     },
     {
+      "title": "UCL: 'It's unfair' - Ahmet Çakar rejects Man of the Match award to Osimhen, names deserving players",
+      "summary": "Former Turkish referee, Ahmet Çakar has rejected the choice of Victor Osimhen as the Man of the Match after Galatasaray's win over Lille. He said that there are three other players who deserve the award more than Osimhen, having made more contributions. The Nigerian forward registered his first goal",
+      "url": "https://dailypost.ng/2026/10/24/ucl-its-unfair-ahmet-cakar-rejects-man-of-the-match-award-to-osimhen-names-deserving-players/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-24T06:49:23+00:00",
+      "categories": []
+    },
+    {
       "title": "WHO begins Ebola vaccine trial in DR Congo",
       "summary": "The WHO has started the first clinical trial of an Ebola vaccine for the Bundibugyo strain during the ongoing outbreak in the Democratic Republic of Congo. Read More: https://punchng.com/who-begins-ebola-vaccine-trial-in-dr-congo/",
       "url": "https://punchng.com/who-begins-ebola-vaccine-trial-in-dr-congo/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-24T06:39:51+00:00",
       "categories": []
+    },
+    {
+      "title": "2026 U-17 WWC: Poland defeat proved turning point for Flamingos – Busari",
+      "summary": "Flamingos head coach, Akeem Busari has revealed that Nigeria’s opening defeat to Poland served as a wake-up call for his team at the ongoing 2026 FIFA U-17 Women’s World Cup. Nigeria began their campaign with a 2-1 loss to Poland but bounced back in impressive fashion, securing victories over Puerto",
+      "url": "https://dailypost.ng/2026/10/24/2026-u-17-wwc-poland-defeat-proved-turning-point-for-flamingos-busari/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-24T06:33:07+00:00",
+      "categories": [
+        "property"
+      ]
+    },
+    {
+      "title": "Girlfriends I stole for abandoned me - Convict",
+      "summary": "A convict in Adamawa State has narrated how he stole N700,000 to buy handsets for his girlfriends only for them to abandon him when he was sent to jail over the theft. The 25-year-old man, Suleiman Idi from Ngurore in Yola South Local Government Area, is serving a jail term at the Yolde Pate Correct",
+      "url": "https://dailypost.ng/2026/10/24/my-girlfriends-i-stole-to-buy-phones-for-abandoned-me-says-convict/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-24T06:17:15+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Ebola Virus Disease: Osun govt expands awareness, plans jingles, emergency isolation facility",
+      "summary": "Osun State Government has resolved to expand public awareness campaigns on Ebola Virus Disease, EVD, including multilingual radio and television broadcasts, as part of efforts to prevent the disease from spreading into the state. The decision was reached at a meeting of the State Steering Committee ",
+      "url": "https://dailypost.ng/2026/10/24/ebola-virus-disease-osun-govt-expands-awareness-plans-jingles-emergency-isolation-facility/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-24T06:16:50+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
     },
     {
       "title": "European, Middle Eastern ministers warn against new attacks on Iran",
@@ -204,80 +283,6 @@
       "url": "https://punchng.com/canada-grants-asylum-to-7643-nigerians-in-30-months/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-24T05:22:01+00:00",
-      "categories": []
-    },
-    {
-      "title": "Tinubu spent more protecting billboards in few days than Kaduna people in 3 years – Odinkalu",
-      "summary": "Former Chairman of the National Human Rights Commission, NHRC, Professor Chidi Odinkalu, has criticised President Bola Tinubu and the Kaduna State Governor Uba Sani over security arrangements for their billboards amid persistent insecurity in the state. Odinkalu accused the governments of Tinubu and",
-      "url": "https://dailypost.ng/2026/10/24/tinubu-spent-more-protecting-billboards-in-few-days-than-kaduna-people-in-3-years-odinkalu/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-24T05:21:14+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Bundesliga: Bayern manager, Kompany collapses, rushed to hospital",
-      "summary": "Bayern Munich head coach, Vincent Kompany, has been rushed to hospital after the Belgian collapsed at the club's training ground on Friday. According to the club, the former Manchester City defender will remain under medical care while he undergoes examination. The forty-year-old manager collapsed w",
-      "url": "https://dailypost.ng/2026/10/24/bundesliga-bayern-manager-kompany-collapses-rushed-to-hospital/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-24T05:19:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "You lied about Osinbajo, produce your evidence – Akande fires back at Babachir Lawal",
-      "summary": "Former presidential aide, Laolu Akande, has accused former Secretary to the Government of the Federation, SGF, and chieftain of the Nigeria Democratic Congress, NDC, Babachir Lawal, of fabricating claims that former Vice President Yemi Osinbajo appointed Christians from his church to key government ",
-      "url": "https://dailypost.ng/2026/10/24/you-lied-against-osinbajo-produce-your-evidence-ex-presidential-aide-laolu-akande-fires-back-at-babachir-lawal/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-24T05:16:51+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Nigerian Newspapers: 10 things you need to know Saturday morning",
-      "summary": "Good morning! Here is today’s summary from Nigerian Newspapers: 1. The Federal Government has raised concerns over reported breaches of Ebola screening protocols at the nation’s entry points, ordering security agencies, health institutions and other relevant authorities to tighten surveillance and e",
-      "url": "https://dailypost.ng/2026/10/24/nigerian-newspapers-10-things-you-need-to-know-saturday-morning-1792816715723/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-24T05:16:41+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Three Ogun school pupils nabbed during cult initiation",
-      "summary": "Ogun State Police Command has arrested three secondary school pupils aged 12 and 18 over a suspected cult initiation in Owode-Yewa. Read More: https://punchng.com/three-ogun-school-pupils-nabbed-during-cult-initiation/",
-      "url": "https://punchng.com/three-ogun-school-pupils-nabbed-during-cult-initiation/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-24T05:16:06+00:00",
-      "categories": []
-    },
-    {
-      "title": "Tragedy in Anambra as man allegedly kills young lady over breakup [Video]",
-      "summary": "A young woman, identified as Umuora Mmesoma, has reportedly been killed by her former boyfriend in Uga, Aguata Local Government Area of Anambra State, after she allegedly ended their relationship. Mmesoma was said to have gone missing on Friday, October 16, 2026, before her body was reportedly disco",
-      "url": "https://dailypost.ng/2026/10/24/tragedy-in-anambra-as-man-allegedly-kills-young-lady-over-breakup-video/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-24T05:13:42+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Health workers threaten strike over unpaid allowances",
-      "summary": "Nigerian health workers may begin a nationwide strike over the Federal Government’s failure to pay 19 months’ arrears and implement salary adjustments. Read More: https://punchng.com/health-workers-threaten-strike-over-unpaid-allowances/",
-      "url": "https://punchng.com/health-workers-threaten-strike-over-unpaid-allowances/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-24T05:07:56+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Tinubu, Nollywood mourn veteran actor, Francis Duru",
-      "summary": "President Bola Tinubu, Nollywood stars, and the Actors Guild of Nigeria have mourned the death of veteran actor Francis Duru, who died at the age of 57. Read More: https://punchng.com/tinubu-nollywood-mourn-veteran-actor-francis-duru/",
-      "url": "https://punchng.com/tinubu-nollywood-mourn-veteran-actor-francis-duru/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-24T05:06:14+00:00",
       "categories": []
     }
   ]
