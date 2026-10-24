@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T20:14:51.214085+00:00",
+  "generated_at": "2026-10-24T20:52:16.285680+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "From Barcelona to Inter: Europe’s domestically unbeaten teams",
+      "summary": "A look at the seven teams from Serie A, La Liga, and the Bundesliga, including Inter and Barcelona, who remain unbeaten in their domestic leagues. Read More: https://punchng.com/from-barcelona-to-inter-europes-domestically-unbeaten-teams/",
+      "url": "https://punchng.com/from-barcelona-to-inter-europes-domestically-unbeaten-teams/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-24T21:40:20+00:00",
+      "categories": []
+    },
     {
       "title": "Expert warns of declining sperm concentration in Nigerian men",
       "summary": "An expert has raised concerns over declining sperm concentration in Nigerian men, warning that toxins, lifestyle, and STIs could worsen infertility. Read More: https://punchng.com/expert-warns-of-declining-sperm-concentration-in-nigerian-men/",
@@ -27,6 +35,22 @@
       "categories": [
         "government"
       ]
+    },
+    {
+      "title": "Tinubu blames opposition for hunger, poverty in Nigeria, Atiku kicks, says president delusional",
+      "summary": "“I have heard the opposition talking about hunger and poverty. Who caused them? They did! They caused hunger and poverty. We are trying to eliminate them,” the president said. The post Tinubu blames opposition for hunger, poverty in Nigeria, Atiku kicks, says president delusional appeared first on P",
+      "url": "https://www.premiumtimesng.com/news/top-news/919948-tinubu-blames-opposition-for-hunger-poverty-in-nigeria-atiku-kicks-says-president-delusional.html",
+      "source": "Premium Times",
+      "published": "2026-10-24T20:39:48+00:00",
+      "categories": []
+    },
+    {
+      "title": "EPL: Bassey, Iwobi celebrate Fulham win as Villa stun Man City",
+      "summary": "Calvin Bassey and Alex Iwobi helped Fulham defeat Coventry City, featuring Taiwo Awoniyi and Frank Onyeka, while Aston Villa ended Manchester City's perfect league start. The post EPL: Bassey, Iwobi celebrate Fulham win as Villa stun Man City appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/sports/football/919949-epl-bassey-iwobi-celebrate-fulham-win-as-villa-stun-man-city.html",
+      "source": "Premium Times",
+      "published": "2026-10-24T20:36:46+00:00",
+      "categories": []
     },
     {
       "title": "NASENI empowers 120 Kogi youths with N50,000 start-up support",
@@ -245,30 +269,6 @@
       "url": "https://www.premiumtimesng.com/opinion/919922-saving-nigeria-from-the-increasingly-absurd-theatrics-of-jimoh-ibrahim-by-owei-lakemfa.html",
       "source": "Premium Times",
       "published": "2026-10-24T18:17:36+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: Tinubu deserves second term to consolidate reforms – Yilwatda",
-      "summary": "The APC National Chairman, Nentawe Yilwatda, says President Bola Tinubu deserves a second term in 2027 to consolidate his administration’s reforms. Read More: https://punchng.com/2027-tinubu-deserves-second-term-to-consolidate-reforms-yilwatda/",
-      "url": "https://punchng.com/2027-tinubu-deserves-second-term-to-consolidate-reforms-yilwatda/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-24T18:14:28+00:00",
-      "categories": []
-    },
-    {
-      "title": "Kaduna rally: ADC mocks APC over alleged empty seats, rented crowds",
-      "summary": "The African Democratic Congress Presidential Campaign Council, ADC-PCC, has criticised the All Progressives Congress, APC, over its Northwest zonal flag-off rally in Kaduna, alleging that the event was poorly attended despite claims of large-scale mobilisation. In a statement, the ADC-PCC Director o",
-      "url": "https://dailypost.ng/2026/10/24/kaduna-rally-adc-mocks-apc-over-alleged-empty-seats-rented-crowds/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-24T18:07:52+00:00",
-      "categories": []
-    },
-    {
-      "title": "'2027 presidential election will be referendum on your record' - Atiku tells Tinubu",
-      "summary": "The African Democratic Congress, ADC, presidential candidate, Atiku Abubakar, on Saturday said the 2027 election will be a referendum for President Bola Tinubu. Atiku said Nigerians have rejected Tinubu's administration due to the current level of hardship. The former vice president disclosed this i",
-      "url": "https://dailypost.ng/2026/10/24/hardship-2027-presidential-election-a-referendum-for-tinubu-atiku/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-24T18:06:22+00:00",
       "categories": []
     }
   ]
