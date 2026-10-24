@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T19:23:09.646906+00:00",
+  "generated_at": "2026-10-24T19:49:21.443402+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,17 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "NASENI empowers 120 Kogi youths with N50,000 start-up support",
+      "summary": "NASENI has trained 120 youths in Kogi State in electrical installation, providing each with a starter pack and N50,000 to start their businesses. Read More: https://punchng.com/naseni-empowers-120-kogi-youths-with-n50000-start-up-support/",
+      "url": "https://punchng.com/naseni-empowers-120-kogi-youths-with-n50000-start-up-support/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-24T20:25:40+00:00",
+      "categories": [
+        "engineering",
+        "business"
+      ]
+    },
     {
       "title": "Kwara urges religious leaders to fight healthcare misinformation",
       "summary": "The Kwara State Government has urged religious and traditional leaders to counter vaccine misinformation and beliefs that stop families from accessing heal Read More: https://punchng.com/kwara-urges-religious-leaders-to-fight-healthcare-misinformation/",
@@ -43,6 +54,16 @@
       "source": "PUNCH",
       "published": "2026-10-24T19:48:36+00:00",
       "categories": []
+    },
+    {
+      "title": "2027: Makinde calls for economic, security ‘reset’ at campaign group launch",
+      "summary": "“We need to reset our economy. We need to reset our security architecture. We need to reset our educational system,” Mr Makinde said. The post 2027: Makinde calls for economic, security ‘reset’ at campaign group launch appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/more-news/919933-2027-makinde-calls-for-economic-security-reset-at-campaign-group-launch.html",
+      "source": "Premium Times",
+      "published": "2026-10-24T19:30:57+00:00",
+      "categories": [
+        "business"
+      ]
     },
     {
       "title": "Blaming opposition for hunger is ‘delusion’, Atiku tells Tinubu",
@@ -251,22 +272,6 @@
       "categories": [
         "government"
       ]
-    },
-    {
-      "title": "NPFL: Jack, Ponkap boost Kwara United ahead of Barau FC clash",
-      "summary": "Kwara United have been boosted by the return of Benjamin Jack and Obeid Ponkap ahead of the Nigeria Premier Football League, NPFL, matchday 10 tie against Barau FC. Jack and Ponkap have recovered from their injury setback. The duo are in contention to feature against the Maliya Boys. Kwara United wi",
-      "url": "https://dailypost.ng/2026/10/24/npfl-jack-ponkap-boost-kwara-united-ahead-of-barau-fc-clash/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-24T17:49:02+00:00",
-      "categories": []
-    },
-    {
-      "title": "EPL: Visitor Fulham strike late to edge Lampard’s Coventry 1-0",
-      "summary": "Fulham secured a hard-fought 1-0 victory over Coventry City in the Premier League after Oscar Bobb scored an 80th-minute winner at the CBS Arena. Read More: https://punchng.com/epl-visitor-fulham-strike-late-to-edge-lampards-coventry-1-0/",
-      "url": "https://punchng.com/epl-visitor-fulham-strike-late-to-edge-lampards-coventry-1-0/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-24T17:46:44+00:00",
-      "categories": []
     }
   ]
 }
