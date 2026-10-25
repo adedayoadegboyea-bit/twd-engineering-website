@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T21:52:15.922009+00:00",
+  "generated_at": "2026-10-25T22:15:34.437979+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "El Clásico: Mbappé scores brace as Madrid Beat Barcelona 2-1",
+      "summary": "Kylian Mbappé scored a brace to give Real Madrid a 2-1 victory over Barcelona in a thrilling El Clásico, ending the Catalan club’s perfect league start. Read More: https://punchng.com/el-clasico-mbappe-scores-brace-as-madrid-beat-barcelona-2-1/",
+      "url": "https://punchng.com/el-clasico-mbappe-scores-brace-as-madrid-beat-barcelona-2-1/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T23:06:56+00:00",
+      "categories": []
+    },
     {
       "title": "It’s dangerous to buy Christmas clothes without paying tithes – cleric",
       "summary": "Salvation Ministries founder, Pastor David Ibiyeomie, has warned Christians against buying Christmas clothes without first paying their tithes. Read More: https://punchng.com/its-dangerous-to-buy-christmas-clothes-without-paying-tithes-cleric/",
@@ -33,6 +41,24 @@
       "source": "PUNCH",
       "published": "2026-10-25T22:15:52+00:00",
       "categories": []
+    },
+    {
+      "title": "Does Nigeria truly have over 103 million voters?, By Chidi Anselm Odinkalu",
+      "summary": "Ahead of Nigeria’s general elections in January and February 2027, Africa Confidential warns that “turnout in the elections is likely to be even lower than the average 26.7% four years ago. Nigerian voters are among the least enthusiastic in the world…. Out of more than 93.4 million registered voter",
+      "url": "https://www.premiumtimesng.com/opinion/920220-does-nigeria-truly-have-over-103-million-voters-by-chidi-anselm-odinkalu.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T22:10:42+00:00",
+      "categories": []
+    },
+    {
+      "title": "The odds against Tinubu, By Wole Olaoye",
+      "summary": "…If major opposition figures (Obi, Atiku, Kwankwaso, Adebayo, or a broader coalition platform) successfully present a single consolidated ticket, they would have aggregated core voting blocs across the South-East, South-South, urban centres, and northern strongholds, creating a direct head-to-head r",
+      "url": "https://www.premiumtimesng.com/opinion/920216-the-odds-against-tinubu-by-wole-olaoye.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T21:56:01+00:00",
+      "categories": [
+        "engineering"
+      ]
     },
     {
       "title": "U-17 World Cup: Flamingos eye quarter-final place against Mexico",
@@ -249,32 +275,6 @@
       "categories": [
         "lagos"
       ]
-    },
-    {
-      "title": "CBD COP17: Nigeria, six others each win $50,000 grant for biodiversity projects",
-      "summary": "Nigeria and six other countries have won $50,000 seed grants each to accelerate biodiversity conservation efforts and advance their respective 30x30 targets under the High Ambition Coalition for Nature and People. The post CBD COP17: Nigeria, six others each win $50,000 grant for biodiversity projec",
-      "url": "https://www.premiumtimesng.com/business/business-news/920188-cbd-cop17-nigeria-six-others-each-win-50000-grant-for-biodiversity-projects.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T20:04:34+00:00",
-      "categories": []
-    },
-    {
-      "title": "Akwa Ibom revenue from tricycle, minibus drivers hits ₦14m weekly",
-      "summary": "Akwa Ibom State Government now generates ₦14 million weekly from tricycle and minibus drivers in Uyo through a new e-ticketing system, boosting its IGR. Read More: https://punchng.com/akwa-ibom-revenue-from-tricycle-minibus-drivers-hits-%e2%82%a614m-weekly/",
-      "url": "https://punchng.com/akwa-ibom-revenue-from-tricycle-minibus-drivers-hits-%e2%82%a614m-weekly/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T20:04:12+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Ballon d'Or 2026: Rafael van der Vaart names player to win award in London",
-      "summary": "Former Tottenham Hotspur attacking midfielder, Rafael van der Vaart, has named the player to win the 2026 Ballon d'Or. The winner of this year's Ballon d'Or will be announced on Monday in London. However, Van der Vaart believes Real Madrid striker Kylian Mbappé will win the Ballon d'Or because he is",
-      "url": "https://dailypost.ng/2026/10/25/ballon-dor-2026-rafael-van-der-vaart-names-player-to-win-award-in-london/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T20:00:47+00:00",
-      "categories": []
     }
   ]
 }
