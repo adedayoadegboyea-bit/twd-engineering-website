@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T17:20:47.903329+00:00",
+  "generated_at": "2026-10-25T17:52:26.515326+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,6 +11,22 @@
   ],
   "articles": [
     {
+      "title": "Police foil motorcycle, generator theft, arrest suspect in Ogun",
+      "summary": "Ogun State Police have arrested a suspect, Adam Muhammed, and recovered a stolen motorcycle and generator after a tip-off from a motorist in Itori. Read More: https://punchng.com/police-foil-motorcycle-generator-theft-arrest-suspect-in-ogun/",
+      "url": "https://punchng.com/police-foil-motorcycle-generator-theft-arrest-suspect-in-ogun/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T18:36:08+00:00",
+      "categories": []
+    },
+    {
+      "title": "Sultan Maccido’s family urges tolerance 20 years after death",
+      "summary": "The family of the late Sultan of Sokoto, Muhammadu Maccido, marks 20 years since his death by urging leaders to embrace dialogue and religious tolerance. Read More: https://punchng.com/sultan-maccidos-family-urges-tolerance-20-years-after-death/",
+      "url": "https://punchng.com/sultan-maccidos-family-urges-tolerance-20-years-after-death/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T18:17:11+00:00",
+      "categories": []
+    },
+    {
       "title": "Ekiti court unveils case management system for faster justice",
       "summary": "Ekiti State has launched the Nigeria Case Management System for its High Court to ensure faster justice delivery through electronic filing and case trackin Read More: https://punchng.com/ekiti-court-unveils-case-management-system-for-faster-justice/",
       "url": "https://punchng.com/ekiti-court-unveils-case-management-system-for-faster-justice/?utm_source=rss.punchng.com&utm_medium=web",
@@ -20,7 +36,7 @@
     },
     {
       "title": "Manchester United suffer eighth winless match against Bournemouth",
-      "summary": "Manchester United’s winless run extends to eight games after a 3-0 Premier League defeat to Bournemouth at Old Trafford, piling pressure on Michael Carrick Read More: https://punchng.com/manchester-united-suffer-eighth-winless-match-against-bournemouth/",
+      "summary": "Manchester United have gone eight games without a win after losing 3-0 to a scintillating Bournemouth side at Old Trafford in a Premier League match. Read More: https://punchng.com/manchester-united-suffer-eighth-winless-match-against-bournemouth/",
       "url": "https://punchng.com/manchester-united-suffer-eighth-winless-match-against-bournemouth/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-25T18:09:10+00:00",
@@ -38,6 +54,26 @@
       ]
     },
     {
+      "title": "Ebola: NCDC warns misinformation could undermine Nigeria’s response",
+      "summary": "The Director-General of the NCDC, Jide Idris, gave the warning during a briefing in Abuja on Sunday, where he provided an update on the country’s response to the confirmed case of Ebola disease in the Federal Capital Territory (FCT) The post Ebola: NCDC warns misinformation could undermine Nigeria’s",
+      "url": "https://www.premiumtimesng.com/health/health-news/920169-ebola-ncdc-warns-misinformation-could-undermine-nigerias-response.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T17:29:57+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Ebola: NCDC approves ₦100,000 weekly allowance for quarantined contacts",
+      "summary": "The NCDC said the emergency allowance was introduced following complaints from quarantined contacts who expressed concerns about supporting their families and managing their businesses during isolation. The post Ebola: NCDC approves ₦100,000 weekly allowance for quarantined contacts appeared first o",
+      "url": "https://www.premiumtimesng.com/health/health-news/920165-ebola-ncdc-approves-%e2%82%a6100000-weekly-allowance-for-quarantined-contacts.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T17:25:51+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
       "title": "EPL: Bournemouth thrash Man United 3-0, pressure mounts on Carrick",
       "summary": "Manchester United slumped to a 3-0 home defeat against Bournemouth in the Premier League, increasing the pressure on manager Michael Carrick. Read More: https://punchng.com/epl-bournemouth-thrash-man-united-3-0-pressure-mounts-on-carrick/",
       "url": "https://punchng.com/epl-bournemouth-thrash-man-united-3-0-pressure-mounts-on-carrick/?utm_source=rss.punchng.com&utm_medium=web",
@@ -46,6 +82,14 @@
       "categories": [
         "property"
       ]
+    },
+    {
+      "title": "Motorists protest three-month CNG scarcity in Niger",
+      "summary": "Vehicle owners in Minna, the Niger State capital, have expressed frustration over the prolonged shortage of Compressed Natural Gas, CNG, saying the product has been unavailable for the past three months despite the cost they incurred in converting their vehicles to use it. The motorists staged a pro",
+      "url": "https://dailypost.ng/2026/10/25/motorists-protest-three-month-cng-scarcity-in-niger/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T17:09:50+00:00",
+      "categories": []
     },
     {
       "title": "CBD COP17: Nigeria, France Push for Faster Action on 30×30 Biodiversity Target",
@@ -98,7 +142,17 @@
       "categories": []
     },
     {
-      "title": "Nigeria’s N30tn Livestock economy at risk- Buzaye tells Tinubu",
+      "title": "Ebola: NCDC to pay contacts in isolation N100,000 weekly",
+      "summary": "The Nigeria Centre for Disease Control and Prevention, NCDC, has approved an emergency payment of N100,000 per person, weekly, for individuals placed in isolation or quarantine as part of efforts to contain the Ebola outbreak in the Federal Capital Territory, FCT. The Director-General of the agency,",
+      "url": "https://dailypost.ng/2026/10/25/ebola-ncdc-to-pay-contacts-in-isolation-n100000-weekly/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T16:38:30+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Nigeria’s N30tn livestock economy at risk- Buzaye tells Tinubu",
       "summary": "Huseini Buzaye, a public affairs analyst and president of Kautal Pulaaku, has urged President Bola Ahmed Tinubu not to allow Nigeria's N30 trillion livestock economy to suffer as a result of the ethnic profiling of Fulani pastoralists. Buzaye made the appeal in a statement on Sunday following a brie",
       "url": "https://dailypost.ng/2026/10/25/nigerias-n30tn-livestock-economy-at-risk-buzaye-tells-tinubu-2/",
       "source": "Daily Post Nigeria",
@@ -232,60 +286,6 @@
       "published": "2026-10-25T15:45:02+00:00",
       "categories": [
         "engineering"
-      ]
-    },
-    {
-      "title": "Pantami vows to expose those behind efforts to stop his guber ambition",
-      "summary": "Former Minister of Communications and Digital Economy, Isa Ali Pantami, has threatened to reveal those he accused of working to frustrate his bid to become governor of Gombe State. Pantami vowed that his political ambition would not be stopped by those working against him. The Islamic scholar, who r",
-      "url": "https://dailypost.ng/2026/10/25/pantami-vows-to-expose-those-behind-efforts-to-stop-his-guber-ambition/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T15:37:08+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "Kano woman faces trial for allegedly mutilating boyfriend's genitals",
-      "summary": "A Kano State High Court has begun hearing evidence in the trial of Maimuna Idris, who is accused of cutting off her boyfriend’s genitals. At the hearing held at the Audu Bako Secretariat court complex in Kano, the prosecution lawyer, Safiya Yalwati Yahaya, called the alleged victim, Ashiru Sani, to ",
-      "url": "https://dailypost.ng/2026/10/25/kano-woman-faces-trial-over-alleged-genital-mutilation-of-boyfriend/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T15:33:25+00:00",
-      "categories": []
-    },
-    {
-      "title": "NFF salutes Iwobi on record Premier League appearances",
-      "summary": "Alex Iwobi has been congratulated by the Nigeria Football Federation, NFF, following the midfielder's new milestone in the Premier League. Iwobi became the joint-second most-featured African player in the Premier League alongside Mohamed Salah following Fulham's 1-0 victory over Coventry City on Sat",
-      "url": "https://dailypost.ng/2026/10/25/nff-salutes-iwobi-on-record-premier-league-appearances/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T15:30:13+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: 'Postpone on eve of election' - Aisha Yesufu alleges 'game plan' to rig poll",
-      "summary": "Activist-cum-politician, Aisha Yesufu, on Sunday alleged \"game plan' to rig the 2027 general elections. Yesufu hinted at the postponement of the elections a day before its commencement as part of the game plan to rig the polls. Posting on X, the human rights activist said politicians are usually vul",
-      "url": "https://dailypost.ng/2026/10/25/2027-postpone-on-eve-of-election-aisha-yesufu-alleges-game-plan-to-rig-poll/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T15:27:24+00:00",
-      "categories": []
-    },
-    {
-      "title": "EPL: I feel sorry for him - Troy Deeney on Man Utd star",
-      "summary": "Former Watford striker, Troy Deeney, says he feels sorry for Leny Yoro, arguing that the France defender currently has nobody at Manchester United to “learn off.” Man United beat Real Madrid to sign Yoro from Lille in 2024, with the centre-back joining for £52million after making just 60 appearances",
-      "url": "https://dailypost.ng/2026/10/25/epl-i-feel-sorry-for-him-troy-deeney-on-man-utd-star/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T15:20:31+00:00",
-      "categories": []
-    },
-    {
-      "title": "From Garden to Market: How women’s vegetable farming is transforming household livelihoods in Kaduna",
-      "summary": "Women farmers are among the key beneficiaries of the Governor Uba Sani administration's latest free fertiliser distribution, an intervention aimed at reducing production costs and strengthening smallholder farmers' capacity. The post From Garden to Market: How women’s vegetable farming is transformi",
-      "url": "https://www.premiumtimesng.com/features-and-interviews/920118-from-garden-to-market-how-womens-vegetable-farming-is-transforming-household-livelihoods-in-kaduna.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T15:20:13+00:00",
-      "categories": [
-        "business",
-        "government"
       ]
     }
   ]
