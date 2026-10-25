@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T16:56:31.913736+00:00",
+  "generated_at": "2026-10-25T17:20:47.903329+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,11 +11,48 @@
   ],
   "articles": [
     {
+      "title": "Ekiti court unveils case management system for faster justice",
+      "summary": "Ekiti State has launched the Nigeria Case Management System for its High Court to ensure faster justice delivery through electronic filing and case trackin Read More: https://punchng.com/ekiti-court-unveils-case-management-system-for-faster-justice/",
+      "url": "https://punchng.com/ekiti-court-unveils-case-management-system-for-faster-justice/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T18:13:15+00:00",
+      "categories": []
+    },
+    {
+      "title": "Manchester United suffer eighth winless match against Bournemouth",
+      "summary": "Manchester United’s winless run extends to eight games after a 3-0 Premier League defeat to Bournemouth at Old Trafford, piling pressure on Michael Carrick Read More: https://punchng.com/manchester-united-suffer-eighth-winless-match-against-bournemouth/",
+      "url": "https://punchng.com/manchester-united-suffer-eighth-winless-match-against-bournemouth/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T18:09:10+00:00",
+      "categories": []
+    },
+    {
+      "title": "Lawyer urges enforcement of disability laws",
+      "summary": "A lawyer, Olayinka Komolafe, has urged the Federal and state governments to enforce disability laws and improve infrastructure for visually impaired person Read More: https://punchng.com/lawyer-urges-enforcement-of-disability-laws/",
+      "url": "https://punchng.com/lawyer-urges-enforcement-of-disability-laws/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T18:02:34+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
       "title": "EPL: Bournemouth thrash Man United 3-0, pressure mounts on Carrick",
       "summary": "Manchester United slumped to a 3-0 home defeat against Bournemouth in the Premier League, increasing the pressure on manager Michael Carrick. Read More: https://punchng.com/epl-bournemouth-thrash-man-united-3-0-pressure-mounts-on-carrick/",
       "url": "https://punchng.com/epl-bournemouth-thrash-man-united-3-0-pressure-mounts-on-carrick/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-25T17:16:06+00:00",
+      "categories": [
+        "property"
+      ]
+    },
+    {
+      "title": "CBD COP17: Nigeria, France Push for Faster Action on 30×30 Biodiversity Target",
+      "summary": "Nigeria and France have called for stronger political leadership, increased financing and collective action to accelerate the implementation of the global target to protect 30 per cent of the world’s land and seas by 2030. The call was made at a Target 3 Action Day during CBD COP17 in Armenia. The p",
+      "url": "https://www.premiumtimesng.com/business/business-news/920155-cbd-cop17-nigeria-france-push-for-faster-action-on-30x30-biodiversity-target.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T17:09:32+00:00",
       "categories": [
         "property"
       ]
@@ -250,38 +287,6 @@
         "business",
         "government"
       ]
-    },
-    {
-      "title": "Don’t buy Christmas clothes if you haven’t paid tithe – Pastor David Ibiyeomie warns [VIDEO]",
-      "summary": "The Founder of Salvation Ministries, Pastor David Ibiyeomie, has warned Christians against buying Christmas clothes when they have not paid their tithes, describing the act as very dangerous. Pastor Ibiyeomie gave the warning while preaching in his church in a sermon video which has now gone viral o",
-      "url": "https://dailypost.ng/2026/10/25/dont-buy-christmas-clothes-if-you-havent-paid-tithe-its-dangerous-pastor-david-ibiyeomie-warns-christians-video/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T15:17:18+00:00",
-      "categories": []
-    },
-    {
-      "title": "Death toll in Taraba terror attack rises to 40",
-      "summary": "PREMIUM TIMES earlier reported that the police in the state confirmed that 10 locals were killed in the attack. The post Death toll in Taraba terror attack rises to 40 appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/regional/nnorth-east/920137-death-toll-in-taraba-terror-attack-rises-to-40.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T15:10:02+00:00",
-      "categories": []
-    },
-    {
-      "title": "NCDC announces two more suspected cases of Ebola",
-      "summary": "Nigeria Centre for Disease Control and Prevention, NCDC, has announced two more suspected cases of Ebola in the country. Dr Jide Idris, the Director General of the NCDC, announced this on Sunday at a press briefing, where he emphasised that the cases are still suspected. He explained that a suspecte",
-      "url": "https://dailypost.ng/2026/10/25/breaking-ncdc-announce-two-more-suspected-cases-of-ebola/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T15:08:10+00:00",
-      "categories": []
-    },
-    {
-      "title": "'Muslim-Muslim ticket is fraud to deceive voters' – Bugaje",
-      "summary": "Political activist and Islamic scholar, Dr Usman Bugaje, has described the Muslim-Muslim presidential ticket as a “fraud”, accusing politicians of using religion to win Muslim voters’ support without solving the problems affecting them. Bugaje spoke at a one-day summit organised by the Islamic Forum",
-      "url": "https://dailypost.ng/2026/10/25/muslim-muslim-ticket-is-fraud-to-deceive-voters-bugaje/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T15:05:29+00:00",
-      "categories": []
     }
   ]
 }
