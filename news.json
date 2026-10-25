@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T19:50:56.812113+00:00",
+  "generated_at": "2026-10-25T20:14:50.151672+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,25 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Lagos steps up Ebola surveillance, urges calm",
+      "summary": "The Lagos State Government has intensified Ebola surveillance and preparedness measures, urging residents to remain calm and vigilant after a case in Abuja Read More: https://punchng.com/lagos-steps-up-ebola-surveillance-urges-calm/",
+      "url": "https://punchng.com/lagos-steps-up-ebola-surveillance-urges-calm/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T21:00:21+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
+    },
+    {
+      "title": "Afenifere leadership not won through campaigns – Factional leader",
+      "summary": "A factional leader of Afenifere, Oba Oladipo Olaitan, says leadership succession in the group is guided by tradition and selection, not campaigns or ambiti Read More: https://punchng.com/afenifere-leadership-not-won-through-campaigns-factional-leader/",
+      "url": "https://punchng.com/afenifere-leadership-not-won-through-campaigns-factional-leader/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T20:55:07+00:00",
+      "categories": []
+    },
     {
       "title": "Police arrest four over railway vandalism in Katsina",
       "summary": "The Katsina State Police Command has arrested four suspects for alleged railway vandalism after discovering 70 stolen railway sleepers in their vehicle. Read More: https://punchng.com/police-arrest-four-over-railway-vandalism-in-katsina/",
@@ -47,6 +66,14 @@
       "categories": [
         "lagos"
       ]
+    },
+    {
+      "title": "CBD COP17: Nigeria, six others each win $50,000 grant for biodiversity projects",
+      "summary": "Nigeria and six other countries have won $50,000 seed grants each to accelerate biodiversity conservation efforts and advance their respective 30x30 targets under the High Ambition Coalition for Nature and People. The post CBD COP17: Nigeria, six others each win $50,000 grant for biodiversity projec",
+      "url": "https://www.premiumtimesng.com/business/business-news/920188-cbd-cop17-nigeria-six-others-each-win-50000-grant-for-biodiversity-projects.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T20:04:34+00:00",
+      "categories": []
     },
     {
       "title": "Akwa Ibom revenue from tricycle, minibus drivers hits ₦14m weekly",
@@ -246,33 +273,6 @@
       "url": "https://dailypost.ng/2026/10/25/epl-carrick-reveals-who-is-responsible-for-man-utds-3-0-defeat-to-bournemouth/",
       "source": "Daily Post Nigeria",
       "published": "2026-10-25T18:07:04+00:00",
-      "categories": []
-    },
-    {
-      "title": "Lawyer urges enforcement of disability laws",
-      "summary": "A lawyer, Olayinka Komolafe, has urged the Federal and state governments to enforce disability laws and improve infrastructure for visually impaired person Read More: https://punchng.com/lawyer-urges-enforcement-of-disability-laws/",
-      "url": "https://punchng.com/lawyer-urges-enforcement-of-disability-laws/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T18:02:34+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Peller Says He’s Not Divorcing Jarvis, Denies Relationship Issues Are For Social Media Engagement",
-      "summary": "Nigerian content creator Peller, has insisted that he is not planning to divorce his wife, Jarvis, amid their ongoing relationship issues. In a statement addressing speculation about their marriage, Peller denied claims that the couple were deliberately creating relationship drama to attract views, ",
-      "url": "https://www.informationng.com/2026/10/peller-says-hes-not-divorcing-jarvis-denies-relationship-issues-are-for-social-media-engagement.html",
-      "source": "Information Nigeria",
-      "published": "2026-10-25T17:59:18+00:00",
-      "categories": []
-    },
-    {
-      "title": "Uneven petrol prices, lingering hardship as Zaria residents question NNPC discount",
-      "summary": "A commercial driver in Zaria said he had not yet seen any meaningful benefit despite buying petrol at an NNPC station in Dakatsalle. The post Uneven petrol prices, lingering hardship as Zaria residents question NNPC discount appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/regional/nwest/920175-uneven-petrol-prices-lingering-hardship-as-zaria-residents-question-nnpc-discount.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T17:57:29+00:00",
       "categories": []
     }
   ]
