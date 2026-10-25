@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T07:58:57.636079+00:00",
+  "generated_at": "2026-10-25T08:27:20.620167+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,14 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Musk accuses Ukraine of violating Starlink’s terms of service",
+      "summary": "Tech tycoon Elon Musk has accused Ukraine of violating Starlink’s terms of service by using the satellite network for offensive drone strikes to kill peopl Read More: https://punchng.com/musk-accuses-ukraine-of-violating-starlinks-terms-of-service/",
+      "url": "https://punchng.com/musk-accuses-ukraine-of-violating-starlinks-terms-of-service/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T09:22:18+00:00",
+      "categories": []
+    },
     {
       "title": "Don urges graduates to shun corruption, uphold integrity",
       "summary": "The Chancellor of Dominion University, Ibadan, has urged 140 graduating students to shun corruption, uphold integrity and contribute to Nigeria’s developme Read More: https://punchng.com/don-urges-graduates-to-shun-corruption-uphold-integrity/",
@@ -276,14 +284,6 @@
       "categories": [
         "property"
       ]
-    },
-    {
-      "title": "El Clásico: Steve McManaman predicts scoreline of Barcelona vs Real Madrid clash",
-      "summary": "Former Liverpool winger, Steve McManaman, has predicted that Real Madrid would beat Barcelona 3-1 when both teams clash in today's El Clásico in LaLiga. Barcelona will host Real Madrid at Camp Nou, following their Champions League defeat to Paris Saint-Germain in mid-week. Speaking to 365Scores (via",
-      "url": "https://dailypost.ng/2026/10/25/el-clasico-steve-mcmanaman-predicts-scoreline-of-barcelona-vs-real-madrid-clash/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:17:17+00:00",
-      "categories": []
     }
   ]
 }
