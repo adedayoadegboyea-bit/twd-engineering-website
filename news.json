@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T13:06:22.826295+00:00",
+  "generated_at": "2026-10-25T13:55:13.928908+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,11 +11,85 @@
   ],
   "articles": [
     {
+      "title": "Police arrest two robbery suspects in Bauchi",
+      "summary": "The Bauchi State Police Command has arrested two suspected members of a gang accused of robbing residents and inflicting machete injuries on them. Read More: https://punchng.com/police-arrest-two-robbery-suspects-in-bauchi-3/",
+      "url": "https://punchng.com/police-arrest-two-robbery-suspects-in-bauchi-3/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T14:12:37+00:00",
+      "categories": []
+    },
+    {
+      "title": "Heat wave: Anambra first lady urges residents to take precautions",
+      "summary": "Anambra First Lady, Nonye Soludo, has urged residents to take precautions like staying hydrated to prevent heat-related illnesses as the heat wave intensif Read More: https://punchng.com/heat-wave-anambra-first-lady-urges-residents-to-take-precautions/",
+      "url": "https://punchng.com/heat-wave-anambra-first-lady-urges-residents-to-take-precautions/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T14:11:21+00:00",
+      "categories": []
+    },
+    {
+      "title": "EPL: Carrick to bench Brruno for Bournemouth clash — Report",
+      "summary": "Manchester United head coach Michael Carrick will reportedly leave club captain Bruno Fernandes out of the starting line-up for their Premier League match. Read More: https://punchng.com/epl-carrick-to-bench-brruno-for-bournemouth-clash-report/",
+      "url": "https://punchng.com/epl-carrick-to-bench-brruno-for-bournemouth-clash-report/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T14:07:41+00:00",
+      "categories": []
+    },
+    {
+      "title": "The city does not smell of roses, By Temitope Sodipo",
+      "summary": "Lagos does not need to experience its own Great Stink before taking decisive action. The warning signs are visible and painfully olfactory. This challenge presents an opportunity to rethink how a fast-growing metropolis can manage its resources and infrastructure more effectively. A cleaner Lagos wi",
+      "url": "https://www.premiumtimesng.com/opinion/920109-the-city-does-not-smell-of-roses-by-temitope-sodipo.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T13:36:07+00:00",
+      "categories": [
+        "engineering",
+        "business",
+        "lagos"
+      ]
+    },
+    {
       "title": "2027: Turnout at Kaduna rally shows North’s support for Tinubu — Group",
       "summary": "A northern group says the massive turnout at a Kaduna rally is evidence of the region’s confidence in President Bola Tinubu’s leadership ahead of 2027. Read More: https://punchng.com/2027-turnout-at-kaduna-rally-shows-norths-support-for-tinubu-group/",
       "url": "https://punchng.com/2027-turnout-at-kaduna-rally-shows-norths-support-for-tinubu-group/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-25T13:21:34+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nigerian businesses need more than bank loans to thrive – Finance Minister",
+      "summary": "According to the minister, patient capital, investor networks and institutional support are needed to help small businesses expand as seven startups share $277,000 in awards. The post Nigerian businesses need more than bank loans to thrive – Finance Minister appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/business/business-news/920094-nigerian-businesses-need-more-than-bank-loans-to-thrive-finance-minister.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T13:20:45+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "Must we destroy the evidence of our past to build our future?, By Lande Ọmọ Ọba",
+      "summary": "And I asked myself: Must we destroy the evidence of our past in order to celebrate our freedom from it? Surely, preserving a colonial building does not mean celebrating colonialism! It simply means acknowledging that this was part of our history. Whether we like that history or not, it happened. I a",
+      "url": "https://www.premiumtimesng.com/opinion/920103-must-we-destroy-the-evidence-of-our-past-to-build-our-future-by-lande-omo-oba.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T13:14:32+00:00",
+      "categories": [
+        "engineering",
+        "property"
+      ]
+    },
+    {
+      "title": "Kogi Police begins probe as male officer guns down female colleague, shoots self dead",
+      "summary": "The Kogi State Police Command has launched an investigation into the circumstances surrounding the deaths of two of its officers attached to the Ajaokuta Police Division, Amos Yusuf and Grace Onimisi. Reports indicate that Amos Yusuf allegedly shot his female colleague, Grace Onimisi, dead while the",
+      "url": "https://dailypost.ng/2026/10/25/kogi-police-begins-probe-as-male-officer-gundown-female-colleague-shoots-self-dead/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T13:04:30+00:00",
+      "categories": []
+    },
+    {
+      "title": "EPL: Carrick drops Bruno Fernandes for Man Utd vs Bournemouth",
+      "summary": "Manchester United manager, Michael Carrick, has left captain Bruno Fernandes out of his starting XI to face Bournemouth. According to The Athletic, Fernandes will start the game from the bench. This comes a week after the Portugal midfielder criticised Carrick's tactics following a 4-1 thrashing at ",
+      "url": "https://dailypost.ng/2026/10/25/epl-carrick-drops-bruno-fernandes-for-man-utd-vs-bournemouth/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T13:00:47+00:00",
       "categories": []
     },
     {
@@ -48,6 +122,24 @@
       ]
     },
     {
+      "title": "'Some APC govs, cabinet members will work with Atiku' – Primate Ayodele warns Tinubu",
+      "summary": "The Leader of INRI Evangelical Spiritual Church, Primate Elijah Ayodele, has warned President Bola Ahmed Tinubu against betrayal from some of his cabinet members and some governors within the ruling party. In a statement signed by his media aide, Osho Oluwatosin, Primate Ayodele made it known that s",
+      "url": "https://dailypost.ng/2026/10/25/some-apc-govs-your-cabinet-membersll-secretly-work-with-atiku-primate-ayodele-warns-tinubu/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T12:48:07+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "LaLiga: Real Madrid suffer fresh blow ahead El Clasico against Barcelona",
+      "summary": "Real Madrid goalkeeper, Thibaut Courtois, will miss Sunday's massive LaLiga clash against Barcelona. Courtois is unavailable due to illness. The Belgian's absence means that manager Jose Mourinho will have to start with Andriy Lunin. This was confirmed by the Spanish club in a statement hours before",
+      "url": "https://dailypost.ng/2026/10/25/laliga-real-madrid-suffer-fresh-blow-ahead-of-el-clasico-against-barcelona/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T12:46:16+00:00",
+      "categories": []
+    },
+    {
       "title": "Choosing humanity over harm: A National Assembly’s duty to protect life, By Margaret Uddin Ojeahere",
       "summary": "This moment, however, presents an opportunity to demand the leadership Nigerians deserve. Nigeria does not need more punishment; it needs leaders that understand the weight of human suffering. The first step is clear: Attempted suicide must be decriminalised. People in crisis deserve care, not const",
       "url": "https://www.premiumtimesng.com/opinion/920069-choosing-humanity-over-harm-a-national-assemblys-duty-to-protect-life-by-margaret-uddin-ojeahere.html",
@@ -68,6 +160,14 @@
       ]
     },
     {
+      "title": "2027: Atiku's breach of zoning fueling political tension in North - Osita Okechukwu",
+      "summary": "Former Director-General of the Voice of Nigeria, VON, and a chieftain of the All Progressives Congress, APC, Osita Okechukwu, has expressed concern that the African Democratic Congress, ADC, presidential candidate, Atiku Abubakar’s breach of zoning is fueling political tensions in Northern Nigeria a",
+      "url": "https://dailypost.ng/2026/10/25/2027-atikus-breach-of-zoning-fueling-political-tension-in-north-osita-okechukwu/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T12:42:32+00:00",
+      "categories": []
+    },
+    {
       "title": "Ekiti, group partner to expand family planning services",
       "summary": "The Ekiti State Government and health organisation, Jhpiego, have reaffirmed their commitment to improving family planning services and expanding access to Read More: https://punchng.com/ekiti-group-partner-to-expand-family-planning-services/",
       "url": "https://punchng.com/ekiti-group-partner-to-expand-family-planning-services/?utm_source=rss.punchng.com&utm_medium=web",
@@ -75,6 +175,16 @@
       "published": "2026-10-25T12:40:18+00:00",
       "categories": [
         "government"
+      ]
+    },
+    {
+      "title": "2027: Engaging APC data boys insult to my integrity – Pat Utomi blasts Tinubu supporters",
+      "summary": "Professor of political economy, Pat Utomi, has lashed out at the ruling All Progressives Congress, APC, and its supporters over alleged cyber attacks and online threats. Utomi warned that engaging with the party's online supporters, also known as APC data boys, was an insult to his integrity. This i",
+      "url": "https://dailypost.ng/2026/10/25/2027-engaging-apc-data-boys-is-insult-to-my-integrity-pat-utomi-blasts-tinubu-supporters/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T12:40:17+00:00",
+      "categories": [
+        "business"
       ]
     },
     {
@@ -171,114 +281,6 @@
       "published": "2026-10-25T11:42:29+00:00",
       "categories": [
         "business",
-        "lagos"
-      ]
-    },
-    {
-      "title": "NAF flew 6,100 hours, consumed 10m litres fuel — Spokesman",
-      "summary": "The Nigerian Air Force says it flew over 6,100 hours and used nearly 10m litres of fuel in security operations between November 2025 and September 2026. Read More: https://punchng.com/naf-flew-6100-hours-consumed-10m-litres-fuel-spokesman/",
-      "url": "https://punchng.com/naf-flew-6100-hours-consumed-10m-litres-fuel-spokesman/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T11:39:09+00:00",
-      "categories": []
-    },
-    {
-      "title": "Bayelsa youths back police anti-cultism campaign",
-      "summary": "Youths in Yenagoa, Bayelsa State, have staged a peace walk to support the police’s anti-cultism campaign, pledging to help curb criminal activities. Read More: https://punchng.com/bayelsa-youths-back-police-anti-cultism-campaign/",
-      "url": "https://punchng.com/bayelsa-youths-back-police-anti-cultism-campaign/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T11:36:52+00:00",
-      "categories": []
-    },
-    {
-      "title": "Moment microphone was snatched from Umahi mid-speech at APC rally [VIDEO]",
-      "summary": "There was mild drama at the All Progressives Congress, APC, campaign rally in Kaduna State on Saturday as the microphone was taken away from the Minister of Works, Dave Umahi, while he was addressing President Bola Tinubu and other party leaders. A video making rounds online showed the minister addr",
-      "url": "https://dailypost.ng/2026/10/25/moment-umahis-microphone-was-snatched-mid-speech-in-apc-rally-in-kaduna-video/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T11:31:34+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "NANS backs Tinubu, Umahi after road projects inspection",
-      "summary": "The National Association of Nigerian Students has passed a vote of confidence in President Tinubu and Works Minister Umahi after inspecting federal road pr Read More: https://punchng.com/nans-backs-tinubu-umahi-after-road-projects-inspection/",
-      "url": "https://punchng.com/nans-backs-tinubu-umahi-after-road-projects-inspection/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T11:30:03+00:00",
-      "categories": [
-        "engineering",
-        "government"
-      ]
-    },
-    {
-      "title": "Move beyond condemnation, stop further killings - NBA tells Taraba Govt",
-      "summary": "The Nigerian Bar Association, NBA, Jalingo Branch, has condemned the reported killing of residents of Binnari community in Karim-Lamido local government council of Taraba state, calling on the state government and security agencies to take urgent measures to protect lives and apprehend those respons",
-      "url": "https://dailypost.ng/2026/10/25/move-beyond-condemnation-stop-further-killings-nba-tells-taraba-govt/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T11:27:28+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "NDLEA arrests S’African with cocaine, grandma with cannabis",
-      "summary": "Operatives of the National Drug Law Enforcement Agency have arrested a 34-year-old South African woman, Qhina Beauty, with 36.65 kilogrammes of cocaine at the Murtala Muhammed International Airport, Ikeja, Lagos State. Beauty was arrested at the departure hall of the MMIA on October 7, 2026, on her ",
-      "url": "https://punchng.com/ndlea-arrests-safrican-with-cocaine-grandma-with-cannabis/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T11:22:21+00:00",
-      "categories": [
-        "government",
-        "lagos"
-      ]
-    },
-    {
-      "title": "Can the media announce election results before INEC’s official declaration?, By Samson Itodo",
-      "summary": "…media organisations can responsibly share and aggregate officially announced results as part of their public information role, but they must be careful not to present such reporting as a final declaration of the election outcome. Until INEC officially declares and returns a winner, all reported fig",
-      "url": "https://www.premiumtimesng.com/opinion/920048-can-the-media-announce-election-results-before-inecs-official-declaration-by-samson-itodo.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T11:20:56+00:00",
-      "categories": []
-    },
-    {
-      "title": "EPL: What Alonso said about Penders' performance, own goal after 2-0 defeat to Tottenham",
-      "summary": "Chelsea boss Xabi Alonso has reacted to goalkeeper Mike Penders' own goal, which helped seal their 2-0 defeat to Tottenham Hotspur in the Premier League on Saturday. The Chelsea manager emphasised that errors are an integral part of the sport that teams must navigate and overcome. The 21-year-old Pe",
-      "url": "https://dailypost.ng/2026/10/25/epl-what-alonso-said-about-penders-performance-own-goal-after-2-0-defeat-to-tottenham/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T11:16:12+00:00",
-      "categories": []
-    },
-    {
-      "title": "Luminate Group visits CJID, praises partnership on AI governance",
-      "summary": "During the visit, Dapo Olorunyomi, chief executive officer of CJID and publisher of PREMIUM TIMES, highlighted the impact of the organisations’ support on efforts to hold technology platforms accountable. The post Luminate Group visits CJID, praises partnership on AI governance appeared first on Pre",
-      "url": "https://www.premiumtimesng.com/news/top-news/920046-luminate-group-visits-cjid-praises-partnership-on-ai-governance.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T11:05:52+00:00",
-      "categories": []
-    },
-    {
-      "title": "NPFL: Abia Warriors chairman charges players to go for victory against Tornadoes",
-      "summary": "Abia Warriors Chairman, John Obuh has charged his players to respect the club badge and represent the team with pride. The Umuahia-based club have had a mixed start to the 2026-27 Nigeria Premier Football League, NPFL, season. Abia Warriors have garnered nine points from nine matches in the current ",
-      "url": "https://dailypost.ng/2026/10/25/npfl-abia-warriors-chairman-charges-players-to-go-for-victory-against-tornadoes/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T11:04:34+00:00",
-      "categories": []
-    },
-    {
-      "title": "MacArthur Foundation visits CJID, Premium Times, reaffirms support for media accountability",
-      "summary": "During the visits, Dapo Olorunyomi, chief executive officer of CJID and publisher of PREMIUM TIMES, highlighted the impact of the organisations’ support on investigative journalism, fact-checking, press freedom and efforts to hold technology platforms accountable. The post MacArthur Foundation visit",
-      "url": "https://www.premiumtimesng.com/news/top-news/920029-macarthur-foundation-visits-cjid-premium-times-reaffirms-support-for-media-accountability.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T11:00:45+00:00",
-      "categories": []
-    },
-    {
-      "title": "NPFL: Ameh Joseph hails Kun Khalifat fans ahead of Inter Lagos clash",
-      "summary": "Kun Khalifat forward, Ameh Joseph, has hailed the club's supporters ahead of the Nigeria Premier Football League, NPFL, matchday 10 fixture against Inter Lagos. Obinna Uzoho's side will do battle with Inter Lagos at the Dan Anyiam Stadium, Owerri on Sunday. Joseph said that he is confident that the ",
-      "url": "https://dailypost.ng/2026/10/25/npfl-ameh-joseph-hails-kun-khalifat-fans-ahead-of-inter-lagos-clash/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T10:55:03+00:00",
-      "categories": [
         "lagos"
       ]
     }
