@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T08:27:20.620167+00:00",
+  "generated_at": "2026-10-25T08:59:11.602255+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,11 +11,41 @@
   ],
   "articles": [
     {
+      "title": "Nigerian businesses need more than loans to grow — Oyedele",
+      "summary": "Finance Minister Taiwo Oyedele says Nigerian businesses need more than loans for growth, stressing the need for patient capital and institutional support. Read More: https://punchng.com/nigerian-businesses-need-more-than-loans-to-grow-oyedele/",
+      "url": "https://punchng.com/nigerian-businesses-need-more-than-loans-to-grow-oyedele/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T09:32:22+00:00",
+      "categories": [
+        "business",
+        "government"
+      ]
+    },
+    {
+      "title": "Save our ancestral lands, Ogun communities beg Abiodun",
+      "summary": "Residents of Ogun communities appeal to Governor Dapo Abiodun to save their ancestral lands from being allocated to Chinese investors, fearing loss of home Read More: https://punchng.com/save-our-ancestral-lands-ogun-communities-beg-abiodun/",
+      "url": "https://punchng.com/save-our-ancestral-lands-ogun-communities-beg-abiodun/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T09:26:42+00:00",
+      "categories": [
+        "government",
+        "property"
+      ]
+    },
+    {
       "title": "Musk accuses Ukraine of violating Starlink’s terms of service",
       "summary": "Tech tycoon Elon Musk has accused Ukraine of violating Starlink’s terms of service by using the satellite network for offensive drone strikes to kill peopl Read More: https://punchng.com/musk-accuses-ukraine-of-violating-starlinks-terms-of-service/",
       "url": "https://punchng.com/musk-accuses-ukraine-of-violating-starlinks-terms-of-service/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-25T09:22:18+00:00",
+      "categories": []
+    },
+    {
+      "title": "Kano ACF chair resigns, three-member interim leadership team appointed",
+      "summary": "The ACF's spokesperson in Kano, Nasiru Ibrahim, said in a statement to PREMIUM TIMES that the interim team comprises Isyaku Tofa, Bala Sani and Rabia Adamu. The post Kano ACF chair resigns, three-member interim leadership team appointed appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/more-news/920027-kano-acf-chair-resigns-three-member-interim-leadership-team-appointed.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T08:53:14+00:00",
       "categories": []
     },
     {
@@ -39,11 +69,53 @@
       ]
     },
     {
+      "title": "SERAP sues Nigerian govt at ECOWAS Court over ₦78.8bn cash transfer",
+      "summary": "SERAP is seeking a declaration that “the government’s failure to ensure the lawful administration of public funds allocated for cash-transfer programmes intended to benefit vulnerable households undermines the enjoyment of the rights protected under the African Charter on Human and Peoples’ Rights.”",
+      "url": "https://www.premiumtimesng.com/news/more-news/920022-serap-sues-nigerian-govt-at-ecowas-court-over-%e2%82%a678-8bn-cash-transfer.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T08:38:51+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "2027: Kano Hisbah Board commandant says he won’t campaign for anyone",
+      "summary": "The Islamic cleric’s position follows ongoing criticism of his inclusion in the All Progressives Congress (APC) campaign advisory committee in Kano The post 2027: Kano Hisbah Board commandant says he won’t campaign for anyone appeared first on Premium Times Nigeria .",
+      "url": "https://www.premiumtimesng.com/news/more-news/920019-2027-kano-hisbah-board-commandant-says-he-wont-campaign-for-anyone.html",
+      "source": "Premium Times",
+      "published": "2026-10-25T08:34:54+00:00",
+      "categories": []
+    },
+    {
       "title": "Big weddings put pressure on marriages, says actress Ruth Kadiri",
       "summary": "Nollywood actress Ruth Kadiri has advised couples to avoid elaborate weddings, arguing they place unnecessary emotional and mental pressure on marriages. Read More: https://punchng.com/big-weddings-put-pressure-on-marriages-says-actress-ruth-kadiri/",
       "url": "https://punchng.com/big-weddings-put-pressure-on-marriages-says-actress-ruth-kadiri/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-25T08:24:23+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nigerians react as First Lady hands President unknown substance at Kaduna rally",
+      "summary": "Questions have emerged following a video circulating on social media that appears to show the First Lady, Oluremi Tinubu, handing President Bola Tinubu an unidentified substance during the All Progressives Congress, APC, presidential campaign flag-off rally in Kaduna State on Saturday. The video has",
+      "url": "https://dailypost.ng/2026/10/25/tinubu-is-slowing-fading-away-nigerians-react-as-first-lady-hands-president-unknown-substance-at-kaduna-rallyvideo/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T08:16:07+00:00",
+      "categories": []
+    },
+    {
+      "title": "Fans berate popular Plateau gospel artiste over song calling Remi Tinubu 'mother of poor'",
+      "summary": "Popular Plateau gospel artiste, Ezra Jinang, has come under serious criticism and vilification on social media after he dropped a new song extolling the virtues of Nigeria's First Lady, Remi Tinubu, calling her the 'Maman Talakawa', which translates to 'Mother of the Poor.' Jinang, who is also a pas",
+      "url": "https://dailypost.ng/2026/10/25/fans-berate-popular-plateau-gospel-artiste-over-song-calling-remi-ti/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T08:12:19+00:00",
+      "categories": []
+    },
+    {
+      "title": "Ballon d'Or 2026: 'Statistically he should win it' - Martin Keown names award winner",
+      "summary": "Former Arsenal defender, Martin Keown, has insisted that Bayern Munich striker, Harry Kane should win the 2026 Ballon d'Or based on statistics. Kane is among the top contenders for this year's Ballon d'Or, the winner of which will be announced on Monday in London. The 33-year-old will face stiff com",
+      "url": "https://dailypost.ng/2026/10/25/ballon-dor-2026-statistically-he-should-win-it-martin-keown-names-award-winner/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T07:56:24+00:00",
       "categories": []
     },
     {
@@ -162,6 +234,14 @@
       ]
     },
     {
+      "title": "2027: Group rallies support for Tinubu’s re-election",
+      "summary": "A group, Jagabanist Nationwide Support Group, has called on its members to begin mobilising for President Bola Tinubu’s re-election in 2027. Read More: https://punchng.com/2027-group-rallies-support-for-tinubus-re-election/",
+      "url": "https://punchng.com/2027-group-rallies-support-for-tinubus-re-election/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T06:00:59+00:00",
+      "categories": []
+    },
+    {
       "title": "Reps move to tighten rules on sale of federal assets",
       "summary": "The House of Representatives is considering a bill to establish a National Public Assets Management Commission to oversee the sale of federal assets. Read More: https://punchng.com/reps-move-to-tighten-rules-on-sale-of-federal-assets/",
       "url": "https://punchng.com/reps-move-to-tighten-rules-on-sale-of-federal-assets/?utm_source=rss.punchng.com&utm_medium=web",
@@ -197,92 +277,6 @@
       "published": "2026-10-25T05:29:07+00:00",
       "categories": [
         "government"
-      ]
-    },
-    {
-      "title": "Troops rescue two kidnapped women, arrest four suspected bandits in Kebbi",
-      "summary": "Troops of the Nigerian Army have rescued two women abducted by bandits from the residence of Alhaji Aminu Mai Suga, popularly known as AA Suga, the African Democratic Congress, ADC, chairman in Sakaba Local Government Area of Kebbi State. The development was disclosed in a post shared on X by crisis",
-      "url": "https://dailypost.ng/2026/10/25/troops-rescue-two-kidnapped-women-arrest-four-suspected-bandits-in-kebbi/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:28:11+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "$700bn US mineral deal: Tell Nigerians what we are getting into – Arewa Forum to FG",
-      "summary": "The Arewa Consultative Forum, ACF, has asked the Federal Government to tell Nigerians what the country stands to gain from the $700 billion mineral deal with the United States. The National Publicity Secretary of the forum, Professor Tukur Mohammed-Baba, made this call during an interview on Arise T",
-      "url": "https://dailypost.ng/2026/10/25/700bn-mineral-deal-tell-nigerians-what-we-are-getting-into-arewa-forum-blasts-fg/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:26:59+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "You packed 5000 people in Kaduna, called it nationwide support - Sowore mocks Tinubu, APC",
-      "summary": "The African Action Congress, AAC, presidential candidate, Omoyele Sowore, has blasted President Bola Tinubu and the All Progressives Congress, APC, over what he described as a fake show of support in Kaduna during the APC campaign flag-off. In a post on his verified X handle on Saturday, Sowore said",
-      "url": "https://dailypost.ng/2026/10/25/you-packed-5000-people-in-kaduna-called-it-nationwide-support-sowore-mocks-tinubu-apc/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:25:17+00:00",
-      "categories": []
-    },
-    {
-      "title": "Trump votes early in Florida as Republicans fight to retain Congress",
-      "summary": "US President Donald Trump and First Lady Melania Trump cast their ballots early in Florida on Saturday ahead of the November 3 midterm elections, as Republicans seek to retain control of Congress. The couple voted in their home state before the president travelled to Georgia for a campaign rally in ",
-      "url": "https://dailypost.ng/2026/10/25/trump-votes-early-in-florida-as-republicans-fight-to-retain-congress/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:23:56+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "Poison for profit: Why fake drinks are killing Nigerians and what must change now, By Chukwuemerie Uduchukwu",
-      "summary": "The war against fake and counterfeit products cannot be left to NAFDAC alone. Manufacturers must invest in secure packaging and rapid verification tools. Traders must refuse to stock goods of doubtful origin. Consumers must demand proof of authenticity and report irregularities. Lawmakers must pass ",
-      "url": "https://www.premiumtimesng.com/opinion/919932-poison-for-profit-why-fake-drinks-are-killing-nigerians-and-what-must-change-now-by-chukwuemerie-uduchukwu.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T05:23:18+00:00",
-      "categories": [
-        "business"
-      ]
-    },
-    {
-      "title": "Catholic Church agrees to pay $800m to 1,300 sexual abuse victims in New York",
-      "summary": "The Archdiocese of New York has agreed to pay more than $800 million to hundreds of people who suffered sexual abuse by Catholic clergy, bringing years of negotiations towards a close. The archdiocese announced the settlement on Saturday, saying the agreement would be formally signed in early Novemb",
-      "url": "https://dailypost.ng/2026/10/25/catholic-church-agrees-to-pay-800m-to-1300-sexual-abuse-victims-in-new-york/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:22:56+00:00",
-      "categories": []
-    },
-    {
-      "title": "Govt of anarchy - Kenneth Okonkwo blasts Tinubu administration",
-      "summary": "A chieftain of the African Democratic Congress, ADC, Kenneth Okonkwo, has described the administration of President Bola Tinubu as a government of anarchy. Okonkwo made this statement in an interview on MIC-ON with Seun Okinbaloye. He said that the Tinubu government has failed to uphold the rule of ",
-      "url": "https://dailypost.ng/2026/10/25/govt-of-anarchy-kenneth-okonkwo-blasts-tinubu-administration/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:20:51+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Enough is enough: Obama laments alleged chaos, cruelty under Trump",
-      "summary": "Former US President Barack Obama has criticised President Donald Trump’s administration over what he described as chaos, corruption and incompetence, urging voters to support Democratic candidates in the November 3 midterm elections. Addressing a campaign rally in Cleveland, Ohio, on Saturday, Obama",
-      "url": "https://dailypost.ng/2026/10/25/enough-is-enough-obama-blasts-trump-urges-voters-to-demand-change/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:19:44+00:00",
-      "categories": [
-        "property"
-      ]
-    },
-    {
-      "title": "2026 U-17 Women’s World Cup: Three countries eliminated",
-      "summary": "At least three countries have officially been eliminated from the ongoing FIFA U-17 Women's World Cup in Morocco. They are Zambia, Puerto Rico and New Zealand. All three teams finished with zero points in their respective groups after losing all three of their group-stage matches. This follows the c",
-      "url": "https://dailypost.ng/2026/10/25/2026-u-17-wwc-3-countries-eliminated-from-competition/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T05:18:54+00:00",
-      "categories": [
-        "property"
       ]
     }
   ]
