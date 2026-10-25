@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T00:19:40.942855+00:00",
+  "generated_at": "2026-10-25T01:06:59.137567+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -10,6 +10,32 @@
     "Information Nigeria"
   ],
   "articles": [
+    {
+      "title": "Varsity workers protest shortfalls in FG’s arrears payment",
+      "summary": "University workers across Nigeria are protesting shortfalls, unpaid allowances, and uncertainty over arrears released by the Federal Government. Read More: https://punchng.com/varsity-workers-protest-shortfalls-in-fgs-arrears-payment/",
+      "url": "https://punchng.com/varsity-workers-protest-shortfalls-in-fgs-arrears-payment/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T01:56:45+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "CBN defends 75% reserve requirement on public deposits",
+      "summary": "The Central Bank of Nigeria has defended its 75% Cash Reserve Ratio on public deposits, stating it’s a measure to manage liquidity and curb inflation. Read More: https://punchng.com/cbn-defends-75-reserve-requirement-on-public-deposits/",
+      "url": "https://punchng.com/cbn-defends-75-reserve-requirement-on-public-deposits/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T01:20:55+00:00",
+      "categories": []
+    },
+    {
+      "title": "Pastors’ heavenly tales spark earthly row",
+      "summary": "Claims by Nigerian pastors like Apostle Arome Osayi to have visited heaven and seen Jesus have divided Christian leaders, sparking a row over their authent Read More: https://punchng.com/pastors-heavenly-tales-spark-earthly-row/",
+      "url": "https://punchng.com/pastors-heavenly-tales-spark-earthly-row/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T01:13:43+00:00",
+      "categories": []
+    },
     {
       "title": "Oyo APC campaign threatens APM gov candidate with defamation suit",
       "summary": "The campaign organisation of the All Progressives Congress governorship candidate in Oyo State, Senator Sharafadeen Alli, has threatened legal action against the governorship candidate of the Allied Peoples Movement, Bimbo Adekanmbi, over allegations of corruption and financial mismanagement. The or",
@@ -47,6 +73,14 @@
       "url": "https://punchng.com/jemiriye-re-imagines-yoruba-folktale-in-olurounbi/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-25T00:12:20+00:00",
+      "categories": []
+    },
+    {
+      "title": "How AI-generated photo cost kidnap victim N4m ransom – Freed Benue graduate",
+      "summary": "A freed Benue State University graduate recounts his kidnap ordeal in Edo State and how an AI-generated photo led kidnappers to demand N4m from a fellow vi Read More: https://punchng.com/how-ai-generated-photo-cost-kidnap-victim-n4m-ransom-freed-benue-graduate/",
+      "url": "https://punchng.com/how-ai-generated-photo-cost-kidnap-victim-n4m-ransom-freed-benue-graduate/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T00:10:52+00:00",
       "categories": []
     },
     {
@@ -117,6 +151,17 @@
       ]
     },
     {
+      "title": "FG to resolve Zaria railway compensation disputes",
+      "summary": "The Federal Government has pledged to intervene in compensation disputes affecting residents impacted by the railway construction project in Zaria, Kaduna Read More: https://punchng.com/fg-to-resolve-zaria-railway-compensation-disputes/",
+      "url": "https://punchng.com/fg-to-resolve-zaria-railway-compensation-disputes/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T00:00:53+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
       "title": "Bad governance, traffickers pushing Nigerian youths to Libya — Soyombo",
       "summary": "Investigative journalist Fisayo Soyombo explains how bad governance and traffickers’ lies push Nigerian youths to embark on the dangerous journey to Libya. Read More: https://punchng.com/bad-governance-traffickers-pushing-nigerian-youths-to-libya-soyombo/",
       "url": "https://punchng.com/bad-governance-traffickers-pushing-nigerian-youths-to-libya-soyombo/?utm_source=rss.punchng.com&utm_medium=web",
@@ -138,12 +183,16 @@
       ]
     },
     {
-      "title": "How AI-generated photo cost kidnap victim N4m ransom – Freed Benue graduate",
-      "summary": "A freed Benue State University graduate recounts how he was kidnapped in Edo State and how an AI-generated photo cost another victim a N4m ransom. Read More: https://punchng.com/how-ai-generated-photo-cost-kidnap-victim-n4m-ransom-freed-benue-graduate/",
-      "url": "https://punchng.com/how-ai-generated-photo-cost-kidnap-victim-n4m-ransom-freed-benue-graduate/?utm_source=rss.punchng.com&utm_medium=web",
+      "title": "Lagos-Calabar highway lacks master design — Umahi",
+      "summary": "The Minister of Works, David Umahi, has revealed that the 750km Lagos-Calabar Coastal Highway lacks a single comprehensive engineering design. Read More: https://punchng.com/lagos-calabar-highway-lacks-master-design-umahi/",
+      "url": "https://punchng.com/lagos-calabar-highway-lacks-master-design-umahi/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
-      "published": "2026-10-25T00:00:52+00:00",
-      "categories": []
+      "published": "2026-10-25T00:00:51+00:00",
+      "categories": [
+        "engineering",
+        "government",
+        "lagos"
+      ]
     },
     {
       "title": "NWF president charges Team Nigeria for 2026 World Champs",
@@ -170,6 +219,14 @@
       "categories": []
     },
     {
+      "title": "Nearly 83% of uneducated Nigerians live in poverty – W’Bank",
+      "summary": "A World Bank report reveals that nearly 83% of uneducated Nigerians live in poverty, highlighting a stark economic divide compared to educated citizens. Read More: https://punchng.com/nearly-83-of-uneducated-nigerians-live-in-poverty-wbank/",
+      "url": "https://punchng.com/nearly-83-of-uneducated-nigerians-live-in-poverty-wbank/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T00:00:49+00:00",
+      "categories": []
+    },
+    {
       "title": "How the eyes work",
       "summary": "Learn how the eyes work to enable vision. This guide explains the function of the cornea, lens, retina, and other parts in processing light and images. Read More: https://punchng.com/how-the-eyes-work/",
       "url": "https://punchng.com/how-the-eyes-work/?utm_source=rss.punchng.com&utm_medium=web",
@@ -191,6 +248,14 @@
       "url": "https://punchng.com/ebola-virologists-urge-nigerians-to-embrace-hygiene-as-current-strain-defies-treatment/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-25T00:00:47+00:00",
+      "categories": []
+    },
+    {
+      "title": "Tinubu to opponents: You created hunger, poverty",
+      "summary": "President Bola Tinubu has blamed past leaders and opposition figures for the hunger and poverty in Nigeria, promising prosperity if re-elected in 2027. Read More: https://punchng.com/tinubu-to-opponents-you-created-hunger-poverty/",
+      "url": "https://punchng.com/tinubu-to-opponents-you-created-hunger-poverty/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T00:00:46+00:00",
       "categories": []
     },
     {
@@ -220,66 +285,6 @@
       "source": "PUNCH",
       "published": "2026-10-25T00:00:46+00:00",
       "categories": []
-    },
-    {
-      "title": "Ooni to resolve Ondo stool crisis",
-      "summary": "The Ooni of Ife, Oba Adeyeye Ogunwusi, has appealed to contestants for the vacant Olufon of Ifon-Omima stool in Ondo State to embrace dialogue and peace. Read More: https://punchng.com/ooni-to-resolve-ondo-stool-crisis/",
-      "url": "https://punchng.com/ooni-to-resolve-ondo-stool-crisis/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T00:00:44+00:00",
-      "categories": []
-    },
-    {
-      "title": "The chemistry of taboo: Decoding Yoruba indigenous science",
-      "summary": "Discover the scientific basis for traditional Yoruba practices like using herbs for childbirth, food preservation with charcoal, and coronation rituals. Read More: https://punchng.com/the-chemistry-of-taboo-decoding-yoruba-indigenous-science/",
-      "url": "https://punchng.com/the-chemistry-of-taboo-decoding-yoruba-indigenous-science/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T00:00:44+00:00",
-      "categories": []
-    },
-    {
-      "title": "Miners seek back-to-back wins against struggling giants",
-      "summary": "Nasarawa United host struggling former champions Enyimba in Lafia, seeking a second consecutive league win after beating Inter Lagos last weekend. Read More: https://punchng.com/miners-seek-back-to-back-wins-against-struggling-giants/",
-      "url": "https://punchng.com/miners-seek-back-to-back-wins-against-struggling-giants/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T00:00:41+00:00",
-      "categories": [
-        "lagos"
-      ]
-    },
-    {
-      "title": "Underground gas spreads panic across Ogun schools",
-      "summary": "An underground gas emission, identified as methane, spreads panic across schools in Ijebu-Ode, Ogun State, causing fainting spells and breathing issues. Read More: https://punchng.com/underground-gas-spreads-panic-across-ogun-schools/",
-      "url": "https://punchng.com/underground-gas-spreads-panic-across-ogun-schools/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T00:00:40+00:00",
-      "categories": []
-    },
-    {
-      "title": "SAN: Court affirms N12m compensation",
-      "summary": "The Court of Appeal has affirmed the N12m compensation awarded to a former NBA Vice-President, Monday Ubani, SAN, over his unlawful 21-day detention by the Read More: https://punchng.com/san-court-affirms-n12m-compensation/",
-      "url": "https://punchng.com/san-court-affirms-n12m-compensation/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T00:00:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "Changi Boys fight back to hold Peace Boys",
-      "summary": "Katsina United fought back from two goals down to secure a dramatic 2-2 draw against Plateau United in their NPFL matchday 10 encounter in Katsina. Read More: https://punchng.com/changi-boys-fight-back-to-hold-peace-boys/",
-      "url": "https://punchng.com/changi-boys-fight-back-to-hold-peace-boys/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T00:00:39+00:00",
-      "categories": []
-    },
-    {
-      "title": "My wife died chasing nine-month retirement benefits from Ogun – Retiree",
-      "summary": "A retired head teacher in Ogun State recounts how his wife, Hannah, died after a nine-month struggle to get her retirement benefits from the government. Read More: https://punchng.com/my-wife-died-chasing-nine-month-retirement-benefits-from-ogun-retiree/",
-      "url": "https://punchng.com/my-wife-died-chasing-nine-month-retirement-benefits-from-ogun-retiree/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T00:00:38+00:00",
-      "categories": [
-        "government"
-      ]
     }
   ]
 }
