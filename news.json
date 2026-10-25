@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T10:22:44.015589+00:00",
+  "generated_at": "2026-10-25T10:55:03.591022+00:00",
   "sources": [
     "PUNCH",
     "PUNCH Business",
@@ -11,12 +11,91 @@
   ],
   "articles": [
     {
+      "title": "Police arrest wanted suspect over robbery, kidnapping in Anambra",
+      "summary": "The Anambra State Police Command has arrested a 26-year-old wanted suspect, Udochukwu Okafor, popularly known as Small-Moto, during an operation in Ebenebe community, Awka North Local Government Area of the state. The command’s spokesman, SP Tochukwu Ikenga, disclosed this in a statement released on",
+      "url": "https://punchng.com/police-arrest-wanted-suspect-over-robbery-kidnapping-in-anambra/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T11:54:31+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "NAF flew 6,100 hours, consumed 10m litres fuel — Spokesman",
+      "summary": "The Nigerian Air Force says it flew over 6,100 hours and used nearly 10m litres of fuel in security operations between November 2025 and September 2026. Read More: https://punchng.com/naf-flew-6100-hours-consumed-10m-litres-fuel-spokesman/",
+      "url": "https://punchng.com/naf-flew-6100-hours-consumed-10m-litres-fuel-spokesman/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T11:39:09+00:00",
+      "categories": []
+    },
+    {
+      "title": "Bayelsa youths back police anti-cultism campaign",
+      "summary": "Youths in Yenagoa, Bayelsa State, have staged a peace walk to support the police’s anti-cultism campaign, pledging to help curb criminal activities. Read More: https://punchng.com/bayelsa-youths-back-police-anti-cultism-campaign/",
+      "url": "https://punchng.com/bayelsa-youths-back-police-anti-cultism-campaign/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T11:36:52+00:00",
+      "categories": []
+    },
+    {
+      "title": "NANS backs Tinubu, Umahi after road projects inspection",
+      "summary": "The National Association of Nigerian Students has passed a vote of confidence in President Tinubu and Works Minister Umahi after inspecting federal road pr Read More: https://punchng.com/nans-backs-tinubu-umahi-after-road-projects-inspection/",
+      "url": "https://punchng.com/nans-backs-tinubu-umahi-after-road-projects-inspection/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T11:30:03+00:00",
+      "categories": [
+        "engineering",
+        "government"
+      ]
+    },
+    {
+      "title": "NDLEA arrests S’African with cocaine, grandma with cannabis",
+      "summary": "Operatives of the National Drug Law Enforcement Agency have arrested a 34-year-old South African woman, Qhina Beauty, with 36.65 kilogrammes of cocaine at the Murtala Muhammed International Airport, Ikeja, Lagos State. Beauty was arrested at the departure hall of the MMIA on October 7, 2026, on her ",
+      "url": "https://punchng.com/ndlea-arrests-safrican-with-cocaine-grandma-with-cannabis/?utm_source=rss.punchng.com&utm_medium=web",
+      "source": "PUNCH",
+      "published": "2026-10-25T11:22:21+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
+    },
+    {
       "title": "Police arrest tiler over death of hotel worker in Abuja",
       "summary": "The FCT Police Command has arrested a tiler, Samuel Net, over the suspected homicide of a hotel worker, Joseph Terdoo, in the Utako District of Abuja. Read More: https://punchng.com/police-arrest-tiler-over-death-of-hotel-worker-in-abuja/",
       "url": "https://punchng.com/police-arrest-tiler-over-death-of-hotel-worker-in-abuja/?utm_source=rss.punchng.com&utm_medium=web",
       "source": "PUNCH",
       "published": "2026-10-25T10:42:10+00:00",
       "categories": []
+    },
+    {
+      "title": "'I will vote for Peter Obi as social media president' - Wike taunts NDC candidate",
+      "summary": "Federal Capital Territory, FCT, Minister Nyesom Wike has taunted the 2027 presidential candidate of the Nigeria Democratic Congress, NDC, Peter Obi, saying the former Anambra State governor can only win the coming election on social media. Speaking at a stakeholders’ town hall meeting in Bonny Local",
+      "url": "https://dailypost.ng/2026/10/25/i-will-vote-for-peter-obi-as-social-media-president-wike-taunts-ndc-candidate/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T10:14:48+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Naira loses N27.12 against US dollar in two days despite $55.16bn external reserves",
+      "summary": "The naira recorded a significant loss of N27.12 against the United States dollar in two days at the official foreign exchange market. Central Bank of Nigeria, CBN, data for Thursday and Friday showed that the naira depreciated to N1,361.84 per dollar on Friday from N1,334.72 traded on Wednesday. Thi",
+      "url": "https://dailypost.ng/2026/10/25/naira-loses-n27-12-against-us-dollar-in-two-days-despite-55-16bn-external-reserves/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T10:05:57+00:00",
+      "categories": [
+        "business"
+      ]
+    },
+    {
+      "title": "NDLEA arrests South African woman, US-based grandma with large cocaine, loud shipments",
+      "summary": "Operatives of the National Drug Law Enforcement Agency, NDLEA, have arrested a 34-year-old South African woman, Qhina Beauty, with 36.65 kilogrammes of cocaine at the Murtala Muhammed International Airport, Lagos, and a 62-year-old Nigerian-American grandmother, Anetor Gloria Ubong, with 9.45kg of h",
+      "url": "https://dailypost.ng/2026/10/25/ndlea-arrests-south-african-woman-us-based-grandma-with-large-cocaine-loud-shipments/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T10:04:42+00:00",
+      "categories": [
+        "government",
+        "lagos"
+      ]
     },
     {
       "title": "SERAP drags FG to ECOWAS court over N78.8bn cash transfer",
@@ -47,6 +126,42 @@
       "categories": [
         "government"
       ]
+    },
+    {
+      "title": "Ogun: SWAT arrests 36-year-old man over railway vandalism, recovers 16 iron rods",
+      "summary": "Operatives of the Special Weapons and Tactics, SWAT, unit of the Ogun State Police Command have arrested a 36-year-old man, Shobande Taofeek for alleged vandalism and theft of railway infrastructure in the state. The arrest led to the recovery of 16 railway iron rods and two gas cylinders used for c",
+      "url": "https://dailypost.ng/2026/10/25/ogun-swat-arrests-36-year-old-man-over-railway-vandalism-recovers-16-iron-rods/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T09:55:10+00:00",
+      "categories": [
+        "engineering"
+      ]
+    },
+    {
+      "title": "One confirmed dead after deadly violence in Abuja hotel",
+      "summary": "The Federal Capital Territory, FCT, Police Command has confirmed the death of a hotel staff member, Joseph Terdoo, following a violent confrontation at the facility. The Police Public Relations Officer, PPRO, Josephine Adeh, disclosed this in a statement issued on Sunday, explaining that the Utako D",
+      "url": "https://dailypost.ng/2026/10/25/one-confirmed-dead-after-deadly-violence-in-abuja-hotel/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T09:53:31+00:00",
+      "categories": [
+        "government"
+      ]
+    },
+    {
+      "title": "Transfer: Bayer Leverkusen chief addresses Boniface's transfer speculation",
+      "summary": "Bayer Leverkusen managing director, Simon Rolfes has reacted to speculation linking Victor Boniface with a move away from the club. Boniface has already expressed his desire to leave the former Bundesliga champions when the transfer window reopens in January, according to Sky Sports. The Nigeria int",
+      "url": "https://dailypost.ng/2026/10/25/transfer-bayer-leverkusen-chief-addresses-bonifaces-transfer-speculation/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T09:52:15+00:00",
+      "categories": []
+    },
+    {
+      "title": "Nigeria’s Ambassador Ufochukwu presents letters of credence to Cyprus president",
+      "summary": "Nigeria’s Ambassador to Israel, with concurrent accreditation to Cyprus, Nkechi Ufochukwu, has formally commenced her diplomatic assignment in Cyprus after presenting her Letters of Credence to President Nikos Christodoulides. The Nigerian Embassy in Israel disclosed this in a statement issued on Sa",
+      "url": "https://dailypost.ng/2026/10/25/nigerias-ambassador-ufochukwu-presents-letters-of-credence-to-cyprus-president/",
+      "source": "Daily Post Nigeria",
+      "published": "2026-10-25T09:49:51+00:00",
+      "categories": []
     },
     {
       "title": "NPFL Preview: Rivers United face Bendel test as Ikorodu City, Shooting Stars clash in Lagos",
@@ -178,110 +293,6 @@
       "url": "https://www.premiumtimesng.com/news/more-news/920019-2027-kano-hisbah-board-commandant-says-he-wont-campaign-for-anyone.html",
       "source": "Premium Times",
       "published": "2026-10-25T08:34:54+00:00",
-      "categories": []
-    },
-    {
-      "title": "2027: Reciprocate Tinubu's support for north - Shettima",
-      "summary": "Vice President Kashim Shettima says northerners should ensure the re-election of President Bola Tinubu. He said it should be a reward for Tinubu for his consistency in supporting politicians from the north. Speaking on Saturday at the All Progressives Congress, APC, presidential campaign launch in K",
-      "url": "https://dailypost.ng/2026/10/25/reciprocate-tinubus-support-for-the-north-to-elect-him-in-2027-shettima/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T08:33:35+00:00",
-      "categories": []
-    },
-    {
-      "title": "Big weddings put pressure on marriages, says actress Ruth Kadiri",
-      "summary": "Nollywood actress Ruth Kadiri has advised couples to avoid elaborate weddings, arguing they place unnecessary emotional and mental pressure on marriages. Read More: https://punchng.com/big-weddings-put-pressure-on-marriages-says-actress-ruth-kadiri/",
-      "url": "https://punchng.com/big-weddings-put-pressure-on-marriages-says-actress-ruth-kadiri/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T08:24:23+00:00",
-      "categories": []
-    },
-    {
-      "title": "Nigerians react as First Lady hands President unknown substance at Kaduna rally (VIDEO)",
-      "summary": "Questions have emerged following a video circulating on social media that appears to show the First Lady, Oluremi Tinubu, handing President Bola Tinubu an unidentified substance during the All Progressives Congress, APC, presidential campaign flag-off rally in Kaduna State on Saturday. The video has",
-      "url": "https://dailypost.ng/2026/10/25/tinubu-is-slowing-fading-away-nigerians-react-as-first-lady-hands-president-unknown-substance-at-kaduna-rallyvideo/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T08:16:07+00:00",
-      "categories": []
-    },
-    {
-      "title": "Fans berate popular Plateau gospel artiste over song calling Remi Tinubu 'mother of poor'",
-      "summary": "Popular Plateau gospel artiste, Ezra Jinang, has come under serious criticism and vilification on social media after he dropped a new song extolling the virtues of Nigeria's First Lady, Remi Tinubu, calling her the 'Maman Talakawa', which translates to 'Mother of the Poor.' Jinang, who is also a pas",
-      "url": "https://dailypost.ng/2026/10/25/fans-berate-popular-plateau-gospel-artiste-over-song-calling-remi-ti/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T08:12:19+00:00",
-      "categories": []
-    },
-    {
-      "title": "Edo to partner Botswana on agric, livestock development",
-      "summary": "The Edo State Government is seeking a partnership with Botswana in agriculture and livestock development to attract foreign investment for its upcoming sum Read More: https://punchng.com/edo-to-partner-botswana-on-agric-livestock-development/",
-      "url": "https://punchng.com/edo-to-partner-botswana-on-agric-livestock-development/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T08:00:24+00:00",
-      "categories": [
-        "business",
-        "government"
-      ]
-    },
-    {
-      "title": "Ballon d'Or 2026: 'Statistically he should win it' - Martin Keown names award winner",
-      "summary": "Former Arsenal defender, Martin Keown, has insisted that Bayern Munich striker, Harry Kane should win the 2026 Ballon d'Or based on statistics. Kane is among the top contenders for this year's Ballon d'Or, the winner of which will be announced on Monday in London. The 33-year-old will face stiff com",
-      "url": "https://dailypost.ng/2026/10/25/ballon-dor-2026-statistically-he-should-win-it-martin-keown-names-award-winner/",
-      "source": "Daily Post Nigeria",
-      "published": "2026-10-25T07:56:24+00:00",
-      "categories": []
-    },
-    {
-      "title": "Tope Alabi threatens legal action over Toluwanisings’ death claims",
-      "summary": "Gospel singer, Tope Alabi, threatens legal action against a Canada-based pastor over defamatory claims linking her to the death of minister Toluwanisings. Read More: https://punchng.com/tope-alabi-threatens-legal-action-over-toluwanisings-death-claims/",
-      "url": "https://punchng.com/tope-alabi-threatens-legal-action-over-toluwanisings-death-claims/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T07:52:11+00:00",
-      "categories": [
-        "government"
-      ]
-    },
-    {
-      "title": "Police rescue 15-year-old kidnapped boy in Oyo",
-      "summary": "The Oyo State Police command has rescued a 15-year-old kidnapped boy, Sumaila Muhammadu, and neutralised one suspect during a gun duel on the Awe-Iwo Road. Read More: https://punchng.com/police-rescue-15-year-old-kidnapped-boy-in-oyo/",
-      "url": "https://punchng.com/police-rescue-15-year-old-kidnapped-boy-in-oyo/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T07:35:47+00:00",
-      "categories": [
-        "engineering",
-        "oyo"
-      ]
-    },
-    {
-      "title": "Obama criticises Trump over Iran war, rising prices",
-      "summary": "Former US President Barack Obama has criticised President Donald Trump over the war in Iran and rising consumer prices while campaigning for Democrats. Read More: https://punchng.com/obama-criticises-trump-over-iran-war-rising-prices/",
-      "url": "https://punchng.com/obama-criticises-trump-over-iran-war-rising-prices/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T07:34:12+00:00",
-      "categories": []
-    },
-    {
-      "title": "PROFILES: The men, women seeking to be Nigeria’s president in 2027",
-      "summary": "Nigeria has 22 registered parties but INEC cleared the presidential candidates of 18 of them. The post PROFILES: The men, women seeking to be Nigeria’s president in 2027 appeared first on Premium Times Nigeria .",
-      "url": "https://www.premiumtimesng.com/features-and-interviews/920001-profiles-the-men-women-seeking-to-be-nigerias-president-in-2027.html",
-      "source": "Premium Times",
-      "published": "2026-10-25T07:17:21+00:00",
-      "categories": []
-    },
-    {
-      "title": "Police probe attack on MC Porcupine in Edo",
-      "summary": "The Edo State Police Command has launched a full-scale investigation into an alleged attack on entertainer Osagie Idieda, also known as MC Porcupine, in Be Read More: https://punchng.com/police-probe-attack-on-mc-porcupine-in-edo/",
-      "url": "https://punchng.com/police-probe-attack-on-mc-porcupine-in-edo/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T07:08:32+00:00",
-      "categories": []
-    },
-    {
-      "title": "Ex-Technical Aid Corps DG Osunyikanmi dies at 55",
-      "summary": "A former Ondo State Commissioner for Education and ex-DG of the Nigerian Technical Aid Corps, Dr Pius Osunyikanmi, has died at the age of 55 after a long i Read More: https://punchng.com/ex-technical-aid-corps-dg-osunyikanmi-dies-at-55/",
-      "url": "https://punchng.com/ex-technical-aid-corps-dg-osunyikanmi-dies-at-55/?utm_source=rss.punchng.com&utm_medium=web",
-      "source": "PUNCH",
-      "published": "2026-10-25T07:04:27+00:00",
       "categories": []
     }
   ]
