@@ -593,13 +593,13 @@ function approveApplicantForAptitude_(row) {
   const id=String(values[0]), name=String(values[2]||'Applicant'), email=String(values[3]||'').trim(), position=String(values[5]||'');
   if(!email) throw new Error('Cannot send aptitude-test invitation: applicant email is missing.');
   if(!position) throw new Error('Cannot send aptitude-test invitation: applied position is missing.');
-  if(String(values[31]||'').trim()==='SENT') return 'Aptitude approval email has already been sent for '+id+'.';
+  if(String(values[41]||'').trim()==='SENT') return 'Aptitude approval email has already been sent for '+id+'.';
 
-  const username=values[28]?String(values[28]):generateAptitudeUsername_(id);
+  const username=values[38]?String(values[38]):generateAptitudeUsername_(id);
   const password=generateAptitudePassword_();
   const passwordHash=hashAptitudePassword_(password);
   const testUrl=getAptitudeTestUrl_();
-  sheet.getRange(rowNumber,29,1,4).setValues([[username,passwordHash,testUrl,'PENDING']]);
+  sheet.getRange(rowNumber,39,1,4).setValues([[username,passwordHash,testUrl,'PENDING']]);
   SpreadsheetApp.flush();
 
   const html='<h2>TW&D Engineering Consult &amp; Services Ltd — Aptitude Test Invitation</h2>'+
@@ -616,10 +616,10 @@ function approveApplicantForAptitude_(row) {
 
   try{
     sendTransactionalEmail_(email,'Aptitude Test Approved — Your TW&D Test Login',html);
-    sheet.getRange(rowNumber,32).setValue('SENT');
+    sheet.getRange(rowNumber,42).setValue('SENT');
     return 'Approval email with aptitude login details sent successfully to '+email;
   }catch(err){
-    sheet.getRange(rowNumber,32).setValue('PENDING');
+    sheet.getRange(rowNumber,42).setValue('PENDING');
     sheet.getRange(rowNumber,26).setValue(('Aptitude approval email failed: '+(err.message||String(err))).slice(0,1000));
     throw err;
   }
@@ -651,7 +651,7 @@ function resendAptitudeApprovalForRow(rowNumber){
   if(rowNumber>sheet.getLastRow()) throw new Error('That row does not exist.');
   const status=String(sheet.getRange(rowNumber,14).getValue()||'').trim();
   if(['SUCCESSFUL','APPROVED'].indexOf(status.toUpperCase())===-1) throw new Error('Only an approved applicant can receive aptitude-test credentials.');
-  sheet.getRange(rowNumber,32).setValue('PENDING');
+  sheet.getRange(rowNumber,42).setValue('PENDING');
   return approveApplicantForAptitude_(sheet.getRange(rowNumber,1,1,HEADERS.length));
 }
 
@@ -1149,10 +1149,10 @@ function loginAptitude(username,password){
   const sheet=getApplicationsSheet_(getRecruitmentSpreadsheet_()), data=sheet.getDataRange().getValues();
   for(let r=1;r<data.length;r++){
     const row=data[r];
-    if(String(row[28]||'').trim()!==username) continue;
+    if(String(row[38]||'').trim()!==username) continue;
     const status=String(row[13]||'').trim();
     if(['SUCCESSFUL','APPROVED'].indexOf(status.toUpperCase())===-1) throw new Error('This application is not approved for the aptitude test.');
-    if(hashAptitudePassword_(password)!==String(row[29]||'').trim()) throw new Error('Invalid aptitude-test username or password.');
+    if(hashAptitudePassword_(password)!==String(row[39]||'').trim()) throw new Error('Invalid aptitude-test username or password.');
     return startAptitudeTest(row[0],row[5],row[3]);
   }
   throw new Error('Invalid aptitude-test username or password.');
