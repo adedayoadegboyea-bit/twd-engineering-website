@@ -591,6 +591,8 @@ function sendStatusEmail(row) {
 function approveApplicantForAptitude_(row) {
   const values=row.getValues()[0], sheet=row.getSheet(), rowNumber=row.getRow();
   const id=String(values[0]), name=String(values[2]||'Applicant'), email=String(values[3]||'').trim(), position=String(values[5]||'');
+  if(!email) throw new Error('Cannot send aptitude-test invitation: applicant email is missing.');
+  if(!position) throw new Error('Cannot send aptitude-test invitation: applied position is missing.');
   if(String(values[31]||'').trim()==='SENT') return 'Aptitude approval email has already been sent for '+id+'.';
 
   const username=values[28]?String(values[28]):generateAptitudeUsername_(id);
@@ -1117,7 +1119,7 @@ function startAptitudeTest(applicationId, position, email) {
     if(status==='IN_PROGRESS'&&values[r][6]&&new Date(values[r][6]).getTime()>Date.now()){
       // Repair older active tests that were created with generic or repeated questions.
       let savedQuestions=[];
-      try{savedQuestions=JSON.parse(String(values[r][10]||'[]'));}catch(ignore){}
+      try{savedQuestions=JSON.parse(String(values[r][11]||'[]'));}catch(ignore){}
       const seenSaved={};
       let hasDuplicate=false;
       savedQuestions.forEach(function(q){const key=String(q.question||'').replace(/^\\s*\\d+\\.\\s*/,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(!key||seenSaved[key])hasDuplicate=true;seenSaved[key]=true;});
@@ -1126,8 +1128,8 @@ function startAptitudeTest(applicationId, position, email) {
       const driverRelevant=savedQuestions.filter(function(q){return driverTerms.test(String(q.question||''));}).length;
       if(savedQuestions.length!==50||hasDuplicate||(isDriver&&driverRelevant<8)){
         const repaired=generateAptitudeQuestions_(approvedPosition);
-        sheet.getRange(r+1,11).setValue(JSON.stringify(repaired));
-        values[r][10]=JSON.stringify(repaired);
+        sheet.getRange(r+1,12).setValue(JSON.stringify(repaired));
+        values[r][11]=JSON.stringify(repaired);
       }
       return aptitudeClientPayload_(values[r]);
     }
@@ -1136,7 +1138,8 @@ function startAptitudeTest(applicationId, position, email) {
 
   const questions=generateAptitudeQuestions_(approvedPosition), now=new Date(), expires=new Date(now.getTime()+60*60*1000);
   const testId='APT-'+Utilities.formatDate(now,CONFIG.TIMEZONE,'yyyyMMdd-HHmmss')+'-'+Math.floor(1000+Math.random()*9000);
-  sheet.appendRow([testId,applicationId,approvedPosition,approvedEmail,'IN_PROGRESS',now,expires,'','','',JSON.stringify(questions),'','PENDING','']);
+  // Keep each value aligned with APTITUDE_HEADERS: Questions JSON is column L (12), not K.
+  sheet.appendRow([testId,applicationId,approvedPosition,approvedEmail,'IN_PROGRESS',now,expires,'','','','',''+JSON.stringify(questions),'','PENDING','']);
   return {ok:true,testId:testId,applicationId:applicationId,position:approvedPosition,email:approvedEmail,startedAt:now.toISOString(),expiresAt:expires.toISOString(),questions:questions.map(function(q){return {question:q.question,options:q.options};})};
 }
 
@@ -1156,7 +1159,7 @@ function loginAptitude(username,password){
 }
 
 function aptitudeClientPayload_(row) {
-  const questions=JSON.parse(String(row[10]||'[]'));
+  const questions=JSON.parse(String(row[11]||'[]'));
   return {
     ok:true,testId:row[0],applicationId:row[1],position:row[2],
     startedAt:new Date(row[5]).toISOString(),expiresAt:new Date(row[6]).toISOString(),
@@ -1172,7 +1175,8 @@ function submitAptitudeTest(testId, answers) {
   if(rowNumber<0) throw new Error('Aptitude test not found.');
   if(String(row[4])!=='IN_PROGRESS') throw new Error('This aptitude test is no longer open.');
   const expired=new Date(row[6]).getTime()<Date.now();
-  const questions=JSON.parse(String(row[10]||'[]'));
+  const questions=JSON.parse(String(row[11]||'[]'));
+  if(!Array.isArray(questions)||questions.length!==50) throw new Error('The saved aptitude test does not contain 50 questions. Please contact recruitment support.');
   if(!Array.isArray(answers)||answers.length!==50) throw new Error('The aptitude test submission is incomplete.');
 
   const key=questions.map(function(q){return Number(q.answer);});
@@ -1186,7 +1190,7 @@ function submitAptitudeTest(testId, answers) {
 
   const submitted=new Date();
   sheet.getRange(rowNumber,5,1,11).setValues([[
-    'SUBMITTED_AI_MARKED_PENDING_ADMIN',row[5],row[6],submitted,correct,score100,assessment,row[10],JSON.stringify(answers),'PENDING',row[13]||''
+    'SUBMITTED_AI_MARKED_PENDING_ADMIN',row[5],row[6],submitted,correct,score100,assessment,row[11],JSON.stringify(answers),'PENDING',row[14]||''
   ]]);
   updateApplicationAptitude_(row[1],score100,assessment,submitted);
   notifyAptitudeAdmin_(row,score100,assessment);
