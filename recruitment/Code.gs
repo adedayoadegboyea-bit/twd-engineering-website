@@ -576,7 +576,7 @@ function sendStatusEmail(row) {
   if(!email) throw new Error('This application does not contain an applicant email address.');
   if(!status) throw new Error('This application does not contain a status.');
 
-  if(status==='Successful' || status==='Approved') return approveApplicantForAptitude_(row);
+  if(['SUCCESSFUL','APPROVED'].indexOf(status.toUpperCase())!==-1) return approveApplicantForAptitude_(row);
 
   let subject='TW&D application update — '+status;
   let body='<p>Dear '+escapeHtml_(name||'Applicant')+',</p><p>Your application with <b>'+CONFIG.COMPANY_NAME+'</b> has been updated.</p><p><b>Application Reference:</b> '+escapeHtml_(id)+'</p><p><b>Position:</b> '+escapeHtml_(position)+'</p><p><b>Status:</b> '+escapeHtml_(status)+'</p>';
@@ -650,7 +650,7 @@ function resendAptitudeApprovalForRow(rowNumber){
   const sheet=getApplicationsSheet_(SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty('SHEET_ID')));
   if(rowNumber>sheet.getLastRow()) throw new Error('That row does not exist.');
   const status=String(sheet.getRange(rowNumber,14).getValue()||'').trim();
-  if(status!=='Successful'&&status!=='Approved') throw new Error('Only an approved applicant can receive aptitude-test credentials.');
+  if(['SUCCESSFUL','APPROVED'].indexOf(status.toUpperCase())===-1) throw new Error('Only an approved applicant can receive aptitude-test credentials.');
   sheet.getRange(rowNumber,32).setValue('PENDING');
   return approveApplicantForAptitude_(sheet.getRange(rowNumber,1,1,HEADERS.length));
 }
@@ -1139,7 +1139,7 @@ function startAptitudeTest(applicationId, position, email) {
   const questions=generateAptitudeQuestions_(approvedPosition), now=new Date(), expires=new Date(now.getTime()+60*60*1000);
   const testId='APT-'+Utilities.formatDate(now,CONFIG.TIMEZONE,'yyyyMMdd-HHmmss')+'-'+Math.floor(1000+Math.random()*9000);
   // Keep each value aligned with APTITUDE_HEADERS: Questions JSON is column L (12), not K.
-  sheet.appendRow([testId,applicationId,approvedPosition,approvedEmail,'IN_PROGRESS',now,expires,'','','','',''+JSON.stringify(questions),'','PENDING','']);
+  sheet.appendRow([testId,applicationId,approvedPosition,approvedEmail,'IN_PROGRESS',now,expires,'','','','',JSON.stringify(questions),'','PENDING','']);
   return {ok:true,testId:testId,applicationId:applicationId,position:approvedPosition,email:approvedEmail,startedAt:now.toISOString(),expiresAt:expires.toISOString(),questions:questions.map(function(q){return {question:q.question,options:q.options};})};
 }
 
@@ -1151,7 +1151,7 @@ function loginAptitude(username,password){
     const row=data[r];
     if(String(row[28]||'').trim()!==username) continue;
     const status=String(row[13]||'').trim();
-    if(status!=='Successful'&&status!=='Approved') throw new Error('This application is not approved for the aptitude test.');
+    if(['SUCCESSFUL','APPROVED'].indexOf(status.toUpperCase())===-1) throw new Error('This application is not approved for the aptitude test.');
     if(hashAptitudePassword_(password)!==String(row[29]||'').trim()) throw new Error('Invalid aptitude-test username or password.');
     return startAptitudeTest(row[0],row[5],row[3]);
   }
