@@ -226,3 +226,24 @@ body{background:#fff}
 .premium-about h2{max-width:760px}
 @media(max-width:800px){.hero-premium .hero-content{grid-template-columns:1fr;gap:28px;padding:50px 0 60px}.hero-premium h1{font-size:clamp(48px,9vw,74px)}.hero-visual .hero-image{height:420px;transform:none}}
 @media(max-width:520px){.hero-premium h1{font-size:clamp(44px,11vw,58px)}.hero-kicker{font-size:9px!important;letter-spacing:.09em!important}.hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{width:100%}.hero-visual .hero-image{height:330px}.hero-cinematic-overlay{left:12px;right:12px;bottom:12px;padding:13px}.hero-trust{margin-top:26px}}
+
+
+/* TW&D public website refinement — Brail-inspired section hierarchy, November 2026.
+   Scoped visual-only changes: no forms, authentication, payroll or backend changes. */
+footer{background:linear-gradient(150deg,#052b27 0%,#063e37 48%,#003d83 100%)!important;color:#eaf8f3!important;border-top:5px solid #ffc107}
+footer .footer-grid{gap:clamp(24px,4vw,64px);padding-top:22px;padding-bottom:54px}
+footer h4{color:#fff!important;font-size:14px!important;letter-spacing:.12em!important;text-transform:uppercase;border-bottom:2px solid #ffc107;padding-bottom:12px;margin-bottom:20px}
+footer p,footer span,footer a{color:#dcece9!important;line-height:1.85}
+footer a:hover,footer a:focus-visible{color:#ffd54f!important;text-decoration:underline}
+footer .footer-brand{color:#fff!important;letter-spacing:-.04em}
+footer .footer-brand span{color:#ffd54f!important}
+footer .copyright,.copyright{border-top:1px solid rgba(255,255,255,.18);color:#d1e4df!important}
+.services-premium,.services-teaser{scroll-margin-top:100px}
+.service-card{border-radius:16px!important;box-shadow:0 14px 38px rgba(0,65,120,.07)}
+.service-card:hover{border-color:#00a45c!important;box-shadow:0 22px 45px rgba(0,92,110,.13)}
+.premium-head h2,.section-head h2{line-height:1.08}
+.contact-strip{background:linear-gradient(120deg,#053e34 0%,#005b60 50%,#0058bc 100%)!important;border-top:4px solid #ffc107}
+.contact-strip .btn,.contact-actions .btn{border-radius:10px}
+.site-header nav a:focus-visible,.btn:focus-visible,.nav-cta:focus-visible,footer a:focus-visible{outline:3px solid #ffc107;outline-offset:4px}
+@media(max-width:800px){footer .footer-grid{grid-template-columns:1fr 1fr;gap:30px}.site-header{box-shadow:0 6px 20px rgba(0,50,110,.1)!important}}
+@media(max-width:520px){footer .footer-grid{grid-template-columns:1fr}footer h4{margin-top:10px}.service-card{min-height:auto}}
