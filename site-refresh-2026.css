@@ -10,9 +10,9 @@ html{scroll-behavior:smooth}body{overflow-x:hidden}a:focus-visible,button:focus-
 .twd-section-intro h2 span{color:#008e65}.twd-section-intro p{max-width:610px;line-height:1.7;color:#516678}
 .twd-link{display:inline-flex;white-space:nowrap;align-items:center;gap:12px;color:#0058b7;font-weight:800;text-decoration:none;border-bottom:2px solid #e8bd5b;padding-bottom:9px}
 .twd-project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.twd-project-tile{min-height:355px;border-radius:19px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;color:white!important;text-decoration:none!important;background:linear-gradient(165deg,rgba(4,27,47,.42),rgba(4,35,51,.97)),url('twd-modern-residence-01.jpg') center/cover;box-shadow:0 18px 38px rgba(8,44,68,.14);transition:transform .25s,box-shadow .25s}
-.twd-project-tile:nth-child(2){background-image:linear-gradient(165deg,rgba(4,27,47,.42),rgba(4,35,51,.97)),url('twd-modern-residence-02.jpg')}
-.twd-project-tile:nth-child(3){background-image:linear-gradient(165deg,rgba(4,27,47,.42),rgba(4,35,51,.97)),url('assets/architectural-concept-02.jpg')}
+.twd-project-tile{min-height:355px;border-radius:19px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;color:white!important;text-decoration:none!important;background:linear-gradient(145deg,#075c76,#052d47 65%,#034c43);box-shadow:0 18px 38px rgba(8,44,68,.14);transition:transform .25s,box-shadow .25s}
+.twd-project-tile:nth-child(2){background-image:linear-gradient(145deg,#034c43,#052d47 65%,#075c76)}
+.twd-project-tile:nth-child(3){background-image:linear-gradient(145deg,#074b77,#052d47 65%,#096c57)}
 .twd-project-tile:hover{transform:translateY(-6px);box-shadow:0 24px 46px rgba(8,44,68,.23)}
 .twd-project-count{font-size:12px;font-weight:800;letter-spacing:.13em;color:#ffda83}
 .twd-project-tile h3{font-size:clamp(23px,2.4vw,32px);line-height:1.12;margin:0 0 9px;color:#fff}
