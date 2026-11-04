@@ -40,5 +40,11 @@ create policy "Approved admins upload staff photos" on storage.objects
  for insert to authenticated with check (bucket_id='staff-photos' and exists (select 1 from public.staff_directory_admins a where a.user_id=(select auth.uid())));
 create policy "Approved admins delete staff photos" on storage.objects
  for delete to authenticated using (bucket_id='staff-photos' and exists (select 1 from public.staff_directory_admins a where a.user_id=(select auth.uid())));
+-- The dashboard checks this RPC; only approved admins return true.
+create or replace function public.is_staff_directory_admin()
+returns boolean language sql stable security definer set search_path = ''
+as $ select exists(select 1 from public.staff_directory_admins where user_id = (select auth.uid())); $;
+revoke all on function public.is_staff_directory_admin() from public;
+grant execute on function public.is_staff_directory_admin() to authenticated;
 -- After creating an admin account through Supabase Auth, run separately:
 -- insert into public.staff_directory_admins(user_id) values ('REPLACE-WITH-VERIFIED-AUTH-USER-UUID');
