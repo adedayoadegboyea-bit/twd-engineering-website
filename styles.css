@@ -196,3 +196,33 @@ a.btn:focus-visible,button:focus-visible,.floating-wa:focus-visible{
 .twd-client-action strong{font-size:19px}.twd-client-action p{margin:6px 0 0;color:#edf5ff;font-size:13px}
 .twd-client-action .btn{flex-shrink:0;background:#fff!important;color:#0047b3!important;border-color:#fff!important}
 @media(max-width:800px){.twd-client-grid{grid-template-columns:1fr}.twd-client-action{align-items:flex-start;flex-direction:column}.twd-client-action .btn{white-space:normal;text-align:center}}
+
+/* TW&D luxury bright homepage art direction — November 2026 */
+body{background:#fff}
+.hero-premium{background:linear-gradient(115deg,#f0f7ff 0%,#fff 47%,#edfff5 100%)!important;border-bottom:1px solid #d7e8f4}
+.hero-premium:before{background:radial-gradient(circle,rgba(0,200,83,.15),transparent 68%)}
+.hero-premium:after{background:rgba(0,107,255,.055)}
+.hero-grid-glow{border-color:rgba(0,107,255,.12);box-shadow:0 0 0 75px rgba(0,107,255,.035),0 0 0 150px rgba(0,200,83,.035)}
+.hero-premium .hero-content{grid-template-columns:1.04fr .96fr;gap:clamp(28px,5vw,72px);padding-top:88px;padding-bottom:96px}
+.hero-kicker{display:flex;align-items:center;gap:9px;font-size:11px!important;letter-spacing:.14em!important;color:#007a43!important}
+.hero-kicker span{flex:0 0 30px;margin-right:0!important}
+.hero-premium h1{font-size:clamp(50px,6.3vw,88px);line-height:1.01;letter-spacing:-.06em;color:#003c86!important}
+.hero-premium h1 em{background:linear-gradient(100deg,#00a84a,#007f62);background-clip:text;-webkit-background-clip:text;color:transparent!important}
+.hero-lead{font-size:clamp(15px,1.4vw,18px);line-height:1.8;max-width:570px;color:#425b73}
+.hero-actions{gap:14px}
+.hero-actions .btn{min-height:54px;padding:0 23px;border-radius:12px;font-size:12px;letter-spacing:.015em}
+.hero-actions .btn-gold{background:linear-gradient(115deg,#ffd84b,#ffc107)!important;border-color:#ffca22!important;box-shadow:0 16px 32px rgba(255,193,7,.23)}
+.hero-actions .btn-outline-light{background:#fff!important;border:1px solid #bed6ee!important;box-shadow:0 8px 25px rgba(0,71,179,.06)}
+.hero-trust{margin-top:38px;border-top:1px solid #d5e5f3}
+.hero-trust>span{color:#008b48;font-weight:900}
+.hero-visual .hero-image{height:clamp(410px,40vw,550px);border:9px solid #fff;border-radius:25px;box-shadow:0 28px 70px rgba(0,71,179,.2);transform:rotate(.5deg)}
+.hero-visual:after{border-color:rgba(0,200,83,.5);border-radius:25px}
+.hero-cinematic-overlay{border-radius:13px;border-color:rgba(255,215,64,.55);background:linear-gradient(125deg,rgba(0,45,106,.91),rgba(0,107,255,.65))}
+.premium-quick{background:#fff!important;box-shadow:0 12px 30px rgba(0,71,179,.035)}
+.premium-quick a{transition:background .2s,transform .2s}
+.premium-quick a:hover{background:#eff9ff!important}
+.premium-quick strong{color:#0047b3}
+.premium-about{background:linear-gradient(180deg,#f6faff,#fff 85%)!important}
+.premium-about h2{max-width:760px}
+@media(max-width:800px){.hero-premium .hero-content{grid-template-columns:1fr;gap:28px;padding:50px 0 60px}.hero-premium h1{font-size:clamp(48px,9vw,74px)}.hero-visual .hero-image{height:420px;transform:none}}
+@media(max-width:520px){.hero-premium h1{font-size:clamp(44px,11vw,58px)}.hero-kicker{font-size:9px!important;letter-spacing:.09em!important}.hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{width:100%}.hero-visual .hero-image{height:330px}.hero-cinematic-overlay{left:12px;right:12px;bottom:12px;padding:13px}.hero-trust{margin-top:26px}}
