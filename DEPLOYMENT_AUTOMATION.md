@@ -44,3 +44,9 @@ The existing draft PR remains unmerged. This automation setup does not change DN
 - Script ID: `1UgRUNp92iL_yGqgBm3I5wc42nKqnej-NV63CPgx94VLelcUEjGvCP8DF`.
 - Purpose and file inventory unknown; do not deploy to this project until its existing code, deployments and role are verified.
 - There are now two reported Apps Script project IDs; maintain separate source mappings, secrets and release workflows if both require automation.
+
+## Second Apps Script project file inventory supplied by owner
+- `TW&D.gs`
+- `marketplace-account.html`
+- Likely marketplace/account backend, based on filenames only. Code, live deployments and relationships to the domain are not verified.
+- Do not overwrite or automate this project until current source is backed up and the live deployment mapping is confirmed.
