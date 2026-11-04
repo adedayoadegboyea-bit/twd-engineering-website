@@ -39,3 +39,8 @@ The existing draft PR remains unmerged. This automation setup does not change DN
 - These names suggest recruitment and SIWES workflows; their code and deployment configuration have **not** been inspected. Do not replace them or assume this Apps Script project hosts the public website.
 - Before automation, export/back up the Apps Script project, inspect `doGet`/`doPost` entry points and frontend links, and identify how `twdengineeringconsult.com` is actually served.
 - A GitHub Actions `clasp push` would replace the remote Apps Script source with the configured local source; never enable it against this production project without a complete verified source mirror and rollback.
+
+## Second Apps Script project reported by owner
+- Script ID: `1UgRUNp92iL_yGqgBm3I5wc42nKqnej-NV63CPgx94VLelcUEjGvCP8DF`.
+- Purpose and file inventory unknown; do not deploy to this project until its existing code, deployments and role are verified.
+- There are now two reported Apps Script project IDs; maintain separate source mappings, secrets and release workflows if both require automation.
