@@ -50,3 +50,9 @@ The existing draft PR remains unmerged. This automation setup does not change DN
 - `marketplace-account.html`
 - Likely marketplace/account backend, based on filenames only. Code, live deployments and relationships to the domain are not verified.
 - Do not overwrite or automate this project until current source is backed up and the live deployment mapping is confirmed.
+
+## Cloudflare DNS evidence supplied by owner (2026-11-04)
+- Apex A records: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (GitHub Pages addresses), proxied through Cloudflare.
+- `www` CNAME target begins `adedayoadegboyea-...`, consistent with a GitHub Pages hostname; full target truncated in screenshot.
+- Cloudflare Workers & Pages dashboard showed no projects. Public website therefore appears hosted on GitHub Pages behind Cloudflare; verify repository Settings > Pages source/branch before configuring publishing.
+- Do not alter DNS or activate a release of unreviewed payroll/auth modules. Confirm Pages build source, test preview and security before merging to production.
