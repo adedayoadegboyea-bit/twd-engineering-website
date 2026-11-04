@@ -31,3 +31,14 @@ jobs:
             echo 'Potential secret found in public source.' >&2
             exit 1
           fi
+      - name: Check staff directory migration function order and quoting
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          sql = Path('supabase/staff-directory.sql').read_text()
+          fn = sql.find('create or replace function public.is_staff_directory_admin()')
+          policy = sql.find('create policy "Public can see published staff"')
+          assert fn >= 0 and policy > fn, 'Staff admin RPC must be defined before its policies'
+          assert 'as $$ select exists(' in sql, 'Staff admin RPC must use valid dollar quoting'
+          assert 'as $ select' not in sql, 'Malformed SQL dollar quoting'
+          PY
