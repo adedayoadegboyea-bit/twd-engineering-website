@@ -24,3 +24,8 @@
 ## Required owner action
 - In Supabase dashboard, identify the existing project for the site and confirm it is the intended project. Do not send service-role keys.
 - For Apps Script, supply current project code backup or grant a supported secure connector access if available; script IDs alone do not authorize deployment.
+
+## Supabase project identity mismatch (owner confirmation 2026-11-04)
+- Supabase dashboard project ref provided by owner: `nsgrzlcfebelqqajirhz` (production, healthy, GitHub not connected in dashboard).
+- Repository `supabase-config.js` currently points to `dawrvqdrnunigmzehhim`.
+- These are distinct projects. DO NOT switch website URL, run SQL, or enable automatic migrations against either until the owner confirms the intended project and existing live data is mapped and backed up.
