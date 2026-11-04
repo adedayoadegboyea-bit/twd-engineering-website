@@ -33,3 +33,9 @@ This repository contains a static website, browser-side Supabase client configur
 
 ## Manual safety
 The existing draft PR remains unmerged. This automation setup does not change DNS, Cloudflare, Google Apps Script deployments, Supabase schema or production site content.
+
+## Existing Apps Script file inventory supplied by owner (2026-11-04)
+- `Adminpreview.gs`, `Recruitment.gs`, `Application.html`, `Aptitude.html`, `AptitudeAdminPrevie.html`, `RecruitmentDecision_old.html`, `AptitudeReview.html`, `RecruitmentDecision.gs`, `RecruitmentManagement.html`, `RecruitmentManagementBackend.gs`, `TWD_SIWES_Module.gs`, `TWD_SIWES_Dashboard_Panel.html`.
+- These names suggest recruitment and SIWES workflows; their code and deployment configuration have **not** been inspected. Do not replace them or assume this Apps Script project hosts the public website.
+- Before automation, export/back up the Apps Script project, inspect `doGet`/`doPost` entry points and frontend links, and identify how `twdengineeringconsult.com` is actually served.
+- A GitHub Actions `clasp push` would replace the remote Apps Script source with the configured local source; never enable it against this production project without a complete verified source mirror and rollback.
