@@ -56,3 +56,10 @@ The existing draft PR remains unmerged. This automation setup does not change DN
 - `www` CNAME target begins `adedayoadegboyea-...`, consistent with a GitHub Pages hostname; full target truncated in screenshot.
 - Cloudflare Workers & Pages dashboard showed no projects. Public website therefore appears hosted on GitHub Pages behind Cloudflare; verify repository Settings > Pages source/branch before configuring publishing.
 - Do not alter DNS or activate a release of unreviewed payroll/auth modules. Confirm Pages build source, test preview and security before merging to production.
+
+## GitHub Pages publishing settings confirmed by owner screenshot (2026-11-04)
+- Site live at `http://twdengineeringconsult.com/` as shown in GitHub Pages UI; Cloudflare proxies the domain.
+- GitHub Pages Source: **Deploy from a branch**; Branch: **main**; Folder: **/(root)**.
+- GitHub Pages deployment already runs automatically on commits to `main`. No new Pages workflow or DNS change is needed.
+- Development branch changes are not live until merged into `main`. Payroll and authentication features require RLS/security verification and staged testing before merge.
+- Google Apps Script and Supabase automation are separate concerns; do not conflate them with public site deployment.
