@@ -5,11 +5,11 @@ This repository contains a static website, browser-side Supabase client configur
 ## Current state
 - Live site: https://twdengineeringconsult.com
 - Current deployment method reported by owner: manual deployment (Google Apps Script, Cloudflare and GitHub have been mentioned).
-- Hosting origin, DNS routing, Apps Script role and Cloudflare deployment product are **not yet verified**.
+- Google Apps Script project ID supplied by the owner: `1t11RBjRXgC6bXGCDIxxObZhcAxeJ3t10JhzNT6urncXOVp8YH1-tZr8o` (project ownership and live deployment mapping not independently verified).\n- Owner confirms manual deployment through Google Apps Script. Hosting origin, DNS routing, the exact Apps Script code structure and Cloudflare role are **not yet verified**.
 - **Do not enable automatic production deployment until hosting and rollback are confirmed.**
 - GitHub validation workflow runs on pull requests and main commits; it does not deploy.
 
-## Proposed release process
+## Google Apps Script preparation\n- Confirm the existing Apps Script project contains the website serving code and whether it uses `HtmlService`, `doGet`, separate HTML partials or external assets.\n- Do not run `clasp push` against this project until we have compared and backed up its current code. The repository contains standalone HTML/CSS/JS files, which cannot simply be pushed as-is into an Apps Script project.\n- Once the mapping is known, create a dedicated Apps Script source directory and a clasp config with the supplied script ID.\n- Configure scoped GitHub Actions credentials through repository environment secrets and a protected `production` environment.\n- Test on a separate Apps Script deployment/version before changing the existing live deployment.\n\n## Proposed release process
 1. Develop on a branch and open a PR.
 2. Run automated syntax and file-presence checks; add browser, auth and RLS tests before payroll release.
 3. Review changes and confirm a production backup.
