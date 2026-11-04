@@ -1,0 +1,28 @@
+/* TW&D 2026 homepage refresh: additive public presentation layer. */
+:root{--twd-deep:#062d45;--twd-blue:#006be8;--twd-green:#008e65;--twd-gold:#e8bd5b}
+html{scroll-behavior:smooth}body{overflow-x:hidden}a:focus-visible,button:focus-visible{outline:3px solid #e8bd5b;outline-offset:4px}
+.hero-premium{background:linear-gradient(125deg,#062b43 0%,#064966 54%,#075a4a 100%)!important}
+.hero-premium .hero-kicker{letter-spacing:.14em}.hero-premium h1{letter-spacing:-.055em}.hero-premium h1 em{color:#f4c96e!important}
+.hero-premium .hero-lead{max-width:590px;line-height:1.75}
+.twd-featured-projects{background:#f5f9fc;padding-block:100px}
+.twd-section-intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:38px}
+.twd-section-intro h2{font-size:clamp(34px,4.5vw,60px);line-height:1.1;letter-spacing:-.045em;color:#063451;margin:12px 0 16px}
+.twd-section-intro h2 span{color:#008e65}.twd-section-intro p{max-width:610px;line-height:1.7;color:#516678}
+.twd-link{display:inline-flex;white-space:nowrap;align-items:center;gap:12px;color:#0058b7;font-weight:800;text-decoration:none;border-bottom:2px solid #e8bd5b;padding-bottom:9px}
+.twd-project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.twd-project-tile{min-height:355px;border-radius:19px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;color:white!important;text-decoration:none!important;background:linear-gradient(165deg,rgba(4,27,47,.42),rgba(4,35,51,.97)),url('twd-modern-residence-01.jpg') center/cover;box-shadow:0 18px 38px rgba(8,44,68,.14);transition:transform .25s,box-shadow .25s}
+.twd-project-tile:nth-child(2){background-image:linear-gradient(165deg,rgba(4,27,47,.42),rgba(4,35,51,.97)),url('twd-modern-residence-02.jpg')}
+.twd-project-tile:nth-child(3){background-image:linear-gradient(165deg,rgba(4,27,47,.42),rgba(4,35,51,.97)),url('assets/architectural-concept-02.jpg')}
+.twd-project-tile:hover{transform:translateY(-6px);box-shadow:0 24px 46px rgba(8,44,68,.23)}
+.twd-project-count{font-size:12px;font-weight:800;letter-spacing:.13em;color:#ffda83}
+.twd-project-tile h3{font-size:clamp(23px,2.4vw,32px);line-height:1.12;margin:0 0 9px;color:#fff}
+.twd-project-tile p{color:#e2eaf0;margin:0 0 23px}.twd-project-arrow{display:inline-block;color:#ffda83;font-weight:800}
+.twd-approach{background:#fff;padding-block:95px}
+.twd-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.twd-steps article{background:#f2f8fc;border:1px solid #dce9ef;border-top:4px solid #008e65;border-radius:14px;padding:32px 27px}
+.twd-steps article>span{font-size:15px;color:#0070ce;font-weight:900}.twd-steps h3{color:#083954;font-size:23px;margin:22px 0 10px}.twd-steps p{color:#516678;line-height:1.7}
+.premium-quick{position:relative;z-index:2}.premium-about{background:#fff}.services-premium{background:#f7fbfd}
+#schoolAdvert{margin-top:0}#contact{scroll-margin-top:85px}
+@media(max-width:900px){.twd-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.twd-project-tile:last-child{grid-column:1/-1;min-height:280px}.twd-steps{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.twd-featured-projects,.twd-approach{padding-block:65px}.twd-section-intro{display:block}.twd-section-intro h2{font-size:36px}.twd-link{margin-top:10px}.twd-project-grid,.twd-steps{grid-template-columns:1fr}.twd-project-tile,.twd-project-tile:last-child{grid-column:auto;min-height:290px}.twd-steps article{padding:24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.twd-project-tile{transition:none}}
