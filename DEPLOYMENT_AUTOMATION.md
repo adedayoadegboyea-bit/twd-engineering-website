@@ -1,0 +1,35 @@
+# TW&D deployment automation plan
+
+This repository contains a static website, browser-side Supabase client configuration, and **SQL migrations that have not been applied**.
+
+## Current state
+- Live site: https://twdengineeringconsult.com
+- Current deployment method reported by owner: manual deployment (Google Apps Script, Cloudflare and GitHub have been mentioned).
+- Hosting origin, DNS routing, Apps Script role and Cloudflare deployment product are **not yet verified**.
+- **Do not enable automatic production deployment until hosting and rollback are confirmed.**
+- GitHub validation workflow runs on pull requests and main commits; it does not deploy.
+
+## Proposed release process
+1. Develop on a branch and open a PR.
+2. Run automated syntax and file-presence checks; add browser, auth and RLS tests before payroll release.
+3. Review changes and confirm a production backup.
+4. After the deployment destination is verified, add a GitHub Actions release job using GitHub Environment `production`, required reviewers and minimal scoped credentials.
+5. Publish static files using the **verified** hosting provider integration (e.g. Cloudflare Pages if it actually serves the domain; otherwise the verified Apps Script deployment mechanism).
+6. Run smoke tests and keep a rollback path.
+
+## Supabase
+- Use the Supabase CLI migrations workflow only after confirming project identity, migration history and a database backup.
+- Existing SQL files: `supabase/staff-directory.sql` and `supabase/employee-payroll.sql` are **draft scripts**, not an applied migration history. Review for idempotence, correct authorization and schema compatibility first.
+- Run migrations in a staging Supabase project, validate RLS with two distinct employee accounts and an admin, then promote to production behind a required approval.
+- Use GitHub Environments secrets for any deploy token/database connection; never put service-role keys or database passwords into the website.
+- Do not automatically seed real employee profiles, salary records or admin user IDs.
+- Payroll status is manually recorded and does not transfer funds.
+
+## Information needed before enabling production deploy
+- Where does `twdengineeringconsult.com` actually serve its HTML from (Cloudflare Pages, Workers, Apps Script, another host)?
+- Which repository branch currently drives live deployment?
+- Is the Supabase project at the URL in `supabase-config.js` the production project, and is there a staging project?
+- Who approves production releases and holds rollback access?
+
+## Manual safety
+The existing draft PR remains unmerged. This automation setup does not change DNS, Cloudflare, Google Apps Script deployments, Supabase schema or production site content.
