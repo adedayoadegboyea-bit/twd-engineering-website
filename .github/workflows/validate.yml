@@ -1,0 +1,44 @@
+name: Validate website and database changes
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JavaScript syntax
+        run: |
+          set -eu
+          find . -type f -name '*.js' -not -path './.git/*' -print0 | while IFS= read -r -d '' file; do
+            node --check "$file"
+          done
+      - name: Validate expected public site files
+        run: |
+          test -s index.html
+          test -s about.html
+          test -s services.html
+          test -s styles.css
+          test -s robots.txt
+          test -s sitemap.xml
+      - name: Ensure no Supabase service-role credentials are committed
+        run: |
+          if grep -R -E -l '(sb_secret_|SUPABASE_SERVICE_ROLE_KEY[[:space:]]*=[[:space:]]*[^$])' --include='*.js' --include='*.html' --include='*.json' .; then
+            echo 'Potential secret found in public source.' >&2
+            exit 1
+          fi
+      - name: Check staff directory migration function order and quoting
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          sql = Path('supabase/staff-directory.sql').read_text()
+          fn = sql.find('create or replace function public.is_staff_directory_admin()')
+          policy = sql.find('create policy "Public can see published staff"')
+          assert fn >= 0 and policy > fn, 'Staff admin RPC must be defined before its policies'
+          assert 'as $$ select exists(' in sql, 'Staff admin RPC must use valid dollar quoting'
+          assert 'as $ select' not in sql, 'Malformed SQL dollar quoting'
+          PY
