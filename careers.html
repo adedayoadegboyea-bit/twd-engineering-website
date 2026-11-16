@@ -75,6 +75,11 @@
 </div>
 </div>
 <div class="portal-note"><strong>Facebook recruitment campaign:</strong> Use <strong>https://twdengineeringconsult.com/careers.html?utm_source=facebook&amp;utm_medium=paid_social&amp;utm_campaign=twd_recruitment_2026</strong> as the destination URL for Facebook/Instagram recruitment advertising. The page is prepared with social sharing metadata and campaign tracking.<br><br><strong>Application centre:</strong> Use the secure TW&amp;D recruitment portal below for job applications and aptitude testing. The public website does not store applicant CVs or supporting documents.</div>
+<section id="peopleOperations" class="career-card" hidden style="margin-top:24px">
+<h2>People Operations</h2>
+<p>Review recruitment and onboarding in the private workspace.</p>
+<a id="peopleOperationsLink" class="btn btn-primary">Open People Operations →</a>
+</section>
 <div class="portal-grid">
 <div class="portal-copy"><p class="eyebrow dark">HOW APPLICATIONS WILL WORK</p><h2>A structured process from application to interview.</h2><p>The recruitment portal is designed to give applicants a clear submission route while keeping application records and supporting documents within TW&amp;D's controlled recruitment workspace.</p><div class="steps">
 <div class="step"><b>01</b><div><strong>Submit application</strong><span>Applicant provides contact details, qualifications, experience, role and application letter, with CV/supporting documents.</span></div></div>
@@ -95,5 +100,48 @@ toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');to
 document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle?.setAttribute('aria-expanded','false');}));
 </script>
 <script src="site-flow.js?v=20260928-1"></script><script src="global-access.js?v=20260928-1"></script>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
+
+const portal = document.getElementById("peopleOperations");
+const link = document.getElementById("peopleOperationsLink");
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+let revision = 0;
+
+async function updatePortalAccess() {
+  const request = ++revision;
+  portal.hidden = true;
+  link.removeAttribute("href");
+
+  try {
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user || request !== revision) return;
+
+    const { data: profile, error } = await supabase
+      .from("profiles")
+      .select("account_type")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    if (error || request !== revision || profile?.account_type !== "admin") return;
+    link.href = "https://twd-people-operations.maryclofthouse.chatgpt.site";
+    portal.hidden = false;
+  } catch {
+    // Keep the portal hidden if the account service is unavailable.
+  }
+}
+
+supabase.auth.onAuthStateChange(() => {
+  revision++;
+  portal.hidden = true;
+  link.removeAttribute("href");
+  setTimeout(updatePortalAccess, 0);
+});
+window.addEventListener("pageshow", event => {
+  if (event.persisted) updatePortalAccess();
+});
+updatePortalAccess();
+</script>
 </body>
 </html>
