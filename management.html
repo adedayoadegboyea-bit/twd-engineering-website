@@ -5,19 +5,37 @@
 <meta name="robots" content="noindex,nofollow">
 <title>TW&D Management Portal</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="account.css"><link rel="stylesheet" href="management.css">
+<link rel="stylesheet" href="account.css"><link rel="stylesheet" href="management.css?v=20261117-live-admin">
 <link rel="stylesheet" href="global-access.css?v=20260928-1">
 </head>
 <body>
 <header class="mgmt-header"><div class="mgmt-nav"><a href="index.html" class="mgmt-brand"><img src="assets/twd-luxury-logo.svg" alt="TW&D Engineering"><span>TW&D ENGINEERING<br>MANAGEMENT</span></a><a href="finance.html" class="mgmt-signout" style="text-decoration:none;margin-right:10px" hidden id="financeDeskLink">Invoices &amp; Receipts</a><button id="signout" class="mgmt-signout" hidden>Sign Out</button></div></header>
 <main class="mgmt-shell">
-<section id="loginPanel" class="mgmt-card"><span class="eyebrow">PRIVATE MANAGEMENT ACCESS</span><h1>TW&D Project Management</h1><p>Only authorised TW&D administrators can access customer projects, reports, private documents and service requests.</p><form id="loginForm" class="mgmt-form"><label>Email<input id="adminEmail" type="email" required autocomplete="username"></label><label>Password<input id="adminPassword" type="password" required autocomplete="current-password"></label><button class="mgmt-btn primary">Sign In to Management</button></form><div id="loginStatus" class="mgmt-status"></div></section>
+<section id="loginPanel" class="mgmt-card"><span class="eyebrow">PRIVATE MANAGEMENT ACCESS</span><h1>TW&amp;D Management Portal</h1><p>Sign in with your TW&amp;D website administrator account to access the company’s live management tools.</p><form id="loginForm" class="mgmt-form"><label>Email<input id="adminEmail" type="email" required autocomplete="username"></label><label>Password<input id="adminPassword" type="password" required autocomplete="current-password"></label><button class="mgmt-btn primary">Sign In to Management</button></form><div id="loginStatus" class="mgmt-status"></div></section>
 <section id="appPanel" hidden>
-<div class="mgmt-hero"><div><span class="eyebrow">SECURE ADMIN AREA</span><h1>Project Control Centre</h1><p>Manage customer assignments and publish private progress information to the correct customer account.</p></div><div id="adminIdentity" class="admin-identity"></div><a class="mgmt-btn" href="#recruitment-admin">Recruitment</a></div>
+<div class="mgmt-hero">
+  <div><span class="eyebrow">TW&amp;D ADMINISTRATION</span><h1>Management Portal</h1><p>Manage website accounts, workers, marketplace activity and customer projects.</p></div>
+  <div id="adminIdentity" class="admin-identity"></div>
+</div>
+<nav class="mgmt-shortcuts" aria-label="Management sections">
+  <a href="#account-holders">Account holders</a>
+  <a href="#workers">Workers</a>
+  <a href="#marketplace-management">Marketplace</a>
+  <a href="#projects-management">Projects</a>
+  <a href="#recruitment-admin">Recruitment</a>
+</nav>
 <div id="mgmtStatus" class="mgmt-status"></div>
 <div class="mgmt-grid">
-<section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">CUSTOMERS</span><h2>Customer accounts</h2></div></div><div id="customersList" class="mgmt-list"></div></section>
-<section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">PROJECTS</span><h2>Project assignments</h2></div><button id="newProjectBtn" class="mgmt-btn small">New Project</button></div><div id="projectsList" class="mgmt-list"></div></section>
+<section id="account-holders" class="mgmt-card" aria-labelledby="accountHoldersTitle">
+<div class="section-head"><h2 id="accountHoldersTitle">Website account holders</h2></div>
+<div class="mgmt-form two-col mgmt-filters">
+  <label>Search accounts<input id="accountSearch" type="search" placeholder="Name, phone or account ID"></label>
+  <label>Account type<select id="accountRole"><option value="">All account types</option><option value="customer">Customer</option><option value="seller">Seller</option><option value="worker">Worker</option><option value="admin">Admin</option></select></label>
+</div>
+<p id="accountsStatus" class="mgmt-note" role="status">Loading website accounts…</p>
+<div id="customersList" class="mgmt-list mgmt-directory"></div>
+</section>
+<section id="projects-management" class="mgmt-card"><div class="section-head"><div><span class="eyebrow">PROJECTS</span><h2>Project assignments</h2></div><button id="newProjectBtn" class="mgmt-btn small">New Project</button></div><div id="projectsList" class="mgmt-list"></div></section>
 <section class="mgmt-card wide"><div class="section-head"><div><span class="eyebrow">SELECTED PROJECT</span><h2 id="selectedProjectTitle">Choose a project</h2></div></div><div id="projectEditor" hidden>
 <form id="projectForm" class="mgmt-form"><div class="two-col"><label>Customer<select id="projectCustomer" required></select></label><label>Project Name<input id="projectName" required></label><label>Project Code<input id="projectCode"></label><label>Service Type<input id="projectService"></label><label>Location<input id="projectLocation"></label><label>Status<select id="projectStatus"><option>REQUESTED</option><option>DESIGN</option><option>APPROVAL</option><option>FOUNDATION</option><option>STRUCTURE</option><option>ROOFING</option><option>FINISHING</option><option>COMPLETED</option></select></label><label>Progress %<input id="projectProgress" type="number" min="0" max="100" required></label></div><label>Description<textarea id="projectDescription" rows="4"></textarea></label><button class="mgmt-btn primary">Save Project</button></form>
 <hr>
@@ -68,10 +86,15 @@
 <div><h3>Recent Gallery Items</h3><div id="portfolioGalleryList" class="mgmt-list"></div></div>
 </div>
 </section>
-<section class="mgmt-card wide marketplace-admin-card">
-<div class="section-head"><div><span class="eyebrow">MARKETPLACE CONTROL CENTRE</span><h2>Marketplace administration</h2></div><button id="refreshMarketplaceAdmin" class="mgmt-btn small">Refresh</button></div>
-<p class="mgmt-note">Monitor marketplace accounts, listings, approvals, subscriptions and buyer/seller messages from the management portal.</p>
-<div id="marketplaceAdminLogin" class="mgmt-form"><label>Marketplace Admin Key<input id="marketplaceAdminKey" type="password" autocomplete="off" placeholder="Enter the Apps Script admin key"></label><button id="connectMarketplaceAdmin" type="button" class="mgmt-btn primary">Connect Marketplace Control Centre</button><div id="marketplaceAdminStatus" class="mgmt-status"></div></div>
+<section id="marketplace-management" class="mgmt-card wide marketplace-admin-card">
+<div class="section-head"><div><span class="eyebrow">MARKETPLACE CONTROL CENTRE</span><h2>Marketplace administration</h2></div><button id="refreshMarketplaceAdmin" class="mgmt-btn small" type="button" hidden>Refresh</button></div>
+<p class="mgmt-note">Connect with the existing Marketplace Admin Key to view marketplace accounts, listing status, subscriptions and messages.</p>
+<form id="marketplaceAdminLogin" class="mgmt-form">
+  <label>Marketplace Admin Key<input id="marketplaceAdminKey" type="password" autocomplete="off" required></label>
+  <button id="connectMarketplaceAdmin" type="submit" class="mgmt-btn primary">Connect Marketplace</button>
+</form>
+<div id="marketplaceAdminStatus" class="mgmt-status" role="status"></div>
+<p class="mgmt-note"><a class="mgmt-inline-link" href="marketplace-admin.html">Open the Marketplace conversation inbox</a></p>
 <div id="marketplaceAdminPanel" hidden>
 <div class="admin-stat-grid">
 <div class="admin-stat"><span>ACCOUNTS</span><strong id="mpStatUsers">0</strong></div><div class="admin-stat"><span>ACTIVE ACCOUNTS</span><strong id="mpStatActive">0</strong></div><div class="admin-stat"><span>APPROVED LISTINGS</span><strong id="mpStatApproved">0</strong></div><div class="admin-stat"><span>PENDING LISTINGS</span><strong id="mpStatPending">0</strong></div><div class="admin-stat"><span>SUBSCRIPTIONS</span><strong id="mpStatSubs">0</strong></div><div class="admin-stat"><span>MESSAGES</span><strong id="mpStatMessages">0</strong></div>
@@ -82,11 +105,14 @@
 <div><h3>Subscriptions</h3><div id="mpAdminSubscriptions" class="mgmt-list"></div></div>
 <div><h3>Buyer / Seller Messages</h3><div id="mpAdminMessages" class="mgmt-list"></div></div>
 </div></div>
-</section><section class="mgmt-card wide"><div class="section-head"><div><span class="eyebrow">WORKFORCE</span><h2>Worker accounts &amp; attendance</h2></div><button id="generateAttendanceCode" class="mgmt-btn small">Generate Today's Attendance Code</button></div>
+</section><section id="workers" class="mgmt-card wide"><div class="section-head"><div><span class="eyebrow">WORKFORCE</span><h2>Worker accounts &amp; attendance</h2></div><button id="generateAttendanceCode" class="mgmt-btn small">Generate Today's Attendance Code</button></div>
 <p class="mgmt-note">Create or activate worker access for an existing authenticated account, record company bank details privately, issue the daily attendance code, review reports and record payments.</p>
 <div id="attendanceCodeResult" class="mgmt-status"></div>
 <div class="two-col"><form id="workerForm" class="mgmt-form"><label>Existing account<select id="workerUser" required></select></label><label>Employee Code<input id="employeeCode" required placeholder="e.g. TWD-EMP-001"></label><label>Job Title<input id="workerJobTitle" required></label><label>Department<input id="workerDepartment"></label><label>Bank Name<input id="workerBank"></label><label>Account Name<input id="workerAccountName"></label><label>Account Number<input id="workerAccountNumber" inputmode="numeric"></label><button class="mgmt-btn primary">Save / Activate Worker</button></form>
-<div><h3>Active workers</h3><div id="workersList" class="mgmt-list"></div></div></div>
+<div><h3>Existing worker records</h3>
+<div class="mgmt-form"><label>Search workers<input id="workerSearch" type="search" placeholder="Name, employee code, department or status"></label></div>
+<p id="workersStatus" class="mgmt-note" role="status">Loading worker records…</p>
+<div id="workersList" class="mgmt-list mgmt-directory"></div></div></div>
 <div class="two-col"><div><h3>Recent attendance</h3><div id="attendanceList" class="mgmt-list"></div></div><div><h3>Worker reports</h3><div id="workerReportsList" class="mgmt-list"></div></div></div>
 <form id="paymentForm" class="mgmt-form"><h3>Record worker payment</h3><div class="two-col"><label>Worker<select id="paymentWorker" required></select></label><label>Pay Period<input id="payPeriod" required placeholder="September 2026"></label><label>Amount (₦)<input id="paymentAmount" type="number" min="0" step="0.01" required></label><label>Status<select id="paymentStatus"><option>PENDING</option><option>PAID</option><option>PROCESSING</option></select></label><label>Payment Date<input id="paymentDate" type="date"></label><label>Reference<input id="paymentReference"></label></div><label>Notes<textarea id="paymentNotes" rows="3"></textarea></label><button class="mgmt-btn primary">Save Payment Record</button></form>
 </section><section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">SERVICE DESK</span><h2>Customer requests & responses</h2></div></div><p class="mgmt-note">Review customer requests, respond from this portal, and notify the customer inside their secure account.</p><div id="requestsList" class="mgmt-list"></div></section>
@@ -96,12 +122,12 @@
 <p class="mgmt-note">Review the application, decide whether the candidate should take the aptitude test, then check the invitation and result.</p>
 <div class="mgmt-status" role="status"><strong>Live applicant decisions unavailable.</strong> This dashboard is awaiting a connection to the recruitment records. No application status or invitation can be updated here yet.</div>
 <div class="two-col">
-<div><h3>Applicant review</h3><p class="mgmt-note">The private preview uses sample records to demonstrate applicant search, verification and management decisions.</p><a class="mgmt-btn primary" href="https://twd-people-operations.maryclofthouse.chatgpt.site" target="_blank" rel="noopener">Open People Operations preview ↗</a></div>
+<div><h3>Applicant review</h3><p class="mgmt-note">The private preview uses sample records to demonstrate applicant search, verification and management decisions.</p><a class="mgmt-btn primary" href="https://twd-recruitment-review.maryclofthouse.chatgpt.site/management" target="_blank" rel="noopener">Open Recruitment preview ↗</a></div>
 <div><h3>Public careers</h3><p class="mgmt-note">Applicants use the Careers page to apply and follow their test instructions.</p><a class="mgmt-btn" href="careers.html">View Careers page</a></div>
 </div>
 </section>
 </div></section></main>
-<script type="module" src="management.js?v=20260928-3"></script>
+<script type="module" src="management.js?v=20261117-live-admin"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{const signout=document.getElementById("signout"),link=document.getElementById("financeDeskLink");if(signout&&link){const show=()=>{link.hidden=signout.hidden};new MutationObserver(show).observe(signout,{attributes:true,attributeFilter:["hidden"]});show();}});</script>
 <script src="global-access.js?v=20260928-1"></script>
 </body></html>

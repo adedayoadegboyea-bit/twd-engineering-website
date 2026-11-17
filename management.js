@@ -4,31 +4,104 @@ const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 let admin=null,projects=[],customers=[],requests=[],quotations=[],workers=[];
+let accessVersion=0, loadVersion=0, accountError=null, workerError=null;
+let marketplaceKey="", marketplaceLoad=0;
 function status(t,bad=false){$("mgmtStatus").textContent=t||"";$("mgmtStatus").className="mgmt-status"+(bad?" error":"")}
 function loginStatus(t,bad=false){$("loginStatus").textContent=t||"";$("loginStatus").className="mgmt-status"+(bad?" error":"")}
-async function requireAdmin(){
- const {data:{session}}=await supabase.auth.getSession();
- if(!session)return false;
- const {data:p,error}=await supabase.from("profiles").select("account_type,full_name").eq("id",session.user.id).maybeSingle();
- if(error||p?.account_type!=="admin"){await supabase.auth.signOut();loginStatus("This account is not authorised for TW&D management access.",true);return false}
- admin=session.user;$("loginPanel").hidden=true;$("appPanel").hidden=false;$("signout").hidden=false;$("adminIdentity").textContent=(p.full_name||session.user.email)+" • ADMINISTRATOR";await loadAll();return true;
+
+function closeManagement(){
+ accessVersion++;
+ admin=null;
+ customers=[];workers=[];projects=[];requests=[];quotations=[];
+ accountError=null;workerError=null;
+ $("appPanel").hidden=true;
+ $("signout").hidden=true;
+ $("loginPanel").hidden=false;
+ $("adminIdentity").textContent="";
+ for (const id of ["customersList","workersList","attendanceList","workerReportsList"]) $(id).replaceChildren();
+ clearMarketplace();
 }
+
+async function requireAdmin(){
+ const version=++accessVersion;
+ try {
+  const {data:{user},error:authError}=await supabase.auth.getUser();
+  if(version!==accessVersion)return false;
+  if(!user||authError){closeManagement();return false}
+  const {data:profile,error}=await supabase.from("profiles").select("account_type,full_name").eq("id",user.id).maybeSingle();
+  if(version!==accessVersion)return false;
+  if(error||profile?.account_type!=="admin"){
+   closeManagement();
+   loginStatus(error?"Unable to verify administrator access. Please try again.":"This account is not authorised for TW&D management access.",true);
+   return false;
+  }
+  admin=user;
+  $("adminIdentity").textContent=(profile.full_name||user.email)+" • ADMINISTRATOR";
+  $("loginPanel").hidden=true;$("appPanel").hidden=false;$("signout").hidden=false;
+  loginStatus("");
+  const target=window.location.hash.slice(1);
+  if(target)$(target)?.scrollIntoView();
+  await loadAll();
+  return true;
+ }catch(error){
+  if(version===accessVersion){closeManagement();loginStatus("Management could not connect. Please try again.",true);}
+  return false;
+ }
+}
+
+async function fetchDirectory(table,fields){
+ const pageSize=250, rows=[];
+ for(let offset=0;admin;offset+=pageSize){
+  const {data,error}=await supabase.from(table).select(fields)
+   .order("created_at",{ascending:false}).order("id",{ascending:true}).range(offset,offset+pageSize-1);
+  if(error)return {data:[],error};
+  rows.push(...data);
+  if(data.length<pageSize)break;
+ }
+ return {data:rows,error:null};
+}
+
 async function loadAll(){
+ if(!admin)return;
+ const revision=++loadVersion, access=accessVersion;
  const [c,p,r,q,w]=await Promise.all([
-  supabase.from("profiles").select("id,full_name,phone,account_type").order("created_at",{ascending:false}),
+  fetchDirectory("profiles","id,full_name,phone,account_type"),
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
   supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
   supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100),
-  supabase.from("workers").select("*").order("created_at",{ascending:false})
+  fetchDirectory("workers","id,employee_code,job_title,department,employment_status")
  ]);
- const firstErr=c.error||p.error||r.error||q.error||w.error;
- if(firstErr){status(firstErr.message,true);return}
+ if(access!==accessVersion||revision!==loadVersion||!admin)return;
+ accountError=c.error;workerError=w.error;
  customers=c.data||[];projects=p.data||[];requests=r.data||[];quotations=q.data||[];workers=w.data||[];
- renderCustomers();renderProjects();renderRequests();renderQuotations();renderWorkers();renderWorkerAttendance();renderWorkerReports();populateCustomerSelects();populateQuoteProjects();populateWorkerSelects();loadPortfolio();
+ const failed=[["projects",p.error],["service requests",r.error],["quotations",q.error]]
+  .filter(([,error])=>error).map(([name])=>name);
+ if(failed.length)status("Could not load "+failed.join(", ")+". Account and worker results are shown in their sections.",true);
+ renderCustomers();renderProjects();renderRequests();renderQuotations();renderWorkers();
+ populateCustomerSelects();populateQuoteProjects();populateWorkerSelects();
+ renderWorkerAttendance();renderWorkerReports();loadPortfolio();
 }
+
+function directoryMatches(search, values){
+ const term=$(search).value.trim().toLowerCase();
+ return !term||values.some(value=>String(value??"").toLowerCase().includes(term));
+}
+
 function renderCustomers(){
- $("customersList").innerHTML=customers.map(x=>'<div class="mgmt-row"><strong>'+esc(x.full_name||"Unnamed customer")+'</strong><span>'+esc(x.phone||"No phone")+" • "+esc(x.account_type||"customer")+" • "+esc(x.id)+'</span></div>').join("")||"<p>No accounts yet.</p>";
+ const role=$("accountRole").value;
+ const filtered=customers.filter(row=>(!role||row.account_type===role)
+  &&directoryMatches("accountSearch",[row.full_name,row.phone,row.id]));
+ $("accountsStatus").textContent=accountError
+  ?"Website accounts could not be loaded. Reopen the portal to try again."
+  :filtered.length+" of "+customers.length+" website accounts";
+ $("customersList").innerHTML=filtered.map(row=>
+  '<div class="mgmt-row"><strong>'+esc(row.full_name||"Unnamed account")+'</strong><span>'+
+  esc(row.phone||"No phone")+' • '+esc(row.account_type||"customer")+'</span><span>'+esc(row.id)+'</span></div>'
+ ).join("")||(!accountError?"<p>No matching website accounts.</p>":"");
 }
+$("accountSearch").addEventListener("input",renderCustomers);
+$("accountRole").addEventListener("change",renderCustomers);
+$("workerSearch").addEventListener("input",renderWorkers);
 function renderProjects(){
  $("projectsList").innerHTML=projects.map(x=>'<div class="mgmt-row '+(window.selectedProjectId===x.id?"selected":"")+'" data-id="'+esc(x.id)+'"><strong>'+esc(x.project_name)+'</strong><span>'+esc(customerName(x.customer_id))+" • "+esc(x.project_code||"No code")+" • "+esc(x.status)+" • "+(x.progress||0)+"%</span></div>").join("")||"<p>No projects assigned yet.</p>";
  document.querySelectorAll("[data-id]").forEach(el=>el.onclick=()=>openProject(el.dataset.id));
@@ -247,7 +320,14 @@ $("portfolioGalleryForm")?.addEventListener("submit",async e=>{
 });
 
 $("loginForm").onsubmit=async e=>{e.preventDefault();loginStatus("Signing in…");const {error}=await supabase.auth.signInWithPassword({email:$("adminEmail").value.trim(),password:$("adminPassword").value});if(error){loginStatus(error.message,true);return}await requireAdmin()};
-$("signout").onclick=async()=>{await supabase.auth.signOut();location.reload()};
+$("signout").onclick=async()=>{
+ closeManagement();
+ try{await supabase.auth.signOut();location.reload();}
+ catch(error){loginStatus("Sign-out could not be confirmed. Please try again.",true);}
+};
+supabase.auth.onAuthStateChange((event,session)=>{
+ if(event==="SIGNED_OUT"||(admin&&session?.user?.id!==admin.id))closeManagement();
+});
 $("newProjectBtn").onclick=()=>{window.selectedProjectId=null;$("projectEditor").hidden=false;$("selectedProjectTitle").textContent="New Project";$("projectForm").reset();$("projectProgress").value=0;$("projectStatus").value="REQUESTED";$("reportForm").reset();$("reportDate").value=new Date().toISOString().slice(0,10)};
 $("projectForm").onsubmit=async e=>{
  e.preventDefault();
@@ -282,10 +362,17 @@ $("quoteForm").onsubmit=async e=>{
  const n=await supabase.from("notifications").insert({customer_id:customer,title:"Quotation update",message:"Quotation "+$("quoteNumber").value.trim()+" has been added to your TW&D account."});if(n.error){status(n.error.message,true);return}
  $("quoteForm").reset();status("Quotation saved and customer notified.");await loadAll();
 };
-(async()=>{await requireAdmin()})();
-
 function renderWorkers(){
- $("workersList").innerHTML=workers.map(x=>'<div class="mgmt-row"><strong>'+esc(x.employee_code)+' • '+esc(customerName(x.id))+'</strong><span>'+esc(x.job_title||"Worker")+' • '+esc(x.department||"")+' • '+esc(x.employment_status)+'</span></div>').join("")||"<p>No workers activated yet.</p>";
+ const filtered=workers.filter(row=>directoryMatches("workerSearch",[
+  customerName(row.id),row.employee_code,row.job_title,row.department,row.employment_status
+ ]));
+ $("workersStatus").textContent=workerError
+  ?"Worker records could not be loaded. Reopen the portal to try again."
+  :filtered.length+" of "+workers.length+" worker records";
+ $("workersList").innerHTML=filtered.map(row=>
+  '<div class="mgmt-row"><strong>'+esc(row.employee_code)+' • '+esc(customerName(row.id))+'</strong><span>'+
+  [row.job_title||"Worker",row.department,row.employment_status].filter(Boolean).map(esc).join(" • ")+'</span></div>'
+ ).join("")||(!workerError?"<p>No matching worker records.</p>":"");
 }
 function populateWorkerSelects(){
  const opts='<option value="">Select worker</option>'+workers.map(x=>'<option value="'+x.id+'">'+esc(x.employee_code)+' • '+esc(customerName(x.id))+'</option>').join("");
@@ -294,12 +381,16 @@ function populateWorkerSelects(){
  if($("workerUser")) $("workerUser").innerHTML='<option value="">Select existing account</option>'+eligible;
 }
 async function renderWorkerAttendance(){
+ const access=accessVersion;
  const q=await supabase.from("worker_attendance").select("worker_id,work_date,check_in,check_out,status").order("work_date",{ascending:false}).limit(50);
+ if(!admin||access!==accessVersion)return;
  if(q.error){$("attendanceList").innerHTML="<p>"+esc(q.error.message)+"</p>";return}
  $("attendanceList").innerHTML=(q.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(customerName(x.worker_id))+'</strong><span>'+esc(x.work_date)+' • '+esc(x.status)+' • '+new Date(x.check_in).toLocaleString()+(x.check_out?" • out "+new Date(x.check_out).toLocaleString():"")+'</span></div>').join("")||"<p>No attendance records.</p>";
 }
 async function renderWorkerReports(){
+ const access=accessVersion;
  const q=await supabase.from("worker_reports").select("worker_id,report_date,report_title,report_body,status,admin_notes").order("report_date",{ascending:false}).limit(30);
+ if(!admin||access!==accessVersion)return;
  if(q.error){$("workerReportsList").innerHTML="<p>"+esc(q.error.message)+"</p>";return}
  $("workerReportsList").innerHTML=(q.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(x.report_title)+'</strong><span>'+esc(customerName(x.worker_id))+' • '+esc(x.report_date)+' • '+esc(x.status)+'</span><small>'+esc(x.report_body)+'</small></div>').join("")||"<p>No worker reports.</p>";
 }
@@ -316,7 +407,6 @@ $("paymentForm")?.addEventListener("submit",async e=>{
 });
 
 const MARKETPLACE_ADMIN_ENDPOINT="https://script.google.com/macros/s/AKfycbzyZ5-txUUqM-O9T0RysHtcTQDfZAz2pgERT3NeKgGSJHnNaql-ZmKmguOYP2TT1IH5/exec";
-const MARKETPLACE_ADMIN_KEY_STORE="twd_marketplace_admin_key";
 function marketplaceAdminStatus(message,bad){const el=$("marketplaceAdminStatus");if(!el)return;el.textContent=message||"";el.className="mgmt-status"+(bad?" error":"");}
 function renderMarketplaceAdmin(data){
  const s=data.stats||{};$("mpStatUsers").textContent=s.users||0;$("mpStatActive").textContent=s.activeUsers||0;$("mpStatApproved").textContent=s.approvedListings||0;$("mpStatPending").textContent=s.pendingListings||0;$("mpStatSubs").textContent=s.subscriptions||0;$("mpStatMessages").textContent=s.messages||0;
@@ -325,10 +415,58 @@ function renderMarketplaceAdmin(data){
  $("mpAdminSubscriptions").innerHTML=(data.subscriptions||[]).map(x=>"<div class='mgmt-row'><strong>"+esc(x.plan||"Subscription")+"</strong><span>"+esc(x.seller)+" • "+esc(x.status)+" • "+esc(x.paymentStatus)+"</span><small>"+esc(x.id)+" • "+esc(x.email)+" • Listing: "+esc(x.listingId||"—")+"</small></div>").join("")||"<p>No subscriptions.</p>";
  $("mpAdminMessages").innerHTML=(data.messages||[]).map(x=>"<div class='mgmt-row'><strong>"+esc(x.listingId||"Marketplace enquiry")+"</strong><span>"+esc(x.from)+" → "+esc(x.to)+" • "+esc(x.status)+"</span><small>"+esc(x.timestamp)+" • "+esc(x.message)+"</small></div>").join("")||"<p>No marketplace messages.</p>";
 }
-async function loadMarketplaceAdmin(){
- const key=$("marketplaceAdminKey")?.value.trim()||sessionStorage.getItem(MARKETPLACE_ADMIN_KEY_STORE)||"";if(!key){marketplaceAdminStatus("Enter the Marketplace Admin Key first.",true);return}
- marketplaceAdminStatus("Connecting to Marketplace Control Centre…");
- try{const r=await fetch(MARKETPLACE_ADMIN_ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"admin_summary",adminKey:key})});const d=await r.json();if(!d.ok)throw Error(d.message||"Marketplace administrator authentication failed.");sessionStorage.setItem(MARKETPLACE_ADMIN_KEY_STORE,key);$("marketplaceAdminKey").value=key;$("marketplaceAdminLogin").hidden=true;$("marketplaceAdminPanel").hidden=false;renderMarketplaceAdmin(d);marketplaceAdminStatus("Marketplace Control Centre connected. Last refresh: "+new Date().toLocaleTimeString())}catch(e){marketplaceAdminStatus(e.message||"Marketplace Control Centre could not be reached.",true)}
+function clearMarketplace(){
+ marketplaceLoad++;
+ marketplaceKey="";
+ $("marketplaceAdminKey").value="";
+ $("marketplaceAdminLogin").hidden=false;
+ $("marketplaceAdminPanel").hidden=true;
+ $("refreshMarketplaceAdmin").hidden=true;
+ $("connectMarketplaceAdmin").disabled=false;
+ $("refreshMarketplaceAdmin").disabled=false;
+ for(const id of ["mpAdminUsers","mpAdminListings","mpAdminSubscriptions","mpAdminMessages"])$(id).replaceChildren();
+ marketplaceAdminStatus("");
 }
-$("connectMarketplaceAdmin")?.addEventListener("click",loadMarketplaceAdmin);$("refreshMarketplaceAdmin")?.addEventListener("click",loadMarketplaceAdmin);
-(async()=>{if(sessionStorage.getItem(MARKETPLACE_ADMIN_KEY_STORE)&&$("marketplaceAdminKey")){$("marketplaceAdminKey").value=sessionStorage.getItem(MARKETPLACE_ADMIN_KEY_STORE);await loadMarketplaceAdmin();}})();
+
+async function loadMarketplaceAdmin(){
+ if(!admin)return;
+ const key=$("marketplaceAdminKey").value.trim()||marketplaceKey;
+ if(!key){marketplaceAdminStatus("Enter the Marketplace Admin Key to connect.",true);return}
+ const access=accessVersion, request=++marketplaceLoad;
+ const buttons=[$("connectMarketplaceAdmin"),$("refreshMarketplaceAdmin")];
+ buttons.forEach(button=>button.disabled=true);
+ marketplaceAdminStatus("Connecting to the live marketplace…");
+ try{
+  const response=await fetch(MARKETPLACE_ADMIN_ENDPOINT,{
+   method:"POST",cache:"no-store",headers:{"Content-Type":"text/plain;charset=utf-8"},
+   body:JSON.stringify({action:"admin_summary",adminKey:key})
+  });
+  if(!response.ok)throw Error("Marketplace responded with HTTP "+response.status+".");
+  const data=await response.json();
+  if(!data.ok)throw Error(data.message||"Marketplace administrator access could not be verified.");
+  if(!Array.isArray(data.users)||!Array.isArray(data.listings)){
+   throw Error("The marketplace service did not return an administrator summary.");
+  }
+  if(!admin||access!==accessVersion||request!==marketplaceLoad)return;
+  renderMarketplaceAdmin(data);
+  marketplaceKey=key;
+  $("marketplaceAdminKey").value="";
+  $("marketplaceAdminLogin").hidden=true;
+  $("marketplaceAdminPanel").hidden=false;
+  $("refreshMarketplaceAdmin").hidden=false;
+  marketplaceAdminStatus("Marketplace connected. Last refreshed at "+new Date().toLocaleTimeString("en-NG",{timeZone:"Africa/Lagos"})+" WAT.");
+ }catch(error){
+  if(!admin||access!==accessVersion||request!==marketplaceLoad)return;
+  clearMarketplace();
+  marketplaceAdminStatus(error instanceof SyntaxError?"Marketplace returned an unreadable response. Try connecting again.":error.message||"Marketplace could not be reached.",true);
+ }finally{
+  if(request===marketplaceLoad)buttons.forEach(button=>button.disabled=false);
+ }
+}
+$("marketplaceAdminLogin").addEventListener("submit",event=>{
+ event.preventDefault();
+ loadMarketplaceAdmin();
+});
+$("refreshMarketplaceAdmin").addEventListener("click",loadMarketplaceAdmin);
+
+requireAdmin();

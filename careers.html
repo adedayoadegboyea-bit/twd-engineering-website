@@ -75,6 +75,11 @@
 </div>
 </div>
 <div class="portal-note"><strong>Facebook recruitment campaign:</strong> Use <strong>https://twdengineeringconsult.com/careers.html?utm_source=facebook&amp;utm_medium=paid_social&amp;utm_campaign=twd_recruitment_2026</strong> as the destination URL for Facebook/Instagram recruitment advertising. The page is prepared with social sharing metadata and campaign tracking.<br><br><strong>Application centre:</strong> Use the secure TW&amp;D recruitment portal below for job applications and aptitude testing. The public website does not store applicant CVs or supporting documents.</div>
+<section id="live-management" class="career-card" hidden style="margin-top:24px">
+<h2>TW&amp;D Management Portal</h2>
+<p>Access existing website accounts, worker records and marketplace administration.</p>
+<a id="liveManagementLink" class="btn btn-primary">Open Management Portal →</a>
+</section>
 <section id="recruitment-admin" class="career-card" hidden style="margin-top:24px">
 <h2>Recruitment Admin Portal</h2>
 <p>Open the private dashboard for applications, aptitude results and recruitment decisions.</p>
@@ -110,6 +115,11 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
 
 const portals = [
+  {
+    section: document.getElementById("live-management"),
+    link: document.getElementById("liveManagementLink"),
+    destination: "management.html"
+  },
   {
     section: document.getElementById("recruitment-admin"),
     link: document.getElementById("recruitmentAdminLink"),
