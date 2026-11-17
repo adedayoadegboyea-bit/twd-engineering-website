@@ -76,19 +76,9 @@
 </div>
 <div class="portal-note"><strong>Facebook recruitment campaign:</strong> Use <strong>https://twdengineeringconsult.com/careers.html?utm_source=facebook&amp;utm_medium=paid_social&amp;utm_campaign=twd_recruitment_2026</strong> as the destination URL for Facebook/Instagram recruitment advertising. The page is prepared with social sharing metadata and campaign tracking.<br><br><strong>Application centre:</strong> Use the secure TW&amp;D recruitment portal below for job applications and aptitude testing. The public website does not store applicant CVs or supporting documents.</div>
 <section id="live-management" class="career-card" hidden style="margin-top:24px">
-<h2>TW&amp;D Management Portal</h2>
-<p>Access existing website accounts, worker records and marketplace administration.</p>
+<h2 id="recruitment-admin">TW&amp;D Management Portal</h2>
+<p>Open worker records, website accounts, marketplace administration and recruitment records.</p>
 <a id="liveManagementLink" class="btn btn-primary">Open Management Portal →</a>
-</section>
-<section id="recruitment-admin" class="career-card" hidden style="margin-top:24px">
-<h2>Recruitment Admin Portal</h2>
-<p>Open the private dashboard for applications, aptitude results and recruitment decisions.</p>
-<a id="recruitmentAdminLink" class="btn btn-primary">Open Recruitment Admin Portal →</a>
-</section>
-<section id="peopleOperations" class="career-card" hidden style="margin-top:24px">
-<h2>People Operations</h2>
-<p>Review recruitment and onboarding in the private workspace.</p>
-<a id="peopleOperationsLink" class="btn btn-primary">Open People Operations →</a>
 </section>
 <div class="portal-grid">
 <div class="portal-copy"><p class="eyebrow dark">HOW APPLICATIONS WILL WORK</p><h2>A structured process from application to interview.</h2><p>The recruitment portal is designed to give applicants a clear submission route while keeping application records and supporting documents within TW&amp;D's controlled recruitment workspace.</p><div class="steps">
@@ -114,36 +104,19 @@ document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>{n
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
 
-const portals = [
-  {
-    section: document.getElementById("live-management"),
-    link: document.getElementById("liveManagementLink"),
-    destination: "management.html"
-  },
-  {
-    section: document.getElementById("recruitment-admin"),
-    link: document.getElementById("recruitmentAdminLink"),
-    destination: "https://twd-recruitment-review.maryclofthouse.chatgpt.site/management"
-  },
-  {
-    section: document.getElementById("peopleOperations"),
-    link: document.getElementById("peopleOperationsLink"),
-    destination: "https://twd-people-operations.maryclofthouse.chatgpt.site"
-  }
-];
+const portal = document.getElementById("live-management");
+const portalLink = document.getElementById("liveManagementLink");
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 let revision = 0;
 
-function hideAdminPortals() {
-  for (const { section, link } of portals) {
-    section.hidden = true;
-    link.removeAttribute("href");
-  }
+function hideAdminPortal() {
+  portal.hidden = true;
+  portalLink.removeAttribute("href");
 }
 
 async function updatePortalAccess() {
   const request = ++revision;
-  hideAdminPortals();
+  hideAdminPortal();
 
   try {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -156,21 +129,19 @@ async function updatePortalAccess() {
       .maybeSingle();
 
     if (error || request !== revision || profile?.account_type !== "admin") return;
-    for (const { section, link, destination } of portals) {
-      link.href = destination;
-      section.hidden = false;
-    }
-    if (window.location.hash === "#recruitment-admin") {
-      document.getElementById("recruitment-admin").scrollIntoView();
+    portalLink.href = "management.html";
+    portal.hidden = false;
+    if (["#live-management", "#recruitment-admin"].includes(window.location.hash)) {
+      portal.scrollIntoView();
     }
   } catch {
-    if (request === revision) hideAdminPortals();
+    if (request === revision) hideAdminPortal();
   }
 }
 
 supabase.auth.onAuthStateChange(() => {
   revision++;
-  hideAdminPortals();
+  hideAdminPortal();
   setTimeout(updatePortalAccess, 0);
 });
 window.addEventListener("pageshow", event => {

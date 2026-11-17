@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>TW&D Management Portal</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="account.css"><link rel="stylesheet" href="management.css?v=20261117-live-admin-2">
+<link rel="stylesheet" href="account.css"><link rel="stylesheet" href="management.css?v=20261117-worker-save">
 <link rel="stylesheet" href="global-access.css?v=20260928-1">
 </head>
 <body>
@@ -108,7 +108,22 @@
 </section><section id="workers" class="mgmt-card wide"><div class="section-head"><div><span class="eyebrow">WORKFORCE</span><h2>Worker accounts &amp; attendance</h2></div><button id="generateAttendanceCode" class="mgmt-btn small">Generate Today's Attendance Code</button></div>
 <p class="mgmt-note">Create or activate worker access for an existing authenticated account, record company bank details privately, issue the daily attendance code, review reports and record payments.</p>
 <div id="attendanceCodeResult" class="mgmt-status"></div>
-<div class="two-col"><form id="workerForm" class="mgmt-form"><label>Existing account<select id="workerUser" required></select></label><label>Employee Code<input id="employeeCode" required placeholder="e.g. TWD-EMP-001"></label><label>Job Title<input id="workerJobTitle" required></label><label>Department<input id="workerDepartment"></label><label>Bank Name<input id="workerBank"></label><label>Account Name<input id="workerAccountName"></label><label>Account Number<input id="workerAccountNumber" inputmode="numeric"></label><button class="mgmt-btn primary">Save / Activate Worker</button></form>
+<div class="two-col">
+<form id="workerForm" class="mgmt-form">
+  <label>Existing website account<select id="workerUser" required><option value="">Loading website accounts…</option></select></label>
+  <label>Employee code<input id="employeeCode" required maxlength="50" placeholder="e.g. TWD-EMP-001"></label>
+  <label>Job title<input id="workerJobTitle" required maxlength="120"></label>
+  <label>Department<input id="workerDepartment" maxlength="120"></label>
+  <fieldset class="worker-bank-fields">
+    <legend>Bank details</legend>
+    <p class="mgmt-note">Enter all three fields to save or replace bank details. Leave all three blank to keep any details already on file.</p>
+    <label>Bank name<input id="workerBank" maxlength="120"></label>
+    <label>Account holder name<input id="workerAccountName" maxlength="120"></label>
+    <label>Account number<input id="workerAccountNumber" inputmode="numeric" maxlength="40" autocomplete="off"></label>
+  </fieldset>
+  <button id="saveWorker" class="mgmt-btn primary" type="submit" disabled>Save / Activate Worker</button>
+  <p id="workerSaveStatus" class="mgmt-note" role="status" aria-live="polite"></p>
+</form>
 <div><h3>Existing worker records</h3>
 <div class="mgmt-form"><label>Search workers<input id="workerSearch" type="search" placeholder="Name, employee code, department or status"></label></div>
 <p id="workersStatus" class="mgmt-note" role="status">Loading worker records…</p>
@@ -118,16 +133,15 @@
 </section><section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">SERVICE DESK</span><h2>Customer requests & responses</h2></div></div><p class="mgmt-note">Review customer requests, respond from this portal, and notify the customer inside their secure account.</p><div id="requestsList" class="mgmt-list"></div></section>
 <section class="mgmt-card"><div class="section-head"><div><span class="eyebrow">QUOTATIONS</span><h2>Customer quotations</h2></div></div><form id="quoteForm" class="mgmt-form"><div class="two-col"><label>Customer<select id="quoteCustomer" required></select></label><label>Project<select id="quoteProject"></select></label><label>Quotation No.<input id="quoteNumber" required></label><label>Amount<input id="quoteAmount" type="number" step="0.01" required></label><label>Status<select id="quoteStatus"><option>DRAFT</option><option>SENT</option><option>ACCEPTED</option><option>DECLINED</option></select></label></div><label>Notes<textarea id="quoteNotes" rows="3"></textarea></label><button class="mgmt-btn primary">Save Quotation & Notify Customer</button></form><div id="quotationsList" class="mgmt-subsection"></div></section>
 <section class="mgmt-card wide" id="recruitment-admin" aria-labelledby="recruitment-admin-title">
-<div class="section-head"><div><span class="eyebrow">ADMIN RECRUITMENT</span><h2 id="recruitment-admin-title">Applicants and aptitude approval</h2></div></div>
-<p class="mgmt-note">Review the application, decide whether the candidate should take the aptitude test, then check the invitation and result.</p>
-<div class="mgmt-status" role="status"><strong>Live applicant decisions unavailable.</strong> This dashboard is awaiting a connection to the recruitment records. No application status or invitation can be updated here yet.</div>
-<div class="two-col">
-<div><h3>Applicant review</h3><p class="mgmt-note">The private preview uses sample records to demonstrate applicant search, verification and management decisions.</p><a class="mgmt-btn primary" href="https://twd-recruitment-review.maryclofthouse.chatgpt.site/management" target="_blank" rel="noopener">Open Recruitment preview ↗</a></div>
-<div><h3>Public careers</h3><p class="mgmt-note">Applicants use the Careers page to apply and follow their test instructions.</p><a class="mgmt-btn" href="careers.html">View Careers page</a></div>
+<div class="section-head"><h2 id="recruitment-admin-title">Recruitment records</h2></div>
+<p class="mgmt-note">Use the existing recruitment workbook to review applications and aptitude test results. Google access to the workbook is required.</p>
+<div class="mgmt-shortcuts">
+<a href="https://docs.google.com/spreadsheets/d/1jM2yiEo4zzZ17N3oOinGIS-NaKqJSPytpOHlvN_cbww/edit?gid=457356760" target="_blank" rel="noopener noreferrer">Open Applications ↗</a>
+<a href="https://docs.google.com/spreadsheets/d/1jM2yiEo4zzZ17N3oOinGIS-NaKqJSPytpOHlvN_cbww/edit?gid=123137908" target="_blank" rel="noopener noreferrer">Open Aptitude Tests ↗</a>
 </div>
 </section>
 </div></section></main>
-<script type="module" src="management.js?v=20261117-live-admin"></script>
+<script type="module" src="management.js?v=20261117-worker-save"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{const signout=document.getElementById("signout"),link=document.getElementById("financeDeskLink");if(signout&&link){const show=()=>{link.hidden=signout.hidden};new MutationObserver(show).observe(signout,{attributes:true,attributeFilter:["hidden"]});show();}});</script>
 <script src="global-access.js?v=20260928-1"></script>
 </body></html>

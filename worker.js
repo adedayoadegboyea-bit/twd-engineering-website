@@ -1,7 +1,140 @@
-import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";import{SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY}from"./supabase-config.js";const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);const $=id=>document.getElementById(id);let user=null;
-function msg(t,bad=false){$("status").textContent=t;$("status").style.background=bad?"#fff0f0":"#eef7ee"}function lmsg(t,bad=false){$("loginStatus").textContent=t;$("loginStatus").style.background=bad?"#fff0f0":"#eef7ee"}
-async function load(){const w=await supabase.from("workers").select("employee_code,bank_name,account_name,account_number,job_title,department,employment_status").eq("id",user.id).maybeSingle();if(w.error||!w.data){lmsg("This account is not activated as a TW&D worker.",true);await supabase.auth.signOut();return}if(w.data.employment_status!=="ACTIVE"){lmsg("This worker account is not active.",true);await supabase.auth.signOut();return}$("loginPanel").hidden=true;$("portal").hidden=false;$("welcome").textContent="Welcome, "+(user.user_metadata?.full_name||"Worker");$("workerMeta").textContent=[w.data.employee_code,w.data.job_title,w.data.department].filter(Boolean).join(" • ");$("bankDetails").innerHTML="<strong>Bank:</strong> "+esc(w.data.bank_name||"Not recorded")+"<br><strong>Account Name:</strong> "+esc(w.data.account_name||"Not recorded")+"<br><strong>Account Number:</strong> "+esc(w.data.account_number||"Not recorded");$("reportDate").value=new Date().toISOString().slice(0,10);await loadData()}
-async function loadData(){const [a,r,p]=await Promise.all([supabase.from("worker_attendance").select("check_in,check_out,status,work_date").eq("worker_id",user.id).order("work_date",{ascending:false}).limit(1),supabase.from("worker_reports").select("report_date,report_title,report_body,status,admin_notes").eq("worker_id",user.id).order("report_date",{ascending:false}).limit(10),supabase.from("worker_payments").select("pay_period,amount,currency,status,payment_date,reference,notes").eq("worker_id",user.id).order("created_at",{ascending:false}).limit(20)]);if(a.data?.[0]){$("attendanceToday").innerHTML="<div class='attendance-box'><strong>"+esc(a.data[0].status)+"</strong><br>Check-in: "+new Date(a.data[0].check_in).toLocaleString()+(a.data[0].check_out?"<br>Check-out: "+new Date(a.data[0].check_out).toLocaleString():"")+"</div>";if(!a.data[0].check_out&&a.data[0].work_date===new Date().toISOString().slice(0,10))$("checkout").hidden=false}else $("attendanceToday").innerHTML="<div class='attendance-box'>Not checked in today.</div>";$("reports").innerHTML=(r.data||[]).map(x=>"<div class='report-item'><strong>"+esc(x.report_title)+"</strong><br><small>"+esc(x.report_date)+" • "+esc(x.status)+"</small><p>"+esc(x.report_body)+"</p>"+(x.admin_notes?"<small>Admin: "+esc(x.admin_notes)+"</small>":"")+"</div>").join("")||"<p>No reports yet.</p>";$("payments").innerHTML=(p.data||[]).map(x=>"<div class='payment-item'><strong>"+esc(x.pay_period)+"</strong><br>₦"+Number(x.amount||0).toLocaleString()+" • "+esc(x.status)+(x.payment_date?" • "+esc(x.payment_date):"")+(x.reference?"<br>Reference: "+esc(x.reference):"")+(x.notes?"<br>"+esc(x.notes):"")+"</div>").join("")||"<p>No payment records yet.</p>"}
-function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-$("loginForm").onsubmit=async e=>{e.preventDefault();lmsg("Signing in…");const r=await supabase.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});if(r.error){lmsg(r.error.message,true);return}user=r.data.user;await load()};$("signout").onclick=async()=>{await supabase.auth.signOut();location.reload()};$("checkinForm").onsubmit=async e=>{e.preventDefault();const r=await supabase.rpc("worker_check_in",{p_code:$("attendanceCode").value.trim()});if(r.error){msg(r.error.message,true);return}msg(r.data?.message||"Check-in recorded.");$("attendanceCode").value="";await loadData()};$("checkout").onclick=async()=>{const r=await supabase.rpc("worker_check_out");if(r.error){msg(r.error.message,true);return}msg(r.data?.message||"Check-out recorded.");await loadData()};$("reportForm").onsubmit=async e=>{e.preventDefault();const r=await supabase.from("worker_reports").insert({worker_id:user.id,report_date:$("reportDate").value,report_title:$("reportTitle").value.trim(),report_body:$("reportBody").value.trim()});if(r.error){msg(r.error.message,true);return}$("reportForm").reset();$("reportDate").value=new Date().toISOString().slice(0,10);msg("Daily report submitted to management.");await loadData()};
-(async()=>{const s=await supabase.auth.getSession();if(s.data.session){user=s.data.session.user;await load()}})();
+import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import {SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY} from "./supabase-config.js";
+
+const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const $=id=>document.getElementById(id);
+const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const time=value=>new Date(value).toLocaleString("en-NG",{timeZone:"Africa/Lagos"});
+let user=null;
+
+function notice(id,message,error=false){
+ const panel=$(id);
+ panel.textContent=message;
+ panel.style.background=error?"#fff0f0":"#eef7ee";
+}
+
+async function openWorker(account){
+ const {data,error}=await supabase.from("workers")
+  .select("employee_code,bank_name,account_name,account_number,job_title,department,employment_status")
+  .eq("id",account.id).maybeSingle();
+ if(error){notice("loginStatus","Could not load your worker record. Try signing in again.",true);return;}
+ if(data?.employment_status!=="ACTIVE"){
+  notice("loginStatus","This account does not have active worker access. Contact TW&D management.",true);return;
+ }
+
+ user=account;
+ $("loginPanel").hidden=true;
+ $("portal").hidden=false;
+ $("welcome").textContent="Welcome, "+(account.user_metadata?.full_name||"Worker");
+ $("workerMeta").textContent=[data.employee_code,data.job_title,data.department].filter(Boolean).join(" • ");
+ $("bankDetails").innerHTML=[
+  ["Bank",data.bank_name],["Account name",data.account_name],["Account number",data.account_number]
+ ].map(([label,value])=>"<strong>"+label+":</strong> "+esc(value||"Not recorded")).join("<br>");
+ $("reportDate").value=today();
+ await loadWorkerDashboard();
+}
+
+async function loadWorkerDashboard(){
+ if(!user)return;
+ const account=user;
+ const [attendance,reports,payments]=await Promise.all([
+  supabase.from("worker_attendance").select("check_in,check_out,status")
+   .eq("worker_id",account.id).eq("work_date",today()).maybeSingle(),
+  supabase.from("worker_reports").select("report_date,report_title,report_body,status,admin_notes")
+   .eq("worker_id",account.id).order("report_date",{ascending:false}).limit(10),
+  supabase.from("worker_payments").select("pay_period,amount,currency,status,payment_date,reference,notes")
+   .eq("worker_id",account.id).order("created_at",{ascending:false}).limit(20)
+ ]);
+ if(user?.id!==account.id)return;
+
+ const record=attendance.data;
+ $("checkinForm").hidden=Boolean(record);
+ $("checkout").hidden=!record||Boolean(record.check_out);
+ $("attendanceToday").innerHTML=attendance.error
+  ?"<p>Attendance could not be loaded.</p>"
+  :record
+   ?"<div class='attendance-box'><strong>"+esc(record.status)+"</strong><br>Check-in: "+time(record.check_in)
+    +(record.check_out?"<br>Check-out: "+time(record.check_out):"")+"</div>"
+   :"<div class='attendance-box'>Not checked in today.</div>";
+
+ $("reports").innerHTML=reports.error?"<p>Reports could not be loaded.</p>":
+  (reports.data||[]).map(row=>"<div class='report-item'><strong>"+esc(row.report_title)+"</strong><br><small>"+
+   esc(row.report_date)+" • "+esc(row.status)+"</small><p>"+esc(row.report_body)+"</p>"+
+   (row.admin_notes?"<small>Admin: "+esc(row.admin_notes)+"</small>":"")+"</div>").join("")||"<p>No reports yet.</p>";
+ $("payments").innerHTML=payments.error?"<p>Payment records could not be loaded.</p>":
+  (payments.data||[]).map(row=>"<div class='payment-item'><strong>"+esc(row.pay_period)+"</strong><br>₦"+
+   Number(row.amount||0).toLocaleString("en-NG")+" • "+esc(row.status)+(row.payment_date?" • "+esc(row.payment_date):"")+
+   (row.reference?"<br>Reference: "+esc(row.reference):"")+(row.notes?"<br>"+esc(row.notes):"")+"</div>").join("")||
+  "<p>No payment records yet.</p>";
+}
+
+async function submit(button,statusId,pending,operation){
+ if(button.disabled)return;
+ button.disabled=true;
+ notice(statusId,pending);
+ try{await operation();}
+ catch(error){notice(statusId,error?.message||"The request failed. Please try again.",true);}
+ finally{button.disabled=false;}
+}
+
+$("loginForm").addEventListener("submit",event=>{
+ event.preventDefault();
+ submit($("workerSignIn"),"loginStatus","Signing in…",async()=>{
+  const {data,error}=await supabase.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
+  if(error)throw error;
+  $("password").value="";
+  await openWorker(data.user);
+ });
+});
+
+$("signout").addEventListener("click",async()=>{
+ user=null;
+ $("portal").hidden=true;
+ $("loginPanel").hidden=false;
+ for(const id of ["bankDetails","attendanceToday","reports","payments"])$(id).replaceChildren();
+ const {error}=await supabase.auth.signOut();
+ if(error){notice("loginStatus","Could not confirm sign-out. Please try again.",true);return;}
+ location.reload();
+});
+
+$("checkinForm").addEventListener("submit",event=>{
+ event.preventDefault();
+ if(!user)return;
+ submit($("workerCheckin"),"status","Recording check-in…",async()=>{
+  const {data,error}=await supabase.rpc("worker_check_in",{p_code:$("attendanceCode").value.trim()});
+  if(error)throw error;
+  $("attendanceCode").value="";
+  notice("status",data?.message||"Check-in recorded.");
+  await loadWorkerDashboard();
+ });
+});
+
+$("checkout").addEventListener("click",()=>{
+ if(!user)return;
+ submit($("checkout"),"status","Recording check-out…",async()=>{
+  const {data,error}=await supabase.rpc("worker_check_out");
+  if(error)throw error;
+  notice("status",data?.message||"Check-out recorded.");
+  await loadWorkerDashboard();
+ });
+});
+
+$("reportForm").addEventListener("submit",event=>{
+ event.preventDefault();
+ if(!user)return;
+ submit($("workerReportSubmit"),"workerReportStatus","Sending report…",async()=>{
+  const {error}=await supabase.from("worker_reports").insert({
+   worker_id:user.id,report_date:$("reportDate").value,
+   report_title:$("reportTitle").value.trim(),report_body:$("reportBody").value.trim()
+  });
+  if(error)throw error;
+  $("reportForm").reset();
+  $("reportDate").value=today();
+  notice("workerReportStatus","Daily report submitted to management.");
+  await loadWorkerDashboard();
+ });
+});
+
+supabase.auth.getUser().then(({data})=>{if(data.user)return openWorker(data.user);})
+ .catch(()=>notice("loginStatus","Could not connect to the worker portal. Try signing in again.",true));

@@ -11,21 +11,27 @@ let recoveryMode=false,currentUser=null;
 function msg(text,type=""){status.textContent=text;status.className="account-status show "+type}
 function pmsg(text,type=""){portalStatus.textContent=text;portalStatus.className="portal-status show "+type}
 function err(e){const m=String(e?.message||"").toLowerCase();if(m.includes("user already registered"))return"An account already exists with this email address.";if(m.includes("invalid login credentials"))return"The email or password is incorrect.";if(m.includes("email not confirmed"))return"Please confirm your email address before signing in.";return e?.message||"The request could not be completed."}
-function showSignedOut(){$("authPanel").style.display="";$("dashboardPanel").classList.remove("show")}
+function showSignedOut(){currentUser=null;$("workerPortalLink").hidden=true;$("adminPortalLink").hidden=true;$("adminAdvertLink").hidden=true;$("authPanel").style.display="";$("dashboardPanel").classList.remove("show")}
 function showRecoveryMode(){recoveryMode=true;$("authPanel").style.display="";$("dashboardPanel").classList.remove("show");$("passwordResetPanel").hidden=false;$("signinForm").hidden=true;$("signupForm").hidden=true;document.querySelector(".account-tabs").style.display="none";msg("Enter a new password for your TW&D account.")}
 async function loadDashboard(user){
  currentUser=user;$("authPanel").style.display="none";setup.classList.remove("show");$("dashboardPanel").classList.add("show");
- const [p,pr,r,q,n]=await Promise.all([
+ const [p,w,pr,r,q,n]=await Promise.all([
   supabase.from("profiles").select("account_type,full_name,phone").eq("id",user.id).maybeSingle(),
+  supabase.from("workers").select("employment_status").eq("id",user.id).maybeSingle(),
   supabase.from("projects").select("id,project_name,service_type,status,progress,location,description,updated_at,created_at").eq("customer_id",user.id).order("created_at",{ascending:false}).limit(20),
   supabase.from("service_requests").select("id,request_type,subject,status,message,created_at,updated_at").eq("customer_id",user.id).order("created_at",{ascending:false}).limit(10),
   supabase.from("quotations").select("quotation_number,amount,status,notes,created_at").eq("customer_id",user.id).order("created_at",{ascending:false}).limit(10),
   supabase.from("notifications").select("id,title,message,read,created_at").eq("customer_id",user.id).order("created_at",{ascending:false}).limit(10)
  ]);
+ if(currentUser?.id!==user.id)return;
+ const isAdmin=p.data?.account_type==="admin";
+ const isActiveWorker=w.data?.employment_status==="ACTIVE";
+ $("accountType").textContent=(isAdmin?"admin":isActiveWorker?"worker":p.data?.account_type||"customer").toUpperCase();
+ $("adminPortalLink").hidden=!isAdmin;
+ $("adminAdvertLink").hidden=!isAdmin;
+ $("workerPortalLink").hidden=!isActiveWorker;
  const firstErr=p.error||pr.error||r.error||q.error||n.error;
  if(firstErr){pmsg(firstErr.message,"error");return}
- if(p.data?.account_type)$("accountType").textContent=p.data.account_type.toUpperCase();
- if(p.data?.account_type==="admin"){$("adminPortalLink").hidden=false;document.getElementById("adminAdvertLink")?.removeAttribute("hidden");}
  const name=p.data?.full_name||user.user_metadata?.full_name||"";$("welcomeName").textContent=name?"Welcome, "+name:"Welcome";$("welcomeEmail").textContent=user.email||"";$("profileName").value=name;$("profilePhone").value=p.data?.phone||user.user_metadata?.phone||"";$("profileEmail").value=user.email||"";
  window.__twProjects=pr.data||[];
  $("projectsList").innerHTML=list(pr.data,x=>'<button type="button" class="portal-row project-open" data-project-id="'+esc(x.id)+'"><strong>'+esc(x.project_name)+'</strong><span>'+esc(x.service_type||"Project")+" • "+esc(x.status)+" • "+(x.progress||0)+"%"+(x.location?" • "+esc(x.location):"")+'</span></button>','<div class="portal-empty">No projects assigned yet.</div>');

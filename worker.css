@@ -14,3 +14,6 @@ input:focus,select:focus,textarea:focus{border-color:#006BFF!important;outline-c
 .tw-global-access{background:linear-gradient(180deg,rgba(0,71,179,.98),rgba(0,107,255,.98))!important;border-color:rgba(255,193,7,.7)!important}
 .tw-global-access a:hover,.tw-global-access a:focus-visible{background:#FFC107!important;color:#0047B3!important}
 .tw-global-access-label{background:#0047B3!important;color:#FFD54F!important}
+
+.worker-shell [hidden] { display: none !important; }
+.worker-shell button:disabled { opacity: .55; cursor: wait; }
