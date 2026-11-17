@@ -1,0 +1,194 @@
+/* Shared presentation for the inner pages. The homepage has its own stylesheet. */
+[data-refined-page] {
+  --page-navy: #071f45;
+  --page-deep: #061733;
+  --page-blue: #0755dd;
+  --page-blue-hover: #0645b0;
+  --page-green: #056851;
+  --page-mint: #9df4cd;
+  --page-ink: #10284a;
+  --page-muted: #455d77;
+  --page-line: #d5e2ef;
+  --page-light: #f2f7ff;
+  --page-radius: 14px;
+  --page-banner: radial-gradient(ellipse at 105% -45%, #12937d 0%, #1266c9 33%, transparent 71%), linear-gradient(117deg, #071f45, #0b439c);
+  --page-shadow: 0 12px 28px #09284912;
+  font-family: Inter, system-ui, sans-serif;
+}
+[data-refined-page] :focus-visible { outline: 3px solid #1f987b; outline-offset: 3px; }
+[data-refined-page] [hidden] { display: none !important; }
+[data-refined-page] :is(.tw-global-access, .twd-prestige-rail, .luxury-explore-dock, .site-flow-bar) { display: none !important; }
+[data-refined-page] :is(.section, .career-card, .solar-services, .mp-container, .mgmt-card)[id] { scroll-margin-top: 105px; }
+[data-refined-page] :is(h1,h2,h3) { text-wrap: balance; }
+[data-refined-page] :is(p,li,address) { overflow-wrap: anywhere; }
+[data-refined-page] .skip-to-page { position:absolute; top:8px; left:14px; z-index:100; transform:translateY(-180%); padding:10px 14px; border-radius:7px; color:var(--page-navy); background:white; font-weight:750; }
+[data-refined-page] .skip-to-page:focus { transform:none; }
+
+[data-refined-page] .site-header {
+  color: var(--page-ink); background: #fff !important;
+  border-bottom: 1px solid var(--page-line) !important; box-shadow: none !important;
+}
+[data-refined-page] .site-header .nav-wrap { min-height: 76px; gap: 16px; }
+[data-refined-page] .site-header .brand img { width: clamp(118px, 12vw, 152px); height: auto; }
+[data-refined-page] .site-header nav { gap: clamp(9px, 1.25vw, 18px); }
+[data-refined-page] .site-header nav a {
+  color: var(--page-ink) !important; white-space: nowrap;
+  letter-spacing: 0; text-transform: none; font-size: clamp(.78rem, 1vw, .91rem); font-weight: 750;
+}
+[data-refined-page] .site-header nav a:is(.active,:hover) { color: var(--page-blue) !important; }
+[data-refined-page] .site-header .menu-toggle { min-width: 44px; min-height: 44px; padding: 4px 10px; border-radius: 8px; }
+[data-refined-page] :is(.site-header .nav-cta, .btn-red, .btn-primary, .btn-gold, .pd-btn, .mp-btn-primary) {
+  border-radius: 9px; letter-spacing: 0; text-transform: none;
+  background: var(--page-blue) !important; color: #fff !important; border-color: var(--page-blue) !important;
+  box-shadow: none !important; text-decoration: none;
+}
+[data-refined-page] :is(.site-header .nav-cta, .btn-red, .btn-primary, .btn-gold, .pd-btn, .mp-btn-primary):hover {
+  background: var(--page-blue-hover) !important; color: #fff !important;
+}
+[data-refined-page] :is(.btn-outline, .btn-outline-light) {
+  background: #fff !important; border-color: #aac2df !important; color: var(--page-blue-hover) !important;
+  border-radius: 9px; box-shadow: none !important; text-transform: none; letter-spacing: 0;
+}
+[data-refined-page] :is(.btn-outline, .btn-outline-light):hover { background: var(--page-light) !important; }
+[data-refined-page] :is(.btn, .pd-btn, .nav-cta, .mp-btn, .mgmt-btn, .worker-btn) { min-height: 44px; }
+[data-refined-page] :is(.text-link, .pd-back) { color: var(--page-blue-hover); text-underline-offset: 4px; }
+[data-refined-page] :is(.text-link, .pd-back):hover { color: var(--page-green); }
+[data-refined-page] :is(.eyebrow,.card-label,.mp-kicker,.resources-kicker,.pd-kicker) { letter-spacing: .09em; font-size: .78rem; }
+
+[data-refined-page] :is(.refined-banner,.careers-hero,.jobs-hero,.resources-hero,.twd-recruit-hero,.mp-hero,.pd-hero,.app-hero) {
+  color: #fff; background: var(--page-banner) !important; border: none;
+}
+[data-refined-page] :is(.refined-banner,.careers-hero,.jobs-hero,.resources-hero,.twd-recruit-hero,.mp-hero,.pd-hero,.app-hero) h1 {
+  max-width: 19ch; color: #fff !important; font-size: clamp(2.25rem, 5vw, 4.35rem) !important;
+  font-weight: 800; letter-spacing: -.048em !important; line-height: 1.08 !important; margin: 8px 0 16px;
+}
+[data-refined-page] :is(.refined-banner,.careers-hero,.jobs-hero,.resources-hero,.twd-recruit-hero,.mp-hero,.pd-hero,.app-hero) h1 :is(span,em) {
+  color: var(--page-mint) !important; font-style: normal;
+}
+[data-refined-page] :is(.refined-banner,.careers-hero,.jobs-hero,.resources-hero,.twd-recruit-hero,.mp-hero,.pd-hero,.app-hero) p {
+  max-width: 64ch; color: #e1edff; font-size: clamp(1rem, 1.6vw, 1.12rem); line-height: 1.65;
+}
+[data-refined-page] :is(.refined-banner,.careers-hero,.jobs-hero,.resources-hero,.twd-recruit-hero,.mp-hero,.pd-hero,.app-hero) :is(.eyebrow,.resources-kicker,.pd-kicker,.mp-kicker,.app-kicker) {
+  color: var(--page-mint) !important; font-size: .78rem;
+}
+[data-refined-page] :is(.refined-banner,.careers-hero,.jobs-hero,.resources-hero,.twd-recruit-hero,.mp-hero,.pd-hero) { padding-block: clamp(38px, 6vw, 82px); }
+[data-refined-page] :is(.refined-banner,.careers-hero,.jobs-hero,.resources-hero,.twd-recruit-hero,.mp-hero,.pd-hero,.app-hero) .btn-gold {
+  color: var(--page-deep) !important; background: var(--page-mint) !important; border-color: var(--page-mint) !important;
+}
+[data-refined-page] :is(.refined-banner,.careers-hero,.jobs-hero,.resources-hero,.twd-recruit-hero,.mp-hero,.pd-hero,.app-hero) .btn-gold:hover {
+  color: var(--page-deep) !important; background: #c9ffe6 !important;
+}
+[data-refined-page] .refined-banner-grid, [data-refined-page] .refined-leadership {
+  display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: clamp(22px,5vw,68px); align-items: center;
+}
+[data-refined-page] .refined-photo {
+  min-width: 0; margin: 0; overflow: hidden; border-radius: var(--page-radius); background: #dae7f5;
+}
+[data-refined-page] .refined-photo img { display: block; width: 100%; aspect-ratio: 1.42; object-fit: cover; }
+[data-refined-page] .refined-photo figcaption { padding: 8px 12px; background: var(--page-deep); color: #fff; font-size: .8rem; }
+[data-refined-page] .refined-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 21px; }
+[data-refined-page] .refined-actions .btn { display: inline-flex; align-items: center; }
+[data-refined-page] .refined-subsection { padding-block: clamp(33px, 6vw, 74px); }
+[data-refined-page] .refined-subsection h2 { margin: 0 0 .55em; color: var(--page-navy); font-size: clamp(1.75rem, 3.4vw, 2.85rem); line-height: 1.16; }
+[data-refined-page] .refined-subsection p { color: var(--page-muted); font-size: 1rem; }
+[data-refined-page] .refined-soft { background: var(--page-light); }
+[data-refined-page] .refined-leadership { grid-template-columns: minmax(0,.65fr) minmax(0,1.35fr); }
+[data-refined-page] .refined-leadership .refined-photo { max-width: 360px; }
+[data-refined-page] .refined-leadership img { aspect-ratio: 4 / 5; object-position: center 24%; }
+[data-refined-page] .refined-leadership h3 { color: var(--page-navy); font-size: clamp(1.35rem, 2.6vw, 2.1rem); margin-top: .3em; }
+
+[data-refined-page] .refined-services { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; margin-top: 24px; }
+[data-refined-page] .refined-service {
+  min-width: 0; padding: clamp(15px,2.3vw,25px); border: 1px solid var(--page-line);
+  border-radius: var(--page-radius); background: white; box-shadow: var(--page-shadow);
+}
+[data-refined-page] .refined-service h3 { margin: 0 0 6px; color: var(--page-navy); font-size: 1.22rem; }
+[data-refined-page] .refined-service p { margin: 0 0 12px; color: var(--page-muted); font-size: .96rem; line-height: 1.6; }
+[data-refined-page] .refined-service .text-link { font-size: .88rem; font-weight: 750; }
+[data-refined-page] .refined-service:target { border-color: var(--page-green); box-shadow: 0 0 0 2px #9df4cda0; }
+[data-refined-page] .refined-service { scroll-margin-top: 100px; }
+
+[data-refined-page] :is(.career-card,.state-project,.project-gallery-card,.job-card,.resource-card,.twd-recruit-card,.solar-card,.staff-card,.mp-listing,.listing-card,.plan-card,.form-card) {
+  border-radius: var(--page-radius) !important; box-shadow: var(--page-shadow);
+}
+[data-refined-page] .state-project { border-top: 3px solid #63c9ad; }
+[data-refined-page] .state-project .state-number { display:none; }
+[data-refined-page] :is(.career-card,.state-project,.job-card,.resource-card,.twd-recruit-card,.solar-card) p:not(.card-label) { font-size: .95rem; line-height: 1.65; }
+[data-refined-page] .career-card .role strong { font-size: .98rem; }
+[data-refined-page] .career-card .role span { font-size: .72rem; letter-spacing: .025em; }
+[data-refined-page] .portal-grid .step span { font-size: .84rem; }
+[data-refined-page] .portal-grid .step strong { font-size: .94rem; }
+[data-refined-page] .portal-box { border-radius: var(--page-radius); background: var(--page-navy); }
+[data-refined-page] .portal-box p { color: #e0edff !important; font-size: .9rem; }
+[data-refined-page] .pd-hero .pd-chip { border-radius: 7px; background: #ffffff14; }
+[data-refined-page] :is(.pd-photo,.pd-disclaimer) { border-radius: var(--page-radius); }
+[data-refined-page] .pd-fact b { color: var(--page-green); }
+[data-refined-page] .pd-stage b { background: var(--page-navy); color: var(--page-mint); }
+[data-refined-page] .pd-cta { background: var(--page-navy); }
+[data-refined-page] .pd-heading .pd-kicker { color: var(--page-green) !important; }
+[data-refined-page] .pd-footer, [data-refined-page].refined-public footer { background: var(--page-deep) !important; }
+
+[data-refined-page] :is(.account-header,.mgmt-header,.mp-header,.pd-nav) {
+  border-bottom: 1px solid var(--page-line); box-shadow: none;
+}
+[data-refined-page] :is(.account-card,.mgmt-card,.worker-card,.portal-card,.admin-card) { border-radius: var(--page-radius); }
+[data-refined-page] .mgmt-shell .mgmt-card { background: #102d54; }
+[data-refined-page] .mgmt-shell :is(.eyebrow,.mp-admin-status-approved) { color: var(--page-mint); }
+[data-refined-page] .mgmt-hero p { color: #d4e6fa; }
+[data-refined-page] .mgmt-shortcuts a { border-radius: 8px; }
+[data-refined-page] :is(.mgmt-shell #loginPanel,.worker-shell #loginPanel) { max-width: 600px; margin-inline: auto; }
+[data-refined-page] .account-hero h1, [data-refined-page] .portal-head h1 { letter-spacing: -.045em; }
+[data-refined-page] .account-hero { background: linear-gradient(120deg,#f0f7ff,#f0fbf6); }
+[data-refined-page] :is(.account-shell,.worker-shell,.ad-admin) :is(input,select,textarea):focus-visible {
+  outline: 2px solid var(--page-green); outline-offset: 2px;
+}
+[data-refined-page] :is(.worker-shell,.account-shell,.mgmt-shell) :is(button,a)[disabled] { cursor: not-allowed; opacity: .68; }
+[data-refined-page] .portal-card .portal-action { border-radius: 10px; }
+
+@media screen {
+  [data-refined-page].refined-finance .wrap > .panel { border-radius: var(--page-radius); box-shadow: var(--page-shadow); }
+}
+@media (max-width: 800px) {
+  [data-refined-page] .site-header .nav-wrap { min-height: 64px; }
+  [data-refined-page] .site-header nav.open { overflow-y: auto; max-height: min(70vh,540px); }
+  [data-refined-page] .site-header nav a { min-height: 42px; font-size: .96rem; }
+  [data-refined-page] .refined-banner-grid, [data-refined-page] .refined-leadership { grid-template-columns: minmax(0,1fr); }
+  [data-refined-page] .refined-photo img { aspect-ratio: 1.7; }
+  [data-refined-page] .refined-leadership img { aspect-ratio: 4 / 5; }
+}
+@media (max-width: 540px) {
+  [data-refined-page] .refined-services { grid-template-columns: minmax(0,1fr); }
+  [data-refined-page] :is(.mgmt-nav,.account-nav,.mp-nav,.pd-nav-inner) { flex-wrap: wrap; gap: 8px; }
+  [data-refined-page] .mgmt-hero { padding-inline: 0; }
+  [data-refined-page] .portal-box { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-refined-page] :is(.btn,.career-card,.resource-card,.state-project,.project-gallery-card) { transition: none !important; transform: none !important; }
+}
+[data-refined-page] .app-hero .app-page-card {
+  color: white; background: #071f456e; border: 1px solid #b4d3f566;
+  border-radius: var(--page-radius); box-shadow: none;
+}
+[data-refined-page] .refined-banner .refined-photo img { object-position: center 36%; }
+@media print {
+  [data-refined-page].refined-finance :is(h1,h2,h3) { text-wrap: initial; }
+}
+
+/* Keep editorial photo crops independent of the legacy image resets. */
+[data-refined-page] .refined-banner .refined-photo img {
+  height: clamp(245px, 31vw, 405px) !important;
+  object-fit: cover !important;
+}
+[data-refined-page] .careers-hero .refined-photo img {
+  height: clamp(240px, 30vw, 385px) !important;
+  object-fit: cover !important; object-position: center 33%;
+}
+[data-refined-page] .refined-leadership .refined-photo img {
+  height: clamp(260px, 34vw, 410px) !important;
+  object-fit: cover !important;
+}
+@media (max-width: 540px) {
+  [data-refined-page] :is(.refined-banner,.careers-hero) .refined-photo img {
+    height: clamp(182px, 55vw, 270px) !important;
+  }
+}
