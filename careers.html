@@ -75,6 +75,11 @@
 </div>
 </div>
 <div class="portal-note"><strong>Facebook recruitment campaign:</strong> Use <strong>https://twdengineeringconsult.com/careers.html?utm_source=facebook&amp;utm_medium=paid_social&amp;utm_campaign=twd_recruitment_2026</strong> as the destination URL for Facebook/Instagram recruitment advertising. The page is prepared with social sharing metadata and campaign tracking.<br><br><strong>Application centre:</strong> Use the secure TW&amp;D recruitment portal below for job applications and aptitude testing. The public website does not store applicant CVs or supporting documents.</div>
+<section id="recruitment-admin" class="career-card" hidden style="margin-top:24px">
+<h2>Recruitment Admin Portal</h2>
+<p>Open the private dashboard for applications, aptitude results and recruitment decisions.</p>
+<a id="recruitmentAdminLink" class="btn btn-primary">Open Recruitment Admin Portal →</a>
+</section>
 <section id="peopleOperations" class="career-card" hidden style="margin-top:24px">
 <h2>People Operations</h2>
 <p>Review recruitment and onboarding in the private workspace.</p>
@@ -104,15 +109,31 @@ document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>{n
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
 
-const portal = document.getElementById("peopleOperations");
-const link = document.getElementById("peopleOperationsLink");
+const portals = [
+  {
+    section: document.getElementById("recruitment-admin"),
+    link: document.getElementById("recruitmentAdminLink"),
+    destination: "https://twd-recruitment-review.maryclofthouse.chatgpt.site/management"
+  },
+  {
+    section: document.getElementById("peopleOperations"),
+    link: document.getElementById("peopleOperationsLink"),
+    destination: "https://twd-people-operations.maryclofthouse.chatgpt.site"
+  }
+];
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 let revision = 0;
 
+function hideAdminPortals() {
+  for (const { section, link } of portals) {
+    section.hidden = true;
+    link.removeAttribute("href");
+  }
+}
+
 async function updatePortalAccess() {
   const request = ++revision;
-  portal.hidden = true;
-  link.removeAttribute("href");
+  hideAdminPortals();
 
   try {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -125,17 +146,21 @@ async function updatePortalAccess() {
       .maybeSingle();
 
     if (error || request !== revision || profile?.account_type !== "admin") return;
-    link.href = "https://twd-people-operations.maryclofthouse.chatgpt.site";
-    portal.hidden = false;
+    for (const { section, link, destination } of portals) {
+      link.href = destination;
+      section.hidden = false;
+    }
+    if (window.location.hash === "#recruitment-admin") {
+      document.getElementById("recruitment-admin").scrollIntoView();
+    }
   } catch {
-    // Keep the portal hidden if the account service is unavailable.
+    if (request === revision) hideAdminPortals();
   }
 }
 
 supabase.auth.onAuthStateChange(() => {
   revision++;
-  portal.hidden = true;
-  link.removeAttribute("href");
+  hideAdminPortals();
   setTimeout(updatePortalAccess, 0);
 });
 window.addEventListener("pageshow", event => {
