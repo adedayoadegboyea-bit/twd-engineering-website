@@ -17,7 +17,7 @@
 })();
 
 (function(){
-  if(document.querySelector('.tw-global-access')) return;
+  if(document.body.hasAttribute('data-homepage') || document.querySelector('.tw-global-access')) return;
   var root=location.pathname.includes('/recruitment/')?'../':'';
   /* This intentionally mirrors the main website navigation, rather than older page-specific shortcuts. */
   var links=[
@@ -42,7 +42,7 @@
 })();
 
 (function(){
-  if(document.querySelector('.twd-prestige-rail')) return;
+  if(document.body.hasAttribute('data-homepage') || document.querySelector('.twd-prestige-rail')) return;
   var isHome=location.pathname==='/' || /\/index\.html$/i.test(location.pathname);
   if(isHome) document.body.classList.add('twd-home-page');
   var root=location.pathname.includes('/recruitment/')?'../':'';
