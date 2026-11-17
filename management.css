@@ -39,6 +39,9 @@ input:focus,select:focus,textarea:focus{border-color:#006BFF!important;outline-c
 }
 .mgmt-inline-link { color: #b2d5ff; }
 .mgmt-inline-link:hover { color: #fff; }
+#appPanel[hidden], #marketplaceAdminLogin[hidden], #marketplaceAdminPanel[hidden] {
+  display: none !important;
+}
 .mgmt-directory {
   max-height: 365px;
   overflow: auto;
