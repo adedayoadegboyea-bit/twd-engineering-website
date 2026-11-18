@@ -1,2 +1,69 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Staff Management | TW&D Admin</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="staff-directory.css"><link rel="stylesheet" href="pages.css?v=761be793a5f9">
-</head><body class="refined-portal" data-refined-page data-site-flow="off"><main class="container staff-admin"><a href="about.html">← About Us</a><h1>Staff Directory Management</h1><p>Only authorised administrators can publish staff profiles. Changes appear on About Us after saving.</p><section id="loginPanel"><h2>Administrator sign in</h2><form id="loginForm"><label>Email <input type="email" name="email" required autocomplete="username"></label><label>Password <input type="password" name="password" required autocomplete="current-password"></label><button class="btn btn-red">Sign in</button></form></section><section id="editorPanel" hidden><button type="button" id="logout" class="btn btn-outline">Sign out</button><h2>Add or edit a staff member</h2><form id="staffForm"><input type="hidden" name="id"><label>Full name <input name="full_name" required maxlength="120"></label><label>Job title / position <input name="job_title" required maxlength="120"></label><label>Staff duties <textarea name="duties" required minlength="5" maxlength="1200" rows="5"></textarea></label><label>Portrait photo (JPG, PNG or WebP; max 5 MB) <input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><label>Display order <input name="sort_order" type="number" value="0"></label><label class="staff-check"><input name="is_published" type="checkbox"> Publish on About Us</label><button class="btn btn-red" type="submit">Save staff profile</button><button class="btn btn-outline" type="reset">Clear form</button></form><h2>Existing staff</h2><div id="staffAdminList"></div></section><p id="adminMessage" role="status" aria-live="polite"></p></main><script type="module" src="staff-admin.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Manage Company Team | TW&amp;D</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css?v=761be793a5f9">
+<link rel="stylesheet" href="staff-directory.css?v=23103072b2a5">
+</head>
+<body class="refined-portal team-admin-page" data-refined-page data-site-flow="off">
+<header class="team-bar"><div class="team-shell team-bar-inner">
+  <a href="management.html" class="team-brand"><img src="assets/twd-luxury-logo.svg" width="125" height="64" alt="TW&amp;D Engineering"><span>Management Portal</span></a>
+  <div class="team-actions"><a class="team-button" href="about.html#company-team" target="_blank" rel="noopener">View Company Team</a><button id="logout" class="team-button" type="button" hidden>Sign out</button></div>
+</div></header>
+<main class="team-shell team-admin">
+  <div class="team-heading"><p class="team-label">Website administration</p><h1>Manage Company Team</h1><p>Add portraits, roles and duties for the team section on About Us.</p></div>
+  <section id="loginPanel" class="team-panel team-login" aria-labelledby="team-login-title">
+    <h2 id="team-login-title">Administrator sign-in</h2>
+    <form id="loginForm" class="team-form" method="post">
+      <label>Email<input type="email" name="email" required autocomplete="username"></label>
+      <label>Password<input type="password" name="password" required autocomplete="current-password"></label>
+      <button id="loginButton" class="team-button team-primary" type="submit" disabled>Sign in</button>
+    </form>
+    <p id="loginStatus" class="team-status" role="status">Checking your website session…</p>
+  </section>
+  <section id="editorPanel" hidden>
+    <div class="team-layout">
+      <section class="team-panel team-members" aria-labelledby="team-list-title">
+        <div class="team-panel-heading"><h2 id="team-list-title">Team members</h2><button class="team-button" id="newMember" type="button">Add member</button></div>
+        <div class="team-filters team-form">
+          <label>Search team<input id="staffSearch" type="search" placeholder="Name, position or department"></label>
+          <label>Visibility<select id="staffFilter"><option value="all">All profiles</option><option value="published">Published</option><option value="draft">Drafts</option></select></label>
+        </div>
+        <div id="staffAdminList" class="team-members-list"><p>Loading team profiles…</p></div>
+        <p id="listMessage" class="team-status" role="status"></p>
+      </section>
+      <section class="team-panel team-edit" id="staffEditor" aria-labelledby="staffEditorTitle">
+        <h2 id="staffEditorTitle" tabindex="-1">Add a team member</h2>
+        <form id="staffForm" class="team-form">
+          <label>Full name<input name="full_name" required minlength="2" maxlength="120"></label>
+          <div class="team-form-grid">
+            <label>Position<input name="job_title" required minlength="2" maxlength="120"></label>
+            <label>Department or function<input name="department" maxlength="120" placeholder="Optional"></label>
+          </div>
+          <label>Key duties<textarea name="duties" required minlength="5" maxlength="1200" rows="4"></textarea></label>
+          <div class="team-photo-tools">
+            <figure class="team-preview" id="staffPhotoPreview" hidden><img id="staffPhotoImage" alt="Portrait preview"></figure>
+            <div>
+              <label>Portrait<input name="photo" type="file" accept="image/*,video/*,.heic,.heif,.tif,.tiff,.avif,.bmp,.gif,.webp,.mpg,.mpeg,.mpe,.m1v,.m2v,.mov,.avi,.mkv,.wmv,.mts,.m2ts,.3gp" aria-describedby="photoFormats"></label>
+              <p id="photoFormats" class="team-muted">Choose a photo or short video up to 25 MB. Videos and animated images use a still frame.</p>
+              <button id="removePortrait" class="team-button" type="button" hidden>Remove photo</button>
+            </div>
+          </div>
+          <div class="team-form-grid">
+            <label>Visibility<select name="is_published"><option value="draft">Save as a draft</option><option value="published">Publish on About Us</option></select></label>
+            <label>Display order<input name="sort_order" type="number" min="0" max="9999" value="0" required><span class="team-muted">Smaller numbers appear first.</span></label>
+          </div>
+          <div class="team-actions"><button id="saveMember" class="team-button team-primary" type="submit">Save profile</button><button id="clearMember" class="team-button" type="button">Clear form</button></div>
+        </form>
+        <p id="adminMessage" class="team-status" role="status"></p>
+      </section>
+    </div>
+  </section>
+</main>
+<script type="module" src="staff-admin.js?v=92c637f167cb"></script>
+</body>
+</html>
