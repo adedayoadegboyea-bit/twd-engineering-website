@@ -4,14 +4,10 @@ const config: CapacitorConfig = {
   appId: 'com.twdengineeringconsult.app',
   appName: 'TW&D Engineering',
   webDir: 'www',
-  bundledWebRuntime: false,
   server: {
+    // Keep pages, sign-in, and media on the same origin as the public site.
+    url: 'https://twdengineeringconsult.com/',
     cleartext: false
-  },
-  plugins: {
-    CapacitorHttp: {
-      enabled: true
-    }
   }
 };
 
