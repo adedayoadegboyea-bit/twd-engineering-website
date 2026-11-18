@@ -1,0 +1,38 @@
+name: Deploy Marketplace Apps Script
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - marketplace-backend/TWD_MARKETPLACE_CODE_EMAIL_VERIFICATION_LINK_READY.gs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: marketplace-apps-script-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: marketplace-production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify baseline or deploy the Marketplace backend
+        env:
+          MARKETPLACE_SCRIPT_ID: ${{ vars.MARKETPLACE_SCRIPT_ID }}
+          MARKETPLACE_DEPLOYMENT_ID: ${{ vars.MARKETPLACE_DEPLOYMENT_ID }}
+          MARKETPLACE_GOOGLE_OAUTH: ${{ secrets.MARKETPLACE_GOOGLE_OAUTH }}
+          GIT_BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -z "$MARKETPLACE_SCRIPT_ID" ] || [ -z "$MARKETPLACE_DEPLOYMENT_ID" ] || [ -z "$MARKETPLACE_GOOGLE_OAUTH" ]; then
+            echo "::error::Configure the Marketplace script ID, deployment ID and Google OAuth secret in the marketplace-production environment."
+            exit 1
+          fi
+          python3 marketplace-backend/deploy.py
