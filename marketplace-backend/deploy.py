@@ -58,7 +58,11 @@ def run():
     published_backend = next(file for file in published_files if file["name"] == SCRIPT_FILE and file["type"] == "SERVER_JS")
     current_backend = next(file for file in current_files if file["name"] == SCRIPT_FILE and file["type"] == "SERVER_JS")
     desired = Path(SOURCE).read_text(encoding="utf-8")
-    if sorted(current_files, key=lambda file: file["name"]) != sorted(published_files, key=lambda file: file["name"]):
+    current_other_files = sorted((file for file in current_files if file is not current_backend), key=lambda file: file["name"])
+    published_other_files = sorted((file for file in published_files if file is not published_backend), key=lambda file: file["name"])
+    current_source = normalize(current_backend["source"])
+    published_source = normalize(published_backend["source"])
+    if current_other_files != published_other_files or current_source not in (published_source, normalize(desired)):
         raise SystemExit("The Apps Script editor has unpublished changes. Reconcile them with the deployed version before continuing.")
 
     before = os.environ.get("GIT_BEFORE")
@@ -71,8 +75,9 @@ def run():
     if normalize(previous) != normalize(published_backend["source"]):
         raise SystemExit("The previous GitHub backend differs from the deployed script. Reconcile the baseline before deploying.")
 
-    current_backend["source"] = desired
-    api("/content", "PUT", {"files": current_files})
+    if current_source != normalize(desired):
+        current_backend["source"] = desired
+        api("/content", "PUT", {"files": current_files})
     sha = os.environ["GITHUB_SHA"]
     version = api("/versions", "POST", {"description": "GitHub " + sha})["versionNumber"]
     deployment["versionNumber"] = version
