@@ -24,4 +24,5 @@ function showLogin(){document.querySelector("#loginBox").classList.remove("hidde
 async function logout(){const t=token();try{if(t)await post({action:"admin_logout",adminSessionToken:t})}catch(e){}sessionStorage.removeItem(SESSION_KEY);messages=[];showLogin();inbox.innerHTML="<div class='empty'>Administrator sign-in is required to view Marketplace conversations.</div>";status.textContent="Signed out."}
 document.querySelector("#backButton").onclick=back;document.querySelector("#loginButton").onclick=login;document.querySelector("#refreshButton").onclick=load;document.querySelector("#logoutButton").onclick=logout;passwordInput.addEventListener("keydown",e=>{if(e.key==="Enter")login()});
 if(token()){showSignedIn("Marketplace Administrator");load()}
-</script></body></html>
+</script><script src="/password-visibility.js?v=1" defer></script>
+</body></html>
