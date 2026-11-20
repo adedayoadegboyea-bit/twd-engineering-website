@@ -7,6 +7,8 @@ const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;
 const today=()=>new Date().toISOString().slice(0,10);
 const time=value=>new Date(value).toLocaleString("en-NG",{timeZone:"Africa/Lagos"});
 let user=null;
+ workerId=null;
+let workerId=null;
 
 function notice(id,message,error=false){
  const panel=$(id);
@@ -16,17 +18,18 @@ function notice(id,message,error=false){
 
 async function openWorker(account){
  const {data,error}=await supabase.from("workers")
-  .select("employee_code,bank_name,account_name,account_number,job_title,department,employment_status")
-  .eq("id",account.id).maybeSingle();
+  .select("id,full_name,employee_code,bank_name,account_name,account_number,job_title,department,employment_status")
+  .eq("user_id",account.id).maybeSingle();
  if(error){notice("loginStatus","Could not load your worker record. Try signing in again.",true);return;}
  if(data?.employment_status!=="ACTIVE"){
   notice("loginStatus","This account does not have active worker access. Contact TW&D management.",true);return;
  }
 
  user=account;
+ workerId=data.id;
  $("loginPanel").hidden=true;
  $("portal").hidden=false;
- $("welcome").textContent="Welcome, "+(account.user_metadata?.full_name||"Worker");
+ $("welcome").textContent="Welcome, "+(data.full_name||"Worker");
  $("workerMeta").textContent=[data.employee_code,data.job_title,data.department].filter(Boolean).join(" • ");
  $("bankDetails").innerHTML=[
   ["Bank",data.bank_name],["Account name",data.account_name],["Account number",data.account_number]
@@ -38,13 +41,14 @@ async function openWorker(account){
 async function loadWorkerDashboard(){
  if(!user)return;
  const account=user;
+ const id=workerId;
  const [attendance,reports,payments]=await Promise.all([
   supabase.from("worker_attendance").select("check_in,check_out,status")
-   .eq("worker_id",account.id).eq("work_date",today()).maybeSingle(),
+   .eq("worker_id",id).eq("work_date",today()).maybeSingle(),
   supabase.from("worker_reports").select("report_date,report_title,report_body,status,admin_notes")
-   .eq("worker_id",account.id).order("report_date",{ascending:false}).limit(10),
+   .eq("worker_id",id).order("report_date",{ascending:false}).limit(10),
   supabase.from("worker_payments").select("pay_period,amount,currency,status,payment_date,reference,notes")
-   .eq("worker_id",account.id).order("created_at",{ascending:false}).limit(20)
+   .eq("worker_id",id).order("created_at",{ascending:false}).limit(20)
  ]);
  if(user?.id!==account.id)return;
 
@@ -125,7 +129,7 @@ $("reportForm").addEventListener("submit",event=>{
  if(!user)return;
  submit($("workerReportSubmit"),"workerReportStatus","Sending report…",async()=>{
   const {error}=await supabase.from("worker_reports").insert({
-   worker_id:user.id,report_date:$("reportDate").value,
+   worker_id:workerId,report_date:$("reportDate").value,
    report_title:$("reportTitle").value.trim(),report_body:$("reportBody").value.trim()
   });
   if(error)throw error;

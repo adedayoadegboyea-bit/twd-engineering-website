@@ -17,7 +17,7 @@ async function loadDashboard(user){
  currentUser=user;$("authPanel").style.display="none";setup.classList.remove("show");$("dashboardPanel").classList.add("show");
  const [p,w,pr,r,q,n]=await Promise.all([
   supabase.from("profiles").select("account_type,full_name,phone").eq("id",user.id).maybeSingle(),
-  supabase.from("workers").select("employment_status").eq("id",user.id).maybeSingle(),
+  supabase.from("workers").select("employment_status").eq("user_id",user.id).maybeSingle(),
   supabase.from("projects").select("id,project_name,service_type,status,progress,location,description,updated_at,created_at").eq("customer_id",user.id).order("created_at",{ascending:false}).limit(20),
   supabase.from("service_requests").select("id,request_type,subject,status,message,created_at,updated_at").eq("customer_id",user.id).order("created_at",{ascending:false}).limit(10),
   supabase.from("quotations").select("quotation_number,amount,status,notes,created_at").eq("customer_id",user.id).order("created_at",{ascending:false}).limit(10),

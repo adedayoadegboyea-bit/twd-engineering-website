@@ -72,7 +72,7 @@ async function loadAll(){
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
   supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
   supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100),
-  fetchDirectory("workers","id,employee_code,job_title,department,employment_status")
+  fetchDirectory("workers","id,user_id,full_name,employee_code,job_title,department,employment_status")
  ]);
  if(access!==accessVersion||revision!==loadVersion||!admin)return;
  accountError=c.error;workerError=w.error;
@@ -92,7 +92,7 @@ function directoryMatches(search, values){
 
 function renderCustomers(){
  const role=$("accountRole").value;
- const activeWorkers=new Set(workers.filter(worker=>worker.employment_status==="ACTIVE").map(worker=>worker.id));
+ const activeWorkers=new Set(workers.filter(worker=>worker.employment_status==="ACTIVE").map(worker=>worker.user_id));
  const accountType=row=>row.account_type==="admin"?"admin":activeWorkers.has(row.id)?"worker":row.account_type||"customer";
  const filtered=customers.filter(row=>(!role||accountType(row)===role)
   &&directoryMatches("accountSearch",[row.full_name,row.phone,row.id]));
@@ -421,20 +421,20 @@ $("quoteForm").onsubmit=async e=>{
 };
 function renderWorkers(){
  const filtered=workers.filter(row=>directoryMatches("workerSearch",[
-  customerName(row.id),row.employee_code,row.job_title,row.department,row.employment_status
+  row.full_name,row.employee_code,row.job_title,row.department,row.employment_status
  ]));
  $("workersStatus").textContent=workerError
   ?"Worker records could not be loaded. Reopen the portal to try again."
   :filtered.length+" of "+workers.length+" worker records";
  $("workersList").innerHTML=filtered.map(row=>
-  '<div class="mgmt-row"><strong>'+esc(row.employee_code)+' • '+esc(customerName(row.id))+'</strong><span>'+
+  '<div class="mgmt-row"><strong>'+esc(row.employee_code)+' • '+esc(row.full_name)+'</strong><span>'+
   [row.job_title||"Worker",row.department,row.employment_status].filter(Boolean).map(esc).join(" • ")+'</span></div>'
  ).join("")||(!workerError?"<p>No matching worker records.</p>":"");
 }
 function populateWorkerSelects(){
  const payment=$("paymentWorker"), savedPayment=payment.value;
  payment.innerHTML='<option value="">Select worker</option>'+workers.map(row=>
-  '<option value="'+esc(row.id)+'">'+esc(row.employee_code)+' • '+esc(customerName(row.id))+'</option>'
+  '<option value="'+esc(row.id)+'">'+esc(row.employee_code)+' • '+esc(row.full_name)+'</option>'
  ).join("");
  if(workers.some(row=>row.id===savedPayment))payment.value=savedPayment;
 
@@ -462,7 +462,7 @@ function workerSaveStatus(message,kind=""){
 }
 
 $("workerUser").addEventListener("change",()=>{
- const current=workers.find(row=>row.id===$("workerUser").value);
+ const current=workers.find(row=>row.user_id===$("workerUser").value);
  $("employeeCode").value=current?.employee_code||"";
  $("workerJobTitle").value=current?.job_title||"";
  $("workerDepartment").value=current?.department||"";
@@ -476,14 +476,14 @@ async function renderWorkerAttendance(){
  const q=await supabase.from("worker_attendance").select("worker_id,work_date,check_in,check_out,status").order("work_date",{ascending:false}).limit(50);
  if(!admin||access!==accessVersion)return;
  if(q.error){$("attendanceList").innerHTML="<p>"+esc(q.error.message)+"</p>";return}
- $("attendanceList").innerHTML=(q.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(customerName(x.worker_id))+'</strong><span>'+esc(x.work_date)+' • '+esc(x.status)+' • '+new Date(x.check_in).toLocaleString()+(x.check_out?" • out "+new Date(x.check_out).toLocaleString():"")+'</span></div>').join("")||"<p>No attendance records.</p>";
+ $("attendanceList").innerHTML=(q.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(workers.find(worker=>worker.id===x.worker_id)?.full_name||"Worker")+'</strong><span>'+esc(x.work_date)+' • '+esc(x.status)+' • '+new Date(x.check_in).toLocaleString()+(x.check_out?" • out "+new Date(x.check_out).toLocaleString():"")+'</span></div>').join("")||"<p>No attendance records.</p>";
 }
 async function renderWorkerReports(){
  const access=accessVersion;
  const q=await supabase.from("worker_reports").select("worker_id,report_date,report_title,report_body,status,admin_notes").order("report_date",{ascending:false}).limit(30);
  if(!admin||access!==accessVersion)return;
  if(q.error){$("workerReportsList").innerHTML="<p>"+esc(q.error.message)+"</p>";return}
- $("workerReportsList").innerHTML=(q.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(x.report_title)+'</strong><span>'+esc(customerName(x.worker_id))+' • '+esc(x.report_date)+' • '+esc(x.status)+'</span><small>'+esc(x.report_body)+'</small></div>').join("")||"<p>No worker reports.</p>";
+ $("workerReportsList").innerHTML=(q.data||[]).map(x=>'<div class="mgmt-row"><strong>'+esc(x.report_title)+'</strong><span>'+esc(workers.find(worker=>worker.id===x.worker_id)?.full_name||"Worker")+' • '+esc(x.report_date)+' • '+esc(x.status)+'</span><small>'+esc(x.report_body)+'</small></div>').join("")||"<p>No worker reports.</p>";
 }
 $("generateAttendanceCode")?.addEventListener("click",async()=>{const r=await supabase.rpc("admin_generate_attendance_code");if(r.error){$("attendanceCodeResult").textContent=r.error.message;return}$("attendanceCodeResult").textContent="TODAY'S ATTENDANCE CODE: "+r.data;await renderWorkerAttendance()});
 $("workerForm").addEventListener("submit",async event=>{
@@ -493,8 +493,11 @@ $("workerForm").addEventListener("submit",async event=>{
  const account=customers.find(row=>row.id===id&&row.account_type!=="admin");
  if(!account){workerSaveStatus("Choose an existing website account.","error");return;}
 
+ const fullName=account.full_name?.trim();
+ if(!fullName){workerSaveStatus("Add a full name to the selected website account before activating it.","error");return;}
  const payload={
-  id,
+  user_id:id,
+  full_name:fullName,
   employee_code:$("employeeCode").value.trim(),
   job_title:$("workerJobTitle").value.trim(),
   department:$("workerDepartment").value.trim()||null,
@@ -521,11 +524,11 @@ $("workerForm").addEventListener("submit",async event=>{
  workerSaveStatus("Saving worker details…");
  try {
   // The worker portal checks this same record to authorize access.
-  const {data,error}=await supabase.from("workers").upsert(payload,{onConflict:"id"})
-   .select("id,employment_status").single();
+  const {data,error}=await supabase.from("workers").upsert(payload,{onConflict:"user_id"})
+   .select("user_id,employment_status").single();
   if(access!==accessVersion||!admin)return;
   if(error)throw error;
-  if(data?.id!==id||data.employment_status!=="ACTIVE")throw Error("The database did not confirm the activation. Check the worker list before retrying.");
+  if(data?.user_id!==id||data.employment_status!=="ACTIVE")throw Error("The database did not confirm the activation. Check the worker list before retrying.");
   for(const field of ["workerBank","workerAccountName","workerAccountNumber"])$(field).value="";
   workerSaveStatus("Worker details saved. "+(account.full_name||"The worker")+" can open the Worker Portal from My Account.","success");
   loadAll().catch(()=>status("The worker was saved. Reload to refresh the worker list.",true));
