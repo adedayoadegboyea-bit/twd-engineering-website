@@ -175,6 +175,7 @@ async function loadPortfolio(){
 }
 function resetPortfolioProjectForm(){
   $("portfolioProjectEditId").value="";
+  $("portfolioProjectPicker").value="";
   $("portfolioProjectFormHeading").textContent="Publish New Project";
   $("portfolioProjectSubmit").textContent="Publish Project";
   $("portfolioProjectCancel").hidden=true;
@@ -187,6 +188,8 @@ function resetPortfolioProjectForm(){
 }
 function editPortfolioProject(id){
   const x=(window.portfolioProjects||[]).find(row=>row.id===id); if(!x)return;
+  if($("portfolioProjectEditId").value!==x.id)$("portfolioProjectFiles").value="";
+  $("portfolioProjectPicker").value=x.id;
   $("portfolioProjectEditId").value=x.id;
   $("portfolioProjectFormHeading").textContent="Edit Project";
   $("portfolioProjectSubmit").textContent="Save Project Changes";
@@ -207,6 +210,15 @@ function editPortfolioProject(id){
 }
 function renderPortfolioProjects(rows){
   window.portfolioProjects=rows;
+  const picker=$("portfolioProjectPicker");
+  const selected=$("portfolioProjectEditId").value;
+  picker.replaceChildren(new Option("Select a project",""));
+  for(const project of rows){
+    const details=[project.location||project.state,project.status].filter(Boolean).join(" · ");
+    picker.add(new Option(details ? project.title+" — "+details : project.title,project.id));
+  }
+  picker.value=rows.some(project=>project.id===selected)?selected:"";
+  picker.disabled=!rows.length;
   const box=$("portfolioProjectsList"); if(!box)return;
   box.innerHTML=rows.map(x=>"<div class='mgmt-row'><strong>"+esc(x.title)+"</strong><span>"+esc(x.state)+" • "+esc(x.category||"")+" • "+esc(x.status)+"</span><small>"+esc(x.location||"")+" • "+esc(x.completion_date||"")+"</small>"+(x.status==="PUBLISHED"?"<a href='project-record.html?id="+encodeURIComponent(x.id)+"'>Open project page →</a>":"")+"<div style='display:flex;gap:8px;flex-wrap:wrap;margin-top:8px'><button type='button' class='mgmt-btn small portfolio-edit-project' data-id='"+esc(x.id)+"'>Edit details / photos</button><button type='button' class='mgmt-btn small portfolio-archive' data-id='"+esc(x.id)+"'>"+(x.status==="ARCHIVED"?"Archived":"Archive")+"</button></div></div>").join("")||"<p>No portfolio projects yet.</p>";
   box.querySelectorAll(".portfolio-edit-project").forEach(b=>b.onclick=()=>editPortfolioProject(b.dataset.id));
@@ -245,6 +257,10 @@ function renderPortfolioGallery(rows){
   });
 }
 function portfolioStatus(t,bad=false){const el=$("portfolioStatus");if(el){el.textContent=t||"";el.className="mgmt-status"+(bad?" error":"")}}
+$("portfolioProjectPicker").addEventListener("change",event=>{
+  if(event.target.value)editPortfolioProject(event.target.value);
+  else resetPortfolioProjectForm();
+});
 $("refreshPortfolio")?.addEventListener("click",loadPortfolio);
 $("portfolioProjectCancel")?.addEventListener("click",()=>{resetPortfolioProjectForm();portfolioStatus("Project edit cancelled.")});
 $("portfolioGalleryCancel")?.addEventListener("click",()=>{resetPortfolioGalleryForm();portfolioStatus("Gallery edit cancelled.")});
@@ -253,6 +269,8 @@ $("portfolioProjectForm")?.addEventListener("submit",async e=>{
   const submitButton=$("portfolioProjectSubmit");
   if(submitButton.disabled)return;
   submitButton.disabled=true;
+  const picker=$('portfolioProjectPicker');
+  picker.disabled=true;
   const editId=$("portfolioProjectEditId").value.trim();
   portfolioStatus(editId?"Saving project changes…":"Creating project record and uploading photographs…");
   try{
@@ -300,7 +318,7 @@ $("portfolioProjectForm")?.addEventListener("submit",async e=>{
       throw err;
     }
     resetPortfolioProjectForm();portfolioStatus("Project published/saved successfully.");await loadPortfolio();
-  }catch(err){portfolioStatus(err.message||"Project save failed.",true)} finally { submitButton.disabled=false; }
+  }catch(err){portfolioStatus(err.message||"Project save failed.",true)} finally { submitButton.disabled=false; picker.disabled=!(window.portfolioProjects||[]).length; }
 });
 function resetPortfolioGalleryForm(){
   $("galleryEditId").value="";

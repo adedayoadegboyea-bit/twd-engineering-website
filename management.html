@@ -51,6 +51,11 @@
 <div id="portfolioStatus" class="mgmt-status"></div>
 <div class="portfolio-admin-grid">
 <div class="mgmt-panel">
+<div class="mgmt-form">
+<label>Edit an uploaded project
+<select id="portfolioProjectPicker" disabled><option value="">Select a project</option></select>
+</label>
+</div>
 <h3 id="portfolioProjectFormHeading">Publish New Project</h3>
 <form id="portfolioProjectForm" class="mgmt-form">
 <input id="portfolioProjectEditId" type="hidden" value="">
@@ -143,7 +148,7 @@
 </div>
 </section>
 </div></section></main>
-<script type="module" src="management.js?v=20261120"></script>
+<script type="module" src="management.js?v=20261120-project-picker"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{const signout=document.getElementById("signout"),link=document.getElementById("financeDeskLink");if(signout&&link){const show=()=>{link.hidden=signout.hidden};new MutationObserver(show).observe(signout,{attributes:true,attributeFilter:["hidden"]});show();}});</script>
 <script src="global-access.js?v=20260928-1"></script>
 <script src="/password-visibility.js?v=1" defer></script>
