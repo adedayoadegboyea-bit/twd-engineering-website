@@ -66,8 +66,11 @@ img { display: block; max-width: 100%; }
 .count-card { display: flex; flex-direction: column; min-width: 0; gap: 4px; padding: clamp(13px, 2vw, 25px); border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 10px; background: white; }
 .count-card:nth-child(even) { border-top-color: var(--green); }
 .count-card dt { font-size: clamp(.85rem, 1.6vw, 1.07rem); font-weight: 800; }
-.count-card dd[data-activity] { order: -1; color: var(--blue-dark); font-size: clamp(1.8rem, 4.2vw, 3.4rem); line-height: 1.1; font-weight: 800; letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.count-card .count-note { color: var(--muted); font-size: .82rem; }
+.count-card .count-value { color: var(--blue-dark); font-size: clamp(1.8rem, 4.2vw, 3.4rem); line-height: 1.1; font-weight: 800; letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.count-card .count-link { display: flex; flex-direction: column; gap: 6px; color: inherit; text-decoration: none; }
+.count-card .count-link:hover .count-note { text-decoration: underline; }
+.count-card .count-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; border-radius: 4px; }
+.count-card .count-note { color: var(--muted); font-size: .82rem; line-height: 1.4; letter-spacing: normal; }
 .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(11px, 2vw, 22px); }
 .home-service { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 13px; }
 .home-service img { width: 100%; height: auto; aspect-ratio: 1.85; object-fit: cover; }
