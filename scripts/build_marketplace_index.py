@@ -24,6 +24,7 @@ def page(path, title, description, content):
 <meta name="description" content="{escape(description[:155])}">
 <link rel="canonical" href="{SITE}/{path}">
 <link rel="stylesheet" href="/marketplace.css">
+<script defer src="/site-search.js"></script>
 </head>
 <body>
 <header class="mp-header"><div class="mp-container mp-nav"><a class="mp-brand" href="/"><img src="/assets/twd-luxury-logo.svg" alt="TW&amp;D Engineering">TW&amp;D</a><nav><a href="/marketplace.html">Marketplace</a><a href="/marketplace-listings/">Approved listings</a></nav></div></header>
