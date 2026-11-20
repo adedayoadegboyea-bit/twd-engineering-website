@@ -45,9 +45,9 @@
 <form id="documentForm" class="mgmt-form"><span class="eyebrow">PRIVATE PROJECT DOCUMENT</span><h3>Upload to customer's secure account</h3><label>Document description<input id="documentDescription"></label><label>File<input id="projectFile" type="file" required></label><button class="mgmt-btn">Upload Private Document</button><small>Files are stored in a private Supabase bucket and are not part of the public gallery.</small></form></div>
 <div id="reportsList" class="mgmt-subsection"></div><div id="documentsList" class="mgmt-subsection"></div>
 </div></section>
-<section class="mgmt-card wide portfolio-admin-card">
+<section id="projects-control" class="mgmt-card wide portfolio-admin-card">
 <div class="section-head"><div><span class="eyebrow">PUBLIC WEBSITE CONTENT</span><h2>Projects &amp; Gallery Control Centre</h2></div><button id="refreshPortfolio" class="mgmt-btn small" type="button">Refresh</button></div>
-<p class="mgmt-note">Only authorised TW&amp;D administrators can publish or update the public project portfolio and visual gallery. Uploaded images are stored in the public portfolio storage area.</p>
+<p class="mgmt-note">Only authorised TW&amp;D administrators can publish or update the public project portfolio and visual gallery. To add photos to an existing project page, choose the project in the photo form. To add photos to a newer project, select Edit beside that project.</p>
 <div id="portfolioStatus" class="mgmt-status"></div>
 <div class="portfolio-admin-grid">
 <div class="mgmt-panel">
@@ -74,10 +74,10 @@
 <h3>Update Website Gallery</h3>
 <form id="portfolioGalleryForm" class="mgmt-form">
 <input id="galleryEditId" type="hidden" value="">
-<label>Gallery Title<input id="galleryTitle" placeholder="e.g. Construction Progress"></label>
+<label>Where should these photos appear?<select id="galleryProject"><option value="">General gallery</option><option value="royal-garden-estate">Royal Garden Estate, Kulodi, Ibadan</option><option value="oore-ofe-jagun">Oore-Ofe Area, Jagun, Ibadan</option><option value="first-dammy-school-lagos">First Dammy Group of School, Sule Lane, Lagos</option><option value="tella-akobo">Tella Area, Akobo, Ibadan</option><option value="oloola-akingbade">Oloola Area, Akingbade Extension, Ibadan</option><option value="ajoda-estate">Ajoda Estate, Ibadan</option><option value="view-point-hotel">View Point Hotel, Olaogun Area, Ibadan</option><option value="six-bedroom-duplex-idi-ishin">6-Bedroom Duplex — Idi-Ishin, Jericho, Ibadan</option></select></label><label>Gallery Title<input id="galleryTitle" placeholder="e.g. Construction Progress"></label>
 <label>Category<select id="galleryCategory"><option>Architecture</option><option>Construction</option><option>Engineering</option><option>Site Visit</option><option>Residential Design</option><option>Commercial Design</option><option>Infrastructure</option><option>Other</option></select></label>
 <label>Caption<input id="galleryCaption" placeholder="Short description shown to visitors"></label>
-<label>Gallery Images<input id="galleryFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+<label>Photos to upload<input id="galleryFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
 <small id="galleryFilesHint">Select images to add new gallery items. When editing, selecting an image will replace the existing image.</small>
 <div style="display:flex;gap:8px;flex-wrap:wrap"><button id="portfolioGallerySubmit" class="mgmt-btn primary" type="submit">Add to Gallery</button><button id="portfolioGalleryCancel" class="mgmt-btn" type="button" hidden>Cancel Edit</button></div>
 </form>
@@ -143,7 +143,7 @@
 </div>
 </section>
 </div></section></main>
-<script type="module" src="management.js?v=c0faf7d17504"></script>
+<script type="module" src="management.js?v=project-photos1"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{const signout=document.getElementById("signout"),link=document.getElementById("financeDeskLink");if(signout&&link){const show=()=>{link.hidden=signout.hidden};new MutationObserver(show).observe(signout,{attributes:true,attributeFilter:["hidden"]});show();}});</script>
 <script src="global-access.js?v=20260928-1"></script>
 <script src="/password-visibility.js?v=1" defer></script>

@@ -1,0 +1,7 @@
+.project-record { padding-block: 2rem; }
+.project-record h1 { margin-block: 1.25rem .5rem; }
+#project-description { white-space: pre-line; }
+#project-photos { margin-block: 2rem; scroll-margin-top: 5rem; }
+.project-photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1rem; margin-top: 1rem; }
+.project-photo-grid figure { margin: 0; }
+.project-photo-grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: .75rem; }

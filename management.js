@@ -202,7 +202,7 @@ function editPortfolioProject(id){
 function renderPortfolioProjects(rows){
   window.portfolioProjects=rows;
   const box=$("portfolioProjectsList"); if(!box)return;
-  box.innerHTML=rows.map(x=>"<div class='mgmt-row'><strong>"+esc(x.title)+"</strong><span>"+esc(x.state)+" • "+esc(x.category||"")+" • "+esc(x.status)+"</span><small>"+esc(x.location||"")+" • "+esc(x.completion_date||"")+"</small><div style='display:flex;gap:8px;flex-wrap:wrap;margin-top:8px'><button type='button' class='mgmt-btn small portfolio-edit-project' data-id='"+esc(x.id)+"'>Edit</button><button type='button' class='mgmt-btn small portfolio-archive' data-id='"+esc(x.id)+"'>"+(x.status==="ARCHIVED"?"Archived":"Archive")+"</button></div></div>").join("")||"<p>No portfolio projects yet.</p>";
+  box.innerHTML=rows.map(x=>"<div class='mgmt-row'><strong>"+esc(x.title)+"</strong><span>"+esc(x.state)+" • "+esc(x.category||"")+" • "+esc(x.status)+"</span><small>"+esc(x.location||"")+" • "+esc(x.completion_date||"")+"</small>"+(x.status==="PUBLISHED"?"<a href='project-record.html?id="+encodeURIComponent(x.id)+"'>Open project page →</a>":"")+"<div style='display:flex;gap:8px;flex-wrap:wrap;margin-top:8px'><button type='button' class='mgmt-btn small portfolio-edit-project' data-id='"+esc(x.id)+"'>Edit</button><button type='button' class='mgmt-btn small portfolio-archive' data-id='"+esc(x.id)+"'>"+(x.status==="ARCHIVED"?"Archived":"Archive")+"</button></div></div>").join("")||"<p>No portfolio projects yet.</p>";
   box.querySelectorAll(".portfolio-edit-project").forEach(b=>b.onclick=()=>editPortfolioProject(b.dataset.id));
   box.querySelectorAll(".portfolio-archive").forEach(b=>b.onclick=async()=>{
     if(b.textContent==="Archived")return;
@@ -222,6 +222,7 @@ function editPortfolioGallery(id){
   $("galleryTitle").value=x.title||"";
   $("galleryCategory").value=x.category||"Other";
   $("galleryCaption").value=x.caption||"";
+  $("galleryProject").value=x.project_slug||"";
   document.getElementById("portfolioGalleryForm").scrollIntoView({behavior:"smooth",block:"center"});
   portfolioStatus("Editing gallery item: "+(x.title||"Untitled"));
 }
@@ -243,6 +244,9 @@ $("portfolioProjectCancel")?.addEventListener("click",()=>{resetPortfolioProject
 $("portfolioGalleryCancel")?.addEventListener("click",()=>{resetPortfolioGalleryForm();portfolioStatus("Gallery edit cancelled.")});
 $("portfolioProjectForm")?.addEventListener("submit",async e=>{
   e.preventDefault();
+  const submitButton=$("portfolioProjectSubmit");
+  if(submitButton.disabled)return;
+  submitButton.disabled=true;
   const editId=$("portfolioProjectEditId").value.trim();
   portfolioStatus(editId?"Saving project changes…":"Creating project record and uploading photographs…");
   try{
@@ -261,7 +265,10 @@ $("portfolioProjectForm")?.addEventListener("submit",async e=>{
       if(files.length){
         const uploaded=[];
         for(let i=0;i<files.length;i++){portfolioStatus("Uploading additional photograph "+(i+1)+" of "+files.length+"…");uploaded.push(await portfolioUploadFile(files[i],"projects/"+editId));}
-        const imgs=await supabase.from("portfolio_project_images").insert(uploaded.map((x,i)=>({project_id:editId,image_url:x.url,sort_order:Date.now()+i})));
+        const order=await supabase.from("portfolio_project_images").select("sort_order").eq("project_id",editId).order("sort_order",{ascending:false,nullsFirst:false}).limit(1).maybeSingle();
+        if(order.error)throw order.error;
+        const firstOrder=(order.data?.sort_order??-1)+1;
+        const imgs=await supabase.from("portfolio_project_images").insert(uploaded.map((x,i)=>({project_id:editId,image_url:x.url,sort_order:firstOrder+i})));
         if(imgs.error)throw imgs.error;
         if(!project.cover_image_url){
           const upd=await supabase.from("portfolio_projects").update({cover_image_url:uploaded[0].url,updated_at:new Date().toISOString()}).eq("id",editId);
@@ -282,7 +289,7 @@ $("portfolioProjectForm")?.addEventListener("submit",async e=>{
       if(upd.error)throw upd.error;
     }catch(err){await supabase.from("portfolio_projects").delete().eq("id",project.id);throw err}
     resetPortfolioProjectForm();portfolioStatus("Project published/saved successfully.");await loadPortfolio();
-  }catch(err){portfolioStatus(err.message||"Project save failed.",true)}
+  }catch(err){portfolioStatus(err.message||"Project save failed.",true)} finally { submitButton.disabled=false; }
 });
 function resetPortfolioGalleryForm(){
   $("galleryEditId").value="";
@@ -296,12 +303,15 @@ function resetPortfolioGalleryForm(){
 }
 $("portfolioGalleryForm")?.addEventListener("submit",async e=>{
   e.preventDefault();
+  const submitButton=$("portfolioGallerySubmit");
+  if(submitButton.disabled)return;
+  submitButton.disabled=true;
   const editId=$("galleryEditId").value.trim(),files=Array.from($("galleryFiles").files||[]);
   portfolioStatus(editId?"Saving gallery changes…":"Uploading gallery images…");
   try{
     if(editId){
       const x=(window.portfolioGallery||[]).find(row=>row.id===editId);if(!x)throw Error("Gallery item could not be found.");
-      const payload={title:$("galleryTitle").value.trim()||null,category:$("galleryCategory").value,caption:$("galleryCaption").value.trim()||null,updated_at:new Date().toISOString()};
+      const payload={title:$("galleryTitle").value.trim()||null,category:$("galleryCategory").value,caption:$("galleryCaption").value.trim()||null,project_slug:$("galleryProject").value||null,updated_at:new Date().toISOString()};
       if(files.length){
         if(files.length>1)throw Error("Select only one image when replacing an existing gallery image.");
         const up=await portfolioUploadFile(files[0],"gallery");
@@ -312,16 +322,29 @@ $("portfolioGalleryForm")?.addEventListener("submit",async e=>{
       resetPortfolioGalleryForm();portfolioStatus("Gallery item updated successfully.");await loadPortfolio();return;
     }
     if(!files.length)throw Error("Select at least one gallery image.");
-    for(let i=0;i<files.length;i++){
-      portfolioStatus("Uploading gallery image "+(i+1)+" of "+files.length+"…");
-      const up=await portfolioUploadFile(files[i],"gallery");
-      const q=await supabase.from("portfolio_gallery").insert({
-        title:$("galleryTitle").value.trim()||null,category:$("galleryCategory").value,caption:$("galleryCaption").value.trim()||null,image_url:up.url,sort_order:i,status:"PUBLISHED"
-      });
-      if(q.error)throw q.error;
+    const uploaded=[];
+    const fields={
+      title:$("galleryTitle").value.trim()||null,
+      category:$("galleryCategory").value,
+      caption:$("galleryCaption").value.trim()||null,
+      project_slug:$("galleryProject").value||null,
+      status:"PUBLISHED"
+    };
+    try{
+      for(let i=0;i<files.length;i++){
+        portfolioStatus("Uploading photo "+(i+1)+" of "+files.length+"…");
+        uploaded.push(await portfolioUploadFile(files[i],"gallery"));
+      }
+      const result=await supabase.from("portfolio_gallery").insert(
+        uploaded.map((photo,index)=>({...fields,image_url:photo.url,sort_order:index}))
+      );
+      if(result.error)throw result.error;
+    }catch(error){
+      if(uploaded.length)await supabase.storage.from("public-portfolio").remove(uploaded.map(photo=>photo.path));
+      throw error;
     }
     resetPortfolioGalleryForm();portfolioStatus("Gallery updated successfully.");await loadPortfolio();
-  }catch(err){portfolioStatus(err.message||"Gallery save failed.",true)}
+  }catch(err){portfolioStatus(err.message||"Gallery save failed.",true)} finally { submitButton.disabled=false; }
 });
 
 $("loginForm").onsubmit=async e=>{e.preventDefault();loginStatus("Signing in…");const {error}=await supabase.auth.signInWithPassword({email:$("adminEmail").value.trim(),password:$("adminPassword").value});if(error){loginStatus(error.message,true);return}await requireAdmin()};
