@@ -62,7 +62,7 @@ img { display: block; max-width: 100%; }
 .activity-section h2 { font-size: clamp(1.8rem, 3.4vw, 2.65rem); }
 .activity-status { color: var(--muted); font-size: .86rem; }
 .activity-status[data-state="live"] { color: var(--green); }
-.count-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.count-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .count-card { display: flex; flex-direction: column; min-width: 0; gap: 4px; padding: clamp(13px, 2vw, 25px); border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 10px; background: white; }
 .count-card:nth-child(even) { border-top-color: var(--green); }
 .count-card dt { font-size: clamp(.85rem, 1.6vw, 1.07rem); font-weight: 800; }

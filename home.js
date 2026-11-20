@@ -44,10 +44,6 @@ async function refreshTotals() {
       cache: "no-store",
       signal: AbortSignal.timeout(8000)
     });
-    if (response.status === 404 && !refreshedAt) {
-      status.textContent = "Live totals are awaiting connection.";
-      return;
-    }
     if (!response.ok) throw new Error("Could not fetch live totals.");
 
     const data = await response.json();
@@ -67,7 +63,7 @@ async function refreshTotals() {
     status.dataset.state = "unavailable";
     status.textContent = refreshedAt
       ? "Showing the last available totals from " + clock.format(refreshedAt) + " WAT."
-      : "Live totals are temporarily unavailable.";
+      : "Showing the latest confirmed company totals.";
   } finally {
     loadingTotals = false;
   }
