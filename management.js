@@ -103,9 +103,37 @@ function renderCustomers(){
   :filtered.length+" of "+customers.length+" website accounts";
  $("customersList").innerHTML=filtered.map(row=>
   '<div class="mgmt-row"><strong>'+esc(row.full_name||"Unnamed account")+'</strong><span>'+
-  esc(row.phone||"No phone")+' • '+esc(accountType(row))+'</span><span>'+esc(row.id)+'</span></div>'
+  esc(row.phone||"No phone")+' • '+esc(accountType(row))+'</span><span>'+esc(row.id)+'</span>'+
+  (row.account_type!=="admin"&&row.id!==admin?.id&&!workers.some(worker=>worker.user_id===row.id)
+   ?'<button type="button" class="mgmt-btn small" data-delete-account="'+esc(row.id)+'">Delete account</button>'
+   :"")+'</div>'
  ).join("")||(!accountError?"<p>No matching website accounts.</p>":"");
 }
+let deletingWebsiteAccount=false;
+$("customersList").addEventListener("click",async event=>{
+ const button=event.target.closest("button[data-delete-account]");
+ if(!button||!admin||deletingWebsiteAccount)return;
+ const account=customers.find(row=>row.id===button.dataset.deleteAccount);
+ if(!account||account.account_type==="admin"||account.id===admin.id)return;
+ if(!window.confirm("Permanently delete the website account for "+(account.full_name||account.id)+"? This removes their sign-in and cannot be undone."))return;
+ const access=accessVersion;
+ deletingWebsiteAccount=true;
+ button.disabled=true;
+ try{
+  const {error}=await supabase.rpc("admin_delete_website_account",{target_account_id:account.id});
+  if(!admin||access!==accessVersion)return;
+  if(error)throw error;
+  customers=customers.filter(row=>row.id!==account.id);
+  renderCustomers();
+  status("Website account deleted.");
+  await loadAll();
+ }catch(error){
+  if(admin&&access===accessVersion)status(error.message||"The website account could not be deleted.",true);
+ }finally{
+  deletingWebsiteAccount=false;
+  button.disabled=false;
+ }
+});
 $("accountSearch").addEventListener("input",renderCustomers);
 $("accountRole").addEventListener("change",renderCustomers);
 $("workerSearch").addEventListener("input",renderWorkers);
