@@ -5,6 +5,7 @@ const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 let admin=null,projects=[],customers=[],requests=[],quotations=[],workers=[];
 let accessVersion=0, loadVersion=0, accountError=null, workerError=null;
+const payrollFields=[["workerSalary","monthly_salary"],["workerOtherPayments","payroll_other_payments"],["workerDeductions","payroll_deductions"],["workerLoan","payroll_loan_repayment"]];
 let marketplaceKey="", marketplaceLoad=0, savingWorker=false;
 function status(t,bad=false){$("mgmtStatus").textContent=t||"";$("mgmtStatus").className="mgmt-status"+(bad?" error":"")}
 function loginStatus(t,bad=false){$("loginStatus").textContent=t||"";$("loginStatus").className="mgmt-status"+(bad?" error":"")}
@@ -21,6 +22,7 @@ function closeManagement(){
  $("workerForm").reset();
  $("saveWorker").disabled=true;
  workerSaveStatus("");
+ $("workerPayrollStatus").textContent="";
  for (const id of ["customersList","workersList","attendanceList","workerReportsList"]) $(id).replaceChildren();
  clearMarketplace();
 }
@@ -72,7 +74,7 @@ async function loadAll(){
   supabase.from("projects").select("*").order("updated_at",{ascending:false}),
   supabase.from("service_requests").select("id,customer_id,request_type,subject,message,status,created_at,updated_at").order("created_at",{ascending:false}).limit(100),
   supabase.from("quotations").select("*").order("created_at",{ascending:false}).limit(100),
-  fetchDirectory("workers","id,user_id,full_name,employee_code,job_title,department,employment_status")
+  fetchDirectory("workers","id,user_id,full_name,employee_code,job_title,department,employment_status,monthly_salary,payroll_other_payments,payroll_deductions,payroll_loan_repayment")
  ]);
  if(access!==accessVersion||revision!==loadVersion||!admin)return;
  accountError=c.error;workerError=w.error;
@@ -466,6 +468,7 @@ $("workerUser").addEventListener("change",()=>{
  $("employeeCode").value=current?.employee_code||"";
  $("workerJobTitle").value=current?.job_title||"";
  $("workerDepartment").value=current?.department||"";
+ for(const [id,key] of payrollFields)$(id).value=current?.[key]??"";
  for(const id of ["workerBank","workerAccountName","workerAccountNumber"])$(id).value="";
  workerSaveStatus(current?"Leave the bank fields blank to keep the current details.":"");
  updateWorkerSaveButton();
@@ -505,6 +508,11 @@ $("workerForm").addEventListener("submit",async event=>{
  };
  if(!payload.employee_code||!payload.job_title){
   workerSaveStatus("Enter an employee code and job title.","error");return;
+ }
+ for(const [field,key] of payrollFields){
+  const input=$(field);
+  if(!input.checkValidity()){workerSaveStatus("Enter valid payroll amounts in naira.","error");return;}
+  payload[key]=input.value===""?null:Number(input.value);
  }
  const bank={
   bank_name:$("workerBank").value.trim(),
@@ -611,3 +619,27 @@ $("marketplaceAdminLogin").addEventListener("submit",event=>{
 $("refreshMarketplaceAdmin").addEventListener("click",loadMarketplaceAdmin);
 
 requireAdmin();
+
+$("workerPayrollMonth").value=new Intl.DateTimeFormat("en-CA",{timeZone:"Africa/Lagos",year:"numeric",month:"2-digit"}).formatToParts(new Date()).filter(part=>part.type==="year"||part.type==="month").map(part=>part.value).join("-");
+$("downloadWorkerPayroll").addEventListener("click",async()=>{
+ if(!admin)return;
+ const month=$("workerPayrollMonth").value;
+ const note=$("workerPayrollStatus"),button=$("downloadWorkerPayroll"),access=accessVersion;
+ if(!/^\d{4}-\d{2}$/.test(month)){note.textContent="Choose a payroll month.";return;}
+ button.disabled=true;
+ note.textContent="Preparing payroll…";
+ try{
+  const [result,exporter]=await Promise.all([
+   supabase.from("workers").select("employee_code,full_name,department,bank_name,account_name,account_number,monthly_salary,payroll_other_payments,payroll_deductions,payroll_loan_repayment",{count:"exact"}).eq("employment_status","ACTIVE").order("employee_code").limit(101),
+   import("./worker-payroll-export.js?v=1")
+  ]);
+  if(!admin||access!==accessVersion)return;
+  if(result.error)throw result.error;
+  if(result.count>100)throw Error("The Excel template supports up to 100 active workers.");
+  if(!result.data?.length)throw Error("There are no active workers to export.");
+  await exporter.exportWorkerPayroll(result.data,month);
+  if(admin&&access===accessVersion)note.textContent="Payroll downloaded. Check salaries and deductions before approving payments.";
+ }catch(error){
+  if(admin&&access===accessVersion)note.textContent=error.message||"The payroll could not be downloaded.";
+ }finally{button.disabled=false;}
+});
