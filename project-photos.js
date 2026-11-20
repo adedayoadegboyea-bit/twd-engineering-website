@@ -48,7 +48,7 @@ async function loadProject() {
     title.textContent = "Project not found";
     return;
   }
-  const result = await db.from("portfolio_projects").select("title,state,location,description,cover_image_url")
+  const result = await db.from("portfolio_projects").select("title,state,location,category,description,cover_image_url")
     .eq("id", id).eq("status", "PUBLISHED").maybeSingle();
   if (result.error) throw result.error;
   if (!result.data) {
@@ -60,6 +60,9 @@ async function loadProject() {
   document.title = project.title + " | TW&D Engineering";
   document.getElementById("project-location").textContent = project.location || project.state || "";
   document.getElementById("project-description").textContent = project.description || "";
+  document.getElementById("project-overview").hidden = !project.description;
+  document.getElementById("project-category").textContent = project.category || "";
+  document.getElementById("project-meta").hidden = !project.category;
   const photos = await db.from("portfolio_project_images").select("image_url,caption")
     .eq("project_id", id).order("sort_order").order("created_at");
   if (photos.error) throw photos.error;

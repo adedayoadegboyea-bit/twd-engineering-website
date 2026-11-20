@@ -4,17 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Project record | TW&amp;D Engineering</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="project-details.css">
 <link rel="stylesheet" href="project-photos.css">
-<script type="module" src="project-photos.js?v=1"></script>
+<script type="module" src="project-photos.js?v=2"></script>
 </head>
 <body>
-<main class="container project-record">
-<nav aria-label="Project navigation"><a href="projects.html#project-records">← All project records</a></nav>
-<h1 id="project-title">Loading project…</h1>
-<p id="project-location"></p>
-<p id="project-description"></p>
-<section class="pd-section" id="project-photos" hidden data-project-photos><div class="pd-container"><h2>Project photographs</h2><div class="project-photo-grid" data-photo-grid></div></div></section>
+<header class="pd-nav"><div class="pd-container pd-nav-inner"><a class="pd-brand" href="index.html">TW<span>&amp;</span>D Engineering</a><a class="pd-back" href="projects.html#project-records">← All projects</a></div></header>
+<main>
+  <section class="pd-hero">
+    <div class="pd-container">
+      <h1 id="project-title">Loading project…</h1>
+      <p id="project-location"></p>
+      <div class="pd-meta" id="project-meta" hidden><span class="pd-chip" id="project-category"></span></div>
+    </div>
+  </section>
+  <section class="pd-main" id="project-overview" hidden>
+    <div class="pd-container pd-copy">
+      <h2>Project overview</h2>
+      <p id="project-description"></p>
+    </div>
+  </section>
+  <section class="pd-section" id="project-photos" hidden data-project-photos>
+    <div class="pd-container"><h2>Project photographs</h2><div class="project-photo-grid" data-photo-grid></div></div>
+  </section>
 </main>
 </body>
 </html>
