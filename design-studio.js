@@ -48,39 +48,155 @@ function getVisualSettings(){
   aesthetic:$('aestheticPreset').value,wall:$('wallColor').value,roof:$('roofColor').value,glass:$('glassColor').value,trim:$('trimColor').value,
   plan_line:$('planLineColor').value,plan_fill:$('planFillColor').value,line_width:+$('planLineWidth').value,
   room_count:+$('roomCount').value,partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
+  facade_finish:$('facadeFinish').value,column_style:$('columnStyle').value,
   features:{balcony:$('featureBalcony').checked,columns:$('featureColumns').checked,fins:$('featureFins').checked,driveway:$('featureDriveway').checked,landscape:$('featureLandscape').checked,parapet:$('featureParapet').checked}
  };
 }
 function drawBuilding(){
  if(!buildingGroup)return;buildingGroup.clear();
  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=+$('storeys').value||2,h=clamp(+$('floorHeight').value||3.2,2.7,5),roof=$('roofType').value,v=getVisualSettings(),total=n*h;
- const wall=new THREE.MeshStandardMaterial({color:v.wall,roughness:.82}),slab=new THREE.MeshStandardMaterial({color:0x929eaa,roughness:.85}),roofMat=new THREE.MeshStandardMaterial({color:v.roof,roughness:.65}),glass=new THREE.MeshStandardMaterial({color:v.glass,metalness:.18,roughness:.22}),trim=new THREE.MeshStandardMaterial({color:v.trim,roughness:.55}),dark=new THREE.MeshStandardMaterial({color:0x27384a,roughness:.6});
- box(buildingGroup,w,.35,d,0,.18,0,slab);
+ const mat=(c,r=.72,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
+ const wall=mat(v.wall,.78),slab=mat('#aeb6bf',.78),roofMat=mat(v.roof,.58),glass=mat(v.glass,.16,.24),trim=mat(v.trim,.42),dark=mat('#303943',.62),wood=mat(v.aesthetic==='luxury'?'#795039':'#80543a',.68),stone=mat('#b8b0a2',.88),light=mat('#fff0c8',.25,.08);
+ const finish=v.facade_finish;
+ const accent=finish==='charcoal'?dark:finish==='stone'?stone:finish==='timber'?wood:finish==='render'?wall:wood;
+ const cladding=finish==='signature'||finish==='charcoal';
+ const frontZ=d/2,backZ=-d/2;
+ // Raised plinth and crisp floor bands create the layered silhouette in TW&D's reference residence.
+ box(buildingGroup,w+.55,.42,d+.55,0,.21,0,slab);
  for(let floor=0;floor<n;floor++){
-   const y=floor*h+h/2;box(buildingGroup,w,h,d,0,y,0,wall);box(buildingGroup,w+.15,.18,d+.15,0,floor*h+.09,0,slab);
-   const count=Math.max(2,Math.floor(w/(v.window_style==='panoramic'?2.0:v.window_style==='wide'?2.4:2.8)));
+  const y=floor*h;
+  // Side elevations remain continuous; window reveals and frames are layered onto the side faces.
+  box(buildingGroup,.22,h,d, -w/2+.11,y+h/2,0,wall);
+  box(buildingGroup,.22,h,d, w/2-.11,y+h/2,0,wall);
+  // Front and rear walls are assembled around true window openings instead of covering glazing with a solid block.
+  const count=Math.max(2,Math.floor(w/(v.window_style==='panoramic'?2.45:v.window_style==='wide'?2.9:3.35)));
+  const bay=w/count,ww=Math.min(v.window_style==='panoramic'?bay*.78:v.window_style==='wide'?bay*.62:v.window_style==='slim'?bay*.34:bay*.48,bay*.82);
+  const wh=v.window_style==='slim'?h*.58:v.window_style==='panoramic'?h*.48:h*.43;
+  const wy=y+h*.53, sill=wy-wh/2, head=wy+wh/2;
+  for(const z of [frontZ,backZ]){
+   let cursor=-w/2;
    for(let i=0;i<count;i++){
-    const x=-w/2+(i+1)*w/(count+1),ww=Math.min(v.window_style==='panoramic'?2.1:v.window_style==='wide'?1.8:1.45,w/count*.68),wh=v.window_style==='slim'?1.7:v.window_style==='panoramic'?1.45:1.25;
-    box(buildingGroup,ww,wh,.08,x,y+.05,d/2+.045,glass);box(buildingGroup,ww,wh,.08,x,y+.05,-d/2-.045,glass);
-    if(v.window_style!=='panoramic'){box(buildingGroup,.045,wh+.08,.1,x-ww/2,y+.05,d/2+.05,trim);box(buildingGroup,.045,wh+.08,.1,x+ww/2,y+.05,d/2+.05,trim)}
+    const cx=-w/2+bay*(i+.5),left=cx-ww/2,right=cx+ww/2;
+    if(left>cursor)box(buildingGroup,left-cursor,h,.2,(left+cursor)/2,y+h/2,z,wall);
+    box(buildingGroup,ww,sill-y,.2,cx,(y+sill)/2,z,wall);
+    box(buildingGroup,ww,y+h-head,.2,cx,(head+y+h)/2,z,wall);
+    const pane=box(buildingGroup,ww-.10,wh-.10,.055,cx,wy,z+(z>0?.13:-.13),glass);
+    // Deep reveal surround, sill and head detail.
+    for(const xx of [left-.045,right+.045])box(buildingGroup,.09,wh+.18,.14,xx,wy,z+(z>0?.2:-.2),trim);
+    for(const yy of [sill-.045,head+.045])box(buildingGroup,ww+.18,.09,.14,cx,yy,z+(z>0?.2:-.2),trim);
+    box(buildingGroup,.045,wh-.12,.08,cx,wy,z+(z>0?.24:-.24),dark);
+    cursor=right;
    }
-   const sideCount=Math.max(2,Math.floor(d/3.5));for(let i=0;i<sideCount;i++){const z=-d/2+(i+1)*d/(sideCount+1);box(buildingGroup,.08,1.25,1.25,w/2+.045,y+.05,z,glass);box(buildingGroup,.08,1.25,1.25,-w/2-.045,y+.05,z,glass)}
-   if(v.features.balcony&&floor>0){
-    const bw=Math.min(w*.42,5.5);box(buildingGroup,bw,.18,1.35,0,floor*h+.2,d/2+.62,slab);
-    box(buildingGroup,bw,.08,.08,0,floor*h+1.15,d/2+1.25,trim);
-    for(let k=0;k<=6;k++)box(buildingGroup,.045,.9,.045,-bw/2+bw*k/6,floor*h+.68,d/2+1.25,trim);
+   if(cursor<w/2)box(buildingGroup,w/2-cursor,h,.2,(w/2+cursor)/2,y+h/2,z,wall);
+  }
+  // Side elevation glazing, with frames and projecting sills.
+  const sideCount=Math.max(2,Math.floor(d/4.2));
+  for(const side of [-1,1])for(let i=0;i<sideCount;i++){
+   const z=-d/2+(i+1)*d/(sideCount+1),sw=Math.min(1.45,d/sideCount*.58),sh=h*.43;
+   box(buildingGroup,.055,sh,sw,side*(w/2+.035),y+h*.54,z,glass);
+   for(const yy of [y+h*.54-sh/2-.04,y+h*.54+sh/2+.04])box(buildingGroup,.1,.08,sw+.14,side*(w/2+.08),yy,z,trim);
+   for(const zz of [z-sw/2-.04,z+sw/2+.04])box(buildingGroup,.1,sh+.16,.08,side*(w/2+.08),y+h*.54,zz,trim);
+  }
+  // Continuous slab edge and clean shadow line.
+  box(buildingGroup,w+.42,.22,d+.42,0,y+.12,0,trim);
+  if(floor>0&&v.features.balcony){
+   const bw=Math.min(w*.48,6.2),balY=y+.25;
+   box(buildingGroup,bw,.22,1.65,0,balY,frontZ+.78,trim);
+   box(buildingGroup,bw,.08,.08,0,balY+1.03,frontZ+1.56,glass);
+   for(let k=0;k<=10;k++)box(buildingGroup,.035,.88,.035,-bw/2+bw*k/10,balY+.55,frontZ+1.56,glass);
+   // Side cheek walls frame the balcony composition.
+   for(const xx of [-bw/2,bw/2])box(buildingGroup,.12,.95,1.5,xx,balY+.52,frontZ+.78,wall);
+  }
+  // Projecting feature bands and textured wall panels.
+  if(cladding){
+   const panelW=w*.31,panelH=h*.72,panelX=-w*.29;
+   box(buildingGroup,panelW,panelH,.12,panelX,y+h*.53,frontZ+.16,accent);
+   if(finish==='signature'||finish==='charcoal'){
+    for(let k=0;k<19;k++)box(buildingGroup,.025,panelH,.045,panelX-panelW/2+k*panelW/18,y+h*.53,frontZ+.245,finish==='charcoal'?trim:dark);
    }
+  }
+  if(finish==='signature'||finish==='timber'){
+   const woodX=w*.22,panelW=w*.23;
+   box(buildingGroup,panelW,h*.72,.13,woodX,y+h*.53,frontZ+.17,wood);
+   for(let k=0;k<7;k++)box(buildingGroup,.025,h*.68,.035,woodX-panelW*.42+k*panelW*.14,y+h*.53,frontZ+.25,mat('#b9875e',.75));
+  }
+  // Decorative horizontal fascia bands.
+  box(buildingGroup,w+.48,.16,.34,0,y+h-.12,frontZ+.10,trim);
  }
+ // Roof/parapet silhouette and oversized entrance canopy.
  drawRoof(w,d,total,roof,roofMat);
- if(v.features.parapet){box(buildingGroup,w+1,.85,.16,0,total+.55,d/2+.35,wall);box(buildingGroup,w+1,.85,.16,0,total+.55,-d/2-.35,wall);box(buildingGroup,.16,.85,d, w/2+.35,total+.55,0,wall);box(buildingGroup,.16,.85,d,-w/2-.35,total+.55,0,wall)}
- const doorMat=new THREE.MeshStandardMaterial({color:0x654b37});box(buildingGroup,1.1,2.25,.12,0,1.15,d/2+.08,doorMat);
- if(v.features.columns){for(const x of [-1.1,1.1]){const col=new THREE.Mesh(new THREE.BoxGeometry(.34,3.1,.34),trim);col.position.set(x,1.55,d/2+.48);col.castShadow=true;buildingGroup.add(col)}}
- if(v.features.fins){for(let i=0;i<7;i++){const x=-w*.38+i*w*.125;box(buildingGroup,.12,total*.82,.22,x,total*.48,d/2+.16,trim)}}
- const ground=new THREE.Mesh(new THREE.PlaneGeometry(100,100),new THREE.MeshStandardMaterial({color:0xdce6d9}));ground.rotation.x=-Math.PI/2;ground.position.y=-.12;buildingGroup.add(ground);
- if(v.features.driveway){const drive=new THREE.Mesh(new THREE.PlaneGeometry(Math.min(w*.72,7),Math.min(d*.55,10)),new THREE.MeshStandardMaterial({color:0x858b91,roughness:.95}));drive.rotation.x=-Math.PI/2;drive.position.set(0,-.105,d/2+Math.min(d*.25,4));buildingGroup.add(drive)}
- if(v.features.landscape){for(const x of [-w*.65,w*.65]){const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.12,.18,1.2,8),new THREE.MeshStandardMaterial({color:0x76553b}));trunk.position.set(x,.5,d*.28);buildingGroup.add(trunk);const crown=new THREE.Mesh(new THREE.SphereGeometry(.85,10,8),new THREE.MeshStandardMaterial({color:0x43835a}));crown.position.set(x,1.65,d*.28);buildingGroup.add(crown)}}
+ if(roof==='contemporary_flat'||roof==='custom'||roof==='combination'){
+  box(buildingGroup,w+1.35,.28,d+1.25,0,total+.24,0,trim);
+  box(buildingGroup,w+1.0,.12,d+1.0,0,total+.43,0,wall);
+ }
+ if(v.features.parapet){
+  for(const z of [frontZ+.32,backZ-.32])box(buildingGroup,w+1,.8,.2,0,total+.65,z,wall);
+  for(const x of [-w/2-.32,w/2+.32])box(buildingGroup,.2,.8,d,x,total+.65,0,wall);
+ }
+ // Recessed porch and a substantial floating canopy with warm soffit lights.
+ const porchW=Math.min(w*.58,7.2),porchZ=frontZ+1.05;
+ box(buildingGroup,porchW,.28,2.15,0,total>0?Math.min(h*.92,3.05):3.05,porchZ,trim);
+ box(buildingGroup,porchW-.24,.045,1.92,0,Math.min(h*.92,3.05)-.16,porchZ,wood);
+ for(let i=0;i<5;i++){
+  const x=-porchW*.4+i*porchW*.2;
+  const lamp=new THREE.Mesh(new THREE.SphereGeometry(.055,10,8),light);
+  lamp.position.set(x,Math.min(h*.92,3.05)-.105,porchZ+.5);buildingGroup.add(lamp);
+ }
+ // Main entrance door and full-height glazed side lights.
+ const doorMat=mat('#3b2c25',.38);
+ box(buildingGroup,1.35,2.45,.09,0,1.25,frontZ+.20,doorMat);
+ for(const x of [-.92,.92])box(buildingGroup,.34,2.28,.055,x,1.18,frontZ+.24,glass);
+ // Column family: square, fluted or rounded profiles with proper base and capital detailing.
+ if(v.features.columns){
+  const positions=[-porchW*.38,porchW*.38];
+  for(const x of positions){
+   if(v.column_style==='round'||v.column_style==='fluted'||v.column_style==='ionic'){
+    const radius=v.column_style==='ionic'?.24:.19;
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(radius,radius,3.15, v.column_style==='fluted'?20:32),trim);
+    shaft.position.set(x,1.72,porchZ+.9);shaft.castShadow=true;buildingGroup.add(shaft);
+    if(v.column_style==='fluted')for(let a=0;a<12;a++){
+     const angle=a*Math.PI/6,flute=new THREE.Mesh(new THREE.CylinderGeometry(.018,.018,3.0,6),dark);
+     flute.position.set(x+Math.cos(angle)*radius,1.72,porchZ+.9+Math.sin(angle)*radius);buildingGroup.add(flute);
+    }
+    box(buildingGroup,.62,.18,.62,x,.18,porchZ+.9,trim);
+    box(buildingGroup,.62,.22,.62,x,3.28,porchZ+.9,trim);
+    if(v.column_style==='ionic'){
+     box(buildingGroup,.82,.13,.78,x,3.43,porchZ+.9,trim);
+     for(const side of [-1,1]){const scroll=new THREE.Mesh(new THREE.TorusGeometry(.12,.035,8,16),trim);scroll.position.set(x+side*.23,3.43,porchZ+.9);scroll.rotation.y=Math.PI/2;buildingGroup.add(scroll)}
+    }
+   }else{
+    box(buildingGroup,.42,3.15,.42,x,1.72,porchZ+.9,trim);
+    box(buildingGroup,.62,.2,.62,x,.18,porchZ+.9,trim);
+    box(buildingGroup,.64,.2,.64,x,3.34,porchZ+.9,trim);
+   }
+  }
+ }
+ // Tall vertical feature fins echo the strong white portal frames in the homepage reference.
+ if(v.features.fins){
+  for(const x of [-w*.39,-w*.35,w*.35,w*.39])box(buildingGroup,.16,total*.88,.28,x,total*.48,frontZ+.22,trim);
+ }
+ // Warm linear accent lighting on the feature façade.
+ if(v.features.lighting){
+  for(const x of [-w*.17,w*.17]){
+   const strip=box(buildingGroup,.035,total*.72,.035,x,total*.48,frontZ+.32,light);
+   const glow=new THREE.PointLight(0xffdca0,.55,5);glow.position.set(x,total*.7,frontZ+.55);buildingGroup.add(glow);
+  }
+ }
+ // Ground, paved arrival court, garden beds and layered planting.
+ const ground=new THREE.Mesh(new THREE.PlaneGeometry(100,100),mat('#dce5d8',.98));ground.rotation.x=-Math.PI/2;ground.position.y=-.13;buildingGroup.add(ground);
+ if(v.features.driveway){
+  const drive=new THREE.Mesh(new THREE.PlaneGeometry(Math.min(w*.92,10),Math.min(d*.62,12)),mat('#737a80',.92));drive.rotation.x=-Math.PI/2;drive.position.set(0,-.105,frontZ+Math.min(d*.27,4));buildingGroup.add(drive);
+  for(const side of [-1,1])box(buildingGroup,.12,.12,Math.min(d*.62,12),side*Math.min(w*.49,5.2),-.035,frontZ+Math.min(d*.27,4),trim);
+ }
+ if(v.features.landscape){
+  for(const x of [-w*.72,-w*.57,w*.57,w*.72]){
+   const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.08,.14,1.35,10),mat('#79553a'));trunk.position.set(x,.55,d*.42);buildingGroup.add(trunk);
+   const crown=new THREE.Mesh(new THREE.SphereGeometry(.9,14,10),mat('#3e7b50',.95));crown.position.set(x,1.72,d*.42);buildingGroup.add(crown);
+   for(let k=0;k<3;k++){const shrub=new THREE.Mesh(new THREE.SphereGeometry(.34,10,8),mat('#4f8752',.96));shrub.position.set(x+(k-1)*.42,.3,d*.42+1.1);buildingGroup.add(shrub)}
+  }
+ }
  $('footprintValue').textContent=(w*d).toFixed(1)+' m²';$('storeyValue').textContent=String(n);$('roofValue').textContent=roofLabels[roof]||roof;
- if(camera){controls.target.set(0,total*.45,0);camera.position.set(Math.max(w,d)*1.6,total+Math.max(w,d)*.8,Math.max(w,d)*1.8);controls.update()}
+ if(camera){controls.target.set(0,total*.48,0);camera.position.set(Math.max(w,d)*1.65,total+Math.max(w,d)*.82,Math.max(w,d)*1.9);controls.update()}
  drawPlan(w,d,n,v);
 }
 function drawPlan(w,d,n,v=getVisualSettings()){
@@ -205,14 +321,15 @@ const aestheticPalettes={
  luxury:{wall:'#d8d0c1',roof:'#292d36',glass:'#6c9fb8',trim:'#c5a56a',line:'#243b53',fill:'#f5f0e7'},
  classic:{wall:'#efe6d5',roof:'#713f32',glass:'#83b4c9',trim:'#fffaf0',line:'#745b49',fill:'#fbf6ed'},
  tropical:{wall:'#e8e0c9',roof:'#344c3c',glass:'#6ea8b5',trim:'#f4ead3',line:'#46664f',fill:'#f4f6e9'},
- industrial:{wall:'#bfc5c9',roof:'#343a40',glass:'#668fa5',trim:'#e2e5e7',line:'#374a59',fill:'#edf1f3'}
+ industrial:{wall:'#bfc5c9',roof:'#343a40',glass:'#668fa5',trim:'#e2e5e7',line:'#374a59',fill:'#edf1f3'},
+ signature:{wall:'#e7e8e6',roof:'#e9e8e3',glass:'#263b52',trim:'#f6f5f1',line:'#34495e',fill:'#f7f8f7'}
 };
 function applyAesthetic(){
  const p=aestheticPalettes[$('aestheticPreset').value];if(!p)return;
  $('wallColor').value=p.wall;$('roofColor').value=p.roof;$('glassColor').value=p.glass;$('trimColor').value=p.trim;$('planLineColor').value=p.line;$('planFillColor').value=p.fill;drawBuilding();
 }
 $('aestheticPreset').addEventListener('change',applyAesthetic);
-['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','partitionDirection','primarySplitX','primarySplitY','windowStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet'].forEach(id=>$(id).addEventListener('input',drawBuilding));
+['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','partitionDirection','primarySplitX','primarySplitY','windowStyle','facadeFinish','columnStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet','featureLighting'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 
 ['width','depth','floorHeight','storeys'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 $('refreshPreview').addEventListener('click',drawBuilding);$('viewReset').addEventListener('click',drawBuilding);
