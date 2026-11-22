@@ -376,13 +376,22 @@ function drawBuilding(){
  // Ground, paved arrival court, garden beds and layered planting.
  const ground=new THREE.Mesh(new THREE.PlaneGeometry(100,100),mat('#dce5d8',.98,0,makeCanvasTexture('grass')));ground.rotation.x=-Math.PI/2;ground.position.y=-.13;ground.receiveShadow=true;buildingGroup.add(ground);
  if(v.features.driveway){
-  const driveTex=makeCanvasTexture('concrete');driveTex.repeat.set(3,5);const drive=new THREE.Mesh(new THREE.PlaneGeometry(Math.min(w*.92,10),Math.min(d*.62,12)),mat('#737a80',.92,0,driveTex));drive.rotation.x=-Math.PI/2;drive.position.set(0,-.105,frontZ+Math.min(d*.27,4));buildingGroup.add(drive);
-  for(const side of [-1,1])box(buildingGroup,.12,.12,Math.min(d*.62,12),side*Math.min(w*.49,5.2),-.035,frontZ+Math.min(d*.27,4),trim);
+  const driveW=Math.min(w*.92,10),driveD=Math.min(d*.62,12),driveZ=frontZ+Math.min(d*.27,4);
+  const pavingCanvas=document.createElement('canvas');pavingCanvas.width=512;pavingCanvas.height=512;const pctx=pavingCanvas.getContext('2d');pctx.fillStyle=interior.hardscape_color||'#858987';pctx.fillRect(0,0,512,512);
+  pctx.strokeStyle='rgba(35,42,45,.28)';pctx.lineWidth=4;const joint=interior.hardscape==='pavers'?64:interior.hardscape==='granite'?128:interior.hardscape==='stamped'?96:256;
+  if(interior.hardscape==='stamped'){for(let y=0;y<512;y+=joint){for(let x=0;x<512;x+=joint){pctx.strokeRect(x+3,y+3,joint-6,joint-6);pctx.beginPath();pctx.moveTo(x+joint/2,y+3);pctx.lineTo(x+joint/2,y+joint-3);pctx.stroke();}}}
+  else if(interior.hardscape==='pavers'){for(let y=0;y<512;y+=joint){pctx.beginPath();pctx.moveTo(0,y);pctx.lineTo(512,y);pctx.stroke();for(let x=(Math.floor(y/joint)%2)*joint/2;x<512;x+=joint){pctx.beginPath();pctx.moveTo(x,y);pctx.lineTo(x,y+joint);pctx.stroke();}}}
+  else if(interior.hardscape==='exposed'){for(let k=0;k<2600;k++){pctx.fillStyle='rgba(245,245,240,'+(Math.random()*.35)+')';pctx.beginPath();pctx.arc(Math.random()*512,Math.random()*512,Math.random()*2+1,0,Math.PI*2);pctx.fill();}}
+  const driveTex=new THREE.CanvasTexture(pavingCanvas);driveTex.colorSpace=THREE.SRGBColorSpace;driveTex.wrapS=driveTex.wrapT=THREE.RepeatWrapping;driveTex.repeat.set(2,3);
+  const drive=new THREE.Mesh(new THREE.PlaneGeometry(driveW,driveD),mat('#ffffff',interior.hardscape==='smooth'?.28:.78,0,driveTex));drive.rotation.x=-Math.PI/2;drive.position.set(0,-.105,driveZ);drive.receiveShadow=true;buildingGroup.add(drive);
+  for(const side of [-1,1])box(buildingGroup,.12,.12,driveD,side*driveW/2,-.035,driveZ,trim);
+  if(interior.show_stamped_joints&&interior.hardscape==='stamped')for(let z=-driveD/2+1;z<driveD/2;z+=1.8)box(buildingGroup,driveW,.012,.018,0,-.09,driveZ+z,mat('#5f6664',.9));
  }
- if(v.features.landscape){
+ if(v.features.landscape&&interior.garden!=='none'&&interior.show_green_areas!==false){
+  const gardenTone=interior.garden==='formal'?'#39734a':interior.garden==='minimal'?'#72915a':'#3e7b50';
   for(const x of [-w*.72,-w*.57,w*.57,w*.72]){
    const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.08,.14,1.35,10),mat('#79553a'));trunk.position.set(x,.55,d*.42);buildingGroup.add(trunk);
-   const crown=new THREE.Mesh(new THREE.SphereGeometry(.9,14,10),mat('#3e7b50',.95));crown.position.set(x,1.72,d*.42);buildingGroup.add(crown);
+   const crown=new THREE.Mesh(new THREE.SphereGeometry(.9,14,10),mat(gardenTone,.95));crown.position.set(x,1.72,d*.42);buildingGroup.add(crown);
    for(let k=0;k<3;k++){const shrub=new THREE.Mesh(new THREE.SphereGeometry(.34,10,8),mat('#4f8752',.96));shrub.position.set(x+(k-1)*.42,.3,d*.42+1.1);buildingGroup.add(shrub)}
   }
  }
@@ -646,6 +655,7 @@ $('viewPerspective').addEventListener('click',()=>setCameraView('perspective'));
 $('viewInterior').addEventListener('click',()=>{$('interiorViewMode').value='interior';drawBuilding();setCameraView('interior')});
 $('viewCutaway').addEventListener('click',()=>{$('interiorViewMode').value='cutaway';drawBuilding();setCameraView('cutaway')});
 $('interiorViewMode').addEventListener('change',()=>{drawBuilding();setCameraView($('interiorViewMode').value==='interior'?'interior':$('interiorViewMode').value==='cutaway'?'cutaway':'perspective')});
+$('interiorViewMode').addEventListener('change',()=>{const mode=$('interiorViewMode').value;viewer.dataset.previewMode=mode;$('viewerStatus').textContent=mode==='interior'?'Interior inspection mode · outer walls transparent':mode==='cutaway'?'Roof-off cutaway mode · rotate to inspect':'Exterior presentation mode'});
 $('viewFront').addEventListener('click',()=>setCameraView('front'));
 $('viewSide').addEventListener('click',()=>setCameraView('side'));
 $('viewTop').addEventListener('click',()=>setCameraView('top'));
