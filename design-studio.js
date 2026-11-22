@@ -311,6 +311,7 @@ function drawBuilding(){
  drawPlan(w,d,n,v);
 }
 function drawPlan(w,d,n,v=getVisualSettings()){
+ const doorGapMin=()=>8;
  const sx=520,sy=360,pad=30,plotW=Math.max(1,+$('plotWidth').value||30),plotD=Math.max(1,+$('plotDepth').value||40);
  const scale=Math.min((sx-2*pad)/plotW,(sy-2*pad)/plotD),plotPx=plotW*scale,plotPy=plotD*scale,px=(sx-plotPx)/2,py=(sy-plotPy)/2;
  const setback=Math.max(0,+$('sideSetback').value||0)*scale,front=Math.max(0,+$('frontSetback').value||0)*scale;const plotFit=(w+2*(+$('sideSetback').value||0)<=plotW)&&(d+(+$('frontSetback').value||0)+(+$('sideSetback').value||0)<=plotD);
@@ -328,15 +329,22 @@ function drawPlan(w,d,n,v=getVisualSettings()){
  const roomLines=[],roomLabels=[];
  if(shape==='rectangle'){
   const cols=Math.ceil(rooms/2),rows=2;
-  for(let i=1;i<cols;i++)roomLines.push('<line x1="'+(bx+rw*i/cols)+'" y1="'+by+'" x2="'+(bx+rw*i/cols)+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
-  roomLines.push('<line x1="'+bx+'" y1="'+(by+rd/2)+'" x2="'+(bx+rw)+'" y2="'+(by+rd/2)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+  // Partition walls are drawn as separate runs, leaving a real visual door opening.
+  for(let i=1;i<cols;i++){
+   const x=bx+rw*i/cols,mid=by+rd*.5,gap=Math.max(doorGapMin(),Math.min(13,rd*.055));
+   roomLines.push('<line x1="'+x+'" y1="'+by+'" x2="'+x+'" y2="'+(mid-gap/2)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+   roomLines.push('<line x1="'+x+'" y1="'+(mid+gap/2)+'" x2="'+x+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+  }
+  const midX=bx+rw*.5,gapX=Math.max(8,Math.min(14,rw*.055));
+  roomLines.push('<line x1="'+bx+'" y1="'+(by+rd/2)+'" x2="'+(midX-gapX/2)+'" y2="'+(by+rd/2)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+  roomLines.push('<line x1="'+(midX+gapX/2)+'" y1="'+(by+rd/2)+'" x2="'+(bx+rw)+'" y2="'+(by+rd/2)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
   const names=(v.room_names||[]).length?v.room_names:['Room 1','Room 2','Room 3','Room 4','Room 5','Room 6'];
   for(let i=0;i<rooms;i++){
    const col=i%cols,row=Math.floor(i/cols),cx=bx+rw*(col+.5)/cols,cy=by+rd*(row+.5)/rows;
-   const label=String(names[i]||('Room '+(i+1))).slice(0,22).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
+   const label=String(names[i]||('Room '+(i+1))).slice(0,22).replace(/[&<>\\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
    roomLabels.push('<text x="'+cx+'" y="'+cy+'" font-size="9" fill="'+line+'" text-anchor="middle" dominant-baseline="middle">'+label+'</text>');
   }
- }else{
+ }}else{
   roomLines.push('<line x1="'+(bx+rw*.5)+'" y1="'+by+'" x2="'+(bx+rw*.5)+'" y2="'+(by+rd*.48)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
   roomLines.push('<line x1="'+(bx+rw*.22)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.78)+'" y2="'+(by+rd*.5)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
   roomLines.push('<line x1="'+(bx+rw*.22)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.22)+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
