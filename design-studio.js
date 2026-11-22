@@ -329,7 +329,7 @@ async function saveDesign(e){e?.preventDefault();if(!currentUser){$('formStatus'
  $('saveProject').disabled=true;$('formStatus').textContent='Saving your design brief securely…';
  try{
    let result;
-   if(currentProjectId){result=await supabase.from('design_projects').update({client_name:b.client_name,client_email:b.client_email,client_phone:b.client_phone,project_name:b.project_name,project_type:b.project_type,site_location:b.site_location,site_dimensions:b.site_dimensions,building_requirements:b.building_requirements,roof_type:b.building_requirements.roof_type,custom_roof_description:b.building_requirements.custom_roof_description,latest_revision:currentRevision+1}).eq('id',currentProjectId).select().single()}
+   if(currentProjectId){const old=await supabase.from('design_projects').select('building_requirements').eq('id',currentProjectId).single();if(old.error)throw old.error;b.building_requirements.project_documents=old.data.building_requirements?.project_documents||[];result=await supabase.from('design_projects').update({client_name:b.client_name,client_email:b.client_email,client_phone:b.client_phone,project_name:b.project_name,project_type:b.project_type,site_location:b.site_location,site_dimensions:b.site_dimensions,building_requirements:b.building_requirements,roof_type:b.building_requirements.roof_type,custom_roof_description:b.building_requirements.custom_roof_description,latest_revision:currentRevision+1}).eq('id',currentProjectId).select().single()}
    else{result=await supabase.from('design_projects').insert({owner_id:currentUser.id,client_name:b.client_name,client_email:b.client_email,client_phone:b.client_phone,project_name:b.project_name,project_type:b.project_type,site_location:b.site_location,site_dimensions:b.site_dimensions,building_requirements:b.building_requirements,roof_type:b.building_requirements.roof_type,custom_roof_description:b.building_requirements.custom_roof_description}).select().single()}
    if(result.error)throw result.error;currentProjectId=result.data.id;currentRevision=result.data.latest_revision||1;renderUploadedFiles(b.building_requirements.project_documents||[]);
    const rev=await supabase.from('design_revisions').insert({design_project_id:currentProjectId,revision_number:currentRevision,design_inputs:b,generated_geometry:{type:'concept_mass_model',width_m:b.site_dimensions.width_m,depth_m:b.site_dimensions.depth_m,storeys:b.site_dimensions.storeys,floor_height_m:b.site_dimensions.floor_height_m,roof_type:b.building_requirements.roof_type,visual_settings:b.visual_settings},change_summary:'Design brief saved from TW&D Design Studio',created_by:currentUser.id});
@@ -424,7 +424,22 @@ async function loadAdminTakeoffRequests(){
  const host=$('takeoffRequestList');if(!host)return;
  const r=await supabase.from('boq_projects').select('id,client_name,project_name,project_type,project_location,status,scope_notes,created_at').like('scope_notes','AUTOMATED TAKE-OFF REQUEST%').order('created_at',{ascending:false}).limit(100);
  if(r.error){host.textContent=r.error.message;return}
- host.innerHTML=(r.data||[]).map(x=>'<div class="invoice-card"><div><strong>'+escapeHtml(x.project_name)+' · '+escapeHtml(x.client_name)+'</strong><small>'+escapeHtml(x.project_location||'Location not supplied')+' · '+new Date(x.created_at).toLocaleDateString('en-NG')+' · '+escapeHtml(x.status)+'</small><small>'+escapeHtml(x.scope_notes)+'</small></div><strong>'+x.id.slice(0,8)+'</strong></div>').join('')||'No automated take-off requests are awaiting review.';
+ const cards=[];
+ for(const x of (r.data||[])){
+  let links='';
+  const dp=await supabase.from('design_projects').select('id,building_requirements').eq('quotation_id',x.id).maybeSingle();
+  if(!dp.error&&dp.data){
+   const docs=dp.data.building_requirements?.project_documents||[];
+   const anchors=[];
+   for(const doc of docs){
+    const signed=await supabase.storage.from('twd-design-files').createSignedUrl(doc.path,3600);
+    if(!signed.error&&signed.data?.signedUrl)anchors.push('<a href="'+escapeHtml(signed.data.signedUrl)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(doc.name)+'</a>');
+   }
+   if(anchors.length)links='<small>Submitted files: '+anchors.join(' · ')+'</small>';
+  }
+  cards.push('<div class="invoice-card"><div><strong>'+escapeHtml(x.project_name)+' · '+escapeHtml(x.client_name)+'</strong><small>'+escapeHtml(x.project_location||'Location not supplied')+' · '+new Date(x.created_at).toLocaleDateString('en-NG')+' · '+escapeHtml(x.status)+'</small><small>'+escapeHtml(x.scope_notes)+'</small>'+links+'</div><strong>'+x.id.slice(0,8)+'</strong></div>');
+ }
+ host.innerHTML=cards.join('')||'No automated take-off requests are awaiting review.';
 }
 async function loadAdminRates(){
  const r=await supabase.from('boq_price_catalog').select('*').order('description').limit(200);if(r.error){$('adminCatalogList').textContent=r.error.message;return}
@@ -440,7 +455,7 @@ async function saveAdminRate(e){
 }
 async function adminActions(e){
  const edit=e.target.closest('.edit-rate'),toggle=e.target.closest('.toggle-rate');if(edit){const r=await supabase.from('boq_price_catalog').select('*').eq('id',edit.dataset.id).single();if(r.data){$('adminRateCategory').value=r.data.category;$('adminRateDescription').value=r.data.description;$('adminRateUnit').value=r.data.unit;$('adminRateValue').value=r.data.unit_rate;$('adminRateLocation').value=r.data.source_location||'';$('adminRateExpiry').value=r.data.valid_until||'';$('adminRateStatus').textContent='Template copied into the form. Saving creates a new rate; deactivate the old rate to preserve its price history.'}return}
- if(toggle){const r=await supabase.from('boq_price_catalog').update({active:toggle.dataset.active!=='true',updated_by:currentUser.id}).eq('id',toggle.dataset.id);if(r.error)alert(r.error.message);await loadAdminRates();await loadApprovedRates()}
+ if(toggle){const r=await supabase.from('boq_price_catalog').update({active:toggle.dataset.active!=='true',updated_by:currentUser.id}).eq('id',toggle.dataset.id);if(r.error)alert(r.error.message);await loadAdminRates()}
 }
 async function reviewSupplier(e){
  const b=e.target.closest('.approve-supplier'),n=e.target.closest('.reject-supplier');if(!b&&!n)return;const id=(b||n).dataset.id;
@@ -449,11 +464,6 @@ async function reviewSupplier(e){
  if(b){const c=await supabase.from('boq_price_catalog').insert({category:x.category,description:x.item_description,unit:x.unit,unit_rate:x.unit_rate,currency:'NGN',active:true,price_source:'supplier',supplier_name:x.supplier_name,source_location:x.location,source_reference:x.quote_reference,valid_from:x.quoted_at,valid_until:x.valid_until,updated_by:currentUser.id}).select().single();if(c.error){alert(c.error.message);return}catalogId=c.data.id}
  const u=await supabase.from('boq_supplier_quotes').update({status:b?'approved':'rejected',reviewed_by:currentUser.id,reviewed_at:new Date().toISOString(),catalog_item_id:catalogId}).eq('id',id);if(u.error)alert(u.error.message);
  await loadSupplierReview();await loadAdminRates();
-}
-async function issueInvoice(e){
- e.preventDefault();const p=$('invoiceProjectSelect').selectedOptions[0];if(!p?.value)return;
- const r=await supabase.from('design_payment_orders').insert({design_project_id:p.value,owner_id:p.dataset.owner,invoice_number:'TWD-DS-'+Date.now(),purpose:$('invoicePurpose').value.trim(),amount:Number($('invoiceAmount').value),currency:'NGN',created_by:currentUser.id,status:'pending'});
- $('invoiceAdminStatus').textContent=r.error?r.error.message:'Invoice issued.';if(!r.error){await supabase.from('design_projects').update({payment_status:'pending'}).eq('id',p.value);$('invoiceForm').reset();await loadInvoices()}
 }
 async function verifyReturn(){
  const q=new URLSearchParams(location.search),ref=q.get('tx_ref'),id=q.get('transaction_id');if(!ref)return;
