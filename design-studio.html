@@ -10,7 +10,17 @@
 <link rel="stylesheet" href="design-studio.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="/platform-shell.js?v=20261122-unified" defer></script>\n</head>
+<script src="/platform-shell.js?v=20261122-unified" defer></script>\n<style>
+.design-customizer{margin-top:14px;padding:16px;border:1px solid #d9e2ed;border-radius:12px;background:linear-gradient(145deg,#fbfdff,#f1f6fc)}
+.customizer-heading{display:grid;gap:4px;margin-bottom:14px}.customizer-heading strong{color:#10294d;font-size:14px}.customizer-heading span,.customizer-note{font-size:11px;color:#64758a}
+.design-customizer>label{display:grid;gap:6px;margin:10px 0;font-size:12px;font-weight:750;color:#314761}
+.design-customizer input[type=color]{height:42px;padding:4px;cursor:pointer}
+.design-customizer input[type=range]{padding:0;accent-color:#0755dd}
+.feature-options{display:flex;flex-wrap:wrap;gap:10px 16px;padding:13px;margin-top:12px;background:#fff;border:1px solid #e1e8f0;border-radius:9px}
+.feature-options strong{width:100%;font-size:12px;color:#314761}.feature-options label{display:flex;align-items:center;gap:6px;font-size:11px;color:#455d77;font-weight:650}.feature-options input{width:auto;min-height:auto;accent-color:#0755dd}
+.customizer-note{line-height:1.55;margin:12px 0 0}
+</style>
+</head>
 <body>
 <header class="ds-header"><a href="index.html" class="ds-brand">TW&amp;D <span>ENGINEERING</span></a><nav><a href="index.html">Main website</a><a href="workspace.html">Online workspace</a><a href="services.html">Services</a><a href="account.html">My account</a></nav></header>
 <main class="ds-wrap">
@@ -32,6 +42,34 @@
 <label>Floor-to-floor height (metres)<input id="floorHeight" type="number" min="2.7" max="5" step=".1" value="3.2"></label>
 <label>Roof style<select id="roofType"><option value="contemporary_flat">Contemporary flat roof</option><option value="conventional_gable" selected>Conventional gable roof</option><option value="hip">Hip roof</option><option value="butterfly">Butterfly roof</option><option value="mono_pitch">Mono-pitch / shed roof</option><option value="combination">Combination roof</option><option value="mansard">Mansard roof</option><option value="custom">Custom roof</option></select></label>
 <label class="wide" id="customRoofWrap" hidden>Describe your custom roof<input id="customRoof" placeholder="Describe roof geometry, materials or special features"></label>
+<div class="wide design-customizer">
+  <div class="customizer-heading"><strong>05 · Visual design &amp; layout controls</strong><span>Changes update the 3D model and concept plan instantly.</span></div>
+  <label>Architectural aesthetic<select id="aestheticPreset"><option value="modern">Modern minimalist</option><option value="luxury">Luxury contemporary</option><option value="classic">Classic / timeless</option><option value="tropical">Tropical modern</option><option value="industrial">Industrial modern</option><option value="custom">Custom colours</option></select></label>
+  <div class="field-grid">
+    <label>Wall colour<input id="wallColor" type="color" value="#e7e4dc"></label>
+    <label>Roof colour<input id="roofColor" type="color" value="#233b57"></label>
+    <label>Glass / window tint<input id="glassColor" type="color" value="#79b6d4"></label>
+    <label>Architectural trim<input id="trimColor" type="color" value="#ffffff"></label>
+    <label>Plan line colour<input id="planLineColor" type="color" value="#42617d"></label>
+    <label>Plan background<input id="planFillColor" type="color" value="#f7fafc"></label>
+  </div>
+  <div class="field-grid">
+    <label>Room / partition count<select id="roomCount"><option value="2">2 main zones</option><option value="3">3 rooms / zones</option><option value="4" selected>4 rooms / zones</option><option value="5">5 rooms / zones</option><option value="6">6 rooms / zones</option></select></label>
+    <label>Partition direction<select id="partitionDirection"><option value="vertical">Vertical divisions</option><option value="horizontal">Horizontal divisions</option><option value="mixed" selected>Mixed layout</option></select></label>
+    <label>Plan line thickness<input id="planLineWidth" type="range" min="1" max="5" step=".5" value="1.5"></label>
+    <label>Window size<select id="windowStyle"><option value="standard">Standard</option><option value="wide">Wide glazing</option><option value="slim">Slim vertical</option><option value="panoramic">Panoramic</option></select></label>
+  </div>
+  <div class="feature-options">
+    <strong>Optional exterior features</strong>
+    <label><input type="checkbox" id="featureBalcony" checked> Balconies</label>
+    <label><input type="checkbox" id="featureColumns"> Entrance columns</label>
+    <label><input type="checkbox" id="featureFins"> Decorative façade fins</label>
+    <label><input type="checkbox" id="featureDriveway"> Driveway</label>
+    <label><input type="checkbox" id="featureLandscape"> Landscape elements</label>
+    <label><input type="checkbox" id="featureParapet"> Roof parapet</label>
+  </div>
+  <p class="customizer-note">These controls shape a conceptual massing model and diagrammatic room zoning. They do not generate dimensioned, construction-ready architectural floor plans or replace an architect's coordinated drawings.</p>
+</div>
 <label class="wide">Room / space requirements<textarea id="requirements" rows="4" placeholder="List bedrooms, living rooms, kitchen, bathrooms, offices, parking, balconies and other requirements."></textarea></label>
 </div>
 <div class="form-actions"><button type="button" class="secondary" id="refreshPreview">Update 3D preview</button><button type="submit" class="primary" id="saveProject">Save design brief</button></div>
