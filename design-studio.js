@@ -44,7 +44,7 @@ function setup3D(){
   const width=Math.max(1,viewer.clientWidth),height=Math.max(1,viewer.clientHeight);
   camera=new THREE.PerspectiveCamera(36,width/height,.1,600);camera.position.set(30,22,34);
   renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.75));renderer.setSize(width,height);
+  const isMobile=matchMedia('(max-width: 760px)').matches;const cores=navigator.hardwareConcurrency||4;const memory=navigator.deviceMemory||4;const qualityCap=cores<=4||memory<=4?(isMobile?1.15:1.5):(isMobile?1.5:2.25);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,qualityCap));renderer.setSize(width,height);
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
   viewer.replaceChildren(renderer.domElement);
@@ -57,7 +57,7 @@ function setup3D(){
   controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.055;controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.495;controls.minDistance=7;controls.maxDistance=180;
   scene.add(new THREE.HemisphereLight(0xe8f3ff,0x78816e,1.35));
   const sun=new THREE.DirectionalLight(0xfff0d8,3.2);sun.position.set(-28,42,24);sun.castShadow=true;
-  sun.shadow.mapSize.set(1536,1536);sun.shadow.camera.left=-45;sun.shadow.camera.right=45;sun.shadow.camera.top=45;sun.shadow.camera.bottom=-45;sun.shadow.bias=-.00018;sun.shadow.normalBias=.025;scene.add(sun);
+  sun.shadow.mapSize.set(cores<=4||memory<=4?1024:2048,cores<=4||memory<=4?1024:2048);sun.shadow.camera.left=-45;sun.shadow.camera.right=45;sun.shadow.camera.top=45;sun.shadow.camera.bottom=-45;sun.shadow.bias=-.00018;sun.shadow.normalBias=.025;scene.add(sun);
   const fill=new THREE.DirectionalLight(0xd6e7ff,.85);fill.position.set(25,18,-25);scene.add(fill);
   const sky=new THREE.Mesh(new THREE.SphereGeometry(260,32,20),new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,uniforms:{top:{value:new THREE.Color('#6e91b2')},bottom:{value:new THREE.Color('#e5edf2')}},vertexShader:'varying vec3 vWorld; void main(){vec4 p=modelMatrix*vec4(position,1.0);vWorld=p.xyz;gl_Position=projectionMatrix*viewMatrix*p;}',fragmentShader:'varying vec3 vWorld; uniform vec3 top; uniform vec3 bottom; void main(){float h=normalize(vWorld).y;float t=smoothstep(-.18,.62,h);gl_FragColor=vec4(mix(bottom,top,t),1.0);}' }));
   scene.add(sky);
@@ -98,6 +98,7 @@ function drawRoof(w,d,y,style,mat){
 function getVisualSettings(){
  return {
   aesthetic:$('aestheticPreset').value,wall:$('wallColor').value,roof:$('roofColor').value,glass:$('glassColor').value,trim:$('trimColor').value,
+  building_shape:$('buildingShape').value,plot_width_m:+$('plotWidth').value,plot_depth_m:+$('plotDepth').value,front_setback_m:+$('frontSetback').value,side_setback_m:+$('sideSetback').value,plot_orientation:$('plotOrientation').value,
   plan_line:$('planLineColor').value,plan_fill:$('planFillColor').value,line_width:+$('planLineWidth').value,
   room_count:+$('roomCount').value,partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
   facade_finish:$('facadeFinish').value,column_style:$('columnStyle').value,
@@ -283,6 +284,15 @@ function drawBuilding(){
    const glow=new THREE.PointLight(0xffdca0,.55,5);glow.position.set(x,total*.7,frontZ+.55);buildingGroup.add(glow);
   }
  }
+ // Shape-specific courtyard / wing cut-outs keep the 3D massing aligned with the selected plan footprint.
+ const grassCut=mat('#71865b',.98,0,makeCanvasTexture('grass'));
+ const cutHeight=total+1.2,cutY=cutHeight/2;
+ const cut=(cw,cd,cx,cz)=>box(buildingGroup,cw,cutHeight,cd,cx,cutY,cz,grassCut);
+ if(v.building_shape==='L')cut(w*.5,d*.5,w*.25,d*.25);
+ if(v.building_shape==='U')cut(w*.42,d*.48,0,d*.26);
+ if(v.building_shape==='H'){cut(w*.34,d*.28,0,d*.36);cut(w*.34,d*.28,0,-d*.36)}
+ if(v.building_shape==='T'){cut(w*.34,d*.45,-w*.33,d*.275);cut(w*.34,d*.45,w*.33,d*.275)}
+ if(v.building_shape==='courtyard')cut(w*.34,d*.34,0,0);
  // Ground, paved arrival court, garden beds and layered planting.
  const ground=new THREE.Mesh(new THREE.PlaneGeometry(100,100),mat('#dce5d8',.98,0,makeCanvasTexture('grass')));ground.rotation.x=-Math.PI/2;ground.position.y=-.13;ground.receiveShadow=true;buildingGroup.add(ground);
  if(v.features.driveway){
@@ -301,28 +311,41 @@ function drawBuilding(){
  drawPlan(w,d,n,v);
 }
 function drawPlan(w,d,n,v=getVisualSettings()){
- const sx=430,sy=220,pad=42,scale=Math.min((sx-2*pad)/w,(sy-2*pad)/d),rw=w*scale,rd=d*scale,x=(sx-rw)/2,y=(sy-rd)/2;
- const rooms=clamp(v.room_count,2,6),lw=v.line_width;let partitions='',labels='';
- const xs=[];
- if(v.partition_direction==='vertical'||v.partition_direction==='mixed'){for(let i=1;i<rooms;i++){const ratio=i===1?v.split_x:(v.split_x+(1-v.split_x)*(i-1)/(rooms-1));xs.push(x+rw*ratio);}}
- const ys=[];
- if(v.partition_direction==='horizontal'||v.partition_direction==='mixed'){const count=v.partition_direction==='mixed'?2:rooms-1;for(let i=1;i<=count;i++){const ratio=i===1?v.split_y:(v.split_y+(1-v.split_y)*(i-1)/count);ys.push(y+rd*ratio);}}
- xs.forEach(px=>partitions+=`<line x1="${px}" y1="${y}" x2="${px}" y2="${y+rd}" stroke="${v.plan_line}" stroke-width="${lw+1.2}"/>`);
- ys.forEach(py=>partitions+=`<line x1="${x}" y1="${py}" x2="${x+rw}" y2="${py}" stroke="${v.plan_line}" stroke-width="${lw+1.2}"/>`);
- // Label each conceptual zone using the actual split coordinates.
- const xCuts=[x,...xs,x+rw],yCuts=[y,...ys,y+rd];let index=1;
- for(let row=0;row<yCuts.length-1;row++)for(let col=0;col<xCuts.length-1;col++){
-  const cx=(xCuts[col]+xCuts[col+1])/2,cy=(yCuts[row]+yCuts[row+1])/2;
-  labels+=`<text x="${cx}" y="${cy}" font-size="8.5" fill="${v.plan_line}" text-anchor="middle" dominant-baseline="middle">ZONE ${index++}</text>`;
+ const sx=520,sy=360,pad=30,plotW=Math.max(w,+$('plotWidth').value||w+12),plotD=Math.max(d,+$('plotDepth').value||d+12);
+ const scale=Math.min((sx-2*pad)/plotW,(sy-2*pad)/plotD),plotPx=plotW*scale,plotPy=plotD*scale,px=(sx-plotPx)/2,py=(sy-plotPy)/2;
+ const setback=Math.max(0,+$('sideSetback').value||0)*scale,front=Math.max(0,+$('frontSetback').value||0)*scale;
+ const bx=px+Math.max(setback,(plotPx-w*scale)/2),by=py+Math.max(front,(plotPy-d*scale-front)/2),rw=w*scale,rd=d*scale;
+ const shape=v.building_shape||'rectangle',lw=v.line_width,rooms=clamp(v.room_count,2,6);
+ let outline='';
+ if(shape==='L')outline=`M ${bx} ${by} H ${bx+rw} V ${by+rd*.5} H ${bx+rw*.5} V ${by+rd} H ${bx} Z`;
+ else if(shape==='U')outline=`M ${bx} ${by} H ${bx+rw} V ${by+rd} H ${bx+rw*.78} V ${by+rd*.42} H ${bx+rw*.22} V ${by+rd} H ${bx} Z`;
+ else if(shape==='H')outline=`M ${bx} ${by} H ${bx+rw*.33} V ${by+rd*.28} H ${bx+rw*.67} V ${by} H ${bx+rw} V ${by+rd} H ${bx+rw*.67} V ${by+rd*.72} H ${bx+rw*.33} V ${by+rd} H ${bx} Z`;
+ else if(shape==='T')outline=`M ${bx} ${by} H ${bx+rw} V ${by+rd*.45} H ${bx+rw*.67} V ${by+rd} H ${bx+rw*.33} V ${by+rd*.45} H ${bx} Z`;
+ else if(shape==='courtyard')outline=`M ${bx} ${by} H ${bx+rw} V ${by+rd} H ${bx} Z M ${bx+rw*.33} ${by+rd*.33} V ${by+rd*.67} H ${bx+rw*.67} V ${by+rd*.33} Z`;
+ else outline=`M ${bx} ${by} H ${bx+rw} V ${by+rd} H ${bx} Z`;
+ const areaFactor={rectangle:1,L:.75,U:.78,H:.80,T:.75,courtyard:.88}[shape]||1;
+ const fill=v.plan_fill,line=v.plan_line;
+ const roomLines=[];
+ if(shape==='rectangle'){
+  for(let i=1;i<rooms;i++)roomLines.push(`<line x1="${bx+rw*i/rooms}" y1="${by}" x2="${bx+rw*i/rooms}" y2="${by+rd}" stroke="${line}" stroke-width="${lw+1}"/>`);
+  roomLines.push(`<line x1="${bx}" y1="${by+rd*.52}" x2="${bx+rw}" y2="${by+rd*.52}" stroke="${line}" stroke-width="${lw+1}"/>`);
+ }else{
+  roomLines.push(`<line x1="${bx+rw*.5}" y1="${by}" x2="${bx+rw*.5}" y2="${by+rd*.48}" stroke="${line}" stroke-width="${lw+1}"/>`);
+  roomLines.push(`<line x1="${bx+rw*.22}" y1="${by+rd*.5}" x2="${bx+rw*.78}" y2="${by+rd*.5}" stroke="${line}" stroke-width="${lw+1}"/>`);
+  roomLines.push(`<line x1="${bx+rw*.22}" y1="${by+rd*.5}" x2="${bx+rw*.22}" y2="${by+rd}" stroke="${line}" stroke-width="${lw+1}"/>`);
+  roomLines.push(`<line x1="${bx+rw*.78}" y1="${by+rd*.5}" x2="${bx+rw*.78}" y2="${by+rd}" stroke="${line}" stroke-width="${lw+1}"/>`);
  }
- // Simple door swing indicators and window markers communicate openings without implying a construction drawing.
- const doorX=x+rw*.5,doorY=y+rd;
- const doors=`<path d="M ${doorX-7} ${doorY} A 7 7 0 0 1 ${doorX} ${doorY-7}" fill="none" stroke="#b8793e" stroke-width="1.4"/><line x1="${doorX-7}" y1="${doorY}" x2="${doorX}" y2="${doorY}" stroke="#b8793e" stroke-width="2"/>`;
- const windows=[.2,.5,.8].map(t=>`<line x1="${x+rw*t-5}" y1="${y}" x2="${x+rw*t+5}" y2="${y}" stroke="#4e9ebd" stroke-width="3"/>`).join('');
- $('planDrawing').innerHTML=`<svg viewBox="0 0 430 220" role="img" aria-label="Indicative footprint ${w} by ${d} metres"><rect x="${x}" y="${y}" width="${rw}" height="${rd}" fill="${v.plan_fill}" stroke="${v.plan_line}" stroke-width="${lw+2}"/>${partitions}${labels}${doors}${windows}<text x="215" y="14" font-size="10" fill="${v.plan_line}" text-anchor="middle">${w.toFixed(1)} m</text><text x="13" y="108" font-size="10" fill="${v.plan_line}" transform="rotate(-90 13 108)" text-anchor="middle">${d.toFixed(1)} m</text><text x="215" y="214" font-size="9" fill="#708197" text-anchor="middle">${n}-storey concept · ${rooms} zones · indicative only</text></svg>`;
+ const labels=shape==='U'?[
+  [bx+rw*.25,by+rd*.22,'WING A'],[bx+rw*.75,by+rd*.22,'WING B'],[bx+rw*.5,by+rd*.83,'CLASSROOM / WING'],[bx+rw*.5,by+rd*.26,'COURTYARD']
+ ]:shape==='L'?[[bx+rw*.25,by+rd*.2,'WING A'],[bx+rw*.73,by+rd*.72,'WING B']]:[[bx+rw*.5,by+rd*.22,'MAIN BLOCK'],[bx+rw*.5,by+rd*.76,'WING']];
+ const labelSvg=labels.map(([x,y,t])=>`<text x="${x}" y="${y}" font-size="9" fill="${line}" text-anchor="middle">${t}</text>`).join('');
+ const north=v.plot_orientation==='north'?'N':v.plot_orientation.toUpperCase()[0];
+ const area=(w*d*areaFactor).toFixed(1);
+ $('footprintValue').textContent=area+' m² approx.';
+ $('planDrawing').innerHTML=`<svg viewBox="0 0 520 360" role="img" aria-label="Conceptual ${shape}-shaped building footprint located within a plot boundary"><rect x="${px}" y="${py}" width="${plotPx}" height="${plotPy}" fill="#f7f9f4" stroke="#557b55" stroke-width="2" stroke-dasharray="6 4"/><rect x="${px+setback}" y="${py+front}" width="${Math.max(1,plotPx-2*setback)}" height="${Math.max(1,plotPy-front-setback)}" fill="none" stroke="#c19a55" stroke-dasharray="4 4"/><path d="${outline}" fill="${fill}" fill-rule="evenodd" stroke="${line}" stroke-width="${lw+3}" stroke-linejoin="round"/>${roomLines.join('')}${labelSvg}<text x="${px+plotPx/2}" y="${Math.max(14,py-8)}" font-size="10" fill="#42617d" text-anchor="middle">PLOT ${plotW.toFixed(1)} m × ${plotD.toFixed(1)} m</text><text x="${px+plotPx/2}" y="${py+plotPy+14}" font-size="9" fill="#557b55" text-anchor="middle">LAND SURVEY BOUNDARY · CONCEPT SITE FIT</text><text x="${px+plotPx-8}" y="${py+14}" font-size="12" font-weight="bold" fill="#263d55" text-anchor="end">${north} ↑</text><text x="260" y="350" font-size="9" fill="#708197" text-anchor="middle">${n}-storey ${shape}-shape concept · Approx. footprint ${area} m² · Setbacks indicative</text></svg><div class="site-plan-legend"><span>Green dashed: plot boundary</span><span>Gold dashed: indicative setback envelope</span><span>Blue line: building footprint</span></div>`;
 }
 function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
-function collectBrief(){return {client_name:$('clientName').value.trim(),client_email:$('clientEmail').value.trim()||null,client_phone:$('clientPhone').value.trim()||null,project_name:$('projectName').value.trim(),project_type:$('projectType').value,site_location:$('siteLocation').value.trim()||null,site_dimensions:{width_m:+$('width').value,depth_m:+$('depth').value,floor_height_m:+$('floorHeight').value,storeys:+$('storeys').value,footprint_m2:+$('width').value*+$('depth').value},building_requirements:{description:$('requirements').value.trim(),roof_type:$('roofType').value,custom_roof_description:$('customRoof').value.trim()||null},visual_settings:getVisualSettings()}}
+function collectBrief(){return {client_name:$('clientName').value.trim(),client_email:$('clientEmail').value.trim()||null,client_phone:$('clientPhone').value.trim()||null,project_name:$('projectName').value.trim(),project_type:$('projectType').value,site_location:$('siteLocation').value.trim()||null,site_dimensions:{width_m:+$('width').value,depth_m:+$('depth').value,floor_height_m:+$('floorHeight').value,storeys:+$('storeys').value,footprint_m2:+$('width').value*+$('depth').value,plot_width_m:+$('plotWidth').value,plot_depth_m:+$('plotDepth').value,front_setback_m:+$('frontSetback').value,side_setback_m:+$('sideSetback').value},building_requirements:{description:$('requirements').value.trim(),roof_type:$('roofType').value,custom_roof_description:$('customRoof').value.trim()||null,required_drawings:[...document.querySelectorAll('input[name="drawingType"]:checked')].map(x=>x.value)},visual_settings:getVisualSettings()}}
 async function saveDesign(e){e?.preventDefault();if(!currentUser){$('formStatus').textContent='Please sign in to your TW&D client account, then return here to save your project.';return}
  const b=collectBrief();if(!b.client_name||!b.project_name||b.site_dimensions.width_m<4||b.site_dimensions.depth_m<4){$('formStatus').textContent='Please enter a client name, project name and valid building dimensions.';return}
  if(b.building_requirements.roof_type==='custom'&&!b.building_requirements.custom_roof_description){$('formStatus').textContent='Please describe your custom roof.';return}
@@ -469,7 +492,7 @@ async function verifyReturn(){
 }
 async function initDesignWorkspace(){if(!currentUser)return;await Promise.all([loadInvoices(),setupAdmin()]);await verifyReturn()}
 
-$('roofType').addEventListener('change',()=>{$('customRoofWrap').hidden=$('roofType').value!=='custom';drawBuilding()});
+$('roofType').addEventListener('change',()=>{$('customRoofWrap').hidden=$('roofType').value!=='custom';drawBuilding()});\n$('projectType').addEventListener('change',()=>{if($('projectType').value==='school'&&$('buildingShape').value==='rectangle')$('buildingShape').value='U';drawBuilding()});
 
 const aestheticPalettes={
  modern:{wall:'#e7e4dc',roof:'#233b57',glass:'#79b6d4',trim:'#ffffff',line:'#42617d',fill:'#f7fafc'},
@@ -486,7 +509,7 @@ function applyAesthetic(){
 $('aestheticPreset').addEventListener('change',applyAesthetic);
 ['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','partitionDirection','primarySplitX','primarySplitY','windowStyle','facadeFinish','columnStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet','featureLighting'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 
-['width','depth','floorHeight','storeys'].forEach(id=>$(id).addEventListener('input',drawBuilding));
+['width','depth','floorHeight','storeys','buildingShape','plotWidth','plotDepth','frontSetback','sideSetback','plotOrientation'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 $('refreshPreview').addEventListener('click',drawBuilding);
 $('viewPerspective').addEventListener('click',()=>setCameraView('perspective'));
 $('viewFront').addEventListener('click',()=>setCameraView('front'));
