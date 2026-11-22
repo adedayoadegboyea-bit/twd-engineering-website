@@ -118,6 +118,22 @@
       <label>Garden style<select id="gardenStyle"><option value="tropical">Tropical green landscape</option><option value="formal">Formal garden beds</option><option value="minimal">Minimal lawn &amp; shrubs</option><option value="courtyard">Courtyard garden</option><option value="none">No landscape planting</option></select></label>
     </div>
     <div class="feature-options">
+      
+    <div class="room-editor" style="margin:14px 0;padding:13px;border:1px solid #b8cbe0;border-radius:9px;background:#f5f9ff">
+      <strong style="display:block;color:#18385d;font-size:13px;margin-bottom:5px">Room-by-room customisation</strong>
+      <p class="customizer-note">Choose a room on the active floor, then set its own finishes, lighting, furniture and sanitary fittings. Each room's settings are saved independently.</p>
+      <div class="field-grid">
+        <label>Room to customise<select id="roomEditSelect"><option value="0">Room 1</option></select></label>
+        <label>Room floor finish<select id="roomFloorFinish"><option value="porcelain">Polished porcelain tile</option><option value="marble">Marble-look tile</option><option value="granite">Granite tile</option><option value="wood">Wood-look tile</option><option value="terrazzo">Terrazzo</option><option value="concrete">Polished concrete</option></select></label>
+        <label>Room wall finish<select id="roomWallFinish"><option value="paint">Premium washable paint</option><option value="ceramic">Ceramic wall tiles</option><option value="marble">Marble feature wall</option><option value="stone">Natural stone feature</option><option value="wood">Timber feature panels</option></select></label>
+        <label>Room floor tile colour<input id="roomTileColor" type="color" value="#d8d4ca"></label>
+        <label>Room wall colour<input id="roomWallColor" type="color" value="#f1eee7"></label>
+        <label>Room lighting<select id="roomLighting"><option value="warm">Warm white · 3000K</option><option value="neutral">Neutral white · 4000K</option><option value="daylight">Daylight · 6000K</option><option value="ambient">Ambient / concealed cove</option></select></label>
+        <label>Room furniture<select id="roomFurniture"><option value="family">Family living &amp; bedroom furniture</option><option value="minimal">Minimal contemporary</option><option value="luxury">Luxury furnished interior</option><option value="office">Office / institutional furniture</option><option value="empty">Empty room</option></select></label>
+        <label>Room sanitary fittings<select id="roomSanitary"><option value="full">WC, basin, shower &amp; sink</option><option value="wc_basin">WC and wash basin</option><option value="wc_shower">WC, basin and shower</option><option value="none">No plumbing fixtures</option></select></label>
+      </div>
+      <p class="customizer-note" id="roomEditorStatus">Select a room to edit its independent specification.</p>
+    </div>
       <strong>Interior and site details</strong>
       <label><input type="checkbox" id="showInteriorLights" checked> Ceiling lights and downlights</label>
       <label><input type="checkbox" id="showFurniture" checked> Add furniture</label>
