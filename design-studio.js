@@ -1,6 +1,7 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.4';
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'https://esm.sh/three@0.180.0';
+import { OrbitControls } from 'https://esm.sh/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFExporter } from 'https://esm.sh/three@0.180.0/examples/jsm/exporters/GLTFExporter.js';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './supabase-config.js';
 
 const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
@@ -111,6 +112,8 @@ $('roofType').addEventListener('change',()=>{$('customRoofWrap').hidden=$('roofT
 ['width','depth','floorHeight','storeys'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 $('refreshPreview').addEventListener('click',drawBuilding);$('viewReset').addEventListener('click',drawBuilding);
 $('designForm').addEventListener('submit',saveDesign);$('addQuoteRow').addEventListener('click',()=>addQuoteRow());$('saveQuote').addEventListener('click',saveQuote);$('printBrief').addEventListener('click',()=>window.print());
+$('downloadGlb').addEventListener('click',()=>{if(!buildingGroup)return;const exporter=new GLTFExporter();$('viewerStatus').textContent='Preparing 3D model file…';exporter.parse(buildingGroup,result=>{const blob=new Blob([result],{type:'model/gltf-binary'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-building-concept-preview.glb';a.click();URL.revokeObjectURL(url);$('viewerStatus').textContent='Concept model exported as GLB. This is a visual massing model, not a CAD or structural file.';},error=>{$('viewerStatus').textContent='Model export failed: '+(error.message||'Please try again.');},{binary:true});});
+$('downloadSvg').addEventListener('click',()=>{const svg=$('planDrawing').querySelector('svg');if(!svg)return;const blob=new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-footprint-concept.svg';a.click();URL.revokeObjectURL(url);});
 addQuoteRow();setup3D();
 const {data:{session}}=await supabase.auth.getSession();currentUser=session?.user||null;
 supabase.auth.onAuthStateChange((_event,s)=>{currentUser=s?.user||null;if(currentUser)$('formStatus').textContent='Signed in. Your design brief can be saved securely.'});
