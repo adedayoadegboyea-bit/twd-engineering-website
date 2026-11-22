@@ -101,6 +101,33 @@
     <label><input type="checkbox" id="featureParapet"> Roof parapet</label>
     <label><input type="checkbox" id="featureLighting" checked> Warm façade / soffit lighting</label>
   </div>
+  <div class="interior-studio" style="margin-top:14px;padding:14px;border:1px solid #cbd8e7;border-radius:10px;background:#fff">
+    <div class="customizer-heading"><strong>06 · Interior, services &amp; landscape studio</strong><span>Explore the building from inside and customise indicative finishes, fittings and external surfaces.</span></div>
+    <div class="field-grid">
+      <label>3D inspection mode<select id="interiorViewMode"><option value="exterior">Exterior presentation</option><option value="interior">Interior inspection · transparent outer walls</option><option value="cutaway">Roof-off cutaway · interior visible</option></select></label>
+      <label>Interior floor finish<select id="interiorFloorFinish"><option value="porcelain">Polished porcelain tile</option><option value="marble">Marble-look tile</option><option value="granite">Granite tile</option><option value="wood">Wood-look tile</option><option value="terrazzo">Terrazzo</option><option value="concrete">Polished concrete</option></select></label>
+      <label>Wall finish / tile selection<select id="interiorWallFinish"><option value="paint">Premium washable paint</option><option value="ceramic">Ceramic wall tiles</option><option value="marble">Marble feature wall</option><option value="stone">Natural stone feature</option><option value="wood">Timber feature panels</option></select></label>
+      <label>Tile colour<input id="tileColor" type="color" value="#d8d4ca"></label>
+      <label>Wall finish colour<input id="interiorWallColor" type="color" value="#f1eee7"></label>
+      <label>Ceiling / lighting scheme<select id="interiorLighting"><option value="warm">Warm white · 3000K</option><option value="neutral">Neutral white · 4000K</option><option value="daylight">Daylight · 6000K</option><option value="ambient">Ambient / concealed cove</option></select></label>
+      <label>Lighting intensity<input id="lightingIntensity" type="range" min="0" max="100" value="65"></label>
+      <label>Furniture arrangement<select id="furniturePreset"><option value="family">Family living &amp; bedroom furniture</option><option value="minimal">Minimal contemporary</option><option value="luxury">Luxury furnished interior</option><option value="office">Office / institutional furniture</option><option value="empty">Empty rooms · no furniture</option></select></label>
+      <label>Sanitary fittings<select id="sanitaryPreset"><option value="full">WC, basin, shower &amp; kitchen sink</option><option value="wc_basin">WC and wash basin</option><option value="wc_shower">WC, basin and shower</option><option value="none">No plumbing fixtures</option></select></label>
+      <label>External hardscape<select id="hardscapeFinish"><option value="stamped">Stamped concrete · stone pattern</option><option value="smooth">Smooth polished concrete</option><option value="exposed">Exposed aggregate</option><option value="pavers">Interlocking concrete pavers</option><option value="granite">Granite paving</option></select></label>
+      <label>Hardscape colour<input id="hardscapeColor" type="color" value="#858987"></label>
+      <label>Garden style<select id="gardenStyle"><option value="tropical">Tropical green landscape</option><option value="formal">Formal garden beds</option><option value="minimal">Minimal lawn &amp; shrubs</option><option value="courtyard">Courtyard garden</option><option value="none">No landscape planting</option></select></label>
+    </div>
+    <div class="feature-options">
+      <strong>Interior and site details</strong>
+      <label><input type="checkbox" id="showInteriorLights" checked> Ceiling lights and downlights</label>
+      <label><input type="checkbox" id="showFurniture" checked> Add furniture</label>
+      <label><input type="checkbox" id="showPlumbing" checked> Add plumbing fittings</label>
+      <label><input type="checkbox" id="showCeiling" checked> Show ceiling / soffit</label>
+      <label><input type="checkbox" id="showStampedJoints" checked> Stamped concrete pattern joints</label>
+      <label><input type="checkbox" id="showGreenAreas" checked> Green areas and planting</label>
+    </div>
+    <p class="customizer-note">Furniture, fixtures, lighting and finishes are visual placeholders for design coordination. Plumbing routes, electrical circuits, fixture schedules, waterproofing and quantities require coordinated professional drawings.</p>
+  </div>
   <p class="customizer-note">These controls shape a conceptual massing model and diagrammatic room zoning. They do not generate dimensioned, construction-ready architectural floor plans or replace an architect's coordinated drawings.</p>
 </div>
 <div class="wide design-customizer drawing-package" id="drawingPackage">
@@ -128,7 +155,7 @@
 </section>
 <section class="panel preview-panel">
 <div class="panel-title"><span class="step">02</span><div><h2>Live concept preview</h2><p>Rotate, zoom and inspect the building massing.</p></div></div>
-<div class="viewer-shell"><div id="viewer" aria-label="Interactive 3D building concept preview"></div><div class="viewer-controls"><div class="viewer-actions"><button id="viewPerspective" class="secondary" type="button">Perspective</button><button id="viewFront" class="secondary" type="button">Front</button><button id="viewSide" class="secondary" type="button">Side</button><button id="viewTop" class="secondary" type="button">Top / plan</button><button id="viewReset" class="secondary" type="button">Reset view</button><button id="retryPreview" class="secondary" type="button">Retry 3D preview</button><button id="downloadGlb" class="secondary" type="button">Download concept GLB</button><button id="downloadSvg" class="secondary" type="button">Download footprint SVG</button></div><span id="viewerStatus">Preparing 3D preview…</span></div></div>
+<div class="viewer-shell"><div id="viewer" aria-label="Interactive 3D building concept preview"></div><div class="viewer-controls"><div class="viewer-actions"><button id="viewPerspective" class="secondary" type="button">Perspective</button><button id="viewInterior" class="secondary" type="button">Enter interior</button><button id="viewCutaway" class="secondary" type="button">Roof-off cutaway</button><button id="viewFront" class="secondary" type="button">Front</button><button id="viewSide" class="secondary" type="button">Side</button><button id="viewTop" class="secondary" type="button">Top / plan</button><button id="viewReset" class="secondary" type="button">Reset view</button><button id="retryPreview" class="secondary" type="button">Retry 3D preview</button><button id="downloadGlb" class="secondary" type="button">Download concept GLB</button><button id="downloadSvg" class="secondary" type="button">Download footprint SVG</button></div><span id="viewerStatus">Preparing 3D preview…</span></div></div>
 <div class="preview-meta"><div><span>Footprint</span><strong id="footprintValue">216 m²</strong></div><div><span>Storeys</span><strong id="storeyValue">2</strong></div><div><span>Roof</span><strong id="roofValue">Gable</strong></div></div>
 <div class="plan-preview"><div class="plan-head"><h3>Indicative footprint plan</h3><span>Concept only · Not to scale for construction</span></div><div id="planDrawing" class="plan-drawing" role="img" aria-label="Indicative building footprint plan"></div></div>
 </section>
