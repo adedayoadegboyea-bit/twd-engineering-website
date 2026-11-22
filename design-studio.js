@@ -279,15 +279,16 @@ function drawBuilding(){
  const addBox=(ww,hh,dd,x,y,z,m)=>box(buildingGroup,ww,hh,dd,x,y,z,m);
  const fixtureMat=mat('#f8f8f4',.2,.08),chromeMat=mat('#b8c4ca',.18,.82),woodMat=mat('#8b6546',.58);
  const roomNamesForModel=(v.floor_room_names&&v.floor_room_names[v.floor_plan_level])?String(v.floor_room_names[v.floor_plan_level]).split(',').map(x=>x.trim()).filter(Boolean):(v.room_names||[]);
- const roomTotal=clamp(roomNamesForModel.length||v.room_count||4,2,12),roomCols=Math.ceil(roomTotal/2),roomRows=Math.ceil(roomTotal/roomCols);
  const makeRoomTileTexture=(cfg)=>{const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;const ctx=canvas.getContext('2d');ctx.fillStyle=cfg.tile_color||'#d8d4ca';ctx.fillRect(0,0,256,256);const step=cfg.floor_finish==='wood'?42:cfg.floor_finish==='marble'?86:cfg.floor_finish==='granite'?52:cfg.floor_finish==='terrazzo'?58:cfg.floor_finish==='concrete'?128:64;ctx.strokeStyle='rgba(75,75,75,.28)';ctx.lineWidth=2;for(let p=0;p<=256;p+=step){ctx.beginPath();ctx.moveTo(p,0);ctx.lineTo(p,256);ctx.stroke();ctx.beginPath();ctx.moveTo(0,p);ctx.lineTo(256,p);ctx.stroke();}if(['marble','granite','terrazzo'].includes(cfg.floor_finish)){for(let q=0;q<90;q++){ctx.fillStyle='rgba(70,70,70,.10)';ctx.beginPath();ctx.arc(Math.random()*256,Math.random()*256,Math.random()*2+1,0,Math.PI*2);ctx.fill();}}return new THREE.CanvasTexture(canvas);};
  for(let fl=0;fl<n;fl++){
   const floorKeyForModel=['ground','first','second','third','fourth'][fl];
   const floorNamesForModel=(v.floor_room_names&&v.floor_room_names[floorKeyForModel])?String(v.floor_room_names[floorKeyForModel]).split(',').map(x=>x.trim()).filter(Boolean):roomNamesForModel;
+  const floorRoomTotal=clamp(floorNamesForModel.length||v.room_count||4,2,12);
+  const floorRoomCols=Math.ceil(floorRoomTotal/2),floorRoomRows=Math.ceil(floorRoomTotal/floorRoomCols);
   const fy=fl*h,fyBase=fy+(fl===0?.43:.245);
-  for(let ri=0;ri<roomTotal;ri++){
-   const row=Math.floor(ri/roomCols),col=ri%roomCols;
-   const cellW=insideW/roomCols,cellD=insideD/roomRows;
+  for(let ri=0;ri<floorRoomTotal;ri++){
+   const row=Math.floor(ri/floorRoomCols),col=ri%floorRoomCols;
+   const cellW=insideW/floorRoomCols,cellD=insideD/floorRoomRows;
    const cx=-insideW/2+cellW*(col+.5),cz=-insideD/2+cellD*(row+.5);
    const cfg=(floorRoomInteriors[floorKeyForModel]||{})[String(ri)]||defaultRoomInterior();
    const texture=makeRoomTileTexture(cfg);texture.colorSpace=THREE.SRGBColorSpace;texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(Math.max(1,cellW/2.5),Math.max(1,cellD/2.5));
