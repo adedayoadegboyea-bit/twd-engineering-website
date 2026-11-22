@@ -13,7 +13,7 @@ function setup3D(){
   try{
     scene=new THREE.Scene();scene.background=new THREE.Color('#edf4fb');
     camera=new THREE.PerspectiveCamera(42,viewer.clientWidth/viewer.clientHeight,.1,500);camera.position.set(26,20,30);
-    renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.setSize(viewer.clientWidth,viewer.clientHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;viewer.appendChild(renderer.domElement);
+    renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.setSize(viewer.clientWidth,viewer.clientHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;viewer.appendChild(renderer.domElement);
     controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.48;
     scene.add(new THREE.HemisphereLight(0xffffff,0x8395aa,2));
     const sun=new THREE.DirectionalLight(0xffffff,2.3);sun.position.set(18,30,12);sun.castShadow=true;scene.add(sun);
@@ -52,6 +52,20 @@ function getVisualSettings(){
   features:{balcony:$('featureBalcony').checked,columns:$('featureColumns').checked,fins:$('featureFins').checked,driveway:$('featureDriveway').checked,landscape:$('featureLandscape').checked,parapet:$('featureParapet').checked,lighting:$('featureLighting').checked}
  };
 }
+
+function setCameraView(view){
+ if(!camera||!controls)return;
+ const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),height=(+$('storeys').value||2)*(+$('floorHeight').value||3.2);
+ const span=Math.max(w,d)*2.05,centerY=height*.48;
+ const poses={
+  perspective:[span*.82,height+span*.48,span*.95],
+  front:[0,centerY+height*.12,span*1.75],
+  side:[span*1.75,centerY+height*.12,0],
+  top:[.01,span*2.1,.01]
+ };
+ const p=poses[view]||poses.perspective;camera.position.set(p[0],p[1],p[2]);controls.target.set(0,view==='top'?0:centerY,0);controls.update();
+}
+
 function drawBuilding(){
  if(!buildingGroup)return;buildingGroup.clear();
  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=+$('storeys').value||2,h=clamp(+$('floorHeight').value||3.2,2.7,5),roof=$('roofType').value,v=getVisualSettings(),total=n*h;
@@ -122,6 +136,27 @@ function drawBuilding(){
   }
   // Decorative horizontal fascia bands.
   box(buildingGroup,w+.48,.16,.34,0,y+h-.12,frontZ+.10,trim);
+ }
+ // Internal partition walls use the same split settings as the plan, keeping the massing model and plan controls coordinated.
+ const innerWall=mat('#eeeae2',.9),innerTrim=mat('#c7c2b8',.8);
+ const wallThickness=.13,insideW=w-.44,insideD=d-.44;
+ const roomCount=clamp(v.room_count,2,6),splitX=v.split_x,splitY=v.split_y;
+ const partitionXs=[];
+ if(v.partition_direction==='vertical'||v.partition_direction==='mixed'){
+  for(let i=1;i<roomCount;i++){const ratio=i===1?splitX:(splitX+(1-splitX)*(i-1)/(roomCount-1));partitionXs.push(-insideW/2+insideW*ratio);}
+ }
+ const partitionYs=[];
+ if(v.partition_direction==='horizontal'||v.partition_direction==='mixed'){
+  const count=v.partition_direction==='mixed'?2:roomCount-1;
+  for(let i=1;i<=count;i++){const ratio=i===1?splitY:(splitY+(1-splitY)*(i-1)/count);partitionYs.push(-insideD/2+insideD*ratio);}
+ }
+ for(let floor=0;floor<n;floor++){
+  const floorY=floor*h;
+  for(const x of partitionXs)box(buildingGroup,wallThickness,h*.72,insideD,x,floorY+h*.38,0,innerWall);
+  for(const z of partitionYs)box(buildingGroup,insideW,h*.72,wallThickness,0,floorY+h*.38,z,innerWall);
+  // Thin contrasting top edges make internal divisions legible in elevated / roof-off views.
+  for(const x of partitionXs)box(buildingGroup,wallThickness+.035,.035,insideD,x,floorY+h*.75,0,innerTrim);
+  for(const z of partitionYs)box(buildingGroup,insideW,.035,wallThickness+.035,0,floorY+h*.75,z,innerTrim);
  }
  // Roof/parapet silhouette and oversized entrance canopy.
  drawRoof(w,d,total,roof,roofMat);
@@ -200,11 +235,25 @@ function drawBuilding(){
  drawPlan(w,d,n,v);
 }
 function drawPlan(w,d,n,v=getVisualSettings()){
- const sx=430,sy=170,pad=36,scale=Math.min((sx-2*pad)/w,(sy-2*pad)/d),rw=w*scale,rd=d*scale,x=(sx-rw)/2,y=(sy-rd)/2;
- const rooms=clamp(v.room_count,2,6),lw=v.line_width;let partitions='';
- if(v.partition_direction==='vertical'||v.partition_direction==='mixed'){for(let i=1;i<rooms;i++){const ratio=i===1?v.split_x:(v.split_x+(1-v.split_x)*(i-1)/(rooms-1));const px=x+rw*ratio;partitions+=`<line x1="${px}" y1="${y}" x2="${px}" y2="${y+rd}" stroke="${v.plan_line}" stroke-width="${lw}" stroke-dasharray="4 2"/>`}}
- if(v.partition_direction==='horizontal'||v.partition_direction==='mixed'){const count=v.partition_direction==='mixed'?2:rooms-1;for(let i=1;i<=count;i++){const ratio=i===1?v.split_y:(v.split_y+(1-v.split_y)*(i-1)/count);const py=y+rd*ratio;partitions+=`<line x1="${x}" y1="${py}" x2="${x+rw}" y2="${py}" stroke="${v.plan_line}" stroke-width="${lw}"/>`}}
- $('planDrawing').innerHTML=`<svg viewBox="0 0 430 170" role="img" aria-label="Indicative footprint ${w} by ${d} metres"><rect x="${x}" y="${y}" width="${rw}" height="${rd}" fill="${v.plan_fill}" stroke="${v.plan_line}" stroke-width="${lw+1.5}"/>${partitions}<text x="215" y="15" font-size="10" fill="${v.plan_line}" text-anchor="middle">${w.toFixed(1)} m</text><text x="12" y="85" font-size="10" fill="${v.plan_line}" transform="rotate(-90 12 85)" text-anchor="middle">${d.toFixed(1)} m</text><text x="215" y="165" font-size="9" fill="#708197" text-anchor="middle">${n}-storey indicative zoning · ${rooms} divisions · concept only</text></svg>`;
+ const sx=430,sy=220,pad=42,scale=Math.min((sx-2*pad)/w,(sy-2*pad)/d),rw=w*scale,rd=d*scale,x=(sx-rw)/2,y=(sy-rd)/2;
+ const rooms=clamp(v.room_count,2,6),lw=v.line_width;let partitions='',labels='';
+ const xs=[];
+ if(v.partition_direction==='vertical'||v.partition_direction==='mixed'){for(let i=1;i<rooms;i++){const ratio=i===1?v.split_x:(v.split_x+(1-v.split_x)*(i-1)/(rooms-1));xs.push(x+rw*ratio);}}
+ const ys=[];
+ if(v.partition_direction==='horizontal'||v.partition_direction==='mixed'){const count=v.partition_direction==='mixed'?2:rooms-1;for(let i=1;i<=count;i++){const ratio=i===1?v.split_y:(v.split_y+(1-v.split_y)*(i-1)/count);ys.push(y+rd*ratio);}}
+ xs.forEach(px=>partitions+=`<line x1="${px}" y1="${y}" x2="${px}" y2="${y+rd}" stroke="${v.plan_line}" stroke-width="${lw+1.2}"/>`);
+ ys.forEach(py=>partitions+=`<line x1="${x}" y1="${py}" x2="${x+rw}" y2="${py}" stroke="${v.plan_line}" stroke-width="${lw+1.2}"/>`);
+ // Label each conceptual zone using the actual split coordinates.
+ const xCuts=[x,...xs,x+rw],yCuts=[y,...ys,y+rd];let index=1;
+ for(let row=0;row<yCuts.length-1;row++)for(let col=0;col<xCuts.length-1;col++){
+  const cx=(xCuts[col]+xCuts[col+1])/2,cy=(yCuts[row]+yCuts[row+1])/2;
+  labels+=`<text x="${cx}" y="${cy}" font-size="8.5" fill="${v.plan_line}" text-anchor="middle" dominant-baseline="middle">ZONE ${index++}</text>`;
+ }
+ // Simple door swing indicators and window markers communicate openings without implying a construction drawing.
+ const doorX=x+rw*.5,doorY=y+rd;
+ const doors=`<path d="M ${doorX-7} ${doorY} A 7 7 0 0 1 ${doorX} ${doorY-7}" fill="none" stroke="#b8793e" stroke-width="1.4"/><line x1="${doorX-7}" y1="${doorY}" x2="${doorX}" y2="${doorY}" stroke="#b8793e" stroke-width="2"/>`;
+ const windows=[.2,.5,.8].map(t=>`<line x1="${x+rw*t-5}" y1="${y}" x2="${x+rw*t+5}" y2="${y}" stroke="#4e9ebd" stroke-width="3"/>`).join('');
+ $('planDrawing').innerHTML=`<svg viewBox="0 0 430 220" role="img" aria-label="Indicative footprint ${w} by ${d} metres"><rect x="${x}" y="${y}" width="${rw}" height="${rd}" fill="${v.plan_fill}" stroke="${v.plan_line}" stroke-width="${lw+2}"/>${partitions}${labels}${doors}${windows}<text x="215" y="14" font-size="10" fill="${v.plan_line}" text-anchor="middle">${w.toFixed(1)} m</text><text x="13" y="108" font-size="10" fill="${v.plan_line}" transform="rotate(-90 13 108)" text-anchor="middle">${d.toFixed(1)} m</text><text x="215" y="214" font-size="9" fill="#708197" text-anchor="middle">${n}-storey concept · ${rooms} zones · indicative only</text></svg>`;
 }
 function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
 function collectBrief(){return {client_name:$('clientName').value.trim(),client_email:$('clientEmail').value.trim()||null,client_phone:$('clientPhone').value.trim()||null,project_name:$('projectName').value.trim(),project_type:$('projectType').value,site_location:$('siteLocation').value.trim()||null,site_dimensions:{width_m:+$('width').value,depth_m:+$('depth').value,floor_height_m:+$('floorHeight').value,storeys:+$('storeys').value,footprint_m2:+$('width').value*+$('depth').value},building_requirements:{description:$('requirements').value.trim(),roof_type:$('roofType').value,custom_roof_description:$('customRoof').value.trim()||null},visual_settings:getVisualSettings()}}
@@ -332,7 +381,13 @@ $('aestheticPreset').addEventListener('change',applyAesthetic);
 ['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','partitionDirection','primarySplitX','primarySplitY','windowStyle','facadeFinish','columnStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet','featureLighting'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 
 ['width','depth','floorHeight','storeys'].forEach(id=>$(id).addEventListener('input',drawBuilding));
-$('refreshPreview').addEventListener('click',drawBuilding);$('viewReset').addEventListener('click',drawBuilding);
+$('refreshPreview').addEventListener('click',drawBuilding);
+$('viewPerspective').addEventListener('click',()=>setCameraView('perspective'));
+$('viewFront').addEventListener('click',()=>setCameraView('front'));
+$('viewSide').addEventListener('click',()=>setCameraView('side'));
+$('viewTop').addEventListener('click',()=>setCameraView('top'));
+$('viewReset').addEventListener('click',()=>{drawBuilding();setCameraView('perspective')});
+
 $('designForm').addEventListener('submit',saveDesign);$('addQuoteRow').addEventListener('click',()=>addQuoteRow());$('saveQuote').addEventListener('click',saveQuote);$('printBrief').addEventListener('click',()=>window.print());
 $('downloadGlb').addEventListener('click',()=>{if(!buildingGroup)return;const exporter=new GLTFExporter();$('viewerStatus').textContent='Preparing 3D model file…';exporter.parse(buildingGroup,result=>{const blob=new Blob([result],{type:'model/gltf-binary'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-building-concept-preview.glb';a.click();URL.revokeObjectURL(url);$('viewerStatus').textContent='Concept model exported as GLB. This is a visual massing model, not a CAD or structural file.';},error=>{$('viewerStatus').textContent='Model export failed: '+(error.message||'Please try again.');},{binary:true});});
 $('downloadSvg').addEventListener('click',()=>{const svg=$('planDrawing').querySelector('svg');if(!svg)return;const blob=new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-footprint-concept.svg';a.click();URL.revokeObjectURL(url);});
