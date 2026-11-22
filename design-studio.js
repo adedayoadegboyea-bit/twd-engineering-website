@@ -495,6 +495,24 @@ async function initDesignWorkspace(){if(!currentUser)return;await Promise.all([l
 
 $('roofType').addEventListener('change',()=>{$('customRoofWrap').hidden=$('roofType').value!=='custom';drawBuilding()});\n$('projectType').addEventListener('change',()=>{if($('projectType').value==='school'&&$('buildingShape').value==='rectangle')$('buildingShape').value='U';drawBuilding()});
 
+$('buildingPreset').addEventListener('change',()=>{
+ const p=$('buildingPreset').value;
+ const presets={
+  school_u:{type:'school',shape:'U',floors:'2',roof:'contemporary_flat',rooms:'6'},
+  school_l:{type:'school',shape:'L',floors:'2',roof:'combination',rooms:'6'},
+  school_h:{type:'school',shape:'H',floors:'3',roof:'contemporary_flat',rooms:'6'},
+  school_t:{type:'school',shape:'T',floors:'2',roof:'conventional_gable',rooms:'5'},
+  duplex:{type:'residential',shape:'rectangle',floors:'2',roof:'hip',rooms:'5'},
+  courtyard_home:{type:'residential',shape:'courtyard',floors:'2',roof:'contemporary_flat',rooms:'5'},
+  commercial:{type:'commercial',shape:'L',floors:'3',roof:'contemporary_flat',rooms:'6'},
+  office:{type:'commercial',shape:'rectangle',floors:'4',roof:'contemporary_flat',rooms:'6'},
+  hotel:{type:'commercial',shape:'U',floors:'3',roof:'combination',rooms:'6'},
+  clinic:{type:'commercial',shape:'L',floors:'2',roof:'contemporary_flat',rooms:'6'}
+ };
+ const x=presets[p];if(!x)return;
+ $('projectType').value=x.type;$('buildingShape').value=x.shape;$('storeys').value=x.floors;$('roofType').value=x.roof;$('roomCount').value=x.rooms;
+ $('customRoofWrap').hidden=true;drawBuilding();
+});
 const aestheticPalettes={
  modern:{wall:'#e7e4dc',roof:'#233b57',glass:'#79b6d4',trim:'#ffffff',line:'#42617d',fill:'#f7fafc'},
  luxury:{wall:'#d8d0c1',roof:'#292d36',glass:'#6c9fb8',trim:'#c5a56a',line:'#243b53',fill:'#f5f0e7'},
