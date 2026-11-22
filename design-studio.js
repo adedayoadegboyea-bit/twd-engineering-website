@@ -31,20 +31,33 @@ function makeCanvasTexture(kind){
  textureCache.set(kind,t);
  return t;
 }
+let previewResizeObserver=null,previewContextLost=false;
 function setup3D(){
  try{
+  if(!viewer)throw new Error('The 3D preview container is missing from this page.');
+  if(!window.WebGLRenderingContext)throw new Error('This browser does not expose WebGL. Try an updated Chrome browser or another device.');
+  if(renderer){renderer.setAnimationLoop(null);renderer.dispose();renderer.domElement.remove();renderer=null}
+  previewResizeObserver?.disconnect();previewResizeObserver=null;
+  viewer.dataset.previewState='loading';
+  $('viewerStatus').textContent='Starting 3D engine…';
   scene=new THREE.Scene();scene.background=new THREE.Color('#b8c9d8');scene.fog=new THREE.Fog('#c8d5df',55,150);
-  camera=new THREE.PerspectiveCamera(36,viewer.clientWidth/viewer.clientHeight,.1,600);camera.position.set(30,22,34);
+  const width=Math.max(1,viewer.clientWidth),height=Math.max(1,viewer.clientHeight);
+  camera=new THREE.PerspectiveCamera(36,width/height,.1,600);camera.position.set(30,22,34);
   renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
-  renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.setSize(viewer.clientWidth,viewer.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.75));renderer.setSize(width,height);
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
-  renderer.physicallyCorrectLights=true;viewer.appendChild(renderer.domElement);
+  viewer.replaceChildren(renderer.domElement);
+  renderer.domElement.setAttribute('aria-label','Interactive TW&D building concept model. Drag to orbit and pinch or scroll to zoom.');
+  renderer.domElement.addEventListener('webglcontextlost',event=>{
+   event.preventDefault();previewContextLost=true;renderer?.setAnimationLoop(null);
+   viewer.dataset.previewState='error';$('viewerStatus').textContent='The device paused its graphics context. Tap “Retry 3D preview” to reload the model.';
+  },false);
+  renderer.domElement.addEventListener('webglcontextrestored',()=>{previewContextLost=false;setup3D()},false);
   controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.055;controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.495;controls.minDistance=7;controls.maxDistance=180;
-  // Soft outdoor sky illumination and a large-area studio environment for believable reflections.
   scene.add(new THREE.HemisphereLight(0xe8f3ff,0x78816e,1.35));
   const sun=new THREE.DirectionalLight(0xfff0d8,3.2);sun.position.set(-28,42,24);sun.castShadow=true;
-  sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-45;sun.shadow.camera.right=45;sun.shadow.camera.top=45;sun.shadow.camera.bottom=-45;sun.shadow.bias=-.00018;sun.shadow.normalBias=.025;scene.add(sun);
+  sun.shadow.mapSize.set(1536,1536);sun.shadow.camera.left=-45;sun.shadow.camera.right=45;sun.shadow.camera.top=45;sun.shadow.camera.bottom=-45;sun.shadow.bias=-.00018;sun.shadow.normalBias=.025;scene.add(sun);
   const fill=new THREE.DirectionalLight(0xd6e7ff,.85);fill.position.set(25,18,-25);scene.add(fill);
   const sky=new THREE.Mesh(new THREE.SphereGeometry(260,32,20),new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,uniforms:{top:{value:new THREE.Color('#6e91b2')},bottom:{value:new THREE.Color('#e5edf2')}},vertexShader:'varying vec3 vWorld; void main(){vec4 p=modelMatrix*vec4(position,1.0);vWorld=p.xyz;gl_Position=projectionMatrix*viewMatrix*p;}',fragmentShader:'varying vec3 vWorld; uniform vec3 top; uniform vec3 bottom; void main(){float h=normalize(vWorld).y;float t=smoothstep(-.18,.62,h);gl_FragColor=vec4(mix(bottom,top,t),1.0);}' }));
   scene.add(sky);
@@ -52,11 +65,16 @@ function setup3D(){
   const ground=new THREE.Mesh(new THREE.PlaneGeometry(240,240),new THREE.MeshStandardMaterial({map:groundTex,roughness:1}));
   ground.rotation.x=-Math.PI/2;ground.position.y=-.16;ground.receiveShadow=true;scene.add(ground);
   buildingGroup=new THREE.Group();scene.add(buildingGroup);drawBuilding();
-  const resize=new ResizeObserver(()=>{if(!renderer)return;const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)});
-  resize.observe(viewer);
-  const animate=()=>{requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)};animate();
-  $('viewerStatus').textContent='Enhanced live render · realistic materials, outdoor lighting and soft shadows';
- }catch(e){$('viewerStatus').textContent='3D preview unavailable on this browser/device.';console.error(e)}
+  const resize=()=>{if(!renderer||previewContextLost)return;const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)};
+  if('ResizeObserver' in window){previewResizeObserver=new ResizeObserver(resize);previewResizeObserver.observe(viewer)}else{window.addEventListener('resize',resize,{passive:true})}
+  renderer.setAnimationLoop(()=>{if(!previewContextLost){controls.update();renderer.render(scene,camera)}});
+  viewer.dataset.previewState='ready';
+  $('viewerStatus').textContent='3D preview ready · drag to rotate, pinch or scroll to zoom';
+ }catch(e){
+  viewer.dataset.previewState='error';
+  $('viewerStatus').textContent='3D preview could not start: '+(e?.message||'graphics initialisation failed')+'. Check WebGL/device support and tap Retry.';
+  console.error('TW&D Design Studio preview initialisation failed:',e);
+ }
 }
 function box(parent,w,h,d,x,y,z,material){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);return mesh}
 function drawRoof(w,d,y,style,mat){
