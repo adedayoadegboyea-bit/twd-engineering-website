@@ -1,17 +1,17 @@
 /* TW&D unified platform navigation. All destinations stay on the main domain. */
 (function(){
-  if(document.body.hasAttribute('data-homepage') || document.querySelector('.twd-platform-header')) return;
+  if(document.body.hasAttribute('data-homepage') || document.querySelector('.twd-platform-header') || document.querySelector('.site-header')) return;
   var legacy=document.querySelector('.ds-header, .account-header, .mgmt-header, body > .top');
   var links=[
-    ['Home','index.html'],['About','about.html'],['Services','services.html'],
-    ['Design Studio','design-studio.html'],['Workspace','workspace.html'],
-    ['Projects','projects.html'],['Marketplace','marketplace.html'],
-    ['My Account','account.html'],['Careers','careers.html'],['Contact','index.html#contact']
+    ['Home','/'],['About','/about.html'],['Services','/services.html'],
+    ['Design Studio','/design-studio.html'],['Workspace','/workspace.html'],
+    ['Projects','/projects.html'],['Marketplace','/marketplace.html'],
+    ['My Account','/account.html'],['Careers','/careers.html'],['Contact','/#contact']
   ];
   var current=location.pathname.split('/').pop() || 'index.html';
   var header=document.createElement('header');
   header.className='twd-platform-header';
-  header.innerHTML='<div class="twd-platform-inner"><a class="twd-platform-brand" href="index.html"><img src="assets/twd-luxury-logo.svg" alt="TW&D Engineering Consult & Services Ltd"><span>ENGINEER · BUILD · DELIVER</span></a><button class="twd-platform-toggle" type="button" aria-expanded="false" aria-controls="twdPlatformNav">Menu <span aria-hidden="true">☰</span></button><nav id="twdPlatformNav" class="twd-platform-nav" aria-label="TW&D main navigation">'+links.map(function(item){var active=current===item[1]?' aria-current="page"':'';return '<a href="'+item[1]+'"'+active+'>'+item[0]+'</a>';}).join('')+'</nav></div>';
+  header.innerHTML='<div class="twd-platform-inner"><a class="twd-platform-brand" href="/"><img src="/assets/twd-luxury-logo.svg" alt="TW&D Engineering Consult & Services Ltd"><span>ENGINEER · BUILD · DELIVER</span></a><button class="twd-platform-toggle" type="button" aria-expanded="false" aria-controls="twdPlatformNav">Menu <span aria-hidden="true">☰</span></button><nav id="twdPlatformNav" class="twd-platform-nav" aria-label="TW&D main navigation">'+links.map(function(item){var active=current===item[1]?' aria-current="page"':'';return '<a href="'+item[1]+'"'+active+'>'+item[0]+'</a>';}).join('')+'</nav></div>';
   if(legacy){legacy.hidden=true;legacy.setAttribute('aria-hidden','true');}
   document.body.insertBefore(header,document.body.firstChild);
   var toggle=header.querySelector('.twd-platform-toggle'),nav=header.querySelector('.twd-platform-nav');
