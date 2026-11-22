@@ -100,7 +100,7 @@ function getVisualSettings(){
   aesthetic:$('aestheticPreset').value,wall:$('wallColor').value,roof:$('roofColor').value,glass:$('glassColor').value,trim:$('trimColor').value,
   building_shape:$('buildingShape').value,plot_width_m:+$('plotWidth').value,plot_depth_m:+$('plotDepth').value,front_setback_m:+$('frontSetback').value,side_setback_m:+$('sideSetback').value,plot_orientation:$('plotOrientation').value,
   plan_line:$('planLineColor').value,plan_fill:$('planFillColor').value,line_width:+$('planLineWidth').value,
-  room_count:+$('roomCount').value,partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
+  room_count:+$('roomCount').value,room_names:$('roomNames').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12),partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
   facade_finish:$('facadeFinish').value,column_style:$('columnStyle').value,
   features:{balcony:$('featureBalcony').checked,columns:$('featureColumns').checked,fins:$('featureFins').checked,driveway:$('featureDriveway').checked,landscape:$('featureLandscape').checked,parapet:$('featureParapet').checked,lighting:$('featureLighting').checked}
  };
@@ -325,20 +325,25 @@ function drawPlan(w,d,n,v=getVisualSettings()){
  else outline=`M ${bx} ${by} H ${bx+rw} V ${by+rd} H ${bx} Z`;
  const areaFactor={rectangle:1,L:.75,U:.78,H:.80,T:.75,courtyard:.88}[shape]||1;
  const fill=v.plan_fill,line=v.plan_line;
- const roomLines=[];
+ const roomLines=[],roomLabels=[];
  if(shape==='rectangle'){
-  for(let i=1;i<rooms;i++)roomLines.push(`<line x1="${bx+rw*i/rooms}" y1="${by}" x2="${bx+rw*i/rooms}" y2="${by+rd}" stroke="${line}" stroke-width="${lw+1}"/>`);
-  roomLines.push(`<line x1="${bx}" y1="${by+rd*.52}" x2="${bx+rw}" y2="${by+rd*.52}" stroke="${line}" stroke-width="${lw+1}"/>`);
+  const cols=Math.ceil(rooms/2),rows=2;
+  for(let i=1;i<cols;i++)roomLines.push('<line x1="'+(bx+rw*i/cols)+'" y1="'+by+'" x2="'+(bx+rw*i/cols)+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+  roomLines.push('<line x1="'+bx+'" y1="'+(by+rd/2)+'" x2="'+(bx+rw)+'" y2="'+(by+rd/2)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+  const names=(v.room_names||[]).length?v.room_names:['Room 1','Room 2','Room 3','Room 4','Room 5','Room 6'];
+  for(let i=0;i<rooms;i++){
+   const col=i%cols,row=Math.floor(i/cols),cx=bx+rw*(col+.5)/cols,cy=by+rd*(row+.5)/rows;
+   const label=String(names[i]||('Room '+(i+1))).slice(0,22).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
+   roomLabels.push('<text x="'+cx+'" y="'+cy+'" font-size="9" fill="'+line+'" text-anchor="middle" dominant-baseline="middle">'+label+'</text>');
+  }
  }else{
-  roomLines.push(`<line x1="${bx+rw*.5}" y1="${by}" x2="${bx+rw*.5}" y2="${by+rd*.48}" stroke="${line}" stroke-width="${lw+1}"/>`);
-  roomLines.push(`<line x1="${bx+rw*.22}" y1="${by+rd*.5}" x2="${bx+rw*.78}" y2="${by+rd*.5}" stroke="${line}" stroke-width="${lw+1}"/>`);
-  roomLines.push(`<line x1="${bx+rw*.22}" y1="${by+rd*.5}" x2="${bx+rw*.22}" y2="${by+rd}" stroke="${line}" stroke-width="${lw+1}"/>`);
-  roomLines.push(`<line x1="${bx+rw*.78}" y1="${by+rd*.5}" x2="${bx+rw*.78}" y2="${by+rd}" stroke="${line}" stroke-width="${lw+1}"/>`);
+  roomLines.push('<line x1="'+(bx+rw*.5)+'" y1="'+by+'" x2="'+(bx+rw*.5)+'" y2="'+(by+rd*.48)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+  roomLines.push('<line x1="'+(bx+rw*.22)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.78)+'" y2="'+(by+rd*.5)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+  roomLines.push('<line x1="'+(bx+rw*.22)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.22)+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
+  roomLines.push('<line x1="'+(bx+rw*.78)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.78)+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
  }
- const labels=shape==='U'?[
-  [bx+rw*.25,by+rd*.22,'WING A'],[bx+rw*.75,by+rd*.22,'WING B'],[bx+rw*.5,by+rd*.83,'CLASSROOM / WING'],[bx+rw*.5,by+rd*.26,'COURTYARD']
- ]:shape==='L'?[[bx+rw*.25,by+rd*.2,'WING A'],[bx+rw*.73,by+rd*.72,'WING B']]:[[bx+rw*.5,by+rd*.22,'MAIN BLOCK'],[bx+rw*.5,by+rd*.76,'WING']];
- const labelSvg=labels.map(([x,y,t])=>`<text x="${x}" y="${y}" font-size="9" fill="${line}" text-anchor="middle">${t}</text>`).join('');
+ const labels=shape==='U'?[[bx+rw*.25,by+rd*.22,'WING A'],[bx+rw*.75,by+rd*.22,'WING B'],[bx+rw*.5,by+rd*.83,'CLASSROOM / WING'],[bx+rw*.5,by+rd*.26,'COURTYARD']]:shape==='L'?[[bx+rw*.25,by+rd*.2,'WING A'],[bx+rw*.73,by+rd*.72,'WING B']]:[[bx+rw*.5,by+rd*.22,'MAIN BLOCK'],[bx+rw*.5,by+rd*.76,'WING']];
+ const labelSvg=labels.map(([x,y,t])=>'<text x="'+x+'" y="'+y+'" font-size="9" fill="'+line+'" text-anchor="middle">'+t+'</text>').join('')+roomLabels.join('');
  const north=v.plot_orientation==='north'?'N':v.plot_orientation.toUpperCase()[0];
  const area=(w*d*areaFactor).toFixed(1);const footprintStroke=plotFit?line:'#c0392b';
  $('footprintValue').textContent=area+' m² approx.';
@@ -527,7 +532,7 @@ function applyAesthetic(){
  $('wallColor').value=p.wall;$('roofColor').value=p.roof;$('glassColor').value=p.glass;$('trimColor').value=p.trim;$('planLineColor').value=p.line;$('planFillColor').value=p.fill;drawBuilding();
 }
 $('aestheticPreset').addEventListener('change',applyAesthetic);
-['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','partitionDirection','primarySplitX','primarySplitY','windowStyle','facadeFinish','columnStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet','featureLighting'].forEach(id=>$(id).addEventListener('input',drawBuilding));
+['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','roomNames','partitionDirection','primarySplitX','primarySplitY','windowStyle','facadeFinish','columnStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet','featureLighting'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 
 ['width','depth','floorHeight','storeys','buildingShape','plotWidth','plotDepth','frontSetback','sideSetback','plotOrientation'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 $('refreshPreview').addEventListener('click',drawBuilding);
