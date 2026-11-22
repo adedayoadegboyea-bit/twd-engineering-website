@@ -9,6 +9,7 @@ const $=id=>document.getElementById(id);
 const roofLabels={contemporary_flat:'Flat',conventional_gable:'Gable',hip:'Hip',butterfly:'Butterfly',mono_pitch:'Mono-pitch',combination:'Combination',mansard:'Mansard',custom:'Custom'};
 let currentUser=null,currentProjectId=null,currentRevision=0,renderer,scene,camera,controls,buildingGroup;
 const floorRoomNames={ground:'Reception, Living room, Dining, Kitchen, Bedroom 1, Bedroom 2',first:'Family lounge, Master bedroom, Bedroom 2, Bedroom 3, Study, Balcony',second:'Bedrooms, Lounge, Bathroom, Store, Terrace',third:'Bedrooms, Lounge, Bathroom, Store, Terrace',fourth:'Bedrooms, Lounge, Bathroom, Store, Terrace'};
+const floorLayouts={ground:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},first:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},second:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},third:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},fourth:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'}};
 const viewer=$('viewer');
 const textureCache=new Map();
 function makeCanvasTexture(kind){
@@ -101,7 +102,7 @@ function getVisualSettings(){
   aesthetic:$('aestheticPreset').value,wall:$('wallColor').value,roof:$('roofColor').value,glass:$('glassColor').value,trim:$('trimColor').value,
   building_shape:$('buildingShape').value,plot_width_m:+$('plotWidth').value,plot_depth_m:+$('plotDepth').value,front_setback_m:+$('frontSetback').value,side_setback_m:+$('sideSetback').value,plot_orientation:$('plotOrientation').value,
   plan_line:$('planLineColor').value,plan_fill:$('planFillColor').value,line_width:+$('planLineWidth').value,
-  room_count:+$('roomCount').value,room_names:$('roomNames').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12),floor_plan_level:$('floorPlanLevel').value,floor_room_names:{...floorRoomNames},partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
+  room_count:+$('roomCount').value,room_names:$('roomNames').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12),floor_plan_level:$('floorPlanLevel').value,floor_room_names:{...floorRoomNames},floor_layouts:{...floorLayouts},partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
   facade_finish:$('facadeFinish').value,column_style:$('columnStyle').value,
   features:{balcony:$('featureBalcony').checked,columns:$('featureColumns').checked,fins:$('featureFins').checked,driveway:$('featureDriveway').checked,landscape:$('featureLandscape').checked,parapet:$('featureParapet').checked,lighting:$('featureLighting').checked}
  };
@@ -549,10 +550,14 @@ function applyAesthetic(){
 $('aestheticPreset').addEventListener('change',applyAesthetic);
 ['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','roomNames','partitionDirection','primarySplitX','primarySplitY','windowStyle','facadeFinish','columnStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet','featureLighting'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 
-function updateFloorPlanLevels(){const count=clamp(+$('storeys').value||1,1,4),levels=[...$('floorPlanLevel').options];levels.forEach((o,i)=>{o.disabled=i>=count});if($('floorPlanLevel').selectedOptions[0]?.disabled)$('floorPlanLevel').value=['ground','first','second','third'][count-1];}
-function switchFloorPlan(){const level=$('floorPlanLevel').value;$('roomNames').value=floorRoomNames[level]||floorRoomNames.ground;drawBuilding();}
+function saveActiveFloorLayout(){const level=$('floorPlanLevel').value;floorRoomNames[level]=$('roomNames').value;floorLayouts[level]={room_count:+$('roomCount').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,partition_direction:$('partitionDirection').value};}
+function loadActiveFloorLayout(){const level=$('floorPlanLevel').value,layout=floorLayouts[level]||floorLayouts.ground;$('roomNames').value=floorRoomNames[level]||floorRoomNames.ground;$('roomCount').value=layout.room_count;$('primarySplitX').value=Math.round(layout.split_x*100);$('primarySplitY').value=Math.round(layout.split_y*100);$('partitionDirection').value=layout.partition_direction;}
+function updateFloorPlanLevels(){const count=clamp(+$('storeys').value||1,1,4),levels=[...$('floorPlanLevel').options];levels.forEach((o,i)=>{o.disabled=i>=count});if($('floorPlanLevel').selectedOptions[0]?.disabled){$('floorPlanLevel').value=['ground','first','second','third'][count-1];loadActiveFloorLayout();}}
+function switchFloorPlan(){saveActiveFloorLayout();loadActiveFloorLayout();drawBuilding();}
 $('floorPlanLevel').addEventListener('change',switchFloorPlan);
 $('roomNames').addEventListener('input',()=>{floorRoomNames[$('floorPlanLevel').value]=$('roomNames').value;drawBuilding()});
+['roomCount','primarySplitX','primarySplitY','partitionDirection'].forEach(id=>$(id).addEventListener('input',()=>{saveActiveFloorLayout();drawBuilding()}));
+loadActiveFloorLayout();
 ['width','depth','floorHeight','buildingShape','plotWidth','plotDepth','frontSetback','sideSetback','plotOrientation'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 $('storeys').addEventListener('input',()=>{updateFloorPlanLevels();drawBuilding()});
 updateFloorPlanLevels();
