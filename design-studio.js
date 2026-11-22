@@ -11,6 +11,15 @@ let currentUser=null,currentProjectId=null,currentRevision=0,renderer,scene,came
 const floorRoomNames={ground:'Reception, Living room, Dining, Kitchen, Bedroom 1, Bedroom 2',first:'Family lounge, Master bedroom, Bedroom 2, Bedroom 3, Study, Balcony',second:'Bedrooms, Lounge, Bathroom, Store, Terrace',third:'Bedrooms, Lounge, Bathroom, Store, Terrace',fourth:'Bedrooms, Lounge, Bathroom, Store, Terrace'};
 const floorLayouts={ground:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},first:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},second:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},third:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},fourth:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'}};
 let activeFloorKey='ground';
+const floorRoomInteriors={ground:{},first:{},second:{},third:{},fourth:{}};
+let activeRoomIndex=0;
+const defaultRoomInterior=()=>({floor_finish:'porcelain',wall_finish:'paint',tile_color:'#d8d4ca',wall_color:'#f1eee7',lighting:'warm',furniture:'family',sanitary:'full'});
+function roomListForActiveFloor(){return ($('roomNames').value||'Room 1').split(',').map(x=>x.trim()).filter(Boolean).slice(0,12);}
+function roomInteriorKey(index){return String(index);}
+function saveActiveRoomInterior(){const level=$('floorPlanLevel').value,key=roomInteriorKey(activeRoomIndex);floorRoomInteriors[level][key]={floor_finish:$('roomFloorFinish').value,wall_finish:$('roomWallFinish').value,tile_color:$('roomTileColor').value,wall_color:$('roomWallColor').value,lighting:$('roomLighting').value,furniture:$('roomFurniture').value,sanitary:$('roomSanitary').value};}
+function loadActiveRoomInterior(){const names=roomListForActiveFloor(),sel=$('roomEditSelect');if(!sel)return;sel.innerHTML=names.map((name,i)=>'<option value="'+i+'">'+escapeHtml(name||('Room '+(i+1)))+'</option>').join('')||'<option value="0">Room 1</option>';activeRoomIndex=Math.min(activeRoomIndex,Math.max(0,names.length-1));sel.value=String(activeRoomIndex);const cfg=floorRoomInteriors[$('floorPlanLevel').value][roomInteriorKey(activeRoomIndex)]||defaultRoomInterior();$('roomFloorFinish').value=cfg.floor_finish;$('roomWallFinish').value=cfg.wall_finish;$('roomTileColor').value=cfg.tile_color;$('roomWallColor').value=cfg.wall_color;$('roomLighting').value=cfg.lighting;$('roomFurniture').value=cfg.furniture;$('roomSanitary').value=cfg.sanitary;$('roomEditorStatus').textContent='Editing '+(names[activeRoomIndex]||('Room '+(activeRoomIndex+1)))+' on the '+$('floorPlanLevel').selectedOptions[0].text+'.';}
+function roomEditorChanged(){saveActiveRoomInterior();drawBuilding();}
+
 const viewer=$('viewer');
 const textureCache=new Map();
 function makeCanvasTexture(kind){
@@ -101,13 +110,15 @@ function drawRoof(w,d,y,style,mat){
   return roof;
 }
 function getVisualSettings(){
+ const roomInteriors=JSON.parse(JSON.stringify(floorRoomInteriors));
+ const selectedRoom=roomInteriors[$('floorPlanLevel').value]?.[roomInteriorKey(activeRoomIndex)]||defaultRoomInterior();
  return {
   aesthetic:$('aestheticPreset').value,wall:$('wallColor').value,roof:$('roofColor').value,glass:$('glassColor').value,trim:$('trimColor').value,
   building_shape:$('buildingShape').value,plot_width_m:+$('plotWidth').value,plot_depth_m:+$('plotDepth').value,front_setback_m:+$('frontSetback').value,side_setback_m:+$('sideSetback').value,plot_orientation:$('plotOrientation').value,
   plan_line:$('planLineColor').value,plan_fill:$('planFillColor').value,line_width:+$('planLineWidth').value,
-  room_count:+$('roomCount').value,room_names:$('roomNames').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12),floor_plan_level:$('floorPlanLevel').value,floor_room_names:{...floorRoomNames},floor_layouts:{...floorLayouts},partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
+  room_count:+$('roomCount').value,room_names:$('roomNames').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12),floor_plan_level:$('floorPlanLevel').value,floor_room_names:{...floorRoomNames},floor_layouts:{...floorLayouts},room_interiors:roomInteriors,active_room_index:activeRoomIndex,selected_room_interior:selectedRoom,partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
   facade_finish:$('facadeFinish').value,column_style:$('columnStyle').value,
-  interior:{view_mode:$('interiorViewMode').value,floor_finish:$('interiorFloorFinish').value,wall_finish:$('interiorWallFinish').value,tile_color:$('tileColor').value,wall_color:$('interiorWallColor').value,lighting:$('interiorLighting').value,lighting_intensity:+$('lightingIntensity').value,furniture:$('furniturePreset').value,sanitary:$('sanitaryPreset').value,hardscape:$('hardscapeFinish').value,hardscape_color:$('hardscapeColor').value,garden:$('gardenStyle').value,show_lights:$('showInteriorLights').checked,show_furniture:$('showFurniture').checked,show_plumbing:$('showPlumbing').checked,show_ceiling:$('showCeiling').checked,show_stamped_joints:$('showStampedJoints').checked,show_green_areas:$('showGreenAreas').checked},
+  interior:{view_mode:$('interiorViewMode').value,floor_finish:selectedRoom.floor_finish,wall_finish:selectedRoom.wall_finish,tile_color:selectedRoom.tile_color,wall_color:selectedRoom.wall_color,lighting:selectedRoom.lighting,lighting_intensity:+$('lightingIntensity').value,furniture:selectedRoom.furniture,sanitary:selectedRoom.sanitary,hardscape:$('hardscapeFinish').value,hardscape_color:$('hardscapeColor').value,garden:$('gardenStyle').value,show_lights:$('showInteriorLights').checked,show_furniture:$('showFurniture').checked,show_plumbing:$('showPlumbing').checked,show_ceiling:$('showCeiling').checked,show_stamped_joints:$('showStampedJoints').checked,show_green_areas:$('showGreenAreas').checked},
   features:{balcony:$('featureBalcony').checked,columns:$('featureColumns').checked,fins:$('featureFins').checked,driveway:$('featureDriveway').checked,landscape:$('featureLandscape').checked,parapet:$('featureParapet').checked,lighting:$('featureLighting').checked}
  };
 }
@@ -642,11 +653,15 @@ $('aestheticPreset').addEventListener('change',applyAesthetic);
 function saveActiveFloorLayout(){const level=activeFloorKey;floorRoomNames[level]=$('roomNames').value;floorLayouts[level]={room_count:+$('roomCount').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,partition_direction:$('partitionDirection').value};}
 function loadActiveFloorLayout(){const level=$('floorPlanLevel').value,layout=floorLayouts[level]||floorLayouts.ground;activeFloorKey=level;$('roomNames').value=floorRoomNames[level]||floorRoomNames.ground;$('roomCount').value=layout.room_count;$('primarySplitX').value=Math.round(layout.split_x*100);$('primarySplitY').value=Math.round(layout.split_y*100);$('partitionDirection').value=layout.partition_direction;}
 function updateFloorPlanLevels(){const count=clamp(+$('storeys').value||1,1,4),levels=[...$('floorPlanLevel').options];levels.forEach((o,i)=>{o.disabled=i>=count});if($('floorPlanLevel').selectedOptions[0]?.disabled){$('floorPlanLevel').value=['ground','first','second','third'][count-1];loadActiveFloorLayout();}}
-function switchFloorPlan(){saveActiveFloorLayout();loadActiveFloorLayout();drawBuilding();}
+function switchFloorPlan(){saveActiveFloorLayout();saveActiveRoomInterior();loadActiveFloorLayout();loadActiveRoomInterior();drawBuilding();}
 $('floorPlanLevel').addEventListener('change',switchFloorPlan);
 $('roomNames').addEventListener('input',()=>{floorRoomNames[$('floorPlanLevel').value]=$('roomNames').value;drawBuilding()});
 ['roomCount','primarySplitX','primarySplitY','partitionDirection'].forEach(id=>$(id).addEventListener('input',()=>{saveActiveFloorLayout();drawBuilding()}));
 loadActiveFloorLayout();
+loadActiveRoomInterior();
+$('roomEditSelect').addEventListener('change',()=>{saveActiveRoomInterior();activeRoomIndex=+$('roomEditSelect').value;loadActiveRoomInterior();drawBuilding();});
+['roomFloorFinish','roomWallFinish','roomTileColor','roomWallColor','roomLighting','roomFurniture','roomSanitary'].forEach(id=>$(id).addEventListener('input',roomEditorChanged));
+$('roomNames').addEventListener('input',()=>{loadActiveRoomInterior();drawBuilding();});
 ['width','depth','floorHeight','buildingShape','plotWidth','plotDepth','frontSetback','sideSetback','plotOrientation'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 $('storeys').addEventListener('input',()=>{updateFloorPlanLevels();drawBuilding()});
 updateFloorPlanLevels();
