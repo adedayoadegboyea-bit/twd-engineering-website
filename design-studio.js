@@ -108,6 +108,76 @@ async function saveQuote(){if(!currentUser){$('quoteStatus').textContent='Sign i
  }catch(err){console.error(err);$('quoteStatus').textContent='Could not save estimate: '+(err.message||'Please check your account permissions.')}
  finally{$('saveQuote').disabled=false}
 }
+
+async function loadApprovedRates(){
+ if(!currentUser)return;
+ const today=new Date().toISOString().slice(0,10);
+ const r=await supabase.from('boq_price_catalog').select('id,description,unit,unit_rate,price_source,source_location,valid_until').eq('active',true).lte('valid_from',today).or('valid_until.is.null,valid_until.gte.'+today).order('description');
+ if(r.error){$('priceListStatus').textContent=r.error.message;return}
+ const s=$('approvedRateSelect');s.innerHTML='<option value="">Choose approved price</option>';
+ (r.data||[]).forEach(x=>{const o=document.createElement('option');o.value=x.id;o.textContent=x.description+' — '+money(Number(x.unit_rate))+'/'+x.unit+' — '+(x.source_location||'location not specified');o.dataset.item=JSON.stringify(x);s.appendChild(o)});
+ $('priceListStatus').textContent=(r.data||[]).length+' approved rates available.';
+}
+async function submitSupplierQuote(e){
+ e.preventDefault();if(!currentUser){$('supplierStatus').textContent='Sign in first.';return}
+ const x={supplier_name:$('supplierName').value.trim(),supplier_contact:$('supplierContact').value.trim()||null,supplier_email:$('supplierEmail').value.trim()||null,supplier_phone:$('supplierPhone').value.trim()||null,item_description:$('supplierItem').value.trim(),category:$('supplierCategory').value.trim(),unit:$('supplierUnit').value.trim(),unit_rate:Number($('supplierRate').value),location:$('supplierLocation').value.trim()||null,quote_reference:$('supplierReference').value.trim()||null,evidence_url:$('supplierEvidence').value.trim()||null,valid_until:$('supplierValidUntil').value||null,submitted_by:currentUser.id};
+ const r=await supabase.from('boq_supplier_quotes').insert(x);$('supplierStatus').textContent=r.error?r.error.message:'Supplier quotation submitted for TW&D review.';if(!r.error)$('supplierQuoteForm').reset();
+}
+async function loadInvoices(){
+ if(!currentUser)return;const r=await supabase.from('design_payment_orders').select('id,invoice_number,purpose,amount,status,created_at').eq('owner_id',currentUser.id).order('created_at',{ascending:false});
+ if(r.error){$('paymentStatus').textContent=r.error.message;return}
+ $('invoiceList').innerHTML=(r.data||[]).map(x=>'<div class="invoice-card"><div><strong>'+x.invoice_number+' · '+x.purpose+'</strong><small>'+new Date(x.created_at).toLocaleDateString('en-NG')+' · '+x.status+'</small></div><div class="invoice-amount">'+money(Number(x.amount))+'</div>'+(x.status==='pending'||x.status==='failed'?'<button class="primary pay-invoice" data-id="'+x.id+'">Pay with Flutterwave</button>':'')+'</div>').join('')||'<p>No TW&D design invoices have been issued to this account yet.</p>';
+}
+async function startInvoicePayment(e){
+ const b=e.target.closest('.pay-invoice');if(!b)return;b.disabled=true;
+ const r=await supabase.functions.invoke('flutterwave-checkout',{body:{action:'create',invoice_id:b.dataset.id}});
+ if(r.error||!r.data?.checkout_url){b.disabled=false;$('paymentStatus').textContent=r.data?.error||r.error?.message||'Unable to start payment.';return}
+ location.assign(r.data.checkout_url);
+}
+async function setupAdmin(){
+ if(!currentUser)return;const a=await supabase.rpc('is_admin'),b=await supabase.rpc('is_boq_staff');if(a.data!==true&&b.data!==true)return;
+ $('adminPanel').hidden=false;
+ const p=await supabase.from('design_projects').select('id,owner_id,client_name,project_name').order('created_at',{ascending:false}).limit(100);
+ $('invoiceProjectSelect').innerHTML='<option value="">Choose project</option>';
+ (p.data||[]).forEach(x=>{const o=document.createElement('option');o.value=x.id;o.dataset.owner=x.owner_id;o.textContent=x.project_name+' — '+x.client_name+' — '+x.id.slice(0,8);$('invoiceProjectSelect').appendChild(o)});
+ await loadAdminRates();await loadSupplierReview();
+}
+async function loadAdminRates(){
+ const r=await supabase.from('boq_price_catalog').select('*').order('description').limit(200);if(r.error){$('adminCatalogList').textContent=r.error.message;return}
+ $('adminCatalogList').innerHTML='<div class="admin-table-wrap"><table class="admin-table"><tr><th>Item</th><th>Rate</th><th>Source</th><th>Action</th></tr>'+(r.data||[]).map(x=>'<tr><td>'+x.description+' ('+x.unit+')</td><td>'+money(Number(x.unit_rate))+'</td><td>'+(x.price_source||'admin')+' / '+(x.source_location||x.supplier_name||'—')+'</td><td><button class="secondary edit-rate" data-id="'+x.id+'">Edit</button> <button class="secondary toggle-rate" data-id="'+x.id+'" data-active="'+x.active+'">'+(x.active?'Deactivate':'Activate')+'</button></td></tr>').join('')+'</table></div>';
+}
+async function loadSupplierReview(){
+ const r=await supabase.from('boq_supplier_quotes').select('*').eq('status','pending').order('created_at',{ascending:false});if(r.error){$('supplierReviewList').textContent=r.error.message;return}
+ $('supplierReviewList').innerHTML=(r.data||[]).map(x=>'<div class="invoice-card"><div><strong>'+x.supplier_name+' — '+x.item_description+'</strong><small>'+money(Number(x.unit_rate))+'/'+x.unit+' · '+(x.location||'location not stated')+'</small></div><button class="primary approve-supplier" data-id="'+x.id+'">Approve</button><button class="secondary reject-supplier" data-id="'+x.id+'">Reject</button></div>').join('')||'No pending supplier quotations.';
+}
+async function saveAdminRate(e){
+ e.preventDefault();const r=await supabase.from('boq_price_catalog').insert({category:$('adminRateCategory').value.trim(),description:$('adminRateDescription').value.trim(),unit:$('adminRateUnit').value.trim(),unit_rate:Number($('adminRateValue').value),currency:'NGN',active:true,price_source:'admin',source_location:$('adminRateLocation').value.trim()||null,valid_from:new Date().toISOString().slice(0,10),valid_until:$('adminRateExpiry').value||null,updated_by:currentUser.id});
+ $('adminRateStatus').textContent=r.error?r.error.message:'Admin price added.';if(!r.error){$('adminRateForm').reset();await loadAdminRates();await loadApprovedRates()}
+}
+async function adminActions(e){
+ const edit=e.target.closest('.edit-rate'),toggle=e.target.closest('.toggle-rate');if(edit){const r=await supabase.from('boq_price_catalog').select('*').eq('id',edit.dataset.id).single();if(r.data){$('adminRateCategory').value=r.data.category;$('adminRateDescription').value=r.data.description;$('adminRateUnit').value=r.data.unit;$('adminRateValue').value=r.data.unit_rate;$('adminRateLocation').value=r.data.source_location||'';$('adminRateExpiry').value=r.data.valid_until||'';$('adminRateStatus').textContent='To revise an existing rate, deactivate it and add a replacement rate.'}return}
+ if(toggle){const r=await supabase.from('boq_price_catalog').update({active:toggle.dataset.active!=='true',updated_by:currentUser.id}).eq('id',toggle.dataset.id);if(r.error)alert(r.error.message);await loadAdminRates();await loadApprovedRates()}
+}
+async function reviewSupplier(e){
+ const b=e.target.closest('.approve-supplier'),n=e.target.closest('.reject-supplier');if(!b&&!n)return;const id=(b||n).dataset.id;
+ const q=await supabase.from('boq_supplier_quotes').select('*').eq('id',id).single();if(q.error){alert(q.error.message);return}
+ const x=q.data;
+ if(b){const c=await supabase.from('boq_price_catalog').insert({category:x.category,description:x.item_description,unit:x.unit,unit_rate:x.unit_rate,currency:'NGN',active:true,price_source:'supplier',supplier_name:x.supplier_name,source_location:x.location,source_reference:x.quote_reference,valid_from:x.quoted_at,valid_until:x.valid_until,updated_by:currentUser.id}).select().single();if(c.error){alert(c.error.message);return}}
+ const u=await supabase.from('boq_supplier_quotes').update({status:b?'approved':'rejected',reviewed_by:currentUser.id,reviewed_at:new Date().toISOString(),catalog_item_id:b?undefined:null}).eq('id',id);if(u.error)alert(u.error.message);
+ await loadSupplierReview();await loadAdminRates();await loadApprovedRates();
+}
+async function issueInvoice(e){
+ e.preventDefault();const p=$('invoiceProjectSelect').selectedOptions[0];if(!p?.value)return;
+ const r=await supabase.from('design_payment_orders').insert({design_project_id:p.value,owner_id:p.dataset.owner,invoice_number:'TWD-DS-'+Date.now(),purpose:$('invoicePurpose').value.trim(),amount:Number($('invoiceAmount').value),currency:'NGN',created_by:currentUser.id,status:'pending'});
+ $('invoiceAdminStatus').textContent=r.error?r.error.message:'Invoice issued.';if(!r.error){$('invoiceForm').reset();await loadInvoices()}
+}
+async function verifyReturn(){
+ const q=new URLSearchParams(location.search),ref=q.get('tx_ref'),id=q.get('transaction_id');if(!ref)return;
+ if(id){$('paymentStatus').textContent='Verifying payment…';const r=await supabase.functions.invoke('flutterwave-checkout',{body:{action:'verify',tx_ref:ref,transaction_id:id}});$('paymentStatus').textContent=r.error?r.error.message:(r.data?.paid?'Payment verified and invoice marked paid.':r.data?.message||'Payment is not yet verified.')}
+ history.replaceState({},document.title,location.pathname);await loadInvoices();
+}
+async function initDesignWorkspace(){if(!currentUser)return;await Promise.all([loadApprovedRates(),loadInvoices(),setupAdmin()]);await verifyReturn()}
+
 $('roofType').addEventListener('change',()=>{$('customRoofWrap').hidden=$('roofType').value!=='custom';drawBuilding()});
 ['width','depth','floorHeight','storeys'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 $('refreshPreview').addEventListener('click',drawBuilding);$('viewReset').addEventListener('click',drawBuilding);
@@ -115,6 +185,15 @@ $('designForm').addEventListener('submit',saveDesign);$('addQuoteRow').addEventL
 $('downloadGlb').addEventListener('click',()=>{if(!buildingGroup)return;const exporter=new GLTFExporter();$('viewerStatus').textContent='Preparing 3D model file…';exporter.parse(buildingGroup,result=>{const blob=new Blob([result],{type:'model/gltf-binary'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-building-concept-preview.glb';a.click();URL.revokeObjectURL(url);$('viewerStatus').textContent='Concept model exported as GLB. This is a visual massing model, not a CAD or structural file.';},error=>{$('viewerStatus').textContent='Model export failed: '+(error.message||'Please try again.');},{binary:true});});
 $('downloadSvg').addEventListener('click',()=>{const svg=$('planDrawing').querySelector('svg');if(!svg)return;const blob=new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-footprint-concept.svg';a.click();URL.revokeObjectURL(url);});
 addQuoteRow();setup3D();
+$('addCatalogRate').addEventListener('click',()=>{const o=$('approvedRateSelect').selectedOptions[0];if(o?.dataset.item){const x=JSON.parse(o.dataset.item);addQuoteRow({description:x.description,unit:x.unit,unit_rate:x.unit_rate});}});
+$('refreshPriceList').addEventListener('click',loadApprovedRates);
+$('supplierQuoteForm').addEventListener('submit',submitSupplierQuote);
+$('invoiceList').addEventListener('click',startInvoicePayment);
+$('adminRateForm').addEventListener('submit',saveAdminRate);
+$('adminCatalogList').addEventListener('click',adminActions);
+$('supplierReviewList').addEventListener('click',reviewSupplier);
+$('invoiceForm').addEventListener('submit',issueInvoice);
+$('cancelRateEdit').addEventListener('click',()=>{$('adminRateForm').reset();$('cancelRateEdit').hidden=true;});
 const {data:{session}}=await supabase.auth.getSession();currentUser=session?.user||null;
-supabase.auth.onAuthStateChange((_event,s)=>{currentUser=s?.user||null;if(currentUser)$('formStatus').textContent='Signed in. Your design brief can be saved securely.'});
-if(!currentUser){$('formStatus').innerHTML='Sign in is required to save projects. <a href="account.html">Open your TW&D client account</a>.'}
+supabase.auth.onAuthStateChange((_event,s)=>{currentUser=s?.user||null;if(currentUser){$('formStatus').textContent='Signed in. Your design brief can be saved securely.';initDesignWorkspace()}});
+if(!currentUser){$('formStatus').innerHTML='Sign in is required to save projects. <a href="account.html">Open your TW&D client account</a>.'}else{initDesignWorkspace()}
