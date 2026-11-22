@@ -19,6 +19,10 @@
 .feature-options{display:flex;flex-wrap:wrap;gap:10px 16px;padding:13px;margin-top:12px;background:#fff;border:1px solid #e1e8f0;border-radius:9px}
 .feature-options strong{width:100%;font-size:12px;color:#314761}.feature-options label{display:flex;align-items:center;gap:6px;font-size:11px;color:#455d77;font-weight:650}.feature-options input{width:auto;min-height:auto;accent-color:#0755dd}
 .customizer-note{line-height:1.55;margin:12px 0 0}
+.viewer-actions{display:flex;flex-wrap:wrap;gap:7px}
+.viewer-actions button{font-size:11px;padding:8px 10px}
+.plan-drawing svg{width:100%;height:auto;display:block}
+
 </style>
 </head>
 <body>
@@ -83,7 +87,7 @@
 </section>
 <section class="panel preview-panel">
 <div class="panel-title"><span class="step">02</span><div><h2>Live concept preview</h2><p>Rotate, zoom and inspect the building massing.</p></div></div>
-<div class="viewer-shell"><div id="viewer" aria-label="Interactive 3D building concept preview"></div><div class="viewer-controls"><div class="viewer-actions"><button id="viewReset" class="secondary" type="button">Reset view</button><button id="downloadGlb" class="secondary" type="button">Download concept GLB</button><button id="downloadSvg" class="secondary" type="button">Download footprint SVG</button></div><span id="viewerStatus">Preparing 3D preview…</span></div></div>
+<div class="viewer-shell"><div id="viewer" aria-label="Interactive 3D building concept preview"></div><div class="viewer-controls"><div class="viewer-actions"><button id="viewPerspective" class="secondary" type="button">Perspective</button><button id="viewFront" class="secondary" type="button">Front</button><button id="viewSide" class="secondary" type="button">Side</button><button id="viewTop" class="secondary" type="button">Top / plan</button><button id="viewReset" class="secondary" type="button">Reset view</button><button id="downloadGlb" class="secondary" type="button">Download concept GLB</button><button id="downloadSvg" class="secondary" type="button">Download footprint SVG</button></div><span id="viewerStatus">Preparing 3D preview…</span></div></div>
 <div class="preview-meta"><div><span>Footprint</span><strong id="footprintValue">216 m²</strong></div><div><span>Storeys</span><strong id="storeyValue">2</strong></div><div><span>Roof</span><strong id="roofValue">Gable</strong></div></div>
 <div class="plan-preview"><div class="plan-head"><h3>Indicative footprint plan</h3><span>Concept only · Not to scale for construction</span></div><div id="planDrawing" class="plan-drawing" role="img" aria-label="Indicative building footprint plan"></div></div>
 </section>
