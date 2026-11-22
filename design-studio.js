@@ -233,26 +233,47 @@ function drawBuilding(){
   // Decorative horizontal fascia bands.
   box(buildingGroup,w+.48,.16,.34,0,y+h-.12,frontZ+.10,trim);
  }
- // Internal partition walls use the same split settings as the plan, keeping the massing model and plan controls coordinated.
+ // Internal partitions follow the same room grid used by the selectable floor surfaces.
+ // Each floor uses its own room count; openings are left in the centre of each adjoining bay.
  const innerWall=mat('#eeeae2',.9),innerTrim=mat('#c7c2b8',.8);
  const wallThickness=.13,insideW=w-.44,insideD=d-.44;
- const roomCount=clamp(v.room_count,2,6),splitX=v.split_x,splitY=v.split_y;
- const partitionXs=[];
- if(v.partition_direction==='vertical'||v.partition_direction==='mixed'){
-  for(let i=1;i<roomCount;i++){const ratio=i===1?splitX:(splitX+(1-splitX)*(i-1)/(roomCount-1));partitionXs.push(-insideW/2+insideW*ratio);}
- }
- const partitionYs=[];
- if(v.partition_direction==='horizontal'||v.partition_direction==='mixed'){
-  const count=v.partition_direction==='mixed'?2:roomCount-1;
-  for(let i=1;i<=count;i++){const ratio=i===1?splitY:(splitY+(1-splitY)*(i-1)/count);partitionYs.push(-insideD/2+insideD*ratio);}
- }
  for(let floor=0;floor<n;floor++){
-  const floorY=floor*h;
-  for(const x of partitionXs)box(buildingGroup,wallThickness,h*.72,insideD,x,floorY+h*.38,0,innerWall);
-  for(const z of partitionYs)box(buildingGroup,insideW,h*.72,wallThickness,0,floorY+h*.38,z,innerWall);
-  // Thin contrasting top edges make internal divisions legible in elevated / roof-off views.
-  for(const x of partitionXs)box(buildingGroup,wallThickness+.035,.035,insideD,x,floorY+h*.75,0,innerTrim);
-  for(const z of partitionYs)box(buildingGroup,insideW,.035,wallThickness+.035,0,floorY+h*.75,z,innerTrim);
+  const floorKeyForPartitions=['ground','first','second','third','fourth'][floor];
+  const floorNames=(v.floor_room_names&&v.floor_room_names[floorKeyForPartitions])
+   ?String(v.floor_room_names[floorKeyForPartitions]).split(',').map(x=>x.trim()).filter(Boolean)
+   :roomNamesForModel;
+  const count=clamp(floorNames.length||v.room_count||4,2,12);
+  const cols=Math.ceil(count/2),rows=Math.ceil(count/cols),floorY=floor*h;
+  const cellW=insideW/cols,cellD=insideD/rows,wallHeight=h*.72,wallY=floorY+h*.38;
+  const gapW=Math.min(.92,cellW*.28),gapD=Math.min(.92,cellD*.28);
+  // Vertical room boundaries with doorway gaps centred in each row.
+  for(let c=1;c<cols;c++){
+   const x=-insideW/2+c*cellW;
+   for(let row=0;row<rows;row++){
+    const z0=-insideD/2+row*cellD,z1=z0+cellD,zMid=(z0+z1)/2;
+    const segment=(cellD-gapD)/2;
+    if(segment>.08){
+     box(buildingGroup,wallThickness,wallHeight,segment,x,wallY,z0+segment/2,innerWall);
+     box(buildingGroup,wallThickness,wallHeight,segment,x,wallY,z1-segment/2,innerWall);
+     box(buildingGroup,wallThickness+.035,.035,segment,x,floorY+h*.75,z0+segment/2,innerTrim);
+     box(buildingGroup,wallThickness+.035,.035,segment,x,floorY+h*.75,z1-segment/2,innerTrim);
+    }
+   }
+  }
+  // Horizontal room boundaries with doorway gaps centred in each column.
+  for(let row=1;row<rows;row++){
+   const z=-insideD/2+row*cellD;
+   for(let col=0;col<cols;col++){
+    const x0=-insideW/2+col*cellW,x1=x0+cellW,xMid=(x0+x1)/2;
+    const segment=(cellW-gapW)/2;
+    if(segment>.08){
+     box(buildingGroup,segment,wallHeight,wallThickness,x0+segment/2,wallY,z,innerWall);
+     box(buildingGroup,segment,wallHeight,wallThickness,x1-segment/2,wallY,z,innerWall);
+     box(buildingGroup,segment,.035,wallThickness+.035,x0+segment/2,floorY+h*.75,z,innerTrim);
+     box(buildingGroup,segment,.035,wallThickness+.035,x1-segment/2,floorY+h*.75,z,innerTrim);
+    }
+   }
+  }
  }
  // Room-by-room interior model: each room receives its own floor material, finish panel, lighting and furniture.
  const addBox=(ww,hh,dd,x,y,z,m)=>box(buildingGroup,ww,hh,dd,x,y,z,m);
