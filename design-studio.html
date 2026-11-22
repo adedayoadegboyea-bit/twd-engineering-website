@@ -55,6 +55,8 @@
   </div>
   <div class="field-grid">
     <label>Room / partition count<select id="roomCount"><option value="2">2 main zones</option><option value="3">3 rooms / zones</option><option value="4" selected>4 rooms / zones</option><option value="5">5 rooms / zones</option><option value="6">6 rooms / zones</option></select></label>
+    <label>Primary vertical split (%)<input id="primarySplitX" type="range" min="20" max="80" step="5" value="50"></label>
+    <label>Primary horizontal split (%)<input id="primarySplitY" type="range" min="20" max="80" step="5" value="52"></label>
     <label>Partition direction<select id="partitionDirection"><option value="vertical">Vertical divisions</option><option value="horizontal">Horizontal divisions</option><option value="mixed" selected>Mixed layout</option></select></label>
     <label>Plan line thickness<input id="planLineWidth" type="range" min="1" max="5" step=".5" value="1.5"></label>
     <label>Window size<select id="windowStyle"><option value="standard">Standard</option><option value="wide">Wide glazing</option><option value="slim">Slim vertical</option><option value="panoramic">Panoramic</option></select></label>
