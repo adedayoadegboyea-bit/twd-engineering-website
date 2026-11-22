@@ -331,7 +331,7 @@ function drawBuilding(){
       const wc=new THREE.Mesh(new THREE.SphereGeometry(.22,16,10),fixtureMat);wc.scale.set(1,.5,1.2);wc.position.set(cx-cellW*.2,fyBase+.24,cz+cellD*.2);buildingGroup.add(wc);
       addBox(.52,.55,.16,cx-cellW*.2,fyBase+.4,cz+cellD*.05,fixtureMat);
       addBox(.62,.14,.46,cx+cellW*.2,fyBase+.78,cz-cellD*.2,fixtureMat);
-      if(cfg.sanitary==='full'||cfg.sanitary==='wc_shower')addBox(.72,.08,.72,cx+cellW*.2,fyBase+.05,cz+cellD*.22,fixtureMat);
+      if(cfg.sanitary==='full'||cfg.sanitary==='wc_shower'){addBox(.78,.08,.78,cx+cellW*.2,fyBase+.05,cz+cellD*.22,fixtureMat);addBox(.035,1.85,.78,cx+cellW*.2-.39,fyBase+.96,cz+cellD*.22,glass);addBox(.78,1.85,.035,cx+cellW*.2,fyBase+.96,cz+cellD*.22-.39,glass);const showerHead=new THREE.Mesh(new THREE.CylinderGeometry(.09,.09,.035,16),chromeMat);showerHead.position.set(cx+cellW*.2,fyBase+1.82,cz+cellD*.22);buildingGroup.add(showerHead);}
      }
     }else if(/office|study|class|reception/.test(roomName)){
      addBox(Math.min(1.5,cellW*.62),.12,.72,cx,fyBase+.78,cz,fm);
@@ -348,7 +348,7 @@ function drawBuilding(){
    addBox(.08,.09,.035,doorX+.04,fyBase+1.02,doorZ+.30,chromeMat);
    if(cfg.storage!=='none'&&/bed|sleep|master|guest/.test(roomName)){
     const wardrobeDepth=cfg.storage==='walkin'?.72:.58;
-    addBox(Math.min(1.75,cellW*.30),2.05,wardrobeDepth,cx+cellW*.32,fyBase+1.025,cz-cellD*.30,fm);
+    addBox(Math.min(1.75,cellW*.30),2.05,wardrobeDepth,cx+cellW*.32,fyBase+1.025,cz-cellD*.30,woodMat);
     for(let k=0;k<3;k++)addBox(.012,1.72,.018,cx+cellW*.32+(k-1)*Math.min(.48,cellW*.09),fyBase+1.02,cz-cellD*.30+wardrobeDepth*.51,chromeMat);
     addBox(.48,.42,.42,cx-cellW*.30,fyBase+.23,cz-cellD*.30,woodMat);
     addBox(.48,.42,.42,cx+cellW*.30,fyBase+.23,cz-cellD*.30,woodMat);
