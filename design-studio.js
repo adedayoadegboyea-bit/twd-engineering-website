@@ -6,7 +6,7 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './supabase-config.js';
 const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 const $=id=>document.getElementById(id);
 const roofLabels={contemporary_flat:'Flat',conventional_gable:'Gable',hip:'Hip',butterfly:'Butterfly',mono_pitch:'Mono-pitch',combination:'Combination',mansard:'Mansard',custom:'Custom'};
-let currentUser=null,currentProjectId=null,renderer,scene,camera,controls,buildingGroup;
+let currentUser=null,currentProjectId=null,currentRevision=0,renderer,scene,camera,controls,buildingGroup;
 const viewer=$('viewer');
 function setup3D(){
   try{
@@ -77,7 +77,7 @@ async function saveDesign(e){e?.preventDefault();if(!currentUser){$('formStatus'
  $('saveProject').disabled=true;$('formStatus').textContent='Saving your design brief securely…';
  try{
    let result;
-   if(currentProjectId){result=await supabase.from('design_projects').update({client_name:b.client_name,client_email:b.client_email,client_phone:b.client_phone,project_name:b.project_name,project_type:b.project_type,site_location:b.site_location,site_dimensions:b.site_dimensions,building_requirements:b.building_requirements,roof_type:b.building_requirements.roof_type,custom_roof_description:b.building_requirements.custom_roof_description,latest_revision:2}).eq('id',currentProjectId).select().single()}
+   if(currentProjectId){result=await supabase.from('design_projects').update({client_name:b.client_name,client_email:b.client_email,client_phone:b.client_phone,project_name:b.project_name,project_type:b.project_type,site_location:b.site_location,site_dimensions:b.site_dimensions,building_requirements:b.building_requirements,roof_type:b.building_requirements.roof_type,custom_roof_description:b.building_requirements.custom_roof_description,latest_revision:currentRevision+1}).eq('id',currentProjectId).select().single()}
    else{result=await supabase.from('design_projects').insert({owner_id:currentUser.id,...b,site_dimensions:b.site_dimensions,building_requirements:b.building_requirements,roof_type:b.building_requirements.roof_type,custom_roof_description:b.building_requirements.custom_roof_description}).select().single()}
    if(result.error)throw result.error;currentProjectId=result.data.id;
    const rev=await supabase.from('design_revisions').insert({design_project_id:currentProjectId,revision_number:currentProjectId?result.data.latest_revision||1:1,design_inputs:b,generated_geometry:{type:'concept_mass_model',width_m:b.site_dimensions.width_m,depth_m:b.site_dimensions.depth_m,storeys:b.site_dimensions.storeys,floor_height_m:b.site_dimensions.floor_height_m,roof_type:b.building_requirements.roof_type},change_summary:'Design brief saved from TW&D Design Studio',created_by:currentUser.id});
