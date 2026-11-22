@@ -651,15 +651,16 @@ loadActiveFloorLayout();
 $('storeys').addEventListener('input',()=>{updateFloorPlanLevels();drawBuilding()});
 updateFloorPlanLevels();
 $('refreshPreview').addEventListener('click',drawBuilding);
-$('viewPerspective').addEventListener('click',()=>setCameraView('perspective'));
+function showExteriorView(view){$('interiorViewMode').value='exterior';drawBuilding();setCameraView(view);}
+$('viewPerspective').addEventListener('click',()=>showExteriorView('perspective'));
 $('viewInterior').addEventListener('click',()=>{$('interiorViewMode').value='interior';drawBuilding();setCameraView('interior')});
 $('viewCutaway').addEventListener('click',()=>{$('interiorViewMode').value='cutaway';drawBuilding();setCameraView('cutaway')});
 $('interiorViewMode').addEventListener('change',()=>{drawBuilding();setCameraView($('interiorViewMode').value==='interior'?'interior':$('interiorViewMode').value==='cutaway'?'cutaway':'perspective')});
 $('interiorViewMode').addEventListener('change',()=>{const mode=$('interiorViewMode').value;viewer.dataset.previewMode=mode;$('viewerStatus').textContent=mode==='interior'?'Interior inspection mode · outer walls transparent':mode==='cutaway'?'Roof-off cutaway mode · rotate to inspect':'Exterior presentation mode'});
-$('viewFront').addEventListener('click',()=>setCameraView('front'));
-$('viewSide').addEventListener('click',()=>setCameraView('side'));
-$('viewTop').addEventListener('click',()=>setCameraView('top'));
-$('viewReset').addEventListener('click',()=>{drawBuilding();setCameraView('perspective')});
+$('viewFront').addEventListener('click',()=>showExteriorView('front'));
+$('viewSide').addEventListener('click',()=>showExteriorView('side'));
+$('viewTop').addEventListener('click',()=>showExteriorView('top'));
+$('viewReset').addEventListener('click',()=>showExteriorView('perspective'));
 $('retryPreview').addEventListener('click',()=>{setup3D();if(renderer)setCameraView('perspective')});
 
 $('designForm').addEventListener('submit',saveDesign);$('uploadProjectFiles').addEventListener('click',uploadProjectDocuments);$('requestTakeoff').addEventListener('click',requestAutomatedTakeoff);$('printBrief').addEventListener('click',()=>window.print());
