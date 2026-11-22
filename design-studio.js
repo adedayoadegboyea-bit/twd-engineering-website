@@ -344,7 +344,7 @@ function drawPlan(w,d,n,v=getVisualSettings()){
    const label=String(names[i]||('Room '+(i+1))).slice(0,22).replace(/[&<>\\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
    roomLabels.push('<text x="'+cx+'" y="'+cy+'" font-size="9" fill="'+line+'" text-anchor="middle" dominant-baseline="middle">'+label+'</text>');
   }
- }}else{
+ }else{
   roomLines.push('<line x1="'+(bx+rw*.5)+'" y1="'+by+'" x2="'+(bx+rw*.5)+'" y2="'+(by+rd*.48)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
   roomLines.push('<line x1="'+(bx+rw*.22)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.78)+'" y2="'+(by+rd*.5)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
   roomLines.push('<line x1="'+(bx+rw*.22)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.22)+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
