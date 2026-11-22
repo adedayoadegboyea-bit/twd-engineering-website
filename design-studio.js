@@ -245,8 +245,8 @@ function drawBuilding(){
  const fixtureMat=mat('#f8f8f4',.2,.08),chromeMat=mat('#b8c4ca',.18,.82),woodMat=mat('#8b6546',.58);
  const addBox=(ww,hh,dd,x,y,z,m)=>box(buildingGroup,ww,hh,dd,x,y,z,m);
  for(let fl=0;fl<n;fl++){
-  const fy=fl*h;
-  const floorSurface=new THREE.Mesh(new THREE.PlaneGeometry(insideW,insideD),floorMat);floorSurface.rotation.x=-Math.PI/2;floorSurface.position.set(0,fy+.025,0);floorSurface.receiveShadow=true;buildingGroup.add(floorSurface);
+  const fy=fl*h,fyBase=fy+(fl===0?.43:.245);
+  const floorSurface=new THREE.Mesh(new THREE.PlaneGeometry(insideW,insideD),floorMat);floorSurface.rotation.x=-Math.PI/2;floorSurface.position.set(0,fyBase,0);floorSurface.receiveShadow=true;buildingGroup.add(floorSurface);
   if(interior.wall_finish==='ceramic'||interior.wall_finish==='marble'||interior.wall_finish==='stone'){
    const tileWall=mat(interior.wall_finish==='marble'?'#d5d0c7':interior.wall_finish==='stone'?'#b9ad9b':'#d9dedc',.42);
    for(const z of [-insideD/2,insideD/2])addBox(insideW,1.15,.025,0,fy+.62,z,tileWall);
@@ -270,39 +270,39 @@ function drawBuilding(){
    const furnitureScale=interior.furniture==='luxury'?1.08:1;
    // Living-room sofa, coffee table and TV console.
    if(fl===0||interior.furniture==='office'){
-    addBox(2.4*furnitureScale,.42,.82,-insideW*.22,fy+.42,-insideD*.22,fabricMat);
-    addBox(2.4*furnitureScale,.72,.18,-insideW*.22,fy+.78,-insideD*.55,fabricMat);
-    addBox(1.05,.12,.65,-insideW*.22,fy+.32,insideD*.04,woodMat);
-    addBox(1.8,.35,.24,insideW*.28,fy+.25,-insideD*.48,woodMat);
+    addBox(2.4*furnitureScale,.42,.82,-insideW*.22,fyBase+.42,-insideD*.22,fabricMat);
+    addBox(2.4*furnitureScale,.72,.18,-insideW*.22,fyBase+.78,-insideD*.55,fabricMat);
+    addBox(1.05,.12,.65,-insideW*.22,fyBase+.32,insideD*.04,woodMat);
+    addBox(1.8,.35,.24,insideW*.28,fyBase+.25,-insideD*.48,woodMat);
    }
    // Dining table and four simple chairs.
-   addBox(1.65,.12,.95,insideW*.22,fy+.82,insideD*.2,woodMat);
-   for(const dx of [-.95,.95])for(const dz of [-.58,.58]){addBox(.38,.48,.38,insideW*.22+dx,fy+.48,insideD*.2+dz,furnishingMat);addBox(.38,.48,.08,insideW*.22+dx,fy+.73,insideD*.2+dz+.16,furnishingMat);}
+   addBox(1.65,.12,.95,insideW*.22,fyBase+.82,insideD*.2,woodMat);
+   for(const dx of [-.95,.95])for(const dz of [-.58,.58]){addBox(.38,.48,.38,insideW*.22+dx,fyBase+.48,insideD*.2+dz,furnishingMat);addBox(.38,.48,.08,insideW*.22+dx,fyBase+.73,insideD*.2+dz+.16,furnishingMat);}
    // Bedroom beds and side tables, placed toward the rear half of each level.
-   addBox(1.65,.22,2.05,-insideW*.24,fy+.28,insideD*.27,furnishingMat);
-   addBox(1.58,.16,1.88,-insideW*.24,fy+.47,insideD*.27,fabricMat);
-   addBox(1.7,.42,.14,-insideW*.24,fy+.66,insideD*.27-insideD*.55,furnishingMat);
-   addBox(.42,.48,.42,-insideW*.24-1.15,fy+.24,insideD*.27,woodMat);
+   addBox(1.65,.22,2.05,-insideW*.24,fyBase+.28,insideD*.27,furnishingMat);
+   addBox(1.58,.16,1.88,-insideW*.24,fyBase+.47,insideD*.27,fabricMat);
+   addBox(1.7,.42,.14,-insideW*.24,fyBase+.66,insideD*.27-insideD*.55,furnishingMat);
+   addBox(.42,.48,.42,-insideW*.24-1.15,fyBase+.24,insideD*.27,woodMat);
    // Kitchen counter and upper cabinets.
-   addBox(Math.min(2.8,insideW*.42),.9,.62,insideW*.28,fy+.48,-insideD*.34,woodMat);
-   addBox(Math.min(2.8,insideW*.42),.62,.3,insideW*.28,fy+1.62,-insideD*.34,wallFinishMat);
+   addBox(Math.min(2.8,insideW*.42),.9,.62,insideW*.28,fyBase+.48,-insideD*.34,woodMat);
+   addBox(Math.min(2.8,insideW*.42),.62,.3,insideW*.28,fyBase+1.62,-insideD*.34,wallFinishMat);
   }
   if(interior.show_plumbing&&interior.sanitary!=='none'){
    const bathroomX=insideW*.32,bathroomZ=insideD*.31;
    // WC pan and cistern.
    if(interior.sanitary==='full'||interior.sanitary==='wc_basin'||interior.sanitary==='wc_shower'){
-    const pan=new THREE.Mesh(new THREE.CylinderGeometry(.24,.28,.16,24),fixtureMat);pan.position.set(bathroomX,fy+.12,bathroomZ);buildingGroup.add(pan);
-    const bowl=new THREE.Mesh(new THREE.SphereGeometry(.24,18,12),fixtureMat);bowl.scale.set(1,.48,1.18);bowl.position.set(bathroomX,fy+.28,bathroomZ);buildingGroup.add(bowl);
-    addBox(.42,.58,.16,bathroomX,fy+.43,bathroomZ-.28,fixtureMat);
+    const pan=new THREE.Mesh(new THREE.CylinderGeometry(.24,.28,.16,24),fixtureMat);pan.position.set(bathroomX,fyBase+.12,bathroomZ);buildingGroup.add(pan);
+    const bowl=new THREE.Mesh(new THREE.SphereGeometry(.24,18,12),fixtureMat);bowl.scale.set(1,.48,1.18);bowl.position.set(bathroomX,fyBase+.28,bathroomZ);buildingGroup.add(bowl);
+    addBox(.42,.58,.16,bathroomX,fyBase+.43,bathroomZ-.28,fixtureMat);
     // Basin with chrome tap.
-    addBox(.72,.18,.48,bathroomX-.82,fy+.86,bathroomZ,fixtureMat);
-    const tap=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.2,10),chromeMat);tap.position.set(bathroomX-.82,fy+1.05,bathroomZ);buildingGroup.add(tap);
+    addBox(.72,.18,.48,bathroomX-.82,fyBase+.86,bathroomZ,fixtureMat);
+    const tap=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.2,10),chromeMat);tap.position.set(bathroomX-.82,fyBase+1.05,bathroomZ);buildingGroup.add(tap);
    }
    if(interior.sanitary==='full'||interior.sanitary==='wc_shower'){
-    addBox(.95,.08,.95,bathroomX+.75,fy+.08,bathroomZ,fixtureMat);
-    const shower=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.18,12),chromeMat);shower.position.set(bathroomX+.75,fy+2.2,bathroomZ);buildingGroup.add(shower);
+    addBox(.95,.08,.95,bathroomX+.75,fyBase+.08,bathroomZ,fixtureMat);
+    const shower=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.18,12),chromeMat);shower.position.set(bathroomX+.75,fyBase+2.2,bathroomZ);buildingGroup.add(shower);
    }
-   if(interior.sanitary==='full')addBox(1.1,.12,.5,-insideW*.28,fy+.72,-insideD*.38,fixtureMat); // kitchen sink/counter
+   if(interior.sanitary==='full')addBox(1.1,.12,.5,-insideW*.28,fyBase+.72,-insideD*.38,fixtureMat); // kitchen sink/counter
   }
  }
  // Roof/parapet silhouette and oversized entrance canopy.
