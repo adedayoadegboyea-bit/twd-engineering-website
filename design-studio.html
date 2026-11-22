@@ -46,6 +46,19 @@
 <label>Number of floors<select id="storeys"><option value="1">1 floor (bungalow)</option><option value="2" selected>2 floors</option><option value="3">3 floors</option><option value="4">4 floors</option></select></label>
 <label>Building width (metres)<input id="width" type="number" min="4" max="80" step=".1" value="12" required></label>
 <label>Building depth (metres)<input id="depth" type="number" min="4" max="80" step=".1" value="18" required></label>
+<label>Architectural building template<select id="buildingPreset">
+<option value="custom">Custom building concept</option>
+<option value="school_u">Contemporary U-shaped school campus</option>
+<option value="school_l">L-shaped school / academic wing</option>
+<option value="school_h">H-shaped university / faculty block</option>
+<option value="school_t">T-shaped institutional building</option>
+<option value="duplex">Luxury contemporary duplex</option>
+<option value="courtyard_home">Modern courtyard residence</option>
+<option value="commercial">Contemporary commercial complex</option>
+<option value="office">Modern office building</option>
+<option value="hotel">Boutique hotel / hospitality block</option>
+<option value="clinic">Healthcare / clinic block</option>
+</select></label>
 <label>Building footprint shape<select id="buildingShape"><option value="rectangle">Rectangular / linear block</option><option value="L">L-shaped wings</option><option value="U" selected>U-shaped courtyard / school block</option><option value="H">H-shaped academic block</option><option value="T">T-shaped building</option><option value="courtyard">Enclosed courtyard block</option></select></label>
 <label>Plot width from survey (metres)<input id="plotWidth" type="number" min="8" max="500" step=".1" value="30"></label>
 <label>Plot depth from survey (metres)<input id="plotDepth" type="number" min="8" max="500" step=".1" value="40"></label>
