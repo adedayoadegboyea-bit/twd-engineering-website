@@ -14,7 +14,7 @@ function setup3D(){
     scene=new THREE.Scene();scene.background=new THREE.Color('#edf4fb');
     camera=new THREE.PerspectiveCamera(42,viewer.clientWidth/viewer.clientHeight,.1,500);camera.position.set(26,20,30);
     renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.setSize(viewer.clientWidth,viewer.clientHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;viewer.appendChild(renderer.domElement);
-    controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.48;
+    controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.499;
     scene.add(new THREE.HemisphereLight(0xffffff,0x8395aa,2));
     const sun=new THREE.DirectionalLight(0xffffff,2.3);sun.position.set(18,30,12);sun.castShadow=true;scene.add(sun);
     const grid=new THREE.GridHelper(60,30,0x8da5bd,0xd5e0eb);grid.position.y=-.04;scene.add(grid);
