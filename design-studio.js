@@ -47,7 +47,7 @@ function getVisualSettings(){
  return {
   aesthetic:$('aestheticPreset').value,wall:$('wallColor').value,roof:$('roofColor').value,glass:$('glassColor').value,trim:$('trimColor').value,
   plan_line:$('planLineColor').value,plan_fill:$('planFillColor').value,line_width:+$('planLineWidth').value,
-  room_count:+$('roomCount').value,partition_direction:$('partitionDirection').value,window_style:$('windowStyle').value,
+  room_count:+$('roomCount').value,partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
   features:{balcony:$('featureBalcony').checked,columns:$('featureColumns').checked,fins:$('featureFins').checked,driveway:$('featureDriveway').checked,landscape:$('featureLandscape').checked,parapet:$('featureParapet').checked}
  };
 }
@@ -86,8 +86,8 @@ function drawBuilding(){
 function drawPlan(w,d,n,v=getVisualSettings()){
  const sx=430,sy=170,pad=36,scale=Math.min((sx-2*pad)/w,(sy-2*pad)/d),rw=w*scale,rd=d*scale,x=(sx-rw)/2,y=(sy-rd)/2;
  const rooms=clamp(v.room_count,2,6),lw=v.line_width;let partitions='';
- if(v.partition_direction==='vertical'||v.partition_direction==='mixed'){for(let i=1;i<rooms;i++){const px=x+rw*i/rooms;partitions+=`<line x1="${px}" y1="${y}" x2="${px}" y2="${y+rd}" stroke="${v.plan_line}" stroke-width="${lw}" stroke-dasharray="4 2"/>`}}
- if(v.partition_direction==='horizontal'||v.partition_direction==='mixed'){const count=v.partition_direction==='mixed'?2:rooms-1;for(let i=1;i<=count;i++){const py=y+rd*i/(count+1);partitions+=`<line x1="${x}" y1="${py}" x2="${x+rw}" y2="${py}" stroke="${v.plan_line}" stroke-width="${lw}"/>`}}
+ if(v.partition_direction==='vertical'||v.partition_direction==='mixed'){for(let i=1;i<rooms;i++){const ratio=i===1?v.split_x:(v.split_x+(1-v.split_x)*(i-1)/(rooms-1));const px=x+rw*ratio;partitions+=`<line x1="${px}" y1="${y}" x2="${px}" y2="${y+rd}" stroke="${v.plan_line}" stroke-width="${lw}" stroke-dasharray="4 2"/>`}}
+ if(v.partition_direction==='horizontal'||v.partition_direction==='mixed'){const count=v.partition_direction==='mixed'?2:rooms-1;for(let i=1;i<=count;i++){const ratio=i===1?v.split_y:(v.split_y+(1-v.split_y)*(i-1)/count);const py=y+rd*ratio;partitions+=`<line x1="${x}" y1="${py}" x2="${x+rw}" y2="${py}" stroke="${v.plan_line}" stroke-width="${lw}"/>`}}
  $('planDrawing').innerHTML=`<svg viewBox="0 0 430 170" role="img" aria-label="Indicative footprint ${w} by ${d} metres"><rect x="${x}" y="${y}" width="${rw}" height="${rd}" fill="${v.plan_fill}" stroke="${v.plan_line}" stroke-width="${lw+1.5}"/>${partitions}<text x="215" y="15" font-size="10" fill="${v.plan_line}" text-anchor="middle">${w.toFixed(1)} m</text><text x="12" y="85" font-size="10" fill="${v.plan_line}" transform="rotate(-90 12 85)" text-anchor="middle">${d.toFixed(1)} m</text><text x="215" y="165" font-size="9" fill="#708197" text-anchor="middle">${n}-storey indicative zoning · ${rooms} divisions · concept only</text></svg>`;
 }
 function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
@@ -101,7 +101,7 @@ async function saveDesign(e){e?.preventDefault();if(!currentUser){$('formStatus'
    if(currentProjectId){result=await supabase.from('design_projects').update({client_name:b.client_name,client_email:b.client_email,client_phone:b.client_phone,project_name:b.project_name,project_type:b.project_type,site_location:b.site_location,site_dimensions:b.site_dimensions,building_requirements:b.building_requirements,roof_type:b.building_requirements.roof_type,custom_roof_description:b.building_requirements.custom_roof_description,latest_revision:currentRevision+1}).eq('id',currentProjectId).select().single()}
    else{result=await supabase.from('design_projects').insert({owner_id:currentUser.id,...b,site_dimensions:b.site_dimensions,building_requirements:b.building_requirements,roof_type:b.building_requirements.roof_type,custom_roof_description:b.building_requirements.custom_roof_description}).select().single()}
    if(result.error)throw result.error;currentProjectId=result.data.id;currentRevision=result.data.latest_revision||1;
-   const rev=await supabase.from('design_revisions').insert({design_project_id:currentProjectId,revision_number:currentRevision,design_inputs:b,generated_geometry:{type:'concept_mass_model',width_m:b.site_dimensions.width_m,depth_m:b.site_dimensions.depth_m,storeys:b.site_dimensions.storeys,floor_height_m:b.site_dimensions.floor_height_m,roof_type:b.building_requirements.roof_type},change_summary:'Design brief saved from TW&D Design Studio',created_by:currentUser.id});
+   const rev=await supabase.from('design_revisions').insert({design_project_id:currentProjectId,revision_number:currentRevision,design_inputs:b,generated_geometry:{type:'concept_mass_model',width_m:b.site_dimensions.width_m,depth_m:b.site_dimensions.depth_m,storeys:b.site_dimensions.storeys,floor_height_m:b.site_dimensions.floor_height_m,roof_type:b.building_requirements.roof_type,visual_settings:b.visual_settings},change_summary:'Design brief saved from TW&D Design Studio',created_by:currentUser.id});
    if(rev.error)throw rev.error;
    $('formStatus').textContent='Design brief saved to your secure TW&D workspace. Reference: '+currentProjectId;
    $('quoteStatus').textContent='Your design brief is saved. You can now save estimate items against this project.';
@@ -212,7 +212,7 @@ function applyAesthetic(){
  $('wallColor').value=p.wall;$('roofColor').value=p.roof;$('glassColor').value=p.glass;$('trimColor').value=p.trim;$('planLineColor').value=p.line;$('planFillColor').value=p.fill;drawBuilding();
 }
 $('aestheticPreset').addEventListener('change',applyAesthetic);
-['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','partitionDirection','windowStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet'].forEach(id=>$(id).addEventListener('input',drawBuilding));
+['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','partitionDirection','primarySplitX','primarySplitY','windowStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 
 ['width','depth','floorHeight','storeys'].forEach(id=>$(id).addEventListener('input',drawBuilding));
 $('refreshPreview').addEventListener('click',drawBuilding);$('viewReset').addEventListener('click',drawBuilding);
