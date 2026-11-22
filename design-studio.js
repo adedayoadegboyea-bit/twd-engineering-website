@@ -9,20 +9,51 @@ const $=id=>document.getElementById(id);
 const roofLabels={contemporary_flat:'Flat',conventional_gable:'Gable',hip:'Hip',butterfly:'Butterfly',mono_pitch:'Mono-pitch',combination:'Combination',mansard:'Mansard',custom:'Custom'};
 let currentUser=null,currentProjectId=null,currentRevision=0,renderer,scene,camera,controls,buildingGroup;
 const viewer=$('viewer');
+function makeCanvasTexture(kind){
+ const c=document.createElement('canvas');c.width=512;c.height=512;const ctx=c.getContext('2d');
+ if(kind==='grass'){
+  ctx.fillStyle='#667b4d';ctx.fillRect(0,0,512,512);
+  for(let i=0;i<16000;i++){const x=Math.random()*512,y=Math.random()*512;ctx.fillStyle=Math.random()>.5?'rgba(35,65,28,.22)':'rgba(190,190,120,.12)';ctx.fillRect(x,y,1.5,3.5)}
+ }else if(kind==='stucco'||kind==='stone'){
+  ctx.fillStyle=kind==='stone'?'#b9b1a3':'#dedbd3';ctx.fillRect(0,0,512,512);
+  for(let i=0;i<18000;i++){const x=Math.random()*512,y=Math.random()*512,a=Math.random()*.11;ctx.fillStyle='rgba(65,58,48,'+a+')';ctx.fillRect(x,y,1+Math.random()*3,1+Math.random()*3)}
+  if(kind==='stone'){ctx.strokeStyle='rgba(95,85,72,.22)';ctx.lineWidth=2;for(let y=0;y<512;y+=128){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(512,y);ctx.stroke()}for(let x=0;x<512;x+=170){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,512);ctx.stroke()}}
+ }else if(kind==='wood'){
+  ctx.fillStyle='#795039';ctx.fillRect(0,0,512,512);
+  for(let i=0;i<75;i++){ctx.strokeStyle=i%3?'rgba(36,20,12,.19)':'rgba(219,164,108,.18)';ctx.lineWidth=1+Math.random()*3;ctx.beginPath();const y=i*7;ctx.moveTo(0,y);ctx.bezierCurveTo(130,y-8,340,y+9,512,y-3);ctx.stroke()}
+ }else if(kind==='concrete'){
+  ctx.fillStyle='#777d82';ctx.fillRect(0,0,512,512);
+  for(let i=0;i<12000;i++){const v=Math.random()>.5?255:0;ctx.fillStyle='rgba('+v+','+v+','+v+',.07)';ctx.fillRect(Math.random()*512,Math.random()*512,2,2)}
+ }
+ const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;
+ return t;
+}
 function setup3D(){
-  try{
-    scene=new THREE.Scene();scene.background=new THREE.Color('#edf4fb');
-    camera=new THREE.PerspectiveCamera(42,viewer.clientWidth/viewer.clientHeight,.1,500);camera.position.set(26,20,30);
-    renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.setSize(viewer.clientWidth,viewer.clientHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;viewer.appendChild(renderer.domElement);
-    controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.499;
-    scene.add(new THREE.HemisphereLight(0xffffff,0x8395aa,2));
-    const sun=new THREE.DirectionalLight(0xffffff,2.3);sun.position.set(18,30,12);sun.castShadow=true;scene.add(sun);
-    const grid=new THREE.GridHelper(60,30,0x8da5bd,0xd5e0eb);grid.position.y=-.04;scene.add(grid);
-    buildingGroup=new THREE.Group();scene.add(buildingGroup);drawBuilding();
-    const resize=new ResizeObserver(()=>{if(!renderer)return;const w=viewer.clientWidth,h=viewer.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)});resize.observe(viewer);
-    const animate=()=>{requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)};animate();
-    $('viewerStatus').textContent='Interactive 3D concept · drag to rotate · scroll to zoom';
-  }catch(e){$('viewerStatus').textContent='3D preview unavailable on this browser/device.';console.error(e)}
+ try{
+  scene=new THREE.Scene();scene.background=new THREE.Color('#b8c9d8');scene.fog=new THREE.Fog('#c8d5df',55,150);
+  camera=new THREE.PerspectiveCamera(36,viewer.clientWidth/viewer.clientHeight,.1,600);camera.position.set(30,22,34);
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.setSize(viewer.clientWidth,viewer.clientHeight);
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+  renderer.physicallyCorrectLights=true;viewer.appendChild(renderer.domElement);
+  controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.055;controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.495;controls.minDistance=7;controls.maxDistance=180;
+  // Soft outdoor sky illumination and a large-area studio environment for believable reflections.
+  scene.add(new THREE.HemisphereLight(0xe8f3ff,0x78816e,1.35));
+  const sun=new THREE.DirectionalLight(0xfff0d8,3.2);sun.position.set(-28,42,24);sun.castShadow=true;
+  sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-45;sun.shadow.camera.right=45;sun.shadow.camera.top=45;sun.shadow.camera.bottom=-45;sun.shadow.bias=-.00018;sun.shadow.normalBias=.025;scene.add(sun);
+  const fill=new THREE.DirectionalLight(0xd6e7ff,.85);fill.position.set(25,18,-25);scene.add(fill);
+  const sky=new THREE.Mesh(new THREE.SphereGeometry(260,32,20),new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,uniforms:{top:{value:new THREE.Color('#6e91b2')},bottom:{value:new THREE.Color('#e5edf2')}},vertexShader:'varying vec3 vWorld; void main(){vec4 p=modelMatrix*vec4(position,1.0);vWorld=p.xyz;gl_Position=projectionMatrix*viewMatrix*p;}',fragmentShader:'varying vec3 vWorld; uniform vec3 top; uniform vec3 bottom; void main(){float h=normalize(vWorld).y;float t=smoothstep(-.18,.62,h);gl_FragColor=vec4(mix(bottom,top,t),1.0);}' }));
+  scene.add(sky);
+  const groundTex=makeCanvasTexture('grass');groundTex.repeat.set(16,16);
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(240,240),new THREE.MeshStandardMaterial({map:groundTex,roughness:1}));
+  ground.rotation.x=-Math.PI/2;ground.position.y=-.16;ground.receiveShadow=true;scene.add(ground);
+  buildingGroup=new THREE.Group();scene.add(buildingGroup);drawBuilding();
+  const resize=new ResizeObserver(()=>{if(!renderer)return;const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)});
+  resize.observe(viewer);
+  const animate=()=>{requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)};animate();
+  $('viewerStatus').textContent='Enhanced live render · realistic materials, outdoor lighting and soft shadows';
+ }catch(e){$('viewerStatus').textContent='3D preview unavailable on this browser/device.';console.error(e)}
 }
 function box(parent,w,h,d,x,y,z,material){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);return mesh}
 function drawRoof(w,d,y,style,mat){
@@ -69,8 +100,8 @@ function setCameraView(view){
 function drawBuilding(){
  if(!buildingGroup)return;buildingGroup.clear();
  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=+$('storeys').value||2,h=clamp(+$('floorHeight').value||3.2,2.7,5),roof=$('roofType').value,v=getVisualSettings(),total=n*h;
- const mat=(c,r=.72,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
- const wall=mat(v.wall,.78),slab=mat('#aeb6bf',.78),roofMat=mat(v.roof,.58),glass=mat(v.glass,.16,.24),trim=mat(v.trim,.42),dark=mat('#303943',.62),wood=mat(v.aesthetic==='luxury'?'#795039':'#80543a',.68),stone=mat('#b8b0a2',.88),light=mat('#fff0c8',.25,.08);
+ const mat=(c,r=.72,m=0,texture=null)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m,map:texture||null});
+ const wall=mat(v.wall,.88,0,makeCanvasTexture('stucco')),slab=mat('#aeb6bf',.82,0,makeCanvasTexture('concrete')),roofMat=mat(v.roof,.68),glass=mat(v.glass,.12,.32),trim=mat(v.trim,.36),dark=mat('#303943',.64),wood=mat(v.aesthetic==='luxury'?'#795039':'#80543a',.66,0,makeCanvasTexture('wood')),stone=mat('#b8b0a2',.9,0,makeCanvasTexture('stone')),light=mat('#fff0c8',.24,.08);
  const finish=v.facade_finish;
  const accent=finish==='charcoal'?dark:finish==='stone'?stone:finish==='timber'?wood:finish==='render'?wall:wood;
  const cladding=finish==='signature'||finish==='charcoal';
@@ -218,9 +249,9 @@ function drawBuilding(){
   }
  }
  // Ground, paved arrival court, garden beds and layered planting.
- const ground=new THREE.Mesh(new THREE.PlaneGeometry(100,100),mat('#dce5d8',.98));ground.rotation.x=-Math.PI/2;ground.position.y=-.13;buildingGroup.add(ground);
+ const ground=new THREE.Mesh(new THREE.PlaneGeometry(100,100),mat('#dce5d8',.98,0,makeCanvasTexture('grass')));ground.rotation.x=-Math.PI/2;ground.position.y=-.13;ground.receiveShadow=true;buildingGroup.add(ground);
  if(v.features.driveway){
-  const drive=new THREE.Mesh(new THREE.PlaneGeometry(Math.min(w*.92,10),Math.min(d*.62,12)),mat('#737a80',.92));drive.rotation.x=-Math.PI/2;drive.position.set(0,-.105,frontZ+Math.min(d*.27,4));buildingGroup.add(drive);
+  const driveTex=makeCanvasTexture('concrete');driveTex.repeat.set(3,5);const drive=new THREE.Mesh(new THREE.PlaneGeometry(Math.min(w*.92,10),Math.min(d*.62,12)),mat('#737a80',.92,0,driveTex));drive.rotation.x=-Math.PI/2;drive.position.set(0,-.105,frontZ+Math.min(d*.27,4));buildingGroup.add(drive);
   for(const side of [-1,1])box(buildingGroup,.12,.12,Math.min(d*.62,12),side*Math.min(w*.49,5.2),-.035,frontZ+Math.min(d*.27,4),trim);
  }
  if(v.features.landscape){
