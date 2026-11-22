@@ -453,6 +453,7 @@ $('viewFront').addEventListener('click',()=>setCameraView('front'));
 $('viewSide').addEventListener('click',()=>setCameraView('side'));
 $('viewTop').addEventListener('click',()=>setCameraView('top'));
 $('viewReset').addEventListener('click',()=>{drawBuilding();setCameraView('perspective')});
+$('retryPreview').addEventListener('click',()=>{setup3D();if(renderer)setCameraView('perspective')});
 
 $('designForm').addEventListener('submit',saveDesign);$('addQuoteRow').addEventListener('click',()=>addQuoteRow());$('saveQuote').addEventListener('click',saveQuote);$('printBrief').addEventListener('click',()=>window.print());
 $('downloadGlb').addEventListener('click',()=>{if(!buildingGroup)return;const exporter=new GLTFExporter();$('viewerStatus').textContent='Preparing 3D model file…';exporter.parse(buildingGroup,result=>{const blob=new Blob([result],{type:'model/gltf-binary'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-building-concept-preview.glb';a.click();URL.revokeObjectURL(url);$('viewerStatus').textContent='Concept model exported as GLB. This is a visual massing model, not a CAD or structural file.';},error=>{$('viewerStatus').textContent='Model export failed: '+(error.message||'Please try again.');},{binary:true});});
