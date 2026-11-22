@@ -341,6 +341,38 @@ function drawBuilding(){
      addBox(.82,.12,.52,cx,fyBase+.28,cz+cellD*.22,woodMat);
     }
    }
+   // Room-specific architectural details: wardrobe/storage, door leaf, ceiling treatment and indicative electrical points.
+   const doorMat=mat(cfg.door==='glass'?'#8fb8c7':cfg.door==='flush'?'#b69b7d':'#795039',.48,.08);
+   const doorX=cx-cellW*.47,doorZ=cz+cellD*.27;
+   addBox(.055,2.05,.82,doorX,fyBase+1.025,doorZ,doorMat);
+   addBox(.08,.09,.035,doorX+.04,fyBase+1.02,doorZ+.30,chromeMat);
+   if(cfg.storage!=='none'&&/bed|sleep|master|guest/.test(roomName)){
+    const wardrobeDepth=cfg.storage==='walkin'?.72:.58;
+    addBox(Math.min(1.75,cellW*.30),2.05,wardrobeDepth,cx+cellW*.32,fyBase+1.025,cz-cellD*.30,fm);
+    for(let k=0;k<3;k++)addBox(.012,1.72,.018,cx+cellW*.32+(k-1)*Math.min(.48,cellW*.09),fyBase+1.02,cz-cellD*.30+wardrobeDepth*.51,chromeMat);
+    addBox(.48,.42,.42,cx-cellW*.30,fyBase+.23,cz-cellD*.30,woodMat);
+    addBox(.48,.42,.42,cx+cellW*.30,fyBase+.23,cz-cellD*.30,woodMat);
+   }
+   if(/kitchen|pantry/.test(roomName)){
+    // Fridge, hob and sink are visual placeholders; service connections are not routed.
+    addBox(.62,1.85,.62,cx+cellW*.36,fyBase+.925,cz-cellD*.30,fixtureMat);
+    addBox(.56,.035,.46,cx-cellW*.12,fyBase+.96,cz-cellD*.28,chromeMat);
+    for(let burner=0;burner<4;burner++){
+     const hob=new THREE.Mesh(new THREE.CylinderGeometry(.075,.075,.025,16),dark);hob.position.set(cx-cellW*.22+(burner%2)*.2,fyBase+.99,cz-cellD*.28+Math.floor(burner/2)*.18);buildingGroup.add(hob);
+    }
+    addBox(.38,.08,.30,cx+cellW*.08,fyBase+.98,cz-cellD*.28,fixtureMat);
+   }
+   if(cfg.ceiling!=='plain'&&interior.view_mode!=='exterior'){
+    const strip=mat(cfg.ceiling==='cove'?'#ffe6b0':'#e7e4dc',.38,.05);
+    const yy=fy+h-.23,spanX=Math.max(.35,cellW-.28),spanZ=Math.max(.35,cellD-.28);
+    addBox(spanX,.035,.045,cx,yy,cz-spanZ/2,strip);addBox(spanX,.035,.045,cx,yy,cz+spanZ/2,strip);
+    addBox(.045,.035,spanZ,cx-spanX/2,yy,cz,strip);addBox(.045,.035,spanZ,cx+spanX/2,yy,cz,strip);
+    if(cfg.ceiling==='tray')addBox(spanX*.72,.025,.035,cx,yy-.035,cz,innerTrim);
+    if(cfg.ceiling==='linear')for(let line=0;line<2;line++)addBox(.035,.025,spanZ*.72,cx+(line-.5)*spanX*.28,yy-.04,cz,light);
+   }
+   // Indicative wall switch and socket points, not an electrical circuit layout.
+   addBox(.055,.12,.035,doorX+.06,fyBase+1.18,doorZ-.52,chromeMat);
+   addBox(.065,.08,.035,cx+cellW*.44,fyBase+.32,cz+cellD*.35,fixtureMat);
    if(interior.show_plumbing&&/bath|toilet|wc|shower/.test(roomName)&&cfg.sanitary!=='none'){
     const basin= new THREE.Mesh(new THREE.CylinderGeometry(.22,.28,.10,20),fixtureMat);basin.position.set(cx+cellW*.23,fyBase+.82,cz-cellD*.22);buildingGroup.add(basin);
     const tap=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.18,10),chromeMat);tap.position.set(cx+cellW*.23,fyBase+.96,cz-cellD*.22);buildingGroup.add(tap);
