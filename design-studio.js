@@ -254,8 +254,8 @@ function drawBuilding(){
   }else if(interior.wall_finish==='wood'){
    for(const z of [-insideD/2,insideD/2])addBox(insideW,1.5,.035,0,fy+.8,z,woodMat);
   }
-  if(interior.show_ceiling&&interior.view_mode==='exterior'){
-   const ceiling=mat('#f4f1e9',.95);const ceilMesh=new THREE.Mesh(new THREE.PlaneGeometry(insideW,insideD),ceilMeshMatFix(ceiling));ceilMesh.rotation.x=Math.PI/2;ceilMesh.position.set(0,fy+h-.16,0);buildingGroup.add(ceilMesh);
+  if(interior.show_ceiling&&interior.view_mode!=='exterior'){
+   const ceiling=mat('#f4f1e9',.95);ceiling.transparent=true;ceiling.opacity=.16;ceiling.depthWrite=false;const ceilMesh=new THREE.Mesh(new THREE.PlaneGeometry(insideW,insideD),ceilMeshMatFix(ceiling));ceilMesh.rotation.x=Math.PI/2;ceilMesh.position.set(0,fy+h-.16,0);buildingGroup.add(ceilMesh);
   }
   if(interior.show_lights){
    const lightColor=interior.lighting==='neutral'?0xfff5e8:interior.lighting==='daylight'?0xe7f2ff:0xffd6a0;
@@ -306,7 +306,7 @@ function drawBuilding(){
   }
  }
  // Roof/parapet silhouette and oversized entrance canopy.
- const roofModel=drawRoof(w,d,total,roof,roofMat);if(interior.view_mode==='interior'||interior.view_mode==='cutaway'||!interior.show_ceiling)roofModel.visible=false;
+ const roofModel=drawRoof(w,d,total,roof,roofMat);if(interior.view_mode==='interior'||interior.view_mode==='cutaway')roofModel.visible=false;
  if(roof==='contemporary_flat'||roof==='custom'||roof==='combination'){
   box(buildingGroup,w+1.35,.28,d+1.25,0,total+.24,0,trim);
   box(buildingGroup,w+1.0,.12,d+1.0,0,total+.43,0,wall);
