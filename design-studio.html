@@ -23,6 +23,8 @@
 .viewer-actions{display:flex;flex-wrap:wrap;gap:7px}
 .viewer-actions button{font-size:11px;padding:8px 10px}
 .plan-drawing svg{width:100%;height:auto;display:block}
+.drawing-package .feature-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.site-plan-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:#64758a;margin-top:8px}
 
 </style>
 </head>
@@ -44,6 +46,12 @@
 <label>Number of floors<select id="storeys"><option value="1">1 floor (bungalow)</option><option value="2" selected>2 floors</option><option value="3">3 floors</option><option value="4">4 floors</option></select></label>
 <label>Building width (metres)<input id="width" type="number" min="4" max="80" step=".1" value="12" required></label>
 <label>Building depth (metres)<input id="depth" type="number" min="4" max="80" step=".1" value="18" required></label>
+<label>Building footprint shape<select id="buildingShape"><option value="rectangle">Rectangular / linear block</option><option value="L">L-shaped wings</option><option value="U" selected>U-shaped courtyard / school block</option><option value="H">H-shaped academic block</option><option value="T">T-shaped building</option><option value="courtyard">Enclosed courtyard block</option></select></label>
+<label>Plot width from survey (metres)<input id="plotWidth" type="number" min="8" max="500" step=".1" value="30"></label>
+<label>Plot depth from survey (metres)<input id="plotDepth" type="number" min="8" max="500" step=".1" value="40"></label>
+<label>Front setback (metres)<input id="frontSetback" type="number" min="0" max="50" step=".1" value="6"></label>
+<label>Side / rear setback (metres)<input id="sideSetback" type="number" min="0" max="50" step=".1" value="3"></label>
+<label>Plot orientation<select id="plotOrientation"><option value="north">North at top of plan</option><option value="south">South at top of plan</option><option value="east">East at top of plan</option><option value="west">West at top of plan</option></select></label>
 <label>Floor-to-floor height (metres)<input id="floorHeight" type="number" min="2.7" max="5" step=".1" value="3.2"></label>
 <label>Roof style<select id="roofType"><option value="contemporary_flat">Contemporary flat roof</option><option value="conventional_gable" selected>Conventional gable roof</option><option value="hip">Hip roof</option><option value="butterfly">Butterfly roof</option><option value="mono_pitch">Mono-pitch / shed roof</option><option value="combination">Combination roof</option><option value="mansard">Mansard roof</option><option value="custom">Custom roof</option></select></label>
 <label class="wide" id="customRoofWrap" hidden>Describe your custom roof<input id="customRoof" placeholder="Describe roof geometry, materials or special features"></label>
@@ -80,7 +88,24 @@
   </div>
   <p class="customizer-note">These controls shape a conceptual massing model and diagrammatic room zoning. They do not generate dimensioned, construction-ready architectural floor plans or replace an architect's coordinated drawings.</p>
 </div>
-<label class="wide">Room / space requirements<textarea id="requirements" rows="4" placeholder="List bedrooms, living rooms, kitchen, bathrooms, offices, parking, balconies and other requirements."></textarea></label>
+<div class="wide design-customizer drawing-package" id="drawingPackage">
+<div class="customizer-heading"><strong>Drawing package required</strong><span>Select the actual deliverables you want TW&amp;D to prepare. You can request more than one.</span></div>
+<div class="feature-options">
+<label><input type="checkbox" name="drawingType" value="site_plan" checked> Site layout on uploaded land survey</label>
+<label><input type="checkbox" name="drawingType" value="architectural_floor_plans" checked> Architectural floor plans</label>
+<label><input type="checkbox" name="drawingType" value="3d_visualisation" checked> 3D exterior visualisation</label>
+<label><input type="checkbox" name="drawingType" value="elevations"> All building elevations</label>
+<label><input type="checkbox" name="drawingType" value="sections"> Building sections</label>
+<label><input type="checkbox" name="drawingType" value="roof_plan"> Roof plan</label>
+<label><input type="checkbox" name="drawingType" value="structural"> Structural drawings</label>
+<label><input type="checkbox" name="drawingType" value="electrical"> Electrical drawings</label>
+<label><input type="checkbox" name="drawingType" value="plumbing"> Plumbing / drainage drawings</label>
+<label><input type="checkbox" name="drawingType" value="mechanical"> Mechanical / HVAC drawings</label>
+<label><input type="checkbox" name="drawingType" value="landscape"> Landscape / external works plan</label>
+<label><input type="checkbox" name="drawingType" value="working_drawings"> Full construction / working drawing set</label>
+<label><input type="checkbox" name="drawingType" value="presentation_render"> High-resolution presentation renders</label>
+</div><p class="customizer-note">Final construction and engineering drawings are produced and signed off by the appropriate professionals. The preview is not a substitute for approved drawings.</p>
+</div><label class="wide">Room / space requirements<textarea id="requirements" rows="4" placeholder="List bedrooms, living rooms, kitchen, bathrooms, offices, parking, balconies and other requirements."></textarea></label>
 </div>
 <div class="form-actions"><button type="button" class="secondary" id="refreshPreview">Update 3D preview</button><button type="submit" class="primary" id="saveProject">Save design brief</button></div>
 <p class="form-status" id="formStatus" role="status">Sign in is required to save projects. You can explore the concept preview first.</p>
@@ -95,9 +120,9 @@
 </div>
 <section class="panel quote-panel" id="takeoffPanel">
 <div class="panel-title"><span class="step">03</span><div><h2>Project documents &amp; automated BOQ request</h2><p>Submit drawings and site reports. TW&amp;D prepares the quantities and pricing; clients do not enter quantities or rates.</p></div></div>
-<div class="quote-disclaimer"><strong>Required for a dependable quotation:</strong> architectural drawings, site survey and levels, and a geotechnical soil investigation report. Structural drawings/design are required before reinforcement and foundation quantities can be treated as final. An initial review may identify missing information.</div>
+<div class="quote-disclaimer"><strong>Site layout:</strong> Upload the registered land survey under “Land survey”. Enter the plot width/depth and setbacks from that survey. The concept site plan will show the building footprint within the plot boundary; a survey drawing is not automatically interpreted as legally verified coordinates until reviewed by TW&amp;D. </div><div class="quote-disclaimer"><strong>Required for a dependable quotation:</strong> architectural drawings, site survey and levels, and a geotechnical soil investigation report. Structural drawings/design are required before reinforcement and foundation quantities can be treated as final. An initial review may identify missing information.</div>
 <div class="field-grid">
-<label>Document category<select id="documentCategory"><option value="architectural_drawings">Architectural drawings / plans</option><option value="structural_drawings">Structural drawings / calculations</option><option value="soil_report">Geotechnical soil investigation</option><option value="survey_plan">Survey plan / site levels</option><option value="other">Other supporting document</option></select></label>
+<label>Document category<select id="documentCategory"><option value="architectural_drawings">Architectural drawings / plans</option><option value="structural_drawings">Structural drawings / calculations</option><option value="soil_report">Geotechnical soil investigation</option><option value="land_survey">Land survey / registered survey plan (site boundary reference)</option><option value="survey_plan">Survey plan / site levels</option><option value="other">Other supporting document</option></select></label>
 <label class="wide">Upload project documents<input id="projectFiles" type="file" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.dwg,.dxf,.ifc,application/pdf,image/png,image/jpeg,image/webp,application/acad,application/dxf,application/ifc"></label>
 <div class="wide"><button type="button" class="secondary" id="uploadProjectFiles">Upload documents securely</button><p class="form-status" id="uploadStatus">Save your project brief first. Files are private to your account and TW&amp;D review staff.</p><div id="uploadedFileList" class="invoice-list"></div></div>
 </div>
