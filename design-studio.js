@@ -493,7 +493,8 @@ async function verifyReturn(){
 }
 async function initDesignWorkspace(){if(!currentUser)return;await Promise.all([loadInvoices(),setupAdmin()]);await verifyReturn()}
 
-$('roofType').addEventListener('change',()=>{$('customRoofWrap').hidden=$('roofType').value!=='custom';drawBuilding()});\n$('projectType').addEventListener('change',()=>{if($('projectType').value==='school'&&$('buildingShape').value==='rectangle')$('buildingShape').value='U';drawBuilding()});
+$('roofType').addEventListener('change',()=>{$('customRoofWrap').hidden=$('roofType').value!=='custom';drawBuilding()});
+$('projectType').addEventListener('change',()=>{if($('projectType').value==='school'&&$('buildingShape').value==='rectangle')$('buildingShape').value='U';drawBuilding()});
 
 $('buildingPreset').addEventListener('change',()=>{
  const p=$('buildingPreset').value;
