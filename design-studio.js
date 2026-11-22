@@ -144,7 +144,7 @@ async function setupAdmin(){
 }
 async function loadAdminRates(){
  const r=await supabase.from('boq_price_catalog').select('*').order('description').limit(200);if(r.error){$('adminCatalogList').textContent=r.error.message;return}
- $('adminCatalogList').innerHTML='<div class="admin-table-wrap"><table class="admin-table"><tr><th>Item</th><th>Rate</th><th>Source</th><th>Action</th></tr>'+(r.data||[]).map(x=>'<tr><td>'+x.description+' ('+x.unit+')</td><td>'+money(Number(x.unit_rate))+'</td><td>'+(x.price_source||'admin')+' / '+(x.source_location||x.supplier_name||'—')+'</td><td><button class="secondary edit-rate" data-id="'+x.id+'">Edit</button> <button class="secondary toggle-rate" data-id="'+x.id+'" data-active="'+x.active+'">'+(x.active?'Deactivate':'Activate')+'</button></td></tr>').join('')+'</table></div>';
+ $('adminCatalogList').innerHTML='<div class="admin-table-wrap"><table class="admin-table"><tr><th>Item</th><th>Rate</th><th>Source</th><th>Action</th></tr>'+(r.data||[]).map(x=>'<tr><td>'+x.description+' ('+x.unit+')</td><td>'+money(Number(x.unit_rate))+'</td><td>'+(x.price_source||'admin')+' / '+(x.source_location||x.supplier_name||'—')+'</td><td><button class="secondary edit-rate" data-id="'+x.id+'">Use as template</button> <button class="secondary toggle-rate" data-id="'+x.id+'" data-active="'+x.active+'">'+(x.active?'Deactivate':'Activate')+'</button></td></tr>').join('')+'</table></div>';
 }
 async function loadSupplierReview(){
  const r=await supabase.from('boq_supplier_quotes').select('*').eq('status','pending').order('created_at',{ascending:false});if(r.error){$('supplierReviewList').textContent=r.error.message;return}
@@ -155,15 +155,15 @@ async function saveAdminRate(e){
  $('adminRateStatus').textContent=r.error?r.error.message:'Admin price added.';if(!r.error){$('adminRateForm').reset();await loadAdminRates();await loadApprovedRates()}
 }
 async function adminActions(e){
- const edit=e.target.closest('.edit-rate'),toggle=e.target.closest('.toggle-rate');if(edit){const r=await supabase.from('boq_price_catalog').select('*').eq('id',edit.dataset.id).single();if(r.data){$('adminRateCategory').value=r.data.category;$('adminRateDescription').value=r.data.description;$('adminRateUnit').value=r.data.unit;$('adminRateValue').value=r.data.unit_rate;$('adminRateLocation').value=r.data.source_location||'';$('adminRateExpiry').value=r.data.valid_until||'';$('adminRateStatus').textContent='To revise an existing rate, deactivate it and add a replacement rate.'}return}
+ const edit=e.target.closest('.edit-rate'),toggle=e.target.closest('.toggle-rate');if(edit){const r=await supabase.from('boq_price_catalog').select('*').eq('id',edit.dataset.id).single();if(r.data){$('adminRateCategory').value=r.data.category;$('adminRateDescription').value=r.data.description;$('adminRateUnit').value=r.data.unit;$('adminRateValue').value=r.data.unit_rate;$('adminRateLocation').value=r.data.source_location||'';$('adminRateExpiry').value=r.data.valid_until||'';$('adminRateStatus').textContent='Template copied into the form. Saving creates a new rate; deactivate the old rate to preserve its price history.'}return}
  if(toggle){const r=await supabase.from('boq_price_catalog').update({active:toggle.dataset.active!=='true',updated_by:currentUser.id}).eq('id',toggle.dataset.id);if(r.error)alert(r.error.message);await loadAdminRates();await loadApprovedRates()}
 }
 async function reviewSupplier(e){
  const b=e.target.closest('.approve-supplier'),n=e.target.closest('.reject-supplier');if(!b&&!n)return;const id=(b||n).dataset.id;
  const q=await supabase.from('boq_supplier_quotes').select('*').eq('id',id).single();if(q.error){alert(q.error.message);return}
- const x=q.data;
- if(b){const c=await supabase.from('boq_price_catalog').insert({category:x.category,description:x.item_description,unit:x.unit,unit_rate:x.unit_rate,currency:'NGN',active:true,price_source:'supplier',supplier_name:x.supplier_name,source_location:x.location,source_reference:x.quote_reference,valid_from:x.quoted_at,valid_until:x.valid_until,updated_by:currentUser.id}).select().single();if(c.error){alert(c.error.message);return}}
- const u=await supabase.from('boq_supplier_quotes').update({status:b?'approved':'rejected',reviewed_by:currentUser.id,reviewed_at:new Date().toISOString(),catalog_item_id:b?undefined:null}).eq('id',id);if(u.error)alert(u.error.message);
+ const x=q.data;let catalogId=null;
+ if(b){const c=await supabase.from('boq_price_catalog').insert({category:x.category,description:x.item_description,unit:x.unit,unit_rate:x.unit_rate,currency:'NGN',active:true,price_source:'supplier',supplier_name:x.supplier_name,source_location:x.location,source_reference:x.quote_reference,valid_from:x.quoted_at,valid_until:x.valid_until,updated_by:currentUser.id}).select().single();if(c.error){alert(c.error.message);return}catalogId=c.data.id}
+ const u=await supabase.from('boq_supplier_quotes').update({status:b?'approved':'rejected',reviewed_by:currentUser.id,reviewed_at:new Date().toISOString(),catalog_item_id:catalogId}).eq('id',id);if(u.error)alert(u.error.message);
  await loadSupplierReview();await loadAdminRates();await loadApprovedRates();
 }
 async function issueInvoice(e){
