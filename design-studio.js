@@ -339,41 +339,68 @@ async function saveDesign(e){e?.preventDefault();if(!currentUser){$('formStatus'
  }catch(err){console.error(err);$('formStatus').textContent='Could not save this brief: '+(err.message||'Please sign in and try again.')}
  finally{$('saveProject').disabled=false}
 }
-function addQuoteRow(data={}){const tr=document.createElement('tr');tr.innerHTML='<td><input class="desc-input" placeholder="e.g. 150mm concrete blocks" aria-label="Description"></td><td><input class="unit-input" placeholder="pcs" aria-label="Unit"></td><td><input class="num-input qty" type="number" min="0" step=".01" value="0" aria-label="Quantity"></td><td><input class="num-input rate" type="number" min="0" step=".01" value="0" aria-label="Unit rate"></td><td class="amount">₦0.00</td><td><button type="button" class="remove-row" aria-label="Remove row">×</button></td>';
- tr.querySelector('.desc-input').value=data.description||'';tr.querySelector('.unit-input').value=data.unit||'';tr.querySelector('.qty').value=data.quantity??0;tr.querySelector('.rate').value=data.unit_rate??0;
- tr.addEventListener('input',updateTotals);tr.querySelector('.remove-row').addEventListener('click',()=>{tr.remove();updateTotals()});$('quoteRows').appendChild(tr);updateTotals()}
-function getQuoteItems(){return [...$('quoteRows').querySelectorAll('tr')].map(tr=>({description:tr.querySelector('.desc-input').value.trim(),unit:tr.querySelector('.unit-input').value.trim()||'item',quantity:+tr.querySelector('.qty').value,unit_rate:+tr.querySelector('.rate').value})).filter(x=>x.description&&x.quantity>0&&x.unit_rate>=0)}
-function updateTotals(){let total=0;for(const tr of $('quoteRows').querySelectorAll('tr')){const amount=(+tr.querySelector('.qty').value||0)*(+tr.querySelector('.rate').value||0);tr.querySelector('.amount').textContent=money(amount);total+=amount}$('quoteTotal').textContent=money(total)}
-function money(v){return new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN'}).format(v)}
-async function saveQuote(){if(!currentUser){$('quoteStatus').textContent='Sign in to save an estimate.';return}if(!currentProjectId){$('quoteStatus').textContent='Save the design brief first.';return}
- const items=getQuoteItems();if(!items.length){$('quoteStatus').textContent='Add at least one item with a description, quantity and confirmed unit rate.';return}
- $('saveQuote').disabled=true;$('quoteStatus').textContent='Saving estimate…';
+async function uploadProjectDocuments(){
+ if(!currentUser){$('uploadStatus').textContent='Please sign in first.';return}
+ if(!currentProjectId){$('uploadStatus').textContent='Save your project brief before uploading documents.';return}
+ const files=[...($('projectFiles').files||[])];if(!files.length){$('uploadStatus').textContent='Choose one or more project documents first.';return}
+ const allowed=/\.(pdf|png|jpe?g|webp|dwg|dxf|ifc)$/i;
+ if(files.some(f=>!allowed.test(f.name))){$('uploadStatus').textContent='Supported formats: PDF, PNG, JPG, WEBP, DWG, DXF and IFC.';return}
+ if(files.some(f=>f.size>100*1024*1024)){$('uploadStatus').textContent='Each file must be 100 MB or smaller.';return}
+ $('uploadProjectFiles').disabled=true;$('uploadStatus').textContent='Uploading documents to your private TW&D project folder…';
  try{
-  const brief=collectBrief();const project=await supabase.from('boq_projects').insert({created_by:currentUser.id,client_name:brief.client_name,client_email:brief.client_email,client_phone:brief.client_phone,project_name:brief.project_name,project_type:brief.project_type,project_location:brief.site_location,dimensions:brief.site_dimensions,scope_notes:'Preliminary client-entered estimate linked to TW&D Design Studio project '+currentProjectId,status:'DRAFT',contingency_percent:0,tax_percent:0}).select().single();
+  const meta=[];
+  for(const file of files){
+   const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,'_').slice(-120);
+   const path=currentUser.id+'/'+currentProjectId+'/'+crypto.randomUUID()+'_'+safeName;
+   const up=await supabase.storage.from('twd-design-files').upload(path,file,{contentType:file.type||'application/octet-stream',upsert:false});
+   if(up.error)throw new Error(file.name+': '+up.error.message);
+   meta.push({name:file.name,path,size:file.size,mime_type:file.type||'application/octet-stream',category:$('documentCategory').value,uploaded_at:new Date().toISOString()});
+  }
+  const project=await supabase.from('design_projects').select('building_requirements').eq('id',currentProjectId).single();
   if(project.error)throw project.error;
-  const inserted=await supabase.from('boq_items').insert(items.map((x,i)=>({project_id:project.data.id,section:'Preliminary estimate',description:x.description,unit:x.unit,quantity:x.quantity,unit_rate:x.unit_rate,sort_order:i+1})));
-  if(inserted.error)throw inserted.error;
-  const totals=await supabase.rpc('refresh_boq_totals',{p_project_id:project.data.id});if(totals.error)throw totals.error;
-  const link=await supabase.from('design_projects').update({quotation_id:project.data.id}).eq('id',currentProjectId);if(link.error)throw link.error;
-  $('quoteStatus').textContent='Estimate saved as draft. BOQ reference: '+project.data.id+'. It is not yet approved or issued.';
- }catch(err){console.error(err);$('quoteStatus').textContent='Could not save estimate: '+(err.message||'Please check your account permissions.')}
- finally{$('saveQuote').disabled=false}
+  const current=project.data.building_requirements||{};
+  const docs=[...(current.project_documents||[]),...meta];
+  const upd=await supabase.from('design_projects').update({building_requirements:{...current,project_documents:docs}}).eq('id',currentProjectId);
+  if(upd.error)throw upd.error;
+  $('projectFiles').value='';
+  $('uploadStatus').textContent=meta.length+' document(s) uploaded securely. They are attached to this saved design project.';
+  renderUploadedFiles(docs);
+ }catch(err){console.error(err);$('uploadStatus').textContent='Upload could not be completed: '+(err.message||'Please retry.')}
+ finally{$('uploadProjectFiles').disabled=false}
+}
+function renderUploadedFiles(docs=[]){
+ const host=$('uploadedFileList');if(!host)return;
+ host.innerHTML=docs.map(f=>'<div class="invoice-card"><div><strong>'+escapeHtml(f.name)+'</strong><small>'+escapeHtml(f.category||'Project document')+' · '+(Math.max(1,Math.round((f.size||0)/1024)))+' KB</small></div><span>Uploaded</span></div>').join('')||'No project documents uploaded yet.';
+}
+function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function requestAutomatedTakeoff(){
+ if(!currentUser){$('quoteStatus').textContent='Please sign in to submit a quotation request.';return}
+ if(!currentProjectId){$('quoteStatus').textContent='Save the project brief first.';return}
+ $('requestTakeoff').disabled=true;$('quoteStatus').textContent='Submitting your project for TW&D quantity-takeoff review…';
+ try{
+  const brief=collectBrief();
+  const project=await supabase.from('design_projects').select('building_requirements,site_dimensions').eq('id',currentProjectId).single();
+  if(project.error)throw project.error;
+  const docs=project.data.building_requirements?.project_documents||[];
+  if(!docs.length){$('quoteStatus').textContent='Please upload architectural drawings and any available survey / soil report before requesting the BOQ review.';return}
+  const existing=await supabase.from('boq_projects').select('id,status').eq('created_by',currentUser.id).eq('project_name',brief.project_name).eq('status','DRAFT').limit(1);
+  if(existing.error)throw existing.error;
+  if(existing.data?.length){$('quoteStatus').textContent='A BOQ review request already exists for this project: '+existing.data[0].id+'. TW&D can continue from the existing request.';return}
+  const result=await supabase.from('boq_projects').insert({
+   created_by:currentUser.id,client_name:brief.client_name,client_email:brief.client_email,client_phone:brief.client_phone,
+   project_name:brief.project_name,project_type:brief.project_type,project_location:brief.site_location,
+   dimensions:brief.site_dimensions,
+   scope_notes:'AUTOMATED TAKE-OFF REQUEST · Design project '+currentProjectId+' · Documents uploaded: '+docs.length+' · Categories: '+[...new Set(docs.map(d=>d.category))].join(', ')+' · Client has not entered quantities or rates. TW&D review required: validate drawings, survey levels, geotechnical report, structural design, scope, measurement rules and current local rates before preparing any priced BOQ. Preliminary estimates must be distinguished from engineer-verified final quantities.',
+   subtotal:0,contingency_percent:0,contingency_amount:0,tax_percent:0,tax_amount:0,grand_total:0,status:'DRAFT',validity_days:14
+  }).select().single();
+  if(result.error)throw result.error;
+  const link=await supabase.from('design_projects').update({quotation_id:result.data.id}).eq('id',currentProjectId);
+  if(link.error)throw link.error;
+  $('quoteStatus').textContent='Your request has been registered for TW&D review. Reference: '+result.data.id+'. No quantities or prices have been guessed. The BOQ, quotation and invoice will be generated after measurement, rate verification and engineering approval.';
+ }catch(err){console.error(err);$('quoteStatus').textContent='Could not submit your request: '+(err.message||'Please try again.')}
+ finally{$('requestTakeoff').disabled=false}
 }
 
-async function loadApprovedRates(){
- if(!currentUser)return;
- const today=new Date().toISOString().slice(0,10);
- const r=await supabase.from('boq_price_catalog').select('id,description,unit,unit_rate,price_source,source_location,valid_until').eq('active',true).lte('valid_from',today).or('valid_until.is.null,valid_until.gte.'+today).order('description');
- if(r.error){$('priceListStatus').textContent=r.error.message;return}
- const s=$('approvedRateSelect');s.innerHTML='<option value="">Choose approved price</option>';
- (r.data||[]).forEach(x=>{const o=document.createElement('option');o.value=x.id;o.textContent=x.description+' — '+money(Number(x.unit_rate))+'/'+x.unit+' — '+(x.source_location||'location not specified');o.dataset.item=JSON.stringify(x);s.appendChild(o)});
- $('priceListStatus').textContent=(r.data||[]).length+' approved rates available.';
-}
-async function submitSupplierQuote(e){
- e.preventDefault();if(!currentUser){$('supplierStatus').textContent='Sign in first.';return}
- const x={supplier_name:$('supplierName').value.trim(),supplier_contact:$('supplierContact').value.trim()||null,supplier_email:$('supplierEmail').value.trim()||null,supplier_phone:$('supplierPhone').value.trim()||null,item_description:$('supplierItem').value.trim(),category:$('supplierCategory').value.trim(),unit:$('supplierUnit').value.trim(),unit_rate:Number($('supplierRate').value),location:$('supplierLocation').value.trim()||null,quote_reference:$('supplierReference').value.trim()||null,evidence_url:$('supplierEvidence').value.trim()||null,valid_until:$('supplierValidUntil').value||null,submitted_by:currentUser.id};
- const r=await supabase.from('boq_supplier_quotes').insert(x);$('supplierStatus').textContent=r.error?r.error.message:'Supplier quotation submitted for TW&D review.';if(!r.error)$('supplierQuoteForm').reset();
-}
 async function loadInvoices(){
  if(!currentUser)return;const r=await supabase.from('design_payment_orders').select('id,invoice_number,purpose,amount,status,created_at').eq('owner_id',currentUser.id).order('created_at',{ascending:false});
  if(r.error){$('paymentStatus').textContent=r.error.message;return}
@@ -391,7 +418,13 @@ async function setupAdmin(){
  const p=await supabase.from('design_projects').select('id,owner_id,client_name,project_name').order('created_at',{ascending:false}).limit(100);
  $('invoiceProjectSelect').innerHTML='<option value="">Choose project</option>';
  (p.data||[]).forEach(x=>{const o=document.createElement('option');o.value=x.id;o.dataset.owner=x.owner_id;o.textContent=x.project_name+' — '+x.client_name+' — '+x.id.slice(0,8);$('invoiceProjectSelect').appendChild(o)});
- await loadAdminRates();await loadSupplierReview();
+ await loadAdminRates();await loadSupplierReview();await loadAdminTakeoffRequests();
+}
+async function loadAdminTakeoffRequests(){
+ const host=$('takeoffRequestList');if(!host)return;
+ const r=await supabase.from('boq_projects').select('id,client_name,project_name,project_type,project_location,status,scope_notes,created_at').like('scope_notes','AUTOMATED TAKE-OFF REQUEST%').order('created_at',{ascending:false}).limit(100);
+ if(r.error){host.textContent=r.error.message;return}
+ host.innerHTML=(r.data||[]).map(x=>'<div class="invoice-card"><div><strong>'+escapeHtml(x.project_name)+' · '+escapeHtml(x.client_name)+'</strong><small>'+escapeHtml(x.project_location||'Location not supplied')+' · '+new Date(x.created_at).toLocaleDateString('en-NG')+' · '+escapeHtml(x.status)+'</small><small>'+escapeHtml(x.scope_notes)+'</small></div><strong>'+x.id.slice(0,8)+'</strong></div>').join('')||'No automated take-off requests are awaiting review.';
 }
 async function loadAdminRates(){
  const r=await supabase.from('boq_price_catalog').select('*').order('description').limit(200);if(r.error){$('adminCatalogList').textContent=r.error.message;return}
@@ -403,7 +436,7 @@ async function loadSupplierReview(){
 }
 async function saveAdminRate(e){
  e.preventDefault();const r=await supabase.from('boq_price_catalog').insert({category:$('adminRateCategory').value.trim(),description:$('adminRateDescription').value.trim(),unit:$('adminRateUnit').value.trim(),unit_rate:Number($('adminRateValue').value),currency:'NGN',active:true,price_source:'admin',source_location:$('adminRateLocation').value.trim()||null,valid_from:new Date().toISOString().slice(0,10),valid_until:$('adminRateExpiry').value||null,updated_by:currentUser.id});
- $('adminRateStatus').textContent=r.error?r.error.message:'Admin price added.';if(!r.error){$('adminRateForm').reset();await loadAdminRates();await loadApprovedRates()}
+ $('adminRateStatus').textContent=r.error?r.error.message:'Admin price added.';if(!r.error){$('adminRateForm').reset();await loadAdminRates()}
 }
 async function adminActions(e){
  const edit=e.target.closest('.edit-rate'),toggle=e.target.closest('.toggle-rate');if(edit){const r=await supabase.from('boq_price_catalog').select('*').eq('id',edit.dataset.id).single();if(r.data){$('adminRateCategory').value=r.data.category;$('adminRateDescription').value=r.data.description;$('adminRateUnit').value=r.data.unit;$('adminRateValue').value=r.data.unit_rate;$('adminRateLocation').value=r.data.source_location||'';$('adminRateExpiry').value=r.data.valid_until||'';$('adminRateStatus').textContent='Template copied into the form. Saving creates a new rate; deactivate the old rate to preserve its price history.'}return}
@@ -415,7 +448,7 @@ async function reviewSupplier(e){
  const x=q.data;let catalogId=null;
  if(b){const c=await supabase.from('boq_price_catalog').insert({category:x.category,description:x.item_description,unit:x.unit,unit_rate:x.unit_rate,currency:'NGN',active:true,price_source:'supplier',supplier_name:x.supplier_name,source_location:x.location,source_reference:x.quote_reference,valid_from:x.quoted_at,valid_until:x.valid_until,updated_by:currentUser.id}).select().single();if(c.error){alert(c.error.message);return}catalogId=c.data.id}
  const u=await supabase.from('boq_supplier_quotes').update({status:b?'approved':'rejected',reviewed_by:currentUser.id,reviewed_at:new Date().toISOString(),catalog_item_id:catalogId}).eq('id',id);if(u.error)alert(u.error.message);
- await loadSupplierReview();await loadAdminRates();await loadApprovedRates();
+ await loadSupplierReview();await loadAdminRates();
 }
 async function issueInvoice(e){
  e.preventDefault();const p=$('invoiceProjectSelect').selectedOptions[0];if(!p?.value)return;
@@ -427,7 +460,7 @@ async function verifyReturn(){
  if(id){$('paymentStatus').textContent='Verifying payment…';const r=await supabase.functions.invoke('flutterwave-checkout',{body:{action:'verify',tx_ref:ref,transaction_id:id}});$('paymentStatus').textContent=r.error?r.error.message:(r.data?.paid?'Payment verified and invoice marked paid.':r.data?.message||'Payment is not yet verified.')}
  history.replaceState({},document.title,location.pathname);await loadInvoices();
 }
-async function initDesignWorkspace(){if(!currentUser)return;await Promise.all([loadApprovedRates(),loadInvoices(),setupAdmin()]);await verifyReturn()}
+async function initDesignWorkspace(){if(!currentUser)return;await Promise.all([loadInvoices(),setupAdmin()]);await verifyReturn()}
 
 $('roofType').addEventListener('change',()=>{$('customRoofWrap').hidden=$('roofType').value!=='custom';drawBuilding()});
 
@@ -455,18 +488,15 @@ $('viewTop').addEventListener('click',()=>setCameraView('top'));
 $('viewReset').addEventListener('click',()=>{drawBuilding();setCameraView('perspective')});
 $('retryPreview').addEventListener('click',()=>{setup3D();if(renderer)setCameraView('perspective')});
 
-$('designForm').addEventListener('submit',saveDesign);$('addQuoteRow').addEventListener('click',()=>addQuoteRow());$('saveQuote').addEventListener('click',saveQuote);$('printBrief').addEventListener('click',()=>window.print());
+$('designForm').addEventListener('submit',saveDesign);$('uploadProjectFiles').addEventListener('click',uploadProjectDocuments);$('requestTakeoff').addEventListener('click',requestAutomatedTakeoff);$('printBrief').addEventListener('click',()=>window.print());
 $('downloadGlb').addEventListener('click',()=>{if(!buildingGroup)return;const exporter=new GLTFExporter();$('viewerStatus').textContent='Preparing 3D model file…';exporter.parse(buildingGroup,result=>{const blob=new Blob([result],{type:'model/gltf-binary'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-building-concept-preview.glb';a.click();URL.revokeObjectURL(url);$('viewerStatus').textContent='Concept model exported as GLB. This is a visual massing model, not a CAD or structural file.';},error=>{$('viewerStatus').textContent='Model export failed: '+(error.message||'Please try again.');},{binary:true});});
 $('downloadSvg').addEventListener('click',()=>{const svg=$('planDrawing').querySelector('svg');if(!svg)return;const blob=new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-footprint-concept.svg';a.click();URL.revokeObjectURL(url);});
-addQuoteRow();setup3D();
-$('addCatalogRate').addEventListener('click',()=>{const o=$('approvedRateSelect').selectedOptions[0];if(o?.dataset.item){const x=JSON.parse(o.dataset.item);addQuoteRow({description:x.description,unit:x.unit,unit_rate:x.unit_rate});}});
-$('refreshPriceList').addEventListener('click',loadApprovedRates);
-$('supplierQuoteForm').addEventListener('submit',submitSupplierQuote);
+setup3D();
 $('invoiceList').addEventListener('click',startInvoicePayment);
 $('adminRateForm').addEventListener('submit',saveAdminRate);
 $('adminCatalogList').addEventListener('click',adminActions);
 $('supplierReviewList').addEventListener('click',reviewSupplier);
-$('invoiceForm').addEventListener('submit',issueInvoice);
+
 $('cancelRateEdit').addEventListener('click',()=>{$('adminRateForm').reset();$('cancelRateEdit').hidden=true;});
 const {data:{session}}=await supabase.auth.getSession();currentUser=session?.user||null;
 supabase.auth.onAuthStateChange((_event,s)=>{currentUser=s?.user||null;if(currentUser){$('formStatus').textContent='Signed in. Your design brief can be saved securely.';initDesignWorkspace()}});
