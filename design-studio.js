@@ -100,8 +100,22 @@ function setCameraView(view){
  const p=poses[view]||poses.perspective;camera.position.set(p[0],p[1],p[2]);controls.target.set(0,view==='top'?0:centerY,0);controls.update();
 }
 
+function disposeBuildingGroup(){
+ if(!buildingGroup)return;
+ const geometries=new Set(),materials=new Set();
+ buildingGroup.traverse(object=>{
+  if(object.geometry)geometries.add(object.geometry);
+  if(object.material){
+   if(Array.isArray(object.material))object.material.forEach(material=>materials.add(material));
+   else materials.add(object.material);
+  }
+ });
+ geometries.forEach(geometry=>geometry.dispose());
+ materials.forEach(material=>material.dispose());
+ buildingGroup.clear();
+}
 function drawBuilding(){
- if(!buildingGroup)return;buildingGroup.clear();
+ if(!buildingGroup)return;disposeBuildingGroup();
  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=+$('storeys').value||2,h=clamp(+$('floorHeight').value||3.2,2.7,5),roof=$('roofType').value,v=getVisualSettings(),total=n*h;
  const mat=(c,r=.72,m=0,texture=null)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m,map:texture||null});
  const wall=mat(v.wall,.88,0,makeCanvasTexture('stucco')),slab=mat('#aeb6bf',.82,0,makeCanvasTexture('concrete')),roofMat=mat(v.roof,.68),glass=mat(v.glass,.12,.32),trim=mat(v.trim,.36),dark=mat('#303943',.64),wood=mat(v.aesthetic==='luxury'?'#795039':'#80543a',.66,0,makeCanvasTexture('wood')),stone=mat('#b8b0a2',.9,0,makeCanvasTexture('stone')),light=mat('#fff0c8',.24,.08);
