@@ -80,6 +80,7 @@ function setup3D(){
  }
 }
 function box(parent,w,h,d,x,y,z,material){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);return mesh}
+function ceilMeshMatFix(material){return material}
 function drawRoof(w,d,y,style,mat){
   const roof=new THREE.Group();roof.position.y=y;buildingGroup.add(roof);
   const ridge=Math.max(w,d);
@@ -97,6 +98,7 @@ function drawRoof(w,d,y,style,mat){
   }else{
     box(roof,w+1,.25,d+1,0,.12,0,mat);
   }
+  return roof;
 }
 function getVisualSettings(){
  return {
@@ -105,6 +107,7 @@ function getVisualSettings(){
   plan_line:$('planLineColor').value,plan_fill:$('planFillColor').value,line_width:+$('planLineWidth').value,
   room_count:+$('roomCount').value,room_names:$('roomNames').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12),floor_plan_level:$('floorPlanLevel').value,floor_room_names:{...floorRoomNames},floor_layouts:{...floorLayouts},partition_direction:$('partitionDirection').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,window_style:$('windowStyle').value,
   facade_finish:$('facadeFinish').value,column_style:$('columnStyle').value,
+  interior:{view_mode:$('interiorViewMode').value,floor_finish:$('interiorFloorFinish').value,wall_finish:$('interiorWallFinish').value,tile_color:$('tileColor').value,wall_color:$('interiorWallColor').value,lighting:$('interiorLighting').value,lighting_intensity:+$('lightingIntensity').value,furniture:$('furniturePreset').value,sanitary:$('sanitaryPreset').value,hardscape:$('hardscapeFinish').value,hardscape_color:$('hardscapeColor').value,garden:$('gardenStyle').value,show_lights:$('showInteriorLights').checked,show_furniture:$('showFurniture').checked,show_plumbing:$('showPlumbing').checked,show_ceiling:$('showCeiling').checked,show_stamped_joints:$('showStampedJoints').checked,show_green_areas:$('showGreenAreas').checked},
   features:{balcony:$('featureBalcony').checked,columns:$('featureColumns').checked,fins:$('featureFins').checked,driveway:$('featureDriveway').checked,landscape:$('featureLandscape').checked,parapet:$('featureParapet').checked,lighting:$('featureLighting').checked}
  };
 }
@@ -113,13 +116,9 @@ function setCameraView(view){
  if(!camera||!controls)return;
  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),height=(+$('storeys').value||2)*(+$('floorHeight').value||3.2);
  const span=Math.max(w,d)*2.05,centerY=height*.48;
- const poses={
-  perspective:[span*.82,height+span*.48,span*.95],
-  front:[0,centerY+height*.12,span*1.75],
-  side:[span*1.75,centerY+height*.12,0],
-  top:[.01,span*2.1,.01]
- };
- const p=poses[view]||poses.perspective;camera.position.set(p[0],p[1],p[2]);controls.target.set(0,view==='top'?0:centerY,0);controls.update();
+ const floorIndex=Math.max(0,['ground','first','second','third'].indexOf($('floorPlanLevel').value)),floorY=floorIndex*(+$('floorHeight').value||3.2);
+ const poses={perspective:[span*.82,height+span*.48,span*.95],front:[0,centerY+height*.12,span*1.75],side:[span*1.75,centerY+height*.12,0],top:[.01,span*2.1,.01],interior:[0,floorY+1.55,0],cutaway:[span*.55,floorY+height*.75,span*.65]};
+ const p=poses[view]||poses.perspective;camera.position.set(p[0],p[1],p[2]);controls.target.set(view==='interior'?0:0,view==='interior'?floorY+1.55:view==='top'?0:centerY,view==='interior'?-2:0);controls.update();
 }
 
 function disposeBuildingGroup(){
@@ -141,6 +140,7 @@ function drawBuilding(){
  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=+$('storeys').value||2,h=clamp(+$('floorHeight').value||3.2,2.7,5),roof=$('roofType').value,v=getVisualSettings(),total=n*h;
  const mat=(c,r=.72,m=0,texture=null)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m,map:texture||null});
  const wall=mat(v.wall,.88,0,makeCanvasTexture('stucco')),slab=mat('#aeb6bf',.82,0,makeCanvasTexture('concrete')),roofMat=mat(v.roof,.68),glass=mat(v.glass,.12,.32),trim=mat(v.trim,.36),dark=mat('#303943',.64),wood=mat(v.aesthetic==='luxury'?'#795039':'#80543a',.66,0,makeCanvasTexture('wood')),stone=mat('#b8b0a2',.9,0,makeCanvasTexture('stone')),light=mat('#fff0c8',.24,.08);
+ const interior=v.interior||{};if(interior.view_mode==='interior'||interior.view_mode==='cutaway'){wall.transparent=true;wall.opacity=.16;wall.depthWrite=false;}
  const finish=v.facade_finish;
  const accent=finish==='charcoal'?dark:finish==='stone'?stone:finish==='timber'?wood:finish==='render'?wall:wood;
  const cladding=finish==='signature'||finish==='charcoal';
@@ -228,8 +228,85 @@ function drawBuilding(){
   for(const x of partitionXs)box(buildingGroup,wallThickness+.035,.035,insideD,x,floorY+h*.75,0,innerTrim);
   for(const z of partitionYs)box(buildingGroup,insideW,.035,wallThickness+.035,0,floorY+h*.75,z,innerTrim);
  }
+ // Interior finish surfaces, fittings and furniture are visualised on every storey.
+ const floorTextureCanvas=document.createElement('canvas');floorTextureCanvas.width=512;floorTextureCanvas.height=512;
+ const fctx=floorTextureCanvas.getContext('2d');const tileBase=interior.tile_color||'#d8d4ca';
+ fctx.fillStyle=tileBase;fctx.fillRect(0,0,512,512);
+ const tileKinds={porcelain:64,marble:86,granite:52,wood:42,terrazzo:58,concrete:128};const tileSize=tileKinds[interior.floor_finish]||64;
+ fctx.strokeStyle='rgba(90,90,90,.30)';fctx.lineWidth=3;
+ for(let q=0;q<=512;q+=tileSize){fctx.beginPath();fctx.moveTo(q,0);fctx.lineTo(q,512);fctx.stroke();fctx.beginPath();fctx.moveTo(0,q);fctx.lineTo(512,q);fctx.stroke();}
+ if(interior.floor_finish==='marble'||interior.floor_finish==='granite'||interior.floor_finish==='terrazzo'){for(let k=0;k<260;k++){fctx.fillStyle='rgba(70,70,70,'+(Math.random()*.12)+')';fctx.beginPath();fctx.arc(Math.random()*512,Math.random()*512,Math.random()*2+1,0,Math.PI*2);fctx.fill();}}
+ if(interior.floor_finish==='wood'){fctx.strokeStyle='rgba(90,60,35,.18)';for(let y=0;y<512;y+=tileSize/2){fctx.beginPath();fctx.moveTo(0,y);fctx.lineTo(512,y);fctx.stroke();}}
+ const floorTexture=new THREE.CanvasTexture(floorTextureCanvas);floorTexture.colorSpace=THREE.SRGBColorSpace;floorTexture.wrapS=floorTexture.wrapT=THREE.RepeatWrapping;floorTexture.repeat.set(Math.max(1,w/4),Math.max(1,d/4));
+ const floorMat=mat('#ffffff',interior.floor_finish==='marble'?.24:.48,0,floorTexture);
+ const wallFinishMat=mat(interior.wall_color||'#f1eee7',.82);
+ const furnishingMat=mat(interior.furniture==='luxury'?'#8b694e':interior.furniture==='office'?'#596b7c':'#b7a58d',.68);
+ const fabricMat=mat(interior.furniture==='minimal'?'#d6dadd':'#9caaad',.94);
+ const fixtureMat=mat('#f8f8f4',.2,.08),chromeMat=mat('#b8c4ca',.18,.82),woodMat=mat('#8b6546',.58);
+ const addBox=(ww,hh,dd,x,y,z,m)=>box(buildingGroup,ww,hh,dd,x,y,z,m);
+ for(let fl=0;fl<n;fl++){
+  const fy=fl*h;
+  const floorSurface=new THREE.Mesh(new THREE.PlaneGeometry(insideW,insideD),floorMat);floorSurface.rotation.x=-Math.PI/2;floorSurface.position.set(0,fy+.025,0);floorSurface.receiveShadow=true;buildingGroup.add(floorSurface);
+  if(interior.wall_finish==='ceramic'||interior.wall_finish==='marble'||interior.wall_finish==='stone'){
+   const tileWall=mat(interior.wall_finish==='marble'?'#d5d0c7':interior.wall_finish==='stone'?'#b9ad9b':'#d9dedc',.42);
+   for(const z of [-insideD/2,insideD/2])addBox(insideW,1.15,.025,0,fy+.62,z,tileWall);
+   for(const x of [-insideW/2,insideW/2])addBox(.025,1.15,insideD,x,fy+.62,0,tileWall);
+  }else if(interior.wall_finish==='wood'){
+   for(const z of [-insideD/2,insideD/2])addBox(insideW,1.5,.035,0,fy+.8,z,woodMat);
+  }
+  if(interior.show_ceiling&&interior.view_mode==='exterior'){
+   const ceiling=mat('#f4f1e9',.95);const ceilMesh=new THREE.Mesh(new THREE.PlaneGeometry(insideW,insideD),ceilMeshMatFix(ceiling));ceilMesh.rotation.x=Math.PI/2;ceilMesh.position.set(0,fy+h-.16,0);buildingGroup.add(ceilMesh);
+  }
+  if(interior.show_lights){
+   const lightColor=interior.lighting==='neutral'?0xfff5e8:interior.lighting==='daylight'?0xe7f2ff:0xffd6a0;
+   const intensity=(interior.lighting_intensity||65)/100;
+   for(let x=-1;x<=1;x++)for(let z=-1;z<=1;z++){
+    const lx=x*insideW*.28,lz=z*insideD*.28;
+    const bulb=new THREE.Mesh(new THREE.SphereGeometry(.075,10,8),new THREE.MeshStandardMaterial({color:lightColor,emissive:lightColor,emissiveIntensity:.8}));bulb.position.set(lx,fy+h-.24,lz);buildingGroup.add(bulb);
+    const point=new THREE.PointLight(lightColor,1.2*intensity,Math.max(w,d)*.72,2);point.position.set(lx,fy+h-.35,lz);buildingGroup.add(point);
+   }
+  }
+  if(interior.show_furniture&&interior.furniture!=='empty'){
+   const furnitureScale=interior.furniture==='luxury'?1.08:1;
+   // Living-room sofa, coffee table and TV console.
+   if(fl===0||interior.furniture==='office'){
+    addBox(2.4*furnitureScale,.42,.82,-insideW*.22,fy+.42,-insideD*.22,fabricMat);
+    addBox(2.4*furnitureScale,.72,.18,-insideW*.22,fy+.78,-insideD*.55,fabricMat);
+    addBox(1.05,.12,.65,-insideW*.22,fy+.32,insideD*.04,woodMat);
+    addBox(1.8,.35,.24,insideW*.28,fy+.25,-insideD*.48,woodMat);
+   }
+   // Dining table and four simple chairs.
+   addBox(1.65,.12,.95,insideW*.22,fy+.82,insideD*.2,woodMat);
+   for(const dx of [-.95,.95])for(const dz of [-.58,.58]){addBox(.38,.48,.38,insideW*.22+dx,fy+.48,insideD*.2+dz,furnishingMat);addBox(.38,.48,.08,insideW*.22+dx,fy+.73,insideD*.2+dz+.16,furnishingMat);}
+   // Bedroom beds and side tables, placed toward the rear half of each level.
+   addBox(1.65,.22,2.05,-insideW*.24,fy+.28,insideD*.27,furnishingMat);
+   addBox(1.58,.16,1.88,-insideW*.24,fy+.47,insideD*.27,fabricMat);
+   addBox(1.7,.42,.14,-insideW*.24,fy+.66,insideD*.27-insideD*.55,furnishingMat);
+   addBox(.42,.48,.42,-insideW*.24-1.15,fy+.24,insideD*.27,woodMat);
+   // Kitchen counter and upper cabinets.
+   addBox(Math.min(2.8,insideW*.42),.9,.62,insideW*.28,fy+.48,-insideD*.34,woodMat);
+   addBox(Math.min(2.8,insideW*.42),.62,.3,insideW*.28,fy+1.62,-insideD*.34,wallFinishMat);
+  }
+  if(interior.show_plumbing&&interior.sanitary!=='none'){
+   const bathroomX=insideW*.32,bathroomZ=insideD*.31;
+   // WC pan and cistern.
+   if(interior.sanitary==='full'||interior.sanitary==='wc_basin'||interior.sanitary==='wc_shower'){
+    const pan=new THREE.Mesh(new THREE.CylinderGeometry(.24,.28,.16,24),fixtureMat);pan.position.set(bathroomX,fy+.12,bathroomZ);buildingGroup.add(pan);
+    const bowl=new THREE.Mesh(new THREE.SphereGeometry(.24,18,12),fixtureMat);bowl.scale.set(1,.48,1.18);bowl.position.set(bathroomX,fy+.28,bathroomZ);buildingGroup.add(bowl);
+    addBox(.42,.58,.16,bathroomX,fy+.43,bathroomZ-.28,fixtureMat);
+    // Basin with chrome tap.
+    addBox(.72,.18,.48,bathroomX-.82,fy+.86,bathroomZ,fixtureMat);
+    const tap=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.2,10),chromeMat);tap.position.set(bathroomX-.82,fy+1.05,bathroomZ);buildingGroup.add(tap);
+   }
+   if(interior.sanitary==='full'||interior.sanitary==='wc_shower'){
+    addBox(.95,.08,.95,bathroomX+.75,fy+.08,bathroomZ,fixtureMat);
+    const shower=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.18,12),chromeMat);shower.position.set(bathroomX+.75,fy+2.2,bathroomZ);buildingGroup.add(shower);
+   }
+   if(interior.sanitary==='full')addBox(1.1,.12,.5,-insideW*.28,fy+.72,-insideD*.38,fixtureMat); // kitchen sink/counter
+  }
+ }
  // Roof/parapet silhouette and oversized entrance canopy.
- drawRoof(w,d,total,roof,roofMat);
+ const roofModel=drawRoof(w,d,total,roof,roofMat);if(interior.view_mode==='interior'||interior.view_mode==='cutaway'||!interior.show_ceiling)roofModel.visible=false;
  if(roof==='contemporary_flat'||roof==='custom'||roof==='combination'){
   box(buildingGroup,w+1.35,.28,d+1.25,0,total+.24,0,trim);
   box(buildingGroup,w+1.0,.12,d+1.0,0,total+.43,0,wall);
@@ -550,6 +627,8 @@ function applyAesthetic(){
 }
 $('aestheticPreset').addEventListener('change',applyAesthetic);
 ['wallColor','roofColor','glassColor','trimColor','planLineColor','planFillColor','planLineWidth','roomCount','roomNames','partitionDirection','primarySplitX','primarySplitY','windowStyle','facadeFinish','columnStyle','featureBalcony','featureColumns','featureFins','featureDriveway','featureLandscape','featureParapet','featureLighting'].forEach(id=>$(id).addEventListener('input',drawBuilding));
+['interiorFloorFinish','interiorWallFinish','tileColor','interiorWallColor','interiorLighting','lightingIntensity','furniturePreset','sanitaryPreset','hardscapeFinish','hardscapeColor','gardenStyle','showInteriorLights','showFurniture','showPlumbing','showCeiling','showStampedJoints','showGreenAreas'].forEach(id=>$(id).addEventListener('input',drawBuilding));
+
 
 function saveActiveFloorLayout(){const level=activeFloorKey;floorRoomNames[level]=$('roomNames').value;floorLayouts[level]={room_count:+$('roomCount').value,split_x:+$('primarySplitX').value/100,split_y:+$('primarySplitY').value/100,partition_direction:$('partitionDirection').value};}
 function loadActiveFloorLayout(){const level=$('floorPlanLevel').value,layout=floorLayouts[level]||floorLayouts.ground;activeFloorKey=level;$('roomNames').value=floorRoomNames[level]||floorRoomNames.ground;$('roomCount').value=layout.room_count;$('primarySplitX').value=Math.round(layout.split_x*100);$('primarySplitY').value=Math.round(layout.split_y*100);$('partitionDirection').value=layout.partition_direction;}
@@ -564,6 +643,9 @@ $('storeys').addEventListener('input',()=>{updateFloorPlanLevels();drawBuilding(
 updateFloorPlanLevels();
 $('refreshPreview').addEventListener('click',drawBuilding);
 $('viewPerspective').addEventListener('click',()=>setCameraView('perspective'));
+$('viewInterior').addEventListener('click',()=>{$('interiorViewMode').value='interior';drawBuilding();setCameraView('interior')});
+$('viewCutaway').addEventListener('click',()=>{$('interiorViewMode').value='cutaway';drawBuilding();setCameraView('cutaway')});
+$('interiorViewMode').addEventListener('change',()=>{drawBuilding();setCameraView($('interiorViewMode').value==='interior'?'interior':$('interiorViewMode').value==='cutaway'?'cutaway':'perspective')});
 $('viewFront').addEventListener('click',()=>setCameraView('front'));
 $('viewSide').addEventListener('click',()=>setCameraView('side'));
 $('viewTop').addEventListener('click',()=>setCameraView('top'));
