@@ -342,7 +342,8 @@ function drawPlan(w,d,n,v=getVisualSettings()){
   roomLines.push('<line x1="'+(bx+rw*.22)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.22)+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
   roomLines.push('<line x1="'+(bx+rw*.78)+'" y1="'+(by+rd*.5)+'" x2="'+(bx+rw*.78)+'" y2="'+(by+rd)+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/>');
  }
- const labels=shape==='U'?[[bx+rw*.25,by+rd*.22,'WING A'],[bx+rw*.75,by+rd*.22,'WING B'],[bx+rw*.5,by+rd*.83,'CLASSROOM / WING'],[bx+rw*.5,by+rd*.26,'COURTYARD']]:shape==='L'?[[bx+rw*.25,by+rd*.2,'WING A'],[bx+rw*.73,by+rd*.72,'WING B']]:[[bx+rw*.5,by+rd*.22,'MAIN BLOCK'],[bx+rw*.5,by+rd*.76,'WING']];
+ const planNames=v.room_names||[];const zoneName=(i,fallback)=>String(planNames[i]||fallback).slice(0,22).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
+ const labels=shape==='U'?[[bx+rw*.25,by+rd*.22,zoneName(0,'WING A')],[bx+rw*.75,by+rd*.22,zoneName(1,'WING B')],[bx+rw*.5,by+rd*.83,zoneName(2,'CLASSROOM / WING')],[bx+rw*.5,by+rd*.26,'COURTYARD']]:shape==='L'?[[bx+rw*.25,by+rd*.2,zoneName(0,'WING A')],[bx+rw*.73,by+rd*.72,zoneName(1,'WING B')]]:[[bx+rw*.5,by+rd*.22,zoneName(0,'MAIN BLOCK')],[bx+rw*.5,by+rd*.76,zoneName(1,'WING')]];
  const labelSvg=labels.map(([x,y,t])=>'<text x="'+x+'" y="'+y+'" font-size="9" fill="'+line+'" text-anchor="middle">'+t+'</text>').join('')+roomLabels.join('');
  const north=v.plot_orientation==='north'?'N':v.plot_orientation.toUpperCase()[0];
  const area=(w*d*areaFactor).toFixed(1);const footprintStroke=plotFit?line:'#c0392b';
