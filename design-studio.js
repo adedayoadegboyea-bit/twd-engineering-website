@@ -256,21 +256,24 @@ function drawBuilding(){
  }
  // Room-by-room interior model: each room receives its own floor material, finish panel, lighting and furniture.
  const addBox=(ww,hh,dd,x,y,z,m)=>box(buildingGroup,ww,hh,dd,x,y,z,m);
+ const fixtureMat=mat('#f8f8f4',.2,.08),chromeMat=mat('#b8c4ca',.18,.82),woodMat=mat('#8b6546',.58);
  const roomNamesForModel=(v.floor_room_names&&v.floor_room_names[v.floor_plan_level])?String(v.floor_room_names[v.floor_plan_level]).split(',').map(x=>x.trim()).filter(Boolean):(v.room_names||[]);
  const roomTotal=clamp(roomNamesForModel.length||v.room_count||4,2,12),roomCols=Math.ceil(roomTotal/2),roomRows=Math.ceil(roomTotal/roomCols);
  const makeRoomTileTexture=(cfg)=>{const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;const ctx=canvas.getContext('2d');ctx.fillStyle=cfg.tile_color||'#d8d4ca';ctx.fillRect(0,0,256,256);const step=cfg.floor_finish==='wood'?42:cfg.floor_finish==='marble'?86:cfg.floor_finish==='granite'?52:cfg.floor_finish==='terrazzo'?58:cfg.floor_finish==='concrete'?128:64;ctx.strokeStyle='rgba(75,75,75,.28)';ctx.lineWidth=2;for(let p=0;p<=256;p+=step){ctx.beginPath();ctx.moveTo(p,0);ctx.lineTo(p,256);ctx.stroke();ctx.beginPath();ctx.moveTo(0,p);ctx.lineTo(256,p);ctx.stroke();}if(['marble','granite','terrazzo'].includes(cfg.floor_finish)){for(let q=0;q<90;q++){ctx.fillStyle='rgba(70,70,70,.10)';ctx.beginPath();ctx.arc(Math.random()*256,Math.random()*256,Math.random()*2+1,0,Math.PI*2);ctx.fill();}}return new THREE.CanvasTexture(canvas);};
  for(let fl=0;fl<n;fl++){
+  const floorKeyForModel=['ground','first','second','third','fourth'][fl];
+  const floorNamesForModel=(v.floor_room_names&&v.floor_room_names[floorKeyForModel])?String(v.floor_room_names[floorKeyForModel]).split(',').map(x=>x.trim()).filter(Boolean):roomNamesForModel;
   const fy=fl*h,fyBase=fy+(fl===0?.43:.245);
   for(let ri=0;ri<roomTotal;ri++){
    const row=Math.floor(ri/roomCols),col=ri%roomCols;
    const cellW=insideW/roomCols,cellD=insideD/roomRows;
    const cx=-insideW/2+cellW*(col+.5),cz=-insideD/2+cellD*(row+.5);
-   const cfg=(floorRoomInteriors[['ground','first','second','third','fourth'][fl]]||{})[String(ri)]||defaultRoomInterior();
+   const cfg=(floorRoomInteriors[floorKeyForModel]||{})[String(ri)]||defaultRoomInterior();
    const texture=makeRoomTileTexture(cfg);texture.colorSpace=THREE.SRGBColorSpace;texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(Math.max(1,cellW/2.5),Math.max(1,cellD/2.5));
    const roomFloorMat=mat('#ffffff',cfg.floor_finish==='marble'?.24:.48,0,texture);
    const roomFloor=new THREE.Mesh(new THREE.PlaneGeometry(Math.max(.2,cellW-.035),Math.max(.2,cellD-.035)),roomFloorMat);
    roomFloor.rotation.x=-Math.PI/2;roomFloor.position.set(cx,fyBase+.012,cz);roomFloor.receiveShadow=true;
-   roomFloor.userData={twdRoomSurface:true,roomIndex:ri,floorKey:['ground','first','second','third','fourth'][fl]};buildingGroup.add(roomFloor);
+   roomFloor.userData={twdRoomSurface:true,roomIndex:ri,floorKey:floorKeyForModel};buildingGroup.add(roomFloor);
    if(fl===+$('floorPlanLevel').selectedIndex&&ri===activeRoomIndex){
     const outline=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(cellW-.06,cellD-.06)),new THREE.LineBasicMaterial({color:0x13a6d8,linewidth:2}));
     outline.rotation.x=-Math.PI/2;outline.position.set(cx,fyBase+.035,cz);buildingGroup.add(outline);
@@ -289,7 +292,7 @@ function drawBuilding(){
     bulb.position.set(cx,fy+h-.24,cz);buildingGroup.add(bulb);
     const point=new THREE.PointLight(lightColor,1.0*((interior.lighting_intensity||65)/100),Math.max(cellW,cellD)*1.5,2);point.position.set(cx,fy+h-.38,cz);buildingGroup.add(point);
    }
-   const roomName=(roomNamesForModel[ri]||('Room '+(ri+1))).toLowerCase();
+   const roomName=(floorNamesForModel[ri]||('Room '+(ri+1))).toLowerCase();
    if(interior.show_furniture&&cfg.furniture!=='empty'){
     const fm=mat(cfg.furniture==='luxury'?'#8b694e':cfg.furniture==='office'?'#596b7c':cfg.furniture==='minimal'?'#d6dadd':'#b7a58d',.72);
     const fabric=mat(cfg.furniture==='minimal'?'#e2e4e2':'#9caaad',.94);
