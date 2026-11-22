@@ -9,7 +9,9 @@ const $=id=>document.getElementById(id);
 const roofLabels={contemporary_flat:'Flat',conventional_gable:'Gable',hip:'Hip',butterfly:'Butterfly',mono_pitch:'Mono-pitch',combination:'Combination',mansard:'Mansard',custom:'Custom'};
 let currentUser=null,currentProjectId=null,currentRevision=0,renderer,scene,camera,controls,buildingGroup;
 const viewer=$('viewer');
+const textureCache=new Map();
 function makeCanvasTexture(kind){
+ if(textureCache.has(kind))return textureCache.get(kind);
  const c=document.createElement('canvas');c.width=512;c.height=512;const ctx=c.getContext('2d');
  if(kind==='grass'){
   ctx.fillStyle='#667b4d';ctx.fillRect(0,0,512,512);
@@ -26,6 +28,7 @@ function makeCanvasTexture(kind){
   for(let i=0;i<12000;i++){const v=Math.random()>.5?255:0;ctx.fillStyle='rgba('+v+','+v+','+v+',.07)';ctx.fillRect(Math.random()*512,Math.random()*512,2,2)}
  }
  const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;
+ textureCache.set(kind,t);
  return t;
 }
 function setup3D(){
