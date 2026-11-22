@@ -81,7 +81,8 @@
   </div>
   <div class="field-grid">
     <label>Room / partition count<select id="roomCount"><option value="2">2 main zones</option><option value="3">3 rooms / zones</option><option value="4" selected>4 rooms / zones</option><option value="5">5 rooms / zones</option><option value="6">6 rooms / zones</option></select></label>
-    <label class="wide">Room names, in plan order<input id="roomNames" value="Reception, Living room, Dining, Kitchen, Bedroom 1, Bedroom 2" placeholder="Reception, Living room, Kitchen, Bedroom 1…"></label>
+    <label>Floor plan being edited<select id="floorPlanLevel"><option value="ground">Ground floor</option><option value="first">First floor</option><option value="second">Second floor</option><option value="third">Third floor</option><option value="fourth">Fourth floor</option></select></label>
+    <label class="wide">Room names for this floor, in plan order<input id="roomNames" value="Reception, Living room, Dining, Kitchen, Bedroom 1, Bedroom 2" placeholder="Reception, Living room, Kitchen, Bedroom 1…"></label>
     <label>Primary vertical split (%)<input id="primarySplitX" type="range" min="20" max="80" step="5" value="50"></label>
     <label>Primary horizontal split (%)<input id="primarySplitY" type="range" min="20" max="80" step="5" value="52"></label>
     <label>Partition direction<select id="partitionDirection"><option value="vertical">Vertical divisions</option><option value="horizontal">Horizontal divisions</option><option value="mixed" selected>Mixed layout</option></select></label>
