@@ -415,9 +415,6 @@ async function startInvoicePayment(e){
 async function setupAdmin(){
  if(!currentUser)return;const a=await supabase.rpc('is_admin'),b=await supabase.rpc('is_boq_staff');if(a.data!==true&&b.data!==true)return;
  $('adminPanel').hidden=false;
- const p=await supabase.from('design_projects').select('id,owner_id,client_name,project_name').order('created_at',{ascending:false}).limit(100);
- $('invoiceProjectSelect').innerHTML='<option value="">Choose project</option>';
- (p.data||[]).forEach(x=>{const o=document.createElement('option');o.value=x.id;o.dataset.owner=x.owner_id;o.textContent=x.project_name+' — '+x.client_name+' — '+x.id.slice(0,8);$('invoiceProjectSelect').appendChild(o)});
  await loadAdminRates();await loadSupplierReview();await loadAdminTakeoffRequests();
 }
 async function loadAdminTakeoffRequests(){
