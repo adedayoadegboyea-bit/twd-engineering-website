@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071f45">
+<title>Design Studio | TW&D Engineering Consult & Services Ltd</title>
+<meta name="description" content="Start a TW&D building design brief, explore a live 3D concept preview, choose a roof form and prepare a preliminary project estimate.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="design-studio.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="ds-header"><a href="index.html" class="ds-brand">TW&amp;D <span>ENGINEERING</span></a><nav><a href="index.html">Main website</a><a href="services.html">Services</a><a href="account.html">My account</a></nav></header>
+<main class="ds-wrap">
+<section class="ds-intro"><p class="eyebrow">TW&amp;D ENGINEERING DESIGN WORKSPACE</p><h1>Shape your building concept.</h1><p>Enter your project brief, select a roof style and explore a live 3D massing preview. Save your brief to your secure client workspace.</p><div class="notice"><strong>Important:</strong> This is a preliminary design concept and visualisation tool. Its plans and dimensions are not approved construction drawings, structural calculations or a substitute for professional site assessment and engineering sign-off.</div></section>
+<div class="ds-grid">
+<section class="panel brief-panel">
+<div class="panel-title"><span class="step">01</span><div><h2>Project brief</h2><p>Tell us what you want to build.</p></div></div>
+<form id="designForm">
+<div class="field-grid">
+<label>Client full name<input id="clientName" required autocomplete="name" placeholder="Enter client name"></label>
+<label>Project name<input id="projectName" required placeholder="e.g. 4-bedroom duplex"></label>
+<label>Email address<input id="clientEmail" type="email" autocomplete="email" placeholder="name@example.com"></label>
+<label>Phone number<input id="clientPhone" type="tel" autocomplete="tel" placeholder="+234..."></label>
+<label class="wide">Project location<input id="siteLocation" placeholder="Town, LGA, State"></label>
+<label>Building type<select id="projectType"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="school">School / Institutional</option><option value="mixed_use">Mixed use</option><option value="industrial">Industrial</option></select></label>
+<label>Number of floors<select id="storeys"><option value="1">1 floor (bungalow)</option><option value="2" selected>2 floors</option><option value="3">3 floors</option><option value="4">4 floors</option></select></label>
+<label>Building width (metres)<input id="width" type="number" min="4" max="80" step=".1" value="12" required></label>
+<label>Building depth (metres)<input id="depth" type="number" min="4" max="80" step=".1" value="18" required></label>
+<label>Floor-to-floor height (metres)<input id="floorHeight" type="number" min="2.7" max="5" step=".1" value="3.2"></label>
+<label>Roof style<select id="roofType"><option value="contemporary_flat">Contemporary flat roof</option><option value="conventional_gable" selected>Conventional gable roof</option><option value="hip">Hip roof</option><option value="butterfly">Butterfly roof</option><option value="mono_pitch">Mono-pitch / shed roof</option><option value="combination">Combination roof</option><option value="mansard">Mansard roof</option><option value="custom">Custom roof</option></select></label>
+<label class="wide" id="customRoofWrap" hidden>Describe your custom roof<input id="customRoof" placeholder="Describe roof geometry, materials or special features"></label>
+<label class="wide">Room / space requirements<textarea id="requirements" rows="4" placeholder="List bedrooms, living rooms, kitchen, bathrooms, offices, parking, balconies and other requirements."></textarea></label>
+</div>
+<div class="form-actions"><button type="button" class="secondary" id="refreshPreview">Update 3D preview</button><button type="submit" class="primary" id="saveProject">Save design brief</button></div>
+<p class="form-status" id="formStatus" role="status">Sign in is required to save projects. You can explore the concept preview first.</p>
+</form>
+</section>
+<section class="panel preview-panel">
+<div class="panel-title"><span class="step">02</span><div><h2>Live concept preview</h2><p>Rotate, zoom and inspect the building massing.</p></div></div>
+<div class="viewer-shell"><div id="viewer" aria-label="Interactive 3D building concept preview"></div><div class="viewer-controls"><button id="viewReset" class="secondary" type="button">Reset view</button><span id="viewerStatus">Preparing 3D preview…</span></div></div>
+<div class="preview-meta"><div><span>Footprint</span><strong id="footprintValue">216 m²</strong></div><div><span>Storeys</span><strong id="storeyValue">2</strong></div><div><span>Roof</span><strong id="roofValue">Gable</strong></div></div>
+<div class="plan-preview"><div class="plan-head"><h3>Indicative footprint plan</h3><span>Concept only · Not to scale for construction</span></div><div id="planDrawing" class="plan-drawing" role="img" aria-label="Indicative building footprint plan"></div></div>
+</section>
+</div>
+<section class="panel quote-panel">
+<div class="panel-title"><span class="step">03</span><div><h2>Preliminary cost estimate</h2><p>Add materials or work items with current supplier rates. All amounts are in Nigerian naira.</p></div></div>
+<div class="quote-disclaimer">No verified live material price catalogue is currently populated. Enter or confirm your own current unit rates before saving this estimate. This is not a fixed contract quotation.</div>
+<div class="quote-table-wrap"><table class="quote-table"><thead><tr><th>Work / material description</th><th>Unit</th><th>Quantity</th><th>Rate (₦)</th><th>Amount (₦)</th><th></th></tr></thead><tbody id="quoteRows"></tbody></table></div>
+<button type="button" id="addQuoteRow" class="secondary">+ Add estimate item</button>
+<div class="quote-total"><span>Estimated subtotal</span><strong id="quoteTotal">₦0.00</strong></div>
+<div class="form-actions"><button type="button" id="saveQuote" class="primary">Save estimate to project</button><button type="button" id="printBrief" class="secondary">Print concept brief</button></div>
+<p class="form-status" id="quoteStatus" role="status">Save your design brief first. Estimate items will be linked to that project.</p>
+</section>
+<section class="ds-footnote"><h2>What happens next?</h2><p>TW&amp;D reviews the brief, confirms site and design requirements, and prepares coordinated architectural and structural deliverables where commissioned. Final CAD files, construction drawings, certified structural calculations and payment-gated downloads are released only after professional review and the required workflow integrations are completed.</p><a href="https://wa.me/2348035774420?text=Hello%20TW%26D%2C%20I%20have%20started%20a%20design%20brief." target="_blank" rel="noopener noreferrer">Discuss your design with TW&amp;D →</a></section>
+</main>
+<footer class="ds-footer">© 2026 TW&amp;D Engineering Consult &amp; Services Ltd · <a href="index.html">Return to main website</a></footer>
+<script type="module" src="design-studio.js"></script>
+</body>
+</html>
