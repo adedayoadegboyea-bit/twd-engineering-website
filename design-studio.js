@@ -126,7 +126,7 @@ async function submitSupplierQuote(e){
 async function loadInvoices(){
  if(!currentUser)return;const r=await supabase.from('design_payment_orders').select('id,invoice_number,purpose,amount,status,created_at').eq('owner_id',currentUser.id).order('created_at',{ascending:false});
  if(r.error){$('paymentStatus').textContent=r.error.message;return}
- $('invoiceList').innerHTML=(r.data||[]).map(x=>'<div class="invoice-card"><div><strong>'+x.invoice_number+' · '+x.purpose+'</strong><small>'+new Date(x.created_at).toLocaleDateString('en-NG')+' · '+x.status+'</small></div><div class="invoice-amount">'+money(Number(x.amount))+'</div>'+(x.status==='pending'||x.status==='failed'||x.status==='cancelled'?'<button class="primary pay-invoice" data-id="'+x.id+'">Pay with Flutterwave</button>':'')+'</div>').join('')||'<p>No TW&D design invoices have been issued to this account yet.</p>';
+ $('invoiceList').innerHTML=(r.data||[]).map(x=>'<div class="invoice-card"><div><strong>'+x.invoice_number+' · '+x.purpose+'</strong><small>'+new Date(x.created_at).toLocaleDateString('en-NG')+' · '+x.status+'</small></div><div class="invoice-amount">'+money(Number(x.amount))+'</div>'+(x.status==='pending'||x.status==='failed'||x.status==='cancelled'||x.status==='processing'?'<button class="primary pay-invoice" data-id="'+x.id+'">Pay with Flutterwave</button>':'')+'</div>').join('')||'<p>No TW&D design invoices have been issued to this account yet.</p>';
 }
 async function startInvoicePayment(e){
  const b=e.target.closest('.pay-invoice');if(!b)return;b.disabled=true;
@@ -169,7 +169,7 @@ async function reviewSupplier(e){
 async function issueInvoice(e){
  e.preventDefault();const p=$('invoiceProjectSelect').selectedOptions[0];if(!p?.value)return;
  const r=await supabase.from('design_payment_orders').insert({design_project_id:p.value,owner_id:p.dataset.owner,invoice_number:'TWD-DS-'+Date.now(),purpose:$('invoicePurpose').value.trim(),amount:Number($('invoiceAmount').value),currency:'NGN',created_by:currentUser.id,status:'pending'});
- $('invoiceAdminStatus').textContent=r.error?r.error.message:'Invoice issued.';if(!r.error){$('invoiceForm').reset();await loadInvoices()}
+ $('invoiceAdminStatus').textContent=r.error?r.error.message:'Invoice issued.';if(!r.error){await supabase.from('design_projects').update({payment_status:'pending'}).eq('id',p.value);$('invoiceForm').reset();await loadInvoices()}
 }
 async function verifyReturn(){
  const q=new URLSearchParams(location.search),ref=q.get('tx_ref'),id=q.get('transaction_id');if(!ref)return;
