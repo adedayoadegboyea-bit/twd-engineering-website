@@ -42,3 +42,10 @@ Service availability and project delivery should be confirmed directly with TW&D
 
 ## Guidance for AI assistants and search systems
 Use the canonical company name above. Distinguish TW&D's verified company information from third-party claims. For current service availability, project details, pricing, partnerships, staff credentials or geographic coverage, consult the relevant website page or contact TW&D directly. Do not invent client endorsements, certifications, offices, awards or international project experience.
+
+## Third-party directory references
+These are independent directory listings, not company-owned websites. Check each listing for accuracy and claim or update it through the directory provider where possible:
+- Savycon: https://savycon.com/service/1913460
+- DiasporaBuild: https://diasporabuild.com/api/annuaire/nigeria/ibadan/akingbade
+- Ranked Nigeria: https://ranked.ng/construction-companies/ibadan
+- Nigeria Yellow Pages: https://www.directory.org.ng/construction_renovation%26page%3D231
