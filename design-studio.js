@@ -249,6 +249,9 @@ function drawBuilding(){
  // Each floor uses its own room count; openings are left in the centre of each adjoining bay.
  const innerWall=mat('#eeeae2',.9),innerTrim=mat('#c7c2b8',.8);
  const wallThickness=.13,insideW=w-.44,insideD=d-.44;
+ const doorLeafMat=mat('#80583e',.56),doorFrameMat=mat('#d7c9b8',.72),doorHandleMat=mat('#b7a27b',.22,.78);
+ const addDoorOnVerticalWall=(x,z,opening,floorY)=>{const width=Math.min(.9,opening*.86),height=Math.min(2.12,h*.78);if(width<.52)return;box(buildingGroup,.065,height,.065,x,floorY+height/2,z-width/2,doorFrameMat);box(buildingGroup,.065,height,.065,x,floorY+height/2,z+width/2,doorFrameMat);box(buildingGroup,.07,.07,width+.08,x,floorY+height+.035,z,doorFrameMat);const leaf=box(buildingGroup,.045,height-.07,width-.08,x,floorY+(height-.07)/2,z,doorLeafMat);leaf.rotation.y=.12;const handle=new THREE.Mesh(new THREE.SphereGeometry(.045,10,8),doorHandleMat);handle.position.set(x+.075,floorY+1.02,z+width*.28);buildingGroup.add(handle);};
+ const addDoorOnHorizontalWall=(x,z,opening,floorY)=>{const width=Math.min(.9,opening*.86),height=Math.min(2.12,h*.78);if(width<.52)return;box(buildingGroup,.065,height,.065,x-width/2,floorY+height/2,z,doorFrameMat);box(buildingGroup,.065,height,.065,x+width/2,floorY+height/2,z,doorFrameMat);box(buildingGroup,width+.08,.07,.07,x,floorY+height+.035,z,doorFrameMat);const leaf=box(buildingGroup,width-.08,height-.07,.045,x,floorY+(height-.07)/2,z,doorLeafMat);leaf.rotation.y=-.12;const handle=new THREE.Mesh(new THREE.SphereGeometry(.045,10,8),doorHandleMat);handle.position.set(x+width*.28,floorY+1.02,z+.075);buildingGroup.add(handle);};
  for(let floor=0;floor<n;floor++){
   const floorKeyForPartitions=['ground','first','second','third','fourth'][floor];
   const floorNames=(v.floor_room_names&&v.floor_room_names[floorKeyForPartitions])
@@ -271,6 +274,7 @@ function drawBuilding(){
      box(buildingGroup,wallThickness+.035,.035,segment,x,floorY+h*.75,z1-segment/2,innerTrim);
     }
    }
+    addDoorOnVerticalWall(x,zMid,gapD,floorY);
   }
   // Horizontal room boundaries with doorway gaps centred in each column.
   for(let row=1;row<rows;row++){
@@ -286,6 +290,7 @@ function drawBuilding(){
     }
    }
   }
+    addDoorOnHorizontalWall(xMid,z,gapW,floorY);
  }
  // Room-by-room interior model: each room receives its own floor material, finish panel, lighting and furniture.
  const addBox=(ww,hh,dd,x,y,z,m)=>box(buildingGroup,ww,hh,dd,x,y,z,m);
@@ -353,11 +358,7 @@ function drawBuilding(){
      addBox(.82,.12,.52,cx,fyBase+.28,cz+cellD*.22,woodMat);
     }
    }
-   // Room-specific architectural details: wardrobe/storage, door leaf, ceiling treatment and indicative electrical points.
-   const doorMat=mat(cfg.door==='glass'?'#8fb8c7':cfg.door==='flush'?'#b69b7d':'#795039',.48,.08);
-   const doorX=cx-cellW*.47,doorZ=cz+cellD*.27;
-   addBox(.055,2.05,.82,doorX,fyBase+1.025,doorZ,doorMat);
-   addBox(.08,.09,.035,doorX+.04,fyBase+1.02,doorZ+.30,chromeMat);
+    // Room-specific architectural details: wardrobe/storage, ceiling treatment and indicative electrical points.
    if(cfg.storage!=='none'&&/bed|sleep|master|guest/.test(roomName)){
     const wardrobeDepth=cfg.storage==='walkin'?.72:.58;
     addBox(Math.min(1.75,cellW*.30),2.05,wardrobeDepth,cx+cellW*.32,fyBase+1.025,cz-cellD*.30,woodMat);
