@@ -253,6 +253,7 @@ function drawBuilding(){
   // Decorative horizontal fascia bands.
   box(buildingGroup,w+.48,.16,.34,0,y+h-.12,frontZ+.10,trim);
  }
+ const roomNamesForModel=(v.floor_room_names&&v.floor_room_names[v.floor_plan_level])?String(v.floor_room_names[v.floor_plan_level]).split(',').map(x=>x.trim()).filter(Boolean):(v.room_names||[]);
  // Internal partitions follow the same room grid used by the selectable floor surfaces.
  // Each floor uses its own room count; openings are left in the centre of each adjoining bay.
  const innerWall=mat('#eeeae2',.9),innerTrim=mat('#c7c2b8',.8);
@@ -303,7 +304,6 @@ function drawBuilding(){
  // Room-by-room interior model: each room receives its own floor material, finish panel, lighting and furniture.
  const addBox=(ww,hh,dd,x,y,z,m)=>box(buildingGroup,ww,hh,dd,x,y,z,m);
  const fixtureMat=mat('#f8f8f4',.2,.08),chromeMat=mat('#b8c4ca',.18,.82),woodMat=mat('#8b6546',.58);
- const roomNamesForModel=(v.floor_room_names&&v.floor_room_names[v.floor_plan_level])?String(v.floor_room_names[v.floor_plan_level]).split(',').map(x=>x.trim()).filter(Boolean):(v.room_names||[]);
  const makeRoomTileTexture=(cfg)=>{const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;const ctx=canvas.getContext('2d');ctx.fillStyle=cfg.tile_color||'#d8d4ca';ctx.fillRect(0,0,256,256);const step=cfg.floor_finish==='wood'?42:cfg.floor_finish==='marble'?86:cfg.floor_finish==='granite'?52:cfg.floor_finish==='terrazzo'?58:cfg.floor_finish==='concrete'?128:64;ctx.strokeStyle='rgba(75,75,75,.28)';ctx.lineWidth=2;for(let p=0;p<=256;p+=step){ctx.beginPath();ctx.moveTo(p,0);ctx.lineTo(p,256);ctx.stroke();ctx.beginPath();ctx.moveTo(0,p);ctx.lineTo(256,p);ctx.stroke();}if(['marble','granite','terrazzo'].includes(cfg.floor_finish)){for(let q=0;q<90;q++){ctx.fillStyle='rgba(70,70,70,.10)';ctx.beginPath();ctx.arc(Math.random()*256,Math.random()*256,Math.random()*2+1,0,Math.PI*2);ctx.fill();}}return new THREE.CanvasTexture(canvas);};
  for(let fl=0;fl<n;fl++){
   const floorKeyForModel=['ground','first','second','third','fourth'][fl];
