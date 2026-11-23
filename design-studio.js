@@ -124,7 +124,7 @@ function footprintShape2D(w,d,kind='rectangle'){
  kind==='T'?[[0,0],[w,0],[w,d*.45],[w*.67,d*.45],[w*.67,d],[w*.33,d],[w*.33,d*.45],[0,d*.45]]:
  [[0,0],[w,0],[w,d],[0,d]];
  points.forEach(([x,y],i)=>{const v=pt(x,y);if(i===0)p.moveTo(v.x,v.y);else p.lineTo(v.x,v.y)});p.closePath();
- if(kind==='courtyard'){const hole=new THREE.Path();[[w*.33,d*.33],[w*.67,d*.33],[w*.67,d*.67],[w*.33,d*.67]].forEach(([x,y],i)=>{const v=pt(x,y);if(i===0)hole.moveTo(v.x,v.y);else hole.lineTo(v.x,v.y)});hole.closePath();p.holes.push(hole);}
+ if(kind==='courtyard'){const hole=new THREE.Path();[[w*.33,d*.33],[w*.33,d*.67],[w*.67,d*.67],[w*.67,d*.33]].forEach(([x,y],i)=>{const v=pt(x,y);if(i===0)hole.moveTo(v.x,v.y);else hole.lineTo(v.x,v.y)});hole.closePath();p.holes.push(hole);}
  return p;
 }
 function addFootprintPlate(parent,w,d,kind,y,thickness,material){
