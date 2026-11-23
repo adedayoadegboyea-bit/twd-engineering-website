@@ -115,6 +115,23 @@ controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.495;
   try{const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=clamp(+$('storeys').value||1,1,4);drawPlan(w,d,n,getVisualSettings());}catch(planError){console.error('TW&D plan fallback failed:',planError);}
  }
 }
+function footprintShape2D(w,d,kind='rectangle'){
+ const p=new THREE.Shape();
+ const pt=(x,y)=>new THREE.Vector2(x-w/2,d/2-y);
+ const points=kind==='L'?[[0,0],[w,0],[w,d*.5],[w*.5,d*.5],[w*.5,d],[0,d]]:
+ kind==='U'?[[0,0],[w,0],[w,d],[w*.78,d],[w*.78,d*.42],[w*.22,d*.42],[w*.22,d],[0,d]]:
+ kind==='H'?[[0,0],[w*.33,0],[w*.33,d*.28],[w*.67,d*.28],[w*.67,0],[w,0],[w,d],[w*.67,d],[w*.67,d*.72],[w*.33,d*.72],[w*.33,d],[0,d]]:
+ kind==='T'?[[0,0],[w,0],[w,d*.45],[w*.67,d*.45],[w*.67,d],[w*.33,d],[w*.33,d*.45],[0,d*.45]]:
+ [[0,0],[w,0],[w,d],[0,d]];
+ points.forEach(([x,y],i)=>{const v=pt(x,y);if(i===0)p.moveTo(v.x,v.y);else p.lineTo(v.x,v.y)});p.closePath();
+ if(kind==='courtyard'){const hole=new THREE.Path();[[w*.33,d*.33],[w*.67,d*.33],[w*.67,d*.67],[w*.33,d*.67]].forEach(([x,y],i)=>{const v=pt(x,y);if(i===0)hole.moveTo(v.x,v.y);else hole.lineTo(v.x,v.y)});hole.closePath();p.holes.push(hole);}
+ return p;
+}
+function addFootprintPlate(parent,w,d,kind,y,thickness,material){
+ const geometry=new THREE.ExtrudeGeometry(footprintShape2D(w,d,kind),{depth:thickness,bevelEnabled:false,curveSegments:1});
+ geometry.rotateX(-Math.PI/2);
+ const mesh=new THREE.Mesh(geometry,material);mesh.position.y=y;mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);return mesh;
+}
 function box(parent,w,h,d,x,y,z,material){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);return mesh}
 function ceilMeshMatFix(material){return material}
 function drawRoof(w,d,y,style,mat){
@@ -185,7 +202,7 @@ function drawBuildingUnsafe(){
  const cladding=finish==='signature'||finish==='charcoal';
  const frontZ=d/2,backZ=-d/2;
  // Raised plinth and crisp floor bands create the layered silhouette in TW&D's reference residence.
- box(buildingGroup,w+.55,.42,d+.55,0,.21,0,slab);
+ addFootprintPlate(buildingGroup,w+.55,d+.55,v.building_shape,0,.42,slab);
  for(let floor=0;floor<n;floor++){
   const y=floor*h;
   // Side elevations are assembled around true window openings below.
@@ -229,7 +246,7 @@ function drawBuildingUnsafe(){
    if(cursor<d/2)box(buildingGroup,.22,h,d/2-cursor,x,y+h/2,(d/2+cursor)/2,wall);
   }
   // Continuous slab edge and clean shadow line.
-  box(buildingGroup,w+.42,.22,d+.42,0,y+.12,0,trim);
+  addFootprintPlate(buildingGroup,w+.42,d+.42,v.building_shape,y+.01,.22,trim);
   if(floor>0&&v.features.balcony){
    const bw=Math.min(w*.48,6.2),balY=y+.25;
    box(buildingGroup,bw,.22,1.65,0,balY,frontZ+.78,trim);
