@@ -43,30 +43,35 @@ function makeCanvasTexture(kind){
  textureCache.set(kind,t);
  return t;
 }
-let previewResizeObserver=null,previewContextLost=false;
+let previewResizeObserver=null,previewContextLost=false,cameraInteracted=false,resizeFallback=null;
 function setup3D(){
  try{
   if(!viewer)throw new Error('The 3D preview container is missing from this page.');
-  if(!window.WebGLRenderingContext)throw new Error('This browser does not expose WebGL. Try an updated Chrome browser or another device.');
-  if(renderer){renderer.setAnimationLoop(null);renderer.dispose();renderer.domElement.remove();renderer=null}
+  if(!window.WebGLRenderingContext&&!window.WebGL2RenderingContext)throw new Error('This browser does not expose WebGL. Try an updated Chrome browser or another device.');
+  if(renderer){renderer.setAnimationLoop(null);controls?.dispose();renderer.dispose();renderer.domElement.remove();renderer=null;controls=null}
   previewResizeObserver?.disconnect();previewResizeObserver=null;
+  if(resizeFallback){window.removeEventListener('resize',resizeFallback);resizeFallback=null}
+  cameraInteracted=false;
   viewer.dataset.previewState='loading';
   $('viewerStatus').textContent='Starting 3D engine…';
   scene=new THREE.Scene();scene.background=new THREE.Color('#b8c9d8');scene.fog=new THREE.Fog('#c8d5df',55,150);
   const width=Math.max(1,viewer.clientWidth),height=Math.max(1,viewer.clientHeight);
   camera=new THREE.PerspectiveCamera(36,width/height,.1,600);camera.position.set(30,22,34);
   renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
-  const isMobile=matchMedia('(max-width: 760px)').matches;const cores=navigator.hardwareConcurrency||4;const memory=navigator.deviceMemory||4;const qualityCap=cores<=4||memory<=4?(isMobile?1.15:1.5):(isMobile?1.5:2.25);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,qualityCap));renderer.setSize(width,height);
+  const isMobile=matchMedia('(max-width: 760px)').matches;const cores=navigator.hardwareConcurrency||4;const memory=navigator.deviceMemory||4;const qualityCap=cores<=4||memory<=4?(isMobile?1.15:1.5):(isMobile?1.5:2.25);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,qualityCap,2));renderer.setSize(width,height,false);
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
   viewer.replaceChildren(renderer.domElement);
-  renderer.domElement.setAttribute('aria-label','Interactive TW&D building concept model. Drag to orbit and pinch or scroll to zoom.');
+  renderer.domElement.setAttribute('aria-label','Interactive TW&D building concept model. Drag to orbit, pinch or scroll to zoom, and tap a room floor to select it.');
+  renderer.domElement.style.display='block';renderer.domElement.style.width='100%';renderer.domElement.style.height='100%';renderer.domElement.style.touchAction='none';renderer.domElement.tabIndex=0;
   renderer.domElement.addEventListener('webglcontextlost',event=>{
    event.preventDefault();previewContextLost=true;renderer?.setAnimationLoop(null);
    viewer.dataset.previewState='error';$('viewerStatus').textContent='The device paused its graphics context. Tap “Retry 3D preview” to reload the model.';
   },false);
   renderer.domElement.addEventListener('webglcontextrestored',()=>{previewContextLost=false;setup3D()},false);
   controls=new OrbitControls(camera,renderer.domElement);
+  controls.addEventListener('start',()=>{cameraInteracted=true});
+  controls.enableDamping=true;controls.dampingFactor=.065;controls.screenSpacePanning=true;controls.zoomToCursor=true;controls.minDistance=5;controls.maxDistance=260;
   const roomRaycaster=new THREE.Raycaster(),roomPointer=new THREE.Vector2();
   renderer.domElement.addEventListener('click',event=>{
    if(!buildingGroup||!camera)return;
@@ -81,7 +86,7 @@ function setup3D(){
    activeRoomIndex=roomIndex;loadActiveRoomInterior();drawBuilding();
    $('roomEditorStatus').textContent='Selected in 3D: '+(roomListForActiveFloor()[roomIndex]||('Room '+(roomIndex+1)))+'. Adjust its settings below.';
   });
-controls.enableDamping=true;controls.dampingFactor=.055;controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.495;controls.minDistance=7;controls.maxDistance=180;
+controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.495;
   scene.add(new THREE.HemisphereLight(0xe8f3ff,0x78816e,1.35));
   const sun=new THREE.DirectionalLight(0xfff0d8,3.2);sun.position.set(-28,42,24);sun.castShadow=true;
   sun.shadow.mapSize.set(cores<=4||memory<=4?1024:2048,cores<=4||memory<=4?1024:2048);sun.shadow.camera.left=-45;sun.shadow.camera.right=45;sun.shadow.camera.top=45;sun.shadow.camera.bottom=-45;sun.shadow.bias=-.00018;sun.shadow.normalBias=.025;scene.add(sun);
@@ -92,11 +97,12 @@ controls.enableDamping=true;controls.dampingFactor=.055;controls.target.set(0,4,
   const ground=new THREE.Mesh(new THREE.PlaneGeometry(240,240),new THREE.MeshStandardMaterial({map:groundTex,roughness:1}));
   ground.rotation.x=-Math.PI/2;ground.position.y=-.16;ground.receiveShadow=true;scene.add(ground);
   buildingGroup=new THREE.Group();scene.add(buildingGroup);drawBuilding();
-  const resize=()=>{if(!renderer||previewContextLost)return;const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)};
-  if('ResizeObserver' in window){previewResizeObserver=new ResizeObserver(resize);previewResizeObserver.observe(viewer)}else{window.addEventListener('resize',resize,{passive:true})}
+  const resize=()=>{if(!renderer||previewContextLost)return;const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);};
+  if('ResizeObserver' in window){previewResizeObserver=new ResizeObserver(resize);previewResizeObserver.observe(viewer)}else{resizeFallback=resize;window.addEventListener('resize',resizeFallback,{passive:true})}
+  requestAnimationFrame(resize);
   renderer.setAnimationLoop(()=>{if(!previewContextLost){controls.update();renderer.render(scene,camera)}});
   viewer.dataset.previewState='ready';
-  $('viewerStatus').textContent='3D preview ready · drag to rotate, pinch or scroll to zoom';
+  $('viewerStatus').textContent='3D preview ready · drag to rotate · pinch or scroll to zoom · tap a room to edit';
  }catch(e){
   viewer.dataset.previewState='error';
   $('viewerStatus').textContent='3D preview could not start: '+(e?.message||'graphics initialisation failed')+'. Check WebGL/device support and tap Retry.';
@@ -140,6 +146,7 @@ function getVisualSettings(){
 
 function setCameraView(view){
  if(!camera||!controls)return;
+ cameraInteracted=false;
  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),height=(+$('storeys').value||2)*(+$('floorHeight').value||3.2);
  const span=Math.max(w,d)*2.05,centerY=height*.48;
  const floorIndex=Math.max(0,['ground','first','second','third'].indexOf($('floorPlanLevel').value)),floorY=floorIndex*(+$('floorHeight').value||3.2);
@@ -474,7 +481,11 @@ function drawBuilding(){
   }
  }
  $('footprintValue').textContent=(w*d).toFixed(1)+' m²';$('storeyValue').textContent=String(n);$('roofValue').textContent=roofLabels[roof]||roof;
- if(camera){controls.target.set(0,total*.48,0);camera.position.set(Math.max(w,d)*1.65,total+Math.max(w,d)*.82,Math.max(w,d)*1.9);controls.update()}
+ if(camera&&controls){
+  const targetY=total*.46;
+  if(!cameraInteracted){const span=Math.max(w,d,total*1.35),distance=span*1.72;camera.position.set(distance*.72,targetY+distance*.48,distance*.82);camera.near=Math.max(.05,span/1200);camera.far=Math.max(500,span*18);camera.updateProjectionMatrix();}
+  controls.target.set(0,targetY,0);controls.minDistance=Math.max(3,Math.min(w,d)*.35);controls.maxDistance=Math.max(180,Math.max(w,d,total)*12);controls.update();
+ }
  drawPlan(w,d,n,v);
 }
 function drawPlan(w,d,n,v=getVisualSettings()){
