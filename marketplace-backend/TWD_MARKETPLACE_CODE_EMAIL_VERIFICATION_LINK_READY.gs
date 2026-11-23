@@ -7,6 +7,7 @@ const CONFIG = {
   MESSAGES_SHEET_NAME: "Marketplace Messages",
   VERIFICATION_SHEET_NAME: "Marketplace Email Verification",
   PASSWORD_RESET_SHEET_NAME: "Marketplace Password Resets",
+  ADMIN_SESSIONS_SHEET_NAME: "Marketplace Admin Sessions",
   FOLDER_NAME: "TW&D Marketplace Photos",
   MANAGEMENT_EMAIL: "admin@twdengineeringconsult.com",
   REPLY_TO: "marketplace@twdengineeringconsult.com",
@@ -112,7 +113,10 @@ function setupMarketplace() {
       "Listing ID",
       "Payment Method",
       "Payment Reference",
-      "Payment Status"
+      "Payment Status",
+      "Payment Confirmed At",
+      "Approved By",
+      "Admin Notes"
     ]
   );
 
@@ -128,6 +132,8 @@ function setupMarketplace() {
   ]);
   const verificationSheet = ensureVerificationSheet_(spreadsheet);
   const resetSheet = getOrCreateSheet_(spreadsheet, CONFIG.PASSWORD_RESET_SHEET_NAME, ["Created","Email","Token Hash","Expires At","Attempts","Status"]);
+  const adminSessionsSheet = getOrCreateSheet_(spreadsheet, CONFIG.ADMIN_SESSIONS_SHEET_NAME, ["Created","Token Hash","Expires At","Status","Admin Email"]);
+  adminSessionsSheet.setFrozenRows(1);
   resetSheet.setFrozenRows(1);
 
   listingsSheet.setFrozenRows(1);
@@ -201,6 +207,10 @@ function doPost(e) {
     const data = parseRequest_(e);
 
     if (data.action === "subscribe") return handleSubscription_(data);
+    if (data.action === "admin_login") return handleAdminLogin_(data);
+    if (data.action === "admin_logout") return handleAdminLogout_(data);
+    if (data.action === "admin_subscriptions") return handleAdminSubscriptions_(data);
+    if (data.action === "admin_update_subscription") return handleAdminSubscriptionUpdate_(data);
     if (data.action === "register") return handleRegister_(data);
     if (data.action === "verify_email") return handleVerifyEmail_(data);
     if (data.action === "resend_verification") return handleResendVerification_(data);
@@ -746,7 +756,10 @@ function handleSubscription_(data) {
         "Listing ID",
         "Payment Method",
         "Payment Reference",
-        "Payment Status"
+        "Payment Status",
+        "Payment Confirmed At",
+        "Approved By",
+        "Admin Notes"
       ]
     );
 
@@ -848,6 +861,125 @@ function handleSubscription_(data) {
   };
 
   return json(response);
+}
+
+/**
+ * PRIVATE ADMIN ACCESS + SUBSCRIPTION APPROVAL
+ * Configure MARKETPLACE_ADMIN_EMAIL and MARKETPLACE_ADMIN_PASSWORD in
+ * Apps Script > Project Settings > Script Properties before using the admin page.
+ */
+function handleAdminLogin_(data) {
+  const props = PropertiesService.getScriptProperties();
+  const expectedEmail = String(props.getProperty("MARKETPLACE_ADMIN_EMAIL") || CONFIG.MANAGEMENT_EMAIL).trim().toLowerCase();
+  const expectedPassword = String(props.getProperty("MARKETPLACE_ADMIN_PASSWORD") || "");
+  const email = requiredEmail_(data.adminEmail);
+  const password = String(data.adminPassword || "");
+  if (!expectedPassword || email !== expectedEmail || password !== expectedPassword) throw new Error("Administrator credentials are invalid or not configured.");
+  const ss = SpreadsheetApp.openById(props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID"));
+  const sh = getOrCreateSheet_(ss, CONFIG.ADMIN_SESSIONS_SHEET_NAME, ["Created","Token Hash","Expires At","Status","Admin Email"]);
+  const token = randomToken_(), expires = new Date(Date.now() + 12 * 60 * 60 * 1000);
+  sh.appendRow([new Date(), hashValue_(token, "TWDM_ADMIN_SESSION"), expires, "ACTIVE", email]);
+  return json({ok:true, adminSessionToken:token, adminEmail:email, expiresAt:expires.toISOString()});
+}
+function requireAdminSession_(token) {
+  const raw = clean_(token);
+  if (!raw) throw new Error("Administrator sign-in is required.");
+  const props = PropertiesService.getScriptProperties();
+  const ss = SpreadsheetApp.openById(props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID"));
+  const sh = ss.getSheetByName(CONFIG.ADMIN_SESSIONS_SHEET_NAME);
+  if (!sh || sh.getLastRow() < 2) throw new Error("Administrator session is invalid. Please sign in again.");
+  const rows = sh.getDataRange().getValues(), h = rows[0], ix = {};
+  h.forEach((v,i)=>ix[String(v)]=i);
+  const digest = hashValue_(raw, "TWDM_ADMIN_SESSION");
+  for (let i=rows.length-1;i>=1;i--) {
+    if (String(rows[i][ix["Token Hash"]]||"") === digest && String(rows[i][ix.Status]||"") === "ACTIVE") {
+      if (new Date(rows[i][ix["Expires At"]]).getTime() > Date.now()) return String(rows[i][ix["Admin Email"]] || CONFIG.MANAGEMENT_EMAIL);
+      sh.getRange(i+1, ix.Status+1).setValue("EXPIRED");
+    }
+  }
+  throw new Error("Administrator session has expired. Please sign in again.");
+}
+function handleAdminLogout_(data) {
+  const props = PropertiesService.getScriptProperties();
+  const ss = SpreadsheetApp.openById(props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID"));
+  const sh = ss.getSheetByName(CONFIG.ADMIN_SESSIONS_SHEET_NAME);
+  if (sh && sh.getLastRow() >= 2) {
+    const rows=sh.getDataRange().getValues(), h=rows[0], tokenHash=hashValue_(clean_(data.adminSessionToken), "TWDM_ADMIN_SESSION");
+    const ix=h.indexOf("Token Hash"), sx=h.indexOf("Status");
+    for(let i=1;i<rows.length;i++) if(String(rows[i][ix]||"")===tokenHash) sh.getRange(i+1,sx+1).setValue("REVOKED");
+  }
+  return json({ok:true});
+}
+function handleAdminSubscriptions_(data) {
+  requireAdminSession_(data.adminSessionToken);
+  const props=PropertiesService.getScriptProperties();
+  const ss=SpreadsheetApp.openById(props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID"));
+  const sh=ss.getSheetByName(CONFIG.SUBSCRIPTION_SHEET_NAME);
+  if(!sh || sh.getLastRow()<2) return json({ok:true,subscriptions:[]});
+  const rows=sh.getDataRange().getValues(), h=rows[0], ix={};
+  h.forEach((v,i)=>ix[String(v)]=i);
+  const subscriptions=[];
+  for(let i=rows.length-1;i>=1 && subscriptions.length<150;i--){
+    const r=rows[i];
+    subscriptions.push({
+      subscriptionId:String(r[ix["Subscription ID"]]||""),
+      createdAt:r[ix.Timestamp] instanceof Date ? r[ix.Timestamp].toISOString() : String(r[ix.Timestamp]||""),
+      status:String(r[ix.Status]||"PAYMENT_PENDING"),
+      plan:String(r[ix.Plan]||""),
+      seller:String(r[ix["Seller / Business"]]||""),
+      email:String(r[ix.Email]||""),
+      phone:String(r[ix["Phone / WhatsApp"]]||""),
+      listingId:String(r[ix["Listing ID"]]||""),
+      paymentMethod:String(r[ix["Payment Method"]]||""),
+      paymentReference:String(r[ix["Payment Reference"]]||""),
+      paymentStatus:String(r[ix["Payment Status"]]||"PAYMENT_PENDING"),
+      paymentConfirmedAt:String(r[ix["Payment Confirmed At"]]||""),
+      approvedBy:String(r[ix["Approved By"]]||""),
+      adminNotes:String(r[ix["Admin Notes"]]||"")
+    });
+  }
+  return json({ok:true,subscriptions:subscriptions});
+}
+function handleAdminSubscriptionUpdate_(data) {
+  const adminEmail=requireAdminSession_(data.adminSessionToken);
+  const id=required_(data.subscriptionId,"Subscription ID");
+  const decision=String(data.decision||"").toLowerCase();
+  if(decision!=="approve" && decision!=="reject") throw new Error("Choose approve or reject.");
+  if(decision==="approve" && data.confirmPayment!==true) throw new Error("Payment must be explicitly confirmed by the administrator before approval.");
+  const props=PropertiesService.getScriptProperties();
+  const ss=SpreadsheetApp.openById(props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID"));
+  const sh=ss.getSheetByName(CONFIG.SUBSCRIPTION_SHEET_NAME);
+  if(!sh || sh.getLastRow()<2) throw new Error("No subscription records were found.");
+  const rows=sh.getDataRange().getValues(), h=rows[0], ix={};
+  h.forEach((v,i)=>ix[String(v)]=i);
+  let row=-1;
+  for(let i=1;i<rows.length;i++) if(String(rows[i][ix["Subscription ID"]]||"")===id){row=i+1;break;}
+  if(row<0) throw new Error("Subscription reference was not found.");
+  const currentStatus=String(sh.getRange(row,ix.Status+1).getValue()||"").toUpperCase();
+  if(currentStatus==="APPROVED") throw new Error("This subscription is already approved.");
+  if(currentStatus==="REJECTED") throw new Error("This subscription was already rejected. Create a new request if needed.");
+  const notes=clean_(data.adminNotes||"").slice(0,500);
+  if(decision==="approve"){
+    sh.getRange(row,ix.Status+1).setValue("APPROVED");
+    sh.getRange(row,ix["Payment Status"]+1).setValue("PAYMENT_CONFIRMED");
+    sh.getRange(row,ix["Payment Confirmed At"]+1).setValue(new Date());
+    sh.getRange(row,ix["Approved By"]+1).setValue(adminEmail);
+    sh.getRange(row,ix["Admin Notes"]+1).setValue(notes);
+  } else {
+    sh.getRange(row,ix.Status+1).setValue("REJECTED");
+    sh.getRange(row,ix["Payment Status"]+1).setValue("PAYMENT_REJECTED");
+    sh.getRange(row,ix["Approved By"]+1).setValue(adminEmail);
+    sh.getRange(row,ix["Admin Notes"]+1).setValue(notes);
+  }
+  const sellerEmail=String(rows[row-1][ix.Email]||"");
+  if(sellerEmail){
+    try{MailApp.sendEmail({to:sellerEmail,subject:"TW&D Marketplace Subscription "+(decision==="approve"?"Approved":"Not Approved")+" - "+id,
+      body:decision==="approve"
+        ? "Your TW&D Marketplace subscription payment has been confirmed by management and your subscription is now approved.\n\nReference: "+id+"\nPlan: "+String(rows[row-1][ix.Plan]||"")+"\n\nThank you.\nTW&D Engineering Consult & Services Ltd"
+        : "Your TW&D Marketplace subscription request was not approved. Please contact TW&D management for clarification.\n\nReference: "+id+"\nManagement note: "+notes+"\n\nTW&D Engineering Consult & Services Ltd",
+      replyTo:CONFIG.REPLY_TO});}catch(mailError){console.error("Subscription decision email failed:",mailError);}
+  }
+  return json({ok:true,message:decision==="approve"?"Payment confirmed and subscription approved.":"Subscription rejected.",subscriptionId:id});
 }
 
 /**
