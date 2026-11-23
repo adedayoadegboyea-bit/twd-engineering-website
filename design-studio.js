@@ -112,6 +112,7 @@ controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.495;
   viewer.dataset.previewState='error';
   $('viewerStatus').textContent='3D preview could not start: '+(e?.message||'graphics initialisation failed')+'. Check WebGL/device support and tap Retry.';
   console.error('TW&D Design Studio preview initialisation failed:',e);
+  try{const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=clamp(+$('storeys').value||1,1,4);drawPlan(w,d,n,getVisualSettings());}catch(planError){console.error('TW&D plan fallback failed:',planError);}
  }
 }
 function box(parent,w,h,d,x,y,z,material){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);return mesh}
@@ -796,6 +797,10 @@ $('downloadGlb').addEventListener('click',()=>{if(!buildingGroup)return;const ex
 function exportFootprintSvg(){const svg=$('planDrawing').querySelector('svg');if(!svg)return null;const clone=svg.cloneNode(true);clone.setAttribute('xmlns','http://www.w3.org/2000/svg');clone.setAttribute('width','520');clone.setAttribute('height','360');clone.setAttribute('role','img');clone.setAttribute('aria-label','TW&D Engineering conceptual footprint plan');return new XMLSerializer().serializeToString(clone);}
  $('downloadSvg').addEventListener('click',()=>{const source=exportFootprintSvg();if(!source)return;const blob=new Blob([source],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='twd-footprint-concept-vector.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);});
  $('downloadPng').addEventListener('click',()=>{const source=exportFootprintSvg();if(!source)return;const status=$('viewerStatus');status.textContent='Rendering high-resolution 6000 px plan…';const blob=new Blob([source],{type:'image/svg+xml;charset=utf-8'});const sourceUrl=URL.createObjectURL(blob);const img=new Image();img.onload=()=>{try{const width=6000,height=Math.round(6000*360/520),canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,width,height);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,width,height);canvas.toBlob(png=>{if(!png){status.textContent='PNG export failed. Please use the vector SVG export.';URL.revokeObjectURL(sourceUrl);return;}const pngUrl=URL.createObjectURL(png),a=document.createElement('a');a.href=pngUrl;a.download='twd-footprint-concept-6000px.png';a.click();setTimeout(()=>URL.revokeObjectURL(pngUrl),2000);status.textContent='High-resolution 6000 px PNG exported. For unlimited scaling, use the vector SVG export.';URL.revokeObjectURL(sourceUrl);},'image/png');}catch(error){status.textContent='High-resolution export failed: '+(error.message||'Please use SVG.');URL.revokeObjectURL(sourceUrl);}};img.onerror=()=>{status.textContent='Could not render the plan image. Please use the vector SVG export.';URL.revokeObjectURL(sourceUrl);};img.src=sourceUrl;});
+try{
+ const initialWidth=clamp(+$('width').value||12,4,80),initialDepth=clamp(+$('depth').value||18,4,80),initialFloors=clamp(+$('storeys').value||1,1,4);
+ drawPlan(initialWidth,initialDepth,initialFloors,getVisualSettings());
+}catch(initialPlanError){console.error('TW&D initial plan render failed:',initialPlanError);}
 setup3D();
 $('invoiceList').addEventListener('click',startInvoicePayment);
 $('adminRateForm').addEventListener('submit',saveAdminRate);
