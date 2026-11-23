@@ -274,8 +274,8 @@ function drawBuilding(){
      box(buildingGroup,wallThickness+.035,.035,segment,x,floorY+h*.75,z1-segment/2,innerTrim);
     }
    }
-    addDoorOnVerticalWall(x,zMid,gapD,floorY);
   }
+addDoorOnVerticalWall(x,zMid,gapD,floorY);
   // Horizontal room boundaries with doorway gaps centred in each column.
   for(let row=1;row<rows;row++){
    const z=-insideD/2+row*cellD;
@@ -290,8 +290,8 @@ function drawBuilding(){
     }
    }
   }
-    addDoorOnHorizontalWall(xMid,z,gapW,floorY);
  }
+addDoorOnHorizontalWall(xMid,z,gapW,floorY);
  // Room-by-room interior model: each room receives its own floor material, finish panel, lighting and furniture.
  const addBox=(ww,hh,dd,x,y,z,m)=>box(buildingGroup,ww,hh,dd,x,y,z,m);
  const fixtureMat=mat('#f8f8f4',.2,.08),chromeMat=mat('#b8c4ca',.18,.82),woodMat=mat('#8b6546',.58);
