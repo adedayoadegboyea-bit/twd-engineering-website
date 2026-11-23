@@ -789,7 +789,7 @@ function handleSubscription_(data) {
     phone,
     listingId,
     paymentMethod,
-    "",
+    clean_(data.paymentReference || "").slice(0,120),
     paymentStatus
   ]);
 
@@ -801,8 +801,8 @@ function handleSubscription_(data) {
     email: email,
     phone: phone,
     listingId: listingId,
-    paymentMethod:
-      paymentMethod
+    paymentMethod: paymentMethod,
+    paymentReference: clean_(data.paymentReference || "").slice(0,120)
   };
 
   safeSendSubscriptionManagement_(
@@ -1288,6 +1288,7 @@ function safeSendSubscriptionManagement_(data) {
           data.paymentMethod ||
           "Payoneer"
         ) +
+        "\nPayment Reference: " + (data.paymentReference || "Not supplied") +
         "\n\n" +
 
         "STATUS: PAYMENT PENDING"
@@ -1346,6 +1347,7 @@ function safeSendSubscriptionConfirmation_(data) {
           data.paymentMethod ||
           "Payoneer"
         ) +
+        "\nPayment Reference: " + (data.paymentReference || "Not supplied") +
         "\n\n" +
 
         "Payment has not yet been verified. Please complete payment using the instructions shown on the marketplace.\n\n" +
