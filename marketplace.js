@@ -183,15 +183,15 @@ form.addEventListener("submit", async event => {
   }
 
   const files = [...form.photos.files];
-  const MAX = 20 * 1024 * 1024;
-  const MAX_TOTAL = 50 * 1024 * 1024;
+  const MAX = 5 * 1024 * 1024;
+  const MAX_TOTAL = 15 * 1024 * 1024;
 
   if (!files.length) { statusBox.textContent = "Please select at least one photo or advertisement video."; return; }
   const allowedTypes = ["image/jpeg","image/png","image/webp","video/mp4","video/webm","video/quicktime"];
   const invalid = files.find(file => !allowedTypes.includes(file.type));
   if (invalid) { statusBox.textContent = "Only JPG, PNG, WEBP, MP4, WEBM or MOV videos are allowed."; return; }
-  if (files.some(file => file.size > MAX)) { statusBox.textContent = "Each photo or video must be 20 MB or smaller."; return; }
-  if (files.reduce((sum,file) => sum + file.size, 0) > MAX_TOTAL) { statusBox.textContent = "Please keep all photos and videos together below 50 MB."; return; }
+  if (files.some(file => file.size > MAX)) { statusBox.textContent = "Each photo or video must be 5 MB or smaller."; return; }
+  if (files.reduce((sum,file) => sum + file.size, 0) > MAX_TOTAL) { statusBox.textContent = "Please keep all photos and videos together below 15 MB."; return; }
   statusBox.textContent = "Creating your listing…";
   try {
     const payload = {}; new FormData(form).forEach((value,key) => { if (key !== "photos") payload[key] = value; }); payload.sessionToken = sessionToken;
