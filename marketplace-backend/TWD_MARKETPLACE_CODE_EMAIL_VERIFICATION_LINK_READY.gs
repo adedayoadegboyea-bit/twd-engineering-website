@@ -6,6 +6,7 @@ const CONFIG = {
   SESSIONS_SHEET_NAME: "Marketplace Sessions",
   MESSAGES_SHEET_NAME: "Marketplace Messages",
   VERIFICATION_SHEET_NAME: "Marketplace Email Verification",
+  PASSWORD_RESET_SHEET_NAME: "Marketplace Password Resets",
   FOLDER_NAME: "TW&D Marketplace Photos",
   MANAGEMENT_EMAIL: "admin@twdengineeringconsult.com",
   REPLY_TO: "marketplace@twdengineeringconsult.com",
@@ -126,6 +127,8 @@ function setupMarketplace() {
     "Timestamp", "Message ID", "Listing ID", "From User ID", "To User ID", "Message", "Status"
   ]);
   const verificationSheet = ensureVerificationSheet_(spreadsheet);
+  const resetSheet = getOrCreateSheet_(spreadsheet, CONFIG.PASSWORD_RESET_SHEET_NAME, ["Created","Email","Token Hash","Expires At","Attempts","Status"]);
+  resetSheet.setFrozenRows(1);
 
   listingsSheet.setFrozenRows(1);
   subscriptionsSheet.setFrozenRows(1);
@@ -202,6 +205,8 @@ function doPost(e) {
     if (data.action === "verify_email") return handleVerifyEmail_(data);
     if (data.action === "resend_verification") return handleResendVerification_(data);
     if (data.action === "login") return handleLogin_(data);
+    if (data.action === "request_password_reset") return handlePasswordResetRequest_(data);
+    if (data.action === "reset_password") return handlePasswordReset_(data);
     if (data.action === "logout") return handleLogout_(data);
     if (data.action === "me") return handleMe_(data);
     if (data.action === "send_message") return handleSendMessage_(data);
@@ -230,6 +235,10 @@ function doGet(e) {
     e && e.parameter
       ? String(e.parameter.action || "")
       : "";
+
+  if (action === "reset_password") {
+    return HtmlService.createHtmlOutput("<!doctype html><html><head><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Marketplace Password Reset</title></head><body style=\"font-family:Arial;background:#071d38;display:grid;place-items:center;min-height:100vh;margin:0\"><main style=\"background:#fff;padding:30px;border-radius:16px;max-width:520px;width:88%\"><h1>Reset your TW&D Marketplace password</h1><p>Open the Marketplace account page to complete your password reset.</p><a style=\"display:inline-block;background:#d7a62a;color:#071d38;padding:12px 18px;border-radius:8px;font-weight:bold;text-decoration:none\" href=\"https://twdengineeringconsult.com/marketplace-account.html?reset=1&email="+encodeURIComponent(String(e.parameter.email||""))+"&token="+encodeURIComponent(String(e.parameter.token||""))+"\">Continue to reset password</a><p>This secure link expires after 30 minutes and can only be used once.</p></main></body></html>");
+  }
 
   if (action === "verify_email") {
     return handleVerifyEmailLink_(String((e && e.parameter && e.parameter.email) || ""), String((e && e.parameter && e.parameter.token) || ""));
@@ -1882,6 +1891,53 @@ function handleResendVerification_(data){
   MailApp.sendEmail({to:email,subject:"TW&D Marketplace verification code",htmlBody:emailVerificationHtml_(u.fullName,email,code,verifyUrl),body:"Your new TW&D Marketplace verification code is: "+code+"\n\nVerification link:\n"+verifyUrl+"\n\nThis verification expires in 15 minutes.\n\n"+CONFIG.COMPANY,replyTo:CONFIG.REPLY_TO});
   return json({ok:true,message:"A new verification code and verification link have been sent to your email."});
 }
+function handlePasswordResetRequest_(data){
+  const email=requiredEmail_(data.email);
+  const u=findUserByEmail_(email);
+  // Always return the same public response to prevent account enumeration.
+  if(u && u.status==="ACTIVE"){
+    const ss=getMarketplaceSpreadsheet_();
+    const sh=getOrCreateSheet_(ss,CONFIG.PASSWORD_RESET_SHEET_NAME,["Created","Email","Token Hash","Expires At","Attempts","Status"]);
+    const token=randomToken_();
+    const expires=new Date(Date.now()+30*60*1000);
+    sh.appendRow([new Date(),email,hashValue_(token,"TWDM_PASSWORD_RESET"),expires,0,"PENDING"]);
+    const url="https://twdengineeringconsult.com/marketplace-account.html?reset=1&email="+encodeURIComponent(email)+"&token="+encodeURIComponent(token);
+    MailApp.sendEmail({to:email,subject:"Reset your TW&D Marketplace password",htmlBody:'<div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;padding:28px;color:#142033"><h2 style="color:#071d38">Reset your Marketplace password</h2><p>Hello '+escapeHtml_(u.fullName)+',</p><p>We received a request to reset your TW&D Marketplace password.</p><p><a href="'+escapeHtml_(url)+'" style="display:inline-block;background:#d7a62a;color:#071d38;padding:14px 20px;border-radius:8px;text-decoration:none;font-weight:bold">RESET MY PASSWORD</a></p><p>This link expires in 30 minutes and can be used once. If you did not request this, ignore this email.</p><p>TW&D Engineering Consult & Services Ltd</p></div>',body:"Reset your TW&D Marketplace password using this secure link (expires in 30 minutes): "+url+"\n\nIf you did not request this, ignore this email.",replyTo:CONFIG.REPLY_TO});
+  }
+  return json({ok:true,message:"If an active Marketplace account exists for that email, password-reset instructions have been sent. Check your inbox and spam folder."});
+}
+function handlePasswordReset_(data){
+  const email=requiredEmail_(data.email), token=clean_(data.token), password=String(data.password||"");
+  if(!token) throw new Error("The password-reset link is invalid. Request a new link.");
+  if(password.length<8) throw new Error("Your new password must be at least 8 characters.");
+  const lock=LockService.getScriptLock();lock.waitLock(10000);
+  try{
+    const ss=getMarketplaceSpreadsheet_(), sh=ss.getSheetByName(CONFIG.PASSWORD_RESET_SHEET_NAME);
+    if(!sh||sh.getLastRow()<2) throw new Error("No active password-reset request was found. Request a new link.");
+    const values=sh.getDataRange().getValues(), headers=values[0], ix={};headers.forEach((x,i)=>ix[String(x)]=i);
+    let row=-1;
+    for(let i=values.length-1;i>=1;i--){
+      if(String(values[i][ix.Email]||"").toLowerCase()===email.toLowerCase() && String(values[i][ix.Status]||"")==="PENDING"){row=i+1;break;}
+    }
+    if(row<0) throw new Error("This password-reset link is no longer active. Request a new link.");
+    const v=values[row-1], attempts=Number(v[ix.Attempts]||0);
+    if(new Date(v[ix["Expires At"]]).getTime()<Date.now()){sh.getRange(row,ix.Status+1).setValue("EXPIRED");throw new Error("This password-reset link has expired. Request a new one.");}
+    if(attempts>=5){sh.getRange(row,ix.Status+1).setValue("LOCKED");throw new Error("Too many attempts. Request a new reset link.");}
+    sh.getRange(row,ix.Attempts+1).setValue(attempts+1);
+    if(hashValue_(token,"TWDM_PASSWORD_RESET")!==String(v[ix["Token Hash"]]||"")) throw new Error("This password-reset link is invalid. Request a new one.");
+    const user=findUserByEmail_(email);if(!user||user.status!=="ACTIVE")throw new Error("The Marketplace account is not active.");
+    const users=ss.getSheetByName(CONFIG.USERS_SHEET_NAME), map=getHeaderMap_(users), salt=randomToken_().slice(0,24), userValues=users.getDataRange().getValues();
+    let userRow=-1;for(let i=1;i<userValues.length;i++)if(String(userValues[i][map["User ID"]-1])===user.userId){userRow=i+1;break;}
+    if(userRow<0)throw new Error("Marketplace account could not be located.");
+    users.getRange(userRow,map["Password Salt"]).setValue(salt);
+    users.getRange(userRow,map["Password Hash"]).setValue(hashValue_(password,salt));
+    sh.getRange(row,ix.Status+1).setValue("USED");
+    const sessions=ss.getSheetByName(CONFIG.SESSIONS_SHEET_NAME), smap=getHeaderMap_(sessions);
+    if(sessions&&sessions.getLastRow()>1){const sv=sessions.getDataRange().getValues();for(let i=1;i<sv.length;i++)if(String(sv[i][smap["User ID"]-1])===user.userId&&String(sv[i][smap.Status-1])==="ACTIVE")sessions.getRange(i+1,smap.Status).setValue("REVOKED");}
+    return json({ok:true,message:"Your Marketplace password has been reset. Please sign in with your new password."});
+  }finally{lock.releaseLock();}
+}
+
 function handleLogin_(data){const email=requiredEmail_(data.email), password=String(data.password||""); const u=findUserByEmail_(email); if(!u) throw new Error("Account not found. Please create an account first."); const ss=SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty("SHEET_ID")), sh=ss.getSheetByName(CONFIG.USERS_SHEET_NAME), vals=sh.getDataRange().getValues(), h=vals[0], idx={}; h.forEach(function(x,i){idx[String(x)]=i;}); let salt=""; for(let i=1;i<vals.length;i++){if(String(vals[i][idx["User ID"]])===u.userId){salt=String(vals[i][idx["Password Salt"]]||"");break;}} if(hashValue_(password,salt)!==hashValue_(password,salt) && false){} const stored=vals.slice(1).find(r=>String(r[idx["User ID"]])===u.userId); if(!stored || hashValue_(password,String(stored[idx["Password Salt"]]))!==String(stored[idx["Password Hash"]])) throw new Error("Incorrect email or password."); if(u.status==="PENDING_EMAIL") throw new Error("Please verify your email before signing in. Use the verification code sent to your email."); if(u.status!=="ACTIVE") throw new Error("This account is not active."); return json({ok:true,message:"Signed in successfully.",token:createSession_(u.userId),user:publicUser_(u)});}
 function handleLogout_(data){try{const raw=clean_(data.sessionToken); const ss=SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty("SHEET_ID")), sh=ss.getSheetByName(CONFIG.SESSIONS_SHEET_NAME); if(raw&&sh){const vals=sh.getDataRange().getValues(),h=vals[0],idx={};h.forEach(function(x,i){idx[String(x)]=i;});for(let i=1;i<vals.length;i++)if(String(vals[i][idx["Token Hash"]])===hashValue_(raw,"TWDM_SESSION"))sh.getRange(i+1,idx["Status"]+1).setValue("REVOKED");}}catch(e){} return json({ok:true});}
 function handleMe_(data){const u=requireSession_(data.sessionToken); return json({ok:true,user:publicUser_(u)});}
