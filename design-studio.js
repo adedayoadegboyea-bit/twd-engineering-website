@@ -43,7 +43,7 @@ function makeCanvasTexture(kind){
  textureCache.set(kind,t);
  return t;
 }
-let previewResizeObserver=null,previewContextLost=false,cameraInteracted=false,resizeFallback=null;
+let previewResizeObserver=null,previewContextLost=false,cameraInteracted=false,resizeFallback=null,visibilityHandler=null;
 function setup3D(){
  try{
   if(!viewer)throw new Error('The 3D preview container is missing from this page.');
@@ -51,7 +51,9 @@ function setup3D(){
   if(renderer){renderer.setAnimationLoop(null);controls?.dispose();renderer.dispose();renderer.domElement.remove();renderer=null;controls=null}
   previewResizeObserver?.disconnect();previewResizeObserver=null;
   if(resizeFallback){window.removeEventListener('resize',resizeFallback);resizeFallback=null}
-  cameraInteracted=false;
+  if(visibilityHandler){document.removeEventListener('visibilitychange',visibilityHandler);visibilityHandler=null}
+  if(scene){const geometries=new Set(),materials=new Set();scene.traverse(object=>{if(object.geometry)geometries.add(object.geometry);if(object.material){if(Array.isArray(object.material))object.material.forEach(m=>materials.add(m));else materials.add(object.material)}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());scene.clear();scene=null;buildingGroup=null}
+  cameraInteracted=false;previewContextLost=false;
   viewer.dataset.previewState='loading';
   $('viewerStatus').textContent='Starting 3D engine…';
   scene=new THREE.Scene();scene.background=new THREE.Color('#b8c9d8');scene.fog=new THREE.Fog('#c8d5df',55,150);
@@ -100,7 +102,10 @@ controls.target.set(0,4,0);controls.maxPolarAngle=Math.PI*.495;
   const resize=()=>{if(!renderer||previewContextLost)return;const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);};
   if('ResizeObserver' in window){previewResizeObserver=new ResizeObserver(resize);previewResizeObserver.observe(viewer)}else{resizeFallback=resize;window.addEventListener('resize',resizeFallback,{passive:true})}
   requestAnimationFrame(resize);
-  renderer.setAnimationLoop(()=>{if(!previewContextLost){controls.update();renderer.render(scene,camera)}});
+  const renderFrame=()=>{if(!previewContextLost&&scene&&camera&&controls){controls.update();renderer.render(scene,camera)}};
+  renderer.setAnimationLoop(document.hidden?null:renderFrame);
+  visibilityHandler=()=>{if(renderer)renderer.setAnimationLoop(document.hidden||previewContextLost?null:renderFrame)};
+  document.addEventListener('visibilitychange',visibilityHandler);
   viewer.dataset.previewState='ready';
   $('viewerStatus').textContent='3D preview ready · drag to rotate · pinch or scroll to zoom · tap a room to edit';
  }catch(e){
