@@ -544,7 +544,56 @@ function drawBuilding(){
   $('planDrawing').innerHTML='<svg viewBox="0 0 520 360" role="img" aria-label="Fallback conceptual footprint"><rect x="90" y="55" width="340" height="250" fill="#f3f6f8" stroke="#173b65" stroke-width="5"/><text x="260" y="165" text-anchor="middle" font-size="20" fill="#173b65">BUILDING FOOTPRINT</text><text x="260" y="195" text-anchor="middle" font-size="15" fill="#52677b">'+w.toFixed(2)+' m × '+d.toFixed(2)+' m</text><text x="260" y="330" text-anchor="middle" font-size="12" fill="#9b4b32">Detailed plan temporarily unavailable</text></svg>';
  }
 }
+
+function residentialRoomDefaults(level){
+ const plans={ground:['Living room','Dining','Kitchen','Guest bedroom','Guest WC','Staircase'],first:['Master bedroom','Walk-in closet','Master bathroom','Bedroom 2','Bedroom 3','Family lounge'],second:['Bedroom 4','Bedroom 5','Family lounge','Study','Bathroom','Terrace'],third:['Penthouse lounge','Bedroom','Bathroom','Study','Store','Terrace']};
+ return plans[level]||plans.ground;
+}
+function drawResidentialPlan(w,d,n,v){
+ const sx=520,sy=360,pad=30,plotW=Math.max(1,+$('plotWidth').value||30),plotD=Math.max(1,+$('plotDepth').value||40);
+ const scale=Math.min((sx-2*pad)/plotW,(sy-2*pad)/plotD),plotPx=plotW*scale,plotPy=plotD*scale,px=(sx-plotPx)/2,py=(sy-plotPy)/2;
+ const setback=Math.max(0,+$('sideSetback').value||0)*scale,front=Math.max(0,+$('frontSetback').value||0)*scale;
+ const bx=px+Math.max(setback,(plotPx-w*scale)/2),by=py+Math.max(front,(plotPy-d*scale-front)/2),rw=w*scale,rd=d*scale;
+ const shape=v.building_shape||'rectangle',line=v.plan_line||'#34495e',lw=Math.max(1,+v.line_width||1.5);
+ const level=$('floorPlanLevel').value;
+ let names=(v.room_names||[]).filter(Boolean);
+ if(!names.length||names.every(x=>/^room\s*\d+$/i.test(x))||names.some(x=>/classroom|wing|reception/i.test(x))) names=residentialRoomDefaults(level);
+ const count=clamp(+v.room_count||6,2,6),cells=[];
+ const addCell=(x,y,ww,hh,defaultName)=>cells.push({x,y,w:ww,h:hh,name:defaultName});
+ if(shape==='U'){
+  const barH=rd*.38,legW=rw*.28,barCount=Math.min(3,Math.max(2,count-2));
+  for(let i=0;i<barCount;i++)addCell(bx+rw*i/barCount,by,rw/barCount,barH,names[cells.length]||'Living / dining');
+  const remain=count-barCount,leftCount=Math.ceil(remain/2),rightCount=remain-leftCount;
+  for(let i=0;i<leftCount;i++)addCell(bx,by+barH+i*(rd-barH)/leftCount,legW,(rd-barH)/leftCount,names[cells.length]||'Bedroom');
+  for(let i=0;i<rightCount;i++)addCell(bx+rw-legW,by+barH+i*(rd-barH)/rightCount,legW,(rd-barH)/rightCount,names[cells.length]||'Bedroom');
+ }else if(shape==='L'){
+  const barH=rd*.40,legW=rw*.40,barCount=Math.min(3,Math.max(2,count-1));
+  for(let i=0;i<barCount;i++)addCell(bx+rw*i/barCount,by,rw/barCount,barH,names[cells.length]||'Living / dining');
+  const remain=Math.max(1,count-barCount);
+  for(let i=0;i<remain;i++)addCell(bx+rw-legW,by+barH+i*(rd-barH)/remain,legW,(rd-barH)/remain,names[cells.length]||'Bedroom');
+ }else{
+  const cols=Math.ceil(count/2),rows=2;
+  for(let i=0;i<count;i++){const col=i%cols,row=Math.floor(i/cols);addCell(bx+rw*col/cols,by+rd*row/rows,rw/cols,rd/rows,names[i]||'Room');}
+ }
+ const barH=rd*.38,legW=rw*.28;
+ const outer=shape==='U'?'M '+bx+' '+by+' H '+(bx+rw)+' V '+(by+rd)+' H '+(bx+rw-legW)+' V '+(by+barH)+' H '+(bx+legW)+' V '+(by+rd)+' H '+bx+' Z':
+ shape==='L'?'M '+bx+' '+by+' H '+(bx+rw)+' V '+(by+rd)+' H '+(bx+rw-legW)+' V '+(by+barH)+' H '+bx+' Z':
+ 'M '+bx+' '+by+' H '+(bx+rw)+' V '+(by+rd)+' H '+bx+' Z';
+ const area=cells.reduce((sum,c)=>sum+(c.w/scale)*(c.h/scale),0);
+ const roomSvg=cells.map((c,i)=>{
+  const label=String(names[i]||c.name||('Room '+(i+1))).slice(0,24).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+  const isWet=/bath|wc|toilet|laundry|kitchen/i.test(label),isStair=/stair/i.test(label),bg=isWet?'#e9f3f8':isStair?'#f4eee5':'#fff';
+  const doorX=c.x+c.w*.5,doorY=c.y+c.h*.5,door=Math.max(7,Math.min(12,scale*.7)),windowX=c.x+c.w*.25;
+  return '<g data-room-index="'+i+'" class="residential-room" style="cursor:pointer"><rect x="'+(c.x+1)+'" y="'+(c.y+1)+'" width="'+Math.max(1,c.w-2)+'" height="'+Math.max(1,c.h-2)+'" fill="'+bg+'" stroke="'+line+'" stroke-width="'+(lw+1)+'"/><text x="'+(c.x+c.w/2)+'" y="'+(c.y+c.h/2-3)+'" font-size="9" fill="'+line+'" text-anchor="middle" pointer-events="none">'+label+'</text><text x="'+(c.x+c.w/2)+'" y="'+(c.y+c.h/2+10)+'" font-size="7" fill="#708197" text-anchor="middle" pointer-events="none">'+((c.w/scale)*(c.h/scale)).toFixed(1)+' m²</text><path d="M '+doorX+' '+doorY+' l '+door+' 0 m '+(-door)+' 0 a '+door+' '+door+' 0 0 1 '+door+' '+door+'" fill="none" stroke="#986a3f" stroke-width="1.3" pointer-events="none"/><path d="M '+windowX+' '+(c.y+1)+' h '+Math.max(8,c.w*.24)+'" stroke="#2588ae" stroke-width="3" pointer-events="none"/></g>';
+ }).join('');
+ const courtyard=shape==='U'?'<rect x="'+(bx+rw*.28)+'" y="'+(by+rd*.38)+'" width="'+(rw*.44)+'" height="'+(rd*.62)+'" fill="#e9f1e5" stroke="#8ba27a" stroke-dasharray="4 3"/><text x="'+(bx+rw*.5)+'" y="'+(by+rd*.68)+'" font-size="9" fill="#55734c" text-anchor="middle">PRIVATE COURTYARD</text>':'';
+ const north=(v.plot_orientation||'north').toUpperCase()[0];
+ $('footprintValue').textContent=area.toFixed(1)+' m² approx.';
+ $('planDrawing').innerHTML='<svg viewBox="0 0 520 360" role="img" aria-label="Residential '+shape+'-shaped floor plan with individually selectable rooms"><rect x="'+px+'" y="'+py+'" width="'+plotPx+'" height="'+plotPy+'" fill="#f7f9f4" stroke="#557b55" stroke-width="2" stroke-dasharray="6 4"/><rect x="'+(px+setback)+'" y="'+(py+front)+'" width="'+Math.max(1,plotPx-2*setback)+'" height="'+Math.max(1,plotPy-front-setback)+'" fill="none" stroke="#c19a55" stroke-dasharray="4 4"/>'+courtyard+'<path d="'+outer+'" fill="none" stroke="'+line+'" stroke-width="'+(lw+4)+'" stroke-linejoin="round"/>'+roomSvg+'<text x="'+(px+plotPx/2)+'" y="'+Math.max(14,py-8)+'" font-size="10" fill="#42617d" text-anchor="middle">PLOT '+plotW.toFixed(1)+' m × '+plotD.toFixed(1)+' m</text><text x="'+(px+plotPx-8)+'" y="'+(py+14)+'" font-size="12" font-weight="bold" fill="#263d55" text-anchor="end">'+north+' ↑</text><text x="260" y="350" font-size="9" fill="#708197" text-anchor="middle">'+$('floorPlanLevel').selectedOptions[0].textContent+' · '+n+'-storey residential '+shape+'-shape concept · Click a room to customise it</text></svg><div class="site-plan-legend"><span>Blue outline: residential wall layout</span><span>Blue marks: indicative windows</span><span>Brown arcs: indicative door swings</span><span>Click any room to edit its finishes</span></div>';
+}
+
 function drawPlan(w,d,n,v=getVisualSettings()){
+ if($('projectType').value==='residential'){drawResidentialPlan(w,d,n,v);return;}
  const doorGapMin=()=>8;
  const sx=520,sy=360,pad=30,plotW=Math.max(1,+$('plotWidth').value||30),plotD=Math.max(1,+$('plotDepth').value||40);
  const scale=Math.min((sx-2*pad)/plotW,(sy-2*pad)/plotD),plotPx=plotW*scale,plotPy=plotD*scale,px=(sx-plotPx)/2,py=(sy-plotPy)/2;
@@ -754,6 +803,8 @@ $('buildingPreset').addEventListener('change',()=>{
  const presets={
   school_u:{type:'school',shape:'U',floors:'2',roof:'contemporary_flat',rooms:'6'},
   school_l:{type:'school',shape:'L',floors:'2',roof:'combination',rooms:'6'},
+  residential_u:{type:'residential',shape:'U',floors:'2',roof:'hip',rooms:'6'},
+  residential_l:{type:'residential',shape:'L',floors:'2',roof:'combination',rooms:'6'},
   school_h:{type:'school',shape:'H',floors:'3',roof:'contemporary_flat',rooms:'6'},
   school_t:{type:'school',shape:'T',floors:'2',roof:'conventional_gable',rooms:'5'},
   duplex:{type:'residential',shape:'rectangle',floors:'2',roof:'hip',rooms:'5'},
@@ -794,6 +845,7 @@ $('roomNames').addEventListener('input',()=>{floorRoomNames[$('floorPlanLevel').
 loadActiveFloorLayout();
 loadActiveRoomInterior();
 $('roomEditSelect').addEventListener('change',()=>{saveActiveRoomInterior();activeRoomIndex=+$('roomEditSelect').value;loadActiveRoomInterior();drawBuilding();});
+$('planDrawing').addEventListener('click',e=>{const room=e.target.closest('[data-room-index]');if(!room)return;const index=+room.dataset.roomIndex;saveActiveRoomInterior();activeRoomIndex=index;loadActiveRoomInterior();drawBuilding();$('roomEditorStatus').textContent='Selected '+(roomListForActiveFloor()[index]||('Room '+(index+1)))+' from the floor plan. Change any finish below for a live preview.';});
 ['roomFloorFinish','roomWallFinish','roomTileColor','roomWallColor','roomLighting','roomFurniture','roomSanitary','roomCeiling','roomDoor','roomStorage'].forEach(id=>$(id).addEventListener('input',roomEditorChanged));
 $('roomNames').addEventListener('input',()=>{loadActiveRoomInterior();drawBuilding();});
 ['width','depth','floorHeight','buildingShape','plotWidth','plotDepth','frontSetback','sideSetback','plotOrientation'].forEach(id=>$(id).addEventListener('input',drawBuilding));
