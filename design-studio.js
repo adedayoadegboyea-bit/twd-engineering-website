@@ -503,17 +503,20 @@ function drawBuildingUnsafe(){
  }
 }
 function drawBuilding(){
- if(!buildingGroup)return;
- try{drawBuildingUnsafe();}
- catch(error){
-  console.error('TW&D 3D model generation failed:',error);
-  try{
-   disposeBuildingGroup();
-   const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=clamp(+$('storeys').value||1,1,4),h=clamp(+$('floorHeight').value||3.2,2.7,5),height=Math.max(2.7,n*h*.78);
-   const fallbackMat=new THREE.MeshStandardMaterial({color:'#d9e0e8',roughness:.82});
-   box(buildingGroup,w,height,d,0,height/2,0,fallbackMat);
-   $('viewerStatus').textContent='Basic 3D fallback shown. Detailed model error: '+(error?.message||'unknown error');
-  }catch(fallbackError){console.error('TW&D fallback model failed:',fallbackError);$('viewerStatus').textContent='3D preview needs a retry: '+(fallbackError?.message||'graphics error');}
+ // Keep the 2D footprint renderer independent of WebGL. A graphics/context failure
+ // must never prevent the indicative plan from rendering or updating.
+ if(buildingGroup){
+  try{drawBuildingUnsafe();}
+  catch(error){
+   console.error('TW&D 3D model generation failed:',error);
+   try{
+    disposeBuildingGroup();
+    const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=clamp(+$('storeys').value||1,1,4),h=clamp(+$('floorHeight').value||3.2,2.7,5),height=Math.max(2.7,n*h*.78);
+    const fallbackMat=new THREE.MeshStandardMaterial({color:'#d9e0e8',roughness:.82});
+    box(buildingGroup,w,height,d,0,height/2,0,fallbackMat);
+    $('viewerStatus').textContent='Basic 3D fallback shown. Detailed model error: '+(error?.message||'unknown error');
+   }catch(fallbackError){console.error('TW&D fallback model failed:',fallbackError);$('viewerStatus').textContent='3D preview needs a retry: '+(fallbackError?.message||'graphics error');}
+  }
  }
  try{
   const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=clamp(+$('storeys').value||1,1,4);
