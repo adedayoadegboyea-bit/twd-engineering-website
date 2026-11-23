@@ -6,4 +6,9 @@
   script.defer=true;
   script.setAttribute('data-twd-platform-shell','');
   document.head.appendChild(script);
+  var viewer=document.createElement('script');
+  viewer.src='/twd-image-viewer.js?v=20261123-1';
+  viewer.defer=true;
+  viewer.setAttribute('data-twd-image-viewer','');
+  document.head.appendChild(viewer);
 })();
