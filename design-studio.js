@@ -187,9 +187,7 @@ function drawBuilding(){
  box(buildingGroup,w+.55,.42,d+.55,0,.21,0,slab);
  for(let floor=0;floor<n;floor++){
   const y=floor*h;
-  // Side elevations remain continuous; window reveals and frames are layered onto the side faces.
-  box(buildingGroup,.22,h,d, -w/2+.11,y+h/2,0,wall);
-  box(buildingGroup,.22,h,d, w/2-.11,y+h/2,0,wall);
+  // Side elevations are assembled around true window openings below.
   // Front and rear walls are assembled around true window openings instead of covering glazing with a solid block.
   const count=Math.max(2,Math.floor(w/(v.window_style==='panoramic'?2.45:v.window_style==='wide'?2.9:3.35)));
   const bay=w/count,ww=Math.min(v.window_style==='panoramic'?bay*.78:v.window_style==='wide'?bay*.62:v.window_style==='slim'?bay*.34:bay*.48,bay*.82);
@@ -211,13 +209,23 @@ function drawBuilding(){
    }
    if(cursor<w/2)box(buildingGroup,w/2-cursor,h,.2,(w/2+cursor)/2,y+h/2,z,wall);
   }
-  // Side elevation glazing, with frames and projecting sills.
+  // Side elevations are built in segments so each window is a real wall opening, not a pane over solid masonry.
   const sideCount=Math.max(2,Math.floor(d/4.2));
-  for(const side of [-1,1])for(let i=0;i<sideCount;i++){
-   const z=-d/2+(i+1)*d/(sideCount+1),sw=Math.min(1.45,d/sideCount*.58),sh=h*.43;
-   box(buildingGroup,.055,sh,sw,side*(w/2+.035),y+h*.54,z,glass);
-   for(const yy of [y+h*.54-sh/2-.04,y+h*.54+sh/2+.04])box(buildingGroup,.1,.08,sw+.14,side*(w/2+.08),yy,z,trim);
-   for(const zz of [z-sw/2-.04,z+sw/2+.04])box(buildingGroup,.1,sh+.16,.08,side*(w/2+.08),y+h*.54,zz,trim);
+  for(const side of [-1,1]){
+   const x=side*(w/2-.11),paneX=side*(w/2+.035),sh=h*.43,wy=y+h*.54,sill=wy-sh/2,head=wy+sh/2,sw=Math.min(1.45,d/sideCount*.58);
+   let cursor=-d/2;
+   for(let i=0;i<sideCount;i++){
+    const z=-d/2+(i+1)*d/(sideCount+1),left=z-sw/2,right=z+sw/2;
+    if(left>cursor)box(buildingGroup,.22,h,left-cursor,x,y+h/2,(left+cursor)/2,wall);
+    box(buildingGroup,.22,sill-y,sw,x,(y+sill)/2,z,wall);
+    box(buildingGroup,.22,y+h-head,sw,x,(head+y+h)/2,z,wall);
+    box(buildingGroup,.055,sh-.10,sw-.10,paneX,wy,z,glass);
+    for(const yy of [sill-.04,head+.04])box(buildingGroup,.1,.08,sw+.14,side*(w/2+.08),yy,z,trim);
+    for(const zz of [left-.04,right+.04])box(buildingGroup,.1,sh+.16,.08,side*(w/2+.08),wy,zz,trim);
+    box(buildingGroup,.045,sh-.12,.08,side*(w/2+.105),wy,z,dark);
+    cursor=right;
+   }
+   if(cursor<d/2)box(buildingGroup,.22,h,d/2-cursor,x,y+h/2,(d/2+cursor)/2,wall);
   }
   // Continuous slab edge and clean shadow line.
   box(buildingGroup,w+.42,.22,d+.42,0,y+.12,0,trim);
