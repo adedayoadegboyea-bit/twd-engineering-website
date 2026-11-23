@@ -405,7 +405,7 @@ function handleUploadListingPhoto_(data) {
   const ctx=marketplaceListingContext_(), row=marketplaceListingRow_(ctx.sheet,ctx.map,required_(data.listingId,"Listing ID"),account.userId), m=ctx.map;
   const saved=JSON.parse(String(ctx.sheet.getRange(row,m["Photo URLs"]).getValue()||"[]"));
   let total=bytes.length;
-  saved.forEach(p=>{try{total+=DriveApp.getFileById(p.id).getSize();}catch(e){}});
+  saved.forEach(p=>{try{const id=String(p).match(/[?&]id=([\\w-]+)/);if(id)total+=DriveApp.getFileById(id[1]).getSize();}catch(e){}});
   if(total>CONFIG.MAX_TOTAL_FILE_BYTES) throw new Error("All uploaded files together must be 15 MB or smaller.");
   const folderUrl=String(ctx.sheet.getRange(row,m["Photo Folder"]).getValue()||"");
   const folderId=(folderUrl.match(/[-\w]{25,}/)||[])[0];
@@ -414,7 +414,7 @@ function handleUploadListingPhoto_(data) {
   const file=DriveApp.getFolderById(folderId).createFile(blob);
   try{file.setSharing(DriveApp.Access.ANYONE_WITH_LINK,DriveApp.Permission.VIEW);}catch(e){console.warn("Could not enable public file link",e);}
   const url="https://drive.google.com/uc?export=view&id="+file.getId();
-  saved.push({name:file.getName(),id:file.getId(),url:url,type:type});
+  saved.push(url);
   ctx.sheet.getRange(row,m["Photo URLs"]).setValue(JSON.stringify(saved));
   ctx.sheet.getRange(row,m["Photos Saved"]).setValue(saved.length);
   return json({ok:true,message:"File uploaded.",uploaded:saved.length});
