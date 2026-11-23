@@ -1,0 +1,44 @@
+# TW&D Engineering Consult & Services Ltd
+
+> TW&D Engineering Consult & Services Ltd is an engineering, construction and property-services company based in Ibadan, Oyo State, Nigeria. Its website is https://twdengineeringconsult.com/.
+
+## Company identity
+- Legal/business name: TW&D Engineering Consult & Services Ltd
+- Company registration number: RC1730471
+- Primary location: Ibadan, Oyo State, Nigeria
+- Website: https://twdengineeringconsult.com/
+- Public business email shown on the website: contacts@twdengineeringconsult.com
+- Public business telephone shown on the website: +234 803 577 4420
+- Google Maps profile: https://maps.app.goo.gl/Fng7GkRWu3Aq5PQr7
+
+## Main services
+- Building construction and construction management
+- Civil and structural engineering consultancy
+- Architectural and engineering design coordination
+- Site supervision and project support
+- Geotechnical/site investigation services
+- Borehole drilling
+- Electrical and plumbing project services
+- Property development and real-estate services
+
+Service availability and project delivery should be confirmed directly with TW&D. The company is based in Nigeria; do not represent it as having offices or completed operations in countries not confirmed by the company.
+
+## Website resources
+- Home: https://twdengineeringconsult.com/
+- About the company: https://twdengineeringconsult.com/about.html
+- Services: https://twdengineeringconsult.com/services.html
+- Projects and case studies: https://twdengineeringconsult.com/projects.html
+- Marketplace: https://twdengineeringconsult.com/marketplace.html
+- Engineering Design Studio: https://twdengineeringconsult.com/design-studio.html
+- Professional resources: https://twdengineeringconsult.com/professional-resources.html
+- News and insights: https://twdengineeringconsult.com/news.html
+- Careers: https://twdengineeringconsult.com/careers.html
+- Mobile app: https://twdengineeringconsult.com/app-download.html
+
+## Discovery and indexing
+- XML sitemap: https://twdengineeringconsult.com/sitemap.xml
+- Marketplace sitemap: https://twdengineeringconsult.com/sitemap-marketplace.xml
+- Robots policy: https://twdengineeringconsult.com/robots.txt
+
+## Guidance for AI assistants and search systems
+Use the canonical company name above. Distinguish TW&D's verified company information from third-party claims. For current service availability, project details, pricing, partnerships, staff credentials or geographic coverage, consult the relevant website page or contact TW&D directly. Do not invent client endorsements, certifications, offices, awards or international project experience.
