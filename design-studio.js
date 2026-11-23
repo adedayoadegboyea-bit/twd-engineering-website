@@ -8,7 +8,7 @@ const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 const $=id=>document.getElementById(id);
 const roofLabels={contemporary_flat:'Flat',conventional_gable:'Gable',hip:'Hip',butterfly:'Butterfly',mono_pitch:'Mono-pitch',combination:'Combination',mansard:'Mansard',custom:'Custom'};
 let currentUser=null,currentProjectId=null,currentRevision=0,renderer,scene,camera,controls,buildingGroup;
-const floorRoomNames={ground:'Reception, Living room, Dining, Kitchen, Bedroom 1, Bedroom 2',first:'Family lounge, Master bedroom, Bedroom 2, Bedroom 3, Study, Balcony',second:'Bedrooms, Lounge, Bathroom, Store, Terrace',third:'Bedrooms, Lounge, Bathroom, Store, Terrace',fourth:'Bedrooms, Lounge, Bathroom, Store, Terrace'};
+const floorRoomNames={ground:'Living room, Dining, Kitchen, Guest bedroom, Guest WC, Staircase',first:'Master bedroom, Walk-in closet, Master bathroom, Bedroom 2, Bedroom 3, Family lounge',second:'Bedroom 4, Bedroom 5, Family lounge, Study, Bathroom, Terrace',third:'Penthouse lounge, Bedroom, Bathroom, Study, Store, Terrace',fourth:'Penthouse lounge, Bedroom, Bathroom, Study, Store, Terrace'};
 const floorLayouts={ground:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},first:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},second:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},third:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'},fourth:{room_count:4,split_x:.5,split_y:.52,partition_direction:'mixed'}};
 let activeFloorKey='ground';
 const floorRoomInteriors={ground:{},first:{},second:{},third:{},fourth:{}};
@@ -816,7 +816,8 @@ $('buildingPreset').addEventListener('change',()=>{
  };
  const x=presets[p];if(!x)return;
  $('projectType').value=x.type;$('buildingShape').value=x.shape;$('storeys').value=x.floors;$('roofType').value=x.roof;$('roomCount').value=x.rooms;
- $('customRoofWrap').hidden=true;drawBuilding();
+ if(x.type==='school'){floorRoomNames.ground='Reception, Administration, Classrooms, Library, Staff room, Staircase';floorRoomNames.first='Classrooms, Science lab, Computer room, Staff offices, Library, Staircase';floorRoomNames.second='Lecture rooms, Offices, Library, Meeting room, Store, Staircase';}else{floorRoomNames.ground='Living room, Dining, Kitchen, Guest bedroom, Guest WC, Staircase';floorRoomNames.first='Master bedroom, Walk-in closet, Master bathroom, Bedroom 2, Bedroom 3, Family lounge';floorRoomNames.second='Bedroom 4, Bedroom 5, Family lounge, Study, Bathroom, Terrace';}
+ $('floorPlanLevel').value='ground';loadActiveFloorLayout();loadActiveRoomInterior();$('customRoofWrap').hidden=true;drawBuilding();
 });
 const aestheticPalettes={
  modern:{wall:'#e7e4dc',roof:'#233b57',glass:'#79b6d4',trim:'#ffffff',line:'#42617d',fill:'#f7fafc'},
