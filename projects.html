@@ -117,7 +117,7 @@ const sb=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 async function loadLivePortfolio(){
  const p=await sb.from("portfolio_projects").select("id,title,state,location,category,client,description,completion_date,project_value,cover_image_url").eq("status","PUBLISHED").order("updated_at",{ascending:false}).limit(24);
- const g=await sb.from("portfolio_gallery").select("id,title,category,image_url,caption").eq("status","PUBLISHED").is("project_slug",null).order("sort_order",{ascending:true}).order("created_at",{ascending:false}).limit(60);
+ const g=await sb.from("portfolio_gallery").select("id,title,category,image_url,caption").eq("status","PUBLISHED").order("created_at",{ascending:false}).limit(500);
  const pe=document.getElementById("liveProjects"),ge=document.getElementById("liveGallery");
  if(!p.error) pe.insertAdjacentHTML("afterbegin",(p.data||[]).map(x=>'<article class="state-project">'+(x.cover_image_url?'<img src="'+esc(x.cover_image_url)+'" alt="'+esc(x.title)+'" loading="lazy" class="portfolio-cover">':'')+'<p class="card-label">'+esc(x.state)+'</p><h3>'+esc(x.title)+'</h3><p>'+esc(x.category||"Engineering project")+(x.location?" • "+esc(x.location):"")+'</p><p class="portfolio-summary">'+esc(x.description||"")+'</p><a class="text-link" href="project-record.html?id='+encodeURIComponent(x.id)+'">View project →</a></article>') .join(""));
  if(p.error) document.getElementById("portfolioStatus").textContent="Additional project records are temporarily unavailable.";
