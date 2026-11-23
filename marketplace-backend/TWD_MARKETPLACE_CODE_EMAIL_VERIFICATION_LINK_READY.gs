@@ -221,6 +221,9 @@ function doPost(e) {
     if (data.action === "me") return handleMe_(data);
     if (data.action === "send_message") return handleSendMessage_(data);
     if (data.action === "messages") return handleMessages_(data);
+    if (data.action === "start_listing") return handleStartListing_(data);
+    if (data.action === "upload_listing_photo") return handleUploadListingPhoto_(data);
+    if (data.action === "finalize_listing") return handleFinalizeListing_(data);
     return submitListing(data);
 
   } catch (error) {
@@ -336,6 +339,97 @@ function parseRequest_(e) {
   }
 
   return data;
+}
+
+/**
+ * ACCOUNT-BOUND, THREE-STEP LISTING WORKFLOW
+ * Draft rows remain invisible to buyers until finalize_listing succeeds.
+ */
+function marketplaceListingContext_() {
+  const props = PropertiesService.getScriptProperties();
+  const folderId = props.getProperty("FOLDER_ID") || props.getProperty("MARKETPLACE_FOLDER_ID");
+  const spreadsheetId = props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID");
+  if (!folderId || !spreadsheetId) throw new Error("Marketplace storage is not configured. Please contact TW&D support.");
+  const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+  const sheet = spreadsheet.getSheetByName(CONFIG.SHEET_NAME);
+  if (!sheet) throw new Error("Marketplace Listings sheet is unavailable. Existing data has not been changed.");
+  return {folder:DriveApp.getFolderById(folderId), spreadsheet:spreadsheet, sheet:sheet, map:getHeaderMap_(sheet)};
+}
+function marketplaceListingRow_(sheet, map, listingId, userId) {
+  if (!map["Listing ID"] || !map["Account ID"]) throw new Error("Marketplace listing columns are incomplete.");
+  const last = sheet.getLastRow();
+  if (last < 2) throw new Error("Listing draft was not found. Please start again.");
+  const ids = sheet.getRange(2, map["Listing ID"], last - 1, 1).getDisplayValues();
+  for (let i=0;i<ids.length;i++) {
+    if (String(ids[i][0]) === String(listingId)) {
+      const row=i+2;
+      const owner=String(sheet.getRange(row,map["Account ID"]).getValue()||"");
+      const status=String(sheet.getRange(row,map["Status"]).getValue()||"");
+      if (owner !== String(userId)) throw new Error("This listing draft does not belong to your account.");
+      if (status !== "DRAFT_UPLOAD") throw new Error("This listing is no longer open for uploads.");
+      return row;
+    }
+  }
+  throw new Error("Listing draft was not found. Please start again.");
+}
+function handleStartListing_(data) {
+  const account=requireSession_(data.sessionToken);
+  const category=required_(data.category,"Category"), location=required_(data.location,"Location");
+  const title=required_(data.title,"Listing Title"), price=required_(data.price,"Price");
+  const description=required_(data.description,"Description"), condition=clean_(data.condition||"");
+  const ctx=marketplaceListingContext_();
+  const id="TWM-"+Utilities.formatDate(new Date(),CONFIG.TIMEZONE,"yyyyMMdd-HHmmss")+"-"+Utilities.getUuid().slice(0,6).toUpperCase();
+  const folder=ctx.folder.createFolder(id+" - "+safeFolderName_(title));
+  const m=ctx.map, row=ctx.sheet.getLastRow()+1;
+  const values={
+    "Timestamp":new Date(),"Listing ID":id,"Status":"DRAFT_UPLOAD",
+    "Seller / Business":account.businessName||account.fullName,"Email":account.email,
+    "Phone / WhatsApp":account.phone,"Category":category,"Location":location,
+    "Listing Title":title,"Price":price,"Condition":condition,"Description":description,
+    "Photo Folder":folder.getUrl(),"Photos Saved":0,"Photo URLs":"[]","Account ID":account.userId,
+    "Phone Visibility":account.phoneVisibility||"HIDDEN","WhatsApp Number":account.whatsappNumber||"",
+    "WhatsApp Enabled":account.whatsappEnabled?"YES":"NO","Approval Notification Sent":""
+  };
+  Object.keys(values).forEach(k=>{if(m[k])ctx.sheet.getRange(row,m[k]).setValue(values[k]);});
+  return json({ok:true,listingId:id,message:"Listing draft created. Upload your photos to continue."});
+}
+function handleUploadListingPhoto_(data) {
+  const account=requireSession_(data.sessionToken), photo=data.photo||{};
+  const name=required_(photo.name,"File name"), type=String(photo.type||"").toLowerCase();
+  const allowed=["image/jpeg","image/png","image/webp","video/mp4","video/webm","video/quicktime"];
+  if (allowed.indexOf(type)<0) throw new Error("Unsupported file type. Use JPG, PNG, WEBP, MP4, WEBM or MOV.");
+  const base64=String(photo.data||"").replace(/^data:[^;]+;base64,/,"");
+  if(!base64) throw new Error("The selected file was empty. Please choose it again.");
+  const bytes=Utilities.base64Decode(base64);
+  if(bytes.length>CONFIG.MAX_FILE_BYTES) throw new Error("Each file must be 5 MB or smaller.");
+  const ctx=marketplaceListingContext_(), row=marketplaceListingRow_(ctx.sheet,ctx.map,required_(data.listingId,"Listing ID"),account.userId), m=ctx.map;
+  const saved=JSON.parse(String(ctx.sheet.getRange(row,m["Photo URLs"]).getValue()||"[]"));
+  let total=bytes.length;
+  saved.forEach(p=>{try{total+=DriveApp.getFileById(p.id).getSize();}catch(e){}});
+  if(total>CONFIG.MAX_TOTAL_FILE_BYTES) throw new Error("All uploaded files together must be 15 MB or smaller.");
+  const folderUrl=String(ctx.sheet.getRange(row,m["Photo Folder"]).getValue()||"");
+  const folderId=(folderUrl.match(/[-\w]{25,}/)||[])[0];
+  if(!folderId) throw new Error("The listing's upload folder could not be found.");
+  const blob=Utilities.newBlob(bytes,type,safeFileName_(name));
+  const file=DriveApp.getFolderById(folderId).createFile(blob);
+  try{file.setSharing(DriveApp.Access.ANYONE_WITH_LINK,DriveApp.Permission.VIEW);}catch(e){console.warn("Could not enable public file link",e);}
+  const url="https://drive.google.com/uc?export=view&id="+file.getId();
+  saved.push({name:file.getName(),id:file.getId(),url:url,type:type});
+  ctx.sheet.getRange(row,m["Photo URLs"]).setValue(JSON.stringify(saved));
+  ctx.sheet.getRange(row,m["Photos Saved"]).setValue(saved.length);
+  return json({ok:true,message:"File uploaded.",uploaded:saved.length});
+}
+function handleFinalizeListing_(data) {
+  const account=requireSession_(data.sessionToken), ctx=marketplaceListingContext_(), id=required_(data.listingId,"Listing ID");
+  const row=marketplaceListingRow_(ctx.sheet,ctx.map,id,account.userId), m=ctx.map;
+  const saved=JSON.parse(String(ctx.sheet.getRange(row,m["Photo URLs"]).getValue()||"[]"));
+  if(!saved.length) throw new Error("Please upload at least one photo or video before submitting.");
+  ctx.sheet.getRange(row,m["Status"]).setValue("PENDING_REVIEW");
+  const get=k=>m[k]?ctx.sheet.getRange(row,m[k]).getValue():"";
+  const info={listingId:id,seller:get("Seller / Business"),email:get("Email"),phone:get("Phone / WhatsApp"),category:get("Category"),location:get("Location"),title:get("Listing Title"),price:get("Price"),condition:get("Condition"),description:get("Description"),photoCount:saved.length,accountId:account.userId,phoneVisibility:get("Phone Visibility"),whatsappNumber:get("WhatsApp Number"),whatsappEnabled:get("WhatsApp Enabled")==="YES",folderUrl:get("Photo Folder")};
+  safeSendManagementNotification_(info);
+  safeSendSellerConfirmation_(info);
+  return json({ok:true,message:"Listing submitted successfully and is awaiting TW&D review.",listingId:id,status:"PENDING_REVIEW",photosSaved:saved.length});
 }
 
 /**
