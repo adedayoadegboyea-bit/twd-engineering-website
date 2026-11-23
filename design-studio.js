@@ -173,7 +173,7 @@ function disposeBuildingGroup(){
  materials.forEach(material=>material.dispose());
  buildingGroup.clear();
 }
-function drawBuilding(){
+function drawBuildingUnsafe(){
  if(!buildingGroup)return;disposeBuildingGroup();
  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=+$('storeys').value||2,h=clamp(+$('floorHeight').value||3.2,2.7,5),roof=$('roofType').value,v=getVisualSettings(),total=n*h;
  const mat=(c,r=.72,m=0,texture=null)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m,map:texture||null});
@@ -500,7 +500,28 @@ function drawBuilding(){
   if(!cameraInteracted){const span=Math.max(w,d,total*1.35),distance=span*1.72;camera.position.set(distance*.72,targetY+distance*.48,distance*.82);camera.near=Math.max(.05,span/1200);camera.far=Math.max(500,span*18);camera.updateProjectionMatrix();}
   controls.target.set(0,targetY,0);controls.minDistance=Math.max(3,Math.min(w,d)*.35);controls.maxDistance=Math.max(180,Math.max(w,d,total)*12);controls.update();
  }
- drawPlan(w,d,n,v);
+}
+function drawBuilding(){
+ if(!buildingGroup)return;
+ try{drawBuildingUnsafe();}
+ catch(error){
+  console.error('TW&D 3D model generation failed:',error);
+  try{
+   disposeBuildingGroup();
+   const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=clamp(+$('storeys').value||1,1,4),h=clamp(+$('floorHeight').value||3.2,2.7,5),height=Math.max(2.7,n*h*.78);
+   const fallbackMat=new THREE.MeshStandardMaterial({color:'#d9e0e8',roughness:.82});
+   box(buildingGroup,w,height,d,0,height/2,0,fallbackMat);
+   $('viewerStatus').textContent='Basic 3D fallback shown. Detailed model error: '+(error?.message||'unknown error');
+  }catch(fallbackError){console.error('TW&D fallback model failed:',fallbackError);$('viewerStatus').textContent='3D preview needs a retry: '+(fallbackError?.message||'graphics error');}
+ }
+ try{
+  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80),n=clamp(+$('storeys').value||1,1,4);
+  drawPlan(w,d,n,getVisualSettings());
+ }catch(planError){
+  console.error('TW&D plan drawing failed:',planError);
+  const w=clamp(+$('width').value||12,4,80),d=clamp(+$('depth').value||18,4,80);
+  $('planDrawing').innerHTML='<svg viewBox="0 0 520 360" role="img" aria-label="Fallback conceptual footprint"><rect x="90" y="55" width="340" height="250" fill="#f3f6f8" stroke="#173b65" stroke-width="5"/><text x="260" y="165" text-anchor="middle" font-size="20" fill="#173b65">BUILDING FOOTPRINT</text><text x="260" y="195" text-anchor="middle" font-size="15" fill="#52677b">'+w.toFixed(2)+' m × '+d.toFixed(2)+' m</text><text x="260" y="330" text-anchor="middle" font-size="12" fill="#9b4b32">Detailed plan temporarily unavailable</text></svg>';
+ }
 }
 function drawPlan(w,d,n,v=getVisualSettings()){
  const doorGapMin=()=>8;
