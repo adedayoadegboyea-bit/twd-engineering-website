@@ -78,3 +78,85 @@ document.addEventListener("visibilitychange", () => {
     refreshTotals();
   }
 });
+
+
+/* Homepage gallery: rotate through every published gallery image without leaving the page. */
+(() => {
+  const grid = document.getElementById("homeGalleryGrid");
+  if (!grid) return;
+  const counter = document.getElementById("homeGalleryCounter");
+  const previous = document.getElementById("homeGalleryPrev");
+  const next = document.getElementById("homeGalleryNext");
+  const pause = document.getElementById("homeGalleryPause");
+  const pageSize = window.matchMedia("(max-width: 420px)").matches ? 2 : 6;
+  let images = [];
+  let page = 0;
+  let timer = null;
+  let paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const stop = () => { if (timer) window.clearInterval(timer); timer = null; };
+  const updatePause = () => {
+    pause.setAttribute("aria-pressed", String(paused));
+    pause.textContent = paused ? "Play motion" : "Pause motion";
+  };
+  const render = () => {
+    if (!images.length) return;
+    const totalPages = Math.ceil(images.length / pageSize);
+    page = (page + totalPages) % totalPages;
+    const start = page * pageSize;
+    const visible = images.slice(start, start + pageSize);
+    grid.replaceChildren();
+    visible.forEach((item, index) => {
+      const figure = document.createElement("figure");
+      figure.className = "home-gallery-card";
+      const img = document.createElement("img");
+      img.src = item.image_url;
+      img.alt = item.title || item.caption || "TW&D engineering project gallery photograph";
+      img.loading = "lazy";
+      img.decoding = "async";
+      const caption = document.createElement("figcaption");
+      caption.textContent = item.title || item.category || "TW&D project gallery";
+      figure.append(img, caption);
+      grid.append(figure);
+    });
+    counter.textContent = "Showing " + (start + 1) + "–" + (start + visible.length) + " of " + images.length + " gallery images";
+  };
+  const start = () => {
+    stop();
+    if (!paused && images.length > pageSize) timer = window.setInterval(() => { page += 1; render(); }, 6500);
+  };
+  const move = delta => { page += delta; render(); start(); };
+  previous.addEventListener("click", () => move(-1));
+  next.addEventListener("click", () => move(1));
+  pause.addEventListener("click", () => { paused = !paused; updatePause(); start(); });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) stop(); else start(); });
+  grid.addEventListener("mouseenter", stop);
+  grid.addEventListener("mouseleave", start);
+  grid.addEventListener("focusin", stop);
+  grid.addEventListener("focusout", start);
+  updatePause();
+
+  (async () => {
+    try {
+      const url = SUPABASE_URL + "/rest/v1/portfolio_gallery?select=title,category,image_url,caption&status=eq.PUBLISHED&project_slug=is.null&order=sort_order.asc,created_at.desc&limit=60";
+      const response = await fetch(url, {
+        headers: { apikey: SUPABASE_PUBLISHABLE_KEY, Accept: "application/json" },
+        cache: "no-store",
+        signal: AbortSignal.timeout(10000)
+      });
+      if (!response.ok) throw new Error("Gallery request failed");
+      const rows = await response.json();
+      images = (Array.isArray(rows) ? rows : []).filter(row => typeof row.image_url === "string" && /^https:\/\//i.test(row.image_url));
+      if (!images.length) {
+        grid.innerHTML = '<p class="home-gallery-status">Our public gallery is being refreshed. Visit the full project gallery to explore available photographs.</p>';
+        counter.textContent = "Gallery updates";
+        return;
+      }
+      render();
+      start();
+    } catch {
+      grid.innerHTML = '<p class="home-gallery-status">The gallery is temporarily unavailable. Please visit the full project gallery to view published photographs.</p>';
+      counter.textContent = "Gallery temporarily unavailable";
+    }
+  })();
+})();
