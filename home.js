@@ -138,29 +138,23 @@ document.addEventListener("visibilitychange", () => {
 
   (async () => {
     try {
-      const headers = { apikey: SUPABASE_PUBLISHABLE_KEY, Accept: "application/json" };
-      const options = { headers, cache: "no-store", signal: AbortSignal.timeout(12000) };
-      const projectUrl = SUPABASE_URL + "/rest/v1/portfolio_gallery?select=title,category,image_url,caption,project_slug&status=eq.PUBLISHED&project_slug=eq.six-bedroom-duplex-idi-ishin&order=created_at.desc&limit=60";
-      const generalUrl = SUPABASE_URL + "/rest/v1/portfolio_gallery?select=title,category,image_url,caption,project_slug&status=eq.PUBLISHED&project_slug=is.null&order=sort_order.asc,created_at.desc&limit=60";
-      const [projectResponse, generalResponse] = await Promise.all([fetch(projectUrl, options), fetch(generalUrl, options)]);
-      if (!projectResponse.ok || !generalResponse.ok) throw new Error("Gallery request failed");
-      const [projectRows, generalRows] = await Promise.all([projectResponse.json(), generalResponse.json()]);
-      const valid = rows => (Array.isArray(rows) ? rows : []).filter(row => typeof row.image_url === "string" && /^https:\/\//i.test(row.image_url));
-      const projectImages = valid(projectRows);
-      const generalImages = valid(generalRows);
-      // Shuffle Idi-Ishin project photos so repeat visits feature different real project views.
-      for (let i = projectImages.length - 1; i > 0; i--) {
+      const url = SUPABASE_URL + "/rest/v1/portfolio_gallery?select=title,category,image_url,caption,project_slug&status=eq.PUBLISHED&order=created_at.desc&limit=500";
+      const response = await fetch(url, {
+        headers: { apikey: SUPABASE_PUBLISHABLE_KEY, Accept: "application/json" },
+        cache: "no-store",
+        signal: AbortSignal.timeout(12000)
+      });
+      if (!response.ok) throw new Error("Gallery request failed");
+      const rows = await response.json();
+      const unique = new Map();
+      (Array.isArray(rows) ? rows : []).forEach(row => {
+        if (typeof row.image_url === "string" && /^https:\/\//i.test(row.image_url) && !unique.has(row.image_url)) unique.set(row.image_url, row);
+      });
+      images = Array.from(unique.values());
+      // Shuffle the complete published portfolio so every project gets a fair turn.
+      for (let i = images.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [projectImages[i], projectImages[j]] = [projectImages[j], projectImages[i]];
-      }
-      images = projectImages.concat(generalImages);
-      // Use real Idi-Ishin photographs in selected homepage feature slots.
-      const featureImages = projectImages.slice();
-      for (const image of document.querySelectorAll(".hero-photo img, .property-feature-photo img, .service-grid-complete .home-service img")) {
-        if (!featureImages.length) break;
-        const chosen = featureImages.splice(Math.floor(Math.random() * featureImages.length), 1)[0];
-        image.src = chosen.image_url;
-        image.alt = "Idi-Ishin six-bedroom duplex project photograph — " + (chosen.title || chosen.category || "construction progress");
+        [images[i], images[j]] = [images[j], images[i]];
       }
       if (!images.length) {
         grid.innerHTML = '<p class="home-gallery-status">Our public gallery is being refreshed. Visit the full project gallery to explore available photographs.</p>';
@@ -176,19 +170,3 @@ document.addEventListener("visibilitychange", () => {
   })();
 })();
 
-
-/* Facebook share: choose a unique project-preview page so Facebook receives a different static Open Graph image. */
-(() => {
-  const button = document.getElementById("shareIdiIshinFacebook");
-  if (!button) return;
-  const previews = [
-    "01","02","03","04","05","06","07"
-  ];
-  button.addEventListener("click", event => {
-    event.preventDefault();
-    const selected = previews[Math.floor(Math.random() * previews.length)];
-    const shareUrl = "https://twdengineeringconsult.com/facebook-share/idi-ishin-" + selected + ".html";
-    const facebookUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl);
-    window.open(facebookUrl, "_blank", "noopener,noreferrer");
-  });
-})();
