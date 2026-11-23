@@ -914,7 +914,7 @@ function handleAdminSubscriptions_(data) {
   requireAdminSession_(data.adminSessionToken);
   const props=PropertiesService.getScriptProperties();
   const ss=SpreadsheetApp.openById(props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID"));
-  const sh=ss.getSheetByName(CONFIG.SUBSCRIPTION_SHEET_NAME);
+  const sh=getOrCreateSheet_(ss, CONFIG.SUBSCRIPTION_SHEET_NAME, ["Timestamp","Subscription ID","Status","Plan","Seller / Business","Email","Phone / WhatsApp","Listing ID","Payment Method","Payment Reference","Payment Status","Payment Confirmed At","Approved By","Admin Notes"]);
   if(!sh || sh.getLastRow()<2) return json({ok:true,subscriptions:[]});
   const rows=sh.getDataRange().getValues(), h=rows[0], ix={};
   h.forEach((v,i)=>ix[String(v)]=i);
@@ -948,7 +948,7 @@ function handleAdminSubscriptionUpdate_(data) {
   if(decision==="approve" && data.confirmPayment!==true) throw new Error("Payment must be explicitly confirmed by the administrator before approval.");
   const props=PropertiesService.getScriptProperties();
   const ss=SpreadsheetApp.openById(props.getProperty("SHEET_ID") || props.getProperty("MARKETPLACE_SPREADSHEET_ID"));
-  const sh=ss.getSheetByName(CONFIG.SUBSCRIPTION_SHEET_NAME);
+  const sh=getOrCreateSheet_(ss, CONFIG.SUBSCRIPTION_SHEET_NAME, ["Timestamp","Subscription ID","Status","Plan","Seller / Business","Email","Phone / WhatsApp","Listing ID","Payment Method","Payment Reference","Payment Status","Payment Confirmed At","Approved By","Admin Notes"]);
   if(!sh || sh.getLastRow()<2) throw new Error("No subscription records were found.");
   const rows=sh.getDataRange().getValues(), h=rows[0], ix={};
   h.forEach((v,i)=>ix[String(v)]=i);
