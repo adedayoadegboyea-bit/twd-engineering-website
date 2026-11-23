@@ -239,6 +239,12 @@ function ensureSubscriptionFields() {
     subscriptionForm.insertBefore(listingLabel, subscriptionForm.querySelector("button"));
   }
 
+  if (!document.querySelector("#subscriptionPaymentReference")) {
+    const referenceLabel = document.createElement("label");
+    referenceLabel.innerHTML = '<span>Payment / Transaction Reference (optional)</span><input id="subscriptionPaymentReference" name="paymentReference" maxlength="120" placeholder="Enter bank transfer or payment reference if available">';
+    subscriptionForm.insertBefore(referenceLabel, subscriptionForm.querySelector("button"));
+  }
+
   if (!document.querySelector("#subscriptionPaymentMethod")) {
     const methodLabel = document.createElement("label");
     methodLabel.innerHTML =
@@ -523,7 +529,8 @@ if (subscriptionForm) {
       email: String(formData.get("email") || "").trim(),
       phone: String(formData.get("phone") || "").trim(),
       listingId: String(formData.get("listingId") || "").trim(),
-      paymentMethod: String(formData.get("paymentMethod") || "payoneer").trim()
+      paymentMethod: String(formData.get("paymentMethod") || "payoneer").trim(),
+      paymentReference: String(formData.get("paymentReference") || "").trim()
     };
 
     if (!payload.sellerName || !payload.email || !payload.phone || !payload.plan) {
