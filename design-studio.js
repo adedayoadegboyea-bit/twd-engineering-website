@@ -410,7 +410,7 @@ function drawBuildingUnsafe(){
     if(cfg.ceiling==='linear')for(let line=0;line<2;line++)addBox(.035,.025,spanZ*.72,cx+(line-.5)*spanX*.28,yy-.04,cz,light);
    }
    // Indicative wall switch and socket points, not an electrical circuit layout.
-   addBox(.055,.12,.035,doorX+.06,fyBase+1.18,doorZ-.52,chromeMat);
+   addBox(.055,.12,.035,cx+cellW*.44,fyBase+1.18,cz-cellD*.35,chromeMat);
    addBox(.065,.08,.035,cx+cellW*.44,fyBase+.32,cz+cellD*.35,fixtureMat);
    if(interior.show_plumbing&&/bath|toilet|wc|shower/.test(roomName)&&cfg.sanitary!=='none'){
     const basin= new THREE.Mesh(new THREE.CylinderGeometry(.22,.28,.10,20),fixtureMat);basin.position.set(cx+cellW*.23,fyBase+.82,cz-cellD*.22);buildingGroup.add(basin);
