@@ -174,7 +174,7 @@ document.querySelectorAll(".account-nav button").forEach(b=>b.onclick=()=>showTa
 $("#listingFormAccount").onsubmit=async e=>{
   e.preventDefault();
   const form=e.currentTarget,files=[...form.photos.files],status=$("#listingStatus");
-  const MAX_FILE=20*1024*1024,MAX_TOTAL=50*1024*1024;
+  const MAX_FILE=5*1024*1024,MAX_TOTAL=15*1024*1024;
   if(!token()){
     status.textContent="Please sign in or create a Marketplace account first.";
     location.href="marketplace-account.html?next=listing";
@@ -184,11 +184,11 @@ $("#listingFormAccount").onsubmit=async e=>{
   const total=files.reduce((a,f)=>a+f.size,0);
   if(files.some(f=>f.size>MAX_FILE)){
     const bad=files.find(f=>f.size>MAX_FILE);
-    status.textContent="Maximum 20 MB per file. Please remove: "+bad.name;
+    status.textContent="Maximum 5 MB per file. Please remove: "+bad.name;
     return;
   }
   if(total>MAX_TOTAL){
-    status.textContent="Maximum 50 MB total for all photos/videos. Please remove some files.";
+    status.textContent="Maximum 15 MB total for all photos/videos. Please remove some files.";
     return;
   }
   status.textContent="Checking your Marketplace account…";
