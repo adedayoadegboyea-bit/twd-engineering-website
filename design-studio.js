@@ -828,6 +828,54 @@ $('adminCatalogList').addEventListener('click',adminActions);
 $('supplierReviewList').addEventListener('click',reviewSupplier);
 
 $('cancelRateEdit').addEventListener('click',()=>{$('adminRateForm').reset();$('cancelRateEdit').hidden=true;});
-const {data:{session}}=await supabase.auth.getSession();currentUser=session?.user||null;
-supabase.auth.onAuthStateChange((_event,s)=>{currentUser=s?.user||null;if(currentUser){$('formStatus').textContent='Signed in. Your design brief can be saved securely.';initDesignWorkspace()}});
-if(!currentUser){$('formStatus').innerHTML='Sign in is required to save projects. <a href="account.html">Open your TW&D client account</a>.'}else{initDesignWorkspace()}
+function studioAuthMessage(message,type=''){const el=$('studioAuthStatus');el.textContent=message;el.className='studio-access-status'+(type?' '+type:'');}
+function studioAuthMode(mode){
+ $('studioSigninForm').hidden=mode!=='signin';$('studioSignupForm').hidden=mode!=='signup';$('studioRecoveryForm').hidden=mode!=='recovery';
+ $('studioAuthForms').hidden=false;$('studioSignedIn').hidden=true;
+}
+function studioAuthRender(user){
+ currentUser=user||null;
+ $('studioAccessState').textContent=currentUser?'Signed in':'Not signed in';
+ $('studioAuthForms').hidden=!!currentUser;$('studioSignedIn').hidden=!currentUser;
+ $('studioSignedInEmail').textContent=currentUser?('Signed in as '+(currentUser.email||'')):'';
+ if(currentUser){$('formStatus').textContent='Signed in to the Design Studio. Your design brief can be saved securely.';initDesignWorkspace();}
+ else{$('formStatus').innerHTML='Sign in or create a Design Studio account above to save projects and access private files.';}
+}
+$('studioShowSignin').addEventListener('click',()=>studioAuthMode('signin'));
+$('studioShowSignup').addEventListener('click',()=>studioAuthMode('signup'));
+$('studioSigninForm').addEventListener('submit',async e=>{
+ e.preventDefault();studioAuthMessage('Signing in securely…');
+ try{const {data,error}=await supabase.auth.signInWithPassword({email:$('studioSigninEmail').value.trim(),password:$('studioSigninPassword').value});if(error)throw error;studioAuthRender(data.user);studioAuthMessage('You are signed in to the Design Studio.','success');}
+ catch(error){studioAuthMessage(error.message||'Sign-in failed. Please check your details.','error');}
+});
+$('studioSignupForm').addEventListener('submit',async e=>{
+ e.preventDefault();const password=$('studioSignupPassword').value;
+ if(password!==$('studioSignupConfirm').value){studioAuthMessage('The passwords do not match.','error');return;}
+ studioAuthMessage('Creating your secure Design Studio account…');
+ try{
+  const {data,error}=await supabase.auth.signUp({email:$('studioSignupEmail').value.trim(),password,options:{emailRedirectTo:window.location.origin+'/design-studio.html',data:{full_name:$('studioSignupName').value.trim(),phone:$('studioSignupPhone').value.trim(),account_source:'design_studio'}}});
+  if(error)throw error;
+  if(data.session){studioAuthRender(data.user);studioAuthMessage('Your Design Studio account is ready.','success');}
+  else{studioAuthMode('signin');$('studioSigninEmail').value=$('studioSignupEmail').value.trim();studioAuthMessage('Account created. Check your email to confirm your address, then sign in.','success');}
+ }catch(error){studioAuthMessage(error.message||'Account creation failed.','error');}
+});
+$('studioForgotPassword').addEventListener('click',async()=>{
+ const email=$('studioSigninEmail').value.trim();if(!email){studioAuthMessage('Enter your account email address first.','error');return;}
+ studioAuthMessage('Sending password reset instructions…');
+ try{const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+'/design-studio.html'});if(error)throw error;studioAuthMessage('If an account exists for that email, password-reset instructions have been sent. Check your inbox and spam folder.','success');}
+ catch(error){studioAuthMessage(error.message||'Could not send the reset email.','error');}
+});
+$('studioRecoveryForm').addEventListener('submit',async e=>{
+ e.preventDefault();const password=$('studioNewPassword').value;
+ if(password!==$('studioNewPasswordConfirm').value){studioAuthMessage('The passwords do not match.','error');return;}
+ try{studioAuthMessage('Updating your password…');const {error}=await supabase.auth.updateUser({password});if(error)throw error;await supabase.auth.signOut();studioAuthRender(null);studioAuthMode('signin');studioAuthMessage('Password updated successfully. Sign in with your new password.','success');}
+ catch(error){studioAuthMessage(error.message||'Password update failed. Please reopen the reset email link.','error');}
+});
+$('studioSignout').addEventListener('click',async()=>{const {error}=await supabase.auth.signOut();if(error){studioAuthMessage(error.message,'error');return;}studioAuthRender(null);studioAuthMessage('You have signed out.','success');});
+const {data:{session},error:sessionError}=await supabase.auth.getSession();
+if(sessionError)studioAuthMessage(sessionError.message,'error');
+studioAuthRender(session?.user||null);
+supabase.auth.onAuthStateChange((event,s)=>{
+ if(event==='PASSWORD_RECOVERY'){studioAuthMode('recovery');studioAuthMessage('Choose a new password for your Design Studio account.');return;}
+ if(event==='SIGNED_IN'||event==='TOKEN_REFRESHED'||event==='SIGNED_OUT')studioAuthRender(s?.user||null);
+});
