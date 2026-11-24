@@ -22,30 +22,10 @@ function escapeHtml(value) {
   }[ch]));
 }
 
-function publicImageUrl(value) {
-  const src = String(value || "").trim();
-  if (!src) return "";
-
-  // Google Drive file URL: /file/d/FILE_ID/view
-  let match = src.match(/drive\.google\.com\/file\/d\/([^/?#]+)/i);
-  if (match && match[1]) {
-    return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1600";
-  }
-
-  // Google Drive thumbnail/open URL with ?id=FILE_ID
-  match = src.match(/[?&]id=([^&]+)/i);
-  if (match && match[1]) {
-    return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1600";
-  }
-
-  // Google Drive uc?export=view&id=FILE_ID
-  match = src.match(/(?:export=view|uc[^?]*)[?&]id=([^&]+)/i);
-  if (match && match[1]) {
-    return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(match[1]) + "&sz=w1600";
-  }
-
-  return src;
-}
+function driveFileId(value){const src=String(value||"").trim();const match=src.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?[^#]*?id=)([A-Za-z0-9_-]+)/i)||src.match(/[?&]id=([A-Za-z0-9_-]+)/i);return match?match[1]:""}
+function publicImageUrl(value){const src=String(value||"").trim();if(!src)return "";const id=driveFileId(src);return id?"https://drive.google.com/thumbnail?id="+encodeURIComponent(id)+"&sz=w1600":src}
+function publicVideoUrl(value){const src=String(value||"").trim();if(!src)return "";const id=driveFileId(src);return id?"https://drive.google.com/uc?export=download&id="+encodeURIComponent(id):src}
+function wireVideoPlayers(root){(root||document).querySelectorAll("video").forEach(video=>{video.controls=true;video.playsInline=true;video.setAttribute("playsinline","");video.setAttribute("webkit-playsinline","");video.preload="metadata";video.addEventListener("error",()=>{const wrap=video.parentElement;if(!wrap||wrap.querySelector(".video-open-fallback"))return;const link=document.createElement("a");link.className="video-open-fallback";link.href=video.currentSrc||video.src;link.target="_blank";link.rel="noopener noreferrer";link.textContent="This browser cannot play this video format. Open video separately";wrap.appendChild(link)},{once:true})})}
 function render() {
   const search = (document.querySelector("#search").value || "").toLowerCase().trim();
   const category = document.querySelector("#category").value;
@@ -69,7 +49,7 @@ function render() {
     const types = Array.isArray(item.mediaTypes) ? item.mediaTypes : [];
     const normalizedVideos = types.reduce((out,t,i)=>String(t).toLowerCase()==="video" && normalizedImages[i] ? out.concat(normalizedImages[i]) : out, []);
     const images = normalizedImages.map(publicImageUrl);
-    const videos = normalizedVideos.map(publicImageUrl).filter(Boolean);
+    const videos = normalizedVideos.map(publicVideoUrl).filter(Boolean);
     const image = escapeHtml(publicImageUrl(images[0] || ""));
     const categoryText = escapeHtml(item.category);
     const locationText = escapeHtml(item.location);
@@ -95,6 +75,7 @@ function render() {
     </article>`;
   }).join("");
 
+  grid.querySelectorAll("video").forEach(video=>wireVideoPlayers(video.parentElement));
   empty.hidden = rows.length > 0;
   grid.querySelectorAll(".listing").forEach(card => {
     const main = card.querySelector(".listing-main-image");
