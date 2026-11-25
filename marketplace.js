@@ -25,7 +25,7 @@ function escapeHtml(value) {
 function driveFileId(value){const src=String(value||"").trim();const match=src.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?[^#]*?id=)([A-Za-z0-9_-]+)/i)||src.match(/[?&]id=([A-Za-z0-9_-]+)/i);return match?match[1]:""}
 function publicImageUrl(value){const src=String(value||"").trim();if(!src)return "";const id=driveFileId(src);return id?"https://drive.google.com/thumbnail?id="+encodeURIComponent(id)+"&sz=w1600":src}
 function publicVideoUrl(value){const src=String(value||"").trim();if(!src)return "";const id=driveFileId(src);return id?"https://drive.google.com/uc?export=download&id="+encodeURIComponent(id):src}
-function wireVideoPlayers(root){(root||document).querySelectorAll("video").forEach(video=>{video.controls=true;video.playsInline=true;video.setAttribute("playsinline","");video.setAttribute("webkit-playsinline","");video.preload="metadata";video.addEventListener("error",()=>{const wrap=video.parentElement;if(!wrap||wrap.querySelector(".video-open-fallback"))return;const link=document.createElement("a");link.className="video-open-fallback";link.href=video.currentSrc||video.src;link.target="_blank";link.rel="noopener noreferrer";link.textContent="This browser cannot play this video format. Open video separately";wrap.appendChild(link)},{once:true})})}
+function wireVideoPlayers(root){(root||document).querySelectorAll("video").forEach(video=>{video.controls=true;video.playsInline=true;video.muted=true;video.defaultMuted=true;video.loop=true;video.autoplay=true;video.setAttribute("muted","");video.setAttribute("autoplay","");video.setAttribute("loop","");video.setAttribute("playsinline","");video.setAttribute("webkit-playsinline","");video.preload="auto";video.play().catch(()=>{});video.addEventListener("error",()=>{const wrap=video.parentElement;if(!wrap||wrap.querySelector(".video-open-fallback"))return;const link=document.createElement("a");link.className="video-open-fallback";link.href=video.currentSrc||video.src;link.target="_blank";link.rel="noopener noreferrer";link.textContent="This browser cannot play this video format. Open video separately";wrap.appendChild(link)},{once:true})})}
 function render() {
   const search = (document.querySelector("#search").value || "").toLowerCase().trim();
   const category = document.querySelector("#category").value;
@@ -55,9 +55,10 @@ function render() {
     const locationText = escapeHtml(item.location);
     const conditionText = escapeHtml(item.condition || "");
     const ownerId = String(item.accountId || item.ownerId || "").trim();
-    const wa = "marketplace-listing.html?id=" + encodeURIComponent(item.id) + (ownerId ? "&owner=" + encodeURIComponent(ownerId) : "");
+    const listingId = String(item.id || "");
+    const wa = /^TWM-[0-9-]+$/i.test(listingId) ? "/marketplace-listings/" + listingId.toLowerCase() + ".html" : "marketplace-listing.html?id=" + encodeURIComponent(listingId) + (ownerId ? "&owner=" + encodeURIComponent(ownerId) : "");
     const gallery = images.slice(0, 5).map((src, index) => '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="eager" decoding="async" data-gallery-src="' + escapeHtml(src) + '">').join("");
-    const videoBlock = videos.length ? '<div class="listing-videos">' + videos.slice(0, 2).map((src, index) => '<video controls preload="metadata" playsinline src="' + escapeHtml(src) + '" aria-label="' + title + ' advertisement video ' + (index + 1) + '"></video>').join("") + '</div>' : "";
+    const videoBlock = videos.length ? '<div class="listing-videos">' + videos.slice(0, 2).map((src, index) => '<video controls autoplay muted loop preload="auto" playsinline webkit-playsinline src="' + escapeHtml(src) + '" aria-label="' + title + ' advertisement video ' + (index + 1) + '"></video>').join("") + '</div>' : "";
 
     return `<article class="listing">
       <div class="listing-media">
