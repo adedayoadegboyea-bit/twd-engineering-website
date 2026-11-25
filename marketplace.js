@@ -55,8 +55,7 @@ function render() {
     const locationText = escapeHtml(item.location);
     const conditionText = escapeHtml(item.condition || "");
     const ownerId = String(item.accountId || item.ownerId || "").trim();
-    const listingId = String(item.id || "");
-    const wa = /^TWM-[0-9-]+$/i.test(listingId) ? "/marketplace-listings/" + listingId.toLowerCase() + ".html" : "marketplace-listing.html?id=" + encodeURIComponent(listingId) + (ownerId ? "&owner=" + encodeURIComponent(ownerId) : "");
+    const wa = "marketplace-listing.html?id=" + encodeURIComponent(item.id) + (ownerId ? "&owner=" + encodeURIComponent(ownerId) : "");
     const gallery = images.slice(0, 5).map((src, index) => '<img src="' + escapeHtml(src) + '" alt="' + title + ' photo ' + (index + 1) + '" loading="eager" decoding="async" data-gallery-src="' + escapeHtml(src) + '">').join("");
     const videoBlock = videos.length ? '<div class="listing-videos">' + videos.slice(0, 2).map((src, index) => '<video controls autoplay muted loop preload="auto" playsinline webkit-playsinline src="' + escapeHtml(src) + '" aria-label="' + title + ' advertisement video ' + (index + 1) + '"></video>').join("") + '</div>' : "";
 
